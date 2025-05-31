@@ -1,318 +1,41 @@
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T03:49:55.750Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T03:49:55.788Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T04:18:18.025Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T04:18:18.067Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T05:54:17.139Z"}
-{"code":8000,"codeName":"AtlasError","connectionGeneration":0,"errorLabelSet":{},"errorResponse":{"code":8000,"codeName":"AtlasError","errmsg":"bad auth : Authentication failed.","ok":0},"level":"error","message":"MongoDB connection error bad auth : Authentication failed.","ok":0,"stack":"MongoServerError: bad auth : Authentication failed.\n    at Connection.sendCommand (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/connection.js:299:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Connection.command (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/connection.js:327:26)\n    at async executeScram (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/auth/scram.js:79:22)\n    at async ScramSHA256.auth (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/auth/scram.js:39:16)\n    at async performInitialHandshake (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/connect.js:104:13)\n    at async connect (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/connect.js:24:9)","timestamp":"2025-05-31T05:54:17.761Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T05:56:29.137Z"}
-{"code":8000,"codeName":"AtlasError","connectionGeneration":0,"errorLabelSet":{},"errorResponse":{"code":8000,"codeName":"AtlasError","errmsg":"bad auth : authentication failed","ok":0},"level":"error","message":"MongoDB connection error bad auth : authentication failed","ok":0,"stack":"MongoServerError: bad auth : authentication failed\n    at Connection.sendCommand (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/connection.js:299:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Connection.command (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/connection.js:327:26)\n    at async continueScramConversation (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/auth/scram.js:131:15)\n    at async executeScram (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/auth/scram.js:80:5)\n    at async ScramSHA1.auth (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/auth/scram.js:39:16)\n    at async performInitialHandshake (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/connect.js:104:13)\n    at async connect (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/cmap/connect.js:24:9)","timestamp":"2025-05-31T05:56:29.763Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T05:58:49.780Z"}
-{"level":"error","message":"MongoDB connection error mongodb+srv URI cannot have port number","stack":"MongoParseError: mongodb+srv URI cannot have port number\n    at new ConnectionString (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb-connection-string-url/lib/index.js:146:23)\n    at parseOptions (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/connection_string.js:203:17)\n    at new MongoClient (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/mongo_client.js:52:61)\n    at NativeConnection.createClient (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js:343:14)\n    at NativeConnection.openUri (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/connection.js:1071:34)\n    at Mongoose.connect (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/mongoose.js:450:15)\n    at connectMongoDB (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/config/mongodbConfig.js:9:24)\n    at Object.<anonymous> (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/server.js:18:1)\n    at Module._compile (node:internal/modules/cjs/loader:1734:14)\n    at Object..js (node:internal/modules/cjs/loader:1899:10)","timestamp":"2025-05-31T05:58:49.783Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T06:00:13.062Z"}
-{"level":"error","message":"MongoDB connection error mongodb+srv URI cannot have port number","stack":"MongoParseError: mongodb+srv URI cannot have port number\n    at new ConnectionString (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb-connection-string-url/lib/index.js:146:23)\n    at parseOptions (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/connection_string.js:203:17)\n    at new MongoClient (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongodb/lib/mongo_client.js:52:61)\n    at NativeConnection.createClient (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js:343:14)\n    at NativeConnection.openUri (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/connection.js:1071:34)\n    at Mongoose.connect (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/mongoose.js:450:15)\n    at connectMongoDB (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/config/mongodbConfig.js:9:24)\n    at Object.<anonymous> (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/server.js:18:1)\n    at Module._compile (node:internal/modules/cjs/loader:1734:14)\n    at Object..js (node:internal/modules/cjs/loader:1899:10)","timestamp":"2025-05-31T06:00:13.070Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T06:00:53.661Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T06:00:54.253Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:22:32.036Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:22:32.901Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:31:50.100Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:31:50.772Z"}
-{"level":"info","message":"Received request: GET /","timestamp":"2025-05-31T07:35:40.721Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T07:35:40.723Z"}
-{"level":"error","message":"TypeError: rateLimit.consume is not a function\n    at /home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/server.js:35:13\n    at Layer.handleRequest (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:342:13)\n    at /home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:297:9\n    at processParams (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:582:12)\n    at next (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:291:5)\n    at /home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/server.js:30:3\n    at Layer.handleRequest (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:342:13)\n    at /home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:297:9","timestamp":"2025-05-31T07:35:40.730Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:37:49.038Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:37:49.723Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:38:15.291Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:38:15.956Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:38:26.912Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:38:27.543Z"}
-{"level":"info","message":"Received request: GET /","timestamp":"2025-05-31T07:38:30.633Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T07:38:30.634Z"}
-{"level":"info","message":"Received request: GET /api/v1/user","timestamp":"2025-05-31T07:38:40.674Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T07:38:40.674Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-05-31T07:38:53.608Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T07:38:53.608Z"}
-{"level":"info","message":"Received request: GET /favicon.ico","timestamp":"2025-05-31T07:38:53.881Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T07:38:53.882Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:41:31.282Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:41:32.054Z"}
-{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-05-31T07:41:38.903Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T07:41:38.904Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:44:53.343Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:44:54.014Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:48:19.594Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:48:20.368Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:49:43.053Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:49:43.726Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:50:40.506Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:50:41.185Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T07:51:57.560Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T07:51:58.283Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:17:39.837Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:17:40.467Z"}
-{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-05-31T08:17:48.454Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:17:48.454Z"}
-{"level":"info","message":"Creating a new user...","timestamp":"2025-05-31T08:17:48.455Z"}
-{"level":"warn","message":"Validation error: \"address\" is not allowed","timestamp":"2025-05-31T08:17:48.463Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:20:12.764Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:20:13.444Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:22:08.523Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:22:09.234Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:22:45.753Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:22:46.345Z"}
-{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-05-31T08:22:51.514Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:22:51.515Z"}
-{"level":"info","message":"Creating a new user...","timestamp":"2025-05-31T08:22:51.518Z"}
-{"level":"warn","message":"Validation error: \"image\" is not allowed","timestamp":"2025-05-31T08:22:51.537Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:23:29.524Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:23:30.245Z"}
-{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-05-31T08:23:33.063Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:23:33.066Z"}
-{"level":"info","message":"Creating a new user...","timestamp":"2025-05-31T08:23:33.068Z"}
-{"level":"error","message":"Error creating user: this.isModified is not a function","timestamp":"2025-05-31T08:23:33.201Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:25:13.849Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:25:14.585Z"}
-{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-05-31T08:25:17.099Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:25:17.102Z"}
-{"level":"info","message":"Creating a new user...","timestamp":"2025-05-31T08:25:17.112Z"}
-{"level":"info","message":"User created successfully: 683abced58a91f35d751fa9d","timestamp":"2025-05-31T08:25:17.625Z"}
-{"level":"info","message":"Received request: GET /api/v1/user","timestamp":"2025-05-31T08:25:41.596Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:25:41.596Z"}
-{"level":"info","message":"Received request: GET /api/v1/user/","timestamp":"2025-05-31T08:25:55.711Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:25:55.711Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-05-31T08:26:17.467Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:26:17.467Z"}
-{"level":"info","message":"Fetching all users...","timestamp":"2025-05-31T08:26:17.468Z"}
-{"level":"info","message":"Total users retrieved: 1","timestamp":"2025-05-31T08:26:17.530Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/1","timestamp":"2025-05-31T08:28:57.443Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:28:57.444Z"}
-{"level":"info","message":"Fetching user with ID: 1","timestamp":"2025-05-31T08:28:57.445Z"}
-{"level":"error","message":"Error fetching user: Cast to ObjectId failed for value \"1\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-05-31T08:28:57.447Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/0","timestamp":"2025-05-31T08:29:03.538Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:29:03.538Z"}
-{"level":"info","message":"Fetching user with ID: 0","timestamp":"2025-05-31T08:29:03.539Z"}
-{"level":"error","message":"Error fetching user: Cast to ObjectId failed for value \"0\" (type string) at path \"_id\" for model \"User\"","timestamp":"2025-05-31T08:29:03.541Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-05-31T08:29:08.655Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:29:08.656Z"}
-{"level":"info","message":"Fetching all users...","timestamp":"2025-05-31T08:29:08.656Z"}
-{"level":"info","message":"Total users retrieved: 1","timestamp":"2025-05-31T08:29:08.714Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/683abced58a91f35d751fa9d","timestamp":"2025-05-31T08:29:18.302Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:29:18.302Z"}
-{"level":"info","message":"Fetching user with ID: 683abced58a91f35d751fa9d","timestamp":"2025-05-31T08:29:18.302Z"}
-{"level":"info","message":"User retrieved successfully: 683abced58a91f35d751fa9d","timestamp":"2025-05-31T08:29:18.364Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:38:08.780Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:38:09.507Z"}
-{"level":"info","message":"Received request: DELETE /api/v1/users/users/683abced58a91f35d751fa9d","timestamp":"2025-05-31T08:38:36.768Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:38:36.768Z"}
-{"level":"info","message":"Received request: DELETE /api/v1/users/683abced58a91f35d751fa9d","timestamp":"2025-05-31T08:39:06.014Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:39:06.015Z"}
-{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-05-31T08:39:13.713Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:39:13.714Z"}
-{"level":"info","message":"Creating a new user...","timestamp":"2025-05-31T08:39:13.714Z"}
-{"level":"info","message":"User created successfully: 683ac031f890f9be521242a1","timestamp":"2025-05-31T08:39:14.039Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:39:48.940Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:39:49.604Z"}
-{"level":"info","message":"Received request: DELETE /api/v1/users/683ac031f890f9be521242a1","timestamp":"2025-05-31T08:40:13.965Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:40:13.966Z"}
-{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-05-31T08:40:20.685Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T08:40:20.686Z"}
-{"level":"info","message":"Creating a new user...","timestamp":"2025-05-31T08:40:20.686Z"}
-{"level":"info","message":"User created successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T08:40:21.017Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:44:09.928Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:44:10.570Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:51:37.756Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:51:38.349Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:54:31.685Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:54:32.265Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T08:58:57.124Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T08:58:57.925Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:00:24.291Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:00:24.995Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:08:31.219Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:08:31.970Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:10:57.594Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:10:58.599Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:11:45.597Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:11:46.340Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:11:58.335Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:11:59.074Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:15:34.444Z"}
-{"cause":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":30,"maxElectionId":null,"maxSetVersion":null,"servers":{"cluster0-shard-00-00.1ya4y.mongodb.net:27017":{"$clusterTime":{"clusterTime":{"$timestamp":{"i":52,"t":1748682934}},"signature":{"hash":{"0":122,"1":132,"10":253,"11":15,"12":190,"13":152,"14":19,"15":245,"16":79,"17":91,"18":18,"19":56,"2":80,"3":45,"4":229,"5":89,"6":30,"7":1,"8":9,"9":88},"keyId":7449639273336144000}},"address":"cluster0-shard-00-00.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":["cluster0-shard-00-00.1ya4y.mongodb.net:27017","cluster0-shard-00-01.1ya4y.mongodb.net:27017","cluster0-shard-00-02.1ya4y.mongodb.net:27017"],"iscryptd":false,"lastUpdateTime":27560721,"lastWriteDate":{"$date":"2025-05-31T09:15:34Z"},"logicalSessionTimeoutMinutes":30,"maxBsonObjectSize":16777216,"maxMessageSizeBytes":48000000,"maxWireVersion":25,"maxWriteBatchSize":100000,"me":"cluster0-shard-00-00.1ya4y.mongodb.net:27017","minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","roundTripTime":57,"setName":"atlas-6lqfv6-shard-0","setVersion":130,"tags":{"availabilityZone":"apse1-az2","diskState":"READY","nodeType":"ELECTABLE","provider":"AWS","region":"AP_SOUTHEAST_1","workloadType":"OPERATIONAL"},"topologyVersion":{"counter":4,"processId":{"$oid":"682e18e3dbd8846f30f7df33"}},"type":"RSSecondary"},"cluster0-shard-00-01.1ya4y.mongodb.net:27017":{"$clusterTime":null,"address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":[],"iscryptd":false,"lastUpdateTime":27560402,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"cluster0-shard-00-02.1ya4y.mongodb.net:27017":{"$clusterTime":{"clusterTime":{"$timestamp":{"i":52,"t":1748682934}},"signature":{"hash":{"0":122,"1":132,"10":253,"11":15,"12":190,"13":152,"14":19,"15":245,"16":79,"17":91,"18":18,"19":56,"2":80,"3":45,"4":229,"5":89,"6":30,"7":1,"8":9,"9":88},"keyId":7449639273336144000}},"address":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":["cluster0-shard-00-00.1ya4y.mongodb.net:27017","cluster0-shard-00-01.1ya4y.mongodb.net:27017","cluster0-shard-00-02.1ya4y.mongodb.net:27017"],"iscryptd":false,"lastUpdateTime":27560723,"lastWriteDate":{"$date":"2025-05-31T09:15:34Z"},"logicalSessionTimeoutMinutes":30,"maxBsonObjectSize":16777216,"maxMessageSizeBytes":48000000,"maxWireVersion":25,"maxWriteBatchSize":100000,"me":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","roundTripTime":55,"setName":"atlas-6lqfv6-shard-0","setVersion":130,"tags":{"availabilityZone":"apse1-az3","diskState":"READY","nodeType":"ELECTABLE","provider":"AWS","region":"AP_SOUTHEAST_1","workloadType":"OPERATIONAL"},"topologyVersion":{"counter":3,"processId":{"$oid":"682e1e7e49529f180bb73f1f"}},"type":"RSSecondary"}},"setName":"atlas-6lqfv6-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"errorLabelSet":{},"level":"error","message":"Server selection timed out after 5000 ms","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":30,"maxElectionId":null,"maxSetVersion":null,"servers":{"cluster0-shard-00-00.1ya4y.mongodb.net:27017":{"$clusterTime":{"clusterTime":{"$timestamp":{"i":52,"t":1748682934}},"signature":{"hash":{"0":122,"1":132,"10":253,"11":15,"12":190,"13":152,"14":19,"15":245,"16":79,"17":91,"18":18,"19":56,"2":80,"3":45,"4":229,"5":89,"6":30,"7":1,"8":9,"9":88},"keyId":7449639273336144000}},"address":"cluster0-shard-00-00.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":["cluster0-shard-00-00.1ya4y.mongodb.net:27017","cluster0-shard-00-01.1ya4y.mongodb.net:27017","cluster0-shard-00-02.1ya4y.mongodb.net:27017"],"iscryptd":false,"lastUpdateTime":27560721,"lastWriteDate":{"$date":"2025-05-31T09:15:34Z"},"logicalSessionTimeoutMinutes":30,"maxBsonObjectSize":16777216,"maxMessageSizeBytes":48000000,"maxWireVersion":25,"maxWriteBatchSize":100000,"me":"cluster0-shard-00-00.1ya4y.mongodb.net:27017","minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","roundTripTime":57,"setName":"atlas-6lqfv6-shard-0","setVersion":130,"tags":{"availabilityZone":"apse1-az2","diskState":"READY","nodeType":"ELECTABLE","provider":"AWS","region":"AP_SOUTHEAST_1","workloadType":"OPERATIONAL"},"topologyVersion":{"counter":4,"processId":{"$oid":"682e18e3dbd8846f30f7df33"}},"type":"RSSecondary"},"cluster0-shard-00-01.1ya4y.mongodb.net:27017":{"$clusterTime":null,"address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":[],"iscryptd":false,"lastUpdateTime":27560402,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"cluster0-shard-00-02.1ya4y.mongodb.net:27017":{"$clusterTime":{"clusterTime":{"$timestamp":{"i":52,"t":1748682934}},"signature":{"hash":{"0":122,"1":132,"10":253,"11":15,"12":190,"13":152,"14":19,"15":245,"16":79,"17":91,"18":18,"19":56,"2":80,"3":45,"4":229,"5":89,"6":30,"7":1,"8":9,"9":88},"keyId":7449639273336144000}},"address":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":["cluster0-shard-00-00.1ya4y.mongodb.net:27017","cluster0-shard-00-01.1ya4y.mongodb.net:27017","cluster0-shard-00-02.1ya4y.mongodb.net:27017"],"iscryptd":false,"lastUpdateTime":27560723,"lastWriteDate":{"$date":"2025-05-31T09:15:34Z"},"logicalSessionTimeoutMinutes":30,"maxBsonObjectSize":16777216,"maxMessageSizeBytes":48000000,"maxWireVersion":25,"maxWriteBatchSize":100000,"me":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","roundTripTime":55,"setName":"atlas-6lqfv6-shard-0","setVersion":130,"tags":{"availabilityZone":"apse1-az3","diskState":"READY","nodeType":"ELECTABLE","provider":"AWS","region":"AP_SOUTHEAST_1","workloadType":"OPERATIONAL"},"topologyVersion":{"counter":3,"processId":{"$oid":"682e1e7e49529f180bb73f1f"}},"type":"RSSecondary"}},"setName":"atlas-6lqfv6-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongooseServerSelectionError: Server selection timed out after 5000 ms\n    at _handleConnectionErrors (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/connection.js:1165:11)\n    at NativeConnection.openUri (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/connection.js:1096:11)\n    at async connectMongoDB (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/config/mongodbConfig.js:9:9)","timestamp":"2025-05-31T09:15:39.526Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:16:28.791Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:16:29.348Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:16:51.556Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:16:52.332Z"}
-{"level":"info","message":"Received request: PUT /api/v1/iusers/683ac0744b8decb4542f76ea","timestamp":"2025-05-31T09:17:47.619Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T09:17:47.621Z"}
-{"level":"info","message":"Received request: PUT /api/v1/users/683ac0744b8decb4542f76ea","timestamp":"2025-05-31T09:17:56.213Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T09:17:56.213Z"}
-{"level":"info","message":"Updating user with ID: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T09:17:56.214Z"}
-{"level":"info","message":"User updated successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T09:17:56.396Z"}
-{"level":"info","message":"Received request: PUT /api/v1/users/683ac0744b8decb4542f76ea","timestamp":"2025-05-31T09:18:30.542Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T09:18:30.542Z"}
-{"level":"info","message":"Updating user with ID: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T09:18:30.543Z"}
-{"level":"info","message":"User updated successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T09:18:30.849Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:23:29.430Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:23:30.122Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:24:37.312Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:24:38.056Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:25:16.745Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:25:17.510Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T09:26:52.320Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T09:26:53.065Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:06:50.655Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:06:51.364Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-05-31T11:07:15.239Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:07:15.239Z"}
-{"level":"error","message":"ReferenceError: logger is not defined\n    at validateToken (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/middlewares/authMiddleware.js:7:9)\n    at Layer.handleRequest (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:342:13)\n    at /home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:297:9\n    at processParams (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:582:12)\n    at next (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:291:5)\n    at /home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/server.js:31:3\n    at Layer.handleRequest (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:342:13)\n    at /home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/router/index.js:297:9","timestamp":"2025-05-31T11:07:15.240Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:09:17.811Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:09:18.526Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-05-31T11:09:21.657Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:09:21.657Z"}
-{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-05-31T11:09:21.658Z"}
-{"level":"warn","message":"Invalid token","timestamp":"2025-05-31T11:09:21.659Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:16:24.678Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:16:25.337Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-05-31T11:18:03.351Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:18:03.352Z"}
-{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-05-31T11:18:03.354Z"}
-{"level":"warn","message":"Invalid token","timestamp":"2025-05-31T11:18:03.356Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:23:10.164Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:23:10.164Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:23:10.165Z"}
-{"level":"error","message":"Er\n            ror during user login: pchstr must be a non-empty string","timestamp":"2025-05-31T11:23:10.243Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:23:46.650Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:23:47.360Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:26:43.819Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:26:44.514Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:26:51.281Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:26:51.282Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:26:51.284Z"}
-{"level":"error","message":"Error during user login: pchstr must be a non-empty string","timestamp":"2025-05-31T11:26:51.353Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:27:30.629Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:27:31.342Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:27:32.765Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:27:32.766Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:27:32.769Z"}
-{"level":"error","message":"Error during user login: pchstr must be a non-empty string","timestamp":"2025-05-31T11:27:32.860Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:27:37.404Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:27:37.971Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:27:53.905Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:27:54.577Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:27:56.442Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:27:56.443Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:27:56.445Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T11:27:56.528Z"}
-{"level":"error","message":"Error during user login: pchstr must be a non-empty string","timestamp":"2025-05-31T11:27:56.535Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:28:14.087Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:28:15.059Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:28:16.219Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:28:16.220Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:28:16.222Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T11:28:16.306Z"}
-{"level":"info","message":"User found: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T11:28:16.308Z"}
-{"level":"error","message":"Error during user login: pchstr must be a non-empty string","timestamp":"2025-05-31T11:28:16.309Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:29:00.625Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:29:01.280Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:29:02.506Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:29:02.506Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:29:02.508Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T11:29:02.589Z"}
-{"level":"info","message":"User found: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T11:29:02.592Z"}
-{"level":"error","message":"Error during user login: pchstr must be a non-empty string","timestamp":"2025-05-31T11:29:02.593Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:29:36.331Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:29:36.982Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:31:04.619Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:31:05.381Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:31:08.703Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:31:08.703Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:31:08.704Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T11:31:08.767Z"}
-{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T11:31:08.917Z"}
-{"level":"error","message":"Error during user login: expiresAt is not defined","timestamp":"2025-05-31T11:31:08.920Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:32:52.542Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:32:53.198Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:33:08.139Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:33:08.742Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:33:14.042Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:33:14.043Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:33:14.044Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T11:33:14.118Z"}
-{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T11:33:14.260Z"}
-{"level":"error","message":"Error during user login: expiresAt is not defined","timestamp":"2025-05-31T11:33:14.266Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:37:10.477Z"}
-{"cause":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":30,"maxElectionId":null,"maxSetVersion":null,"servers":{"cluster0-shard-00-00.1ya4y.mongodb.net:27017":{"$clusterTime":{"clusterTime":{"$timestamp":{"i":55,"t":1748691430}},"signature":{"hash":{"0":130,"1":68,"10":144,"11":255,"12":56,"13":45,"14":203,"15":55,"16":106,"17":32,"18":197,"19":144,"2":152,"3":74,"4":90,"5":16,"6":181,"7":170,"8":74,"9":241},"keyId":7449639273336144000}},"address":"cluster0-shard-00-00.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":["cluster0-shard-00-00.1ya4y.mongodb.net:27017","cluster0-shard-00-01.1ya4y.mongodb.net:27017","cluster0-shard-00-02.1ya4y.mongodb.net:27017"],"iscryptd":false,"lastUpdateTime":36056769,"lastWriteDate":{"$date":"2025-05-31T11:37:10Z"},"logicalSessionTimeoutMinutes":30,"maxBsonObjectSize":16777216,"maxMessageSizeBytes":48000000,"maxWireVersion":25,"maxWriteBatchSize":100000,"me":"cluster0-shard-00-00.1ya4y.mongodb.net:27017","minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","roundTripTime":58,"setName":"atlas-6lqfv6-shard-0","setVersion":130,"tags":{"availabilityZone":"apse1-az2","diskState":"READY","nodeType":"ELECTABLE","provider":"AWS","region":"AP_SOUTHEAST_1","workloadType":"OPERATIONAL"},"topologyVersion":{"counter":4,"processId":{"$oid":"682e18e3dbd8846f30f7df33"}},"type":"RSSecondary"},"cluster0-shard-00-01.1ya4y.mongodb.net:27017":{"$clusterTime":null,"address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":[],"iscryptd":false,"lastUpdateTime":36056435,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"cluster0-shard-00-02.1ya4y.mongodb.net:27017":{"$clusterTime":{"clusterTime":{"$timestamp":{"i":51,"t":1748691430}},"signature":{"hash":{"0":130,"1":68,"10":144,"11":255,"12":56,"13":45,"14":203,"15":55,"16":106,"17":32,"18":197,"19":144,"2":152,"3":74,"4":90,"5":16,"6":181,"7":170,"8":74,"9":241},"keyId":7449639273336144000}},"address":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":["cluster0-shard-00-00.1ya4y.mongodb.net:27017","cluster0-shard-00-01.1ya4y.mongodb.net:27017","cluster0-shard-00-02.1ya4y.mongodb.net:27017"],"iscryptd":false,"lastUpdateTime":36056724,"lastWriteDate":{"$date":"2025-05-31T11:37:10Z"},"logicalSessionTimeoutMinutes":30,"maxBsonObjectSize":16777216,"maxMessageSizeBytes":48000000,"maxWireVersion":25,"maxWriteBatchSize":100000,"me":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","roundTripTime":49,"setName":"atlas-6lqfv6-shard-0","setVersion":130,"tags":{"availabilityZone":"apse1-az3","diskState":"READY","nodeType":"ELECTABLE","provider":"AWS","region":"AP_SOUTHEAST_1","workloadType":"OPERATIONAL"},"topologyVersion":{"counter":3,"processId":{"$oid":"682e1e7e49529f180bb73f1f"}},"type":"RSSecondary"}},"setName":"atlas-6lqfv6-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"errorLabelSet":{},"level":"error","message":"Server selection timed out after 5000 ms","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":30,"maxElectionId":null,"maxSetVersion":null,"servers":{"cluster0-shard-00-00.1ya4y.mongodb.net:27017":{"$clusterTime":{"clusterTime":{"$timestamp":{"i":55,"t":1748691430}},"signature":{"hash":{"0":130,"1":68,"10":144,"11":255,"12":56,"13":45,"14":203,"15":55,"16":106,"17":32,"18":197,"19":144,"2":152,"3":74,"4":90,"5":16,"6":181,"7":170,"8":74,"9":241},"keyId":7449639273336144000}},"address":"cluster0-shard-00-00.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":["cluster0-shard-00-00.1ya4y.mongodb.net:27017","cluster0-shard-00-01.1ya4y.mongodb.net:27017","cluster0-shard-00-02.1ya4y.mongodb.net:27017"],"iscryptd":false,"lastUpdateTime":36056769,"lastWriteDate":{"$date":"2025-05-31T11:37:10Z"},"logicalSessionTimeoutMinutes":30,"maxBsonObjectSize":16777216,"maxMessageSizeBytes":48000000,"maxWireVersion":25,"maxWriteBatchSize":100000,"me":"cluster0-shard-00-00.1ya4y.mongodb.net:27017","minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","roundTripTime":58,"setName":"atlas-6lqfv6-shard-0","setVersion":130,"tags":{"availabilityZone":"apse1-az2","diskState":"READY","nodeType":"ELECTABLE","provider":"AWS","region":"AP_SOUTHEAST_1","workloadType":"OPERATIONAL"},"topologyVersion":{"counter":4,"processId":{"$oid":"682e18e3dbd8846f30f7df33"}},"type":"RSSecondary"},"cluster0-shard-00-01.1ya4y.mongodb.net:27017":{"$clusterTime":null,"address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":[],"iscryptd":false,"lastUpdateTime":36056435,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"},"cluster0-shard-00-02.1ya4y.mongodb.net:27017":{"$clusterTime":{"clusterTime":{"$timestamp":{"i":51,"t":1748691430}},"signature":{"hash":{"0":130,"1":68,"10":144,"11":255,"12":56,"13":45,"14":203,"15":55,"16":106,"17":32,"18":197,"19":144,"2":152,"3":74,"4":90,"5":16,"6":181,"7":170,"8":74,"9":241},"keyId":7449639273336144000}},"address":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","arbiters":[],"electionId":null,"error":null,"hosts":["cluster0-shard-00-00.1ya4y.mongodb.net:27017","cluster0-shard-00-01.1ya4y.mongodb.net:27017","cluster0-shard-00-02.1ya4y.mongodb.net:27017"],"iscryptd":false,"lastUpdateTime":36056724,"lastWriteDate":{"$date":"2025-05-31T11:37:10Z"},"logicalSessionTimeoutMinutes":30,"maxBsonObjectSize":16777216,"maxMessageSizeBytes":48000000,"maxWireVersion":25,"maxWriteBatchSize":100000,"me":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","roundTripTime":49,"setName":"atlas-6lqfv6-shard-0","setVersion":130,"tags":{"availabilityZone":"apse1-az3","diskState":"READY","nodeType":"ELECTABLE","provider":"AWS","region":"AP_SOUTHEAST_1","workloadType":"OPERATIONAL"},"topologyVersion":{"counter":3,"processId":{"$oid":"682e1e7e49529f180bb73f1f"}},"type":"RSSecondary"}},"setName":"atlas-6lqfv6-shard-0","stale":false,"type":"ReplicaSetNoPrimary"},"stack":"MongooseServerSelectionError: Server selection timed out after 5000 ms\n    at _handleConnectionErrors (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/connection.js:1165:11)\n    at NativeConnection.openUri (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/node_modules/mongoose/lib/connection.js:1096:11)\n    at async connectMongoDB (/home/dell/Documents/Kiến tập/project/source/WebDoLuuNiem/backend/src/config/mongodbConfig.js:9:9)","timestamp":"2025-05-31T11:37:15.524Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:37:29.835Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:37:30.415Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:38:24.420Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:38:25.308Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:38:28.008Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:38:28.009Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:38:28.011Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T11:38:28.122Z"}
-{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T11:38:28.352Z"}
-{"level":"error","message":"Error during user login: expiresAt is not defined","timestamp":"2025-05-31T11:38:28.362Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:39:15.752Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:39:16.355Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:39:19.436Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:39:19.436Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:39:19.437Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T11:39:19.503Z"}
-{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T11:39:19.675Z"}
-{"level":"error","message":"Error during user login: expiresIn is not defined","timestamp":"2025-05-31T11:39:19.680Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:40:30.409Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:40:31.066Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T11:40:35.159Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:40:35.160Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T11:40:35.160Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T11:40:35.228Z"}
-{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T11:40:35.379Z"}
-{"level":"error","message":"Error during user login: refresh_token validation failed: access_token: Path `access_token` is required.","timestamp":"2025-05-31T11:40:35.389Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:42:20.818Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:42:21.765Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register/","timestamp":"2025-05-31T11:53:05.075Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:53:05.075Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-05-31T11:53:05.076Z"}
-{"level":"info","message":"User registered successfully: 683aeda11c43568ff530c471","timestamp":"2025-05-31T11:53:05.321Z"}
-{"level":"error","message":"Error during user registration: Cannot read properties of undefined (reading '_id')","timestamp":"2025-05-31T11:53:05.321Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:55:26.346Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:55:26.935Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register/","timestamp":"2025-05-31T11:55:43.436Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:55:43.437Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-05-31T11:55:43.439Z"}
-{"level":"info","message":"User registered successfully: 683aee3f2ebf4e38a04658a1","timestamp":"2025-05-31T11:55:43.752Z"}
-{"level":"error","message":"Error during user registration: refresh_token validation failed: access_token: Path `access_token` is required.","timestamp":"2025-05-31T11:55:43.759Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:57:00.290Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:57:00.992Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register/","timestamp":"2025-05-31T11:57:03.844Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:57:03.845Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-05-31T11:57:03.847Z"}
-{"level":"warn","message":"User already exists with email: nguyenvanc@example.com","timestamp":"2025-05-31T11:57:03.939Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register/","timestamp":"2025-05-31T11:57:13.967Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:57:13.969Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-05-31T11:57:13.969Z"}
-{"level":"info","message":"User registered successfully: 683aee9a47be79dae2dfef4e","timestamp":"2025-05-31T11:57:14.217Z"}
-{"level":"error","message":"Error during user registration: refresh_token validation failed: access_token: Path `access_token` is required.","timestamp":"2025-05-31T11:57:14.232Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:59:13.296Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:59:14.078Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register/","timestamp":"2025-05-31T11:59:18.494Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:59:18.494Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-05-31T11:59:18.495Z"}
-{"level":"info","message":"User registered successfully: 683aef16475d6e3a6dbf587f","timestamp":"2025-05-31T11:59:18.767Z"}
-{"level":"error","message":"Error during user registration: refresh_token validation failed: access_token: Path `access_token` is required.","timestamp":"2025-05-31T11:59:18.781Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T11:59:45.637Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T11:59:46.217Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register/","timestamp":"2025-05-31T11:59:56.628Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T11:59:56.629Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-05-31T11:59:56.630Z"}
-{"level":"info","message":"User registered successfully: 683aef3cf7d1eadc49249c7e","timestamp":"2025-05-31T11:59:56.858Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login/","timestamp":"2025-05-31T12:00:18.111Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T12:00:18.111Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-05-31T12:00:18.112Z"}
-{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-05-31T12:00:18.165Z"}
-{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T12:00:18.322Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-05-31T12:03:18.971Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T12:03:18.972Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/683ac0744b8decb4542f76ea","timestamp":"2025-05-31T12:04:35.269Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T12:04:35.270Z"}
-{"level":"info","message":"Fetching user with ID: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T12:04:35.272Z"}
-{"level":"info","message":"User retrieved successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-05-31T12:04:35.320Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T13:30:06.014Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T13:30:06.681Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:51:02.550Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:51:02.553Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:51:02.561Z"}
+{"level":"error","message":"Error during token refresh: Cannot destructure property 'refreshToken' of 'req.body' as it is undefined.","timestamp":"2025-05-31T14:51:02.562Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:53:08.726Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:53:09.382Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:53:11.629Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:53:11.629Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:53:11.630Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:53:11.697Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:53:45.623Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:53:46.353Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:53:49.159Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:53:49.159Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:53:49.160Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:53:49.235Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:55:37.879Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:55:37.879Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:55:37.880Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:55:37.942Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:55:46.063Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:55:46.725Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:57:34.306Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:57:34.306Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:57:34.308Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:57:34.376Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:58:25.140Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:58:25.887Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:58:29.703Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:58:30.299Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:58:33.962Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:58:33.962Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:58:33.964Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:58:34.043Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T15:00:20.031Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T15:00:20.032Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T15:00:20.032Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T16:09:28.580Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T16:09:29.294Z"}

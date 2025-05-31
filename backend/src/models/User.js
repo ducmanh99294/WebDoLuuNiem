@@ -36,16 +36,8 @@ const userSchema = new mongoose.Schema(
         image: {
             type: String,
             default: null
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now
-        },
-        updatedAt: {
-            type: Date,
-            default: Date.now
         }
-    }, { timestamps: true }
+    }, {timestamps: { createdAt: 'create_at', updatedAt: 'update_at' }}
 )
 
 userSchema.pre('save', async function (next) {

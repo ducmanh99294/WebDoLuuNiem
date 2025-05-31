@@ -14,12 +14,8 @@ const RefreshTokenSchema = new mongoose.Schema({
     access_token: {
         type: String,
         required: true,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
     }
-}, { timestamps: true });
+}, {timestamps: {createdAt: 'create_at'}});
 
 RefreshTokenSchema.index({expiresAt: 1}, { expireAfterSeconds: 0 })
 
