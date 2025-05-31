@@ -7,6 +7,7 @@ const {rateLimit} = require('express-rate-limit')
 const errorHandler = require('./middlewares/errorHandler');
 const logger = require('./utils/logger');
 const connectMongoDB = require('./config/mongodbConfig');
+const { validateToken } = require('./middlewares/authMiddleware');
 
 const app = express();
 
@@ -30,17 +31,6 @@ app.use((req, res, next) => {
   next();
 })
 
-// Rate limiting middleware
-app.use((req, res, next) => {
-  rateLimit.consume(req.ip).then(() => next().catch(() => {
-    logger.warn(`Rate limit exceeded for IP: ${req.ip}`);
-    res.status(429).json({
-      success: false,
-      message: 'Too many requests'
-    });
-  }))
-})
-
 const sensitiveEnpointsLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 50, // Limit each IP to 50 requests per windowMs
@@ -54,6 +44,12 @@ const sensitiveEnpointsLimiter = rateLimit({
     })
   }
 });
+
+// app.use(`/api/${API_VERSION}/`, validateToken)
+
+//route imports
+app.use(`/api/${API_VERSION}/users`, validateToken, require('./routes/userRoutes'));
+app.use(`/api/${API_VERSION}/auth`, require('./routes/identity'));
 
 //error handler
 app.use(errorHandler);

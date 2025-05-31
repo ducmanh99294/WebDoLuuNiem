@@ -37,28 +37,31 @@ const userSchema = new mongoose.Schema(
             type: String,
             default: null
         },
-        create_at: {
+        createdAt: {
             type: Date,
             default: Date.now
         },
-        update_at: {
+        updatedAt: {
             type: Date,
             default: Date.now
         }
     }, { timestamps: true }
 )
 
-userSchema.pre('save', async (next) => {
+userSchema.pre('save', async function (next) {
     if (this.isModified('password')) {
         try {
             this.password = await argon2.hash(this.password)
+            next()
         } catch (error) {
             return next(error)
         }
+    } else {
+        next()
     }
 })
 
-userSchema.methods.comparePassword = async (candidatePassword) => {
+userSchema.methods.comparePassword = async function (candidatePassword) {
     try {
         return await argon2.verify(this.password, candidatePassword)
     } catch (error) {
@@ -68,4 +71,6 @@ userSchema.methods.comparePassword = async (candidatePassword) => {
 
 userSchema.index({ username: 'text' })
 
-const User = mongoose('User', userSchema)
+const User = mongoose.model('User', userSchema)
+
+module.exports = User;

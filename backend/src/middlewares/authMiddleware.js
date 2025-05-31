@@ -1,5 +1,5 @@
-require(dotenv).config();
 const jwt = require('jsonwebtoken');
+const logger = require('../utils/logger');
 
 const validateToken =  (req, res, next) => {
     const authHeader = req.headers['authorization'];

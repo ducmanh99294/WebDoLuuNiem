@@ -15,13 +15,13 @@ const RefreshTokenSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    created_at: {
+    createdAt: {
         type: Date,
         default: Date.now,
     }
 }, { timestamps: true });
 
-RefreshTokenSchema.index({create_at: 1}, { expireAfterSeconds: 0 })
+RefreshTokenSchema.index({expiresAt: 1}, { expireAfterSeconds: 0 })
 
 const RefreshToken = mongoose.model('refresh_token', RefreshTokenSchema);
 
