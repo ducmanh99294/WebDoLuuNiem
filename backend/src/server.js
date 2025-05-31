@@ -12,6 +12,7 @@ const app = express();
 
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
+const API_VERSION = process.env.API_VERSION || 'v1'
 
 //connect to MongoDB
 connectMongoDB()
