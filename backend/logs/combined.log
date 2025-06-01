@@ -39,3 +39,7 @@
 {"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T15:00:20.032Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T16:09:28.580Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T16:09:29.294Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T06:25:36.786Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T06:25:36.826Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-01T06:25:44.793Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T06:25:44.794Z"}
