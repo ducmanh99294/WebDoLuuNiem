@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const {rateLimit} = require('express-rate-limit')
-
 const errorHandler = require('./middlewares/errorHandler');
 const logger = require('./utils/logger');
 const connectMongoDB = require('./config/mongodbConfig');
@@ -50,8 +49,12 @@ const sensitiveEnpointsLimiter = rateLimit({
 //route imports
 app.use(`/api/${API_VERSION}/users`, validateToken, require('./routes/userRoutes'));
 app.use(`/api/${API_VERSION}/auth`, require('./routes/identity'));
-app.use(`/api/${API_VERSION}/products`, require('./routes/productRoutes'));
-
+app.use(`/api/${API_VERSION}/products`, validateToken,require('./routes/productRoutes'));
+app.use(`/api/${API_VERSION}/orders`, validateToken, require('./routes/orderRoutes'));
+// Nhan quản
+app.use(`/api/${API_VERSION}/categories`, require('./routes/categoryRoutes'));
+app.use(`/api/${API_VERSION}/shipping-companies`, require('./routes/shippingCompanyRoutes'));
+app.use(`/api/${API_VERSION}/shippers`, require('./routes/shipperRoutes'));
 //error handler
 app.use(errorHandler);
 
