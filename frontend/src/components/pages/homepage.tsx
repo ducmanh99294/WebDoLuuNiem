@@ -3,7 +3,8 @@ import React from 'react';
 import ProductCard from '../data/product';  // giả sử đây là component hiển thị 1 product
 import '../../assets/css/home.css';
 import Banner from '../Banner';
-
+import WhyChooseUs from '../WhyChooseUs'
+import DealsSection from '../DealsSection'
 const Home: React.FC = () => {
   // data mảng sản phẩm
   const products = [
@@ -57,6 +58,8 @@ const Home: React.FC = () => {
           ))}
         </div>
       </div>
+      <DealsSection/>
+      <WhyChooseUs />
     </>
   );
 };
