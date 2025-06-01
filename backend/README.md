@@ -13,6 +13,10 @@ git clone https://github.com/ducmanh99294/WebDoLuuNiem
 
 cd /WebDoLuuNiem/backend
 
+-install 
+
+npm i
+
 # for dev
 
 npm run dev
