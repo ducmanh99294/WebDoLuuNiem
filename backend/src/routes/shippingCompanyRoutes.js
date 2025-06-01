@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const shippingCompanyController = require('../controllers/shippingCompany');
+
+const shippingCompanyController = require('../controllers/shippingCompanyControllers');
 const { validateToken } = require('../middlewares/authMiddleware');
 const authRoles = require('../middlewares/authRoles');
 
