@@ -2,7 +2,6 @@ import React from 'react';
 import '../assets/css/header.css';
 import { FaSearch, FaBell, FaShoppingCart, FaUser, FaBars, FaTruck} from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // dùng Link để chuyển trang
-
 const Header: React.FC = () => {
   return (
     <div className="header-container">
@@ -10,7 +9,6 @@ const Header: React.FC = () => {
       <div className="header-top">
         <div className='box-moi'>
         <div className="logo"> <a href="/"><img src="/images/logo.png" alt="" /></a></div>
-        <div className="logo" > <img src="/images/logo.png" alt="" srcset="" /></div>
         <div className="search-box">
           <input type="text" placeholder="Nhập nội dung tìm kiếm" />
           <button><FaSearch /></button>
@@ -21,7 +19,7 @@ const Header: React.FC = () => {
           <button><FaBell /> Thông báo</button>
           <Link to = "/register"style={{ textDecoration: 'none' }}><button><FaUser /> Đăng kí </button></Link>
           <Link to ="/login" style={{ textDecoration: 'none' }} ><button><FaUser /> Đăng nhập</button></Link>
-          <button><FaUser /> Đăng nhập / Đăng ký</button>
+
           <button><FaShoppingCart /></button>
         </div>
       </div>
@@ -38,16 +36,6 @@ const Header: React.FC = () => {
         <a href="#">Tên</a>
       </div>
     </div>
-    </div>
-      <div className="header-bottom">
-        <button><FaBars /> DANH MỤC SẢN PHẨM</button>
-        <a href="#">Đi chợ online</a>
-        <a href="#">Trái cây theo mùa</a>
-        <a href="#">Rau củ</a>
-        <a href="#">Trà - Cafe</a>
-        <a href="#">Đặc sản</a>
-        <a href="#">Tên</a>
-      </div>
     </div>
   );
 };
