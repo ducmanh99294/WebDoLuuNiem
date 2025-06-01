@@ -50,7 +50,8 @@ const sensitiveEnpointsLimiter = rateLimit({
 //route imports
 app.use(`/api/${API_VERSION}/users`, validateToken, require('./routes/userRoutes'));
 app.use(`/api/${API_VERSION}/auth`, require('./routes/identity'));
-app.use(`/api/${API_VERSION}/products`, require('./routes/productRoutes'));
+app.use(`/api/${API_VERSION}/products`, validateToken, require('./routes/productRoutes'));
+app.use(`/api/${API_VERSION}/public`, require('./routes/publicRouters'));
 
 //error handler
 app.use(errorHandler);

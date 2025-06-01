@@ -13,10 +13,10 @@ git clone https://github.com/ducmanh99294/WebDoLuuNiem
 
 cd /WebDoLuuNiem/backend
 
-# for dev
+### for dev
 
 npm run dev
 
-# for production
+### for production
 
 npm run start
