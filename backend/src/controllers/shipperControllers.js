@@ -1,4 +1,4 @@
-const Shipper = require('../models/shipper');
+const Shipper = require('../models/Shipper');
 const logger = require('../utils/logger');
 
 const createShipper = async (req, res) => {
