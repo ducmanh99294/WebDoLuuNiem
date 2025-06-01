@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 
 const shipperSchema = new mongoose.Schema({
-    shipping_company_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ShippingCompanies',
-        required: true
-    },
     name: {
         type: String,
         required: true
@@ -13,7 +8,11 @@ const shipperSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: true
-    }
+    },
+    shipping_company: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'ShippingCompanies'
+  }
 });
 
 const Shipper = mongoose.model('Shippers', shipperSchema);
