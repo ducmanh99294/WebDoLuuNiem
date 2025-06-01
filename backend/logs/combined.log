@@ -43,3 +43,63 @@
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T06:25:36.826Z"}
 {"level":"info","message":"Received request: GET /","timestamp":"2025-06-01T06:25:44.793Z"}
 {"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T06:25:44.794Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T08:44:57.401Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T08:44:57.421Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:49:55.346Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:49:55.347Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:49:55.348Z"}
+{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T08:49:55.353Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:01.792Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:01.793Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:01.793Z"}
+{"level":"info","message":"User registered successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:50:01.921Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:50:01.922Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:09.434Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:09.435Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:09.436Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:50:09.439Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:50.205Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:50.206Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:50.206Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:50:50.209Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:52:04.237Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:52:04.238Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:52:04.238Z"}
+{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T08:52:04.241Z"}
+{"level":"info","message":"User logged in successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:52:04.337Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:52:04.338Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:52:23.987Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:52:23.988Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:52:23.988Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:52:23.991Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:53:55.482Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:53:55.482Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:53:55.483Z"}
+{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T08:53:55.485Z"}
+{"level":"info","message":"User logged in successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:53:55.583Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:53:55.585Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:54:05.545Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:05.545Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:54:05.546Z"}
+{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T08:54:05.546Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:54:17.054Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:17.055Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:54:17.055Z"}
+{"level":"info","message":"User registered successfully: 683c1539fe0ddb32574c37ea","timestamp":"2025-06-01T08:54:17.158Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:54:17.158Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"warn","message":"User already exists with email: nhang@example.com","timestamp":"2025-06-01T08:54:35.666Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:55:35.029Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:55:35.030Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:55:35.030Z"}
+{"level":"info","message":"User registered successfully: 683c1587fe0ddb32574c37ee","timestamp":"2025-06-01T08:55:35.129Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:01:34.489Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:01:34.511Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:01:50.388Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:01:50.389Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:01:50.390Z"}
+{"level":"info","message":"User registered successfully: 683c16fe05c5fd13845d0d75","timestamp":"2025-06-01T09:01:50.515Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}

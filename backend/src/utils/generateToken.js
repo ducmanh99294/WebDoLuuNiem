@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const RefreshToken = require('../models/RefreshToken');
-
+// Tạo access token và refresh token
 const generateToken = async (user) => {
+    console.log('JWT_SECRET:', process.env.JWT_SECRET); // Thêm log xác nhận JWT có không
     const accessToken = jwt.sign({
         id: user._id,
         role: user.role
