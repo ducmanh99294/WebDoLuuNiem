@@ -24,6 +24,16 @@
     background-color: white;
     border-radius: 10px;
     justify-content: space-between;
+    border-radius: 40px;
+
+}
+.text-input input{
+    border: 1px solid white;
+    border-radius: 40px;
+    text-align: center;
+    width: 200px ;
+    border: none;           /* cút cm m đi viền c hó  */
+    outline: none;       /* Ẩn đi */
     border-radius: 39%;
     border: 1px solid white;
 }
@@ -38,10 +48,18 @@
 
 .text-input button{
     width: 175px ;
+    height: 60px;
+    border-radius: 40px;
     height:  54px;
     border-radius: 40%;
     border: 1px solid white;
     background-color: #3BB77E;
     cursor: pointer;
     margin-left: 13px;
+    margin-top: 2px;
+}
+.icon{
+    margin-left: 20px;
+    margin-top: 23px;
+    color: #838383;
 }
