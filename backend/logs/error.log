@@ -1,1 +1,4 @@
 {"level":"error","message":"Error during token refresh: Cannot destructure property 'refreshToken' of 'req.body' as it is undefined.","timestamp":"2025-05-31T14:51:02.562Z"}
+{"level":"error","message":"Error retrieving chats: Cannot populate path `messages.user` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-02T02:44:38.650Z"}
+{"level":"error","message":"Error retrieving chats: Cannot populate path `chat.user` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-02T02:45:03.090Z"}
+{"level":"error","message":"Error retrieving chats: Cannot populate path `sender.user` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-02T02:45:21.444Z"}

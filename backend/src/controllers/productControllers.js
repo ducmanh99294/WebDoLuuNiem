@@ -1,10 +1,18 @@
 const Product = require('../models/Product.js');
-const Image = require('../models/Image.js');
-const Category = require('../models/Category.js');
+const logger = require('../utils/logger.js');
 
 const createProduct = async (req, res) => {
     try {
+        logger('Creating product with data:', req.body);
+        if (!req.body.name || !req.body.price || !req.body.categories || !req.body.images || !req.body.description || !req.body.discount || !req.body.quantity) {
+            return res.status(400).json({
+                success: false,
+                message: 'Thiếu trường bắt buộc'
+            });
+        }
         const product = await Product.create(req.body);
+        
+        logger.info(`Product created successfully: ${product._id}`);
         res.status(201).json({
             success: true,
             data: product
@@ -19,13 +27,17 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
     try {
+        logger.info('Fetching all products')
         const products = await Product.find().populate('images').populate('categories');
+      
+        logger.info(`Retrieved ${products.length} products`);
         res.status(200).json({
             success: true,
             message: 'Lấy danh sách sản phẩm thành công',
             products: products
         })
     } catch (e) {
+        logger.error(`Error fetching products: ${e.message}`);
         res.status(500).json({
             success: false,
             message: e.message 
@@ -35,6 +47,15 @@ const getAllProducts = async (req, res) => {
 
 const getProductById = async (req, res) => {
     try {
+        logger.info(`Fetching product with ID: ${req.params.id}`);
+        if (!req.params.id) {
+            logger.warn('Product ID is required');
+            return res.status(400).json({
+                success: false,
+                message: 'Vui lòng cung cấp ID sản phẩm'
+            });
+        }
+
         const product = await Product.findById(req.params.id).populate('images').populate('categories');
         if (!product) {
             return res.status(500).json({
@@ -42,9 +63,11 @@ const getProductById = async (req, res) => {
                 message: 'Sản phẩm không tồn tại'
             });
         } 
-
+        
+        logger.info(`Product retrieved successfully: ${product._id}`);
         res.json(product);
     } catch (e) {
+        logger.error(`Error fetching product: ${e.message}`);
         res.status(500).json({
             success: false,
             message: e.message
@@ -54,6 +77,16 @@ const getProductById = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
+        logger.info(`Updating product with ID: ${req.params.id}`);
+        if (!req.params.id) {
+            logger.warn('Product ID is required for update');
+            return res.status(400).json({
+                success: false,
+                message: 'Vui lòng cung cấp ID sản phẩm để cập nhật'
+            });
+        }
+
+        logger.info('Update data:', req.body);
         const product = await Product.findByIdAndUpdate(
             req.params.id, 
             req.body,
@@ -65,8 +98,10 @@ const updateProduct = async (req, res) => {
             message: 'Sản phẩm không tồn tại'
         });
 
+        logger.info(`Product updated successfully: ${product._id}`);
         res.json(product);
     } catch (e) {  
+        logger.error(`Error updating product: ${e.message}`);
         res.status(500).json({
             success: false,
             message: e.message
@@ -76,6 +111,16 @@ const updateProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
     try {
+        logger.info(`Deleting product with ID: ${req.params.id}`);
+        if (!req.params.id) {
+            logger.warn('Product ID is required for deletion');
+            return res.status(400).json({
+                success: false,
+                message: 'Vui lòng cung cấp ID sản phẩm để xóa'
+            });
+        }
+
+        logger.info(`Attempting to delete product with ID: ${req.params.id}`);
         const product = await Product.findByIdAndDelete(req.params.id);
 
         if (!product) return res.status(404).json({
@@ -83,8 +128,10 @@ const deleteProduct = async (req, res) => {
             message: 'Sản phẩm không tồn tại'
         });
 
+        logger.info(`Product deleted successfully: ${product._id}`);
         res.json({product});
     } catch (e) {
+        logger.error(`Error deleting product: ${e.message}`);
         res.status(500).json({
             success: false,
             message: e.message
@@ -92,10 +139,143 @@ const deleteProduct = async (req, res) => {
     }
 }
 
+const like_count = async (req, res) => {
+    try {
+        logger.info(`Liking product with ID: ${req.params.id}`);
+        if (!req.params.id) {
+            logger.warn('Product ID is required for liking');
+            return res.status(400).json({
+                success: false,
+                message: 'Vui lòng cung cấp ID sản phẩm để thích'
+            });
+        }
+
+        logger.info(`User ID liking product: ${req.user._id}`);
+        if (!req.user || !req.user._id) {
+            logger.warn('User not authenticated');
+            return res.status(401).json({
+                success: false,
+                message: 'Bạn cần đăng nhập để thích sản phẩm'
+            });
+        }
+
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({
+                success: false,
+                message: 'Sản phẩm không tồn tại'
+            });
+        }
+
+        logger.info(`Checking if user has already liked product: ${product._id}`);
+        if (product.liked_by.includes(req.user._id)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Bạn đã thích sản phẩm này rồi'
+            });
+        }
+
+        product.like_count += 1;
+        await product.save();
+
+        logger.info(`Product liked successfully: ${product._id}`);
+        res.json({
+            success: true,
+            message: 'Cập nhật số lượt thích thành công',
+            like_count: product.like_count
+        });
+    } catch (e) {
+        logger.error(`Error liking product: ${e.message}`);
+        res.status(500).json({
+            success: false,
+            message: e.message
+        });
+    }
+}
+
+const view_count = async (req, res) => {
+    try {
+        logger.info(`Viewing product with ID: ${req.params.id}`);
+        if (!req.params.id) {
+            logger.warn('Product ID is required for viewing');
+            return res.status(400).json({
+                success: false,
+                message: 'Vui lòng cung cấp ID sản phẩm để xem'
+            });
+        }
+
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({
+                success: false,
+                message: 'Sản phẩm không tồn tại'
+            });
+        }
+        product.view_count += 1;
+        await product.save();
+
+        logger.info(`Product viewed successfully: ${product._id}`);
+        res.json({
+            success: true,
+            message: 'Cập nhật số lượt xem thành công',
+            view_count: product.view_count
+        });
+    } catch (e) {
+        logger.error(`Error viewing product: ${e.message}`);
+        res.status(500).json({
+            success: false,
+            message: e.message
+        });
+    }
+}
+
+const sell_count = async (req, res) => {
+    try {
+        logger.info(`Updating sell count for product with ID: ${req.params.id}`);
+        if (!req.params.id) {
+            logger.warn('Product ID is required for updating sell count');
+            return res.status(400).json({
+                success: false,
+                message: 'Vui lòng cung cấp ID sản phẩm để cập nhật số lượng bán'
+            });
+        }
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({
+                success: false,
+                message: 'Sản phẩm không tồn tại'
+            });
+        }
+        if (product.sell_count >= product.quantity) {
+            return res.status(400).json({
+                success: false,
+                message: 'Sản phẩm đã bán hết'
+            });
+        }
+        product.sell_count += 1;
+        await product.save();
+
+        logger.info(`Sell count updated successfully for product: ${product._id}`);
+        res.json({
+            success: true,
+            message: 'Cập nhật số lượng bán thành công',
+            sell_count: product.sell_count
+        });
+    } catch (e) {
+        logger.error(`Error updating sell count: ${e.message}`);
+        res.status(500).json({
+            success: false,
+            message: e.message
+        });
+    }
+}
 module.exports = {
     createProduct,
     getAllProducts,
     getProductById,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    like_count,
+    view_count,
+    sell_count
 };
