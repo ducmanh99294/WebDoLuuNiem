@@ -6,6 +6,14 @@
 {"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
 {"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}
 {"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:17:07.707Z"}
+{"level":"error","message":"Error during token refresh: Cannot destructure property 'refreshToken' of 'req.body' as it is undefined.","timestamp":"2025-05-31T14:51:02.562Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:50:01.922Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:52:04.338Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:53:55.585Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:54:17.158Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:17:07.707Z"}
 {"level":"error","message":"Error creating coupon: Coupons validation failed: expiry_date: Path `expiry_date` is required.","timestamp":"2025-06-02T02:37:33.616Z"}
 {"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:30.743Z"}
 {"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:42.826Z"}
