@@ -1,5 +1,5 @@
 const winston = require('winston');
-
+//Thiết lập hệ thống ghi log bằng winston
 const logger = winston.createLogger({
     level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
     format: winston.format.combine(

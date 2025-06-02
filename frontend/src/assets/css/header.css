@@ -1,0 +1,113 @@
+/* RESET CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+/* HEADER */
+.header-container {
+  background-color: #4caf83;
+  color: white;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: space-between; /* chia đều không gian */
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  height: auto;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 12px;
+  cursor: pointer;
+}
+.logo img{
+  height: 100px;
+  width: 100px;
+}
+.search-box {
+  display: flex;
+  flex: 1;
+  max-width: 700px;
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  outline: none;
+}
+
+.search-box button {
+  background-color: #fff;
+  border: none;
+  padding: 0 10px;
+  cursor: pointer;
+  color: #4caf83;
+}
+
+.header-actions button {
+  background-color: #4caf83;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 10px;
+  margin-left: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+
+}
+.header-actions{
+  display: flex;
+}
+
+.header-bottom {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #3b9f6a;
+  padding: 10px 20px;
+}
+
+.header-bottom a,
+.header-bottom button {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.box-moi{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1000px;
+  padding: 12px;
+  gap: 5px ;
+}
