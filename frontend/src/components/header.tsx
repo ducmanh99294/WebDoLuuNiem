@@ -28,7 +28,7 @@ const Header: React.FC = () => {
       <div className="header-dm">
         <button><FaBars /> DANH MỤC SẢN PHẨM</button>
         <div className="utilities">
-        <a href="#">Giới thiệu</a>
+        <a href="/about">Giới thiệu</a>
         <a href="#">Đặc Sản </a>
         <a href="#">Trà - Cafe</a>
         <a href="#">Tin Tức</a>
