@@ -1,30 +1,8 @@
 {"level":"error","message":"Error during token refresh: Cannot destructure property 'refreshToken' of 'req.body' as it is undefined.","timestamp":"2025-05-31T14:51:02.562Z"}
-{"level":"error","message":"Error during user login: Cannot destructure property 'email' of 'req.body' as it is undefined.","timestamp":"2025-06-01T11:23:13.098Z"}
-{"level":"error","message":"Error during user login: Cannot destructure property 'email' of 'req.body' as it is undefined.","timestamp":"2025-06-01T11:23:19.905Z"}
-{"level":"error","message":"Error during user login: Cannot destructure property 'email' of 'req.body' as it is undefined.","timestamp":"2025-06-01T15:52:48.654Z"}
-{"level":"error","message":"Error during user login: Cannot destructure property 'email' of 'req.body' as it is undefined.","timestamp":"2025-06-01T15:57:00.810Z"}
-{"level":"error","message":"Error during user login: Cannot destructure property 'email' of 'req.body' as it is undefined.","timestamp":"2025-06-01T15:58:35.334Z"}
-{"level":"error","message":"Error during user login: Cannot destructure property 'email' of 'req.body' as it is undefined.","timestamp":"2025-06-01T15:59:02.577Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:24:48.314Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:26:05.522Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:26:08.366Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:26:41.529Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:27:18.023Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:27:52.058Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:28:29.042Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:28:34.663Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:29:31.930Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:31:40.579Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:31:46.474Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:32:04.963Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:32:44.969Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:32:47.463Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:32:48.608Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:33:17.169Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:36:31.097Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:39:38.119Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:40:01.897Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:40:31.000Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:40:33.247Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:40:37.505Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T16:43:01.900Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:50:01.922Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:52:04.338Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:53:55.585Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:54:17.158Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:17:07.707Z"}
