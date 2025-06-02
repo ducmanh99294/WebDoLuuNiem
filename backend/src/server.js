@@ -55,6 +55,7 @@ app.use(`/api/${API_VERSION}/orders`, validateToken, require('./routes/orderRout
 app.use(`/api/${API_VERSION}/categories`, require('./routes/categoryRoutes'));
 app.use(`/api/${API_VERSION}/shipping-companies`, require('./routes/shippingCompanyRoutes'));
 app.use(`/api/${API_VERSION}/shippers`, require('./routes/shipperRoutes'));
+app.use(`/api/${API_VERSION}/coupons`, require('./routes/couponRoutes'));
 //error handler
 app.use(errorHandler);
 

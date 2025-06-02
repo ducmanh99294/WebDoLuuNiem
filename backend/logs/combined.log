@@ -155,3 +155,96 @@
 {"level":"info","message":"User retrieved successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.533Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T17:11:51.194Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T17:11:51.216Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:19:15.107Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:19:15.150Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:35:19.363Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:35:19.404Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:35:23.228Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:23.229Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-02T02:35:23.231Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-02T02:35:23.232Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-02T02:35:30.652Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:30.653Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-02T02:35:30.656Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-02T02:35:30.697Z"}
+{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:35:30.832Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:35:47.903Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:47.904Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:36:46.971Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:36:46.972Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:36:56.247Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:36:56.280Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-02T02:37:01.875Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:37:01.877Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-02T02:37:01.879Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-02T02:37:01.916Z"}
+{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:37:02.026Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:37:10.558Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:37:10.560Z"}
+{"level":"info","message":"Fetching user with ID: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:37:10.566Z"}
+{"level":"info","message":"User retrieved successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:37:10.578Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:37:33.603Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:37:33.604Z"}
+{"level":"error","message":"Error creating coupon: Coupons validation failed: expiry_date: Path `expiry_date` is required.","timestamp":"2025-06-02T02:37:33.616Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:39:00.358Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:00.359Z"}
+{"level":"info","message":"Coupon created successfully: 683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:39:00.370Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:39:30.736Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:30.736Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:30.743Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:39:42.822Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:42.823Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:42.826Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:39:50.300Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:50.301Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:50.304Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:39:57.196Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:57.197Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:57.203Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:40:13.147Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:40:13.149Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:40:13.153Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:40:32.606Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:40:32.608Z"}
+{"level":"warn","message":"Coupon already exists with code: DISCOUNT10","timestamp":"2025-06-02T02:40:32.613Z"}
+{"level":"error","message":"Error creating coupon: fakse is not defined","timestamp":"2025-06-02T02:40:32.615Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:42:59.276Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:42:59.316Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:43:02.788Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:43:02.789Z"}
+{"level":"warn","message":"Coupon already exists with code: DISCOUNT10","timestamp":"2025-06-02T02:43:02.815Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:43:08.221Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:43:08.223Z"}
+{"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:43:08.239Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-02T02:44:51.740Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:44:51.741Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-02T02:44:51.742Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-02T02:44:51.757Z"}
+{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:44:51.876Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:44:59.291Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:44:59.292Z"}
+{"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:44:59.298Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:45:07.420Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:45:07.421Z"}
+{"level":"info","message":"Coupon created successfully: 683d1033ef0619943e3fb3d7","timestamp":"2025-06-02T02:45:07.431Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:45:11.765Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:45:11.766Z"}
+{"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:45:11.772Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:47:58.208Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:47:58.245Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:48:01.851Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:48:01.852Z"}
+{"level":"info","message":"Retrieved 2 coupons","timestamp":"2025-06-02T02:48:01.886Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons/683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:49:16.326Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:49:16.327Z"}
+{"level":"info","message":"Coupon retrieved successfully: 683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:49:16.339Z"}
+{"level":"info","message":"Received request: PUT /api/v1/coupons/683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:50:56.211Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:50:56.213Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-02T02:50:56.215Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-02T02:50:56.216Z"}
+{"level":"info","message":"Received request: PUT /api/v1/coupons/683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:51:17.289Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:51:17.290Z"}
+{"level":"info","message":"Coupon updated successfully: 683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:51:17.314Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/coupons/683d1033ef0619943e3fb3d7","timestamp":"2025-06-02T02:52:28.601Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:52:28.602Z"}
+{"level":"info","message":"Coupon deleted successfully: 683d1033ef0619943e3fb3d7","timestamp":"2025-06-02T02:52:28.612Z"}
