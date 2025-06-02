@@ -1,0 +1,140 @@
+/* src/assets/css/login.css */
+.login-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 40px auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.login-left, .login-right {
+  padding: 30px;
+  flex: 1;
+}
+
+.login-left {
+  background-color: #fff;
+}
+
+.login-right {
+  background-color: #e6f9ec;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 24px;
+  color: #28a745;
+  line-height: 1.5;
+}
+
+.shopmall {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.slogan {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.highlight {
+  color: #28a745;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-login {
+  background-color: #28a745;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-login:hover {
+  background-color: #218838;
+}
+
+.otp-link {
+  text-align: right;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.otp-link a {
+  color: #28a745;
+  text-decoration: none;
+}
+
+.options {
+  margin-top: 10px;
+}
+
+.links {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.links a {
+  color: #28a745;
+  text-decoration: none;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0 10px;
+  font-size: 14px;
+  color: #777;
+}
+
+.social-login {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.facebook-btn {
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.google-btn {
+  background-color: #ea4335;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.login-right img{
+height: 600px;
+width: 500px;
+}

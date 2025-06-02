@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../assets/css/baner.css";
-
+import { FaPaperPlane } from "react-icons/fa";
 const Banner = () => {
   const slides = [
     "/images/slider_dac-san-ngon-da-nang.png",
@@ -40,6 +40,7 @@ const Banner = () => {
                     <h2 className="Text-chu">SHOP MẠN</h2>
                     <p className="text-p">Save up to 50% off on your first order!</p>
                     <div className="text-input">
+                      <div className="icon"><FaPaperPlane /></div>
                       <input
                         type="email"
                         placeholder="Your email address"
