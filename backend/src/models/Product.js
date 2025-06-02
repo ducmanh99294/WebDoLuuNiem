@@ -23,6 +23,8 @@ const productSchema = new mongoose.Schema({
     discount: {
         type: Number,
         required: true,
+        min: 0,
+        max: 100 
     },
     images: [{
         type: mongoose.Schema.Types.ObjectId,
