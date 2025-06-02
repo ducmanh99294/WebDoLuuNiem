@@ -51,10 +51,13 @@ app.use(`/api/${API_VERSION}/users`, validateToken, require('./routes/userRoutes
 app.use(`/api/${API_VERSION}/auth`, require('./routes/identity'));
 app.use(`/api/${API_VERSION}/products`, validateToken,require('./routes/productRoutes'));
 app.use(`/api/${API_VERSION}/orders`, validateToken, require('./routes/orderRoutes'));
+app.use(`/api/${API_VERSION}/reviews`, validateToken, require('./routes/reviewRoutes'));
+app.use(`/api/${API_VERSION}/chats`, validateToken, require('./routes/chatRoutes'));
 // Nhan quản
 app.use(`/api/${API_VERSION}/categories`, require('./routes/categoryRoutes'));
 app.use(`/api/${API_VERSION}/shipping-companies`, require('./routes/shippingCompanyRoutes'));
 app.use(`/api/${API_VERSION}/shippers`, require('./routes/shipperRoutes'));
+app.use(`/api/${API_VERSION}/coupons`, require('./routes/couponRoutes'));
 //error handler
 app.use(errorHandler);
 

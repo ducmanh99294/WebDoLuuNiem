@@ -39,3 +39,1054 @@
 {"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T15:00:20.032Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T16:09:28.580Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T16:09:29.294Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T06:25:36.786Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T06:25:36.826Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-01T06:25:44.793Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T06:25:44.794Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T08:44:57.401Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T08:44:57.421Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:49:55.346Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:49:55.347Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:49:55.348Z"}
+{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T08:49:55.353Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:01.792Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:01.793Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:01.793Z"}
+{"level":"info","message":"User registered successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:50:01.921Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:50:01.922Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:09.434Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:09.435Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:09.436Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:50:09.439Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:50.205Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:50.206Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:50.206Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:50:50.209Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:52:04.237Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:52:04.238Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:52:04.238Z"}
+{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T08:52:04.241Z"}
+{"level":"info","message":"User logged in successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:52:04.337Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:52:04.338Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:52:23.987Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:52:23.988Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:52:23.988Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:52:23.991Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:53:55.482Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:53:55.482Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:53:55.483Z"}
+{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T08:53:55.485Z"}
+{"level":"info","message":"User logged in successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:53:55.583Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:53:55.585Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:54:05.545Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:05.545Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:54:05.546Z"}
+{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T08:54:05.546Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:54:17.054Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:17.055Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:54:17.055Z"}
+{"level":"info","message":"User registered successfully: 683c1539fe0ddb32574c37ea","timestamp":"2025-06-01T08:54:17.158Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:54:17.158Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"warn","message":"User already exists with email: nhang@example.com","timestamp":"2025-06-01T08:54:35.666Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:55:35.029Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:55:35.030Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:55:35.030Z"}
+{"level":"info","message":"User registered successfully: 683c1587fe0ddb32574c37ee","timestamp":"2025-06-01T08:55:35.129Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:01:34.489Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:01:34.511Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:01:50.388Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:01:50.389Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:01:50.390Z"}
+{"level":"info","message":"User registered successfully: 683c16fe05c5fd13845d0d75","timestamp":"2025-06-01T09:01:50.515Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}
+<<<<<<< HEAD
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:16:22.242Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:16:23.767Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:16:31.970Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:16:32.764Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-02T01:16:39.197Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T01:16:39.206Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:18:05.749Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:18:06.514Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:18:11.290Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:18:11.991Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:18:52.780Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:18:53.512Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:19:00.205Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:19:00.936Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:20:01.460Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:20:03.359Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:20:04.118Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:20:12.238Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:20:13.027Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:20:15.141Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:20:15.865Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:20:22.306Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:20:23.013Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:20:25.170Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:20:25.925Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:21:36.833Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:21:37.902Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:21:48.046Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:21:48.716Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:21:51.513Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:21:52.229Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:03.853Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:06.106Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:07.989Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:22:08.720Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:13.514Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:15.479Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:22:16.160Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:29.283Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:22:30.959Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:33.142Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:22:33.808Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:40.025Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:22:40.763Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:43.329Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:22:44.014Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:49.605Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:22:50.324Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:52.539Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:22:53.213Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:55.596Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:22:59.356Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:23:00.040Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:23:07.647Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:23:08.439Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:24:07.698Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:24:09.919Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:24:12.158Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:24:13.102Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:24:17.049Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:24:17.750Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:24:19.829Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:24:20.536Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:24:26.710Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:24:27.406Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:24:33.272Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:24:33.958Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:24:37.484Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:24:38.154Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:22.371Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:26:23.107Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:26.364Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:26:27.029Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:31.210Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:33.246Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:26:33.942Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:37.766Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:26:38.461Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:45.091Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:26:45.769Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:48.668Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:50.870Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:26:51.555Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:54.701Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:26:57.869Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:26:58.574Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:27:16.057Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:27:16.752Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:28:14.161Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:28:19.941Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:28:23.770Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:28:24.499Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:29:48.194Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:29:50.287Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:29:51.023Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:29:56.083Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:29:56.783Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:29:58.646Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:29:59.337Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:30:11.730Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:30:12.408Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:30:15.334Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:30:16.023Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:30:24.538Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:30:25.262Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:30:31.492Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:30:32.208Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:30:34.998Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:30:35.711Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:30:39.232Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:30:39.925Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:30:59.903Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:31:00.601Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:32:54.448Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:32:56.843Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:32:57.531Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:33:08.607Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:33:09.300Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:33:12.581Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:33:13.249Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:33:15.493Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:33:16.204Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:33:25.279Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:33:26.002Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:33:33.273Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:33:33.988Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:33:48.150Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:33:48.869Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:33:50.701Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:33:51.417Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:33:57.665Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:33:58.629Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:34:10.853Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:34:11.579Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:34:14.533Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:34:15.234Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:34:25.443Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:34:26.144Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:34:38.521Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:34:39.252Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:34:51.792Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:34:52.511Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:35:02.827Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:35:03.512Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:35:13.598Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:35:14.365Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:35:25.619Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:35:26.313Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:35:31.555Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:35:32.235Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:35:38.773Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:35:39.445Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:35:41.074Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:35:41.755Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:36:20.136Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:36:21.136Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:36:35.780Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:36:39.553Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:36:40.277Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:04.531Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:05.235Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:19.922Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:20.586Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:24.309Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:26.164Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:27.066Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:30.316Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:30.975Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:33.415Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:34.157Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:36.892Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:37.603Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:41.794Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:43.653Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:44.366Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:53.510Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:54.215Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:37:55.946Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:37:56.638Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:00.190Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:02.307Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:04.508Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:06.348Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:07.028Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:10.720Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:12.388Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:14.144Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:14.841Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:20.602Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:21.342Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:23.024Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:24.940Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:25.907Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:28.687Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:29.357Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:36.256Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:38.129Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:38.802Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:46.330Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:48.169Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:48.859Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:51.567Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:52.663Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:54.465Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:38:55.145Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:57.742Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:38:59.421Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:00.112Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:10.575Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:11.260Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:17.232Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:20.420Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:23.449Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:24.701Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:28.927Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:29.604Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:38.495Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:39.181Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:41.590Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:42.614Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:44.421Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:45.075Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:47.075Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:47.769Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:50.079Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:50.827Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:39:53.643Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:39:54.389Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:00.003Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:40:00.724Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:18.549Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:40:19.278Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:21.704Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:40:22.430Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:26.156Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:40:26.858Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:34.500Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:40:35.194Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:37.543Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:40:38.271Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:46.374Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:48.204Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:40:48.887Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:40:52.708Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:40:53.430Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:41:32.954Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:41:33.667Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:41:39.070Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:41:39.790Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:41:51.594Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:41:53.761Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:41:55.880Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:41:56.915Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:42:04.538Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:42:05.341Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:42:11.022Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:42:11.724Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:42:23.370Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:42:24.110Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:42:34.775Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:42:35.556Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:42:37.917Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:42:38.657Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:43:04.198Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:43:04.919Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:43:16.165Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:43:16.837Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:43:22.325Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:43:23.349Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:43:28.371Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:43:29.101Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:43:40.652Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:43:41.416Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:44:09.165Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:44:09.841Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:44:13.120Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:44:13.844Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:44:17.213Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:44:17.876Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:44:28.158Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:44:29.005Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:44:36.749Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:44:37.781Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:44:41.054Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:44:41.776Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:44:49.081Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:44:49.774Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:44:56.848Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:44:57.510Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:45:00.502Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:45:01.432Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:45:18.254Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:45:19.357Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:45:24.174Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:45:24.878Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:45:27.524Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:45:28.217Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:46:05.837Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:46:06.508Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:46:08.651Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:53:52.532Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:53:53.280Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-02T01:54:01.263Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T01:54:01.267Z"}
+{"level":"info","message":"Retrieved 1 categories","timestamp":"2025-06-02T01:54:01.355Z"}
+{"level":"info","message":"Received request: GET /favicon.ico","timestamp":"2025-06-02T01:54:02.770Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T01:54:02.771Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:54:17.517Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:54:18.281Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:54:22.073Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:54:22.812Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T01:54:28.613Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T01:54:29.538Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-06-02T01:54:31.793Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T01:54:31.794Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:09:26.127Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:09:26.902Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:09:46.248Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:09:46.952Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:09:53.428Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:09:54.146Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:10:01.145Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:10:01.811Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:10:04.342Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:10:05.025Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:10:18.776Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:10:19.477Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:10:21.660Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:10:22.378Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:10:27.725Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:10:28.410Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:11:22.679Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:11:23.373Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:11:25.809Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:11:26.515Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:11:28.412Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:11:30.636Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:11:31.372Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:11:33.092Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:11:34.088Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:11:41.528Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:11:43.332Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:11:43.993Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:11:48.449Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:11:49.204Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:13:08.562Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:13:09.307Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:13:12.760Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:13:12.762Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:13:12.940Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:15:49.303Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:15:49.305Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:15:49.446Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews","timestamp":"2025-06-02T02:16:40.869Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:16:40.870Z"}
+{"level":"info","message":"Fetching all reviews","timestamp":"2025-06-02T02:16:40.872Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews","timestamp":"2025-06-02T02:17:58.937Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:17:58.939Z"}
+{"level":"info","message":"Fetching all reviews","timestamp":"2025-06-02T02:17:58.940Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews","timestamp":"2025-06-02T02:23:28.055Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:23:28.057Z"}
+{"level":"info","message":"Fetching all reviews","timestamp":"2025-06-02T02:23:28.058Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews","timestamp":"2025-06-02T02:23:43.416Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:23:43.417Z"}
+{"level":"info","message":"Fetching all reviews","timestamp":"2025-06-02T02:23:43.419Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:24:12.183Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:24:12.184Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:24:12.329Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:27:27.280Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:27:28.025Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:27:40.712Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:27:42.674Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:27:43.385Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:27:46.318Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:27:47.338Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:28:05.427Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:28:06.164Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:28:08.663Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:28:09.341Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:31:27.845Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:31:28.814Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:32:12.275Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:32:14.715Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:32:15.407Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:32:18.888Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:32:19.552Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:32:22.576Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:32:23.303Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:32:25.732Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:32:27.003Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-02T02:34:41.679Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:34:41.681Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-02T02:34:41.683Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-02T02:34:41.685Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:35:01.892Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:35:02.669Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-02T02:35:03.077Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:03.079Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:35:32.796Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:32.798Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-02T02:35:32.800Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-02T02:35:32.802Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:35:45.507Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:35:45.639Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:45.640Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:35:46.326Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:35:57.562Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:57.563Z"}
+{"level":"info","message":"Received request: GET /api/v1/ch%C3%A1t","timestamp":"2025-06-02T02:36:15.386Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:36:15.387Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:36:19.152Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:36:19.153Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews","timestamp":"2025-06-02T02:36:46.848Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:36:46.849Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-02T02:36:46.850Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-02T02:36:46.851Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:37:07.920Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:37:08.675Z"}
+{"level":"info","message":"Received request: GET /api/v1/ch%C3%A1t","timestamp":"2025-06-02T02:37:09.495Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:37:09.496Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:37:13.658Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:37:13.659Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:37:13.817Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:39:07.414Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:07.416Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:39:07.553Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:40:25.166Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:40:25.900Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:40:59.199Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:40:59.879Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:41:01.562Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:41:02.245Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:41:16.418Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:41:17.119Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:41:22.296Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:41:22.984Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:41:29.494Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:41:30.246Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:41:33.552Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:41:34.226Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:41:37.363Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:41:38.066Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:41:38.944Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:41:38.945Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:41:39.091Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:42:49.338Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:42:50.095Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:43:24.417Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:43:24.418Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:43:24.586Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:43:46.702Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:43:46.704Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:43:46.859Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:44:28.303Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:44:29.583Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:44:36.747Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:44:36.846Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:44:36.847Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:44:38.551Z"}
+{"level":"error","message":"Error retrieving chats: Cannot populate path `messages.user` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-02T02:44:38.650Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:44:56.859Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:44:57.534Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:45:02.255Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:45:02.817Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:45:02.819Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:45:03.000Z"}
+{"level":"error","message":"Error retrieving chats: Cannot populate path `chat.user` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-02T02:45:03.090Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:45:20.631Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:45:20.776Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:45:20.777Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:45:21.342Z"}
+{"level":"error","message":"Error retrieving chats: Cannot populate path `sender.user` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-02T02:45:21.444Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:46:01.538Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:46:01.716Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:46:01.718Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:46:02.543Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:46:03.221Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:48:56.129Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:48:56.835Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:48:58.880Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:48:59.041Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:48:59.042Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:48:59.599Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:49:00.856Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:49:21.872Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:49:22.596Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:49:25.447Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:49:26.189Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-02T02:49:28.346Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:49:28.347Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-02T02:49:28.529Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:50:03.777Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:50:05.171Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:50:09.975Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:50:11.691Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:50:19.324Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:50:20.109Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:50:31.695Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:50:32.396Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:50:41.509Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:50:43.199Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:51:28.550Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:51:29.271Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:51:47.499Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:51:48.222Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:51:57.692Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:51:58.456Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:52:25.953Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:52:26.715Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:52:30.639Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:52:31.362Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:52:49.680Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:52:50.409Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:52:56.557Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:52:57.288Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:53:13.719Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:53:14.420Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:53:52.322Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:53:54.222Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:54:45.687Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:54:46.390Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:54:52.555Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:54:53.605Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:54:58.883Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:55:01.655Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:55:02.546Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:55:05.942Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:55:06.674Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:55:10.567Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:55:11.494Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:55:18.067Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:55:19.802Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:55:21.668Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:55:30.537Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:55:31.889Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:55:48.500Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:55:49.546Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:55:51.447Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:55:52.173Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:56:01.165Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:56:01.882Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:56:17.838Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:56:18.655Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:56:24.023Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:56:24.718Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:56:43.000Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:56:43.771Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:56:48.029Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:56:48.731Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:58:29.468Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:58:30.184Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:58:39.274Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:58:40.000Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:58:43.336Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:58:45.025Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:58:46.226Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:58:49.690Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:58:50.601Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:59:15.126Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:59:15.825Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:59:19.204Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:59:20.185Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:59:24.818Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:59:25.512Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:59:34.407Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:59:35.138Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:59:40.791Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:59:41.465Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:59:58.086Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:59:59.074Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:00:04.575Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:00:06.639Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:00:07.656Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:03:54.918Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:03:55.653Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:03:58.322Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:03:59.040Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:04:10.215Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:04:10.923Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:04:29.615Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:04:30.301Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:04:32.424Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:04:33.191Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:04:35.600Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:04:36.313Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:04:38.513Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:04:39.271Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:04:42.131Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:04:43.129Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:04:49.263Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:04:49.988Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:05:03.609Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:05:04.335Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:05:18.673Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:05:19.366Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:05:39.172Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:05:40.198Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:05:44.428Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:05:45.087Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:05:58.343Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:06:01.665Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:06:02.426Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:06:07.151Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:06:07.920Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:06:19.645Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:06:20.319Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:06:42.132Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:06:42.822Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:06:47.528Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:06:48.543Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:16.885Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:19.324Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:21.638Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:22.418Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:24.866Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:25.606Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:31.075Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:31.810Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:34.184Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:34.887Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:37.263Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:37.925Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:45.599Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:46.295Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:49.789Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:50.501Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:53.139Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:53.829Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:07:57.486Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:07:58.208Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:08:01.447Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:08:02.148Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:08:06.475Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:08:07.254Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:08:15.152Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:08:15.849Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:08:31.500Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:08:32.187Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:08:34.809Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:08:35.463Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:08:41.489Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:08:42.159Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:08:44.620Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:08:45.327Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:08:50.781Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:08:51.533Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:09:15.896Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:09:16.617Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:09:20.028Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:09:20.730Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:09:34.353Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:09:35.106Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:09:41.603Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:09:42.321Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:09:45.299Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:09:46.011Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:09:51.022Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:09:51.703Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:10:01.789Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:10:02.536Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:10:05.032Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:10:05.728Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:12:32.363Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:12:33.439Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:12:56.287Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:13:00.348Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:13:01.038Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:13:35.799Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:13:36.502Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:13:40.498Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:13:41.202Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:13:47.832Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:13:48.539Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:14:01.754Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:15:33.070Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:15:33.854Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:15:54.880Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:15:55.576Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:15:57.639Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:15:58.605Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T03:16:07.047Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T03:16:07.752Z"}
+=======
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:16:58.540Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:16:58.561Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:17:07.570Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:17:07.570Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:17:07.572Z"}
+{"level":"info","message":"User registered successfully: 683c1a933a6266d0cf83573b","timestamp":"2025-06-01T09:17:07.705Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:17:07.707Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:20:30.034Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:20:30.054Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:21:04.709Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:21:04.710Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:21:04.712Z"}
+{"level":"info","message":"User registered successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T09:21:04.827Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T15:53:42.943Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T15:53:43.015Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T15:53:59.549Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:53:59.550Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T15:53:59.551Z"}
+{"level":"warn","message":"User already exists with email: user4@example.com","timestamp":"2025-06-01T15:53:59.569Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:09.711Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:09.712Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:09.712Z"}
+{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T15:54:09.714Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:14.029Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:14.030Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:14.031Z"}
+{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T15:54:14.034Z"}
+{"level":"warn","message":"Invalid","timestamp":"2025-06-01T15:54:14.035Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:26.332Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:26.332Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:26.333Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-01T15:54:26.337Z"}
+{"level":"warn","message":"Invalid password","timestamp":"2025-06-01T15:54:26.445Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:38.872Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:38.873Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:38.873Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-01T15:54:38.876Z"}
+{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:54:38.975Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:05.245Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:05.246Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-01T15:58:05.246Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-01T15:58:05.246Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:18.378Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:18.378Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:32.324Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:32.324Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.523Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:59:00.524Z"}
+{"level":"info","message":"Fetching user with ID: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.526Z"}
+{"level":"info","message":"User retrieved successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.533Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T17:11:51.194Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T17:11:51.216Z"}
+>>>>>>> main
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T13:30:06.014Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T13:30:06.681Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:51:02.550Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:51:02.553Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:51:02.561Z"}
+{"level":"error","message":"Error during token refresh: Cannot destructure property 'refreshToken' of 'req.body' as it is undefined.","timestamp":"2025-05-31T14:51:02.562Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:53:08.726Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:53:09.382Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:53:11.629Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:53:11.629Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:53:11.630Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:53:11.697Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:53:45.623Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:53:46.353Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:53:49.159Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:53:49.159Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:53:49.160Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:53:49.235Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:55:37.879Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:55:37.879Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:55:37.880Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:55:37.942Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:55:46.063Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:55:46.725Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:57:34.306Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:57:34.306Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:57:34.308Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:57:34.376Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:58:25.140Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:58:25.887Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:58:29.703Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:58:30.299Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:58:33.962Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:58:33.962Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:58:33.964Z"}
+{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:58:34.043Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T15:00:20.031Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T15:00:20.032Z"}
+{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T15:00:20.032Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T16:09:28.580Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T16:09:29.294Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T06:25:36.786Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T06:25:36.826Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-01T06:25:44.793Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T06:25:44.794Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T08:44:57.401Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T08:44:57.421Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:49:55.346Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:49:55.347Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:49:55.348Z"}
+{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T08:49:55.353Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:01.792Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:01.793Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:01.793Z"}
+{"level":"info","message":"User registered successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:50:01.921Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:50:01.922Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:09.434Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:09.435Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:09.436Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:50:09.439Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:50.205Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:50.206Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:50.206Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:50:50.209Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:52:04.237Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:52:04.238Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:52:04.238Z"}
+{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T08:52:04.241Z"}
+{"level":"info","message":"User logged in successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:52:04.337Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:52:04.338Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:52:23.987Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:52:23.988Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:52:23.988Z"}
+{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:52:23.991Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:53:55.482Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:53:55.482Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:53:55.483Z"}
+{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T08:53:55.485Z"}
+{"level":"info","message":"User logged in successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:53:55.583Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:53:55.585Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:54:05.545Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:05.545Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:54:05.546Z"}
+{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T08:54:05.546Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:54:17.054Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:17.055Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:54:17.055Z"}
+{"level":"info","message":"User registered successfully: 683c1539fe0ddb32574c37ea","timestamp":"2025-06-01T08:54:17.158Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:54:17.158Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:54:35.663Z"}
+{"level":"warn","message":"User already exists with email: nhang@example.com","timestamp":"2025-06-01T08:54:35.666Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:55:35.029Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:55:35.030Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:55:35.030Z"}
+{"level":"info","message":"User registered successfully: 683c1587fe0ddb32574c37ee","timestamp":"2025-06-01T08:55:35.129Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:01:34.489Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:01:34.511Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:01:50.388Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:01:50.389Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:01:50.390Z"}
+{"level":"info","message":"User registered successfully: 683c16fe05c5fd13845d0d75","timestamp":"2025-06-01T09:01:50.515Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:16:58.540Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:16:58.561Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:17:07.570Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:17:07.570Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:17:07.572Z"}
+{"level":"info","message":"User registered successfully: 683c1a933a6266d0cf83573b","timestamp":"2025-06-01T09:17:07.705Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:17:07.707Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:20:30.034Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:20:30.054Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:21:04.709Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:21:04.710Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:21:04.712Z"}
+{"level":"info","message":"User registered successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T09:21:04.827Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T15:53:42.943Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T15:53:43.015Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T15:53:59.549Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:53:59.550Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T15:53:59.551Z"}
+{"level":"warn","message":"User already exists with email: user4@example.com","timestamp":"2025-06-01T15:53:59.569Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:09.711Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:09.712Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:09.712Z"}
+{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T15:54:09.714Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:14.029Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:14.030Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:14.031Z"}
+{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T15:54:14.034Z"}
+{"level":"warn","message":"Invalid","timestamp":"2025-06-01T15:54:14.035Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:26.332Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:26.332Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:26.333Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-01T15:54:26.337Z"}
+{"level":"warn","message":"Invalid password","timestamp":"2025-06-01T15:54:26.445Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:38.872Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:38.873Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:38.873Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-01T15:54:38.876Z"}
+{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:54:38.975Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:05.245Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:05.246Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-01T15:58:05.246Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-01T15:58:05.246Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:18.378Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:18.378Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:32.324Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:32.324Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.523Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:59:00.524Z"}
+{"level":"info","message":"Fetching user with ID: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.526Z"}
+{"level":"info","message":"User retrieved successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.533Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T17:11:51.194Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T17:11:51.216Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:19:15.107Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:19:15.150Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:35:19.363Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:35:19.404Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:35:23.228Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:23.229Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-02T02:35:23.231Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-02T02:35:23.232Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-02T02:35:30.652Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:30.653Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-02T02:35:30.656Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-02T02:35:30.697Z"}
+{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:35:30.832Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:35:47.903Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:35:47.904Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:36:46.971Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:36:46.972Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:36:56.247Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:36:56.280Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-02T02:37:01.875Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:37:01.877Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-02T02:37:01.879Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-02T02:37:01.916Z"}
+{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:37:02.026Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:37:10.558Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:37:10.560Z"}
+{"level":"info","message":"Fetching user with ID: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:37:10.566Z"}
+{"level":"info","message":"User retrieved successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:37:10.578Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:37:33.603Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:37:33.604Z"}
+{"level":"error","message":"Error creating coupon: Coupons validation failed: expiry_date: Path `expiry_date` is required.","timestamp":"2025-06-02T02:37:33.616Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:39:00.358Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:00.359Z"}
+{"level":"info","message":"Coupon created successfully: 683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:39:00.370Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:39:30.736Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:30.736Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:30.743Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:39:42.822Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:42.823Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:42.826Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:39:50.300Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:50.301Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:50.304Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:39:57.196Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:39:57.197Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:39:57.203Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:40:13.147Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:40:13.149Z"}
+{"level":"error","message":"Error retrieving coupons: coupons is not defined","timestamp":"2025-06-02T02:40:13.153Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:40:32.606Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:40:32.608Z"}
+{"level":"warn","message":"Coupon already exists with code: DISCOUNT10","timestamp":"2025-06-02T02:40:32.613Z"}
+{"level":"error","message":"Error creating coupon: fakse is not defined","timestamp":"2025-06-02T02:40:32.615Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:42:59.276Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:42:59.316Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:43:02.788Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:43:02.789Z"}
+{"level":"warn","message":"Coupon already exists with code: DISCOUNT10","timestamp":"2025-06-02T02:43:02.815Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:43:08.221Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:43:08.223Z"}
+{"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:43:08.239Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-02T02:44:51.740Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:44:51.741Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-02T02:44:51.742Z"}
+{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-02T02:44:51.757Z"}
+{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-02T02:44:51.876Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:44:59.291Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:44:59.292Z"}
+{"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:44:59.298Z"}
+{"level":"info","message":"Received request: POST /api/v1/coupons","timestamp":"2025-06-02T02:45:07.420Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:45:07.421Z"}
+{"level":"info","message":"Coupon created successfully: 683d1033ef0619943e3fb3d7","timestamp":"2025-06-02T02:45:07.431Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:45:11.765Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:45:11.766Z"}
+{"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:45:11.772Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T02:47:58.208Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T02:47:58.245Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-02T02:48:01.851Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:48:01.852Z"}
+{"level":"info","message":"Retrieved 2 coupons","timestamp":"2025-06-02T02:48:01.886Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons/683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:49:16.326Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:49:16.327Z"}
+{"level":"info","message":"Coupon retrieved successfully: 683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:49:16.339Z"}
+{"level":"info","message":"Received request: PUT /api/v1/coupons/683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:50:56.211Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:50:56.213Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-02T02:50:56.215Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-02T02:50:56.216Z"}
+{"level":"info","message":"Received request: PUT /api/v1/coupons/683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:51:17.289Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:51:17.290Z"}
+{"level":"info","message":"Coupon updated successfully: 683d0ec45726246d9c15030c","timestamp":"2025-06-02T02:51:17.314Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/coupons/683d1033ef0619943e3fb3d7","timestamp":"2025-06-02T02:52:28.601Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T02:52:28.602Z"}
+{"level":"info","message":"Coupon deleted successfully: 683d1033ef0619943e3fb3d7","timestamp":"2025-06-02T02:52:28.612Z"}
