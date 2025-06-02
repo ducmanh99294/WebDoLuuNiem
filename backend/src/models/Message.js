@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const argon2 = require('argon2')
 
 const messageSchema = new mongoose.Schema({
   content: { type: String, required: true },

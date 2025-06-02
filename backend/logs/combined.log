@@ -1,0 +1,78 @@
+{"level":"info","message":"Server is running on http://localhost:4000","timestamp":"2025-06-02T17:25:13.989Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:25:14.597Z"}
+{"level":"info","message":"Server is running on http://localhost:4000","timestamp":"2025-06-02T17:27:32.738Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:27:33.519Z"}
+{"level":"info","message":"Server is running on http://localhost:4000","timestamp":"2025-06-02T17:29:56.765Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:29:57.577Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T17:31:08.066Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:31:08.667Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T17:33:22.103Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:33:25.776Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-02T17:33:31.859Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T17:33:31.860Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T17:34:49.487Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:34:50.120Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T17:35:10.889Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:35:11.505Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T17:35:58.060Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:35:59.804Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T17:37:05.719Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:37:06.433Z"}
+{"level":"info","message":"Client connected: PIgA-PHIA2DBmsVUAAAB","timestamp":"2025-06-02T17:37:07.445Z"}
+{"level":"info","message":"Client disconnected: PIgA-PHIA2DBmsVUAAAB","timestamp":"2025-06-02T17:38:01.494Z"}
+{"level":"info","message":"Client connected: 0P9KunQcyoxBnz_eAAAD","timestamp":"2025-06-02T17:38:04.604Z"}
+{"level":"info","message":"Socket 0P9KunQcyoxBnz_eAAAD attempting to join session chat_room","timestamp":"2025-06-02T17:38:04.615Z"}
+{"level":"info","message":"Socket 0P9KunQcyoxBnz_eAAAD joined session chat_room","timestamp":"2025-06-02T17:38:04.616Z"}
+{"level":"info","message":"Client connected: kKysRJgVReYfrbFlAAAF","timestamp":"2025-06-02T17:38:09.552Z"}
+{"level":"info","message":"Socket kKysRJgVReYfrbFlAAAF attempting to join session chat_room","timestamp":"2025-06-02T17:38:09.563Z"}
+{"level":"info","message":"Socket kKysRJgVReYfrbFlAAAF joined session chat_room","timestamp":"2025-06-02T17:38:09.563Z"}
+{"level":"info","message":"Received send-message event from socket 0P9KunQcyoxBnz_eAAAD","timestamp":"2025-06-02T17:38:13.751Z"}
+{"level":"error","message":"Error while handling send-message: Message validation failed: sender_id: Cast to ObjectId failed for value \"Client 1\" (type string) at path \"sender_id\" because of \"BSONError\", session_id: Cast to ObjectId failed for value \"chat_room\" (type string) at path \"session_id\" because of \"BSONError\"","timestamp":"2025-06-02T17:38:13.765Z"}
+{"level":"info","message":"Received request: POST /api/v1/support-sessions/","timestamp":"2025-06-02T17:44:02.940Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-02T17:44:02.942Z"}
+{"level":"info","message":"Creating a new support session...","timestamp":"2025-06-02T17:44:02.947Z"}
+{"level":"info","message":"Support session created successfully: 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:44:03.030Z"}
+{"level":"info","message":"Client disconnected: 0P9KunQcyoxBnz_eAAAD","timestamp":"2025-06-02T17:44:18.287Z"}
+{"level":"info","message":"Client connected: B_YfIsXt5Ogv_8Q1AAAH","timestamp":"2025-06-02T17:44:20.052Z"}
+{"level":"info","message":"Socket B_YfIsXt5Ogv_8Q1AAAH attempting to join session chat_room","timestamp":"2025-06-02T17:44:20.059Z"}
+{"level":"info","message":"Socket B_YfIsXt5Ogv_8Q1AAAH joined session chat_room","timestamp":"2025-06-02T17:44:20.059Z"}
+{"level":"info","message":"Client disconnected: kKysRJgVReYfrbFlAAAF","timestamp":"2025-06-02T17:44:26.294Z"}
+{"level":"info","message":"Client connected: QXo39BETDiebHk3kAAAJ","timestamp":"2025-06-02T17:44:29.538Z"}
+{"level":"info","message":"Socket QXo39BETDiebHk3kAAAJ attempting to join session chat_room","timestamp":"2025-06-02T17:44:29.546Z"}
+{"level":"info","message":"Socket QXo39BETDiebHk3kAAAJ joined session chat_room","timestamp":"2025-06-02T17:44:29.546Z"}
+{"level":"info","message":"Received send-message event from socket B_YfIsXt5Ogv_8Q1AAAH","timestamp":"2025-06-02T17:44:37.122Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:44:37.177Z"}
+{"level":"info","message":"Received send-message event from socket QXo39BETDiebHk3kAAAJ","timestamp":"2025-06-02T17:44:47.742Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:44:47.795Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T17:57:35.035Z"}
+{"level":"info","message":"Client connected: 2UAZuRmNgf9janR4AAAB","timestamp":"2025-06-02T17:57:35.204Z"}
+{"level":"info","message":"Socket 2UAZuRmNgf9janR4AAAB attempting to join session chat_room","timestamp":"2025-06-02T17:57:35.226Z"}
+{"level":"info","message":"Socket 2UAZuRmNgf9janR4AAAB joined session chat_room","timestamp":"2025-06-02T17:57:35.227Z"}
+{"level":"info","message":"Client connected: _VY9RJPun8jeRWogAAAD","timestamp":"2025-06-02T17:57:35.368Z"}
+{"level":"info","message":"Socket _VY9RJPun8jeRWogAAAD attempting to join session chat_room","timestamp":"2025-06-02T17:57:35.372Z"}
+{"level":"info","message":"Socket _VY9RJPun8jeRWogAAAD joined session chat_room","timestamp":"2025-06-02T17:57:35.372Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:57:35.700Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-02T17:58:06.184Z"}
+{"level":"info","message":"Client connected: cPUxyXsCijebgKYXAAAB","timestamp":"2025-06-02T17:58:06.525Z"}
+{"level":"info","message":"Socket cPUxyXsCijebgKYXAAAB attempting to join session chat_room","timestamp":"2025-06-02T17:58:06.532Z"}
+{"level":"info","message":"Socket cPUxyXsCijebgKYXAAAB joined session chat_room","timestamp":"2025-06-02T17:58:06.532Z"}
+{"level":"info","message":"Client connected: LWYJ_b6nzMlBOVPzAAAD","timestamp":"2025-06-02T17:58:06.726Z"}
+{"level":"info","message":"Socket LWYJ_b6nzMlBOVPzAAAD attempting to join session chat_room","timestamp":"2025-06-02T17:58:06.730Z"}
+{"level":"info","message":"Socket LWYJ_b6nzMlBOVPzAAAD joined session chat_room","timestamp":"2025-06-02T17:58:06.731Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-02T17:58:06.774Z"}
+{"level":"info","message":"Received send-message event from socket LWYJ_b6nzMlBOVPzAAAD","timestamp":"2025-06-02T17:58:15.041Z"}
+{"level":"info","message":"Received send-message event from socket LWYJ_b6nzMlBOVPzAAAD","timestamp":"2025-06-02T17:58:15.062Z"}
+{"level":"info","message":"Received send-message event from socket LWYJ_b6nzMlBOVPzAAAD","timestamp":"2025-06-02T17:58:15.066Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:58:15.119Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:58:15.127Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:58:15.136Z"}
+{"level":"info","message":"Client disconnected: LWYJ_b6nzMlBOVPzAAAD","timestamp":"2025-06-02T17:59:15.123Z"}
+{"level":"info","message":"Client disconnected: cPUxyXsCijebgKYXAAAB","timestamp":"2025-06-02T17:59:17.963Z"}
+{"level":"info","message":"Client connected: _SVClWab-L7xb0IcAAAF","timestamp":"2025-06-02T17:59:20.962Z"}
+{"level":"info","message":"Socket _SVClWab-L7xb0IcAAAF attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-02T17:59:20.970Z"}
+{"level":"info","message":"Socket _SVClWab-L7xb0IcAAAF joined session 683aeda11c43568ff530c471","timestamp":"2025-06-02T17:59:20.970Z"}
+{"level":"info","message":"Client connected: NZMmPm68AljnKy-xAAAH","timestamp":"2025-06-02T17:59:23.290Z"}
+{"level":"info","message":"Socket NZMmPm68AljnKy-xAAAH attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:59:23.301Z"}
+{"level":"info","message":"Socket NZMmPm68AljnKy-xAAAH joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:59:23.302Z"}
+{"level":"info","message":"Received send-message event from socket _SVClWab-L7xb0IcAAAF","timestamp":"2025-06-02T17:59:26.767Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-02T17:59:26.827Z"}

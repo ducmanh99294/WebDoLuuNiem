@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const argon2 = require('argon2')
 
 const supportSessionSchema = new mongoose.Schema({
     closed_at: { 
@@ -22,7 +21,17 @@ const supportSessionSchema = new mongoose.Schema({
         ref: 'User', 
         required: true 
     },
+}, {
+    timestamps: { createdAt: 'created_at', updatedAt: false }
 });
+
+supportSessionSchema.pre('save', function (next) {
+  if (this.isModified('status') && this.status === 'closed' && !this.closed_at) {
+    this.closed_at = new Date();
+  }
+  next();
+});
+
 
 const SupportSession = mongoose.model('SupportSession', supportSessionSchema);
 module.exports = SupportSession;
