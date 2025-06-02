@@ -1,6 +1,4 @@
 {"level":"error","message":"Error during token refresh: Cannot destructure property 'refreshToken' of 'req.body' as it is undefined.","timestamp":"2025-05-31T14:51:02.562Z"}
-<<<<<<< HEAD
-=======
 {"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:50:01.922Z"}
 {"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:52:04.338Z"}
 {"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:53:55.585Z"}
@@ -26,4 +24,3 @@
 {"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:43:08.239Z"}
 {"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:44:59.298Z"}
 {"level":"error","message":"Error retrieving coupons: Schema hasn't been registered for model \"Users\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-02T02:45:11.772Z"}
->>>>>>> main
