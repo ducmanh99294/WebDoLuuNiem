@@ -5,3 +5,4 @@
 {"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:54:17.158Z"}
 {"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
 {"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}
+{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:17:07.707Z"}
