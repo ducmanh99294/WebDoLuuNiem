@@ -1,4 +1,3 @@
-// src/Router.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -7,6 +6,7 @@ import HomePage from '../pages/homepage';
 import LoginPage from '../LoginPage';
 import Footer from '../Fotter';
 import Register from '../Register';
+import DetailProduct from '../pages/DetailProduct';
 
 const AppRouter: React.FC = () => {
   return (
@@ -17,6 +17,8 @@ const AppRouter: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/product-detail" element={<DetailProduct />} />
+
 
         {/* Chuyển hướng từ /signin sang /login */}
         <Route path="/signin" element={<Navigate to="/login" replace />} />
