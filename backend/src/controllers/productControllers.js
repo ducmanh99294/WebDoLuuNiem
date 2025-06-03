@@ -7,7 +7,7 @@ const createProduct = async (req, res) => {
         if (!req.body.name || !req.body.price || !req.body.categories || !req.body.images || !req.body.description || !req.body.discount || !req.body.quantity) {
             return res.status(400).json({
                 success: false,
-                message: 'Thiếu trường bắt buộc'
+                message: 'please provide all required fields: name, price, categories, images, description, discount, quantity'
             });
         }
         const product = await Product.create(req.body);
@@ -33,7 +33,7 @@ const getAllProducts = async (req, res) => {
         logger.info(`Retrieved ${products.length} products`);
         res.status(200).json({
             success: true,
-            message: 'Lấy danh sách sản phẩm thành công',
+            message: 'get all products successfully',
             products: products
         })
     } catch (e) {
@@ -52,7 +52,7 @@ const getProductById = async (req, res) => {
             logger.warn('Product ID is required');
             return res.status(400).json({
                 success: false,
-                message: 'Vui lòng cung cấp ID sản phẩm'
+                message: 'please provide product ID to get product details'
             });
         }
 
@@ -60,7 +60,7 @@ const getProductById = async (req, res) => {
         if (!product) {
             return res.status(500).json({
                 success: false,
-                message: 'Sản phẩm không tồn tại'
+                message: 'product not found'
             });
         } 
         
@@ -82,7 +82,7 @@ const updateProduct = async (req, res) => {
             logger.warn('Product ID is required for update');
             return res.status(400).json({
                 success: false,
-                message: 'Vui lòng cung cấp ID sản phẩm để cập nhật'
+                message: 'please provide product ID to update product details'
             });
         }
 
@@ -95,7 +95,7 @@ const updateProduct = async (req, res) => {
 
         if (!product) return res.status(404).json({
             success: false,
-            message: 'Sản phẩm không tồn tại'
+            message: 'product not found'
         });
 
         logger.info(`Product updated successfully: ${product._id}`);
@@ -116,7 +116,7 @@ const deleteProduct = async (req, res) => {
             logger.warn('Product ID is required for deletion');
             return res.status(400).json({
                 success: false,
-                message: 'Vui lòng cung cấp ID sản phẩm để xóa'
+                message: 'please provide product ID to delete'
             });
         }
 
@@ -125,7 +125,7 @@ const deleteProduct = async (req, res) => {
 
         if (!product) return res.status(404).json({
             success: false,
-            message: 'Sản phẩm không tồn tại'
+            message: 'product not found'
         });
 
         logger.info(`Product deleted successfully: ${product._id}`);
@@ -146,7 +146,7 @@ const like_count = async (req, res) => {
             logger.warn('Product ID is required for liking');
             return res.status(400).json({
                 success: false,
-                message: 'Vui lòng cung cấp ID sản phẩm để thích'
+                message: 'please provide product ID to like'
             });
         }
 
@@ -155,7 +155,7 @@ const like_count = async (req, res) => {
             logger.warn('User not authenticated');
             return res.status(401).json({
                 success: false,
-                message: 'Bạn cần đăng nhập để thích sản phẩm'
+                message: 'please login to like this product'
             });
         }
 
@@ -163,7 +163,7 @@ const like_count = async (req, res) => {
         if (!product) {
             return res.status(404).json({
                 success: false,
-                message: 'Sản phẩm không tồn tại'
+                message: 'product not found'
             });
         }
 
@@ -171,7 +171,7 @@ const like_count = async (req, res) => {
         if (product.liked_by.includes(req.user._id)) {
             return res.status(400).json({
                 success: false,
-                message: 'Bạn đã thích sản phẩm này rồi'
+                message: 'you have already liked this product'
             });
         }
 
@@ -181,7 +181,7 @@ const like_count = async (req, res) => {
         logger.info(`Product liked successfully: ${product._id}`);
         res.json({
             success: true,
-            message: 'Cập nhật số lượt thích thành công',
+            message: 'updated like count successfully',
             like_count: product.like_count
         });
     } catch (e) {
@@ -200,7 +200,7 @@ const view_count = async (req, res) => {
             logger.warn('Product ID is required for viewing');
             return res.status(400).json({
                 success: false,
-                message: 'Vui lòng cung cấp ID sản phẩm để xem'
+                message: 'please provide product ID to view'
             });
         }
 
@@ -208,7 +208,7 @@ const view_count = async (req, res) => {
         if (!product) {
             return res.status(404).json({
                 success: false,
-                message: 'Sản phẩm không tồn tại'
+                message: 'product not found'
             });
         }
         product.view_count += 1;
@@ -217,7 +217,7 @@ const view_count = async (req, res) => {
         logger.info(`Product viewed successfully: ${product._id}`);
         res.json({
             success: true,
-            message: 'Cập nhật số lượt xem thành công',
+            message: 'updated view count successfully',
             view_count: product.view_count
         });
     } catch (e) {
@@ -236,20 +236,20 @@ const sell_count = async (req, res) => {
             logger.warn('Product ID is required for updating sell count');
             return res.status(400).json({
                 success: false,
-                message: 'Vui lòng cung cấp ID sản phẩm để cập nhật số lượng bán'
+                message: 'please provide product ID to update sell count'
             });
         }
         const product = await Product.findById(req.params.id);
         if (!product) {
             return res.status(404).json({
                 success: false,
-                message: 'Sản phẩm không tồn tại'
+                message: 'product not found'
             });
         }
         if (product.sell_count >= product.quantity) {
             return res.status(400).json({
                 success: false,
-                message: 'Sản phẩm đã bán hết'
+                message: 'product is out of stock'
             });
         }
         product.sell_count += 1;
@@ -258,7 +258,7 @@ const sell_count = async (req, res) => {
         logger.info(`Sell count updated successfully for product: ${product._id}`);
         res.json({
             success: true,
-            message: 'Cập nhật số lượng bán thành công',
+            message: 'updated sell count successfully',
             sell_count: product.sell_count
         });
     } catch (e) {
