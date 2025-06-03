@@ -22,7 +22,8 @@ function socketHandler(io) {
     socket.on('send-message', async (msg) => {
       try {
         logger.info(`Received send-message event from socket ${socket.id}`);
-        const { session_id, sender_id, content, type } = msg;
+        const { session_id, content, type, token } = msg;
+        const sender_id = socket.user._id;
 
         if (!session_id || !sender_id || !content || !type) {
           logger.warn("Invalid message payload received:", msg);
@@ -64,9 +65,6 @@ function socketHandler(io) {
     });
     socket.on("error", (err) => {
       logger.error(`Socket error: ${err.message}`);
-    });
-    socket.on("receive-message", (msg) => {
-      console.log("✅ Tin nhắn nhận được:", msg);
     });
   });
   

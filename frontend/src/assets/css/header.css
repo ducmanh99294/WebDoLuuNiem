@@ -15,7 +15,6 @@ html, body {
 .header-container {
   background-color: #4caf83;
   color: white;
-  border: 1px solid black;
   align-items: center;
   justify-content: space-between; /* chia đều không gian */
 }
@@ -76,23 +75,31 @@ html, body {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 14px;
-
+  font-size: 12px;
+  text-decoration: none;
 }
 .header-actions{
   display: flex;
 }
 
-.header-bottom {
+.header-dm {
   display: flex;
   align-items: center;
   gap: 15px;
   background-color: #3b9f6a;
   padding: 10px 20px;
+  justify-content: space-between;
+  color: white;
+  text-decoration: none;
+
+}
+.header-dm a{
+  color: white;
+  text-decoration: none;
 }
 
 .header-bottom a,
-.header-bottom button {
+.header-dm button {
   color: white;
   text-decoration: none;
   background: none;
@@ -110,4 +117,22 @@ html, body {
   width: 1000px;
   padding: 12px;
   gap: 5px ;
+}
+.header-actions Link{
+  text-decoration: none;
+}
+.utilities{
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  color: white;
+}
+.utilities a{
+  color: white;
+  text-decoration: none;
+}
+.divider {
+  margin-left: 15px;
+  color: white; /* hoặc màu phù hợp */
+  opacity: 0.6;  /* giảm độ nổi bật nếu muốn nhẹ nhàng */
 }

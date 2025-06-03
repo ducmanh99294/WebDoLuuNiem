@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27017/webdoluuniem';
 
+
 const connectMongoDB = async () => {
     try {
         await mongoose.connect(mongoURL, {

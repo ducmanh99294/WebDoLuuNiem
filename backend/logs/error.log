@@ -1,1 +1,0 @@
-{"level":"error","message":"Error while handling send-message: Message validation failed: sender_id: Cast to ObjectId failed for value \"Client 1\" (type string) at path \"sender_id\" because of \"BSONError\", session_id: Cast to ObjectId failed for value \"chat_room\" (type string) at path \"session_id\" because of \"BSONError\"","timestamp":"2025-06-02T17:38:13.765Z"}
