@@ -2,23 +2,24 @@ const jwt = require('jsonwebtoken');
 const logger = require('../utils/logger');
 
 function socketAuthMiddleware(socket, next) {
-  const tokenWithBearer = socket.handshake.auth.token;
-  
-    if (!tokenWithBearer) {
-        logger.warn('Authentication token missing');
-        return next(new Error('Authentication token missing'));
-    }
+    const authToken = socket.handshake.auth?.token;
+    const token = authToken?.startsWith('Bearer ') ? authToken.split(' ')[1] : authToken;
 
-    const token = tokenWithBearer.split(' ')[1]; 
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    if (err) {
-        logger.warn('Authentication failed: Invalid token');
-        return next(new Error('Authentication failed'));
+    if (!token) {
+        logger.warn('Access attempt without valid token');
     }
-    socket.user = user;
-    next();
-  });
+    
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+        if (err) {
+            logger.warn('Invalid token');
+            console.log(err)
+            
+            return next(new Error('Invalid token'));
+        }
+
+        socket.user = user;
+        next();
+    })
 }
 
 module.exports = socketAuthMiddleware;

@@ -22,8 +22,8 @@ function socketHandler(io) {
     socket.on('send-message', async (msg) => {
       try {
         logger.info(`Received send-message event from socket ${socket.id}`);
-        const { session_id, content, type, token } = msg;
-        const sender_id = socket.user._id;
+        const { session_id, content, type } = msg;
+        const sender_id = socket.user.id;
 
         if (!session_id || !sender_id || !content || !type) {
           logger.warn("Invalid message payload received:", msg);

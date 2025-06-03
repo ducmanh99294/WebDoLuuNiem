@@ -10,7 +10,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const logger = require('./utils/logger');
 const connectMongoDB = require('./config/mongodbConfig');
 const { validateToken } = require('./middlewares/authMiddleware');
-const { validateToken: socketValidateToken } = require('./middlewares/socketAuthMiddleware');
+const socketAuthMiddleware = require('./middlewares/socketAuthMiddleware');
 const socketHandler = require('./sockets/index');
 
 const app = express();
@@ -19,7 +19,6 @@ const io = new Server(server, {
   cors: { origin: '*' },
 });
 //check user token before allowing socket connection
-io.use(socketValidateToken);
 
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
@@ -27,6 +26,9 @@ const API_VERSION = process.env.API_VERSION || 'v1'
 
 //connect to MongoDB
 connectMongoDB()
+
+//socket.io setup
+io.use(socketAuthMiddleware);
 socketHandler(io);
 
 // Middleware
