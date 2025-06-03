@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const chatController = require('../controllers/chatController');
+const { validateToken } = require('../middlewares/authMiddleware');
 const authRoles = require('../middlewares/authRoles');
 const { validateToken } = require('../middlewares/authMiddleware');
 
@@ -18,5 +19,6 @@ router.delete('/:id',validateToken, authRoles('admin'), chatController.deleteCha
 // router.put('/:id', validateToken, authRoles('admin'), chatController.updateChat); // Chỉ admin được cập nhật chat
 // router.delete('/:id', validateToken, authRoles('admin'), chatController.deleteChat); // Chỉ admin được xóa chat
 //
+
 
 module.exports = router;
