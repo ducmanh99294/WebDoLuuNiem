@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const orderController = require('../controllers/orderController');
+const { validateToken } = require('../middlewares/authMiddleware');
 
-router.post('/', orderController.createOrder);
-router.get('/', orderController.getAllOrders);
-router.get('/:id', orderController.getOrderById);
-router.put('/:id/status', orderController.updateOrderStatus);
-router.delete('/:id', orderController.deleteOrder);
+router.post('/', validateToken, orderController.createOrder);
+router.get('/', validateToken, orderController.getAllOrders);
+router.get('/:id', validateToken, orderController.getOrderById);
+router.put('/:id/status', validateToken, orderController.updateOrderStatus);
+router.delete('/:id', validateToken, orderController.deleteOrder);
 
 module.exports = router;
