@@ -141,7 +141,7 @@ const deleteReview = async (req, res) => {
     try {
         logger.info(`Deleting review with ID: ${req.params.id}`);
         const review = await Review.findByIdAndDelete(req.params.id);
-        if(!reviwe) {
+        if(!review) {
             logger.warn(`Review not found with Id: ${req.params.id}`);
             return res.status(404).json({
                 success: false,
