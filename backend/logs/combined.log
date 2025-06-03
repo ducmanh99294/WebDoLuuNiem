@@ -220,3 +220,9 @@
 {"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:43:50.354Z"}
 {"level":"info","message":"Client disconnected: 6pIDKQyIxmmMGfR3AAAF","timestamp":"2025-06-03T04:43:59.468Z"}
 {"level":"info","message":"Client disconnected: wOjJs-4rsb3hbgp6AAAH","timestamp":"2025-06-03T04:44:03.709Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T13:00:54.473Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T13:00:54.495Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T13:15:04.713Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T13:15:04.728Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T13:31:28.871Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T13:31:28.887Z"}
