@@ -1,4 +1,3 @@
-// src/Router.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -7,6 +6,9 @@ import HomePage from '../pages/homepage';
 import LoginPage from '../LoginPage';
 import Footer from '../Fotter';
 import Register from '../Register';
+import About from '../pages/about'
+import DetailProduct from '../pages/DetailProduct';
+
 
 const AppRouter: React.FC = () => {
   return (
@@ -18,11 +20,12 @@ const AppRouter: React.FC = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register/>} />
 
+        <Route path="/about" element={<About/>} />
+        <Route path="/product-detail" element={<DetailProduct />} />
+
+
         {/* Chuyển hướng từ /signin sang /login */}
         <Route path="/signin" element={<Navigate to="/login" replace />} />
-
-        {/* Trang không tìm thấy */}
-        {/* Mọi route không khớp thì chuyển về / hoặc 404 */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

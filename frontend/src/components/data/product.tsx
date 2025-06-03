@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../assets/css/productcard.css';
+import { FaHeart } from 'react-icons/fa';
 
 type Product = {
   id: number;
@@ -43,6 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="price-line">
         <span className="final-price">{finalPrice.toLocaleString()}₫</span>
         <span className="old-price">{product.price.toLocaleString()}₫</span>
+        <span><FaHeart className="heart-icon" /></span>
       </div>
     </div>
     </div>

@@ -1,11 +1,6 @@
-{"level":"error","message":"Error during token refresh: Cannot destructure property 'refreshToken' of 'req.body' as it is undefined.","timestamp":"2025-05-31T14:51:02.562Z"}
-<<<<<<< HEAD
-=======
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:50:01.922Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:52:04.338Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:53:55.585Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:54:17.158Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:17:07.707Z"}
->>>>>>> main
+{"level":"error","message":"recipient ID and sender ID and Messages are required","timestamp":"2025-06-03T17:48:29.532Z"}
+{"level":"error","message":"sender ID and Product ID and Messages are required","timestamp":"2025-06-03T17:50:34.698Z"}
+{"level":"error","message":"sender ID and Product ID and Messages are required","timestamp":"2025-06-03T17:53:44.277Z"}
+{"level":"error","message":"recipient ID and sender ID and Messages are required","timestamp":"2025-06-03T17:54:08.934Z"}
+{"level":"error","message":"recipient ID and sender ID and Messages are required","timestamp":"2025-06-03T17:56:43.477Z"}
+{"level":"error","message":"Error creating chat: Chats validation failed: user: Cast to ObjectId failed for value \"[ '683ac0744b8decb4542f76ea', '683aeda11c43568ff530c471' ]\" (type Array) at path \"user\" because of \"BSONError\"","timestamp":"2025-06-03T17:56:52.396Z"}
