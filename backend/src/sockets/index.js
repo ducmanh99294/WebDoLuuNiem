@@ -2,7 +2,7 @@ const Notification = require('../models/Notification');
 const Message = require('../models/Message');
 const logger = require('../utils/logger');
 
-const onlineUsers = new Map(); // userId -> socket.id|theo dõi user onl/off
+const onlineUsers = new Map(); // userId -> socket.id
 
 module.exports = (io) => {
   logger.info("📡 Socket handler initialized");
@@ -10,7 +10,7 @@ module.exports = (io) => {
   io.on('connection', (socket) => {
     logger.info(`✅ Client connected: ${socket.id}`);
 
-    // Khi client xác định người dùng
+    // Khi client xác định danh tính người dùng
     socket.on('user_connected', (userId) => {
       onlineUsers.set(userId, socket.id);
       logger.info(`👤 User online: ${userId}`);
@@ -40,7 +40,7 @@ module.exports = (io) => {
       logger.info(`Socket ${socket.id} joined session ${sessionId}`);
     });
 
-    // 📌 [2] Gửi tin nhắn mới (support/chat)
+    // 📌 [2] Gửi tin nhắn mới vào 1 phiên (support/chat)
     socket.on('send-message', async (msg) => {
       try {
         logger.info(`Received send-message event from socket ${socket.id}`);
@@ -72,7 +72,7 @@ module.exports = (io) => {
           is_read: false,
         });
 
-        // Gửi thông báo -> người t/gia khác trong session
+        // 🔔 Gửi thông báo tới người tham gia khác trong session
         const participants = await Message.distinct('sender_id', { session_id });
         for (const participantId of participants) {
           if (participantId.toString() !== sender_id) {
@@ -108,7 +108,7 @@ module.exports = (io) => {
       }
     });
 
-    // xử lý sự kiện
+    // Hệ thống xử lý sự kiện kỹ thuật
     socket.on("upgrade", () => {
       logger.info("Transport upgraded:", socket.transport);
     });

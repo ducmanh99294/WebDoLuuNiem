@@ -348,4 +348,6 @@
 {"level":"info","message":"Creating product with data:","timestamp":"2025-06-04T03:28:29.628Z"}
 {"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-04T03:30:39.156Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:30:39.236Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:30:39.248Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:30:39.248Z"}{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-04T03:51:19.942Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:51:20.048Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:51:20.061Z"}

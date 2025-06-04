@@ -1,6 +1,6 @@
 const Notification = require('../models/Notification');
 
-// Lấy all t/báo của user
+// 📌 Lấy tất cả thông báo của user
 exports.getUserNotifications = async (req, res) => {
   try {
     const notifications = await Notification.find({ user: req.user._id })
@@ -19,7 +19,7 @@ exports.getUserNotifications = async (req, res) => {
   }
 };
 
-// Đánh dấu all t/báo là đã đọc
+// 📌 Đánh dấu tất cả thông báo là đã đọc
 exports.markAllAsRead = async (req, res) => {
   try {
     await Notification.updateMany(
@@ -40,7 +40,7 @@ exports.markAllAsRead = async (req, res) => {
   }
 };
 
-//Xoá all t/bao của user
+// 📌 Xoá tất cả thông báo của user
 exports.deleteAllNotifications = async (req, res) => {
   try {
     await Notification.deleteMany({ user: req.user._id });
