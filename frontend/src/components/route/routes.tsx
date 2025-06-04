@@ -8,7 +8,8 @@ import Footer from '../Fotter';
 import Register from '../Register';
 import About from '../pages/about'
 import DetailProduct from '../pages/DetailProduct';
-
+import NewsPage from '../pages/newspage';
+import Contact from '../pages/contact';
 
 const AppRouter: React.FC = () => {
   return (
@@ -19,7 +20,8 @@ const AppRouter: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register/>} />
-
+        <Route path="/newpage" element={<NewsPage/>} />
+        <Route path="/contact" element={<Contact/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/product-detail" element={<DetailProduct />} />
           {/* Chuyển hướng từ /signin sang /login */}

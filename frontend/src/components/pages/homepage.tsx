@@ -1,32 +1,57 @@
 // src/pages/Home.tsx
-import React from 'react';
-import ProductCard from '../pages/ProductCard';  // giả sử đây là component hiển thị 1 product
+import React, { useEffect, useState } from 'react';
+import ProductCard from '../pages/ProductCard'; // vẫn giữ nguyên
 import '../../assets/css/home.css';
 import Banner from '../Banner';
-import WhyChooseUs from '../WhyChooseUs'
-import DealsSection from '../DealsSection'
-import { Link } from 'react-router-dom'; // dùng Link để chuyển trang
-import { products } from '../data/product';
+import WhyChooseUs from '../WhyChooseUs';
+import DealsSection from '../DealsSection';
+import { Link } from 'react-router-dom';
 import CategoryList from '../category';
+
 const Home: React.FC = () => {
-  // data mảng sản phẩm
+  const [products, setProducts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('http://localhost:3000/api/v1/products');
+        const data = await res.json();
+        setProducts(data.products || []);
+      } catch (err) {
+        console.error('Lỗi gọi API sản phẩm:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <>
-      
       <Banner />
-      <CategoryList/>
+      <CategoryList />
       <div className="card-sp">
         <h1>Chào mừng đến với cửa hàng Đặc Sản</h1>
         <p>vài sp xem thử </p>
-        <Link to = "/product-detail" style={{textDecoration: 'none', color : 'black'}}>
         <div className="sp">
-          {products.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div></Link>
+          {loading ? (
+            <p>Đang tải sản phẩm...</p>
+          ) : (
+            products.map(product => (
+              <Link
+                key={product.id}
+                to={`/product-detail/${product.id}`}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ProductCard product={product} />
+              </Link>
+            ))
+          )}
+        </div>
       </div>
-      <DealsSection/>
+      <DealsSection />
       <WhyChooseUs />
     </>
   );
