@@ -1,159 +1,228 @@
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T13:30:06.014Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T13:30:06.681Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:51:02.550Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:51:02.553Z"}
-{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:51:02.561Z"}
-{"level":"error","message":"Error during token refresh: Cannot destructure property 'refreshToken' of 'req.body' as it is undefined.","timestamp":"2025-05-31T14:51:02.562Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:53:08.726Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:53:09.382Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:53:11.629Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:53:11.629Z"}
-{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:53:11.630Z"}
-{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:53:11.697Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:53:45.623Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:53:46.353Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:53:49.159Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:53:49.159Z"}
-{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:53:49.160Z"}
-{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:53:49.235Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:55:37.879Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:55:37.879Z"}
-{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:55:37.880Z"}
-{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:55:37.942Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:55:46.063Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:55:46.725Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:57:34.306Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:57:34.306Z"}
-{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:57:34.308Z"}
-{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:57:34.376Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:58:25.140Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:58:25.887Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T14:58:29.703Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T14:58:30.299Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T14:58:33.962Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T14:58:33.962Z"}
-{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T14:58:33.964Z"}
-{"level":"warn","message":"Invalid refresh token","timestamp":"2025-05-31T14:58:34.043Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/refresh-token/","timestamp":"2025-05-31T15:00:20.031Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-05-31T15:00:20.032Z"}
-{"level":"info","message":"Refreshing token...","timestamp":"2025-05-31T15:00:20.032Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-05-31T16:09:28.580Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-05-31T16:09:29.294Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T06:25:36.786Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T06:25:36.826Z"}
-{"level":"info","message":"Received request: GET /","timestamp":"2025-06-01T06:25:44.793Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T06:25:44.794Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T08:44:57.401Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T08:44:57.421Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:49:55.346Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:49:55.347Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:49:55.348Z"}
-{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T08:49:55.353Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:01.792Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:01.793Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:01.793Z"}
-{"level":"info","message":"User registered successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:50:01.921Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:50:01.922Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:09.434Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:09.435Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:09.436Z"}
-{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:50:09.439Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:50:50.205Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:50:50.206Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:50:50.206Z"}
-{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:50:50.209Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:52:04.237Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:52:04.238Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:52:04.238Z"}
-{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T08:52:04.241Z"}
-{"level":"info","message":"User logged in successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:52:04.337Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:52:04.338Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:52:23.987Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:52:23.988Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:52:23.988Z"}
-{"level":"warn","message":"User already exists with email: admin@example.com","timestamp":"2025-06-01T08:52:23.991Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:53:55.482Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:53:55.482Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:53:55.483Z"}
-{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T08:53:55.485Z"}
-{"level":"info","message":"User logged in successfully: 683c1439fe0ddb32574c37e2","timestamp":"2025-06-01T08:53:55.583Z"}
-{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:53:55.585Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T08:54:05.545Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:05.545Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T08:54:05.546Z"}
-{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T08:54:05.546Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:54:17.054Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:17.055Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:54:17.055Z"}
-{"level":"info","message":"User registered successfully: 683c1539fe0ddb32574c37ea","timestamp":"2025-06-01T08:54:17.158Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:54:17.158Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:54:35.663Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:54:35.663Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:54:35.663Z"}
-{"level":"warn","message":"User already exists with email: nhang@example.com","timestamp":"2025-06-01T08:54:35.666Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T08:55:35.029Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T08:55:35.030Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T08:55:35.030Z"}
-{"level":"info","message":"User registered successfully: 683c1587fe0ddb32574c37ee","timestamp":"2025-06-01T08:55:35.129Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T08:55:35.130Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:01:34.489Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:01:34.511Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:01:50.388Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:01:50.389Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:01:50.390Z"}
-{"level":"info","message":"User registered successfully: 683c16fe05c5fd13845d0d75","timestamp":"2025-06-01T09:01:50.515Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:01:50.517Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:16:58.540Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:16:58.561Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:17:07.570Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:17:07.570Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:17:07.572Z"}
-{"level":"info","message":"User registered successfully: 683c1a933a6266d0cf83573b","timestamp":"2025-06-01T09:17:07.705Z"}
-{"level":"error","message":"Error during user registration: secretOrPrivateKey must have a value","timestamp":"2025-06-01T09:17:07.707Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T09:20:30.034Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T09:20:30.054Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T09:21:04.709Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T09:21:04.710Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T09:21:04.712Z"}
-{"level":"info","message":"User registered successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T09:21:04.827Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T15:53:42.943Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T15:53:43.015Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-01T15:53:59.549Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:53:59.550Z"}
-{"level":"info","message":"Registering new user...","timestamp":"2025-06-01T15:53:59.551Z"}
-{"level":"warn","message":"User already exists with email: user4@example.com","timestamp":"2025-06-01T15:53:59.569Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:09.711Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:09.712Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:09.712Z"}
-{"level":"warn","message":"Validation error: \"password\" length must be at least 6 characters long","timestamp":"2025-06-01T15:54:09.714Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:14.029Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:14.030Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:14.031Z"}
-{"level":"info","message":"User login attempt for email: admin@example.com","timestamp":"2025-06-01T15:54:14.034Z"}
-{"level":"warn","message":"Invalid","timestamp":"2025-06-01T15:54:14.035Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:26.332Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:26.332Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:26.333Z"}
-{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-01T15:54:26.337Z"}
-{"level":"warn","message":"Invalid password","timestamp":"2025-06-01T15:54:26.445Z"}
-{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-01T15:54:38.872Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:54:38.873Z"}
-{"level":"info","message":"User login attempt...","timestamp":"2025-06-01T15:54:38.873Z"}
-{"level":"info","message":"User login attempt for email: user4@example.com","timestamp":"2025-06-01T15:54:38.876Z"}
-{"level":"info","message":"User logged in successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:54:38.975Z"}
-{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:05.245Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:05.246Z"}
-{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-01T15:58:05.246Z"}
-{"level":"warn","message":"Invalid token","timestamp":"2025-06-01T15:58:05.246Z"}
-{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:18.378Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:18.378Z"}
-{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-01T15:58:32.324Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:58:32.324Z"}
-{"level":"info","message":"Received request: GET /api/v1/users/683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.523Z"}
-{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-01T15:59:00.524Z"}
-{"level":"info","message":"Fetching user with ID: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.526Z"}
-{"level":"info","message":"User retrieved successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.533Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T17:11:51.194Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T17:11:51.216Z"}
-{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:37:13.893Z"}
-{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:37:13.916Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:33:35.381Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:36:00.035Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:36:06.197Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:38:27.100Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:38:27.732Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:39:02.156Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:39:02.775Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:39:50.331Z"}
+{"level":"info","message":"Client connected: PdDMFCi0JjT3iixIAAAB","timestamp":"2025-06-03T03:39:51.179Z"}
+{"level":"info","message":"Socket PdDMFCi0JjT3iixIAAAB attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T03:39:51.213Z"}
+{"level":"info","message":"Socket PdDMFCi0JjT3iixIAAAB joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T03:39:51.214Z"}
+{"level":"info","message":"Client connected: m9VvjKuFJmMCghuKAAAD","timestamp":"2025-06-03T03:39:55.209Z"}
+{"level":"info","message":"Socket m9VvjKuFJmMCghuKAAAD attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T03:39:55.220Z"}
+{"level":"info","message":"Socket m9VvjKuFJmMCghuKAAAD joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T03:39:55.222Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:39:56.397Z"}
+{"level":"info","message":"Received send-message event from socket PdDMFCi0JjT3iixIAAAB","timestamp":"2025-06-03T03:40:05.535Z"}
+{"level":"info","message":"Received send-message event from socket PdDMFCi0JjT3iixIAAAB","timestamp":"2025-06-03T03:40:05.548Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T03:40:05.611Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T03:40:05.613Z"}
+{"level":"info","message":"Client disconnected: PdDMFCi0JjT3iixIAAAB","timestamp":"2025-06-03T03:40:21.836Z"}
+{"level":"info","message":"Client disconnected: m9VvjKuFJmMCghuKAAAD","timestamp":"2025-06-03T03:40:23.937Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:41:55.731Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:41:56.366Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:42:13.978Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:42:15.055Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:42:23.675Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:42:24.246Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:43:54.760Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:43:55.391Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:44:31.282Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:44:31.966Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:51:54.441Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:51:55.156Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:52:02.599Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:52:03.214Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:52:47.677Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:52:48.262Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:54:12.076Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:54:12.711Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T03:54:43.572Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T03:54:44.596Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:03:28.916Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:03:29.608Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-03T04:03:31.522Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-03T04:03:31.524Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-03T04:03:31.526Z"}
+{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-06-03T04:03:31.618Z"}
+{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-06-03T04:03:31.859Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-03T04:04:30.027Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-03T04:04:30.027Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-03T04:04:30.028Z"}
+{"level":"info","message":"User login attempt for email: nguyenvanb@example.com","timestamp":"2025-06-03T04:04:30.084Z"}
+{"level":"info","message":"User logged in successfully: 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:04:30.205Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:06:13.068Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:06:13.818Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:06:45.477Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:06:46.181Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:09:43.203Z"}
+{"level":"warn","message":"Authentication failed: Invalid token","timestamp":"2025-06-03T04:09:44.175Z"}
+{"level":"warn","message":"Authentication failed: Invalid token","timestamp":"2025-06-03T04:09:44.904Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:09:48.860Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:10:22.764Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:10:23.419Z"}
+{"level":"warn","message":"Authentication failed: Invalid token","timestamp":"2025-06-03T04:10:36.332Z"}
+{"level":"warn","message":"Authentication failed: Invalid token","timestamp":"2025-06-03T04:10:38.951Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:11:33.156Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:11:33.897Z"}
+{"level":"info","message":"Socket authentication attempt with token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2FjMDc0NGI4ZGVjYjQ1NDJmNzZlYSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ4OTIzNDExLCJleHAiOjE3NDg5MjQzMTF9.s44nYpcuwX6cXDMtn0XPk1VVeWt5VVNGPJU_vauGvV4","timestamp":"2025-06-03T04:11:36.625Z"}
+{"level":"warn","message":"Authentication failed: Invalid token","timestamp":"2025-06-03T04:11:36.627Z"}
+{"level":"info","message":"Socket authentication attempt with token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2FjMDc0NGI4ZGVjYjQ1NDJmNzZlYSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ4OTIzNDExLCJleHAiOjE3NDg5MjQzMTF9.s44nYpcuwX6cXDMtn0XPk1VVeWt5VVNGPJU_vauGvV4","timestamp":"2025-06-03T04:11:57.357Z"}
+{"level":"warn","message":"Authentication failed: Invalid token","timestamp":"2025-06-03T04:11:57.357Z"}
+{"level":"info","message":"Socket authentication attempt with token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2FlZGExMWM0MzU2OGZmNTMwYzQ3MSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ4OTIzNDcwLCJleHAiOjE3NDg5MjQzNzB9.0evS9kC45Tt_fV01CkjMwtC5X0uT1pxZ5QZwymaISBk","timestamp":"2025-06-03T04:12:00.497Z"}
+{"level":"warn","message":"Authentication failed: Invalid token","timestamp":"2025-06-03T04:12:00.497Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:13:16.133Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:13:17.833Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:14:21.480Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:14:23.854Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:14:47.015Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:14:47.782Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-03T04:15:01.445Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:16:26.377Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:16:27.037Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-03T04:16:30.230Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-03T04:16:30.231Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-03T04:16:30.738Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-03T04:16:30.739Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-03T04:16:31.849Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-03T04:16:31.849Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:31:12.679Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:31:13.542Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:31:20.346Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:31:20.897Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-03T04:31:23.116Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-03T04:31:23.117Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:31:53.741Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:31:54.375Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-03T04:32:12.616Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:32:37.679Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:32:38.398Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-03T04:32:38.538Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:33:52.887Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:33:53.785Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-03T04:34:06.930Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-03T04:34:06.932Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-03T04:34:06.936Z"}
+{"level":"info","message":"User login attempt for email: nguyenvanb@example.com","timestamp":"2025-06-03T04:34:07.012Z"}
+{"level":"info","message":"User logged in successfully: 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:34:07.154Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-03T04:34:41.557Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-03T04:34:41.557Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-03T04:34:41.557Z"}
+{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-06-03T04:34:41.615Z"}
+{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-06-03T04:34:41.781Z"}
+{"level":"info","message":"Client connected: GIIloO5Njd2TUQlRAAAB","timestamp":"2025-06-03T04:35:10.515Z"}
+{"level":"info","message":"Socket GIIloO5Njd2TUQlRAAAB attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:35:10.524Z"}
+{"level":"info","message":"Socket GIIloO5Njd2TUQlRAAAB joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:35:10.524Z"}
+{"level":"info","message":"Client connected: QfaEfGOPfHMZiIAXAAAD","timestamp":"2025-06-03T04:35:12.917Z"}
+{"level":"info","message":"Socket QfaEfGOPfHMZiIAXAAAD attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:35:12.923Z"}
+{"level":"info","message":"Socket QfaEfGOPfHMZiIAXAAAD joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:35:12.924Z"}
+{"level":"info","message":"Received send-message event from socket GIIloO5Njd2TUQlRAAAB","timestamp":"2025-06-03T04:35:16.971Z"}
+{"content":"hello","level":"warn","message":"Invalid message payload received:","sender_id":"683ac0744b8decb4542f76ea","session_id":"683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:35:16.971Z","type":"text"}
+{"level":"info","message":"Received send-message event from socket GIIloO5Njd2TUQlRAAAB","timestamp":"2025-06-03T04:35:57.310Z"}
+{"content":"hello","level":"warn","message":"Invalid message payload received:","sender_id":"683ac0744b8decb4542f76ea","session_id":"683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:35:57.312Z","type":"text"}
+{"level":"info","message":"Client disconnected: GIIloO5Njd2TUQlRAAAB","timestamp":"2025-06-03T04:36:02.032Z"}
+{"level":"info","message":"Client connected: Vm6nsenhTpgRPFDnAAAF","timestamp":"2025-06-03T04:36:02.942Z"}
+{"level":"info","message":"Socket Vm6nsenhTpgRPFDnAAAF attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:36:02.948Z"}
+{"level":"info","message":"Socket Vm6nsenhTpgRPFDnAAAF joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:36:02.949Z"}
+{"level":"info","message":"Client disconnected: QfaEfGOPfHMZiIAXAAAD","timestamp":"2025-06-03T04:36:05.046Z"}
+{"level":"info","message":"Client connected: 0BF0N40Y3NIfXgM3AAAH","timestamp":"2025-06-03T04:36:05.785Z"}
+{"level":"info","message":"Socket 0BF0N40Y3NIfXgM3AAAH attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:36:05.792Z"}
+{"level":"info","message":"Socket 0BF0N40Y3NIfXgM3AAAH joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:36:05.792Z"}
+{"level":"info","message":"Received send-message event from socket Vm6nsenhTpgRPFDnAAAF","timestamp":"2025-06-03T04:36:08.189Z"}
+{"content":"hello","level":"warn","message":"Invalid message payload received:","session_id":"683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:36:08.190Z","type":"text"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:37:09.969Z"}
+{"level":"info","message":"Client connected: iE-jGLbxQ72EiuYJAAAB","timestamp":"2025-06-03T04:37:10.267Z"}
+{"level":"info","message":"Socket iE-jGLbxQ72EiuYJAAAB attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:37:10.275Z"}
+{"level":"info","message":"Socket iE-jGLbxQ72EiuYJAAAB joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:37:10.275Z"}
+{"level":"info","message":"Client connected: Onx85sAlZkmIQ7hNAAAD","timestamp":"2025-06-03T04:37:10.320Z"}
+{"level":"info","message":"Socket Onx85sAlZkmIQ7hNAAAD attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:37:10.334Z"}
+{"level":"info","message":"Socket Onx85sAlZkmIQ7hNAAAD joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:37:10.334Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:37:11.750Z"}
+{"level":"info","message":"Received send-message event from socket Onx85sAlZkmIQ7hNAAAD","timestamp":"2025-06-03T04:37:15.433Z"}
+{"content":"hello","level":"warn","message":"Invalid message payload received:","session_id":"683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:37:15.434Z","type":"text"}
+{"level":"info","message":"Received send-message event from socket Onx85sAlZkmIQ7hNAAAD","timestamp":"2025-06-03T04:37:15.434Z"}
+{"content":"hello","level":"warn","message":"Invalid message payload received:","session_id":"683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:37:15.434Z","type":"text"}
+{"level":"info","message":"Received send-message event from socket iE-jGLbxQ72EiuYJAAAB","timestamp":"2025-06-03T04:37:23.460Z"}
+{"content":"hhello","level":"warn","message":"Invalid message payload received:","session_id":"683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:37:23.460Z","type":"text"}
+{"level":"info","message":"Received send-message event from socket iE-jGLbxQ72EiuYJAAAB","timestamp":"2025-06-03T04:37:23.461Z"}
+{"content":"hhello","level":"warn","message":"Invalid message payload received:","session_id":"683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:37:23.461Z","type":"text"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:39:41.468Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:39:42.331Z"}
+{"level":"info","message":"Client connected: B5f6c0_Fbe4Qeq36AAAB","timestamp":"2025-06-03T04:39:42.650Z"}
+{"level":"info","message":"Socket B5f6c0_Fbe4Qeq36AAAB attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:39:42.659Z"}
+{"level":"info","message":"Socket B5f6c0_Fbe4Qeq36AAAB joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:39:42.659Z"}
+{"level":"info","message":"Client connected: _1ZGRVjCnBQcyaIkAAAD","timestamp":"2025-06-03T04:39:44.086Z"}
+{"level":"info","message":"Socket _1ZGRVjCnBQcyaIkAAAD attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:39:44.090Z"}
+{"level":"info","message":"Socket _1ZGRVjCnBQcyaIkAAAD joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:39:44.090Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:39:50.072Z"}
+{"level":"info","message":"Client connected: XsmfIwOiySoOa15LAAAB","timestamp":"2025-06-03T04:39:50.261Z"}
+{"level":"info","message":"Socket XsmfIwOiySoOa15LAAAB attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:39:50.270Z"}
+{"level":"info","message":"Socket XsmfIwOiySoOa15LAAAB joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:39:50.271Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:39:50.708Z"}
+{"level":"info","message":"Client connected: GrD_la6T4_qWFYxvAAAD","timestamp":"2025-06-03T04:39:52.320Z"}
+{"level":"info","message":"Socket GrD_la6T4_qWFYxvAAAD attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:39:52.324Z"}
+{"level":"info","message":"Socket GrD_la6T4_qWFYxvAAAD joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:39:52.324Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:40:54.503Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:40:55.148Z"}
+{"level":"info","message":"Client connected: kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:40:55.372Z"}
+{"level":"info","message":"Socket kBin_PHqlBHayUihAAAB attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:40:55.393Z"}
+{"level":"info","message":"Socket kBin_PHqlBHayUihAAAB joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:40:55.394Z"}
+{"level":"info","message":"Client connected: YELabhMtvN3vdUJGAAAD","timestamp":"2025-06-03T04:40:56.380Z"}
+{"level":"info","message":"Socket YELabhMtvN3vdUJGAAAD attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:40:56.425Z"}
+{"level":"info","message":"Socket YELabhMtvN3vdUJGAAAD joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:40:56.426Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:00.838Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:00.850Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:00.851Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:00.852Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:00.853Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:00.901Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:00.909Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:00.910Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:00.916Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:00.920Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:38.912Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:38.916Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:38.917Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:38.917Z"}
+{"level":"info","message":"Received send-message event from socket kBin_PHqlBHayUihAAAB","timestamp":"2025-06-03T04:41:38.918Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:38.966Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:38.973Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:38.980Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:38.986Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:41:38.991Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:42:56.665Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:42:57.527Z"}
+{"level":"info","message":"Client connected: 67v5XxMchNnIaZoXAAAB","timestamp":"2025-06-03T04:42:57.904Z"}
+{"level":"info","message":"Socket 67v5XxMchNnIaZoXAAAB attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:42:57.911Z"}
+{"level":"info","message":"Socket 67v5XxMchNnIaZoXAAAB joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:42:57.912Z"}
+{"level":"info","message":"Client connected: Cw_NK5ZXboZ_RLXEAAAD","timestamp":"2025-06-03T04:42:59.084Z"}
+{"level":"info","message":"Received send-message event from socket Cw_NK5ZXboZ_RLXEAAAD","timestamp":"2025-06-03T04:42:59.120Z"}
+{"level":"info","message":"Received send-message event from socket Cw_NK5ZXboZ_RLXEAAAD","timestamp":"2025-06-03T04:42:59.210Z"}
+{"level":"info","message":"Received send-message event from socket Cw_NK5ZXboZ_RLXEAAAD","timestamp":"2025-06-03T04:42:59.215Z"}
+{"level":"info","message":"Received send-message event from socket Cw_NK5ZXboZ_RLXEAAAD","timestamp":"2025-06-03T04:42:59.216Z"}
+{"level":"info","message":"Received send-message event from socket Cw_NK5ZXboZ_RLXEAAAD","timestamp":"2025-06-03T04:42:59.217Z"}
+{"level":"info","message":"Socket Cw_NK5ZXboZ_RLXEAAAD attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:42:59.218Z"}
+{"level":"info","message":"Socket Cw_NK5ZXboZ_RLXEAAAD joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:42:59.218Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:42:59.245Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:42:59.288Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:42:59.299Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:42:59.305Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:42:59.308Z"}
+{"level":"info","message":"Client disconnected: Cw_NK5ZXboZ_RLXEAAAD","timestamp":"2025-06-03T04:43:44.104Z"}
+{"level":"info","message":"Client connected: 6pIDKQyIxmmMGfR3AAAF","timestamp":"2025-06-03T04:43:45.442Z"}
+{"level":"info","message":"Socket 6pIDKQyIxmmMGfR3AAAF attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:43:45.448Z"}
+{"level":"info","message":"Socket 6pIDKQyIxmmMGfR3AAAF joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:43:45.448Z"}
+{"level":"info","message":"Client disconnected: 67v5XxMchNnIaZoXAAAB","timestamp":"2025-06-03T04:43:46.998Z"}
+{"level":"info","message":"Client connected: wOjJs-4rsb3hbgp6AAAH","timestamp":"2025-06-03T04:43:48.063Z"}
+{"level":"info","message":"Socket wOjJs-4rsb3hbgp6AAAH attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:43:48.072Z"}
+{"level":"info","message":"Socket wOjJs-4rsb3hbgp6AAAH joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:43:48.072Z"}
+{"level":"info","message":"Received send-message event from socket 6pIDKQyIxmmMGfR3AAAF","timestamp":"2025-06-03T04:43:50.295Z"}
+{"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:43:50.354Z"}
+{"level":"info","message":"Client disconnected: 6pIDKQyIxmmMGfR3AAAF","timestamp":"2025-06-03T04:43:59.468Z"}
+{"level":"info","message":"Client disconnected: wOjJs-4rsb3hbgp6AAAH","timestamp":"2025-06-03T04:44:03.709Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T13:00:54.473Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T13:00:54.495Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T13:15:04.713Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T13:15:04.728Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T13:31:28.871Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T13:31:28.887Z"}

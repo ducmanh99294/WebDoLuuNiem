@@ -1,5 +1,4 @@
 node_modules
 .env
 *.log
-*.logs
-# package*.json
+.env.example
