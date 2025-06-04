@@ -220,3 +220,24 @@
 {"level":"info","message":"New message saved and broadcasted in session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:43:50.354Z"}
 {"level":"info","message":"Client disconnected: 6pIDKQyIxmmMGfR3AAAF","timestamp":"2025-06-03T04:43:59.468Z"}
 {"level":"info","message":"Client disconnected: wOjJs-4rsb3hbgp6AAAH","timestamp":"2025-06-03T04:44:03.709Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-03T04:50:00.207Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T04:50:00.990Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-03T04:50:05.695Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-03T04:50:26.191Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-03T04:50:26.192Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-03T04:50:26.193Z"}
+{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-06-03T04:50:26.260Z"}
+{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-06-03T04:50:26.379Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-03T04:51:15.657Z"}
+{"level":"info","message":"Received body $ undefined","timestamp":"2025-06-03T04:51:15.657Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-03T04:51:15.658Z"}
+{"level":"info","message":"User login attempt for email: nguyenvanb@example.com","timestamp":"2025-06-03T04:51:15.707Z"}
+{"level":"info","message":"User logged in successfully: 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:51:15.832Z"}
+{"level":"info","message":"Client connected: QC4zye-66cN8-qrTAAAD","timestamp":"2025-06-03T04:51:37.889Z"}
+{"level":"info","message":"Socket QC4zye-66cN8-qrTAAAD attempting to join session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:51:37.897Z"}
+{"level":"info","message":"Socket QC4zye-66cN8-qrTAAAD joined session 683aeda11c43568ff530c471","timestamp":"2025-06-03T04:51:37.897Z"}
+{"level":"info","message":"Client connected: UEyrniUAj78A-982AAAF","timestamp":"2025-06-03T04:51:40.176Z"}
+{"level":"info","message":"Socket UEyrniUAj78A-982AAAF attempting to join session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:51:40.182Z"}
+{"level":"info","message":"Socket UEyrniUAj78A-982AAAF joined session 683de2e2134be94358ac8aeb","timestamp":"2025-06-03T04:51:40.182Z"}
+{"level":"info","message":"Client disconnected: QC4zye-66cN8-qrTAAAD","timestamp":"2025-06-03T04:51:57.086Z"}
+{"level":"info","message":"Client disconnected: UEyrniUAj78A-982AAAF","timestamp":"2025-06-03T04:52:01.162Z"}

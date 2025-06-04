@@ -63,11 +63,19 @@ function socketHandler(io) {
     socket.on("upgrade", () => {
       logger.info("Transport upgraded:", socket.transport);
     });
+
     socket.on("error", (err) => {
       logger.error(`Socket error: ${err.message}`);
     });
+
+      socket.on('typing', ({ session_id, sender_id }) => {
+    if (!session_id || !sender_id) return;
+      socket.to(session_id).emit('user-typing', {
+        sender_id,
+        status: 'typing'
+      });
+    });
   });
-  
 }
 
 module.exports = socketHandler;
