@@ -21,8 +21,9 @@ const productSchema = new mongoose.Schema({
     },
 
     discount: {
-        type: Number,
-        required: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Coupons",
+        default: 0,
         min: 0,
         max: 100 
     },
@@ -52,6 +53,14 @@ const productSchema = new mongoose.Schema({
      sell_count: {
         type: Number,
         required: true,
+    },
+    created_At: {
+        type: Date,
+        default: Date.now
+    },
+    update_At: {
+        type: Date,
+        default: Date.now
     }
 }, {
     timestamps: { created_At: 'create_At', updated_At: 'update_At' }

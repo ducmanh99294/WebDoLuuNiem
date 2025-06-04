@@ -1,22 +1,84 @@
 const Chat = require('../models/Chat');
 const logger = require('../utils/logger');
 
-const createChat = async (req, res) => {
+const createChatOneToOne = async (req, res) => {
     try {
-        const {user , messages} = req.body;
-        logger.info(`Creating chat for user: ${user}`);
-        if(!user) {
-            logger.warn('User ID is required to create a chat');
-            return res.status(400).json({ 
+        const { senderId, recipientId, productId, messages, parentMessageId } = req.body;
+
+        if (!senderId || !recipientId || !messages || !Array.isArray(messages) || messages.length === 0) {
+            logger.error('need are validation required');
+            return res.status(400).json({
                 success: false,
-                error: 'User ID is required' 
+                message: 'need are validation required'
             });
-        } 
-        const chat = await Chat.create({user, messages});
-        logger.info(`Chat created successfully: ${chat._id}`);
-        res.status(201).json({
+        }
+
+        let chat = await Chat.findOne({ 
+            user: { $all: [senderId, recipientId] },
+            product: productId
+        });
+
+        if (!chat) {
+            chat = new Chat({
+                user: [senderId, recipientId],
+                product: productId,
+                parentMessageId: parentMessageId || null,
+                messages: messages || []
+            });
+        }
+
+        chat.messages.push(...messages);
+
+        await chat.save();
+        
+        logger.info(`Messages sent successfully in chat with ID: ${chat._id}`);
+        res.status(200).json({
             success: true,
-            message: 'Chat created successfully',
+            message: 'send messages successfully',
+            chat
+        });
+    } catch (error) {
+        logger.error(`Error creating chat: ${error.message}`);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to create chat',
+            error: error.message
+        });
+    }
+}
+
+const createChatGroupProduct = async (req, res) => {
+    try {
+        const { senderId, productId, messages, parentMessageId} = req.body;
+
+        if (!senderId || !productId || !messages || !Array.isArray(messages) || messages.length === 0) {
+            logger.error('sender ID and Product ID and Messages are required');
+            return res.status(400).json({
+                success: false,
+                message: 'sender ID and Product ID and Messages are required'
+            });
+        }
+
+        let chat = await Chat.findOne({ product: productId });
+        if (!chat) {
+            chat = new Chat({
+                users: [senderId],
+                product: productId,
+                parentMessageId: parentMessageId || null,
+                messages: []
+            });
+        } else if (!chat.user.includes(senderId)) {
+            chat.user.push(senderId); // thêm người dùng nếu chưa có
+        }
+        
+        chat.messages.push(...messages);
+        
+        await chat.save();
+
+        logger.info(`Messages added to chat with ID: ${chat._id}`);
+        res.status(200).json({
+            success: true,
+            message: 'messages added successfully',
             chat
         });
     } catch (error) {
@@ -137,7 +199,8 @@ const deleteChat = async (req, res) => {
 }
 
 module.exports = {
-    createChat,
+    createChatOneToOne,
+    createChatGroupProduct,
     getAllChats,
     getChatById,
     updateChat,

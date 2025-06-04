@@ -2,15 +2,16 @@ const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/productControllers');
 const authRoles = require('../middlewares/authRoles');
+const { validateToken } = require('../middlewares/authMiddleware');
 
 //CRUD 
-router.post('/', authRoles("admin"),productController.createProduct);
+router.post('/', validateToken, authRoles("admin"), productController.createProduct);
 router.get('/', productController.getAllProducts);
 router.get('/:id',productController.getProductById);
-router.post('/products/:id/like', authRoles,productController.like_count);
-router.post('/products/:id/view', productController.view_count);
+router.post('/products/:id/like', validateToken, authRoles, productController.like_count);
+router.post('/products/:id/view', validateToken, authRoles, productController.view_count);
 router.post('/products/:id/sell', productController.sell_count);
-router.put('/:id', authRoles("admin"), productController.updateProduct);
-router.delete('/:id', authRoles("admin"), productController.deleteProduct);
+router.put('/:id', validateToken, authRoles("admin"), productController.updateProduct);
+router.delete('/:id', validateToken, authRoles("admin"), productController.deleteProduct);
 
 module.exports = router;
