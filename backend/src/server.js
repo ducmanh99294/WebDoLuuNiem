@@ -58,6 +58,7 @@ app.use(`/api/${API_VERSION}/users`, require('./routes/userRoutes'));
 app.use(`/api/${API_VERSION}/auth`, require('./routes/identity'));
 app.use(`/api/${API_VERSION}/products`, require('./routes/productRoutes'));
 app.use(`/api/${API_VERSION}/public`, require('./routes/publicRouters'));
+app.use(`/api/${API_VERSION}/like-lists`, require('./routes/likeListRoutes'));
 app.use(`/api/${API_VERSION}/orders`, require('./routes/orderRoutes'));
 app.use(`/api/${API_VERSION}/categories`, require('./routes/categoryRoutes'));
 app.use(`/api/${API_VERSION}/shipping-companies`, require('./routes/shippingCompanyRoutes'));
