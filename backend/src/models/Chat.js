@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 
 const chatSchema = new mongoose.Schema({
 
-    user: { 
+    user: [{ 
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    },
+    }],
     product: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Products',
@@ -26,6 +26,10 @@ const chatSchema = new mongoose.Schema({
             timestamp: {
                 type: Date,
                 default: Date.now
+            },
+            parentMessageId: { 
+                type: mongoose.Schema.Types.ObjectId, 
+                default: null 
             }
         }
     ],

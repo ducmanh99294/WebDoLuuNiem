@@ -2,7 +2,6 @@ const Message = require('../models/Message');
 const logger = require('../utils/logger');
 
 function socketHandler(io) {
-  console.log("Socket handler initialized");
   io.on('connection', (socket) => {
     logger.info(`Client connected: ${socket.id}`);
     console.log(`Client connected: ${socket.id}`);
@@ -20,7 +19,7 @@ function socketHandler(io) {
     });
 
     socket.on('send-message', async (msg) => {
-      try {
+      try { 
         logger.info(`Received send-message event from socket ${socket.id}`);
         const { session_id, content, type } = msg;
         const sender_id = socket.user.id;
