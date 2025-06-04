@@ -155,3 +155,5 @@
 {"level":"info","message":"User retrieved successfully: 683c1b80cb5a4108a2bce291","timestamp":"2025-06-01T15:59:00.533Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-01T17:11:51.194Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-01T17:11:51.216Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:37:13.893Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:37:13.916Z"}
