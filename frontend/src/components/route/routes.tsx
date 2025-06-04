@@ -22,9 +22,7 @@ const AppRouter: React.FC = () => {
 
         <Route path="/about" element={<About/>} />
         <Route path="/product-detail" element={<DetailProduct />} />
-
-
-        {/* Chuyển hướng từ /signin sang /login */}
+          {/* Chuyển hướng từ /signin sang /login */}
         <Route path="/signin" element={<Navigate to="/login" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

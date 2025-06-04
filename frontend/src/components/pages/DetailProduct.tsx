@@ -1,21 +1,23 @@
 import React from 'react';
+import { products } from '../data/product'; // ✅ Lấy product từ data
 
 const DetailProduct: React.FC = () => {
+  const product = products[0]; // ✅ Giả sử hiển thị sản phẩm đầu tiên
+
+  const finalPrice = product.price - (product.price * product.discount) / 100;
+
   return (
     <div className="product-detail-container" style={{ background: '#fff', padding: 24 }}>
-      {/* Header */}
       <h2>Chi tiết sản phẩm</h2>
 
-      {/* Main content */}
       <div className="product-main" style={{ display: 'flex', gap: 24 }}>
         {/* Product Image */}
         <div className="product-image" style={{ flex: 1 }}>
           <div style={{ background: '#eee', height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            Ảnh sản phẩm
+            <img src={product.image} alt={product.name} style={{ maxHeight: '100%' }} />
           </div>
-          {/* Thumbnail images */}
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-            {[1,2,3,4].map(i => (
+            {[1, 2, 3, 4].map(i => (
               <div key={i} style={{ width: 48, height: 48, background: '#ddd' }} />
             ))}
           </div>
@@ -23,12 +25,12 @@ const DetailProduct: React.FC = () => {
 
         {/* Product Info */}
         <div className="product-info" style={{ flex: 2 }}>
-          <h3>Sầu riêng Black Thorn</h3>
+          <h3>{product.name}</h3>
           <div>
-            <span>5.0 ★★★★★ | Xem đánh giá | Đã bán 68</span>
+            <span>{product.rating} ★★★★★ | Xem đánh giá | Đã bán {product.like_count}</span>
           </div>
           <div style={{ fontSize: 24, color: '#009900', margin: '12px 0' }}>
-            299.000VND
+            {finalPrice.toLocaleString()} VND
           </div>
           <div>
             <span>Vận chuyển đến: </span>
@@ -57,7 +59,7 @@ const DetailProduct: React.FC = () => {
         {/* News Sidebar */}
         <div className="product-news" style={{ flex: 1 }}>
           <h4>Tin tức nổi bật</h4>
-          {[1,2,3,4].map(i => (
+          {[1, 2, 3, 4].map(i => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, background: '#f5f5f5', padding: 8 }}>
               <div style={{ width: 48, height: 48, background: '#ddd' }}>Ảnh</div>
               <div>Tin tức {i}</div>
@@ -68,7 +70,6 @@ const DetailProduct: React.FC = () => {
 
       {/* Product Description & Reviews */}
       <div style={{ display: 'flex', gap: 24, marginTop: 24 }}>
-        {/* Product Description */}
         <div style={{ flex: 2 }}>
           <h4>Thông tin sản phẩm</h4>
           <p>
@@ -79,12 +80,11 @@ const DetailProduct: React.FC = () => {
             <img src="https://via.placeholder.com/100" alt="Ảnh mô tả" />
           </div>
         </div>
-        {/* Product Reviews */}
         <div style={{ flex: 1 }}>
           <h4>Đánh giá sản phẩm</h4>
           <div style={{ fontSize: 32, color: '#ffb400' }}>5.0 ★</div>
           <div>
-            {[5,4,3,2,1].map(star => (
+            {[5, 4, 3, 2, 1].map(star => (
               <div key={star}>
                 {star}★ <progress value={star === 5 ? 80 : 10} max={100} style={{ width: 100 }} />
               </div>
