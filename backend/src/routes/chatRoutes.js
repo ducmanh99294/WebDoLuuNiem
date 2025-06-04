@@ -3,7 +3,7 @@ const router = express.Router();
 const chatController = require('../controllers/chatController');
 const { validateToken } = require('../middlewares/authMiddleware');
 const authRoles = require('../middlewares/authRoles');
-const { validateToken } = require('../middlewares/authMiddleware');
+
 
 router.post('/private',validateToken, chatController.createChatOneToOne);
 router.post('/group',validateToken, chatController.createChatGroupProduct);
