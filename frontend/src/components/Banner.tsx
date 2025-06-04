@@ -9,7 +9,7 @@ import { FaPaperPlane } from "react-icons/fa";
 const Banner = () => {
   const slides = [
     "/images/slider_dac-san-ngon-da-nang.png",
-    "/images/slider2.png",
+    "/images/baner1.png",
     "/images/slider3.png",
   ];
 
@@ -37,7 +37,7 @@ const Banner = () => {
               <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-between px-6 md:px-16">
                 <div className="Text-big">
                   <div className="text">
-                    <h2 className="Text-chu">SHOP MẠN</h2>
+                    <h2 className="Text-chu">Đặc Sản </h2>
                     <p className="text-p">Save up to 50% off on your first order!</p>
                     <div className="text-input">
                       <div className="icon"><FaPaperPlane /></div>
