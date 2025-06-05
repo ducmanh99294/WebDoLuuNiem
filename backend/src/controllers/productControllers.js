@@ -1,4 +1,6 @@
 const Product = require('../models/Product.js');
+const Images = require('../models/Image.js');
+const Categories = require('../models/Category.js');
 const logger = require('../utils/logger.js');
 
 const createProduct = async (req, res) => {
