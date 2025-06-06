@@ -5,7 +5,7 @@ const logger = require('../utils/logger.js');
 
 const createProduct = async (req, res) => {
     try {
-        logger('Creating product with data:', req.body);
+        logger.log('Creating product with data:', req.body);
         if (!req.body.name || !req.body.price || !req.body.categories || !req.body.images || !req.body.description || !req.body.discount || !req.body.quantity) {
             return res.status(400).json({
                 success: false,
@@ -30,7 +30,7 @@ const createProduct = async (req, res) => {
 const getAllProducts = async (req, res) => {
     try {
         logger.info('Fetching all products')
-        const products = await Product.find().populate('images').populate('categories');
+        const products = await Product.find().populate('Images').populate('categories');
       
         logger.info(`Retrieved ${products.length} products`);
         res.status(200).json({
@@ -58,7 +58,7 @@ const getProductById = async (req, res) => {
             });
         }
 
-        const product = await Product.findById(req.params.id).populate('images').populate('categories');
+        const product = await Product.findById(req.params.id).populate('Images').populate('categories');
         if (!product) {
             return res.status(500).json({
                 success: false,
