@@ -52,7 +52,14 @@ const orderSchema = new mongoose.Schema({
     },
     status: {
       type: String,
-      enum: ['pending', 'paid', 'failed'],
+      enum: [
+            'pending',
+            'processing',
+            'paid', 
+            'failed', 
+            'cancelled',
+            'refunded'  
+      ],
       default: 'pending'
     },
     time: Date
@@ -60,5 +67,33 @@ const orderSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+
+// Order.watch().on('change', async (change) => {
+//     if (['insert', 'update', 'replace'].includes(change.operationType)) {
+//         let orderDoc = null;
+
+//         if (change.operationType === 'insert' || change.operationType === 'replace') {
+//             orderDoc = change.fullDocument;
+//         } else if (change.operationType === 'update') {
+//             orderDoc = await Order.findById(change.documentKey._id);
+//         }
+
+//         if (orderDoc && orderDoc.status === 'delivered') {
+//             for (const item of orderDoc.products) {
+//                 const sellCount = await Order.aggregate([
+//                     { $match: { status: 'delivered' } },
+//                     { $unwind: '$products' },
+//                     { $match: { 'products.product': item.product } },
+//                     { $group: { _id: '$products.product', total: { $sum: '$products.quantity' } } }
+//                 ]);
+//                 const totalSold = sellCount[0]?.total || 0;
+//                 await mongoose.model('Products').findByIdAndUpdate(
+//                     item.product,
+//                     { sell_count: totalSold }
+//                 );
+//             }
+//         }
+//     }
+// });
 
 module.exports = mongoose.model('Orders', orderSchema);

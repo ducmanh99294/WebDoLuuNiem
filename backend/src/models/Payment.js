@@ -1,43 +1,39 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const User = require('./User');
-const Order = require('./Order');
+const mongoose = require('mongoose');
 
-const Payment = sequelize.define('Payment', {
+const PaymentSchema = new mongoose.Schema({
     user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: User,
-            key: 'id',
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
     },
     order_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: Order,
-            key: 'id',
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order',
+        required: true,
     },
     date: {
-        type: DataTypes.DATE,
-        allowNull: false,
+        type: Date,
+        required: true,
     },
     status: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: String,
+        enum: [
+            'pending',
+            'processing',
+            'paid', 
+            'failed', 
+            'cancelled',
+            'refunded'  
+        ],
+        default: 'pending'
     },
     method: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: String,
+        required: true,
     },
 }, {
-    tableName: 'payments',
+    collection: 'payments',
     timestamps: false,
 });
 
-Payment.belongsTo(User, { foreignKey: 'user_id' });
-Payment.belongsTo(Order, { foreignKey: 'order_id' });
-
-module.exports = Payment;
+module.exports = mongoose.model('Payment', PaymentSchema);
