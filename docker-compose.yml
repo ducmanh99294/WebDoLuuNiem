@@ -1,0 +1,33 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app/backend
+      - /app/backend/node_modules
+      - ./backend/logs:/app/backend/logs
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - MONGO_URL=${MONGO_URL}
+      - HOST=${HOST}
+      - PORT=${PORT}
+      - API_VERSION=${API_VERSION}
+      - JWT_SECRET=${JWT_SECRET}
+    depends_on:
+      - mongodb
+  
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27018:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+    volumes:
+      - mongodb_data:/data/db
+volumes:
+  mongodb_data:

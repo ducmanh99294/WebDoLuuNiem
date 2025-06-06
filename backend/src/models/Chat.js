@@ -11,6 +11,11 @@ const chatSchema = new mongoose.Schema({
         ref: 'Products',
         required: true
     },
+    session: {
+        type: String,
+        enum: ['chat', 'comment'],
+        required: true
+    },
     messages: [
         {
             sender: {

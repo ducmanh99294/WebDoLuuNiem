@@ -31,8 +31,8 @@ const Header: React.FC = () => {
         <a href="/about">Giới thiệu</a>
         <a href="#">Đặc Sản </a>
         <a href="#">Trà - Cafe</a>
-        <a href="#">Tin Tức</a>
-        <a href="#">Liên Hệ </a>
+        <a href="/newpage">Tin Tức</a>
+        <a href="/contact">Liên Hệ </a>
         <a href="#">Tên</a>
       </div>
     </div>
