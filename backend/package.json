@@ -12,7 +12,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "natural": "^8.1.0"
   },
   "devDependencies": {
     "argon2": "^0.43.0",

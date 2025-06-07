@@ -12,5 +12,4 @@ router.get('/:id',validateToken, chatController.getChatById);
 router.put('/:id',validateToken, authRoles('admin'), chatController.updateChat);
 router.delete('/:id',validateToken, authRoles('admin'), chatController.deleteChat);
 
-
 module.exports = router;
