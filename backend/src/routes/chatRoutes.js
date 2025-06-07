@@ -12,6 +12,8 @@ router.put('/chat/:id',validateToken, authRoles('admin'), chatController.updateC
 router.delete('/chat/:id',validateToken, authRoles('admin'), chatController.deleteChat);
 
 
+<<<<<<< HEAD
+=======
 // _____________COMMENT______________
 router.post('/comment',validateToken, chatController.createComment);
 router.get('/comment',validateToken, authRoles('admin'), chatController.getAllComments);
@@ -19,4 +21,5 @@ router.get('/comment/:id', chatController.getCommentById);
 router.put('/comment/:id',validateToken, authRoles('admin'), chatController.updateComment);
 router.delete('/comment/:id',validateToken, authRoles('admin'), chatController.deleteComment);
 
+>>>>>>> main
 module.exports = router;
