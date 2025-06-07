@@ -11,5 +11,4 @@ const imageSchema = new mongoose.Schema({
     },
 });
 
-const Images = mongoose.model('Images', imageSchema);
-module.exports = Images;
+module.exports = mongoose.model('Images', imageSchema);

@@ -1,0 +1,5 @@
+{"level":"error","message":"Error creating user: username is not defined","timestamp":"2025-06-06T01:45:03.862Z"}
+{"level":"error","message":"Error creating user: username is not defined","timestamp":"2025-06-06T01:48:41.234Z"}
+{"level":"error","message":"Error creating user: user.save(...).sendWelcomeEmail is not a function","timestamp":"2025-06-06T01:50:24.093Z"}
+{"level":"error","message":"Error creating user: sendWelcomeEmail is not a function","timestamp":"2025-06-06T01:52:59.989Z"}
+{"level":"error","message":"Error in resetPassword: otp is not defined","timestamp":"2025-06-06T02:48:04.490Z"}

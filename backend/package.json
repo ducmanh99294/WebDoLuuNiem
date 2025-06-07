@@ -12,8 +12,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "express": "^5.1.0",
     "natural": "^8.1.0"
+=======
+    "@sendgrid/mail": "^8.1.5",
+    "express": "^5.1.0"
+>>>>>>> main
   },
   "devDependencies": {
     "argon2": "^0.43.0",
