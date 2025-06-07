@@ -18,7 +18,6 @@ async function getAllPayments() {
     try {
         const payments = await Payment.find()
             .populate('order_id')
-            .populate('user_id');
         logger.info('Fetched all payments');
         return payments;
     } catch (error) {
@@ -32,7 +31,6 @@ async function getPaymentById(id) {
     try {
         const payment = await Payment.findById(id)
             .populate('order_id')
-            .populate('user_id');
         logger.info(`Fetched payment by id: ${id}`);
         return payment;
     } catch (error) {

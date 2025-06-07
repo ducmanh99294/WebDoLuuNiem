@@ -47,9 +47,33 @@ const validationUpdateUser = (data) => {
     return schema.validate(data)
 }
 
+const validationCreatePayment = (data) => {
+    const schema = joi.object({
+        order_id: joi.string().required(),
+        date: joi.date().required(),
+        status: joi.string().valid('pending', 'processing', 'paid', 'failed', 'cancelled', 'refunded').optional(),
+        method: joi.string().required()
+    });
+
+    return schema.validate(data);
+};
+
+const validationUpdatePayment = (data) => {
+    const schema = joi.object({
+        order_id: joi.string().optional(),
+        date: joi.date().optional(),
+        status: joi.string().valid('pending', 'processing', 'paid', 'failed', 'cancelled', 'refunded').optional(),
+        method: joi.string().optional()
+    });
+
+    return schema.validate(data);
+};
+
 module.exports = {
     validationRegistration,
     validationLogin,
     validationUser,
-    validationUpdateUser
+    validationUpdateUser,
+    validationCreatePayment,
+    validationUpdatePayment
 }

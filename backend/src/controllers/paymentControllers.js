@@ -1,8 +1,18 @@
 const logger = require('../utils/logger');
 const paymentService = require('../services/paymentServices');
+const { validationCreatePayment, validationUpdatePayment } = require('../utils/validation');
 
 // Create a new payment
 async function createPayment(req, res) {
+    const { error } = validationCreatePayment(req.body);
+    if (error) {
+        logger.error(`Validation error creating payment: ${error.message}`);
+        return res.status(400).json({
+            success: false,
+            error: 'Validation error',
+            details: error.message
+        });
+    }
     try {
         logger.info('Creating new payment...');
         const payment = await paymentService.createPayment(req.body);
@@ -67,6 +77,15 @@ async function getPaymentById(req, res) {
 
 // Update payment by ID
 async function updatePayment(req, res) {
+    const { error } = validationUpdatePayment(req.body);
+    if (error) {
+        logger.error(`Validation error updating payment: ${error.message}`);
+        return res.status(400).json({
+            success: false,
+            error: 'Validation error',
+            details: error.message
+        });
+    }
     try {
         logger.info(`Updating payment by id: ${req.params.id}`);
         const updatedPayment = await paymentService.updatePayment(req.params.id, req.body);

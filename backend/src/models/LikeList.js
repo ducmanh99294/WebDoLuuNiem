@@ -13,6 +13,7 @@ const likeListSchema = new mongoose.Schema({
     },
 });
 
+const LikeList = mongoose.model('LikeList', likeListSchema, 'like_list');
 
 LikeList.watch().on('change', async (change) => {
     if (['insert', 'delete'].includes(change.operationType)) {
@@ -32,4 +33,4 @@ LikeList.watch().on('change', async (change) => {
     }
 });
 
-module.exports = mongoose.model('LikeList', likeListSchema);
+module.exports = LikeList;

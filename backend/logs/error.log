@@ -9,3 +9,7 @@
 {"error":{},"level":"error","message":"Error fetching all payments","timestamp":"2025-06-06T01:11:00.314Z"}
 {"error":{},"level":"error","message":"Error fetching all payments","timestamp":"2025-06-06T01:12:38.172Z"}
 {"error":{},"level":"error","message":"Error fetching all payments","timestamp":"2025-06-06T01:16:27.108Z"}
+{"error":{},"level":"error","message":"Error fetching all payments","timestamp":"2025-06-07T07:14:44.017Z"}
+{"level":"error","message":"Error fetching all payments: Schema hasn't been registered for model \"Order\".\nUse mongoose.model(name, schema)","timestamp":"2025-06-07T07:14:44.018Z"}
+{"level":"error","message":"Validation error creating payment: \"status\" must be one of [pending, processing, paid, failed, cancelled, refunded]","timestamp":"2025-06-07T07:17:29.982Z"}
+{"level":"error","message":"Validation error creating payment: \"status\" must be one of [pending, processing, paid, failed, cancelled, refunded]","timestamp":"2025-06-07T07:17:40.911Z"}
