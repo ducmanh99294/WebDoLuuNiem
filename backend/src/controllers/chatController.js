@@ -3,10 +3,10 @@ const logger = require('../utils/logger');
 
 const createChatOneToOne = async (req, res) => {
     try {
-        const { senderId, recipientId, productId, messages, parentMessageId } = req.body;
+        const { senderId, recipientId} = req.body;
 
-        if (!senderId || !recipientId || !messages || !Array.isArray(messages) || messages.length === 0) {
-            logger.error('need are validation required');
+        if (!senderId || !recipientId) {
+            logger.error('need are validation required: ' + error.message);
             return res.status(400).json({
                 success: false,
                 message: 'need are validation required'
@@ -14,28 +14,22 @@ const createChatOneToOne = async (req, res) => {
         }
 
         let chat = await Chat.findOne({ 
-            user: { $all: [senderId, recipientId] },
-            product: productId
+            user: { $all: [senderId, recipientId] }
         });
 
         if (!chat) {
             chat = new Chat({
                 user: [senderId, recipientId],
-                product: productId,
-                parentMessageId: parentMessageId || null,
-                messages: messages || []
             });
         }
 
-        chat.messages.push(...messages);
-
         await chat.save();
         
-        logger.info(`Messages sent successfully in chat with ID: ${chat._id}`);
+        logger.info(`Chat created successfully with ID: ${chat._id}`);
         res.status(200).json({
             success: true,
             message: 'send messages successfully',
-            chat
+            data: chat
         });
     } catch (error) {
         logger.error(`Error creating chat: ${error.message}`);

@@ -28,12 +28,12 @@ function socketHandler(io) {
           logger.warn("Invalid message payload received:", msg);
           return;
         }
-
         const message = new Message({
-          session_id,
-          sender_id,
           content,
           type,
+          sender_id,
+          session_id,
+          // timestamp and is_read will use schema defaults
         });
 
         await message.save();
@@ -43,12 +43,12 @@ function socketHandler(io) {
 
         io.to(session_id).emit('receive-message', {
           _id: message._id,
-          session_id,
-          sender_id,
-          content,
-          type,
+          session_id: message.session_id,
+          sender_id: message.sender_id,
+          content: message.content,
+          type: message.type,
           timestamp: message.timestamp,
-          is_read: false,
+          is_read: message.is_read,
         });
       } catch (err) {
         logger.error(`Error while handling send-message: ${err.message}`);

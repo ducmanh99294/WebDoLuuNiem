@@ -1,4 +1,4 @@
-const LikeList = require('../models/likeList');
+const LikeList = require('../models/LikeList');
 const Product = require('../models/Product');
 const logger = require('../utils/logger');
 
