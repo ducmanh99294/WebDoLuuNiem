@@ -1,0 +1,103 @@
+.boder {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+  justify-content: center;
+}
+
+.boder::-webkit-scrollbar {
+  display: none; /* Ẩn thanh cuộn ngang */
+}
+
+.boder > div {
+  flex: 0 0 auto;
+  width: 120px;
+  border-radius: 10px;
+  padding: 16px 8px;
+  text-align: center;
+  scroll-snap-align: start;
+  transition: all 0.3s ease;
+  background-color: #f7f7f7;
+  opacity: 0.4;
+}
+
+.boder > div.active {
+  opacity: 1;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.boder > div:nth-child(6n + 1) {
+  background-color: #fff4f1;
+  opacity: 1;
+}
+.boder > div:nth-child(6n + 2) {
+  background-color: #ffffe0;
+  opacity: 1;
+}
+.boder > div:nth-child(6n + 3) {
+  background-color: #f0fff0;
+  opacity: 1;
+}
+.boder > div:nth-child(6n + 4) {
+  background-color: #ffeef1;
+  opacity: 1;
+}
+.boder > div:nth-child(6n + 5) {
+  background-color: #fff3e0;
+  opacity: 1;
+
+}
+.boder > div:nth-child(6n) {
+  background-color: #ffefff;
+  opacity: 1;
+
+}
+
+.b1{
+    
+}
+.b1 img{
+    width: 90px;
+    height: 50px;
+}
+.b1{
+
+}
+.text-p1{
+    font-size: 13px ;
+    justify-content: center;
+    width: 100px;
+    margin-left: 5px;
+    margin-top: 5px;
+    color: black;
+    font-size: 10px;
+    opacity: 30%;
+}
+.b1 button{
+    padding: 40px ;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid white;
+    background-color: white;
+    width: max-content;
+    margin-left: 20%;
+    cursor: pointer;
+    
+}
+.p-4 {
+    padding: 40px;
+}
+.boder button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.boder > div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  cursor: pointer;
+}

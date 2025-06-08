@@ -1,8 +1,6 @@
-import React from 'react';
-import '../../assets/css/productcard.css';
-import { FaHeart } from 'react-icons/fa';
+// src/data/productData.ts
 
-type Product = {
+export type Product = {
   id: number;
   category_id: number;
   name: string;
@@ -21,34 +19,24 @@ type Product = {
   status: string;
 };
 
-interface ProductCardProps {
-  product: Product;
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const finalPrice = product.price - (product.price * product.discount) / 100;
-
-  return (
-    <div className="container">
-    <div className="card">
-      <div className="image-wrapper">
-        <img src={product.image} alt={product.name} className="image" />
-        <div className="label">Hot</div>
-      </div>
-      <div className="rating-line">
-        <span className="star"> {product.rating}</span>
-        <span className="review-count">({product.like_count} đánh giá)</span>
-      </div>
-      <div className="name">{product.name}</div>
-      <div className="provider">By <span className="provider-name">NetFood</span></div>
-      <div className="price-line">
-        <span className="final-price">{finalPrice.toLocaleString()}₫</span>
-        <span className="old-price">{product.price.toLocaleString()}₫</span>
-        <span><FaHeart className="heart-icon" /></span>
-      </div>
-    </div>
-    </div>
-  );
-};
-
-export default ProductCard;
+export const products: Product[] = [
+  {
+    id: 1,
+    category_id: 101,
+    name: 'Sản phẩm A',
+    description: 'Mô tả sản phẩm A',
+    rating: 4.5,
+    price: 500000,
+    discount: 10,
+    image: 'https://via.placeholder.com/150',
+    like_count: 20,
+    quantity: 50,
+    view_count: 100,
+    sell_count: 30,
+    create_At: '2024-01-01',
+    update_At: '2024-01-05',
+    is_delete: false,
+    status: 'active',
+  },
+  // bạn có thể thêm nhiều sản phẩm khác ở đây
+];

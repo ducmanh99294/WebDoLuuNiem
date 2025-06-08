@@ -3,9 +3,9 @@ const logger = require('../utils/logger');
 
 const createShipper = async (req, res) => {
     try {
-        const { shipping_company_id, name, phone } = req.body;
+        const { shipping_company, name, phone } = req.body;
 
-        const shipper = await Shipper.create({ shipping_company_id, name, phone });
+        const shipper = await Shipper.create({ shipping_company, name, phone });
         logger.info(`Shipper created successfully: ${shipper._id}`);
         res.status(201).json({
             success: true,
@@ -22,7 +22,7 @@ const createShipper = async (req, res) => {
 
 const getAllShippers = async (req, res) => {
     try {
-        const shippers = await Shipper.find().populate('shipping_company_id');
+        const shippers = await Shipper.find().populate('shipping_company');
         logger.info(`Retrieved ${shippers.length} shippers`);
         res.status(200).json({
             success: true,
@@ -40,7 +40,7 @@ const getAllShippers = async (req, res) => {
 
 const getShipperById = async (req, res) => {
     try {
-        const shipper = await Shipper.findById(req.params.id).populate('shipping_company_id');
+        const shipper = await Shipper.findById(req.params.id).populate('shipping_company');
         if (!shipper) {
             logger.warn(`Shipper not found with ID: ${req.params.id}`);
             return res.status(404).json({
@@ -64,7 +64,7 @@ const getShipperById = async (req, res) => {
 
 const updateShipper = async (req, res) => {
     try {
-        const shipper = await Shipper.findByIdAndUpdate(req.params.id, req.body, { new: true }).populate('shipping_company_id');
+        const shipper = await Shipper.findByIdAndUpdate(req.params.id, req.body, { new: true }).populate('shipping_company');
         if (!shipper) {
             logger.warn(`Shipper not found with ID: ${req.params.id}`);
             return res.status(404).json({

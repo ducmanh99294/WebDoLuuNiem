@@ -4,20 +4,22 @@ const chatController = require('../controllers/chatController');
 const { validateToken } = require('../middlewares/authMiddleware');
 const authRoles = require('../middlewares/authRoles');
 
-router.post('/private',validateToken, chatController.createChatOneToOne);
-router.post('/group',validateToken, chatController.createChatGroupProduct);
-router.get('/', validateToken, authRoles('admin'),  chatController.getAllChats);
-router.get('/:id',validateToken, chatController.getChatById);
-router.put('/:id',validateToken, authRoles('admin'), chatController.updateChat);
-router.delete('/:id',validateToken, authRoles('admin'), chatController.deleteChat);
-
-// 
-// router.post('/', validateToken, chatController.createChat); // Yêu cầu token để tạo chat
-// router.get('/', validateToken, authRoles('admin'), chatController.getAllChats); // Chỉ admin được xem tất cả chat
-// router.get('/:id', validateToken, chatController.getChatById); // Yêu cầu token để xem chat theo ID
-// router.put('/:id', validateToken, authRoles('admin'), chatController.updateChat); // Chỉ admin được cập nhật chat
-// router.delete('/:id', validateToken, authRoles('admin'), chatController.deleteChat); // Chỉ admin được xóa chat
-//
+// ______________CHAT______________
+router.post('/chat',validateToken, chatController.createChat);
+router.get('/chat',validateToken, authRoles('admin'), chatController.getAllChats);
+router.get('/chat/:id',validateToken, chatController.getChatById);
+router.put('/chat/:id',validateToken, authRoles('admin'), chatController.updateChat);
+router.delete('/chat/:id',validateToken, authRoles('admin'), chatController.deleteChat);
 
 
+<<<<<<< HEAD
+=======
+// _____________COMMENT______________
+router.post('/comment',validateToken, chatController.createComment);
+router.get('/comment',validateToken, authRoles('admin'), chatController.getAllComments);
+router.get('/comment/:id', chatController.getCommentById);
+router.put('/comment/:id',validateToken, authRoles('admin'), chatController.updateComment);
+router.delete('/comment/:id',validateToken, authRoles('admin'), chatController.deleteComment);
+
+>>>>>>> main
 module.exports = router;

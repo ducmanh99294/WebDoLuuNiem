@@ -5,12 +5,12 @@ const authRoles = require('../middlewares/authRoles');
 const { validateToken } = require('../middlewares/authMiddleware');
 
 //CRUD 
-router.post('/', validateToken, authRoles("admin"), productController.createProduct);
+router.post('/', productController.createProduct);
 router.get('/', productController.getAllProducts);
 router.get('/:id',productController.getProductById);
 router.post('/products/:id/like', validateToken, authRoles, productController.like_count);
 router.post('/products/:id/view', validateToken, authRoles, productController.view_count);
-router.post('/products/:id/sell', productController.sell_count);
+router.post('/products/:id/sell', validateToken, productController.sell_count);
 router.put('/:id', validateToken, authRoles("admin"), productController.updateProduct);
 router.delete('/:id', validateToken, authRoles("admin"), productController.deleteProduct);
 

@@ -35,7 +35,7 @@ const orderSchema = new mongoose.Schema({
     shipping_company: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'ShippingCompanies'
-    },
+    }, 
     shipper: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Shippers'
