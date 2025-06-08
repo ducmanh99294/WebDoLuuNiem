@@ -50,20 +50,20 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
 
-     sell_count: {
+    sell_count: {
         type: Number,
         required: true,
     },
-    created_At: {
+    created_at: {
         type: Date,
         default: Date.now
     },
-    update_At: {
+    update_at: {
         type: Date,
         default: Date.now
     }
 }, {
-    timestamps: { created_At: 'create_At', updated_At: 'update_At' }
+    timestamps: { created_at: 'create_at', updated_at: 'update_at' }
 });
 
 const Product = mongoose.model('Products', productSchema);
