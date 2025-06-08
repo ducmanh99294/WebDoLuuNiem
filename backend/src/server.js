@@ -67,6 +67,7 @@ app.use(`/api/${API_VERSION}/messages`, require('./routes/messageRoutes'));
 app.use(`/api/${API_VERSION}/support-sessions`, require('./routes/supportSessionRoutes'));
 app.use(`/api/${API_VERSION}/reviews`, require('./routes/reviewRoutes'));
 app.use(`/api/${API_VERSION}/chats`, require('./routes/chatRoutes'));
+app.use(`/api/${API_VERSION}/comments`, require('./routes/commentRoutes'));
 app.use(`/api/${API_VERSION}/coupons`, require('./routes/couponRoutes'));
 app.use(`/api/${API_VERSION}/payments`, require('./routes/paymentRoutes'));
 app.use(`/api/${API_VERSION}/notifications`, require('./routes/notificationRoutes'));

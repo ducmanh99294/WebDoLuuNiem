@@ -30,7 +30,7 @@ const createProduct = async (req, res) => {
 const getAllProducts = async (req, res) => {
     try {
         logger.info('Fetching all products')
-        const products = await Product.find().populate('Images').populate('categories');
+        const products = await Product.find().populate('images').populate('categories');
       
         logger.info(`Retrieved ${products.length} products`);
         res.status(200).json({
@@ -58,7 +58,7 @@ const getProductById = async (req, res) => {
             });
         }
 
-        const product = await Product.findById(req.params.id).populate('Images').populate('categories');
+        const product = await Product.findById(req.params.id).populate('images').populate('categories');
         if (!product) {
             return res.status(500).json({
                 success: false,

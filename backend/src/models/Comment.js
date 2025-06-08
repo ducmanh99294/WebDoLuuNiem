@@ -6,6 +6,11 @@ const chatSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     }],
+    product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Products',
+        required: true
+    },
     messages: [
         {
             sender: {
@@ -29,5 +34,5 @@ const chatSchema = new mongoose.Schema({
     ],
 });
 
-const Chat = mongoose.model('Chats', chatSchema);   
-module.exports = Chat;
+const Comment = mongoose.model('Comments', chatSchema);   
+module.exports = Comment;

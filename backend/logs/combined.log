@@ -1,3 +1,458 @@
+
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:30:16.487Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:30:16.778Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:30:17.497Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-08T12:30:24.111Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:30:24.113Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:30:36.181Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:30:36.182Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:30:48.362Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:30:48.565Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:30:49.657Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:30:58.120Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:30:58.388Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:30:59.524Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:30:59.754Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:00.472Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:03.704Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:03.910Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:04.557Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:05.321Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:05.503Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:06.115Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:09.018Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:09.200Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:09.893Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:31:10.165Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:31:10.166Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:31:10.168Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:31:10.169Z"}
+{"level":"info","message":"Received request: GET /favicon.ico","timestamp":"2025-06-08T12:31:10.441Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:31:10.442Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:24.861Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:25.007Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:26.191Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:27.624Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:27.826Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:31:28.051Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:31:28.051Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:31:28.052Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:31:28.053Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:28.562Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:37.539Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:37.689Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:38.772Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:39.520Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:39.719Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:40.317Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:44.457Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:44.618Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:31:44.708Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:31:44.709Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:31:44.710Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:31:44.711Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:45.256Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:31:50.793Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:31:50.945Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:31:50.987Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:31:50.988Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:31:50.989Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:31:50.990Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:31:51.776Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:31:53.438Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:31:53.439Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:31:53.439Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:31:53.440Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:32:20.115Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:32:20.116Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:32:20.116Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:32:20.116Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:32:40.189Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:32:40.340Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:32:41.053Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:32:41.150Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:32:41.151Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:32:41.151Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:32:41.152Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:32:45.551Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:32:45.716Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:32:46.354Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:32:55.671Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:32:55.672Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:32:55.673Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:32:55.674Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:33:00.583Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:33:00.584Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:33:00.585Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:33:00.663Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:33:21.841Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:33:21.997Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:33:22.672Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:33:25.541Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:33:25.751Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:33:27.104Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:33:37.446Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:33:37.446Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:33:37.447Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:33:37.702Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:33:55.837Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:33:56.052Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:33:56.165Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:33:56.166Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:33:56.167Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:33:57.057Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Image` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:33:57.138Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:34:04.067Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:34:04.455Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:34:04.521Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:34:04.522Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:34:04.523Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:34:05.105Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:34:05.174Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:34:06.438Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:34:06.439Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:34:06.441Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:34:06.519Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:35:23.136Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:35:23.338Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:35:23.381Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:35:23.381Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:35:23.382Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:35:24.036Z"}
+{"level":"info","message":"Retrieved 10 products","timestamp":"2025-06-08T12:35:24.548Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:35:36.959Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:35:37.122Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:35:37.790Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:35:39.403Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:35:39.404Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:35:39.406Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:35:39.485Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:35:44.806Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:35:44.967Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:35:45.019Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:35:45.020Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:35:45.021Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:35:45.716Z"}
+{"level":"info","message":"Retrieved 10 products","timestamp":"2025-06-08T12:35:46.206Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:36:02.741Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:36:02.883Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:36:03.686Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-08T12:36:05.884Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:36:05.884Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-08T12:36:05.885Z"}
+{"level":"info","message":"Retrieved 10 products","timestamp":"2025-06-08T12:36:06.046Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:36:10.622Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:36:10.623Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:36:10.624Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:36:10.625Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:36:49.326Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:36:49.535Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:36:50.227Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:36:50.229Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:36:50.231Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:36:50.232Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:36:50.306Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:36:59.097Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:36:59.242Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:36:59.861Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:37:04.342Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:37:04.480Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:37:05.155Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:37:08.055Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:37:08.289Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:37:08.911Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:37:12.830Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:37:13.022Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:37:13.750Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:37:15.541Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:37:15.675Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:37:16.671Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:37:55.277Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:37:55.621Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:37:56.458Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:38:01.312Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:38:01.521Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:38:02.219Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:38:11.051Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:38:11.357Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:38:12.814Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:38:21.170Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:38:21.427Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:38:22.176Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:39:50.584Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:39:50.585Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:39:50.587Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:39:50.588Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats/comment/683f9c1167b7dec68a644bae","timestamp":"2025-06-08T12:39:54.410Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:39:54.411Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-08T12:40:00.297Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:40:00.298Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:40:00.298Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:40:00.299Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-08T12:40:01.082Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:40:01.082Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T12:40:01.083Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T12:40:01.085Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:40:21.306Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:40:21.697Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-08T12:40:22.172Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:40:22.173Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:40:22.504Z"}
+{"level":"error","message":"Error retrieving chats: Cannot populate path `product` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:40:22.602Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:40:46.277Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:40:46.553Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:40:47.274Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:40:57.170Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:40:57.429Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:40:58.118Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:41:06.000Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:41:06.262Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:41:07.247Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-08T12:41:10.246Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:41:10.247Z"}
+{"level":"info","message":"Retrieved 2 chats","timestamp":"2025-06-08T12:41:10.416Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:41:25.645Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:41:25.913Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:41:26.767Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:41:33.887Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:41:34.160Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:41:34.913Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:42:04.810Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:42:05.061Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:42:05.744Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:42:11.538Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:42:11.724Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:42:12.555Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:42:16.860Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:42:17.059Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:42:17.709Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:42:28.336Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:42:28.633Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:42:29.340Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:42:45.552Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:42:45.555Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:42:45.714Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:43:09.970Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:43:09.971Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:43:10.091Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:43:30.229Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:43:30.229Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:43:30.352Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:44:28.358Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:44:28.362Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:44:28.480Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:45:26.473Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:45:26.858Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:45:28.315Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:45:28.640Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:45:30.333Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:45:30.548Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:45:31.206Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:45:33.705Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:45:33.948Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:45:34.661Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:45:36.994Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:45:37.238Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:45:37.937Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:46:27.236Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:46:27.238Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:46:27.397Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:46:35.418Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:46:35.793Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:46:36.965Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:46:39.806Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:46:39.808Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:46:39.967Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:47:22.801Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:47:23.172Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:47:23.988Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:47:40.536Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:47:40.791Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:47:41.612Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:47:44.578Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:47:44.839Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:47:45.561Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:48:04.137Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:48:04.449Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:48:05.319Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:48:24.878Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:48:25.347Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:48:26.057Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:48:30.929Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:48:31.120Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:48:31.782Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:48:45.124Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:48:45.126Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:48:45.283Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:48:48.038Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:48:48.039Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:48:48.178Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:49:51.350Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:49:51.351Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:49:51.498Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-08T12:50:06.508Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:50:06.509Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:50:06.681Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:50:34.017Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:50:34.018Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:50:34.142Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:50:56.091Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:50:56.583Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:50:56.669Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:50:56.670Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:50:57.376Z"}
+{"level":"info","message":"Retrieved 0 comment","timestamp":"2025-06-08T12:50:57.459Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-08T12:51:24.994Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:51:24.996Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:51:25.171Z"}
+{"level":"info","message":"Received request: GET /api/v1/ch%C3%A1t","timestamp":"2025-06-08T12:51:25.872Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:51:25.873Z"}
+{"level":"info","message":"Received request: GET /api/v1/chats","timestamp":"2025-06-08T12:51:28.971Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:51:28.981Z"}
+{"level":"info","message":"Retrieved 4 chats","timestamp":"2025-06-08T12:51:29.136Z"}
+{"level":"info","message":"Received request: GET /api/v1/comments","timestamp":"2025-06-08T12:52:57.040Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-08T12:52:57.042Z"}
+{"level":"info","message":"Retrieved 2 comment","timestamp":"2025-06-08T12:52:57.227Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:53:56.241Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:53:56.482Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:53:57.275Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T12:54:04.474Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T12:54:04.757Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T12:54:05.570Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:24:07.891Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:24:08.447Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:24:09.527Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:25:10.744Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:25:11.172Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:25:12.865Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:25:13.163Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:25:13.946Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:25:55.887Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:25:56.194Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:25:58.891Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:25:59.114Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:25:59.823Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:26:03.538Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:26:03.851Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:26:04.631Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:26:07.336Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:26:07.563Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:26:08.265Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:26:10.994Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:26:11.248Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:26:12.742Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:26:12.981Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:26:14.541Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:26:14.747Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:26:15.443Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:26:17.272Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:26:17.469Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:26:18.842Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:26:19.034Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:26:19.669Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:27:41.943Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:27:42.249Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:27:42.949Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:27:48.132Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:27:48.412Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:27:49.639Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:27:49.960Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:27:51.318Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:27:51.643Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:27:52.399Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:28:07.141Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:28:07.426Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:28:08.118Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:28:11.900Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:28:12.106Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:28:12.831Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:28:31.672Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:28:32.127Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:28:32.837Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:28:41.611Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:28:41.856Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:28:42.513Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:28:48.003Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:28:48.328Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:28:49.655Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:28:49.949Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:28:50.611Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:28:54.366Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:28:54.694Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:28:55.442Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:28:57.183Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:28:57.399Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:28:58.036Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:29:01.791Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:29:01.995Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:29:02.696Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:29:13.847Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:29:14.090Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:29:14.853Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:29:29.066Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:29:29.378Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:29:30.229Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:29:32.359Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:29:32.647Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:29:33.434Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:29:50.743Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:29:51.026Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:29:51.850Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:30:05.465Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:30:05.768Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:30:06.607Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:30:53.800Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:30:54.148Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:30:54.898Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:31:17.767Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:31:18.027Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:31:18.691Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:31:34.345Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:31:34.582Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:31:35.336Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:31:40.612Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:31:40.817Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:31:41.652Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:31:43.467Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:31:43.658Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:31:44.321Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:31:48.979Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:31:49.221Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:31:49.928Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:32:43.575Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:32:43.937Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:32:44.635Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:32:48.623Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:32:48.816Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:32:49.501Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:32:54.301Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:32:54.695Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:32:55.366Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:32:57.128Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:32:57.364Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:32:58.013Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:32:59.579Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:32:59.767Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:33:00.473Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:33:03.528Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:33:04.108Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:33:04.773Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:52:10.975Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:52:11.625Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:52:12.496Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:53:53.527Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:53:54.054Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:53:54.868Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:54:08.501Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:54:08.941Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:54:09.624Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:54:26.302Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:54:26.740Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:54:27.511Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-08T13:54:30.346Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T13:54:30.752Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T13:54:31.540Z"}
+=======
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:23:41.853Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:23:43.439Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:37:02.855Z"}
