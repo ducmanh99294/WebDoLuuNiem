@@ -1,6 +1,8 @@
 const Notification = require('../models/Notification');
 const Message = require('../models/Message');
+const Comment = require('../models/Comment');
 const logger = require('../utils/logger');
+const { propfind } = require('../routes/commentRoutes');
 
 const onlineUsers = new Map(); // userId -> socket.id
 
@@ -113,8 +115,59 @@ module.exports = (io) => {
       logger.info("Transport upgraded:", socket.transport);
     });
 
-    socket.on("error", (err) => {
-      logger.error(`Socket error: ${err.message}`);
+    // Tham gia bình luận sản phẩm
+    socket.on('join-comment', (productId) => {
+      if (!productId) return;
+      socket.join(`product_${productId}`);
+      logger.info(`Socket ${socket.id} joined comment room for product ${productId}`);
     });
+
+    // Gửi bình luận mới
+    socket.on('send-comment', async ({ productId, senderId, content, parentMessageId }) => {
+      try {
+        if (!productId || !senderId || !content) {
+          logger.warn("Invalid send-comment payload");
+          return;
+        }
+
+        let commentThread = await Comment.findOne({ product: productId });
+
+        const newMessage = {
+          sender: senderId,
+          content,
+          timestamp: new Date(),
+          parentMessageId: parentMessageId || null
+        };
+
+        if (!commentThread) {
+          commentThread = await Comment.create({
+            product: productId,
+            user: [senderId],
+            messages: [newMessage]
+          });
+        } else {
+          if (!commentThread.user.includes(senderId)) {
+            commentThread.user.push(senderId);
+          }
+          commentThread.messages.push(newMessage);
+          await commentThread.save();
+        }
+
+        // Gửi comment mới tới room đúng
+        io.to(`product_${productId}`).emit('receive-comment', {
+          productId,
+          senderId,
+          content,
+          parentMessageId,
+          timestamp: newMessage.timestamp,
+        });
+
+        logger.info(`📤 Comment emitted for product ${productId}`);
+      } catch (err) {
+        logger.error(`❌ Error in send-comment: ${err.message}`);
+      }
+    });
+
   });
 };
+

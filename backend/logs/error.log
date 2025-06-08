@@ -3,3 +3,10 @@
 {"level":"error","message":"Error creating user: user.save(...).sendWelcomeEmail is not a function","timestamp":"2025-06-06T01:50:24.093Z"}
 {"level":"error","message":"Error creating user: sendWelcomeEmail is not a function","timestamp":"2025-06-06T01:52:59.989Z"}
 {"level":"error","message":"Error in resetPassword: otp is not defined","timestamp":"2025-06-06T02:48:04.490Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:33:00.663Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:33:37.702Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Image` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:33:57.138Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:34:05.174Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:34:06.519Z"}
+{"level":"error","message":"Error fetching products: Cannot populate path `Images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:35:39.485Z"}
+{"level":"error","message":"Error retrieving chats: Cannot populate path `product` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-08T12:40:22.602Z"}
