@@ -24,9 +24,6 @@ services:
     container_name: mongodb
     ports:
       - "27018:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: 123456
     volumes:
       - mongodb_data:/data/db
 volumes:

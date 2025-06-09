@@ -10,7 +10,7 @@ import CategoryList from '../category';
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchProducts = async () => {
