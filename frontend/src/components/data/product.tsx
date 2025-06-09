@@ -28,7 +28,7 @@ export const products: Product[] = [
     rating: 4.5,
     price: 500000,
     discount: 10,
-    image: 'https://via.placeholder.com/150',
+    image: 'https://example.com/image-a.jpg',
     like_count: 20,
     quantity: 50,
     view_count: 100,

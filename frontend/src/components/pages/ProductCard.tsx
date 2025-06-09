@@ -10,13 +10,16 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const finalPrice = product.price - (product.price * product.discount) / 100;
+  const finalPrice = product.discount > 0 
+    ? product.price - (product.price * product.discount) / 100 
+    : product.price;
+  
 
   return (
     <div className="container">
       <div className="card">
         <div className="image-wrapper">
-          <img src={product.image} alt={product.name} className="image" />
+          <img src={product.images[0]} alt={product.name} className="image" />
           <div className="label">Hot</div>
         </div>
         <div className="rating-line">
@@ -28,8 +31,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           By <span className="provider-name">NetFood</span>
         </div>
         <div className="price-line">
-          <span className="final-price">{finalPrice.toLocaleString()}₫</span>
-          <span className="old-price">{product.price.toLocaleString()}₫</span>
+          {product.discount > 0 ? (
+            <div>
+              <span className="final-price">{finalPrice.toLocaleString()}₫</span>
+              <span className="old-price">{product.price.toLocaleString()}₫</span>
+            </div>
+          ) : (
+              <span className="final-price">{product.price.toLocaleString()}₫</span>
+          )
+          }
           <span><FaHeart className="heart-icon" /></span>
         </div>
       </div>

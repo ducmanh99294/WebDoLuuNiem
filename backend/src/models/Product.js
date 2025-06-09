@@ -34,7 +34,6 @@ const productSchema = new mongoose.Schema({
     quantity: {
         type: Number,
         required: true,
-   
     },
     categories: {
         type: mongoose.Schema.Types.ObjectId,

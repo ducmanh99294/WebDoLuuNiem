@@ -3,7 +3,7 @@ const logger = require('../utils/logger');
 
 const createChat = async (req, res) => {
     try {
-        const { senderId, recipientId, parentMessageId } = req.body;
+        const { senderId, recipientId} = req.body;
 
         if (!senderId || !recipientId) {
             logger.error('need are validation required: ' + error.message);
@@ -20,7 +20,6 @@ const createChat = async (req, res) => {
         if (!chat) {
             chat = new Chat({
                 user: [senderId, recipientId],
-                parentMessageId: parentMessageId || null,
                 messages: messages || []
             });
         }
