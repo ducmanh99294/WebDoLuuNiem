@@ -4,14 +4,14 @@ const logger = require('../utils/logger');
 const orderSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'Users',
     required: true
   },
   order_number: {
     type: String,
     required: true,
     unique: true,
-    match: /^[A-Z0-9]{6,12}$/ // Ví dụ: mã đơn hàng 6-12 ký tự chữ/số
+    match: /^[A-Z0-9]{6,12}$/
   },
   status: {
     type: String,
@@ -27,7 +27,7 @@ const orderSchema = new mongoose.Schema({
     {
       product: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
+        ref: 'Products',
         required: true
       },
       quantity: { type: Number, required: true, min: 1 },
@@ -38,11 +38,11 @@ const orderSchema = new mongoose.Schema({
   shipping: {
     shipping_company: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'ShippingCompany'
+      ref: 'ShippingCompanies'
     },
     shipper: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Shipper'
+      ref: 'Shippers'
     },
     address: { type: String, required: true, trim: true },
     price: { type: Number, required: true, min: 0 },
@@ -77,43 +77,6 @@ orderSchema.pre('save', function (next) {
 });
 
 // Index để tối ưu truy vấn
-orderSchema.index({ order_number: 1 });
 orderSchema.index({ user: 1, status: 1, createdAt: -1 });
 
-const Order = mongoose.model('Order', orderSchema, 'orders');
-
-// Pipeline watch để cập nhật sell_count
-Order.watch().on('change', async (change) => {
-  try {
-    if (['insert', 'update', 'replace'].includes(change.operationType)) {
-      let orderDoc = null;
-
-      if (change.operationType === 'insert' || change.operationType === 'replace') {
-        orderDoc = change.fullDocument;
-      } else if (change.operationType === 'update') {
-        orderDoc = await Order.findById(change.documentKey._id);
-      }
-
-      if (orderDoc && orderDoc.status === 'delivered') {
-        const sellCounts = await Order.aggregate([
-          { $match: { status: 'delivered' } },
-          { $unwind: '$products' },
-          { $group: { _id: '$products.product', total: { $sum: '$products.quantity' } } }
-        ]);
-
-        await Promise.all(sellCounts.map(async ({ _id, total }) => {
-          await mongoose.model('Product').findByIdAndUpdate(
-            _id,
-            { sell_count: total },
-            { new: true }
-          );
-        }));
-        logger.info(`Updated sell_count for products in order ${orderDoc._id}`);
-      }
-    }
-  } catch (error) {
-    logger.error(`Error in Order watch pipeline: ${error.message}`);
-  }
-});
-
-module.exports = Order;
+module.exports = mongoose.model('Order', orderSchema, 'orders');

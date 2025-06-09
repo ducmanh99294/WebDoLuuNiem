@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Notification = require('../models/Notification');
 
 // Lấy danh sách thông báo của user
@@ -188,10 +189,10 @@ exports.getUnreadCount = async (req, res) => {
 };
 
 module.exports = {
-  getUserNotifications,
-  markAsRead,
-  markAllAsRead,
-  deleteAllNotifications,
-  deleteNotification,
-  getUnreadCount
+  getUserNotifications: exports.getUserNotifications,
+  markAsRead: exports.markAsRead,
+  markAllAsRead: exports.markAllAsRead,
+  deleteAllNotifications: exports.deleteAllNotifications,
+  deleteNotification: exports.deleteNotification,
+  getUnreadCount: exports.getUnreadCount
 };

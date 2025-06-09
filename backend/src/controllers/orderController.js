@@ -30,7 +30,7 @@ const createOrder = async (req, res) => {
 
     const newOrder = await Order.create({
       ...orderData,
-      user: req.user._id // Đảm bảo user từ token
+      user: req.user._id
     });
 
     // Tạo thông báo cho người dùng
@@ -43,8 +43,8 @@ const createOrder = async (req, res) => {
       priority: 'high'
     });
 
-    // Tạo thông báo cho admin (giả định có role admin)
-    const admins = await mongoose.model('User').find({ role: 'admin' });
+    // Tạo thông báo cho admin
+    const admins = await mongoose.model('Users').find({ role: 'admin' });
     await Promise.all(admins.map(admin =>
       Notification.create({
         user: admin._id,
@@ -74,7 +74,6 @@ const createOrder = async (req, res) => {
 // Lấy tất cả đơn hàng
 const getAllOrders = async (req, res) => {
   try {
-    // Chỉ admin được xem tất cả đơn hàng
     if (req.user.role !== 'admin') {
       return res.status(403).json({
         success: false,
@@ -128,7 +127,6 @@ const getOrderById = async (req, res) => {
       });
     }
 
-    // Kiểm tra quyền truy cập
     if (req.user.role !== 'admin' && order.user.toString() !== req.user._id.toString()) {
       return res.status(403).json({
         success: false,
@@ -177,7 +175,6 @@ const updateOrderStatus = async (req, res) => {
       });
     }
 
-    // Chỉ admin được cập nhật trạng thái
     if (req.user.role !== 'admin') {
       return res.status(403).json({
         success: false,
@@ -188,7 +185,24 @@ const updateOrderStatus = async (req, res) => {
     order.status = status;
     await order.save();
 
-    // Tạo thông báo cho người dùng
+    // Cập nhật sell_count khi trạng thái là delivered
+    if (status === 'delivered') {
+      const sellCounts = await Order.aggregate([
+        { $match: { status: 'delivered' } },
+        { $unwind: '$products' },
+        { $group: { _id: '$products.product', total: { $sum: '$products.quantity' } } }
+      ]);
+
+      await Promise.all(sellCounts.map(async ({ _id, total }) => {
+        await mongoose.model('Products').findByIdAndUpdate(
+          _id,
+          { sell_count: total },
+          { new: true }
+        );
+      }));
+      logger.info(`Updated sell_count for products in order ${order._id}`);
+    }
+
     await Notification.create({
       user: order.user,
       sender: req.user._id,
@@ -231,7 +245,6 @@ const deleteOrder = async (req, res) => {
       });
     }
 
-    // Chỉ admin được xóa đơn hàng
     if (req.user.role !== 'admin') {
       return res.status(403).json({
         success: false,
@@ -241,7 +254,6 @@ const deleteOrder = async (req, res) => {
 
     await order.deleteOne();
 
-    // Tạo thông báo cho người dùng
     await Notification.create({
       user: order.user,
       sender: req.user._id,
