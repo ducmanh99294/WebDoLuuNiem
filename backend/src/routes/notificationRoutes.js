@@ -1,17 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { validateToken } = require('../middlewares/authMiddleware');
-const controller = require('../controllers/notificationController');
+const notificationController = require('../controllers/notificationController');
+const authMiddleware = require('../middleware/authMiddleware');
 
-// all route cần xác thực token
-router.use(validateToken);
+router.use(authMiddleware); // bảo vệ tất cả route
 
-router.get('/', controller.getUserNotifications);
-
-// Đánh dấu all đã đọc
-router.put('/mark-all-read', controller.markAllAsRead);
-
-//  Xoá all thông báo
-router.delete('/delete-all', controller.deleteAllNotifications);
+router.get('/', notificationController.getUserNotifications);
+router.patch('/:id/read', notificationController.markAsRead);
+router.patch('/read-all', notificationController.markAllAsRead);
+router.delete('/', notificationController.deleteAllNotifications);
 
 module.exports = router;
