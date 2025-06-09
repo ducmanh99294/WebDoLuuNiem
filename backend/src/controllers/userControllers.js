@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const { sendEmail, sendOTP } = require('../services/emailService');
 const { validationUser, validationUpdateUser } = require('../utils/validation');
 const logger = require('../utils/logger');
 
@@ -87,6 +88,7 @@ exports.createUser = async (req, res) => {
 
         const user = new User({ name, email, password, address, phone, role, image });
         await user.save();
+        await sendEmail(user.email, user.name);
         
         logger.info(`User created successfully: ${user._id}`);
         res.status(201).json({ 
@@ -196,3 +198,42 @@ exports.deleteUser = async (req, res) => {
         });
     }
 };
+
+exports.resetPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({ 
+                success: false,
+                error: 'Email is required' 
+            });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ 
+                success: false,
+                error: 'User not found' 
+            });
+        }
+
+        const otp = Math.floor(100000 + Math.random() * 900000);
+
+        await sendOTP(user.email, otp);
+
+        user.otp = otp;
+        await user.save();
+
+        res.status(200).json({ 
+            success: true,
+            message: 'OTP sent to your email' 
+        });
+    } catch (err) {
+        logger.error(`Error in resetPassword: ${err.message}`);
+        res.status(500).json({ 
+            success: false,
+            error: 'Internal Server Error' 
+        });
+    }
+}

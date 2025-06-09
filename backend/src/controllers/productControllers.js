@@ -1,9 +1,11 @@
 const Product = require('../models/Product.js');
+const Images = require('../models/Image.js');
+const Categories = require('../models/Category.js');
 const logger = require('../utils/logger.js');
 
 const createProduct = async (req, res) => {
     try {
-        logger('Creating product with data:', req.body);
+        logger.log('Creating product with data:', req.body);
         if (!req.body.name || !req.body.price || !req.body.categories || !req.body.images || !req.body.description || !req.body.discount || !req.body.quantity) {
             return res.status(400).json({
                 success: false,
