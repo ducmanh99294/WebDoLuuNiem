@@ -54,43 +54,21 @@ module.exports = (io) => {
           return;
         }
 
-        // Lưu tin nhắn
         const message = new Message({
-          session_id,
-          sender_id,
           content,
-          type
+          type,
         });
         await message.save();
 
         logger.info(`💬 Message saved and emitted to session ${session_id}`);
         io.to(session_id).emit('receive-message', {
           _id: message._id,
-          session_id,
-          sender_id,
-          content,
-          type,
+          session_id: message.session_id,
+          sender_id: message.sender_id,
+          content: message.content,
+          type: message.type,
           timestamp: message.timestamp,
-          is_read: false,
-        });
-
-        // 🔔 Gửi thông báo tới người tham gia khác trong session
-        const participants = await Message.distinct('sender_id', { session_id });
-        for (const participantId of participants) {
-          if (participantId.toString() !== sender_id) {
-            const noti = await Notification.create({
-              user: participantId,
-              type: 'support',
-              message: `Tin nhắn mới trong phiên hỗ trợ`
-            });
-
-            const receiverSocket = onlineUsers.get(participantId.toString());
-            if (receiverSocket) {
-              io.to(receiverSocket).emit('notification', noti);
-            }
-          }
-        }
-
+        
       } catch (err) {
         logger.error(`❌ Error in send-message: ${err.message}`);
       }

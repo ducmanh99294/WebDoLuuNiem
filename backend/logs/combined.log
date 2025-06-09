@@ -932,3 +932,126 @@
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:30:39.248Z"}{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-04T03:51:19.942Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:51:20.048Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:51:20.061Z"}
+=======
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-03T13:31:28.887Z"}{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:04:22.157Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:04:22.256Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T11:23:19.914Z"}
+{"cause":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"mongodb:27017":{"$clusterTime":null,"address":"mongodb:27017","arbiters":[],"electionId":null,"error":{"beforeHandshake":false,"errorLabelSet":{}},"hosts":[],"iscryptd":false,"lastUpdateTime":36764029,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":null,"stale":false,"type":"Unknown"},"errorLabelSet":{},"level":"error","message":"connect ECONNREFUSED 172.21.0.2:27017","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"mongodb:27017":{"$clusterTime":null,"address":"mongodb:27017","arbiters":[],"electionId":null,"error":{"beforeHandshake":false,"errorLabelSet":{}},"hosts":[],"iscryptd":false,"lastUpdateTime":36764029,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":null,"stale":false,"type":"Unknown"},"stack":"MongooseServerSelectionError: connect ECONNREFUSED 172.21.0.2:27017\n    at _handleConnectionErrors (/app/backend/node_modules/mongoose/lib/connection.js:1165:11)\n    at NativeConnection.openUri (/app/backend/node_modules/mongoose/lib/connection.js:1096:11)\n    at async connectMongoDB (/app/backend/src/config/mongodbConfig.js:11:9)","timestamp":"2025-06-04T11:23:24.139Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T11:27:09.803Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T11:27:12.070Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T11:41:17.394Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T11:41:21.540Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T16:42:40.044Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T16:42:40.152Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T16:49:44.294Z"}
+{"cause":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"localhost:27017":{"$clusterTime":null,"address":"localhost:27017","arbiters":[],"electionId":null,"error":{"beforeHandshake":false,"errorLabelSet":{}},"hosts":[],"iscryptd":false,"lastUpdateTime":509509,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":null,"stale":false,"type":"Unknown"},"errorLabelSet":{},"level":"error","message":"connect ECONNREFUSED 127.0.0.1:27017","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"localhost:27017":{"$clusterTime":null,"address":"localhost:27017","arbiters":[],"electionId":null,"error":{"beforeHandshake":false,"errorLabelSet":{}},"hosts":[],"iscryptd":false,"lastUpdateTime":509509,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":null,"stale":false,"type":"Unknown"},"stack":"MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017\n    at _handleConnectionErrors (/app/backend/node_modules/mongoose/lib/connection.js:1165:11)\n    at NativeConnection.openUri (/app/backend/node_modules/mongoose/lib/connection.js:1096:11)\n    at async connectMongoDB (/app/backend/src/config/mongodbConfig.js:11:9)","timestamp":"2025-06-04T16:49:49.066Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T16:54:03.436Z"}
+{"cause":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"mongo:27017":{"$clusterTime":null,"address":"mongo:27017","arbiters":[],"electionId":null,"error":{"beforeHandshake":false,"errorLabelSet":{}},"hosts":[],"iscryptd":false,"lastUpdateTime":768667,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":null,"stale":false,"type":"Unknown"},"errorLabelSet":{},"level":"error","message":"getaddrinfo ENOTFOUND mongo","reason":{"commonWireVersion":0,"compatible":true,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"logicalSessionTimeoutMinutes":null,"maxElectionId":null,"maxSetVersion":null,"servers":{"mongo:27017":{"$clusterTime":null,"address":"mongo:27017","arbiters":[],"electionId":null,"error":{"beforeHandshake":false,"errorLabelSet":{}},"hosts":[],"iscryptd":false,"lastUpdateTime":768667,"lastWriteDate":0,"logicalSessionTimeoutMinutes":null,"maxBsonObjectSize":null,"maxMessageSizeBytes":null,"maxWireVersion":0,"maxWriteBatchSize":null,"me":null,"minRoundTripTime":0,"minWireVersion":0,"passives":[],"primary":null,"roundTripTime":-1,"setName":null,"setVersion":null,"tags":{},"topologyVersion":null,"type":"Unknown"}},"setName":null,"stale":false,"type":"Unknown"},"stack":"MongooseServerSelectionError: getaddrinfo ENOTFOUND mongo\n    at _handleConnectionErrors (/app/backend/node_modules/mongoose/lib/connection.js:1165:11)\n    at NativeConnection.openUri (/app/backend/node_modules/mongoose/lib/connection.js:1096:11)\n    at async connectMongoDB (/app/backend/src/config/mongodbConfig.js:11:9)","timestamp":"2025-06-04T16:54:08.325Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T16:55:24.298Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T16:55:24.353Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T15:36:57.596Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T15:36:57.621Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T15:51:36.670Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T15:51:36.738Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T15:53:49.107Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T15:53:49.161Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T15:55:10.216Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T15:55:10.245Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-08T15:57:08.284Z"}
+{"level":"info","message":"Received body: {\"email\":\"nguyenvanb@example.com\",\"password\":\"123456@\"}","timestamp":"2025-06-08T15:57:08.284Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-08T15:57:08.285Z"}
+{"level":"info","message":"User login attempt for email: nguyenvanb@example.com","timestamp":"2025-06-08T15:57:08.321Z"}
+{"level":"warn","message":"Invalid","timestamp":"2025-06-08T15:57:08.321Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-08T15:59:31.973Z"}
+{"level":"info","message":"Received body: {\"email\":\"nguyenvanb@example.com\",\"password\":\"123456@\"}","timestamp":"2025-06-08T15:59:31.973Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-08T15:59:31.974Z"}
+{"level":"info","message":"User login attempt for email: nguyenvanb@example.com","timestamp":"2025-06-08T15:59:31.979Z"}
+{"level":"warn","message":"Invalid","timestamp":"2025-06-08T15:59:31.979Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:01:28.583Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:01:29.855Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-08T16:01:46.834Z"}
+{"level":"info","message":"Received body: {\"email\":\"nguyenvanb@example.com\",\"password\":\"123456@\"}","timestamp":"2025-06-08T16:01:46.835Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-08T16:01:46.836Z"}
+{"level":"info","message":"User login attempt for email: nguyenvanb@example.com","timestamp":"2025-06-08T16:01:47.060Z"}
+{"level":"info","message":"User logged in successfully: 683aeda11c43568ff530c471","timestamp":"2025-06-08T16:01:47.176Z"}
+{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-06-08T16:09:54.962Z"}
+{"level":"info","message":"Received body: {\"email\":\"nguyenvana@example.com\",\"password\":\"123456@\"}","timestamp":"2025-06-08T16:09:54.962Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-08T16:09:54.963Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-08T16:09:54.964Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-08T16:10:17.660Z"}
+{"level":"info","message":"Received body: {\"email\":\"nguyenvana@example.com\",\"password\":\"123456@\"}","timestamp":"2025-06-08T16:10:17.661Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-08T16:10:17.661Z"}
+{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-06-08T16:10:17.752Z"}
+{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-06-08T16:10:17.871Z"}
+{"level":"info","message":"Received request: POST /api/v1/chats/private","timestamp":"2025-06-08T16:10:31.095Z"}
+{"level":"info","message":"Received body: [{\"user\":[\"683aeda11c43568ff530c471\",\"683ac0744b8decb4542f76ea\"],\"product\":\"\",\"messages\":[]}]","timestamp":"2025-06-08T16:10:31.096Z"}
+{"level":"error","message":"need are validation required","timestamp":"2025-06-08T16:10:31.099Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:11:32.005Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:11:33.247Z"}
+{"level":"info","message":"Received request: POST /api/v1/chats/private","timestamp":"2025-06-08T16:11:42.649Z"}
+{"level":"info","message":"Received body: [{\"user\":[\"683aeda11c43568ff530c471\",\"683ac0744b8decb4542f76ea\"]}]","timestamp":"2025-06-08T16:11:42.650Z"}
+{"level":"error","message":"need are validation required","timestamp":"2025-06-08T16:11:42.655Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:11:48.803Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:11:49.748Z"}
+{"level":"info","message":"Received request: POST /api/v1/chats/private","timestamp":"2025-06-08T16:12:46.012Z"}
+{"level":"info","message":"Received body: [{\"user\":[\"683aeda11c43568ff530c471\",\"683ac0744b8decb4542f76ea\"]}]","timestamp":"2025-06-08T16:12:46.012Z"}
+{"level":"error","message":"need are validation required","timestamp":"2025-06-08T16:12:46.016Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:15:13.473Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:15:15.016Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:17:10.748Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:17:12.175Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:18:55.044Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:18:56.385Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:19:44.020Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:19:45.415Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:26:35.932Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:26:39.193Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:29:09.270Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:29:10.914Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-08T16:29:17.728Z"}
+{"level":"info","message":"Received body: {\"email\":\"nguyenvanb@example.com\",\"password\":\"123456@\"}","timestamp":"2025-06-08T16:29:17.728Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-08T16:29:17.729Z"}
+{"level":"info","message":"User login attempt for email: nguyenvanb@example.com","timestamp":"2025-06-08T16:29:17.913Z"}
+{"level":"info","message":"User logged in successfully: 683aeda11c43568ff530c471","timestamp":"2025-06-08T16:29:18.099Z"}
+{"level":"info","message":"Received request: POST /api/v1/chats/private","timestamp":"2025-06-08T16:29:37.894Z"}
+{"level":"info","message":"Received body: {\"senderId\":\"683aeda11c43568ff530c471\",\"receiptId\":\"683ac0744b8decb4542f76ea\"}","timestamp":"2025-06-08T16:29:37.894Z"}
+{"level":"error","message":"need are validation required","timestamp":"2025-06-08T16:29:37.898Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:30:09.983Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:30:11.308Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:30:17.358Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:30:18.591Z"}
+{"level":"info","message":"Received request: POST /api/v1/chats/private","timestamp":"2025-06-08T16:30:18.774Z"}
+{"level":"info","message":"Received body: {\"senderId\":\"683aeda11c43568ff530c471\",\"receiptId\":\"683ac0744b8decb4542f76ea\"}","timestamp":"2025-06-08T16:30:18.774Z"}
+{"level":"error","message":"Error creating chat: error is not defined","timestamp":"2025-06-08T16:30:18.779Z"}
+{"level":"info","message":"Received request: POST /api/v1/chats/private","timestamp":"2025-06-08T16:31:03.483Z"}
+{"level":"info","message":"Received body: {\"senderId\":\"683aeda11c43568ff530c471\",\"recipientId\":\"683ac0744b8decb4542f76ea\"}","timestamp":"2025-06-08T16:31:03.483Z"}
+{"level":"error","message":"Error creating chat: productId is not defined","timestamp":"2025-06-08T16:31:03.486Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:31:30.716Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:31:31.971Z"}
+{"level":"info","message":"Received request: POST /api/v1/chats/private","timestamp":"2025-06-08T16:31:32.241Z"}
+{"level":"info","message":"Received body: {\"senderId\":\"683aeda11c43568ff530c471\",\"recipientId\":\"683ac0744b8decb4542f76ea\"}","timestamp":"2025-06-08T16:31:32.241Z"}
+{"level":"info","message":"Chat created successfully with ID: 6845bae536fdb891a9b60e8b","timestamp":"2025-06-08T16:31:33.505Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-08T16:35:45.078Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-08T16:35:46.719Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-08T16:36:24.444Z"}
+{"level":"info","message":"Received body: {\"email\":\"nguyenvanb@example.com\",\"password\":\"123456@\"}","timestamp":"2025-06-08T16:36:24.445Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-08T16:36:24.446Z"}
+{"level":"info","message":"User login attempt for email: nguyenvanb@example.com","timestamp":"2025-06-08T16:36:24.555Z"}
+{"level":"info","message":"User logged in successfully: 683aeda11c43568ff530c471","timestamp":"2025-06-08T16:36:24.675Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-08T16:36:52.310Z"}
+{"level":"info","message":"Received body: {\"email\":\"nguyenvana@example.com\",\"password\":\"123456@\"}","timestamp":"2025-06-08T16:36:52.310Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-08T16:36:52.311Z"}
+{"level":"info","message":"User login attempt for email: nguyenvana@example.com","timestamp":"2025-06-08T16:36:52.495Z"}
+{"level":"info","message":"User logged in successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-06-08T16:36:52.606Z"}
+{"level":"info","message":"Client connected: e4bQKOEgDzBQv56pAAAB","timestamp":"2025-06-08T16:37:14.465Z"}
+{"level":"info","message":"Socket e4bQKOEgDzBQv56pAAAB attempting to join session 6845bae536fdb891a9b60e8b","timestamp":"2025-06-08T16:37:14.488Z"}
+{"level":"info","message":"Socket e4bQKOEgDzBQv56pAAAB joined session 6845bae536fdb891a9b60e8b","timestamp":"2025-06-08T16:37:14.489Z"}
+{"level":"info","message":"Client connected: K7fOdIUyQmRZ44-7AAAD","timestamp":"2025-06-08T16:37:21.196Z"}
+{"level":"info","message":"Socket K7fOdIUyQmRZ44-7AAAD attempting to join session 6845bae536fdb891a9b60e8b","timestamp":"2025-06-08T16:37:21.203Z"}
+{"level":"info","message":"Socket K7fOdIUyQmRZ44-7AAAD joined session 6845bae536fdb891a9b60e8b","timestamp":"2025-06-08T16:37:21.203Z"}
+{"level":"info","message":"Received send-message event from socket e4bQKOEgDzBQv56pAAAB","timestamp":"2025-06-08T16:37:24.770Z"}
+{"level":"info","message":"New message saved and broadcasted in session 6845bae536fdb891a9b60e8b","timestamp":"2025-06-08T16:37:24.876Z"}
+{"level":"info","message":"Received send-message event from socket K7fOdIUyQmRZ44-7AAAD","timestamp":"2025-06-08T16:37:27.717Z"}
+{"level":"info","message":"New message saved and broadcasted in session 6845bae536fdb891a9b60e8b","timestamp":"2025-06-08T16:37:27.829Z"}
+{"level":"info","message":"Client disconnected: e4bQKOEgDzBQv56pAAAB","timestamp":"2025-06-08T16:37:35.332Z"}
+{"level":"info","message":"Client disconnected: K7fOdIUyQmRZ44-7AAAD","timestamp":"2025-06-08T16:37:38.424Z"}
