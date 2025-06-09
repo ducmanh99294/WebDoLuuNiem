@@ -47,4 +47,4 @@ chatSchema.pre('save', function (next) {
 // Index để tối ưu truy vấn
 chatSchema.index({ user: 1, createdAt: -1 });
 
-module.exports = mongoose.model('Chats', chatSchema);
+module.exports = mongoose.model('Chat', chatSchema, 'chats');

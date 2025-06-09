@@ -1,36 +1,65 @@
 const mongoose = require('mongoose');
 const Order = require('../models/Order');
+const Product = require('../models/Product');
 const Notification = require('../models/Notification');
 const logger = require('../utils/logger');
 
-// Tạo đơn hàng mới
 const createOrder = async (req, res) => {
   try {
-    const orderData = req.body;
+    const { user, order_number, products, total_price, shipping, payment } = req.body;
 
     // Validation
-    if (!orderData.user || !orderData.order_number || !orderData.products || !orderData.total_price || !orderData.shipping) {
+    if (!user || !order_number || !products || !total_price || !shipping) {
       return res.status(400).json({
         success: false,
         message: 'Thiếu thông tin cần thiết: user, order_number, products, total_price, shipping'
       });
     }
-    if (!mongoose.isValidObjectId(orderData.user)) {
+    if (!mongoose.isValidObjectId(user)) {
       return res.status(400).json({
         success: false,
         message: 'ID người dùng không hợp lệ'
       });
     }
-    if (!Array.isArray(orderData.products) || orderData.products.length === 0) {
+    if (!Array.isArray(products) || products.length === 0) {
       return res.status(400).json({
         success: false,
         message: 'Danh sách sản phẩm không hợp lệ'
       });
     }
+    if (products.some(p => !mongoose.isValidObjectId(p.product) || p.quantity < 1 || p.price < 0)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Sản phẩm không hợp lệ'
+      });
+    }
+    if (!shipping.address || shipping.price < 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'Thông tin vận chuyển không hợp lệ'
+      });
+    }
+
+    // Kiểm tra sản phẩm tồn tại và đủ số lượng
+    await Promise.all(products.map(async (p) => {
+      const product = await Product.findById(p.product);
+      if (!product || product.quantity < p.quantity) {
+        throw new Error(`Sản phẩm ${p.product} không đủ số lượng`);
+      }
+    }));
 
     const newOrder = await Order.create({
-      ...orderData,
-      user: req.user._id
+      user: req.user._id,
+      order_number,
+      products: products.map(p => ({
+        product: p.product,
+        quantity: p.quantity,
+        price: p.price,
+        total_price: p.quantity * p.price
+      })),
+      total_price,
+      shipping,
+      payment
     });
 
     // Tạo thông báo cho người dùng
@@ -44,7 +73,7 @@ const createOrder = async (req, res) => {
     });
 
     // Tạo thông báo cho admin
-    const admins = await mongoose.model('Users').find({ role: 'admin' });
+    const admins = await mongoose.model('User').find({ role: 'admin' });
     await Promise.all(admins.map(admin =>
       Notification.create({
         user: admin._id,
@@ -55,6 +84,13 @@ const createOrder = async (req, res) => {
         priority: 'high'
       })
     ));
+
+    // Emit socket
+    req.io.to(newOrder.user.toString()).emit('order_created', {
+      userId: newOrder.user,
+      orderNumber: newOrder.order_number,
+      orderId: newOrder._id
+    });
 
     res.status(201).json({
       success: true,
@@ -71,7 +107,6 @@ const createOrder = async (req, res) => {
   }
 };
 
-// Lấy tất cả đơn hàng
 const getAllOrders = async (req, res) => {
   try {
     if (req.user.role !== 'admin') {
@@ -103,7 +138,6 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-// Lấy đơn hàng theo ID
 const getOrderById = async (req, res) => {
   try {
     if (!mongoose.isValidObjectId(req.params.id)) {
@@ -148,7 +182,6 @@ const getOrderById = async (req, res) => {
   }
 };
 
-// Cập nhật trạng thái đơn hàng
 const updateOrderStatus = async (req, res) => {
   try {
     const { status } = req.body;
@@ -187,22 +220,15 @@ const updateOrderStatus = async (req, res) => {
 
     // Cập nhật sell_count khi trạng thái là delivered
     if (status === 'delivered') {
-      const sellCounts = await Order.aggregate([
-        { $match: { status: 'delivered' } },
-        { $unwind: '$products' },
-        { $group: { _id: '$products.product', total: { $sum: '$products.quantity' } } }
-      ]);
-
-      await Promise.all(sellCounts.map(async ({ _id, total }) => {
-        await mongoose.model('Products').findByIdAndUpdate(
-          _id,
-          { sell_count: total },
-          { new: true }
-        );
+      await Promise.all(order.products.map(async (item) => {
+        await Product.findByIdAndUpdate(item.product, {
+          $inc: { sell_count: item.quantity }
+        });
       }));
       logger.info(`Updated sell_count for products in order ${order._id}`);
     }
 
+    // Tạo thông báo
     await Notification.create({
       user: order.user,
       sender: req.user._id,
@@ -212,10 +238,23 @@ const updateOrderStatus = async (req, res) => {
       priority: 'high'
     });
 
+    // Emit socket
+    req.io.to(order.user.toString()).emit('order_updated', {
+      orderId: order._id,
+      orderNumber: order.order_number,
+      status
+    });
+
+    const populatedOrder = await Order.findById(req.params.id)
+      .populate('user', 'name email')
+      .populate('products.product', 'name price')
+      .populate('shipping.shipping_company', 'name')
+      .populate('shipping.shipper', 'name phone');
+
     res.status(200).json({
       success: true,
       message: 'Cập nhật trạng thái đơn hàng thành công',
-      order
+      order: populatedOrder
     });
   } catch (error) {
     logger.error(`Error updating order ${req.params.id}: ${error.message}`);
@@ -227,7 +266,6 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
-// Xóa đơn hàng
 const deleteOrder = async (req, res) => {
   try {
     if (!mongoose.isValidObjectId(req.params.id)) {
@@ -239,6 +277,7 @@ const deleteOrder = async (req, res) => {
 
     const order = await Order.findById(req.params.id);
     if (!order) {
+      logger.warn(`Order not found with ID: ${req.params.id}`);
       return res.status(404).json({
         success: false,
         message: 'Đơn hàng không tồn tại'
@@ -254,6 +293,7 @@ const deleteOrder = async (req, res) => {
 
     await order.deleteOne();
 
+    // Tạo thông báo
     await Notification.create({
       user: order.user,
       sender: req.user._id,

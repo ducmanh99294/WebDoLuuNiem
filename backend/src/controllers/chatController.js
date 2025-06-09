@@ -38,29 +38,42 @@ const createChat = async (req, res) => {
       user: { $all: [senderId, recipientId], $size: 2 }
     });
 
+    const newMessages = messages.map(msg => ({
+      sender: senderId,
+      content: msg.content,
+      timestamp: new Date(),
+      parentMessageId: parentMessageId && mongoose.isValidObjectId(parentMessageId) ? parentMessageId : null
+    }));
+
     if (!chat) {
       chat = new Chat({
         user: [senderId, recipientId],
-        parentMessageId: parentMessageId && mongoose.isValidObjectId(parentMessageId) ? parentMessageId : null,
-        messages: []
+        messages: newMessages
       });
+    } else {
+      chat.messages.push(...newMessages);
     }
 
-    chat.messages.push(...messages.map(msg => ({
-      sender: senderId,
-      content: msg.content,
-      timestamp: new Date()
-    })));
     await chat.save();
 
-    // Tạo thông báo cho recipient
+    // Tạo thông báo
     await Notification.create({
       user: recipientId,
       sender: senderId,
       type: 'chat',
       message: `Bạn nhận được tin nhắn mới trong cuộc trò chuyện #${chat._id}`,
-      data: { chatId: chat._id, message: messages[messages.length - 1].content },
+      data: { chatId: chat._id, message: newMessages[newMessages.length - 1].content },
       priority: 'normal'
+    });
+
+    // Emit socket
+    req.io.to(chat._id.toString()).emit('receive-message', {
+      chatId: chat._id,
+      senderId,
+      content: newMessages[0].content,
+      parentMessageId: newMessages[0].parentMessageId,
+      timestamp: newMessages[0].timestamp,
+      messageId: chat.messages[chat.messages.length - 1]._id
     });
 
     logger.info(`Messages sent successfully in chat with ID: ${chat._id}`);
@@ -81,7 +94,6 @@ const createChat = async (req, res) => {
 
 const getAllChats = async (req, res) => {
   try {
-    // Chỉ lấy chat của người dùng hiện tại
     const chats = await Chat.find({ user: req.user._id })
       .select('user messages createdAt updatedAt')
       .populate('user', 'name email')
@@ -125,7 +137,6 @@ const getChatById = async (req, res) => {
       });
     }
 
-    // Kiểm tra quyền truy cập
     if (!chat.user.map(id => id.toString()).includes(req.user._id.toString())) {
       return res.status(403).json({
         success: false,
@@ -175,7 +186,6 @@ const updateChat = async (req, res) => {
       });
     }
 
-    // Kiểm tra quyền truy cập
     if (!chat.user.map(id => id.toString()).includes(req.user._id.toString()) && req.user.role !== 'admin') {
       return res.status(403).json({
         success: false,
@@ -183,14 +193,17 @@ const updateChat = async (req, res) => {
       });
     }
 
-    chat.messages.push(...messages.map(msg => ({
+    const newMessages = messages.map(msg => ({
       sender: req.user._id,
       content: msg.content,
-      timestamp: new Date()
-    })));
+      timestamp: new Date(),
+      parentMessageId: msg.parentMessageId && mongoose.isValidObjectId(msg.parentMessageId) ? msg.parentMessageId : null
+    }));
+
+    chat.messages.push(...newMessages);
     await chat.save();
 
-    // Tạo thông báo cho các user khác trong chat
+    // Tạo thông báo
     await Promise.all(chat.user.map(async userId => {
       if (userId.toString() !== req.user._id.toString()) {
         await Notification.create({
@@ -198,11 +211,21 @@ const updateChat = async (req, res) => {
           sender: req.user._id,
           type: 'chat',
           message: `Cuộc trò chuyện #${chat._id} đã được cập nhật với tin nhắn mới`,
-          data: { chatId: chat._id, message: messages[messages.length - 1].content },
+          data: { chatId: chat._id, message: newMessages[newMessages.length - 1].content },
           priority: 'normal'
         });
       }
     }));
+
+    // Emit socket
+    req.io.to(chat._id.toString()).emit('receive-message', {
+      chatId: chat._id,
+      senderId: req.user._id,
+      content: newMessages[0].content,
+      parentMessageId: newMessages[0].parentMessageId,
+      timestamp: newMessages[0].timestamp,
+      messageId: chat.messages[chat.messages.length - 1]._id
+    });
 
     const populatedChat = await Chat.findById(req.params.id)
       .populate('user', 'name email')
@@ -242,7 +265,6 @@ const deleteChat = async (req, res) => {
       });
     }
 
-    // Kiểm tra quyền truy cập
     if (!chat.user.map(id => id.toString()).includes(req.user._id.toString()) && req.user.role !== 'admin') {
       return res.status(403).json({
         success: false,
@@ -252,7 +274,7 @@ const deleteChat = async (req, res) => {
 
     await chat.deleteOne();
 
-    // Tạo thông báo cho các user khác
+    // Tạo thông báo
     await Promise.all(chat.user.map(async userId => {
       if (userId.toString() !== req.user._id.toString()) {
         await Notification.create({
