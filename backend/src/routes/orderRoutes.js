@@ -3,10 +3,21 @@ const router = express.Router();
 const orderController = require('../controllers/orderController');
 const { validateToken } = require('../middlewares/authMiddleware');
 
-router.post('/', validateToken, orderController.createOrder);
-router.get('/', validateToken, orderController.getAllOrders);
-router.get('/:id', validateToken, orderController.getOrderById);
-router.put('/:id/status', validateToken, orderController.updateOrderStatus);
-router.delete('/:id', validateToken, orderController.deleteOrder);
+router.use(validateToken);
+
+// Tạo đơn hàng mới
+router.post('/', orderController.createOrder);
+
+// Lấy tất cả đơn hàng (chỉ admin)
+router.get('/', orderController.getAllOrders);
+
+// Lấy đơn hàng theo ID (admin hoặc chủ đơn hàng)
+router.get('/:id', orderController.getOrderById);
+
+// Cập nhật trạng thái đơn hàng (chỉ admin)
+router.patch('/:id/status', orderController.updateOrderStatus);
+
+// Xóa đơn hàng (chỉ admin)
+router.delete('/:id', orderController.deleteOrder);
 
 module.exports = router;
