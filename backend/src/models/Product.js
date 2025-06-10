@@ -19,13 +19,17 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-
     discount: {
+        type: Number,
+        required: true,
+        default: 0,
+        min: 0,
+        max: 100
+    },
+    Coupon: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Coupons",
         default: 0,
-        min: 0,
-        max: 100 
     },
     images: [{
         type: mongoose.Schema.Types.ObjectId,

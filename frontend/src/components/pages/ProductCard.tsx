@@ -10,16 +10,13 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const finalPrice = product.discount > 0 
-    ? product.price - (product.price * product.discount) / 100 
-    : product.price;
-  
+  const finalPrice = product.price - (product.price * product.discount) / 100 
 
   return (
     <div className="container">
       <div className="card">
         <div className="image-wrapper">
-          <img src={product.images[0]} alt={product.name} className="image" />
+          <img src={product.images[0].image} alt={product.name} className="image" />
           <div className="label">Hot</div>
         </div>
         <div className="rating-line">
