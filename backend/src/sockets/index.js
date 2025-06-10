@@ -59,6 +59,11 @@ module.exports = (io) => {
           return;
         }
 
+        const message = new Message({
+          content,
+          type,
+        });
+        await message.save();
         const chat = await Chat.findById(session_id);
         if (!chat || !chat.user.map(id => id.toString()).includes(sender_id)) {
           logger.warn(`Access denied for chat ${session_id} by user ${sender_id}`);
@@ -79,6 +84,13 @@ module.exports = (io) => {
         const messageId = chat.messages[chat.messages.length - 1]._id;
 
         io.to(session_id).emit('receive-message', {
+          _id: message._id,
+          session_id: message.session_id,
+          sender_id: message.sender_id,
+          content: message.content,
+          type: message.type,
+          timestamp: message.timestamp,
+          is_read: message.is_read,
           _id: messageId,
           session_id,
           sender_id,
