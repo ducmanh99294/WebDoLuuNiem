@@ -1060,3 +1060,25 @@
 {"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-10T14:06:13.967Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-10T14:06:15.604Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-10T14:06:16.839Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-11T01:54:48.798Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-11T01:54:50.201Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-11T01:54:51.971Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-11T01:55:41.369Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-11T01:55:41.378Z"}
+{"level":"info","message":"Received request: GET /users","timestamp":"2025-06-11T01:56:06.655Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-11T01:56:06.657Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-11T01:56:20.159Z"}
+{"level":"info","message":"Received body: {\"email\":\"1@example.com\",\"password\":\"123456\"}","timestamp":"2025-06-11T01:56:20.160Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-11T01:56:20.163Z"}
+{"level":"info","message":"User login attempt for email: 1@example.com","timestamp":"2025-06-11T01:56:20.275Z"}
+{"level":"info","message":"User logged in successfully: 68470126c6bb606e7826971f","timestamp":"2025-06-11T01:56:20.394Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-11T01:56:44.672Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-11T01:56:44.674Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-11T01:56:44.675Z"}
+{"level":"info","message":"Total users retrieved: 1","timestamp":"2025-06-11T01:56:44.766Z"}
+{"level":"info","message":"Received request: GET /api/v1/notifications","timestamp":"2025-06-11T01:58:13.378Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-11T01:58:13.379Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-11T01:58:13.380Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-11T01:58:13.381Z"}
+{"level":"info","message":"Received request: GET /api/v1/notifications","timestamp":"2025-06-11T01:58:26.599Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-11T01:58:26.599Z"}
