@@ -5,7 +5,7 @@ const authRoles = require('../middlewares/authRoles');
 const { validateToken } = require('../middlewares/authMiddleware');
 
 //CRUD 
-router.post('/', productController.createProduct);
+router.post('/',imageUpload.singed('image'), productController.createProduct);
 
 
 router.get('/', productController.getAllProducts);
