@@ -932,3 +932,5 @@
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:30:39.248Z"}{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-04T03:51:19.942Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:51:20.048Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:51:20.061Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-11T01:23:19.155Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-11T01:23:19.405Z"}
