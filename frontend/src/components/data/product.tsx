@@ -1,14 +1,19 @@
 // src/data/productData.ts
 
+interface Image {
+  _id: number;
+  image: string;
+};
+
 export type Product = {
-  id: number;
+  _id: number;
   category_id: number;
   name: string;
   description: string;
   rating: number;
   price: number;
   discount: number;
-  image: string;
+  images: Image[];
   like_count: number;
   quantity: number;
   view_count: number;
@@ -21,14 +26,16 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    id: 1,
+    _id: 1,
     category_id: 101,
     name: 'Sản phẩm A',
     description: 'Mô tả sản phẩm A',
     rating: 4.5,
     price: 500000,
     discount: 10,
-    image: 'https://via.placeholder.com/150',
+    images: [
+      { _id: 1, image: 'https://example.com/image1.jpg' },
+    ],
     like_count: 20,
     quantity: 50,
     view_count: 100,

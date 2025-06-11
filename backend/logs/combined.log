@@ -932,6 +932,7 @@
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:30:39.248Z"}{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-04T03:51:19.942Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-04T03:51:20.048Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-04T03:51:20.061Z"}
+<<<<<<< HEAD
 {"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-09T01:27:34.111Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-09T01:27:34.283Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-09T01:27:34.306Z"}
@@ -1082,3 +1083,5 @@
 {"level":"warn","message":"Invalid token","timestamp":"2025-06-11T01:58:13.381Z"}
 {"level":"info","message":"Received request: GET /api/v1/notifications","timestamp":"2025-06-11T01:58:26.599Z"}
 {"level":"info","message":"Received body: undefined","timestamp":"2025-06-11T01:58:26.599Z"}
+=======
+>>>>>>> main

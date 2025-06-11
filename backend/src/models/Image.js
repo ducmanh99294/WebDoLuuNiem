@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const Product = require('./Product');
 
 const imageSchema = new mongoose.Schema({
-    main_image: {
-        type: String,
+    Product: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Products',
         required: true
     },
     image: {

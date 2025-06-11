@@ -77,6 +77,8 @@ app.use(`/api/${API_VERSION}/comments`, require('./routes/commentRoutes'));
 app.use(`/api/${API_VERSION}/coupons`, require('./routes/couponRoutes'));
 app.use(`/api/${API_VERSION}/payments`, require('./routes/paymentRoutes'));
 app.use(`/api/${API_VERSION}/notifications`, require('./routes/notificationRoutes'));
+app.use(`/api/${API_VERSION}/events`, require('./routes/eventRoutes'));
+
 
 // Error handler
 app.use(errorHandler);
