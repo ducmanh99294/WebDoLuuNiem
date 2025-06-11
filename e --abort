@@ -1,0 +1,77 @@
+[33mc6a2ead[m[33m ([m[1;36mHEAD[m[33m)[m HEAD@{0}: pull origin NhanNG --rebase (pick): vặt
+[33m5cd7247[m[33m ([m[1;31morigin/NhanNG[m[33m)[m HEAD@{1}: pull origin NhanNG --rebase (start): checkout 5cd72478472f6c20793d29229db8a5e6fee1c33d
+[33md768961[m[33m ([m[1;32mNhanNG[m[33m)[m HEAD@{2}: checkout: moving from main to NhanNG
+[33mec89a8a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{3}: pull origin main: Fast-forward
+[33m39233ec[m HEAD@{4}: checkout: moving from NhanNG to main
+[33md768961[m[33m ([m[1;32mNhanNG[m[33m)[m HEAD@{5}: rebase (abort): returning to refs/heads/NhanNG
+[33mb155243[m HEAD@{6}: pull origin NhanNG --rebase (pick): vặt
+[33m5cd7247[m[33m ([m[1;31morigin/NhanNG[m[33m)[m HEAD@{7}: pull origin NhanNG --rebase (start): checkout 5cd72478472f6c20793d29229db8a5e6fee1c33d
+[33md768961[m[33m ([m[1;32mNhanNG[m[33m)[m HEAD@{8}: commit: tối ưu Crea TBao notifyService
+[33mead6212[m HEAD@{9}: commit: tối ưu Crea TBao notifyService
+[33m0fc474f[m HEAD@{10}: commit (merge): kéo for main
+[33mad7a760[m HEAD@{11}: checkout: moving from main to NhanNG
+[33m39233ec[m HEAD@{12}: checkout: moving from NhanNG to main
+[33mad7a760[m HEAD@{13}: commit: vặt
+[33mf54dcf5[m HEAD@{14}: checkout: moving from main to NhanNG
+[33m39233ec[m HEAD@{15}: pull origin main: Fast-forward
+[33m35a5658[m HEAD@{16}: checkout: moving from NhanNG to main
+[33mf54dcf5[m HEAD@{17}: commit: 11/6
+[33m2800e58[m HEAD@{18}: commit: làm lại cục đời
+[33mcd4bfd7[m HEAD@{19}: commit: sửa pas 1
+[33mffbc02f[m HEAD@{20}: commit: thêm notifi vào order + tích hợp
+[33m2d150a2[m HEAD@{21}: commit: fig thông báo từ socket
+[33m35a5658[m HEAD@{22}: merge main: Fast-forward
+[33ma3f0a81[m HEAD@{23}: checkout: moving from main to NhanNG
+[33m35a5658[m HEAD@{24}: pull origin main: Fast-forward
+[33m1f1c2a4[m HEAD@{25}: checkout: moving from NhanNG to main
+[33ma3f0a81[m HEAD@{26}: commit (merge): main kéo về nhánh - 0 thay đổi
+[33mc63a37e[m HEAD@{27}: checkout: moving from main to NhanNG
+[33m1f1c2a4[m HEAD@{28}: pull origin main: Fast-forward
+[33m160142a[m HEAD@{29}: checkout: moving from NhanNG to main
+[33mc63a37e[m HEAD@{30}: commit: cập nhật main
+[33m160142a[m HEAD@{31}: checkout: moving from main to NhanNG
+[33m160142a[m HEAD@{32}: checkout: moving from NhanNG to main
+[33m160142a[m HEAD@{33}: merge main: Fast-forward
+[33m818da34[m HEAD@{34}: checkout: moving from main to NhanNG
+[33m160142a[m HEAD@{35}: pull origin main: Fast-forward
+[33m818da34[m HEAD@{36}: checkout: moving from NhanNG to main
+[33m818da34[m HEAD@{37}: merge main: Fast-forward
+[33ma22af74[m HEAD@{38}: checkout: moving from main to NhanNG
+[33m818da34[m HEAD@{39}: pull origin main: Fast-forward
+[33mda481b2[m HEAD@{40}: checkout: moving from NhanNG to main
+[33ma22af74[m HEAD@{41}: commit (merge): fig thông báo + user onl/off
+[33mcaae5cc[m HEAD@{42}: checkout: moving from main to NhanNG
+[33mda481b2[m HEAD@{43}: pull origin main: Fast-forward
+[33m84bc58a[m HEAD@{44}: checkout: moving from NhanNG to main
+[33mcaae5cc[m HEAD@{45}: commit: Thông báo tin nhắn,order + user onl/off
+[33mefa9bf8[m HEAD@{46}: commit: lỗi trùng
+[33m27f6a47[m HEAD@{47}: commit: kéo về
+[33m407e6db[m HEAD@{48}: merge main: Merge made by the 'ort' strategy.
+[33m1810d45[m HEAD@{49}: checkout: moving from main to NhanNG
+[33m84bc58a[m HEAD@{50}: pull origin main: Fast-forward
+[33mc42aa79[m HEAD@{51}: checkout: moving from NhanNG to main
+[33m1810d45[m HEAD@{52}: commit: bổ sung
+[33md2347b4[m HEAD@{53}: commit: chuyển validateToken về cấp Routes + tối ưu
+[33md99c073[m HEAD@{54}: commit: thêm validateToken cho Chat + phân Role
+[33m79e37da[m HEAD@{55}: commit: fig lỗi deleteReview sai chính tả
+[33mc42aa79[m HEAD@{56}: merge main: Fast-forward
+[33m044c367[m HEAD@{57}: checkout: moving from main to NhanNG
+[33mc42aa79[m HEAD@{58}: pull origin main: Fast-forward
+[33mff6c82a[m HEAD@{59}: checkout: moving from NhanNG to main
+[33m044c367[m HEAD@{60}: commit: thêm coupon giảm giá
+[33m115863a[m HEAD@{61}: merge main: Merge made by the 'ort' strategy.
+[33m094008f[m HEAD@{62}: checkout: moving from main to NhanNG
+[33mff6c82a[m HEAD@{63}: reset: moving to HEAD
+[33mff6c82a[m HEAD@{64}: pull origin main: Fast-forward
+[33mcd76078[m HEAD@{65}: checkout: moving from NhanNG to main
+[33m094008f[m HEAD@{66}: commit: Coupon giam gia
+[33m1d99384[m HEAD@{67}: commit: kéo lại từ main
+[33m16b1cf9[m HEAD@{68}: pull origin main: Fast-forward
+[33mea3ce6a[m HEAD@{69}: commit: CRUD category, shipping COmpany,Shipper APIs
+[33m57187bc[m HEAD@{70}: commit (merge): Resolve merge conflicts
+[33mae5d14d[m HEAD@{71}: checkout: moving from main to NhanNG
+[33mcd76078[m HEAD@{72}: checkout: moving from NhanNG to main
+[33mae5d14d[m HEAD@{73}: checkout: moving from main to NhanNG
+[33mcd76078[m HEAD@{74}: checkout: moving from NhanNG to main
+[33mae5d14d[m HEAD@{75}: commit: again
+[33m7a59cab[m HEAD@{76}: commit (initial): khung
