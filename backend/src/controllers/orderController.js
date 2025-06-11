@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Order = require('../models/Order');
+const OrderDetail = require('../models/OrderDetail');
 const Product = require('../models/Product');
 const Notification = require('../models/Notification');
 const logger = require('../utils/logger');
@@ -318,10 +319,137 @@ const deleteOrder = async (req, res) => {
   }
 };
 
+const confirmOrder = async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'ID not  found'
+      });
+    }
+
+    const order = await Order.findById(req.params.id);
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: 'order not found'
+      });
+    }
+
+    const products = await Product.findById(OrderDetail.product_id);
+    if(!products) {
+      return res.status(404).json({
+        success: false,
+        message: 'product not found'
+      });
+    }
+    if( products.quantity < OrderDetail.quantity) {
+      return res.status(400).json({
+        success: false,
+        message: 'not enough product quantity'
+      });
+    }
+
+    products.quantity -= OrderDetail.quantity;
+    await products.save();
+
+    order.status = 'confirmed';
+    await order.save();
+
+    // Tạo thông báo
+    await Notification.create({
+      user: order.user,
+      sender: req.user._id,
+      type: 'order',
+      message: `order #${order.order_number} is confirmed`,
+      data: { orderId: order._id },
+      priority: 'high'
+    });
+
+    res.status(200).json({
+      success: true,
+      message: 'confirm order successfully',
+      order
+    });
+  } catch (error) {
+    logger.error(`Error confirming order ${req.params.id}: ${error.message}`);
+    res.status(500).json({
+      success: false,
+      message: 'error confirming order',
+      error: error.message
+    });
+  }
+};
+
+const cancelOrder = async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'ID not found'
+      });
+    }
+
+    const order = await Order.findById(req.params.id);
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: 'order not found'
+      });
+    }
+
+    if (order.status !== 'cancelled') {
+      return res.status(400).json({
+        success: false,
+        message: 'only allready cancelled order'
+      });
+    }
+
+    const products = await Product.findById(OrderDetail.product_id);
+    if(!products) {
+      return res.status(404).json({
+        success: false,
+        message: 'product not found'
+      });
+    }
+
+    product.quantity += OrderDetail.quantity;
+    await products.save();
+
+    order.status = 'cancelled';
+    await order.save();
+
+    // Tạo thông báo
+    await Notification.create({
+      user: order.user,
+      sender: req.user._id,
+      type: 'order',
+      message: `order #${order.order_number} is cancelled`,
+      data: { orderId: order._id },
+      priority: 'high'
+    });
+
+    res.status(200).json({
+      success: true,
+      message: 'cancel order successfully',
+      order
+    });
+  } catch (error) {
+    logger.error(`Error cancelling order ${req.params.id}: ${error.message}`);
+    res.status(500).json({
+      success: false,
+      message: 'error cancelling order',
+      error: error.message
+    });
+  }
+};
+
 module.exports = {
   createOrder,
   getAllOrders,
   getOrderById,
   updateOrderStatus,
-  deleteOrder
+  deleteOrder,
+  confirmOrder,
+  cancelOrder
 };

@@ -119,7 +119,7 @@ const loginUser = async (req, res) => {
         logger.error(`Error during user login: ${error.message}`);
         return res.status(500).json({
             success: false,
-            message: 'Internal Server Error'
+            message: `Internal Server Error ${error.message}`,
         });
     }
 }

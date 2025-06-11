@@ -6,6 +6,8 @@ const { validateToken } = require('../middlewares/authMiddleware');
 
 //CRUD 
 router.post('/', productController.createProduct);
+
+
 router.get('/', productController.getAllProducts);
 router.get('/:id',productController.getProductById);
 router.post('/products/:id/like', validateToken, authRoles, productController.like_count);

@@ -12,8 +12,24 @@ const createProduct = async (req, res) => {
                 message: 'please provide all required fields: name, price, categories, images, description, discount, quantity'
             });
         }
-        const product = await Product.create(req.body);
         
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: 'please provide product image'
+            });
+        }
+
+        const image = await Images.create({
+            image: req.file.path,
+        });
+
+        const product = await Product.create({
+            ...req.body,
+            images: [image._id],
+        });
+
+
         logger.info(`Product created successfully: ${product._id}`);
         res.status(201).json({
             success: true,
@@ -30,7 +46,7 @@ const createProduct = async (req, res) => {
 const getAllProducts = async (req, res) => {
     try {
         logger.info('Fetching all products')
-        const products = await Product.find().populate('images').populate('categories');
+        const products = await Product.find().populate('images', 'image').populate('categories');
       
         logger.info(`Retrieved ${products.length} products`);
         res.status(200).json({

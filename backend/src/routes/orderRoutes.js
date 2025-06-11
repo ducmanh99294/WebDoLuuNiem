@@ -20,4 +20,8 @@ router.patch('/:id/status', orderController.updateOrderStatus);
 // Xóa đơn hàng (chỉ admin)
 router.delete('/:id', orderController.deleteOrder);
 
+router.post('/comfirm', orderController.confirmOrder);
+
+router.post('/cancel', orderController.cancelOrder);
+
 module.exports = router;
