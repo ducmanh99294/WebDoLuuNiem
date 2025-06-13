@@ -136,3 +136,49 @@ html, body {
   color: white; /* hoặc màu phù hợp */
   opacity: 0.6;  /* giảm độ nổi bật nếu muốn nhẹ nhàng */
 }
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.user-name {
+  padding: 0 10px;
+  font-size: 13px;
+  margin-top: 0px;
+  background-color: #4caf83;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 10px;
+  margin-left: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+  padding: 8px 0;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-menu a,
+.dropdown-menu div {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu div:hover {
+  background-color: #f0f0f0;
+}
