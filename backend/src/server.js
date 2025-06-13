@@ -33,7 +33,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Logging middleware (excluding socket.io)
+// Truyền io vào request
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
+
+// Logging middleware
 app.use((req, res, next) => {
   if (req.url.startsWith('/socket.io')) return next();
   logger.info(`Received request: ${req.method} ${req.url}`);
@@ -41,8 +47,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Optional: Rate limit middleware (chưa gắn vào route cụ thể)
-const sensitiveEnpointsLimiter = rateLimit({
+// Rate limit middleware
+const sensitiveEndpointsLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 50,
   standardHeaders: true,
@@ -53,7 +59,7 @@ const sensitiveEnpointsLimiter = rateLimit({
   },
 });
 
-// Routes (đã không dùng validateToken toàn cục)
+// Routes
 app.use(`/api/${API_VERSION}/users`, require('./routes/userRoutes'));
 app.use(`/api/${API_VERSION}/auth`, require('./routes/identity'));
 app.use(`/api/${API_VERSION}/products`, require('./routes/productRoutes'));
@@ -71,6 +77,8 @@ app.use(`/api/${API_VERSION}/comments`, require('./routes/commentRoutes'));
 app.use(`/api/${API_VERSION}/coupons`, require('./routes/couponRoutes'));
 app.use(`/api/${API_VERSION}/payments`, require('./routes/paymentRoutes'));
 app.use(`/api/${API_VERSION}/notifications`, require('./routes/notificationRoutes'));
+app.use(`/api/${API_VERSION}/events`, require('./routes/eventRoutes'));
+
 
 // Error handler
 app.use(errorHandler);

@@ -6,27 +6,6 @@ const chatSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     }],
-    messages: [
-        {
-            sender: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'User',
-                required: true
-            },
-            content: {
-                type: String,
-                required: true
-            },
-            timestamp: {
-                type: Date,
-                default: Date.now
-            },
-            parentMessageId: { 
-                type: mongoose.Schema.Types.ObjectId, 
-                default: null 
-            }
-        }
-    ],
 });
 
 const Chat = mongoose.model('Chats', chatSchema);   

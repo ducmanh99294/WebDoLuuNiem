@@ -27,28 +27,28 @@ const Home: React.FC = () => {
 
     fetchProducts();
   }, []);
-
+ 
   return (
     <>
       <Banner />
       <CategoryList />
       <div className="card-sp">
-        <h1>Chào mừng đến với cửa hàng Đặc Sản</h1>
-        <p>vài sp xem thử </p>
+        {/* <h1>Chào mừng đến với cửa hàng Đặc Sản</h1> */}
+        <h1>Sản phẩm nổi bật </h1>
         <div className="sp">
           {loading ? (
-            <p>Đang tải sản phẩm...</p>
-          ) : (
-            products.map(product => (
-              <Link
-                key={product.id}
-                to={`/product-detail/${product.id}`}
-                style={{ textDecoration: 'none', color: 'black' }}
-              >
-                <ProductCard product={product} />
-              </Link>
-            ))
-          )}
+  <p>Đang tải sản phẩm...</p>
+) : (
+  products.map(product => (
+    <Link
+      key={product._id}
+      to={`/product-detail/${product._id}`}
+      style={{ textDecoration: 'none', color: 'black' }}
+    >
+      <ProductCard product={product} />
+    </Link>
+  ))
+)}
         </div>
       </div>
       <DealsSection />

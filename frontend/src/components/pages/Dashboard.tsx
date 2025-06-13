@@ -56,12 +56,19 @@ const Dashboard = () => {
       {/* Main Content */}
       <main className="main-content">
         <h1 className="title">📈 Thống kê</h1>
+<div className="filters">
+  <select>
+    <option value="all">Thời gian: Từ trước tới nay</option>
+  </select>
+  <select>
+    {/* phân loại theo độ tuổi */}
+    <option value="all">Nhóm Khách Hàng : Tất cả </option>
+  </select>
+  <select>
+    <option value="all">Mặt hàng: Tất cả</option>
+  </select>
+</div>
 
-        <div className="filters">
-          <select>Thời gian: Từ trước tới nay</select>
-          <select>Người: All</select>
-          <select>Mặt hàng: Tất cả</select>
-        </div>
         <div className="n1">
         <div className="stats-grid">
           <StatCard title="Người dùng" value="27/80" />
@@ -74,26 +81,39 @@ const Dashboard = () => {
 
         <div className="charts-grid">
           <div className="full-span">
+            <div className="n2">
             <h2>Activity</h2>
+            <select >
+            <option value="Ngày">Ngày </option>
+            <option value="tháng"> tháng </option>
+            <option value="năm"> năm </option>
+            </select>
+            </div>
             <Bar data={chartData} />
           </div>
           </div>
             </div>
-          <div className="card">
+            <br />
+            <div className="n3">
+          <div className="card2">
             <h2>Chủ đề hot</h2>
-            <Progress label="trái cây" percent={95} />
-            <Progress label="quà lưu niệm" percent={92} />
-            <Progress label="đồ ăn khô" percent={89} />
+            <Progress label="trái cây" percent={95} image="/images/top/Rectangle 2370.png"/>
+            <Progress label="quà lưu niệm" percent={92}image="/images/top/Rectangle 2370.png" />
+            <Progress label="đồ ăn khô" percent={89} image="/images/top/Rectangle 2370.png" />
           </div>
         
 
         <div className="bottom-grid">
-          <div className="card">
+          <div className="card1">
             <h2>Top sản phẩm</h2>
             <Progress label="Food Safety" percent={74} color="red" />
             <Progress label="Compliance Basics Procedures" percent={52} color="yellow" />
             <Progress label="Company Networking" percent={36} color="pink" />
           </div>
+          </div>
+          </div>
+          <br />
+          <br />
           <div className="card">
             <h2>Bảng xếp hạng người dùng</h2>
             <div className="ranking">
@@ -101,7 +121,7 @@ const Dashboard = () => {
               <div>B - 89% Correct <span className="down">▼</span></div>
             </div>
           </div>
-        </div>
+        
       </main>
     </div>
   );
@@ -114,10 +134,24 @@ const StatCard = ({ title, value }) => (
   </div>
 );
 
-const Progress = ({ label, percent, color = "green" }) => (
+const Progress = ({ label, percent, color = "green", image }) => (
   <div className="progress-item">
     <div className="progress-label">
-      <span>{label}</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        {image && (
+          <img
+            src={image}
+            alt={label}
+            style={{
+              width: '20px',
+              height: '20px',
+              borderRadius: '4px',
+              objectFit: 'cover',
+            }}
+          />
+        )}
+        <span>{label}</span>
+      </div>
       <span>{percent}%</span>
     </div>
     <div className="progress-bar">

@@ -77,11 +77,12 @@
   width: 800px;
 }
 
-.card {
+.card{
   background: white;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  width: 400px;
 }
 
 .card-title {
@@ -158,4 +159,56 @@
   width: 400px;
   height: 200px;
   margin-left: 50px;
+}
+.n2 select{
+  width: 100px;
+  height: 20px;
+  margin-top: 0px;
+  border-radius: 10px;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  background-color: none;
+}
+.n2{
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+.filters select{
+  width: 250px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+.n3{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+}
+.n3 .card2{
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  width: 400px;
+  cursor: pointer;
+}
+.n3 .card2:hover {
+  transform: translateY(-6px); /* nổi lên nhẹ khi hover */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2); /* bóng đổ mạnh hơn khi hover */
+}
+
+.n3 .card1{
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  width: 400px;
+  margin-top: -24px;
+  cursor: pointer;
+}
+.n3 .card1:hover {
+  transform: translateY(-6px); /* nổi lên nhẹ khi hover */
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2); /* bóng đổ mạnh hơn khi hover */
 }
