@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 //const mongoURL = process.env.MONGO_URL || 'mongodb://admin:123456@mongodb:27018/WebDoLuuNiem';
 
+
 const connectMongoDB = async () => {
     try {
         console.log(mongoURL);
