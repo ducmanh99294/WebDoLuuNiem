@@ -8,7 +8,6 @@ router.use(validateToken);
 
 // Tạo cuộc trò chuyện mới
 router.post('/', chatController.createChat);
-
 // Lấy tất cả cuộc trò chuyện của người dùng
 router.get('/', chatController.getAllChats);
 

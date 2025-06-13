@@ -9,8 +9,8 @@ const connectMongoDB = async () => {
     try {
         console.log(mongoURL);
         await mongoose.connect(mongoURL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+            // useNewUrlParser: true,
+            // useUnifiedTopology: true,
             maxPoolSize: 10, // Set max pool size to 10
             minPoolSize: 1, // Set min pool size to 1
             serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds if server is not available

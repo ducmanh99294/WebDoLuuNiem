@@ -10,7 +10,7 @@ import CategoryList from '../category';
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -37,18 +37,18 @@ const Home: React.FC = () => {
         <h1>Sản phẩm nổi bật </h1>
         <div className="sp">
           {loading ? (
-            <p>Đang tải sản phẩm...</p>
-          ) : (
-            products.map(product => (
-              <Link
-                key={product.id}
-                to={`/product-detail/${product.id}`}
-                style={{ textDecoration: 'none', color: 'black' }}
-              >
-                 <ProductCard key={product._id} product={product} />
-              </Link>
-            ))
-          )}
+  <p>Đang tải sản phẩm...</p>
+) : (
+  products.map(product => (
+    <Link
+      key={product._id}
+      to={`/product-detail/${product._id}`}
+      style={{ textDecoration: 'none', color: 'black' }}
+    >
+      <ProductCard product={product} />
+    </Link>
+  ))
+)}
         </div>
       </div>
       <DealsSection />
