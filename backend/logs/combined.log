@@ -1,1 +1,20 @@
- 
+ {"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-13T04:02:33.205Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-13T04:02:33.435Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-13T04:02:34.074Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-13T05:02:08.884Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-13T05:02:09.279Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-13T05:02:10.227Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-13T05:03:00.014Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-13T05:03:00.020Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-13T05:03:00.053Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-13T05:03:00.054Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-13T05:03:00.056Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-13T05:03:00.119Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-13T05:03:00.225Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-13T05:03:00.227Z"}
+{"level":"info","message":"Retrieved 10 products","timestamp":"2025-06-13T05:03:00.288Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-13T05:03:00.299Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-13T05:03:00.337Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-13T05:03:00.337Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-13T05:03:00.338Z"}
+{"level":"info","message":"Retrieved 10 products","timestamp":"2025-06-13T05:03:00.473Z"}

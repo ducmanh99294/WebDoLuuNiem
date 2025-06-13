@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Order = require('../models/Order');
-const OrderDetail = require('../models/OrderDetail');
+// const OrderDetail = require('../models/OrderDetail');
 const Product = require('../models/Product');
 const Notification = require('../models/Notification');
 const logger = require('../utils/logger');
