@@ -938,3 +938,9 @@
 {"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-13T08:58:18.571Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-13T08:58:18.703Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-13T08:58:19.764Z"}
+{"level":"error","message":"MongoDB connection error mongoURL is not defined","stack":"ReferenceError: mongoURL is not defined\n    at connectMongoDB (D:\\ShopLuuNiem\\backend\\src\\config\\mongodbConfig.js:9:21)\n    at Object.<anonymous> (D:\\ShopLuuNiem\\backend\\src\\server.js:24:1)\n    at Module._compile (node:internal/modules/cjs/loader:1469:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)\n    at Module.load (node:internal/modules/cjs/loader:1288:32)\n    at Module._load (node:internal/modules/cjs/loader:1104:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)\n    at node:internal/main/run_main_module:28:49","timestamp":"2025-06-13T09:09:31.384Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-13T09:09:31.387Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-13T09:09:31.508Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-13T09:09:45.747Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-13T09:09:45.871Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-13T09:09:46.936Z"}
