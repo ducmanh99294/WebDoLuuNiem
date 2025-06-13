@@ -12,10 +12,16 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "@sendgrid/mail": "^8.1.5",
     "express": "^5.1.0",
     "multer": "^2.0.1",
     "natural": "^8.1.0"
+=======
+  "@sendgrid/mail": "^8.1.5",
+  "express": "^5.1.0",
+  "natural": "^8.1.0"
+>>>>>>> a8d32bfef57bc1f127bc0f17a62fad50e677f988
   },
   "devDependencies": {
     "argon2": "^0.43.0",

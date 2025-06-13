@@ -1,20 +1,40 @@
-import React from 'react';
-import { products } from '../data/product'; // ✅ Lấy product từ data
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const DetailProduct: React.FC = () => {
-  const product = products[0]; // ✅ Giả sử hiển thị sản phẩm đầu tiên
+  const { _id } = useParams();
+  const [product, setProduct] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/api/v1/products/${_id}`);
+        const data = await res.json();
+        setProduct(data); // ❗ API trả về object sản phẩm trực tiếp
+      } catch (err) {
+        console.error('Lỗi khi lấy sản phẩm:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [_id]);
+
+  if (loading) return <p>Đang tải...</p>;
+  if (!product) return <p>Không tìm thấy sản phẩm.</p>;
 
   const finalPrice = product.price - (product.price * product.discount) / 100;
 
   return (
     <div className="product-detail-container" style={{ background: '#fff', padding: 24 }}>
       <h2>Chi tiết sản phẩm</h2>
-
       <div className="product-main" style={{ display: 'flex', gap: 24 }}>
         {/* Product Image */}
         <div className="product-image" style={{ flex: 1 }}>
           <div style={{ background: '#eee', height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={product.image} alt={product.name} style={{ maxHeight: '100%' }} />
+            <img src={product.images[0]?.image} alt={product.name}  style={{ maxHeight: '100%' }} />
           </div>
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
             {[1, 2, 3, 4].map(i => (
@@ -27,7 +47,7 @@ const DetailProduct: React.FC = () => {
         <div className="product-info" style={{ flex: 2 }}>
           <h3>{product.name}</h3>
           <div>
-            <span>{product.rating} ★★★★★ | Xem đánh giá | Đã bán {product.like_count}</span>
+            <span>{product.rating} ★★★★★ | Xem đánh giá | Đã bán {product.like_count ?? 0}</span>
           </div>
           <div style={{ fontSize: 24, color: '#009900', margin: '12px 0' }}>
             {finalPrice.toLocaleString()} VND
@@ -72,9 +92,7 @@ const DetailProduct: React.FC = () => {
       <div style={{ display: 'flex', gap: 24, marginTop: 24 }}>
         <div style={{ flex: 2 }}>
           <h4>Thông tin sản phẩm</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-          </p>
+          <p>{product.description || 'Đang cập nhật mô tả...'}</p>
           <div style={{ display: 'flex', gap: 8 }}>
             <img src="https://via.placeholder.com/100" alt="Ảnh mô tả" />
             <img src="https://via.placeholder.com/100" alt="Ảnh mô tả" />
