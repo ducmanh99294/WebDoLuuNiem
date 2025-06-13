@@ -41,50 +41,6 @@ const createChat = async (req, res) => {
     }
 }
 
-const createChatGroupProduct = async (req, res) => {
-    try {
-        const { senderId, productId, messages, parentMessageId} = req.body;
-
-        if (!senderId || !productId || !messages || !Array.isArray(messages) || messages.length === 0) {
-            logger.error('sender ID and Product ID and Messages are required');
-            return res.status(400).json({
-                success: false,
-                message: 'sender ID and Product ID and Messages are required'
-            });
-        }
-
-        let chat = await Chat.findOne({ product: productId });
-        if (!chat) {
-            chat = new Chat({
-                users: [senderId],
-                product: productId,
-                parentMessageId: parentMessageId || null,
-                messages: []
-            });
-        } else if (!chat.user.includes(senderId)) {
-            chat.user.push(senderId); // thêm người dùng nếu chưa có
-        }
-        
-        chat.messages.push(...messages);
-        
-        await chat.save();
-
-        logger.info(`Messages added to chat with ID: ${chat._id}`);
-        res.status(200).json({
-            success: true,
-            message: 'messages added successfully',
-            chat
-        });
-    } catch (error) {
-        logger.error(`Error creating chat: ${error.message}`);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to create chat',
-            error: error.message
-        });
-    }
-}
-
 const getAllChats = async (req, res) => {
     try {
         const chats = await Chat.find()
