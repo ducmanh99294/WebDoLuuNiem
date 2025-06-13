@@ -1303,3 +1303,14 @@
 {"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-11T03:30:46.426Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-11T03:30:47.058Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-11T03:30:47.952Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-13T03:48:25.991Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-13T03:48:26.262Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-13T03:48:26.912Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-13T03:48:29.246Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-13T03:48:29.246Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-13T03:48:29.247Z"}
+{"level":"info","message":"Total users retrieved: 12","timestamp":"2025-06-13T03:48:29.306Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-13T03:48:45.891Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-13T03:48:45.892Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-13T03:48:45.893Z"}
+{"level":"info","message":"Total users retrieved: 12","timestamp":"2025-06-13T03:48:45.943Z"}
