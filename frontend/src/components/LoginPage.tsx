@@ -1,10 +1,10 @@
 
+// src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import '../assets/css/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
-<<<<<<< HEAD
   const [useOtp, setUseOtp] = useState(false); // kiểm tra có đăng nhập bằng OTP không
   const [step, setStep] = useState<'form' | 'otp'>('form');
   const [contact, setContact] = useState('');
@@ -39,42 +39,6 @@ const LoginPage: React.FC = () => {
     navigate('/');
   };
 
-=======
-  const [emailOrPhone, setEmailOrPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
-  const navigate = useNavigate();
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const res = await fetch('http://localhost:3000/api/v1/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: emailOrPhone, // hoặc có thể cần tách email/sdt ở backend
-          password: password,
-        }),
-      });
-      
-      const data = await res.json();
-      if (res.ok) {
-        // Ví dụ: lưu token nếu có
-        localStorage.setItem('token', data.token);
-        navigate('/'); // chuyển về trang chủ
-      } else {
-        setErrorMsg(data.message || 'Đăng nhập thất bại');
-      }
-    } catch (err) {
-      console.error('Lỗi đăng nhập:', err);
-      setErrorMsg('Có lỗi xảy ra. Vui lòng thử lại sau.');
-    }
-  };
-
->>>>>>> 8df92d70eb9d2d13ff0c750b175a5ecc1feecce2
   return (
     <div className="login-container">
       <div className="login-left">
@@ -86,36 +50,16 @@ const LoginPage: React.FC = () => {
           Cảm ơn bạn <span className="highlight">rất nhiều!</span>
         </p>
 
-<<<<<<< HEAD
         {/* Nếu chưa chọn OTP */}
         {!useOtp && (
           <form onSubmit={handleNormalLogin}>
             <input type="text" placeholder="Email hoặc số điện thoại" required />
             <input type="password" placeholder="Mật khẩu" required />
-=======
-        <form onSubmit={handleLogin}>
-          <input
-            type="text"
-            placeholder="Email hoặc số điện thoại"
-            value={emailOrPhone}
-            onChange={(e) => setEmailOrPhone(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Mật khẩu"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <div className="otp-link">
-            <a href="#">Đăng nhập bằng OTP</a>
-          </div>
->>>>>>> 8df92d70eb9d2d13ff0c750b175a5ecc1feecce2
 
             <div className="otp-link">
               <a href="#" onClick={(e) => { e.preventDefault(); setUseOtp(true); }}>Đăng nhập bằng OTP</a>
             </div>
 
-<<<<<<< HEAD
             <button type="submit" className="btn-login">Đăng nhập</button>
 
             <div className="options">
@@ -184,23 +128,6 @@ const LoginPage: React.FC = () => {
             </button>
           </form>
         )}
-=======
-          {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
-
-          <div className="options">
-            <label style={{ width: '100px' }}>
-              <input type="checkbox" /> Nhớ đến tôi
-            </label>
-          </div>
-
-          <div className="links">
-            <span>Bạn không có tài khoản?
-              <Link to="/register">Đăng ký</Link>
-            </span><br />
-            <a href="#">Quên mật khẩu?</a>
-          </div>
-        </form>
->>>>>>> 8df92d70eb9d2d13ff0c750b175a5ecc1feecce2
 
         <div className="divider">Hoặc đăng nhập bằng</div>
 
