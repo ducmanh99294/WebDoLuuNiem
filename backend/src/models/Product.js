@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema({
     Coupon: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Coupons",
-        default: 0,
+        default: null,
     },
     images: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -45,17 +45,17 @@ const productSchema = new mongoose.Schema({
     },
     like_count: {
         type: Number,
-        required: true,
+        default: 0
    
     },
     view_count: {
         type: Number,
-        required: true,
+        default: 0
     },
 
     sell_count: {
         type: Number,
-        required: true,
+        default: 0
     },
     created_at: {
         type: Date,
