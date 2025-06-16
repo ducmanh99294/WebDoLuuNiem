@@ -3,6 +3,7 @@ const logger = require("../utils/logger");
 const mongoose = require('mongoose');
 
 // const mongoURL = process.env.MONGO_URL || 'mongodb://admin:123456@mongodb:27018/WebDoLuuNiem';
+const mongoURL = process.env.MONGO_URL || 'mongodb+srv://root:21082004@cluster0.oqhctgp.mongodb.net/shopluuniem?retryWrites=true&w=majority&appName=Cluster0';
 
 
 const connectMongoDB = async () => {
