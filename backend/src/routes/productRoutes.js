@@ -5,6 +5,7 @@ const productController = require('../controllers/productControllers');
 const authRoles = require('../middlewares/authRoles');
 const { validateToken } = require('../middlewares/authMiddleware');
 
+router.post('/', validateToken, authRoles("admin"), productController.createProduct);
 router.get('/', productController.getAllProducts);
 router.get('/:id', productController.getProductById);
 router.post('/products/:id/like', validateToken, authRoles, productController.like_count);
