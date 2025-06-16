@@ -1,0 +1,19 @@
+{"level":"error","message":"Error creating category: urls is not defined","timestamp":"2025-06-16T01:34:50.811Z"}
+{"level":"error","message":"Error creating category: urls is not defined","timestamp":"2025-06-16T01:35:17.059Z"}
+{"level":"error","message":"Error creating category: image.map is not a function","timestamp":"2025-06-16T01:37:25.114Z"}
+{"level":"error","message":"Error creating category: image.map is not a function","timestamp":"2025-06-16T01:38:29.570Z"}
+{"level":"error","message":"Error creating category: image.map is not a function","timestamp":"2025-06-16T02:37:38.965Z"}
+{"level":"error","message":"Error creating category: url is not defined","timestamp":"2025-06-16T02:41:45.833Z"}
+{"level":"error","message":"Error creating category: Images validation failed: Product: Path `Product` is required.","timestamp":"2025-06-16T02:45:38.086Z"}
+{"level":"error","message":"Error creating category: Images validation failed: Product: Path `Product` is required.","timestamp":"2025-06-16T02:47:38.015Z"}
+{"level":"error","message":"Error creating category: Images validation failed: Product: Path `Product` is required.","timestamp":"2025-06-16T02:47:53.191Z"}
+{"level":"error","message":"Error creating category: Categories validation failed: description: Path `description` is required., name: Path `name` is required.","timestamp":"2025-06-16T02:52:25.807Z"}
+{"level":"error","message":"Error creating category: E11000 duplicate key error collection: WebDoLuuNiem.categories index: name_1 dup key: { name: \"n2e\" }","timestamp":"2025-06-16T02:53:16.223Z"}
+{"level":"error","message":"Error creating category: E11000 duplicate key error collection: WebDoLuuNiem.categories index: name_1 dup key: { name: \"new\" }","timestamp":"2025-06-16T02:53:31.564Z"}
+{"level":"error","message":"Error creating category: Categories validation failed: image: Path `image` is required.","timestamp":"2025-06-16T02:57:33.684Z"}
+{"level":"error","message":"Error creating category: Assignment to constant variable.","timestamp":"2025-06-16T02:58:13.067Z"}
+{"level":"error","message":"Error creating category: Assignment to constant variable.","timestamp":"2025-06-16T02:59:36.502Z"}
+{"level":"error","message":"Error creating category: Categories validation failed: description: Path `description` is required., name: Path `name` is required.","timestamp":"2025-06-16T03:04:44.551Z"}
+{"level":"error","message":"Error creating category: Categories validation failed: image: Path `image` is required.","timestamp":"2025-06-16T03:05:58.012Z"}
+{"level":"error","message":"Error creating category: Categories validation failed: image: Path `image` is required.","timestamp":"2025-06-16T03:13:20.839Z"}
+{"level":"error","message":"Error creating category: Categories validation failed: image: Path `image` is required.","timestamp":"2025-06-16T03:14:50.285Z"}

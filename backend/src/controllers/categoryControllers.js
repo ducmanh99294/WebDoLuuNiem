@@ -1,4 +1,5 @@
 const Category = require('../models/Category');
+// const Images = require('../models/Image.js');
 const logger = require('../utils/logger');
 
 const createCategory = async (req, res) => {
@@ -14,7 +15,19 @@ const createCategory = async (req, res) => {
             });
         }
 
-        const category = await Category.create({ name, description, image });
+        let newImage = "";
+
+        if(req.file) {
+            newImage = `/src/assets/images/${req.file.filename}`;
+        } 
+
+        if (image) {
+            newImage = image;
+        }
+
+        const category = await Category.create({ ...req.body, image: newImage });
+        await category.save();
+
         logger.info(`Category created successfully: ${category._id}`);
         res.status(201).json({
             success: true,
