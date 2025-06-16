@@ -8,7 +8,6 @@ const mongoURL = process.env.MONGO_URL || 'mongodb+srv://hoang26022005sc:hoang26
 
 const connectMongoDB = async () => {
     try {
-        console.log(mongoURL);
         await mongoose.connect(mongoURL, {
             // useNewUrlParser: true,
             // useUnifiedTopology: true,
