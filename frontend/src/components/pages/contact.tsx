@@ -1,6 +1,23 @@
-import React from 'react';
-
+import React , { useState }from 'react';
+import '../../assets/css/Contact.css'
 const Contact: React.FC = () => {
+   const [formData, setFormData] = useState({
+    title: "",
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert("Tin nhắn đã được gửi!");
+    // Gửi dữ liệu về backend tại đây nếu cần
+  };
   return (
     <div style={{ background: '#fff', padding: 24 }}>
       <h1>Liên hệ</h1>
@@ -51,27 +68,40 @@ const Contact: React.FC = () => {
           </li>
         </ul>
       </div>
+      <br />
+      <br />
       {/* Footer Info */}
-      <div style={{ marginTop: 32, borderTop: '1px solid #eee', paddingTop: 16, display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <b>Shop Mall</b>
-          <div>Địa chỉ: 33 Xô Viết Nghệ Tĩnh, Đà Nẵng</div>
-          <div>SĐT: 0909876266</div>
-          <div>Email: Email1th@gmail.com</div>
+       <form className="contact-form" onSubmit={handleSubmit}>
+      <h2>Gửi lời nhắn</h2>
+
+      <div className="form-group">
+        <label htmlFor="title">Tiêu đề <span className="required">*</span></label>
+        <input type="text" id="title" placeholder="Nhập tiêu đề tin nhắn" required value={formData.title} onChange={handleChange} />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="name">Tên <span className="required">*</span></label>
+        <input type="text" id="name" placeholder="Nhập tên của bạn" required value={formData.name} onChange={handleChange} />
+      </div>
+
+      <div className="row">
+        <div className="form-group">
+          <label htmlFor="phone">Số điện thoại</label>
+          <input type="text" id="phone" placeholder="Nhập SĐT của bạn" value={formData.phone} onChange={handleChange} />
         </div>
-        <div>
-          <b>Chính sách của hàng</b>
-          <div>Phương thức thanh toán</div>
-          <div>Chính sách đổi trả</div>
-        </div>
-        <div>
-          <b>App</b>
-          <div>Đăng ký nhận tin</div>
-          <div>
-            <img src="https://via.placeholder.com/40" alt="App" />
-          </div>
+        <div className="form-group">
+          <label htmlFor="email">Email <span className="required">*</span></label>
+          <input type="email" id="email" placeholder="Nhập Email của bạn" required value={formData.email} onChange={handleChange} />
         </div>
       </div>
+
+      <div className="form-group">
+        <label htmlFor="message">Tin nhắn <span className="required">*</span></label>
+        <textarea id="message" rows={4} placeholder="Nhập nội dung tin nhắn" required value={formData.message} onChange={handleChange}></textarea>
+      </div>
+
+      <button type="submit">Gửi tin nhắn</button>
+    </form>
     </div>
   );
 };

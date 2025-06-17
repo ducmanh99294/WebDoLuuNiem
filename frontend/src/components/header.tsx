@@ -94,7 +94,7 @@ const handleLogout = async () => {
             </>
           )}
 
-          <button><FaShoppingCart /></button>
+          <Link to="/cart"><button><FaShoppingCart /></button></Link>
         </div>
       </div>
 

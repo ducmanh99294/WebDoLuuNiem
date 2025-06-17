@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import '../../assets/css/Detail.css'
 const DetailProduct: React.FC = () => {
   const { _id } = useParams();
   const [product, setProduct] = useState<any>(null);
@@ -11,7 +11,7 @@ const DetailProduct: React.FC = () => {
       try {
         const res = await fetch(`http://localhost:3000/api/v1/products/${_id}`);
         const data = await res.json();
-        setProduct(data); // ❗ API trả về object sản phẩm trực tiếp
+        setProduct(data); //  API trả về object sản phẩm trực tiếp
       } catch (err) {
         console.error('Lỗi khi lấy sản phẩm:', err);
       } finally {
@@ -55,14 +55,47 @@ const DetailProduct: React.FC = () => {
           <div>
             <span>Vận chuyển đến: </span>
             <select>
-              <option>Hồ Chí Minh</option>
-              <option>Hà Nội</option>
+  <option>Tuyên Quang</option>
+  <option>Lào Cai</option>
+  <option>Thái Nguyên</option>
+  <option>Phú Thọ</option>
+  <option>Bắc Ninh</option>
+  <option>Hưng Yên</option>
+  <option>TP. Hải Phòng</option>
+  <option>Ninh Bình</option>
+  <option>Quảng Trị</option>
+  <option>TP. Huế</option>
+  <option>TP. Đà Nẵng</option>
+  <option>Quảng Ngãi</option>
+  <option>Gia Lai</option>
+  <option>Khánh Hòa</option>
+  <option>Lâm Đồng</option>
+  <option>Đắk Lắk</option>
+  <option>TP. Hồ Chí Minh</option>
+  <option>Đồng Nai</option>
+  <option>Tây Ninh</option>
+  <option>TP. Cần Thơ</option>
+  <option>Vĩnh Long</option>
+  <option>Đồng Tháp</option>
+  <option>Cà Mau</option>
+  <option>An Giang</option>
+  <option>Cao Bằng</option>
+  <option>Lai Châu</option>
+  <option>Điện Biên</option>
+  <option>Lạng Sơn</option>
+  <option>Sơn La</option>
+  <option>Quảng Ninh</option>
+  <option>TP. Hà Nội</option>
+  <option>Thanh Hóa</option>
+  <option>Nghệ An</option>
+  <option>Hà Tĩnh</option>
             </select>
+
           </div>
           <div style={{ margin: '12px 0' }}>
             <span>Số lượng: </span>
             <button>-</button>
-            <input type="number" value={1} style={{ width: 40, textAlign: 'center' }} readOnly />
+            <input type="number" value={1} style={{ width: 80, textAlign: 'center' }} readOnly />
             <button>+</button>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
