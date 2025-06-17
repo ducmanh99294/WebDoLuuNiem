@@ -2,8 +2,7 @@ require('dotenv').config();
 const logger = require("../utils/logger");
 const mongoose = require('mongoose');
 
-// const mongoURL = process.env.MONGO_URL || 'mongodb://admin:123456@mongodb:27018/WebDoLuuNiem';
-const mongoURL = process.env.MONGO_URL || 'mongodb+srv://hoang26022005sc:hoang26022005sc@cluster0.1ya4y.mongodb.net/WebDoLuuNiem?retryWrites=true&w=majority&appName=Cluster0';
+//const mongoURL = process.env.MONGO_URL || 'mongodb://admin:123456@mongodb:27018/WebDoLuuNiem';
 
 
 const connectMongoDB = async () => {

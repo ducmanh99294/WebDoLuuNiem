@@ -1,33 +1,66 @@
-// src/pages/Home.tsx
 import React from 'react';
 import '../../assets/css/about.css';
 import Banner from '../Banner';
+
 const Home: React.FC = () => {
-  // data mảng sản phẩm
-
-
   return (
     <>
       <Banner />
-      <div className="about-page">
-        <h1> Giới thiệu </h1>
-        <br />
-        <div className="row">
-            <center>
-<p className='about-text'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sollicitudin erat ex, eu egestas ipsum malesuada eget. Morbi lobortis felis in nisl cursus, eget dapibus magna elementum. Duis quis erat massa. Proin sed mollis libero, eget venenatis justo. Suspendisse tincidunt est pretium, congue erat sit amet, fringilla nisl. In vitae nunc tristique, aliquam tortor sed, feugiat velit. Donec ut urna mi. Nam ultrices pharetra gravida. Maecenas nulla velit, eleifend eget iaculis vel, iaculis vel orci. Nam sed ex vitae nisi fermentum gravida. Ut aliquet turpis sem, ac consequat lorem iaculis non. Vestibulum nisl quam, efficitur vel
-            <br></br> ullamcorper id, consequat ac massa. Quisque iaculis sapien arcu, quis lobortis eros aliquet pharetra.
-            <br/><br/>
-            Sed non condimentum dolor. Vivamus euismod ullamcorper urna, eget malesuada nibh bibendum a. Cras tincidunt, mauris ut faucibus finibus, eros diam dapibus arcu, ut eleifend dui elit ut ligula. Donec in orci eu urna molestie tristique. Etiam efficitur ut orci ut imperdiet. Vestibulum venenatis nunc id congue convallis. Quisque sodales nulla augue, eget feugiat turpis iaculis vitae. Nunc non tellus tincidunt, hendrerit nunc sit amet, convallis tortor. Quisque et tempor diam. Vivamus aliquet id lorem in sodales. Nulla a consectetur ex, eget maximus neque. Suspendisse varius, lectus vel auctor vestibulum, diam lacus consectetur risus, vel gravida arcu enim eget lectus. Duis sodales pretium interdum.
-            <br/><br/>
-            Etiam gravida non orci eget vestibulum. Donec et tristique massa, at laoreet nisl. Sed lobortis est massa, a blandit nibh tincidunt eu. Nam at tortor egestas, suscipit justo blandit, ultrices nisl. Phasellus imperdiet placerat eros, sed fermentum mi scelerisque id. Duis dignissim leo eu orci sodales mattis. Suspendisse nisl velit, tristique eget ante nec, egestas scelerisque metus. In pellentesque odio purus, vitae scelerisque massa sodales sit amet. Ut ex augue, elementum sed luctus a, facilisis et dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam mauris sapien, malesuada id hendrerit sed, accumsan nec nunc. Fusce consectetur, metus ac suscipit varius, nulla ante scelerisque tellus, ut pretium dui velit at lectus. Suspendisse sem nunc, viverra tempus venenatis sit amet, mattis a nibh. Nulla pretium dictum ipsum, eget placerat urna semper id. 
-            <br/><br/>
-            </p>  
-            </center>  
-            </div>
-                </div>
-                </>
-            );
+      <div className="about-page" style={{ padding: '24px', maxWidth: 1000, margin: '0 auto' }}>
+        <h1>Giới thiệu</h1>
+        <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: 24, gap: 24 }}>
+          {/* Left content */}
+          <div style={{ flex: 1, minWidth: 300 }}>
+            <p style={{ lineHeight: 1.6 }}>
+              Công ty <b style={{ color: '#3BB77E' }}>Shop MALL</b> thành lập kể từ ngày <b>27/12/2020</b>. Công ty chuyên phân phối <b>đặc sản vùng miền ngon</b> và các thực phẩm khô chất lượng, hợp vệ sinh trên toàn quốc để đáp ứng nhu cầu tiêu dùng ngày càng cao của các đối tác, cửa hàng và người tiêu dùng.
+              <br /><br />
+              Với khẩu hiệu trung thành với <b> chất lượng – uy tín – tận tâm</b>, các sản phẩm đặc sản đến từ Shop MALL mang đậm hương vị truyền thống, được kiểm định an toàn thực phẩm rõ ràng và đảm bảo nguồn gốc xuất xứ minh bạch.
+              <br /><br />
+              "Hướng tới tầm nhìn sẽ trở thành một trong những nhà phân phối, cung ứng bánh kẹo, thực phẩm đặc sản Việt hàng đầu đến tay người tiêu dùng trong khắp cả nước"
+            </p>
+          </div>
+
+          {/* Right image */}
+          <div style={{ flex: 1, minWidth: 300 }}>
+            <img
+              src="https://cdn.justfly.vn/1600x1081/media/202108/20/1629426031-dia-diem-mua-dac-san-lam-qua-da-nang.jpg"
+              alt="Đặc sản Đà Nẵng"
+              style={{ width: '100%', borderRadius: 8 }}
+            />
+          </div>
+        </div>
+
+        {/* Second section with image and content */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: 48, gap: 24 }}>
+          <div style={{ flex: 1, minWidth: 300 }}>
+            <img
+              src="https://danangbest.com/upload_content/op-10-cua-hang-ban-dac-san-da-nang-4.webp"
+              alt="Cửa hàng Shop MALL"
+              style={{ width: '100%', borderRadius: 8 }}
+            />
+          </div>
+
+          <div style={{ flex: 1, minWidth: 300 }}>
+            <p style={{ lineHeight: 1.6 }}>
+              Sản phẩm của<b style={{ color: '#3BB77E' }}> Shop MALL</b> hiện diện ở khắp các hệ thống bán lẻ hiện đại, siêu thị mini, cửa hàng tiện lợi, các cửa hàng đặc sản cũng như các hội chợ, triển lãm, giúp khách hàng tiếp cận dễ dàng hơn với thực phẩm an toàn và quà tặng từ thiên nhiên.
+            </p>
+            <br />
+            <ul style={{ paddingLeft: 20 }}>
+              <li>Siêu thị Little Mart</li>
+              <li>Siêu thị City Mart</li>
+              <li>Siêu thị Mini Go</li>
+              <li>Siêu thị An Mart</li>
+              <li>Siêu thị Vinmart</li>
+              <li>Hệ thống Mega Market</li>
+            </ul>
+            <p style={{ marginTop: 12 }}>
+              Shop MALL luôn nỗ lực không ngừng để đưa sản phẩm đến gần hơn với khách hàng, mang lại trải nghiệm mua sắm tiện lợi, an toàn, đảm bảo <b>"an toàn vệ sinh thực phẩm"</b>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Home;
