@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const Event = require('../models/Event');
 const logger = require('../utils/logger');
 
@@ -45,7 +46,6 @@ const createEvent = async (req, res) => {
 const getAllEvents = async (req, res) => {
     try {
         const events = await Event.find()
-            .populate('discount', 'code discountType value')
             .populate('images', 'url')
             .populate('products', 'name price');
 
@@ -68,7 +68,6 @@ const getAllEvents = async (req, res) => {
 const getEventById = async (req, res) => {
     try {
         const event = await Event.findById(req.params.id)
-            .populate('discount', 'code discountType value')
             .populate('images', 'url')
             .populate('products', 'name price');
 
@@ -162,10 +161,98 @@ const deleteEvent = async (req, res) => {
     }
 }
 
+const addProductToEvent = async (req, res) => {
+    const { productId } = req.body;
+    try {
+        const event = await Event.findById(req.params.id);
+        if(!event) {
+            logger.warn(`Event not found with ID: ${req.params.id}`);
+            return res.status(404).json({
+                success: false,
+                message: 'Event not found'
+            });
+        }
+        
+        console.log("id "+Array.isArray(productId), productId);
+        if (!Array.isArray(productId)) {
+            logger.warn(`Product already exists in event with ID: ${req.params.id}`);
+            return res.status(400).json({
+                success: false,
+                message: 'Product already exists in this event'
+            });
+        }
+
+        let addProducts = [];
+
+        for(const id of productId) {
+            if (!event.products.includes(id)) {
+                event.products.push(id);
+                addProducts.push(id);
+            }
+        }
+
+        await event.save();
+        logger.info(`Product added to event successfully with ID: ${req.params.id}`);
+        res.status(200).json({
+            success: true,
+            message: 'Product added to event successfully',
+            data: event
+        });
+} catch (error) {
+    logger.error(`Error adding product to event: ${error.message}`);
+    res.status(500).json({
+        success: false,
+        message: 'Failed to add product to event',
+        error: error.message
+    });
+}
+}
+
+const removeProductFromEvent = async (req, res) => {
+    const { productId } = req.body;
+    try {
+        const event = await Event.findById(req.params.id);
+        if(!event) {
+            logger.warn(`Event not found with ID: ${req.params.id}`);
+            return res.status(404).json({
+                success: false,
+                message: 'Event not found'
+            });
+        }
+
+        console.log("id "+ !Array.isArray(productId), productId);
+        if (Array.isArray(productId)) {
+            logger.warn(`Product not found in event with ID: ${req.params.id}`);
+            return res.status(400).json({
+                success: false,
+                message: 'Product not found in this event'
+            });
+        }
+
+        event.products = event.products.filter(id => !productId.includes(id.toString()));
+        await event.save();
+        logger.info(`Product removed from event successfully with ID: ${req.params.id}`);
+        res.status(200).json({
+            success: true,
+            message: 'Product removed from event successfully',
+            data: event
+        });
+    } catch (error) {
+        logger.error(`Error removing product from event: ${error.message}`);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to remove product from event',
+            error: error.message
+        });
+    }
+}
+
 module.exports = {
     createEvent,
     getAllEvents,
     getEventById,
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    addProductToEvent,
+    removeProductFromEvent
 };
