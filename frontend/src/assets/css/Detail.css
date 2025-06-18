@@ -1,0 +1,9 @@
+.product-info button{
+ cursor: pointer;
+ gap: 5px;
+ margin-left: 5px;
+ 
+}
+.product-info select{
+    cursor: pointer;
+}

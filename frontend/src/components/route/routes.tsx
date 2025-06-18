@@ -11,13 +11,12 @@ import DetailProduct from '../pages/DetailProduct';
 import NewsPage from '../pages/newspage';
 import Contact from '../pages/contact';
 import Dashboard from '../pages/Dashboard';
-
+import CartPage from '../pages/cart';
 const AppRouter: React.FC = () => {
   // tách n
   return (
     <Router>
       <Header />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -30,11 +29,11 @@ const AppRouter: React.FC = () => {
         <Route path="/signin" element={<Navigate to="/login" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
       <Footer />
     </Router>
     // tách 
   );
 };
-
 export default AppRouter;
