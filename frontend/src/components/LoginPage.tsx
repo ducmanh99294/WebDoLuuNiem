@@ -28,12 +28,14 @@ const LoginPage: React.FC = () => {
       if (res.ok && data.success) {
         const token = data.data?.accessToken || '';
         const role = (data.data?.role || '').toLowerCase();
+        const name = data.data?.name?.trim() || 'Người dùng'; // ✅ thêm dòng này
+        const avatar = data.data?.avatar || '/images/default-avatar.png';
 
         localStorage.setItem('token', token);
         localStorage.setItem('role', role);
-
+        localStorage.setItem('username', name);
         console.log('Role:', role);
-
+        localStorage.setItem('avatar', avatar);   // ✔ avatar
         if (role === 'admin') {
           console.log('Admin detected. Navigating to dashboard...');
           navigate('/dashboard');

@@ -39,15 +39,9 @@ const Home: React.FC = () => {
           {loading ? (
             <p>Đang tải sản phẩm...</p>
           ) : (
-            products.map(product => (
-              <Link
-                key={product.id}
-                to={`/product-detail/${product._id}`}
-                style={{ textDecoration: 'none', color: 'black' }}
-              >
-                 <ProductCard key={product._id} product={product} />
-              </Link>
-            ))
+             products.map(product => (
+      <ProductCard key={product._id} product={product} />
+    ))
           )}
         </div>
       </div>

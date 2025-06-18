@@ -2,6 +2,7 @@ import React from 'react';
 import '../../assets/css/productcard.css';
 import { FaHeart } from 'react-icons/fa';
 import type { Product } from '../data/product';
+import { Link } from 'react-router-dom'; // 👈 Thêm dòng này
 // 👉 Import type Product từ productData
 
 
@@ -16,7 +17,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <div className="container">
       <div className="card">
         <div className="image-wrapper">
-          <img src={product.images[0].image} alt={product.name} className="image" />
+          <Link to={`/product-detail/${product._id}`}>
+            <img src={product.images[0].image} alt={product.name} className="image" />
+          </Link>
           <div className="label">Hot</div>
         </div>
         <div className="rating-line">

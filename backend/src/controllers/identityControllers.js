@@ -110,6 +110,8 @@ const { accessToken, refreshToken } = await generateAuthToken(user);
             data: {
                 user_id: user._id,
                 role: user.role,
+                name: user.name,
+                image:user.image,
                 accessToken,
                 refreshToken
             }
