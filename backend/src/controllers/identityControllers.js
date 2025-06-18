@@ -111,6 +111,7 @@ const loginUser = async (req, res) => {
             data: {
                 user_id: user._id,
                 role: user.role,
+                name: user.name,
                 accessToken,
                 refreshToken
             }

@@ -17,3 +17,17 @@
 {"level":"error","message":"Error creating category: Categories validation failed: image: Path `image` is required.","timestamp":"2025-06-16T03:05:58.012Z"}
 {"level":"error","message":"Error creating category: Categories validation failed: image: Path `image` is required.","timestamp":"2025-06-16T03:13:20.839Z"}
 {"level":"error","message":"Error creating category: Categories validation failed: image: Path `image` is required.","timestamp":"2025-06-16T03:14:50.285Z"}
+{"level":"error","message":"Error using coupon: data is not defined","timestamp":"2025-06-18T02:13:05.460Z"}
+{"level":"error","message":"Error using coupon: Cannot read properties of undefined (reading 'body')","timestamp":"2025-06-18T02:13:22.664Z"}
+{"level":"error","message":"Error retrieving coupons: Cannot populate path `name` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-18T02:19:04.026Z"}
+{"level":"error","message":"Error using coupon: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-06-18T02:33:25.087Z"}
+{"level":"error","message":"Error using coupon: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-06-18T02:33:32.122Z"}
+{"level":"error","message":"Error adding product to event: productId is not iterable","timestamp":"2025-06-18T03:18:39.615Z"}
+{"level":"error","message":"Error adding product to event: productId is not iterable","timestamp":"2025-06-18T03:19:37.979Z"}
+{"level":"error","message":"Error adding product to event: productId is not iterable","timestamp":"2025-06-18T03:21:39.277Z"}
+{"level":"error","message":"Error removing product from event: this.splitPath is not a function","timestamp":"2025-06-18T03:43:50.003Z"}
+{"level":"error","message":"Error removing product from event: this.splitPath is not a function","timestamp":"2025-06-18T03:43:54.953Z"}
+{"level":"error","message":"Error removing product from event: this.splitPath is not a function","timestamp":"2025-06-18T03:44:23.033Z"}
+{"level":"error","message":"Error deleting event: Cast to ObjectId failed for value \"remove-products\" (type string) at path \"_id\" for model \"Events\"","timestamp":"2025-06-18T03:46:21.498Z"}
+{"level":"error","message":"Error adding product to event: id is not defined","timestamp":"2025-06-18T03:53:52.967Z"}
+{"level":"error","message":"Error adding product to event: _id is not defined","timestamp":"2025-06-18T03:54:14.809Z"}

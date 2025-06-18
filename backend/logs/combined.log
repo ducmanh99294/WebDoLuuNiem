@@ -744,3 +744,795 @@
 {"level":"info","message":"Received body: undefined","timestamp":"2025-06-16T03:17:12.198Z"}
 {"level":"info","message":"Fetching all products","timestamp":"2025-06-16T03:17:12.199Z"}
 {"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-16T03:17:12.318Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:06:36.859Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:06:37.597Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:06:39.303Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-18T01:07:01.769Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T01:07:01.771Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:13:50.522Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:13:51.120Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:13:51.866Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:13:56.580Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:13:57.107Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:13:57.753Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:19:14.966Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:19:15.514Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:20:51.260Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:20:51.728Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:20:52.435Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:20:57.881Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:20:58.300Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:20:58.974Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:21:50.374Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:21:50.912Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:21:53.038Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:21:53.496Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:21:54.228Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:22:09.076Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:22:09.444Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:22:10.237Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:22:36.874Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:22:37.321Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:22:38.025Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:22:47.713Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:22:48.188Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:22:48.853Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:22:58.489Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:22:58.947Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:22:59.661Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:23:09.007Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:23:09.479Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:23:10.180Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:23:38.758Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:23:39.224Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:23:39.908Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:23:43.369Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:23:43.770Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:23:44.474Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:23:49.042Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:23:49.548Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:23:50.265Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:24:01.409Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:24:01.947Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:24:02.639Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:24:07.423Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:24:07.868Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:24:08.505Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:25:58.372Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:25:58.801Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:25:59.558Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:26:05.400Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:26:05.875Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:26:06.580Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:26:08.492Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:26:08.914Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:26:09.570Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:53:41.157Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:53:41.757Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:53:42.520Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T01:53:50.132Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T01:53:50.595Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T01:53:51.274Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T01:53:51.972Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T01:53:51.973Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T01:53:51.976Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T01:53:52.370Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T01:53:52.514Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-18T01:54:09.781Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T01:54:09.783Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-18T01:54:09.785Z"}
+{"level":"info","message":"Total users retrieved: 15","timestamp":"2025-06-18T01:54:09.854Z"}
+{"level":"info","message":"Received request: GET /favicon.ico","timestamp":"2025-06-18T01:54:13.071Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T01:54:13.072Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:04:11.245Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:04:11.853Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:04:12.566Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:04:15.145Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:04:15.664Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:04:16.367Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:06:33.489Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:06:34.042Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:06:34.778Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:06:51.957Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:06:52.544Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:06:53.279Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:06:58.768Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:06:59.248Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:06:59.956Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:07:19.419Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:07:19.885Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:07:20.598Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:07:28.140Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:07:28.527Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:07:29.205Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:07:33.058Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:07:33.482Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:07:42.301Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:07:42.693Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:07:43.374Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:07:47.121Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:07:47.540Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:07:48.240Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:07:51.302Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:07:51.839Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:07:52.545Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:07:56.929Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:07:57.467Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:07:58.171Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupon","timestamp":"2025-06-18T02:08:59.014Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:08:59.016Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:09:02.171Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:09:02.172Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:09:02.332Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:10:01.915Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:10:02.529Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:10:03.276Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:11:20.715Z"}
+{"level":"info","message":"Received body: {\"name\":\"Add your name in the body\"}","timestamp":"2025-06-18T02:11:20.717Z"}
+{"level":"warn","message":"Access attempt without valid token","timestamp":"2025-06-18T02:11:20.720Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-18T02:11:20.721Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T02:12:38.530Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T02:12:38.531Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T02:12:38.533Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T02:12:38.617Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T02:12:38.774Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:13:05.452Z"}
+{"level":"info","message":"Received body: {\"name\":\"Add your name in the body\"}","timestamp":"2025-06-18T02:13:05.453Z"}
+{"level":"error","message":"Error using coupon: data is not defined","timestamp":"2025-06-18T02:13:05.460Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:13:17.808Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:13:18.440Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:13:19.205Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:13:22.654Z"}
+{"level":"info","message":"Received body: {\"name\":\"Add your name in the body\"}","timestamp":"2025-06-18T02:13:22.655Z"}
+{"level":"error","message":"Error using coupon: Cannot read properties of undefined (reading 'body')","timestamp":"2025-06-18T02:13:22.664Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:13:32.213Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:13:32.684Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:13:33.393Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:13:34.311Z"}
+{"level":"info","message":"Received body: {\"name\":\"Add your name in the body\"}","timestamp":"2025-06-18T02:13:34.312Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:14:28.250Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:14:28.251Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:14:36.358Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:14:36.359Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:14:36.509Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:14:48.988Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:14:48.993Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:14:49.227Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:14:56.183Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:14:56.184Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:15:01.439Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:15:01.440Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:15:01.578Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:15:22.841Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:15:22.846Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:15:22.965Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:15:53.801Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:15:53.802Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T02:15:58.864Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T02:15:58.865Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T02:15:58.866Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T02:15:58.938Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T02:15:59.146Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T02:16:12.131Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T02:16:12.131Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T02:16:12.132Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T02:16:12.201Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T02:16:12.339Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T02:16:15.651Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T02:16:15.652Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T02:16:15.652Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T02:16:15.730Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T02:16:15.871Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:16:32.138Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:16:32.139Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:16:39.323Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:16:39.323Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:16:48.578Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:16:48.586Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:16:48.707Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:17:53.773Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:17:53.774Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:17:53.900Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:18:59.770Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:19:00.379Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:19:01.153Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:19:03.917Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:19:03.920Z"}
+{"level":"error","message":"Error retrieving coupons: Cannot populate path `name` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-18T02:19:04.026Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:20:12.357Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:20:12.786Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:20:12.955Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:20:12.956Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:20:13.479Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:20:14.016Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:25:09.682Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:25:10.421Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:25:11.142Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:25:11.143Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:25:11.366Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:25:11.920Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:25:15.480Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:25:15.481Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:25:15.607Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:25:33.729Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:25:33.730Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:25:53.759Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:25:53.760Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:26:46.577Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:26:46.577Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:27:34.784Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:27:34.785Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:27:34.923Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:30:03.729Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:30:04.291Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:30:09.132Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:30:09.564Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:30:10.377Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:30:24.624Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:30:24.625Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:31:28.001Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:31:28.002Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-18T02:31:28.007Z"}
+{"level":"info","message":"Received request: POST /api/v1/users/reset-password","timestamp":"2025-06-18T02:31:37.906Z"}
+{"level":"info","message":"Received body: {\"name\":\"manh\",\"password\":\"123456\",\"email\":\"nguyenducmanh1809@gmail.com\",\"address\":\"123\",\"phone\":\"0123456789\",\"role\":\"user\",\"image\":\"null\"}","timestamp":"2025-06-18T02:31:37.907Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T02:31:42.876Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T02:31:42.877Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T02:31:42.879Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T02:31:42.946Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T02:31:43.152Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:31:59.719Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:31:59.720Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:32:18.927Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:32:19.343Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:32:20.060Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:32:23.813Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:32:24.224Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:32:24.888Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:32:48.233Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:32:48.848Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:32:49.538Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:32:57.876Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:32:58.296Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:32:59.039Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:33:02.291Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:33:02.717Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:33:03.389Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:33:12.544Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:33:12.975Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:33:13.668Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:33:23.162Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:33:23.640Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:33:24.322Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:33:25.004Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:33:25.005Z"}
+{"level":"error","message":"Error using coupon: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-06-18T02:33:25.087Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:33:32.061Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:33:32.063Z"}
+{"level":"error","message":"Error using coupon: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-06-18T02:33:32.122Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:33:39.163Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:33:39.602Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:33:40.289Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:33:44.787Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:33:45.244Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:33:45.965Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:33:49.383Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:33:49.384Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:35:18.814Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:35:18.815Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:37:02.144Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:37:02.669Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:37:03.421Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:37:09.470Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:37:09.971Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:37:10.648Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:37:13.833Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:37:13.835Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:37:29.719Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:37:30.160Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:37:30.850Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:37:31.582Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:37:31.584Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:37:44.682Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:37:45.160Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:37:45.809Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:37:46.924Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:37:46.925Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:37:57.891Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:37:58.490Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:37:59.264Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:38:03.038Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:38:03.114Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:38:22.443Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:38:22.940Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:38:23.657Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:38:24.855Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:38:24.856Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:38:33.881Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:38:34.312Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:38:35.018Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:38:43.214Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:38:43.742Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:38:44.457Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:38:45.008Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:38:45.009Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:38:52.035Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:38:52.556Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:38:53.280Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:38:53.551Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:38:53.553Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/use-coupon","timestamp":"2025-06-18T02:40:04.430Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-18T02:40:04.431Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:41:02.576Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:41:02.578Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:41:02.764Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-18T02:44:13.926Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:44:13.927Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-18T02:44:13.929Z"}
+{"level":"info","message":"Total users retrieved: 15","timestamp":"2025-06-18T02:44:13.990Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-18T02:46:27.219Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:46:27.220Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-18T02:46:27.221Z"}
+{"level":"info","message":"Total users retrieved: 15","timestamp":"2025-06-18T02:46:27.277Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-06-18T02:46:35.940Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T02:46:35.941Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-06-18T02:46:36.072Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:57:21.181Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:57:21.621Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:57:22.296Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T02:58:49.180Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T02:58:49.633Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T02:58:50.533Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:02:40.421Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:02:40.850Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:02:41.547Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:02:50.024Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:02:50.511Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:02:51.233Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:03:00.494Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:03:00.958Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:03:01.602Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:03:07.903Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:03:08.349Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:03:09.021Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:03:11.569Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:03:11.975Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:03:12.658Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:03:40.379Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:03:40.871Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:03:41.583Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:03:43.330Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:03:43.728Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:03:44.385Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:03:51.819Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:03:52.289Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:03:53.100Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:03:55.445Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:03:55.883Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:03:56.575Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:04:00.364Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:04:00.807Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:04:01.531Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:05:21.637Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:05:22.056Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:05:22.741Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-18T03:05:50.279Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:05:50.281Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-18T03:05:50.283Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-18T03:05:50.519Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T03:07:25.463Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T03:07:25.464Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T03:07:25.466Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T03:07:25.542Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T03:07:25.699Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:12:27.680Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:12:28.258Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:12:28.980Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:12:54.967Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:12:55.388Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:12:56.144Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:13:26.760Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:13:27.288Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:13:28.018Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:13:33.573Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:13:34.209Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:13:34.864Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:13:52.260Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:13:52.261Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:13:52.360Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:14:26.005Z"}
+{"level":"info","message":"Received body: [{\"productId\":\"683d0d6631386e28d0e4fd97\"},{\"productId\":\"683ac36631386e28d0e4b770\"}]","timestamp":"2025-06-18T03:14:26.006Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:14:26.160Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:14:40.026Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:14:40.027Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:14:40.167Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:14:58.698Z"}
+{"level":"info","message":"Received body: [{\"productId\":\"683d0d6631386e28d0e4fd97\"},{\"productId\":\"683ac36631386e28d0e4b770\"}]","timestamp":"2025-06-18T03:14:58.699Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:14:58.760Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:15:29.468Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:15:30.052Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:15:30.803Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:16:31.880Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:16:32.352Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:16:33.102Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:16:35.519Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:16:36.001Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:16:36.689Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:16:38.697Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:16:39.184Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:16:39.927Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:16:41.869Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:16:42.293Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:16:43.003Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:16:57.646Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:16:58.077Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:16:58.781Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:17:01.043Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:17:01.461Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:17:02.152Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:17:12.336Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:17:12.760Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:17:13.400Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:18:39.508Z"}
+{"level":"info","message":"Received body: [{\"productId\":\"683d0d6631386e28d0e4fd97\"},{\"productId\":\"683ac36631386e28d0e4b770\"}]","timestamp":"2025-06-18T03:18:39.509Z"}
+{"level":"error","message":"Error adding product to event: productId is not iterable","timestamp":"2025-06-18T03:18:39.615Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:19:37.915Z"}
+{"level":"info","message":"Received body: [{\"productId\":\"683d0d6631386e28d0e4fd97\"},{\"productId\":\"683ac36631386e28d0e4b770\"}]","timestamp":"2025-06-18T03:19:37.916Z"}
+{"level":"error","message":"Error adding product to event: productId is not iterable","timestamp":"2025-06-18T03:19:37.979Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:19:52.286Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:19:52.288Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:19:52.363Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:21:39.205Z"}
+{"level":"info","message":"Received body: [{\"productId\":\"683ac36631386e28d0e4b770\"}]","timestamp":"2025-06-18T03:21:39.205Z"}
+{"level":"error","message":"Error adding product to event: productId is not iterable","timestamp":"2025-06-18T03:21:39.277Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:22:41.750Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:22:41.751Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-18T03:22:41.755Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T03:22:48.990Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T03:22:48.991Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T03:22:48.997Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T03:22:49.112Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T03:22:49.279Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:23:00.345Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:23:00.346Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-18T03:23:00.360Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:23:07.874Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:23:07.875Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:23:08.035Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:23:17.967Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:23:17.975Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:23:18.116Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:25:13.924Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:25:14.483Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:25:14.626Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:25:14.627Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:25:15.233Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:25:15.750Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:25:35.746Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:25:36.239Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:25:36.915Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:27:28.444Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:27:28.446Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:29:10.516Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:29:10.941Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:29:11.724Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:29:14.270Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:29:14.675Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:29:15.419Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:29:17.553Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:29:17.979Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:29:18.671Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:29:23.403Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:29:23.813Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:29:24.493Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:29:58.989Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:29:58.991Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:29:59.140Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/product","timestamp":"2025-06-18T03:37:00.023Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:37:00.027Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-product","timestamp":"2025-06-18T03:37:14.725Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:37:14.728Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:37:32.460Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:37:32.461Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:37:32.555Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:37:41.333Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:37:41.334Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:37:41.458Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T03:38:39.479Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T03:38:39.481Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T03:38:39.483Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T03:38:39.564Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T03:38:39.842Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:39:16.442Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:39:16.443Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:39:16.501Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:40:15.448Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:40:16.105Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:40:16.924Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:40:22.236Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:40:22.237Z"}
+{"level":"warn","message":"Event not found with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:40:22.315Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:40:29.784Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:40:30.233Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:40:30.924Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:40:41.698Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:40:41.700Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:40:41.779Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:41:01.329Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:41:01.858Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:41:02.608Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:41:07.808Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:41:08.278Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:41:08.964Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:41:10.180Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:41:10.181Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:41:10.266Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:42:08.643Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:42:09.112Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:42:09.806Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:42:13.484Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:42:13.929Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:42:14.582Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:42:30.245Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:42:30.763Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:42:31.423Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:42:31.425Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:42:31.499Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:42:31.589Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:42:38.408Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:42:38.904Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:42:39.615Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:42:46.894Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:42:47.350Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:42:49.465Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:42:49.997Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:42:50.705Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:42:51.867Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:42:51.869Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:42:51.955Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:43:08.928Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:43:09.368Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:43:10.026Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:43:19.574Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:43:20.070Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:43:20.766Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:43:31.309Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:43:31.710Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:43:32.430Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:43:48.812Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:43:49.241Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:43:49.730Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:43:49.731Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:43:49.923Z"}
+{"level":"error","message":"Error removing product from event: this.splitPath is not a function","timestamp":"2025-06-18T03:43:50.003Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:43:54.895Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:43:54.896Z"}
+{"level":"error","message":"Error removing product from event: this.splitPath is not a function","timestamp":"2025-06-18T03:43:54.953Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:44:22.974Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:44:22.975Z"}
+{"level":"error","message":"Error removing product from event: this.splitPath is not a function","timestamp":"2025-06-18T03:44:23.033Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:44:39.017Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:44:39.530Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:44:40.289Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:44:41.701Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:44:41.702Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:44:41.793Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/remove-products","timestamp":"2025-06-18T03:46:21.488Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:46:21.489Z"}
+{"level":"error","message":"Error deleting event: Cast to ObjectId failed for value \"remove-products\" (type string) at path \"_id\" for model \"Events\"","timestamp":"2025-06-18T03:46:21.498Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:46:34.746Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:46:34.747Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:46:34.818Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:47:04.493Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:47:04.494Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:47:04.556Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:48:09.827Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:48:10.293Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:48:10.961Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:48:13.719Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:48:14.093Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:48:14.798Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:48:21.848Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:48:22.425Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:48:23.115Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:48:52.767Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:48:52.768Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-18T03:48:52.775Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T03:49:03.797Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T03:49:03.798Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T03:49:03.801Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T03:49:03.889Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T03:49:04.065Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:49:15.317Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:49:15.318Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:49:15.440Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:49:22.830Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:49:22.832Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:49:22.952Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:49:34.064Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:49:34.066Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:49:34.204Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:49:49.860Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:49:50.389Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:49:51.113Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:50:04.455Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:50:04.873Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:50:05.569Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:50:06.620Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:50:06.621Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:50:06.773Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:50:15.628Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:50:15.629Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:50:15.776Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:50:26.183Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:50:26.655Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:50:27.356Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:50:28.925Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:50:28.926Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:50:29.130Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:51:15.885Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:51:16.381Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:51:17.094Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:51:18.099Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:51:18.100Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:51:18.260Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:51:24.982Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:51:25.446Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:51:27.737Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:51:28.144Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:51:28.832Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:51:29.738Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:51:29.739Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:51:29.909Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:53:37.518Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:53:38.006Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:53:38.761Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:53:46.224Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:53:46.666Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:53:47.374Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:53:52.886Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:53:52.887Z"}
+{"level":"error","message":"Error adding product to event: id is not defined","timestamp":"2025-06-18T03:53:52.967Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:54:12.315Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:54:12.813Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:54:13.529Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:54:14.727Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:54:14.728Z"}
+{"level":"error","message":"Error adding product to event: _id is not defined","timestamp":"2025-06-18T03:54:14.809Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:55:20.557Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:55:21.084Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:55:21.825Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:55:24.624Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:55:25.203Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:55:25.902Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:55:29.831Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:55:30.318Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:55:31.031Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:55:32.293Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:55:32.294Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:55:32.441Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:55:56.682Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:55:57.204Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:55:57.943Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:55:58.661Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:55:58.662Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:55:58.822Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:56:12.547Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:56:13.037Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:56:13.752Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:56:14.053Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:56:14.055Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:56:14.385Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:56:23.298Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:56:23.863Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:56:24.604Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:56:33.849Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:56:34.318Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:56:35.004Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:56:38.512Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:56:38.956Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:56:39.678Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:56:44.692Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:56:44.694Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-18T03:56:44.704Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:57:12.956Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:57:12.958Z"}
+{"level":"info","message":"Product removed from event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:57:13.115Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:57:18.160Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:57:18.161Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:57:18.309Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:57:24.406Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:57:24.406Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:57:24.531Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:57:32.476Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:57:32.477Z"}
+{"level":"info","message":"Product removed from event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:57:32.594Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:57:51.594Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:57:51.595Z"}
+{"level":"info","message":"Product removed from event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:57:51.796Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:58:28.103Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:58:28.546Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:58:29.326Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:58:30.987Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:58:30.989Z"}
+{"level":"info","message":"Product removed from event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:58:31.152Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:58:34.293Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:58:34.294Z"}
+{"level":"info","message":"Product removed from event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:58:34.425Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:58:42.039Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:58:42.041Z"}
+{"level":"info","message":"Product removed from event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:58:42.165Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T03:58:51.376Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T03:58:51.377Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T03:58:51.450Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:59:05.990Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:59:06.404Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:59:07.078Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:59:10.478Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:59:10.942Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:59:11.612Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:59:12.262Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:59:12.263Z"}
+{"level":"info","message":"Product removed from event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:59:12.762Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T03:59:35.487Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T03:59:35.952Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T03:59:36.711Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T03:59:36.898Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:59:36.900Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:59:37.326Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T03:59:54.828Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T03:59:54.830Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T03:59:55.031Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T04:00:00.375Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:00:00.377Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:00:00.460Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T04:00:07.254Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T04:00:07.751Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T04:00:08.435Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T04:00:09.992Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:00:10.000Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:00:10.083Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T04:00:14.412Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T04:00:14.414Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T04:00:14.490Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T04:00:22.687Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:00:22.689Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:00:22.750Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T04:00:55.674Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:00:55.674Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:00:55.756Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T04:01:07.438Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T04:01:07.987Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T04:01:08.725Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T04:01:09.935Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:01:09.936Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:01:10.094Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T04:01:14.067Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:01:14.068Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:01:14.189Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T04:01:32.678Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T04:01:33.132Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T04:01:33.310Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:01:33.311Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T04:01:33.855Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:01:33.944Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T04:01:36.840Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:01:36.841Z"}
+{"level":"warn","message":"Product not found in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:01:36.910Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T04:01:44.020Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T04:01:44.494Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T04:01:45.188Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/events/68522b87b3f6180a93c8da9b/remove-products","timestamp":"2025-06-18T04:01:45.941Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:01:45.942Z"}
+{"level":"info","message":"Product removed from event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:01:46.124Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T04:01:57.713Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T04:01:58.183Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T04:01:58.845Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T04:01:59.712Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:01:59.713Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:01:59.793Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T04:02:09.481Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T04:02:09.482Z"}
+{"level":"warn","message":"Product already exists in event with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T04:02:09.549Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T04:02:37.504Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T04:02:37.509Z"}
+{"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T04:02:37.585Z"}

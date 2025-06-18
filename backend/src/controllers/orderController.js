@@ -444,6 +444,61 @@ const cancelOrder = async (req, res) => {
   }
 };
 
+const useCoupon = async (req, res) => {
+  try {
+    const { code } = req.body;
+
+    const coupon = await mongoose.model('Coupons').findOne({ code: code });
+    if (!coupon) {
+      return res.status(404).json({
+        success: false,
+        message: 'coupon not found'
+      });
+    }
+
+    if (coupon.expiryDate < new Date()) {
+      return res.status(400).json({
+        success: false,
+        message: 'this coupon has expired'
+      });
+    }
+
+    // Kiểm tra xem người dùng đã sử dụng mã này chưa
+    if (coupon.applicable_users.includes(req.user._id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'you have already used this coupon'
+      });
+    }
+
+    // Cập nhật người dùng đã sử dụng mã
+    console.log(req.user.id);
+    if(!req.user || !req.user.id) {
+      return res.status(400).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    coupon.applicable_users.push(req.user.id);
+    await coupon.save();
+
+    res.status(200).json({
+      success: true,
+      message: 'Coupon applied successfully',
+      data: coupon
+    });
+  } catch (error) {
+    logger.error(`Error using coupon: ${error.message}`);
+    res.status(500).json({
+      success: false,
+      message: 'Error using coupon',
+      error: error.message
+    });
+  }
+};
+
+
 module.exports = {
   createOrder,
   getAllOrders,
@@ -451,5 +506,6 @@ module.exports = {
   updateOrderStatus,
   deleteOrder,
   confirmOrder,
-  cancelOrder
+  cancelOrder,
+  useCoupon
 };

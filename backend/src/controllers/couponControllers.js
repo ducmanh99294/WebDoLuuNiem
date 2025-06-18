@@ -31,7 +31,7 @@ const createCoupon = async (req, res) => {
 
 const getAllCoupons = async (req, res) => {
     try {
-        const coupons = await Coupon.find().populate('applicable_users');
+        const coupons = await Coupon.find().populate('applicable_users', 'name');
         logger.info(`Retrieved ${coupons.length} coupons`);
         res.status(200).json({
             success: true,
