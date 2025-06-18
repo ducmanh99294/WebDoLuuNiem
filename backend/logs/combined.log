@@ -1536,3 +1536,23 @@
 {"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-06-18T04:02:37.504Z"}
 {"level":"info","message":"Received body: undefined","timestamp":"2025-06-18T04:02:37.509Z"}
 {"level":"info","message":"Retrieved 1 events","timestamp":"2025-06-18T04:02:37.585Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-18T12:54:05.819Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-18T12:54:06.129Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-18T12:54:07.038Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T12:54:21.817Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T12:54:21.819Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-18T12:54:21.827Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-18T12:54:29.558Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-18T12:54:29.559Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-18T12:54:29.560Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-18T12:54:29.677Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-18T12:54:29.951Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T12:54:40.739Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T12:54:40.739Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T12:54:40.887Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T12:54:43.741Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T12:54:43.742Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T12:54:43.942Z"}
+{"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T12:54:58.168Z"}
+{"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T12:54:58.168Z"}
+{"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T12:54:58.312Z"}
