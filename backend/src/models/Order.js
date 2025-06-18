@@ -7,6 +7,11 @@ const orderSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  copoun: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Coupons',
+    default: null
+  },
   order_number: {
     type: String,
     required: true,

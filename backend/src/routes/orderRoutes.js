@@ -24,4 +24,6 @@ router.post('/comfirm', orderController.confirmOrder);
 
 router.post('/cancel', orderController.cancelOrder);
 
+router.post('/:id/coupon', orderController.useCoupon);
+
 module.exports = router;
