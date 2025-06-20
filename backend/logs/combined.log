@@ -1556,3 +1556,6 @@
 {"level":"info","message":"Received request: POST /api/v1/events/68522b87b3f6180a93c8da9b/add-products","timestamp":"2025-06-18T12:54:58.168Z"}
 {"level":"info","message":"Received body: {\"productId\":[\"683d0d6631386e28d0e4fd97\",\"683ac36631386e28d0e4b770\"]}","timestamp":"2025-06-18T12:54:58.168Z"}
 {"level":"info","message":"Product added to event successfully with ID: 68522b87b3f6180a93c8da9b","timestamp":"2025-06-18T12:54:58.312Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-20T03:36:23.509Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-20T03:36:23.703Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-20T03:36:24.341Z"}
