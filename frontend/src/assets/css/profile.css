@@ -1,0 +1,110 @@
+.account-settings-container {
+  display: flex;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  border-right: 1px solid #eee;
+  padding-right: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: 0.2s;
+}
+
+.sidebar li:hover {
+  background-color: #f5f5f5;
+}
+
+.sidebar .highlight {
+  background-color: #1abc9c;
+  color: white;
+}
+
+.content {
+  flex: 1;
+  padding-left: 40px;
+}
+
+.section {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.section-title.blue {
+  color: #3498db;
+}
+
+.section-title.orange {
+  color: #f39c12;
+}
+
+.section-desc {
+  margin: 5px 0 15px;
+  color: #888;
+  font-size: 13px;
+}
+
+.form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+}
+
+.form input:disabled {
+  background-color: #eee;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn.green {
+  background-color: #2ecc71;
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input .eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

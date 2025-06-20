@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Comment = require('../models/Comment');
-const Notification = require('../models/Notification');
+const { sendNotification } = require('../services/notifyService');
 const logger = require('../utils/logger');
 
 const createComment = async (req, res) => {
@@ -57,29 +57,30 @@ const createComment = async (req, res) => {
 
     await comment.save();
 
-    // Gửi thông báo
+    // Gửi thông báo cho các user liên quan
     await Promise.all(comment.user.map(async userId => {
       if (userId.toString() !== senderId) {
-        await Notification.create({
+        await sendNotification({
           user: userId,
           sender: senderId,
           type: 'comment',
           message: `Bình luận mới cho sản phẩm #${productId}`,
           data: { productId, commentId: comment._id, message: newMessages[0].content },
-          priority: 'normal'
+          priority: 'normal',
+          io: req.io,
+          socketRoom: `product_${productId}`,
+          socketEvent: 'receive-comment',
+          socketPayload: {
+            productId,
+            senderId,
+            content: newMessages[0].content,
+            parentMessageId,
+            timestamp: newMessages[0].timestamp,
+            messageId: comment.messages[comment.messages.length - 1]._id
+          }
         });
       }
     }));
-
-    // Emit socket
-    req.io.to(`product_${productId}`).emit('receive-comment', {
-      productId,
-      senderId,
-      content: newMessages[0].content,
-      parentMessageId,
-      timestamp: newMessages[0].timestamp,
-      messageId: comment.messages[comment.messages.length - 1]._id
-    });
 
     logger.info(`Messages added to comment with ID: ${comment._id}`);
     res.status(200).json({
@@ -211,29 +212,30 @@ const updateComment = async (req, res) => {
     await comment.save();
 
     // Gửi thông báo
-    await Promise.all(comment.user.map(async userId => {
-      if (userId.toString() !== req.user._id.toString()) {
-        await Notification.create({
-          user: userId,
-          sender: req.user._id,
-          type: 'comment',
-          message: `Bình luận #${comment._id} đã được cập nhật`,
-          data: { productId: comment.product, commentId: comment._id },
-          priority: 'normal'
-        });
-      }
-    }));
-
-    // Emit socket
     if (messages) {
-      req.io.to(`product_${comment.product}`).emit('receive-comment', {
-        productId: comment.product,
-        senderId: req.user._id,
-        content: messages[messages.length - 1].content,
-        parentMessageId: messages[messages.length - 1].parentMessageId,
-        timestamp: new Date(),
-        messageId: comment.messages[comment.messages.length - 1]._id
-      });
+      await Promise.all(comment.user.map(async userId => {
+        if (userId.toString() !== req.user._id.toString()) {
+          await sendNotification({
+            user: userId,
+            sender: req.user._id,
+            type: 'comment',
+            message: `Bình luận #${comment._id} đã được cập nhật`,
+            data: { productId: comment.product, commentId: comment._id },
+            priority: 'normal',
+            io: req.io,
+            socketRoom: `product_${comment.product}`,
+            socketEvent: 'receive-comment',
+            socketPayload: {
+              productId: comment.product,
+              senderId: req.user._id,
+              content: messages[messages.length - 1].content,
+              parentMessageId: messages[messages.length - 1].parentMessageId,
+              timestamp: new Date(),
+              messageId: comment.messages[comment.messages.length - 1]._id
+            }
+          });
+        }
+      }));
     }
 
     const populatedComment = await Comment.findById(req.params.id)
@@ -287,7 +289,7 @@ const deleteComment = async (req, res) => {
     // Gửi thông báo
     await Promise.all(comment.user.map(async userId => {
       if (userId.toString() !== req.user._id.toString()) {
-        await Notification.create({
+        await sendNotification({
           user: userId,
           sender: req.user._id,
           type: 'comment',

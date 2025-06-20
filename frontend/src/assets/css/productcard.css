@@ -73,6 +73,7 @@
 .price-line {
   margin-top: 6px;
   display: flex;
+  justify-content: space-between;
 }
 
 .final-price {
@@ -95,7 +96,7 @@
 .heart-icon{
   color: #999;
   opacity: 70%;
-  margin-left: 70px;
+  margin-left: 50px;
 }
 .heart-icon:hover{
   color: hotpink;
