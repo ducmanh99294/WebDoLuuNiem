@@ -30,8 +30,10 @@ const LoginPage: React.FC = () => {
         const role = (data.data?.role || '').toLowerCase();
         const name = data.data?.name?.trim() || 'Người dùng'; // ✅ thêm dòng này
         const avatar = data.data?.avatar || '/images/default-avatar.png';
+        const userId = data.data?.user_id || ''; // 👈 thêm dòng này
 
         localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
         localStorage.setItem('role', role);
         localStorage.setItem('username', name);
         console.log('Role:', role);

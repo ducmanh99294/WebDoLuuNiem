@@ -84,7 +84,7 @@ const handleLogout = async () => {
 
               {isDropdownOpen && (
                 <div className="dropdown-menu">
-                  <Link to="/profile">Hồ sơ</Link>
+                  <Link to="/profile">Tài Khoản</Link>
                   <Link to="/orders">Đơn hàng</Link>
                   <div onClick={handleLogout} style={{ cursor: 'pointer' }}>Đăng xuất</div>
                 </div>

@@ -1,11 +1,13 @@
 const express = require('express');
+const imageUpload = require('../middlewares/imageMiddleware');
 const router = express.Router();
 const productController = require('../controllers/productControllers');
 const authRoles = require('../middlewares/authRoles');
 const { validateToken } = require('../middlewares/authMiddleware');
 
 //CRUD 
-router.post('/', productController.createProduct);
+router.post('/', imageUpload.array('images', 5), productController.createProduct)
+
 router.get('/', productController.getAllProducts);
 router.get('/:id',productController.getProductById);
 router.post('/products/:id/like', validateToken, authRoles, productController.like_count);
