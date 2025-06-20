@@ -1028,3 +1028,6 @@
 {"level":"warn","message":"Invalid token","timestamp":"2025-06-20T03:34:22.001Z"}
 {"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-06-20T03:34:34.108Z"}
 {"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:34:34.109Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-20T03:43:20.478Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-20T03:43:20.828Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-20T03:43:21.509Z"}
