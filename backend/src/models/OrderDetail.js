@@ -18,18 +18,6 @@ const OrderDetailSchema = new mongoose.Schema({
     quantity: {
         type: Number,
         default: null
-    },
-    price: {
-        type: Number,
-        default: null
-    },
-    sell_count: {
-        type: Number,
-        required: true
-    },
-    total_price: {
-        type: Number,
-        required: true
     }
 }, {
     timestamps: false

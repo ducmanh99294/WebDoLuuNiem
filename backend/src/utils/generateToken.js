@@ -1,3 +1,4 @@
+require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const RefreshToken = require('../models/RefreshToken');
@@ -17,7 +18,7 @@ const generateToken = async (user) => {
     const newToken = await RefreshToken.create({
         token: refreshToken,
         access_token: accessToken,
-        user_id: user.id,
+        user_id: user._id,
         expiresAt
     });
     console.log(newToken);

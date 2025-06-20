@@ -5,15 +5,50 @@ const logger = require('../utils/logger.js');
 
 const createProduct = async (req, res) => {
     try {
-        logger.log('Creating product with data:', req.body);
-        if (!req.body.name || !req.body.price || !req.body.categories || !req.body.images || !req.body.description || !req.body.discount || !req.body.quantity) {
+        logger.info('Creating product with data:', req.body);
+
+        const { name, price, categories, description, discount, quantity, imageUrls } = req.body;
+
+        if (!req.body.name || !req.body.price || !req.body.categories || !req.body.description || !req.body.discount || !req.body.quantity) {
             return res.status(400).json({
                 success: false,
                 message: 'please provide all required fields: name, price, categories, images, description, discount, quantity'
             });
         }
-        const product = await Product.create(req.body);
         
+        const product = await Product.create({
+            ...req.body,
+            images: [],
+        });
+
+        let imageIds = [];
+
+        if (req.files && req.files.length > 0) {
+            const uploadImages = await Promise.all(req.files.map(async (file) => {
+                const newImage = await Images.create({ 
+                    image: `/src/assets/images/${file.filename}`, 
+                    Product: product._id
+                });
+                return newImage._id; 
+            }));
+            imageIds = imageIds.concat(uploadImages);
+        }
+
+        if (imageUrls) {
+            const imageUrls = Array.isArray(imageUrls) ? imageUrls : [imageUrls];
+            const uploadImages = await Promise.all(imageUrls.map(async (url) => {
+                const newImage = await Images.create({ 
+                    image: url, 
+                    Product: product._id
+                });
+                return newImage._id; 
+            }));
+            imageIds = imageIds.concat(uploadImages);
+        }
+
+        product.images = imageIds;
+        await product.save();
+
         logger.info(`Product created successfully: ${product._id}`);
         res.status(201).json({
             success: true,
@@ -30,7 +65,7 @@ const createProduct = async (req, res) => {
 const getAllProducts = async (req, res) => {
     try {
         logger.info('Fetching all products')
-        const products = await Product.find().populate('images').populate('categories');
+        const products = await Product.find().populate('images', 'image').populate('categories');
       
         logger.info(`Retrieved ${products.length} products`);
         res.status(200).json({

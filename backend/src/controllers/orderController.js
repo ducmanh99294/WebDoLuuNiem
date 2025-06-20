@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const Order = require('../models/Order');
+// const OrderDetail = require('../models/OrderDetail');
 const Product = require('../models/Product');
 const { sendNotification } = require('../services/notifyService');
 const logger = require('../utils/logger');
+const { Console } = require('winston/lib/winston/transports');
 
 const createOrder = async (req, res) => {
   try {
@@ -120,14 +122,15 @@ const getAllOrders = async (req, res) => {
     const orders = await Order.find()
       .select('order_number status total_price user createdAt')
       .populate('user', 'name email')
-      .populate('products.product', 'name price')
+      .populate('coupon', 'code discount')
+      // .populate('product_id.product', 'name price')
       .populate('shipping.shipping_company', 'name')
       .populate('shipping.shipper', 'name phone');
 
     res.status(200).json({
       success: true,
       message: 'Lấy danh sách đơn hàng thành công',
-      orders
+      orders,
     });
   } catch (error) {
     logger.error(`Error retrieving orders: ${error.message}`);
@@ -320,10 +323,207 @@ const deleteOrder = async (req, res) => {
   }
 };
 
+const confirmOrder = async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'ID not  found'
+      });
+    }
+
+    const order = await Order.findById(req.params.id);
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: 'order not found'
+      });
+    }
+
+    const products = await Product.findById(OrderDetail.product_id);
+    if(!products) {
+      return res.status(404).json({
+        success: false,
+        message: 'product not found'
+      });
+    }
+    if( products.quantity < OrderDetail.quantity) {
+      return res.status(400).json({
+        success: false,
+        message: 'not enough product quantity'
+      });
+    }
+
+    products.quantity -= OrderDetail.quantity;
+    await products.save();
+
+    order.status = 'confirmed';
+    await order.save();
+
+    // Tạo thông báo
+    await Notification.create({
+      user: order.user,
+      sender: req.user._id,
+      type: 'order',
+      message: `order #${order.order_number} is confirmed`,
+      data: { orderId: order._id },
+      priority: 'high'
+    });
+
+    res.status(200).json({
+      success: true,
+      message: 'confirm order successfully',
+      order
+    });
+  } catch (error) {
+    logger.error(`Error confirming order ${req.params.id}: ${error.message}`);
+    res.status(500).json({
+      success: false,
+      message: 'error confirming order',
+      error: error.message
+    });
+  }
+};
+
+const cancelOrder = async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'ID not found'
+      });
+    }
+
+    const order = await Order.findById(req.params.id);
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: 'order not found'
+      });
+    }
+
+    if (order.status !== 'cancelled') {
+      return res.status(400).json({
+        success: false,
+        message: 'only allready cancelled order'
+      });
+    }
+
+    const products = await Product.findById(OrderDetail.product_id);
+    if(!products) {
+      return res.status(404).json({
+        success: false,
+        message: 'product not found'
+      });
+    }
+
+    product.quantity += OrderDetail.quantity;
+    await products.save();
+
+    order.status = 'cancelled';
+    await order.save();
+
+    // Tạo thông báo
+    await Notification.create({
+      user: order.user,
+      sender: req.user._id,
+      type: 'order',
+      message: `order #${order.order_number} is cancelled`,
+      data: { orderId: order._id },
+      priority: 'high'
+    });
+
+    res.status(200).json({
+      success: true,
+      message: 'cancel order successfully',
+      order
+    });
+  } catch (error) {
+    logger.error(`Error cancelling order ${req.params.id}: ${error.message}`);
+    res.status(500).json({
+      success: false,
+      message: 'error cancelling order',
+      error: error.message
+    });
+  }
+};
+
+const useCoupon = async (req, res) => {
+  try {
+    const { code } = req.body;
+    
+    const coupon = await mongoose.model('Coupons').findOne({ code: code });
+    const order = await Order.findById(req.params.id);
+    if (!coupon) {
+      return res.status(404).json({
+        success: false,
+        message: 'coupon not found'
+      });
+    }
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: 'order not found'
+      });
+    }
+
+    if (coupon.expiry_date < new Date()) {
+      return res.status(400).json({
+        success: false,
+        message: 'this coupon has expired'
+      });
+    }
+
+    // Kiểm tra xem người dùng đã sử dụng mã này chưa
+    if (coupon.applicable_users.includes(req.user.id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'you have already used this coupon'
+      });
+    }
+
+    if (!Array.isArray(order.coupon)) {
+      order.coupon = [];
+    } else if (order.coupon.some(id => id.equals(coupon._id))) {
+      return res.status(400).json({
+        success: false,
+        message: 'This coupon has already been applied to this order'
+      });
+    }
+
+    // Cập nhật người dùng đã sử dụng mã
+    coupon.applicable_users.push(req.user.id);
+    // Cập nhật đơn hàng với mã giảm giá
+    console.log("order", coupon._id ,order._id, order.coupon);
+    if (!Array.isArray(order.coupon)) {
+      order.coupon = [];
+    }
+    order.coupon.push(coupon._id);
+    // await coupon.save();
+    await order.save();
+    res.status(200).json({
+      success: true,
+      message: 'Coupon applied successfully',
+      data: coupon
+    });
+  } catch (error) {
+    logger.error(`Error using coupon: ${error.message}`);
+    res.status(500).json({
+      success: false,
+      message: 'Error using coupon',
+      error: error.message
+    });
+  }
+};
+
 module.exports = {
   createOrder,
   getAllOrders,
   getOrderById,
   updateOrderStatus,
-  deleteOrder
+  deleteOrder,
+  confirmOrder,
+  cancelOrder,
+  useCoupon
 };
