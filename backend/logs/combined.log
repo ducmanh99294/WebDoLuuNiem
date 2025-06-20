@@ -1031,3 +1031,15 @@
 {"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-20T03:43:20.478Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-20T03:43:20.828Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-20T03:43:21.509Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/683c328b31386e28d0e4e873/use-coupon","timestamp":"2025-06-20T03:46:12.688Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-20T03:46:12.690Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-20T03:46:12.696Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T03:46:15.540Z"}
+{"level":"info","message":"Received body: {\"email\":\"manhhhh@gmail.com\",\"password\":\"123456\"}","timestamp":"2025-06-20T03:46:15.541Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T03:46:15.542Z"}
+{"level":"info","message":"User login attempt for email: manhhhh@gmail.com","timestamp":"2025-06-20T03:46:15.621Z"}
+{"level":"info","message":"User logged in successfully: 6848ee6ff819d2245eefc943","timestamp":"2025-06-20T03:46:15.774Z"}
+{"level":"info","message":"Received request: POST /api/v1/orders/683c328b31386e28d0e4e873/use-coupon","timestamp":"2025-06-20T03:46:24.472Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\"}","timestamp":"2025-06-20T03:46:24.472Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-06-20T03:46:33.334Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:46:33.335Z"}
