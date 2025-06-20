@@ -21,15 +21,12 @@ const Dashboard = () => {
     try {
       const response = await fetch("http://localhost:3000/api/v1/users");
       const data = await response.json();
-      console.log("Dữ liệu trả về từ API:", data);
-
       if (Array.isArray(data.data)) {
         const users = data.data.filter((user: any) => user.role !== "admin");
         setUserCount(users.length);
       } else if (typeof data.count === "number") {
         setUserCount(data.count);
       } else {
-        console.warn("Không xác định được cấu trúc dữ liệu:", data);
         setUserCount(0);
       }
     } catch (error) {
@@ -70,6 +67,7 @@ const Dashboard = () => {
           <div>➕ Thêm người dùng</div>
           <div>📝 Quản lý bài viết</div>
           <div>📁 Quản lý danh mục</div>
+          <div>📁 Quản lý mã khuyến mãi </div>
           <div><Store size={18} /> Gian hàng hợp tác</div>
         </nav>
         <div className="sidebar-footer">
