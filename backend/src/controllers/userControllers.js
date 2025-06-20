@@ -74,7 +74,7 @@ exports.createUser = async (req, res) => {
             });
         }
 
-        const { name, email, password, address, phone, role, image } = req.body;
+        const { name, email, password, birthday, address, phone, role, image } = req.body;
 
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -86,7 +86,7 @@ exports.createUser = async (req, res) => {
             });
         }
 
-        const user = new User({ name, email, password, address, phone, role, image });
+        const user = new User({ name, email, password, birthday, address, phone, role, image });
         await user.save();
         await sendEmail(user.email, user.name);
         

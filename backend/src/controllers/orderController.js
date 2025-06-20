@@ -4,6 +4,7 @@ const Order = require('../models/Order');
 const Product = require('../models/Product');
 const Notification = require('../models/Notification');
 const logger = require('../utils/logger');
+const { Console } = require('winston/lib/winston/transports');
 
 const createOrder = async (req, res) => {
   try {
@@ -120,14 +121,15 @@ const getAllOrders = async (req, res) => {
     const orders = await Order.find()
       .select('order_number status total_price user createdAt')
       .populate('user', 'name email')
-      .populate('products.product', 'name price')
+      .populate('coupon', 'code discount')
+      // .populate('product_id.product', 'name price')
       .populate('shipping.shipping_company', 'name')
       .populate('shipping.shipper', 'name phone');
 
     res.status(200).json({
       success: true,
       message: 'Lấy danh sách đơn hàng thành công',
-      orders
+      orders,
     });
   } catch (error) {
     logger.error(`Error retrieving orders: ${error.message}`);
@@ -447,8 +449,9 @@ const cancelOrder = async (req, res) => {
 const useCoupon = async (req, res) => {
   try {
     const { code } = req.body;
-
+    
     const coupon = await mongoose.model('Coupons').findOne({ code: code });
+    const order = await Order.findById(req.params.id);
     if (!coupon) {
       return res.status(404).json({
         success: false,
@@ -456,7 +459,14 @@ const useCoupon = async (req, res) => {
       });
     }
 
-    if (coupon.expiryDate < new Date()) {
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: 'order not found'
+      });
+    }
+
+    if (coupon.expiry_date < new Date()) {
       return res.status(400).json({
         success: false,
         message: 'this coupon has expired'
@@ -471,10 +481,25 @@ const useCoupon = async (req, res) => {
       });
     }
 
+    if (!Array.isArray(order.coupon)) {
+      order.coupon = [];
+    } else if (order.coupon.some(id => id.equals(coupon._id))) {
+      return res.status(400).json({
+        success: false,
+        message: 'This coupon has already been applied to this order'
+      });
+    }
+
     // Cập nhật người dùng đã sử dụng mã
     coupon.applicable_users.push(req.user.id);
-    await coupon.save();
-
+    // Cập nhật đơn hàng với mã giảm giá
+    console.log("order", coupon._id ,order._id, order.coupon);
+    if (!Array.isArray(order.coupon)) {
+      order.coupon = [];
+    }
+    order.coupon.push(coupon._id);
+    // await coupon.save();
+    await order.save();
     res.status(200).json({
       success: true,
       message: 'Coupon applied successfully',
