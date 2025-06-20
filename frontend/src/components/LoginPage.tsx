@@ -10,7 +10,6 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       const res = await fetch('http://localhost:3000/api/v1/auth/login', {
         method: 'POST',
@@ -18,16 +17,33 @@ const LoginPage: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: emailOrPhone, // hoặc có thể cần tách email/sdt ở backend
+          email: emailOrPhone,
           password: password,
         }),
       });
-      
+
       const data = await res.json();
-      if (res.ok) {
-        // Ví dụ: lưu token nếu có
-        localStorage.setItem('token', data.token);
-        navigate('/'); // chuyển về trang chủ
+      console.log('Dữ liệu trả về từ API:', data);
+
+      if (res.ok && data.success) {
+        const token = data.data?.accessToken || '';
+        const role = (data.data?.role || '').toLowerCase();
+        const name = data.data?.name?.trim() || 'Người dùng'; // ✅ thêm dòng này
+        const avatar = data.data?.avatar || '/images/default-avatar.png';
+        const userId = data.data?.user_id || ''; // 👈 thêm dòng này
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('role', role);
+        localStorage.setItem('username', name);
+        console.log('Role:', role);
+        localStorage.setItem('avatar', avatar);   // ✔ avatar
+        if (role === 'admin') {
+          console.log('Admin detected. Navigating to dashboard...');
+          navigate('/dashboard');
+        } else {
+          navigate('/');
+        }
       } else {
         setErrorMsg(data.message || 'Đăng nhập thất bại');
       }

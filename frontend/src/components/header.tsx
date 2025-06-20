@@ -8,6 +8,10 @@ const Header: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const username = localStorage.getItem('username'); // thêm dòng này
+  const avatar = localStorage.getItem('avatar') || '/images/default-avatar.png';
+
+  
   // hàm đăng xuất 
 const handleLogout = async () => {
   const refreshToken = localStorage.getItem('refreshToken');
@@ -26,6 +30,7 @@ const handleLogout = async () => {
     });
 
     const data = await res.json();
+    
 
     if (data.success) {
       localStorage.removeItem('token');
@@ -71,13 +76,15 @@ const handleLogout = async () => {
           {/* Nếu có token thì ẩn Đăng nhập/Đăng ký, hiện dropdown tên */}
           {token ? (
             <div className="user-dropdown" ref={dropdownRef}>
-              <div className="user-name" onClick={() => setDropdownOpen(!isDropdownOpen)}>
-                {/* Có thể thay 'Tên' bằng tên thực của user nếu bạn lưu ở localStorage hoặc state */}
-                Tên Người Dùng ▼
-              </div>
+      <div className="user-name" onClick={() => setDropdownOpen(!isDropdownOpen)} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+  <img src={avatar} alt="avatar" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
+  <span>{username || 'Người dùng'} ▼</span>
+</div>
+
+
               {isDropdownOpen && (
                 <div className="dropdown-menu">
-                  <Link to="/profile">Hồ sơ</Link>
+                  <Link to="/profile">Tài Khoản</Link>
                   <Link to="/orders">Đơn hàng</Link>
                   <div onClick={handleLogout} style={{ cursor: 'pointer' }}>Đăng xuất</div>
                 </div>
@@ -94,7 +101,7 @@ const handleLogout = async () => {
             </>
           )}
 
-          <button><FaShoppingCart /></button>
+          <Link to="/cart"><button><FaShoppingCart /></button></Link>
         </div>
       </div>
 

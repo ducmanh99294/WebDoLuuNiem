@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Order = require('../models/Order');
 // const OrderDetail = require('../models/OrderDetail');
 const Product = require('../models/Product');
-const Notification = require('../models/Notification');
+const { sendNotification } = require('../services/notifyService');
 const logger = require('../utils/logger');
 const { Console } = require('winston/lib/winston/transports');
 
@@ -64,20 +64,28 @@ const createOrder = async (req, res) => {
       payment
     });
 
-    // Tạo thông báo cho người dùng
-    await Notification.create({
+    // Gửi thông báo cho người dùng
+    await sendNotification({
       user: newOrder.user,
       sender: req.user._id,
       type: 'order',
       message: `Đơn hàng #${newOrder.order_number} đã được tạo thành công`,
       data: { orderId: newOrder._id },
-      priority: 'high'
+      priority: 'high',
+      io: req.io,
+      socketRoom: newOrder.user.toString(),
+      socketEvent: 'order_created',
+      socketPayload: {
+        userId: newOrder.user,
+        orderNumber: newOrder.order_number,
+        orderId: newOrder._id
+      }
     });
 
-    // Tạo thông báo cho admin
+    // Gửi thông báo cho admin
     const admins = await mongoose.model('User').find({ role: 'admin' });
     await Promise.all(admins.map(admin =>
-      Notification.create({
+      sendNotification({
         user: admin._id,
         sender: req.user._id,
         type: 'order',
@@ -86,13 +94,6 @@ const createOrder = async (req, res) => {
         priority: 'high'
       })
     ));
-
-    // Emit socket
-    req.io.to(newOrder.user.toString()).emit('order_created', {
-      userId: newOrder.user,
-      orderNumber: newOrder.order_number,
-      orderId: newOrder._id
-    });
 
     res.status(201).json({
       success: true,
@@ -231,21 +232,22 @@ const updateOrderStatus = async (req, res) => {
       logger.info(`Updated sell_count for products in order ${order._id}`);
     }
 
-    // Tạo thông báo
-    await Notification.create({
+    // Gửi thông báo
+    await sendNotification({
       user: order.user,
       sender: req.user._id,
       type: 'order',
       message: `Đơn hàng #${order.order_number} đã được cập nhật trạng thái thành ${status}`,
       data: { orderId: order._id, status },
-      priority: 'high'
-    });
-
-    // Emit socket
-    req.io.to(order.user.toString()).emit('order_updated', {
-      orderId: order._id,
-      orderNumber: order.order_number,
-      status
+      priority: 'high',
+      io: req.io,
+      socketRoom: order.user.toString(),
+      socketEvent: 'order_updated',
+      socketPayload: {
+        orderId: order._id,
+        orderNumber: order.order_number,
+        status
+      }
     });
 
     const populatedOrder = await Order.findById(req.params.id)
@@ -296,8 +298,8 @@ const deleteOrder = async (req, res) => {
 
     await order.deleteOne();
 
-    // Tạo thông báo
-    await Notification.create({
+    // Gửi thông báo
+    await sendNotification({
       user: order.user,
       sender: req.user._id,
       type: 'order',

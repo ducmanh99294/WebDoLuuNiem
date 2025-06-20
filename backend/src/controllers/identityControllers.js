@@ -97,8 +97,7 @@ const loginUser = async (req, res) => {
         }
 
         logger.info(`User logged in successfully: ${user._id}`);
-
-        const { accessToken, refreshToken } = await generateAuthToken(user);
+const { accessToken, refreshToken } = await generateAuthToken(user);
         console.log(`Access Token: ${accessToken}`);
         await RefreshToken.deleteMany({
             user_id: user._id
@@ -110,6 +109,9 @@ const loginUser = async (req, res) => {
             message: 'User logged in successfully',
             data: {
                 user_id: user._id,
+                role: user.role,
+                name: user.name,
+                image:user.image,
                 accessToken,
                 refreshToken
             }
@@ -200,7 +202,7 @@ const logoutUser = async (req, res) => {
     } catch (error) {
         logger.error(`Error during user logout: ${error.message}`);
         return res.status(500).json({
-            success: false,
+success: false,
             message: 'Internal Server Error'
         });
     }
