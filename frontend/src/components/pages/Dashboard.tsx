@@ -10,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import "../../assets/css/Dashboard.css";
+import { Link } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -94,7 +95,7 @@ const Dashboard = () => {
 
         <div className="n1">
           <div className="stats-grid">
-         <StatCard title="Người dùng" value={`${userCount} người`} />
+         <Link to ='/user' style={{ textDecoration: 'none'}}><StatCard title="Người dùng" value={`${userCount} người`} /></Link>
             <StatCard title="Câu hỏi" value="3,298" />
             <StatCard title="Số lượt đánh giá" value="5,000" />
             <StatCard title="Tổng doanh thu" value="2,000,000 VNĐ" />

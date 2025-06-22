@@ -15,6 +15,7 @@ import Dashboard from '../pages/Dashboard';
 import CartPage from '../pages/cart';
 import Editprofile from '../pages/Editprofile';
 import Profile from '../pages/profile';
+import User from '../pages/user'
 
 // Component bọc logic router
 const AppContent: React.FC = () => {
@@ -41,6 +42,7 @@ const AppContent: React.FC = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/editprofile" element={<Editprofile />} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/user" element={<User/>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {!hideLayout && <Footer />}

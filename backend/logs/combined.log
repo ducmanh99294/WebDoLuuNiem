@@ -8182,3 +8182,902 @@
 {"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:39:10.540Z"}
 {"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:39:10.545Z"}
 {"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:39:10.693Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T03:42:50.892Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:42:50.893Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T03:42:50.898Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:42:50.899Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T03:42:50.901Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T03:42:51.032Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T03:42:51.036Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:42:51.037Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T03:42:51.122Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T03:42:51.128Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T03:42:51.131Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:42:51.131Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T03:42:51.132Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T03:42:51.351Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T03:43:05.862Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang1232@gmail.com\",\"password\":\"123456789\"}","timestamp":"2025-06-20T03:43:05.862Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T03:43:05.863Z"}
+{"level":"info","message":"User login attempt for email: hoang1232@gmail.com","timestamp":"2025-06-20T03:43:05.950Z"}
+{"level":"info","message":"User logged in successfully: 684fca071effadddd2dee81e","timestamp":"2025-06-20T03:43:06.045Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T03:43:06.327Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:43:06.328Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T03:43:06.331Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:43:06.331Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T03:43:06.332Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T03:43:06.427Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T03:43:06.433Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:43:06.434Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T03:43:06.511Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T03:43:06.518Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:43:06.519Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T03:43:06.520Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T03:43:06.543Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T03:43:06.682Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:43:13.384Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:43:13.385Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:43:13.385Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:43:13.488Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:43:13.496Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:43:13.497Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:43:13.498Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:43:13.633Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T03:46:24.786Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T03:46:24.787Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T03:46:24.787Z"}
+{"level":"info","message":"User login attempt for email: hoang123@gmail.com","timestamp":"2025-06-20T03:46:24.895Z"}
+{"level":"info","message":"User logged in successfully: 6848df2ef98a7356c7fcb2ab","timestamp":"2025-06-20T03:46:25.024Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/683ac0744b8decb4542f76ea","timestamp":"2025-06-20T03:46:43.821Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:46:43.821Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-20T03:46:43.823Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/683ac0744b8decb4542f76ea","timestamp":"2025-06-20T03:46:47.104Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:46:47.104Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-20T03:46:47.105Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/683ac0744b8decb4542f76ea","timestamp":"2025-06-20T03:47:05.834Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:47:05.835Z"}
+{"level":"info","message":"Fetching user with ID: 683ac0744b8decb4542f76ea","timestamp":"2025-06-20T03:47:05.840Z"}
+{"level":"info","message":"User retrieved successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-06-20T03:47:05.935Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683ac0744b8decb4542f76ea","timestamp":"2025-06-20T03:47:13.070Z"}
+{"level":"info","message":"Received body: {}","timestamp":"2025-06-20T03:47:13.070Z"}
+{"level":"info","message":"Updating user with ID: 683ac0744b8decb4542f76ea","timestamp":"2025-06-20T03:47:13.080Z"}
+{"level":"info","message":"User updated successfully: 683ac0744b8decb4542f76ea","timestamp":"2025-06-20T03:47:13.319Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:49:10.965Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:49:10.966Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:49:10.967Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:49:11.098Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:49:11.105Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:49:11.106Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:49:11.107Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:49:11.227Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:49:29.423Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:49:29.423Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:49:29.424Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:49:29.557Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:49:29.574Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:49:29.575Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:49:29.576Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:49:29.713Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/684fca071effadddd2dee81e","timestamp":"2025-06-20T03:49:31.691Z"}
+{"level":"info","message":"Received body: {\"_id\":\"684fca071effadddd2dee81e\",\"name\":\"Hoàng \",\"email\":\"hoang1232@gmail.com\",\"address\":\"Thôn hòa mỹ xuân cảnh sông cầu phú yên \",\"phone\":null,\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-16T07:38:47.144Z\",\"update_at\":\"2025-06-16T07:38:47.144Z\",\"__v\":0}","timestamp":"2025-06-20T03:49:31.692Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-20T03:49:31.694Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/684fca071effadddd2dee81e","timestamp":"2025-06-20T03:49:39.837Z"}
+{"level":"info","message":"Received body: {\"_id\":\"684fca071effadddd2dee81e\",\"name\":\"Hoàng \",\"email\":\"hoang1232@gmail.com\",\"address\":\"Thôn hòa mỹ xuân cảnh sông cầu phú yên \",\"phone\":\"0968814439\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-16T07:38:47.144Z\",\"update_at\":\"2025-06-16T07:38:47.144Z\",\"__v\":0}","timestamp":"2025-06-20T03:49:39.838Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-20T03:49:39.842Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/684fca071effadddd2dee81e","timestamp":"2025-06-20T03:54:42.182Z"}
+{"level":"info","message":"Received body: {\"_id\":\"684fca071effadddd2dee81e\",\"name\":\"Hoàng \",\"email\":\"hoang1232@gmail.com\",\"address\":\"Thôn hòa mỹ xuân cảnh sông cầu phú yên \",\"phone\":\"0968814439\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-16T07:38:47.144Z\",\"update_at\":\"2025-06-16T07:38:47.144Z\",\"__v\":0}","timestamp":"2025-06-20T03:54:42.183Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-20T03:54:42.186Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/684fca071effadddd2dee81e","timestamp":"2025-06-20T03:55:53.927Z"}
+{"level":"info","message":"Received body: {\"_id\":\"684fca071effadddd2dee81e\",\"name\":\"Hoàng \",\"email\":\"hoang1232@gmail.com\",\"address\":\"Thôn hòa mỹ xuân cảnh sông cầu phú yên \",\"phone\":null,\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-16T07:38:47.144Z\",\"update_at\":\"2025-06-16T07:38:47.144Z\",\"__v\":0}","timestamp":"2025-06-20T03:55:53.928Z"}
+{"level":"warn","message":"Invalid token","timestamp":"2025-06-20T03:55:53.930Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T03:57:06.639Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T03:57:06.640Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T03:57:06.640Z"}
+{"level":"info","message":"User login attempt for email: hoang123@gmail.com","timestamp":"2025-06-20T03:57:06.734Z"}
+{"level":"info","message":"User logged in successfully: 6848df2ef98a7356c7fcb2ab","timestamp":"2025-06-20T03:57:06.868Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:57:51.851Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:57:51.852Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:57:51.852Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:57:51.981Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:57:51.987Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:57:51.988Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:57:51.988Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:57:52.123Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:57:54.118Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:57:54.119Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:57:54.119Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:57:54.247Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T03:57:54.254Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T03:57:54.255Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T03:57:54.256Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T03:57:54.389Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T04:03:24.971Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T04:03:24.972Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T04:03:24.972Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T04:03:25.125Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T04:03:25.129Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T04:03:25.130Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T04:03:25.130Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T04:03:25.254Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T04:03:25.256Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T04:03:25.257Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T04:03:25.257Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T04:03:25.400Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T04:03:25.403Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T04:03:25.404Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T04:03:25.405Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T04:03:25.552Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T04:03:48.773Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T04:03:48.773Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T04:03:48.774Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T04:03:48.921Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T04:03:48.923Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T04:03:48.924Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T04:03:48.924Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T04:03:49.061Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"Uncaught Exception thrown: write ECONNRESET","stack":"Error: write ECONNRESET\n    at WriteWrap.onWriteComplete [as oncomplete] (node:internal/stream_base_commons:95:16)\n    at handleWriteReq (node:internal/stream_base_commons:52:26)\n    at writeGeneric (node:internal/stream_base_commons:150:15)\n    at Socket._writeGeneric (node:net:954:11)\n    at Socket._write (node:net:966:8)\n    at writeOrBuffer (node:internal/streams/writable:570:12)\n    at _write (node:internal/streams/writable:499:10)\n    at Writable.write (node:internal/streams/writable:508:10)\n    at Connection.writeCommand (E:\\TTNT\\WebDoLuuNiem\\backend\\node_modules\\mongodb\\lib\\cmap\\connection.js:385:25)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","syscall":"write","timestamp":"2025-06-20T05:56:26.646Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-20T16:12:10.760Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-20T16:12:11.021Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-20T16:12:11.726Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:12:13.947Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:12:13.948Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:12:13.958Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:12:13.959Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:12:13.960Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:12:14.013Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:12:14.056Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:12:14.057Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:12:14.114Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:12:14.124Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:12:14.134Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:12:14.135Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:12:14.136Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:12:14.259Z"}
+{"level":"info","message":"Received request: POST /api/v1/users/","timestamp":"2025-06-20T16:14:54.506Z"}
+{"level":"info","message":"Received body: {}","timestamp":"2025-06-20T16:14:54.508Z"}
+{"level":"info","message":"Creating a new user...","timestamp":"2025-06-20T16:14:54.509Z"}
+{"level":"warn","message":"Validation error: \"name\" is required","timestamp":"2025-06-20T16:14:54.518Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:15:01.727Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:15:01.727Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:15:01.728Z"}
+{"level":"info","message":"Total users retrieved: 16","timestamp":"2025-06-20T16:15:01.796Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-20T16:15:47.351Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:15:47.352Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-20T16:15:47.353Z"}
+{"level":"warn","message":"User already exists with email: hoang123@gmail.com","timestamp":"2025-06-20T16:15:47.423Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-20T16:15:58.658Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang1237@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:15:58.659Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-20T16:15:58.659Z"}
+{"level":"warn","message":"User already exists with email: hoang1237@gmail.com","timestamp":"2025-06-20T16:15:58.723Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-20T16:16:07.421Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:16:07.422Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-20T16:16:07.422Z"}
+{"level":"info","message":"User registered successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:16:07.699Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T16:16:31.337Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:16:31.338Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T16:16:31.339Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-20T16:16:31.404Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:16:31.490Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:16:31.680Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:16:31.681Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:16:31.681Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:16:31.685Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:16:31.686Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:16:31.741Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:16:31.745Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:16:31.745Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:16:31.800Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:16:31.819Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:16:31.824Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:16:31.824Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:16:31.825Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:16:31.956Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:16:34.041Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:16:34.041Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:16:34.042Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:16:34.108Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:16:34.111Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:16:34.112Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:16:34.112Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:16:34.175Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:17:26.725Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:17:26.725Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:17:26.726Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:17:26.790Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:17:26.795Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:17:26.796Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:17:26.796Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:17:26.861Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:17:31.199Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":null,\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:17:31.200Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:17:31.208Z"}
+{"level":"warn","message":"Validation error: \"phone\" must be a string","timestamp":"2025-06-20T16:17:31.835Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:18:26.348Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":\"Thôn hoà mỹ\",\"phone\":\"0968814438\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:18:26.349Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:18:26.353Z"}
+{"level":"warn","message":"Validation error: \"image\" must be a string","timestamp":"2025-06-20T16:18:26.418Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/register","timestamp":"2025-06-20T16:19:59.071Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:19:59.072Z"}
+{"level":"info","message":"Registering new user...","timestamp":"2025-06-20T16:19:59.072Z"}
+{"level":"warn","message":"User already exists with email: hoang123123@gmail.com","timestamp":"2025-06-20T16:19:59.138Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-20T16:20:24.121Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-20T16:20:24.295Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-20T16:20:25.110Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:20:36.375Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:20:36.376Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:20:36.387Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:20:36.388Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:20:36.389Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:20:36.447Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:20:36.455Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:20:36.456Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:20:36.515Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:20:36.556Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:20:36.562Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:20:36.563Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:20:36.564Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:20:36.697Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T16:21:06.504Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:21:06.505Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T16:21:06.506Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-20T16:21:06.564Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:21:06.636Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:21:06.814Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:21:06.814Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:21:06.817Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:21:06.818Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:21:06.818Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:21:06.870Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:21:06.874Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:21:06.875Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:21:06.930Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:21:06.947Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:21:06.950Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:21:06.950Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:21:06.951Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:21:07.076Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:21:08.852Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:21:08.853Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:21:08.854Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:21:08.916Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:21:08.920Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:21:08.921Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:21:08.921Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:21:08.981Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T16:23:14.633Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:23:14.634Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T16:23:14.635Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-20T16:23:14.697Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:23:14.790Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:23:14.977Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:14.978Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:23:14.978Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:23:14.981Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:14.981Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:23:15.031Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:23:15.035Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:15.036Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:23:15.087Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:23:15.108Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:23:15.112Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:15.112Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:23:15.113Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:23:15.238Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:23:17.371Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:17.372Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:23:17.372Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:23:17.434Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:23:17.438Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:17.438Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:23:17.439Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:23:17.501Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:23:22.432Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:22.433Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:23:22.436Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:22.437Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:23:22.437Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:23:22.502Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:23:22.505Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:22.506Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:23:22.555Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:23:22.562Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:23:22.563Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:23:22.564Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:23:22.567Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:23:22.683Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T16:24:31.645Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:24:31.646Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T16:24:31.647Z"}
+{"level":"warn","message":"Validation error: \"email\" must be a valid email","timestamp":"2025-06-20T16:24:31.652Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T16:24:36.733Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:24:36.734Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T16:24:36.735Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-20T16:24:36.795Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:24:36.902Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:24:37.059Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:24:37.060Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:24:37.062Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:24:37.063Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:24:37.063Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:24:37.132Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:24:37.136Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:24:37.137Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:24:37.182Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:24:37.190Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:24:37.191Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:24:37.192Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:24:37.196Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:24:37.316Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:24:39.471Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:24:39.471Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:24:39.472Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:24:39.534Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:24:39.539Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:24:39.540Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:24:39.541Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:24:39.608Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:25:08.055Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":null,\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:25:08.055Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:25:08.057Z"}
+{"level":"warn","message":"Validation error: \"phone\" must be a string","timestamp":"2025-06-20T16:25:08.119Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:26:43.520Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:26:43.520Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:26:43.520Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:26:43.581Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:26:43.589Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:26:43.589Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:26:43.589Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:26:43.648Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:26:45.700Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":null,\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:26:45.701Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:26:45.704Z"}
+{"level":"warn","message":"Validation error: \"phone\" must be a string","timestamp":"2025-06-20T16:26:45.763Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:28:59.470Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:28:59.470Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:28:59.471Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:28:59.532Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:28:59.540Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:28:59.541Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:28:59.544Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:28:59.611Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:29:01.145Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":null,\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:29:01.145Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:29:01.148Z"}
+{"level":"warn","message":"Validation error: \"phone\" must be a string","timestamp":"2025-06-20T16:29:01.206Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-20T16:29:48.564Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-20T16:29:48.771Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-20T16:29:49.553Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:29:53.807Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:29:53.808Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:29:53.810Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:29:53.879Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:29:53.886Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:29:53.886Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:29:53.887Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:29:53.945Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:29:54.896Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":null,\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:29:54.896Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:29:54.901Z"}
+{"level":"warn","message":"Validation error: \"phone\" must be a string","timestamp":"2025-06-20T16:29:54.966Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:30:43.112Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:30:43.113Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:30:43.114Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:30:43.186Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:30:43.190Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:30:43.190Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:30:43.191Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:30:43.248Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:30:44.110Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":\"\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:30:44.111Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:30:44.118Z"}
+{"level":"warn","message":"Validation error: \"phone\" is not allowed to be empty","timestamp":"2025-06-20T16:30:44.201Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:31:24.625Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:31:24.625Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:31:24.627Z"}
+{"level":"warn","message":"Validation error: \"image\" must be a string","timestamp":"2025-06-20T16:31:24.696Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:31:31.615Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:31:31.615Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:31:31.615Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:31:32.287Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:31:32.292Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:31:32.292Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:31:32.293Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:31:34.312Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-20T16:32:08.431Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-20T16:32:08.591Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-20T16:32:11.664Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:32:14.288Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:32:14.288Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:32:14.290Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:32:14.356Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:32:14.361Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:32:14.362Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:32:14.363Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:32:14.416Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:32:15.393Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":\"\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:32:15.393Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:32:15.399Z"}
+{"level":"warn","message":"Validation error: \"phone\" is not allowed to be empty","timestamp":"2025-06-20T16:32:15.464Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:33:21.672Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:33:21.672Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:33:21.673Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:33:21.727Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:33:21.732Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:33:21.733Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:33:21.733Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:33:21.790Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:33:22.414Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":\"\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:33:22.415Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:33:22.417Z"}
+{"level":"warn","message":"Validation error: \"phone\" is not allowed to be empty","timestamp":"2025-06-20T16:33:22.469Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:33:26.584Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:33:26.585Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:33:26.586Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:33:26.641Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:33:26.646Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:33:26.648Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:33:26.649Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:33:26.705Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:33:42.074Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:33:42.075Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:33:42.075Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:33:42.131Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:33:42.134Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:33:42.135Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:33:42.135Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:33:42.188Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:33:42.918Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":\"\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:33:42.918Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:33:42.920Z"}
+{"level":"warn","message":"Validation error: \"phone\" is not allowed to be empty","timestamp":"2025-06-20T16:33:42.971Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-20T16:34:42.109Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-20T16:34:42.303Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-20T16:34:43.138Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:34:47.875Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:34:47.876Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:34:47.877Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:34:47.942Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:34:47.948Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:34:47.949Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:34:47.950Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:34:48.003Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:34:52.924Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":\"\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:34:52.925Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:34:52.929Z"}
+{"level":"warn","message":"Validation error: \"phone\" is not allowed to be empty","timestamp":"2025-06-20T16:34:52.998Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-20T16:35:12.098Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-20T16:35:12.098Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-20T16:35:12.100Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-20T16:35:12.162Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:35:12.257Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:35:12.538Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:35:12.538Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:35:12.542Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:35:12.542Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:35:12.543Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:35:12.593Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-20T16:35:12.595Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:35:12.596Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-20T16:35:12.651Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:35:12.715Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-20T16:35:12.723Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:35:12.724Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-20T16:35:12.725Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-20T16:35:12.853Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:35:14.413Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:35:14.413Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:35:14.416Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:35:14.486Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:35:14.491Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:35:14.492Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:35:14.492Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:35:14.553Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:35:17.600Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":\"\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:35:17.600Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:35:17.604Z"}
+{"level":"warn","message":"Validation error: \"phone\" is not allowed to be empty","timestamp":"2025-06-20T16:35:17.665Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:35:47.978Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":\"Thôn hoà mỹ\",\"phone\":\"0968814438\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:35:47.979Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:35:47.983Z"}
+{"level":"warn","message":"Validation error: \"image\" must be a string","timestamp":"2025-06-20T16:35:48.045Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:35:54.182Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:35:54.183Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:35:54.184Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:35:54.244Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/","timestamp":"2025-06-20T16:35:54.248Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-20T16:35:54.249Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-20T16:35:54.250Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-20T16:35:54.310Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:35:55.528Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":null,\"phone\":\"\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:35:55.529Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:35:55.531Z"}
+{"level":"warn","message":"Validation error: \"phone\" is not allowed to be empty","timestamp":"2025-06-20T16:35:55.591Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:36:00.667Z"}
+{"level":"info","message":"Received body: {\"_id\":\"6855894748ae4b1bcb10d49b\",\"name\":\"Xuân Hoàng \",\"email\":\"hoang123123@gmail.com\",\"address\":\"Thôn hoà mỹ\",\"phone\":\"0968814438\",\"role\":\"user\",\"image\":null,\"create_at\":\"2025-06-20T16:16:07.497Z\",\"update_at\":\"2025-06-20T16:16:07.497Z\",\"__v\":0}","timestamp":"2025-06-20T16:36:00.668Z"}
+{"level":"info","message":"Updating user with ID: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-20T16:36:00.669Z"}
+{"level":"warn","message":"Validation error: \"image\" must be a string","timestamp":"2025-06-20T16:36:00.734Z"}
+{"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-06-21T13:56:04.844Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-22T14:41:11.684Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-22T14:41:12.077Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-22T14:41:12.810Z"}
+{"level":"info","message":"Received request: GET /","timestamp":"2025-06-22T14:41:26.922Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:41:26.923Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:41:30.741Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:41:30.742Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:41:30.744Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:41:30.819Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:41:30.830Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:41:30.832Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:41:30.833Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:41:30.896Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T14:41:42.200Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:41:42.200Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T14:41:42.205Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:41:42.206Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T14:41:42.207Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T14:41:42.269Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T14:41:42.274Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:41:42.275Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T14:41:42.337Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T14:41:42.403Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T14:41:42.410Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:41:42.411Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T14:41:42.411Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T14:41:42.537Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-22T14:42:04.015Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"123456789\"}","timestamp":"2025-06-22T14:42:04.016Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-22T14:42:04.017Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-22T14:42:04.085Z"}
+{"level":"warn","message":"Invalid password","timestamp":"2025-06-22T14:42:04.176Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-22T14:42:05.521Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-22T14:42:05.522Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-22T14:42:05.523Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-22T14:42:05.583Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-22T14:42:05.679Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T14:42:05.877Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:42:05.877Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T14:42:05.882Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:42:05.882Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T14:42:05.883Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T14:42:05.935Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T14:42:05.954Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:42:05.955Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T14:42:06.006Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T14:42:06.013Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:42:06.013Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T14:42:06.014Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T14:42:06.019Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T14:42:06.135Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:42:52.324Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:42:52.325Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:42:52.326Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:42:52.391Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:42:52.395Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:42:52.396Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:42:52.397Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:42:52.458Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:47:31.645Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:47:31.646Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:47:31.647Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:47:31.718Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:47:31.722Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:47:31.723Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:47:31.723Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:47:31.792Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T14:47:37.587Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:47:37.588Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T14:47:37.588Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T14:47:37.591Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:47:37.591Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T14:47:37.667Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T14:47:37.673Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:47:37.675Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T14:47:37.729Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T14:47:37.734Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:47:37.735Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T14:47:37.735Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T14:47:37.739Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T14:47:37.882Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:53:58.133Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:53:58.134Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:53:58.135Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:53:58.206Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:53:58.210Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:53:58.210Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:53:58.211Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:53:58.294Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:54:43.572Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:54:43.573Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:54:43.573Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:54:43.644Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:54:43.651Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:54:43.652Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:54:43.652Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:54:43.719Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:56:55.887Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:56:55.888Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:56:55.888Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:56:55.955Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:56:55.959Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:56:55.959Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:56:55.960Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:56:56.027Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:00.773Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:00.774Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:00.775Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:00.844Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:00.849Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:00.849Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:00.850Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:00.917Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:01.592Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:01.593Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:01.593Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:01.661Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:01.666Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:01.667Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:01.667Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:01.734Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:35.083Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:35.084Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:35.084Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:35.154Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:35.157Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:35.157Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:35.158Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:35.224Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:35.892Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:35.892Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:35.893Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:35.958Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:35.964Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:35.964Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:35.965Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:36.032Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:36.805Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:36.806Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:36.807Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:36.873Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:36.877Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:36.877Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:36.878Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:36.944Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:37.967Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:37.967Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:37.968Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:38.034Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:57:38.037Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:57:38.037Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:57:38.037Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:57:38.103Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:58:35.644Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:58:35.644Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:58:35.644Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:58:35.711Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:58:35.716Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:58:35.716Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:58:35.717Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:58:35.782Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:58:36.731Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:58:36.732Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:58:36.732Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:58:36.798Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:58:36.804Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:58:36.805Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:58:36.806Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:58:36.872Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:58:50.538Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:58:50.539Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:58:50.540Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:58:50.606Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:58:50.609Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:58:50.610Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:58:50.610Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:58:50.675Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:59:06.895Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:59:06.895Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:59:06.896Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:59:06.967Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:59:06.984Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:59:06.986Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:59:06.989Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:59:07.069Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:59:12.004Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:59:12.005Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:59:12.005Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:59:12.071Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:59:12.075Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:59:12.075Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:59:12.075Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:59:12.140Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:59:13.146Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:59:13.146Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:59:13.147Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:59:13.213Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T14:59:13.218Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T14:59:13.219Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T14:59:13.220Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T14:59:13.287Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-22T15:06:34.675Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-22T15:06:34.979Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-22T15:06:35.688Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T15:08:05.035Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:08:05.036Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T15:08:05.048Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:08:05.048Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T15:08:05.049Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T15:08:05.112Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T15:08:05.120Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:08:05.121Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T15:08:05.181Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T15:08:05.289Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T15:08:05.298Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:08:05.298Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T15:08:05.300Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T15:08:05.442Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:08:13.631Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:08:13.632Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:08:13.633Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:08:13.696Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:08:13.702Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:08:13.703Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:08:13.703Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:08:13.767Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:08:15.249Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:08:15.250Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:08:15.251Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:08:15.311Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:08:15.317Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:08:15.318Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:08:15.319Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:08:15.379Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:11:12.509Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:11:12.510Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:11:12.510Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:11:12.568Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:11:12.572Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:11:12.573Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:11:12.573Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:11:12.630Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:23:30.430Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:23:30.431Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:23:30.432Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:23:30.489Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:23:30.493Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:23:30.494Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:23:30.494Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:23:30.559Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:23:40.581Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:23:40.581Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:23:40.582Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:23:40.638Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:23:40.643Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:23:40.643Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:23:40.644Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:23:40.702Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:25:47.047Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:25:47.048Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:25:47.048Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:25:47.106Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:25:47.112Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:25:47.113Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:25:47.113Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:25:47.172Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:25:48.913Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:25:48.914Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:25:48.914Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:25:48.970Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:25:48.974Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:25:48.974Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:25:48.975Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:25:49.029Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:27:04.288Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:27:04.288Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:27:04.289Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:27:04.345Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:27:04.348Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:27:04.348Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:27:04.349Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:27:04.404Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:28:39.085Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:28:39.085Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:28:39.086Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:28:39.211Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:28:39.214Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:28:39.215Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:28:39.215Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:28:39.269Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:31:30.985Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:31:30.985Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:31:30.986Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:31:31.041Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:31:31.045Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:31:31.046Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:31:31.047Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:31:31.103Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T15:32:07.238Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:07.239Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T15:32:07.242Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:07.242Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T15:32:07.243Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T15:32:07.293Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T15:32:07.301Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:07.302Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T15:32:07.363Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T15:32:07.366Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T15:32:07.368Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:07.369Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T15:32:07.369Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T15:32:07.490Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-22T15:32:25.433Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"123456789\"}","timestamp":"2025-06-22T15:32:25.433Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-22T15:32:25.435Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-22T15:32:25.498Z"}
+{"level":"warn","message":"Invalid password","timestamp":"2025-06-22T15:32:25.589Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-06-22T15:32:27.396Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-06-22T15:32:27.397Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-06-22T15:32:27.398Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-06-22T15:32:27.458Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-06-22T15:32:27.556Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T15:32:27.796Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:27.796Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T15:32:27.798Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:27.799Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T15:32:27.799Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T15:32:27.861Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-22T15:32:27.865Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:27.865Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T15:32:27.913Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-22T15:32:27.919Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:27.919Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-22T15:32:27.920Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-22T15:32:27.923Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-22T15:32:28.037Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:32:33.228Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:33.229Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:32:33.229Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:32:33.293Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:32:33.298Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:33.299Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:32:33.299Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:32:33.368Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:32:36.693Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:36.694Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:32:36.695Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:32:36.757Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:32:36.762Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:32:36.763Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:32:36.764Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:32:36.826Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:36:35.067Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:36:35.068Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:36:35.069Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:36:35.130Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:36:35.133Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:36:35.133Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:36:35.133Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:36:35.194Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:37:19.034Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:37:19.035Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:37:19.035Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:37:19.096Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:37:19.099Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:37:19.100Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:37:19.100Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:37:19.163Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:43:53.992Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:43:53.993Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:43:53.994Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:43:54.055Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:43:54.060Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:43:54.060Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:43:54.061Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:43:54.136Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:44:02.776Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:44:02.777Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:44:02.777Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:44:02.836Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-06-22T15:44:02.840Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-22T15:44:02.840Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-06-22T15:44:02.840Z"}
+{"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-22T15:44:02.900Z"}
