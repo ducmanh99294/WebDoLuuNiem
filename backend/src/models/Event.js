@@ -22,13 +22,13 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     discount: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Coupons",
-        default: null
+        type: Number,
+        required: true,
+        min: 0,
+        max: 100
     },
     images: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Images"
+        type: String,
     }],
     products: [{
         type: mongoose.Schema.Types.ObjectId,
