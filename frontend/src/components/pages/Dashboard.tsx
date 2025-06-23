@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Store } from 'lucide-react';
+import { LogOut } from 'lucide-react';
+import { MessageCircle  } from 'lucide-react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,12 +12,19 @@ import {
   Legend,
 } from "chart.js";
 import "../../assets/css/Dashboard.css";
+import { Link, useNavigate } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const Dashboard = () => {
   const [userCount, setUserCount] = useState<number>(0);
-
+  const navigate = useNavigate()
+  const handleLogout = () =>{
+    localStorage.removeItem('token')
+    localStorage.removeItem('role')
+    localStorage.removeItem('userId')
+    navigate('/login')
+  }
  useEffect(() => {
   const fetchUserCount = async () => {
     try {
@@ -37,7 +46,7 @@ const Dashboard = () => {
   fetchUserCount();
 }, []);
 
-
+ //biểu đồ 
   const chartData = {
     labels: [
       "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
@@ -60,7 +69,7 @@ const Dashboard = () => {
         <div className="sidebar-header">🛒 Cửa Hàng Đặc Sản</div>
         <nav className="sidebar-menu">
           <div className="menu-highlight">📊 Báo cáo</div>
-          <div>📚 Library</div>
+          <div><MessageCircle size={18}/> Khung chat </div>
           <div>👥 Quản lý người dùng</div>
           <div>📦 Quản lý sản phẩm</div>
           <div>➕ Thêm sản phẩm</div>
@@ -69,14 +78,16 @@ const Dashboard = () => {
           <div>📁 Quản lý danh mục</div>
           <div>📁 Quản lý mã khuyến mãi </div>
           <div><Store size={18} /> Gian hàng hợp tác</div>
-        </nav>
+<div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
+  <LogOut size={18} /> Đăng Xuất
+</div>        </nav>
         <div className="sidebar-footer">
           <div>⚙️ Cài đặt</div>
           <div className="user-info">Hoang<br />hoang123@gmail.com</div>
         </div>
       </aside>
-
-      {/* Main Content */}
+{/* 
+        khung header dùng để phân loại thống kê  */}
       <main className="main-content">
         <h1 className="title">📈 Thống kê</h1>
 
@@ -94,7 +105,7 @@ const Dashboard = () => {
 
         <div className="n1">
           <div className="stats-grid">
-         <StatCard title="Người dùng" value={`${userCount} người`} />
+         <Link to ='/user' style={{ textDecoration: 'none'}}><StatCard title="Người dùng" value={`${userCount} người`} /></Link>
             <StatCard title="Câu hỏi" value="3,298" />
             <StatCard title="Số lượt đánh giá" value="5,000" />
             <StatCard title="Tổng doanh thu" value="2,000,000 VNĐ" />

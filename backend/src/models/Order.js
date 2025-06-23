@@ -44,6 +44,11 @@ const orderSchema = new mongoose.Schema({
     required: true,
     min: 0
   },
+  coupon: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Coupons',
+    default: null
+  },
   shipping: {
     shipping_company: {
       type: mongoose.Schema.Types.ObjectId,

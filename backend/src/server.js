@@ -79,13 +79,9 @@ app.use(`/api/${API_VERSION}/coupons`, require('./routes/couponRoutes'));
 app.use(`/api/${API_VERSION}/payments`, require('./routes/paymentRoutes'));
 app.use(`/api/${API_VERSION}/notifications`, require('./routes/notificationRoutes'));
 app.use(`/api/${API_VERSION}/events`, require('./routes/eventRoutes'));
-<<<<<<< HEAD
 app.use(`/api/${API_VERSION}/blogs`, require('./routes/blogRoutes'));
-
-=======
 app.use(`/api/${API_VERSION}/carts`, require('./routes/cartRoutes'));
 app.use(`/api/${API_VERSION}/cart-details`, require('./routes/cartDetailRoutes'));
->>>>>>> dd623c013b3c66ec93100818942dbadff4efc325
 
 // Error handler
 app.use(errorHandler);

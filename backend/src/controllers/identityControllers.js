@@ -97,13 +97,10 @@ const loginUser = async (req, res) => {
         }
 
         logger.info(`User logged in successfully: ${user._id}`);
-<<<<<<< HEAD
-const { accessToken, refreshToken } = await generateAuthToken(user);
-        console.log(`Access Token: ${accessToken}`);
-=======
 
         const { accessToken, refreshToken } = await generateAuthToken(user);
->>>>>>> dd623c013b3c66ec93100818942dbadff4efc325
+        console.log(`Access Token: ${accessToken}`);
+
         await RefreshToken.deleteMany({
             user_id: user._id
         })
@@ -115,6 +112,7 @@ const { accessToken, refreshToken } = await generateAuthToken(user);
                 user_id: user._id,
                 role: user.role,
                 name: user.name,
+                ////////
                 image:user.image,
                 accessToken,
                 refreshToken
