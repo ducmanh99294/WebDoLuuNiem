@@ -7,6 +7,27 @@ const orderSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  products: [{
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Products',
+      required: true
+    },
+    quantity: {
+      type: Number,
+      required: true,
+      min: 1
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0
+    }
+  }],
+  coupon: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Coupons',
+  }],
   order_number: {
     type: String,
     required: true,
@@ -72,4 +93,5 @@ orderSchema.pre('save', function (next) {
 // Index để tối ưu truy vấn
 orderSchema.index({ user: 1, status: 1, createdAt: -1 });
 
-module.exports = mongoose.model('Order', orderSchema, 'orders');
+const Order = mongoose.model('Order', orderSchema, 'orders');
+module.exports = Order;

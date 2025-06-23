@@ -31,7 +31,7 @@ const createCoupon = async (req, res) => {
 
 const getAllCoupons = async (req, res) => {
     try {
-        const coupons = await Coupon.find().populate('applicable_users', 'name');
+        const coupons = await Coupon.find().populate('applicable_users', 'name email');
         logger.info(`Retrieved ${coupons.length} coupons`);
         res.status(200).json({
             success: true,
@@ -118,6 +118,7 @@ const deleteCoupon = async (req, res) => {
         });
     }
 };
+
 
 module.exports = {
     createCoupon,

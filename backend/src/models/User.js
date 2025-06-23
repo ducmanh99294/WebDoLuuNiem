@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema(
             required: true,
             minlength: 6,
         },
+        birthday:{ 
+            type: Date,
+            require: true
+        },
         address: {
             type: String,
             default: null
@@ -52,6 +56,19 @@ userSchema.pre('save', async function (next) {
         next()
     }
 })
+
+userSchema.pre('findOneAndUpdate', async function (next) {
+    const update = this.getUpdate();
+    if (update.password) {
+        try {
+            update.password = await argon2.hash(update.password);
+            this.setUpdate(update);
+        } catch (error) {
+            return next(error);
+        }
+    }
+    next();
+});
 
 userSchema.methods.comparePassword = async function (candidatePassword) {
     try {

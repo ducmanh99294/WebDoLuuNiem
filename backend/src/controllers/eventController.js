@@ -4,9 +4,9 @@ const logger = require('../utils/logger');
 
 const createEvent = async (req, res) => {
     try {
-        const { name, description, StartDate, EndDate, location, discount, images, products } = req.body;
+        const { name, description, startDate, endDate, location, discount, images, products } = req.body;
 
-        if (!name || !description || !StartDate || !EndDate || !location) {
+        if (!name || !description || !startDate || !endDate || !location) {
             logger.error('All fields are required');
             return res.status(400).json({
                 success: false,
@@ -17,8 +17,8 @@ const createEvent = async (req, res) => {
         const event = new Event({
             name,
             description,
-            StartDate,
-            EndDate,
+            startDate,
+            endDate,
             location,
             discount,
             images,
@@ -97,13 +97,13 @@ const getEventById = async (req, res) => {
 
 const updateEvent = async (req, res) => {
     try {
-        const { name, description, StartDate, EndDate, location, discount, images, products } = req.body;
+        const { name, description, startDate, endDate, location, discount, images, products } = req.body;
 
         const event = await Event.findByIdAndUpdate(req.params.id, {
             name,
             description,
-            StartDate,
-            EndDate,
+            startDate,
+            endDate,
             location,
             discount,
             images,

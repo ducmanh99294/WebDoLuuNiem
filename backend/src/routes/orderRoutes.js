@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const orderController = require('../controllers/orderController');
 const { validateToken } = require('../middlewares/authMiddleware');
+const authRolers = require('../middlewares/authRoles');
 
 router.use(validateToken);
 
@@ -24,6 +25,6 @@ router.post('/comfirm', orderController.confirmOrder);
 
 router.post('/cancel', orderController.cancelOrder);
 
-router.post('/use-coupon', orderController.useCoupon);
+router.post('/:id/use-coupon', orderController.useCoupon);
 
 module.exports = router;

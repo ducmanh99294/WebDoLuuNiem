@@ -5,6 +5,7 @@ WORKDIR /app/backend
 COPY package*.json ./
 
 RUN npm i
+RUN npm install multer
 
 COPY . .
 

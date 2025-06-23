@@ -23,6 +23,10 @@ const deleteUser = async (id) => {
     return await User.findByIdAndDelete(id);
 };
 
+const updateInfo = async (id, userData) => {
+    return await User.findByIdAndUpdate(id, userData, { new: true }).select('-password');
+}
+
 module.exports = {
     getAllUsers,
     getUserById,

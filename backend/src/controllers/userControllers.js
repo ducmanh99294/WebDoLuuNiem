@@ -1,6 +1,7 @@
 const User = require('../models/User');
-const { sendEmail, sendOTP } = require('../services/emailService');
-const { validationUser, validationUpdateUser } = require('../utils/validation');
+const { sendEmail, sendOTP, verifyOTP } = require('../services/emailService');
+const { validationUser, validationUpdateUser } = require('../utils/validation/validation');
+const { updateUserValidation } = require('../utils/validation/userValidation');
 const logger = require('../utils/logger');
 
 // [GET] /users
@@ -74,7 +75,7 @@ exports.createUser = async (req, res) => {
             });
         }
 
-        const { name, email, password, address, phone, role, image } = req.body;
+        const { name, email, password, birthday, address, phone, role, image } = req.body;
 
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -86,7 +87,7 @@ exports.createUser = async (req, res) => {
             });
         }
 
-        const user = new User({ name, email, password, address, phone, role, image });
+        const user = new User({ name, email, password, birthday, address, phone, role, image });
         await user.save();
         await sendEmail(user.email, user.name);
         
@@ -201,7 +202,22 @@ exports.deleteUser = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
     try {
-        const { email } = req.body;
+        logger.info('Resetting password...');
+        const { email, newPassword, otp } = req.body;
+        if (!newPassword || newPassword.length < 6) {
+            return res.status(400).json({
+                success: false,
+                error: 'New password must be at least 6 characters long'
+            });
+        }
+        const verify = await verifyOTP(email, otp, 'change_password');
+        if (!verify.success) {
+            logger.warn(`OTP verification failed: ${verify.message}`);
+            return res.status(400).json({ 
+                success: false,
+                error: verify.message 
+            });
+        }
 
         if (!email) {
             return res.status(400).json({ 
@@ -218,22 +234,64 @@ exports.resetPassword = async (req, res) => {
             });
         }
 
-        const otp = Math.floor(100000 + Math.random() * 900000);
+        const isValidPassword = await user.comparePassword(newPassword);
+        if (isValidPassword) {
+            return res.status(400).json({ 
+            success: false,
+            error: 'New password must be different from the old password' 
+            });
+        }
 
-        await sendOTP(user.email, otp);
-
-        user.otp = otp;
-        await user.save();
-
+        await user.updateOne({ password: newPassword });
         res.status(200).json({ 
             success: true,
-            message: 'OTP sent to your email' 
+            message: 'Password reset successfully' 
         });
     } catch (err) {
         logger.error(`Error in resetPassword: ${err.message}`);
         res.status(500).json({ 
             success: false,
-            error: 'Internal Server Error' 
+            error: 'Internal Server Error',
+            details: err.message 
+        });
+    }
+}
+
+exports.updateInfo = async (req, res) => {
+    try{
+        logger.info('Updating user information...');
+        const { error } = updateUserValidation(req.body);
+        if (req.params.id !== req.user.id) {
+            logger.warn('User ID mismatch in update request');
+            return res.status(403).json({
+                success: false,
+                error: 'You are not authorized to update this user information'
+            });
+        }
+
+        if (error) {
+            logger.warn(`Validation error: ${error.details[0].message}`);
+            return res.status(400).json({ 
+                success: false,
+                error: error.details[0].message 
+            });
+        }
+        const user = req.user;
+        const updates = req.body;
+        const updatedUser = await User.findByIdAndUpdate(user.id, updates, { new: true }).select('-password');
+        
+        logger.info(`User information updated successfully: ${updatedUser._id}`);
+        res.status(200).json({
+            success: true,
+            message: 'User information updated successfully',
+            data: updatedUser
+        });
+    } catch (error) {
+        logger.error(`Error in updateInfo: ${error.message}`);
+        res.status(500).json({ 
+            success: false,
+            error: 'Internal Server Error',
+            details: error.message 
         });
     }
 }

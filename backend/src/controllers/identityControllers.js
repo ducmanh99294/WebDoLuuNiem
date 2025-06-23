@@ -1,7 +1,7 @@
 const logger = require('../utils/logger');
 const User = require('../models/User');
 const generateAuthToken = require('../utils/generateToken');
-const { validationRegistration, validationLogin } = require('../utils/validation');
+const { validationRegistration, validationLogin } = require('../utils/validation/validation');
 const RefreshToken = require('../models/RefreshToken');
 
 const registerUser = async (req, res) => {
@@ -100,10 +100,10 @@ const loginUser = async (req, res) => {
 
         const { accessToken, refreshToken } = await generateAuthToken(user);
         console.log(`Access Token: ${accessToken}`);
+
         await RefreshToken.deleteMany({
             user_id: user._id
         })
-
 
         res.status(200).json({
             success: true,
@@ -112,6 +112,8 @@ const loginUser = async (req, res) => {
                 user_id: user._id,
                 role: user.role,
                 name: user.name,
+                ////////
+                image:user.image,
                 accessToken,
                 refreshToken
             }
@@ -140,7 +142,6 @@ const refreshToken = async (req, res) => {
         }
 
         const token = await RefreshToken.findOne({ token: refreshToken });
-        console.log(token)
         if (!token || token.expiredAt < new Date()) {
             logger.warn('Invalid refresh token');
 
@@ -191,7 +192,6 @@ const logoutUser = async (req, res) => {
         }
 
         await RefreshToken.deleteOne({ token: refreshToken });
-
         logger.info(`Refresh token delete for logout`);
 
         res.status(200).json({
@@ -202,7 +202,7 @@ const logoutUser = async (req, res) => {
     } catch (error) {
         logger.error(`Error during user logout: ${error.message}`);
         return res.status(500).json({
-            success: false,
+success: false,
             message: 'Internal Server Error'
         });
     }
