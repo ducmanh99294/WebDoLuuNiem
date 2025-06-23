@@ -1,6 +1,6 @@
 const CartDetail = require('../models/CartDetail');
 const logger = require('../utils/logger'); // Adjust path as needed
-const { validateCartDetail } = require('../utils/cartDetailValidation'); // Adjust path as needed
+const { validateCartDetail } = require('../utils/validation/cartDetailValidation'); // Adjust path as needed
 
 // [POST] /cart-details
 exports.createCartDetail = async (req, res) => {

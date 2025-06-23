@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const logger = require('./logger');
+const logger = require('../logger');
 
 // Validation schema for updating CartDetail (PUT/PATCH)
 const validateCartDetail = (data) => {
