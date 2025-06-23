@@ -2135,3 +2135,32 @@
 {"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-23T03:37:48.832Z"}
 {"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-23T03:37:49.324Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-23T03:37:50.690Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-23T03:38:11.877Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-23T03:38:12.414Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-23T03:38:13.544Z"}
+{"level":"info","message":"Received request: GET /api/v1/like-lists","timestamp":"2025-06-23T03:38:20.282Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-23T03:38:20.284Z"}
+{"level":"info","message":"Fetching like list for user: 6848ee6ff819d2245eefc943","timestamp":"2025-06-23T03:38:20.292Z"}
+{"level":"info","message":"Received request: POST /api/v1/like-lists/683d0d6631386e28d0e4fd97","timestamp":"2025-06-23T03:38:32.010Z"}
+{"level":"info","message":"Received body: {}","timestamp":"2025-06-23T03:38:32.011Z"}
+{"level":"info","message":"Liking product with ID: 683d0d6631386e28d0e4fd97","timestamp":"2025-06-23T03:38:32.016Z"}
+{"level":"info","message":"User ID liking product: 6848ee6ff819d2245eefc943","timestamp":"2025-06-23T03:38:32.017Z"}
+{"level":"info","message":"Checking if user has already liked product: 683d0d6631386e28d0e4fd97","timestamp":"2025-06-23T03:38:32.229Z"}
+{"level":"info","message":"Product liked successfully: 683d0d6631386e28d0e4fd97","timestamp":"2025-06-23T03:38:32.481Z"}
+{"level":"info","message":"Received request: POST /api/v1/like-lists/683d0d6631386e28d0e4fd97","timestamp":"2025-06-23T03:38:40.527Z"}
+{"level":"info","message":"Received body: {}","timestamp":"2025-06-23T03:38:40.527Z"}
+{"level":"info","message":"Liking product with ID: 683d0d6631386e28d0e4fd97","timestamp":"2025-06-23T03:38:40.530Z"}
+{"level":"info","message":"User ID liking product: 6848ee6ff819d2245eefc943","timestamp":"2025-06-23T03:38:40.530Z"}
+{"level":"info","message":"Checking if user has already liked product: 683d0d6631386e28d0e4fd97","timestamp":"2025-06-23T03:38:40.735Z"}
+{"level":"warn","message":"Product already liked by user","timestamp":"2025-06-23T03:38:40.736Z"}
+{"level":"info","message":"Received request: GET /api/v1/like-lists","timestamp":"2025-06-23T03:38:45.966Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-23T03:38:45.967Z"}
+{"level":"info","message":"Fetching like list for user: 6848ee6ff819d2245eefc943","timestamp":"2025-06-23T03:38:45.970Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-23T03:38:58.358Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-23T03:38:58.359Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-23T03:38:58.361Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-23T03:38:58.637Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-06-23T03:39:17.599Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-23T03:39:17.601Z"}
+{"level":"info","message":"Retrieved 0 blogs","timestamp":"2025-06-23T03:39:17.751Z"}
+{"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-06-23T04:47:52.269Z"}

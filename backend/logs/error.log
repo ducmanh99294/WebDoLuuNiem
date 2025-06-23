@@ -76,3 +76,4 @@
 {"level":"error","message":"Error retrieving categories: Operation `categories.find()` buffering timed out after 10000ms","timestamp":"2025-06-23T03:10:25.867Z"}
 {"level":"error","message":"Error fetching products: Operation `products.find()` buffering timed out after 10000ms","timestamp":"2025-06-23T03:10:25.870Z"}
 {"level":"error","message":"Error retrieving categories: Operation `categories.find()` buffering timed out after 10000ms","timestamp":"2025-06-23T03:10:27.166Z"}
+{"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-06-23T04:47:52.269Z"}
