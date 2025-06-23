@@ -7,7 +7,6 @@ const mongoURL = process.env.MONGO_URL || 'mongodb://admin:123456@mongodb:27018/
 
 const connectMongoDB = async () => {
     try {
-        console.log(mongoURL);
         await mongoose.connect(mongoURL, {
             // useNewUrlParser: true,
             // useUnifiedTopology: true,

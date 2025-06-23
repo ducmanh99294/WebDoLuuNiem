@@ -6,11 +6,12 @@ const likeListSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
-    product: {
+    product: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Products',
+        default: [],
         required: true
-    },
+    }],
 });
 
 const LikeList = mongoose.model('LikeList', likeListSchema, 'like_list');

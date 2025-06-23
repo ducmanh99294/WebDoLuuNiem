@@ -7,6 +7,5 @@ const { validateToken } = require('../middlewares/authMiddleware');
 router.post('/:id',validateToken, likeListController.addToLikeList);
 router.get('/',validateToken, likeListController.getAllLikeLists);
 router.delete('/:id',validateToken, likeListController.removeFromLikeList);
-router.get('/:id',validateToken, likeListController.isProductLiked);
 
 module.exports = router;

@@ -4,49 +4,77 @@ const logger = require('../utils/logger');
 
 const addToLikeList = async (req, res) => {
     try {
-        const { user, product } = req.body;
-        logger.info(`Adding product ${product} to like list for user ${user}`);
-
-        if (!user || !product) {
-            logger.warn('User ID and Product ID are required');
+        logger.info(`Liking product with ID: ${req.params.id}`);
+        if (!req.params.id) {
+            logger.warn('Product ID is required for liking');
             return res.status(400).json({
                 success: false,
-                message: 'please provide user ID and product ID'
+                message: 'please provide product ID to like'
             });
         }
 
-        const existingLike = await LikeList.findOne({ user, product });
-
-        if (existingLike) {
-            logger.warn('Product already in like list');
-            return res.status(400).json({
+        logger.info(`User ID liking product: ${req.user.id}`);
+        if (!req.user || !req.user.id) {
+            logger.warn('User not authenticated');
+            return res.status(401).json({
                 success: false,
-                message: 'product already exists in like list'
+                message: 'please login to like this product'
             });
         }
 
-        const newLike = await LikeList.create({ user, product });
+        let likeList = await LikeList.findOne({ user: req.user.id});
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({
+                success: false,
+                message: 'product not found'
+            });
+        }
+        console.log("likeList", likeList);
+        logger.info(`Checking if user has already liked product: ${product._id}`);
 
-        await Product.findByIdAndUpdate(product, { $inc: { like_count: 1 } });
+        if (!likeList ) {
+            logger.info(`Creating new like list for user: ${req.user.id}`);
+            likeList = await LikeList.create({
+                user: req.user.id,
+                product: [req.params.id]
+            });
+        }
+        else {
+            if(likeList.product.includes(req.params.id)) {
+                logger.warn('Product already liked by user');
+                return res.status(400).json({
+                    success: false,
+                    message: 'you have already liked this product'
+                });        
+            } 
+        }
+            likeList.product.push(req.params.id);
 
-        res.status(201).json({
+        product.like_count += 1;
+        await product.save();
+        await likeList.save();
+
+        logger.info(`Product liked successfully: ${product._id}`);
+        res.json({
             success: true,
-            message: 'add product to like list successfully',
-            like: newLike
+            message: 'like Product successfully',
+            // like_count: product.like_count
         });
-    } catch (error) {
-        logger.error(`Error adding to like list: ${error.message}`);
+        
+       
+    } catch (e) {
+        logger.error(`Error liking product: ${e.message}`);
         res.status(500).json({
             success: false,
-            message: 'add product to like list failed',
-            error: error.message
+            message: e.message
         });
     }
 }
 
 const getAllLikeLists = async (req, res) => {
     try {
-        const { user } = req.params;
+        const user = req.user.id;
         logger.info(`Fetching like list for user: ${user}`);
 
         if (!user) {
@@ -57,7 +85,7 @@ const getAllLikeLists = async (req, res) => {
             });
         }
 
-        const likes = await LikeList.find({ user }).populate('product');
+        const likes = await LikeList.find({ user }).populate('product', 'name');
 
         res.status(200).json({
             success: true,
@@ -76,10 +104,9 @@ const getAllLikeLists = async (req, res) => {
 
 const removeFromLikeList = async (req, res) => {
     try {
-        const { user, product } = req.body;
-        logger.info(`Removing product ${product} from like list for user ${user}`);
+        logger.info(`Removing product ${req.params.id} from like list for user ${req.user.id}`);
 
-        if (!user || !product) {
+        if (!req.user || !req.user.id || !req.params.id) {
             logger.warn('User ID and Product ID are required');
             return res.status(400).json({
                 success: false,
@@ -87,9 +114,10 @@ const removeFromLikeList = async (req, res) => {
             });
         }
 
-        const like = await LikeList.findOneAndDelete({ user, product });
+        const product = await Product.findById(req.params.id);
+        const likeList = await LikeList.findOneAndDelete({ user: req.user.id, product: req.params.id});
 
-        if (!like) {
+        if (!likeList) {
             logger.warn('Product not found in like list');
             return res.status(404).json({
                 success: false,
@@ -97,12 +125,15 @@ const removeFromLikeList = async (req, res) => {
             });
         }
 
-        await Product.findByIdAndUpdate(product, { $inc: { like_count: -1 } });
+        await Product.findByIdAndUpdate(req.params.id, { $inc: { like_count: -1 } });
         
+        product.like_count -= 1;
+        await product.save();
+
         res.status(200).json({
             success: true,
             message: 'delete product from like list successfully',
-            like
+            likeList
         });
     } catch (error) {
         logger.error(`Error removing from like list: ${error.message}`);
@@ -114,38 +145,8 @@ const removeFromLikeList = async (req, res) => {
     }
 }
 
-const isProductLiked = async (req, res) => {
-    try {
-        const { user, product } = req.params;
-        logger.info(`Checking if product ${product} is liked by user ${user}`);
-
-        if (!user || !product) {
-            logger.warn('User ID and Product ID are required');
-            return res.status(400).json({
-                success: false,
-                message: 'please provide user ID and product ID'
-            });
-        }
-
-        const like = await LikeList.findOne({ user, product });
-
-        res.status(200).json({
-            success: true,
-            isLiked: !!like
-        });
-    } catch (error) {
-        logger.error(`Error checking like status: ${error.message}`);
-        res.status(500).json({
-            success: false,
-            message: 'check like status failed',
-            error: error.message
-        });
-    }
-}
-
 module.exports = {
     addToLikeList,
     getAllLikeLists,
     removeFromLikeList,
-    isProductLiked
 };

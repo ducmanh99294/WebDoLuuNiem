@@ -69,9 +69,9 @@ app.use(`/api/${API_VERSION}/like-lists`, require('./routes/likeListRoutes'));
 app.use(`/api/${API_VERSION}/orders`, require('./routes/orderRoutes'));
 app.use(`/api/${API_VERSION}/categories`, require('./routes/categoryRoutes'));
 app.use(`/api/${API_VERSION}/shipping-companies`, require('./routes/shippingCompanyRoutes'));
-app.use(`/api/${API_VERSION}/shippers`, require('./routes/shipperRoutes'));
+// app.use(`/api/${API_VERSION}/shippers`, require('./routes/shipperRoutes'));
 app.use(`/api/${API_VERSION}/messages`, require('./routes/messageRoutes'));
-app.use(`/api/${API_VERSION}/support-sessions`, require('./routes/supportSessionRoutes'));
+// app.use(`/api/${API_VERSION}/support-sessions`, require('./routes/supportSessionRoutes'));
 app.use(`/api/${API_VERSION}/reviews`, require('./routes/reviewRoutes'));
 app.use(`/api/${API_VERSION}/chats`, require('./routes/chatRoutes'));
 app.use(`/api/${API_VERSION}/comments`, require('./routes/commentRoutes'));
@@ -79,7 +79,13 @@ app.use(`/api/${API_VERSION}/coupons`, require('./routes/couponRoutes'));
 app.use(`/api/${API_VERSION}/payments`, require('./routes/paymentRoutes'));
 app.use(`/api/${API_VERSION}/notifications`, require('./routes/notificationRoutes'));
 app.use(`/api/${API_VERSION}/events`, require('./routes/eventRoutes'));
+<<<<<<< HEAD
+app.use(`/api/${API_VERSION}/blogs`, require('./routes/blogRoutes'));
 
+=======
+app.use(`/api/${API_VERSION}/carts`, require('./routes/cartRoutes'));
+app.use(`/api/${API_VERSION}/cart-details`, require('./routes/cartDetailRoutes'));
+>>>>>>> dd623c013b3c66ec93100818942dbadff4efc325
 
 // Error handler
 app.use(errorHandler);
