@@ -9,7 +9,7 @@ const createProduct = async (req, res) => {
     try {
         logger.info('Creating product with data:', req.body);
 
-        const { name, price, categories, description, discount, quantity, imageUrls } = req.body;
+        const { name, price, categories, description, discount, quantity, images } = req.body;
 
         if (!req.body.name || !req.body.price || !req.body.categories || !req.body.description || !req.body.discount || !req.body.quantity) {
             return res.status(400).json({
@@ -36,9 +36,9 @@ const createProduct = async (req, res) => {
             imageIds = imageIds.concat(uploadImages);
         }
 
-        if (imageUrls) {
-            const imageUrls = Array.isArray(imageUrls) ? imageUrls : [imageUrls];
-            const uploadImages = await Promise.all(imageUrls.map(async (url) => {
+        if (images) {
+            const urls = Array.isArray(images) ? images : [images];
+            const uploadImages = await Promise.all(urls.map(async (url) => {
                 const newImage = await Images.create({ 
                     image: url, 
                     Product: product._id
