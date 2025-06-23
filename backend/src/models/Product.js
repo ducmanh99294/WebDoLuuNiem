@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema({
     Coupon: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Coupons",
-        default: 0,
+        default: null,
     },
     images: [{
         type: mongoose.Schema.Types.ObjectId,
