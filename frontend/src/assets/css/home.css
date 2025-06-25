@@ -1,8 +1,10 @@
 .card-sp{
-    padding: 40px ;
+    padding: 40px;
 }
 .sp{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     gap: 16px;
+}
+.price-line span{
 }

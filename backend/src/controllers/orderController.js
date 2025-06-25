@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const Order = require('../models/Order');
 // const OrderDetail = require('../models/OrderDetail');
 const Product = require('../models/Product');
-const Notification = require('../models/Notification');
+const { sendNotification } = require('../services/notifyService');
 const logger = require('../utils/logger');
+const { Console } = require('winston/lib/winston/transports');
 
 const createOrder = async (req, res) => {
   try {
@@ -63,20 +64,28 @@ const createOrder = async (req, res) => {
       payment
     });
 
-    // Tạo thông báo cho người dùng
-    await Notification.create({
+    // Gửi thông báo cho người dùng
+    await sendNotification({
       user: newOrder.user,
       sender: req.user._id,
       type: 'order',
       message: `Đơn hàng #${newOrder.order_number} đã được tạo thành công`,
       data: { orderId: newOrder._id },
-      priority: 'high'
+      priority: 'high',
+      io: req.io,
+      socketRoom: newOrder.user.toString(),
+      socketEvent: 'order_created',
+      socketPayload: {
+        userId: newOrder.user,
+        orderNumber: newOrder.order_number,
+        orderId: newOrder._id
+      }
     });
 
-    // Tạo thông báo cho admin
+    // Gửi thông báo cho admin
     const admins = await mongoose.model('User').find({ role: 'admin' });
     await Promise.all(admins.map(admin =>
-      Notification.create({
+      sendNotification({
         user: admin._id,
         sender: req.user._id,
         type: 'order',
@@ -85,13 +94,6 @@ const createOrder = async (req, res) => {
         priority: 'high'
       })
     ));
-
-    // Emit socket
-    req.io.to(newOrder.user.toString()).emit('order_created', {
-      userId: newOrder.user,
-      orderNumber: newOrder.order_number,
-      orderId: newOrder._id
-    });
 
     res.status(201).json({
       success: true,
@@ -120,14 +122,15 @@ const getAllOrders = async (req, res) => {
     const orders = await Order.find()
       .select('order_number status total_price user createdAt')
       .populate('user', 'name email')
-      .populate('products.product', 'name price')
+      .populate('coupon', 'code discount')
+      // .populate('product_id.product', 'name price')
       .populate('shipping.shipping_company', 'name')
       .populate('shipping.shipper', 'name phone');
 
     res.status(200).json({
       success: true,
       message: 'Lấy danh sách đơn hàng thành công',
-      orders
+      orders,
     });
   } catch (error) {
     logger.error(`Error retrieving orders: ${error.message}`);
@@ -229,21 +232,22 @@ const updateOrderStatus = async (req, res) => {
       logger.info(`Updated sell_count for products in order ${order._id}`);
     }
 
-    // Tạo thông báo
-    await Notification.create({
+    // Gửi thông báo
+    await sendNotification({
       user: order.user,
       sender: req.user._id,
       type: 'order',
       message: `Đơn hàng #${order.order_number} đã được cập nhật trạng thái thành ${status}`,
       data: { orderId: order._id, status },
-      priority: 'high'
-    });
-
-    // Emit socket
-    req.io.to(order.user.toString()).emit('order_updated', {
-      orderId: order._id,
-      orderNumber: order.order_number,
-      status
+      priority: 'high',
+      io: req.io,
+      socketRoom: order.user.toString(),
+      socketEvent: 'order_updated',
+      socketPayload: {
+        orderId: order._id,
+        orderNumber: order.order_number,
+        status
+      }
     });
 
     const populatedOrder = await Order.findById(req.params.id)
@@ -294,8 +298,8 @@ const deleteOrder = async (req, res) => {
 
     await order.deleteOne();
 
-    // Tạo thông báo
-    await Notification.create({
+    // Gửi thông báo
+    await sendNotification({
       user: order.user,
       sender: req.user._id,
       type: 'order',
@@ -444,6 +448,75 @@ const cancelOrder = async (req, res) => {
   }
 };
 
+const useCoupon = async (req, res) => {
+  try {
+    const { code } = req.body;
+    
+    const coupon = await mongoose.model('Coupons').findOne({ code: code });
+    const order = await Order.findById(req.params.id);
+    if (!coupon) {
+      return res.status(404).json({
+        success: false,
+        message: 'coupon not found'
+      });
+    }
+
+    if (!order) {
+      return res.status(404).json({
+        success: false,
+        message: 'order not found'
+      });
+    }
+
+    if (coupon.expiry_date < new Date()) {
+      return res.status(400).json({
+        success: false,
+        message: 'this coupon has expired'
+      });
+    }
+
+    // Kiểm tra xem người dùng đã sử dụng mã này chưa
+    if (coupon.applicable_users.includes(req.user.id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'you have already used this coupon'
+      });
+    }
+
+    if (!Array.isArray(order.coupon)) {
+      order.coupon = [];
+    } else if (order.coupon.some(id => id.equals(coupon._id))) {
+      return res.status(400).json({
+        success: false,
+        message: 'This coupon has already been applied to this order'
+      });
+    }
+
+    // Cập nhật người dùng đã sử dụng mã
+    coupon.applicable_users.push(req.user.id);
+    // Cập nhật đơn hàng với mã giảm giá
+    console.log("order", coupon._id ,order._id, order.coupon);
+    if (!Array.isArray(order.coupon)) {
+      order.coupon = [];
+    }
+    order.coupon.push(coupon._id);
+    // await coupon.save();
+    await order.save();
+    res.status(200).json({
+      success: true,
+      message: 'Coupon applied successfully',
+      data: coupon
+    });
+  } catch (error) {
+    logger.error(`Error using coupon: ${error.message}`);
+    res.status(500).json({
+      success: false,
+      message: 'Error using coupon',
+      error: error.message
+    });
+  }
+};
+
 module.exports = {
   createOrder,
   getAllOrders,
@@ -451,5 +524,6 @@ module.exports = {
   updateOrderStatus,
   deleteOrder,
   confirmOrder,
-  cancelOrder
+  cancelOrder,
+  useCoupon
 };
