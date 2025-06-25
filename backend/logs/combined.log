@@ -10842,3 +10842,20 @@
 {"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-25T01:54:20.442Z"}
 {"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-06-25T02:12:48.449Z"}
 
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-25T02:30:26.198Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-25T02:30:26.533Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-25T02:30:27.512Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-25T02:30:29.120Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-25T02:30:29.121Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-25T02:30:29.136Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-25T02:30:29.137Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-25T02:30:29.138Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-25T02:30:29.224Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-25T02:30:29.284Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-25T02:30:29.285Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-25T02:30:29.390Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-25T02:30:29.399Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-25T02:30:29.404Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-25T02:30:29.405Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-25T02:30:29.406Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-25T02:30:29.593Z"}

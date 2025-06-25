@@ -15,7 +15,7 @@ const Checkout: React.FC = () => {
             <label>Email</label>
             <input type="email" placeholder="Email" />
           </div>
-          <div className="form-group">
+          <div className="form-group1">
             <label>Điện thoại</label>
             <input type="text" placeholder="Phone number" />
           </div>

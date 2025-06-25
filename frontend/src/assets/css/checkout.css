@@ -25,7 +25,12 @@
 .form-group {
   margin-bottom: 15px;
 }
-
+.form-group1 input {
+  margin-top: 1px;
+}
+.form-group1{
+    margin-top: -6px;
+}
 .form-group input,
 .form-group textarea,
 .form-group select {
