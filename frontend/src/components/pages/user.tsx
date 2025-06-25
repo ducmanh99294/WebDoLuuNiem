@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../assets/css/user.css';
 import axios from 'axios';
 import { data } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 interface User {
   _id: string;
   name: string;
@@ -19,6 +19,7 @@ interface User {
 
 const UserList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
+    const navigate = useNavigate();
 
  useEffect(() => {
   axios.get('http://localhost:3000/api/v1/users')
@@ -46,10 +47,15 @@ const UserList: React.FC = () => {
 
   return (
     <div className="user-container">
+        <h2 className='box-t'> Quản lí người dùng</h2>
         <div className="t1">
-      <h2 className="title">Quản lý người dùng</h2>
+            
+<button className="title" onClick={() => navigate('/dashboard')}>
+  Back
+</button>
       <button className='HI'> thêm người dùng </button></div>
       {users.map((user) => (
+            
         <div key={user._id} className="user-card">
           <div className="user-info">
             <img src={user.image} alt="avatar" className="user-avatar" />

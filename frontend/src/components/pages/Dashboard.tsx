@@ -72,8 +72,6 @@ const Dashboard = () => {
           <div><MessageCircle size={18}/> Khung chat </div>
           <div>👥 Quản lý người dùng</div>
           <div>📦 Quản lý sản phẩm</div>
-          <div>➕ Thêm sản phẩm</div>
-          <div>➕ Thêm người dùng</div>
           <div>📝 Quản lý bài viết</div>
           <div>📁 Quản lý danh mục</div>
           <div>📁 Quản lý mã khuyến mãi </div>

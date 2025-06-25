@@ -6,12 +6,18 @@ import { FaSearch, FaBell, FaShoppingCart, FaUser, FaBars, FaTruck } from 'react
 const Header: React.FC = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('username'); // thêm dòng này
   const avatar = localStorage.getItem('avatar') || '/images/default-avatar.png';
-
-  
+  const [searchText, setSearchText] = useState('');
+  const navigate = useNavigate();
+// hàm tìm kiếm 
+const handleSearch = (e: React.FormEvent) => {
+  e.preventDefault();
+  if (searchText.trim()) {
+    navigate(`/search?keyword=${encodeURIComponent(searchText.trim())}`);
+  }
+};
   // hàm đăng xuất 
 const handleLogout = async () => {
   const refreshToken = localStorage.getItem('refreshToken');

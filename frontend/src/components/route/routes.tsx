@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 
 import Header from '../header';
 import Footer from '../Fotter';
-
+import SearchPage from '../search'; // đường dẫn tuỳ theo bạn lưu
 import HomePage from '../pages/homepage';
 import LoginPage from '../LoginPage';
 import Register from '../Register';
@@ -16,7 +16,7 @@ import CartPage from '../pages/cart';
 import Editprofile from '../pages/Editprofile';
 import Profile from '../pages/profile';
 import User from '../pages/user';
-
+import Checkout from '../pages/checkout';
 const AppContent: React.FC = () => {
   const location = useLocation();
 
@@ -40,7 +40,8 @@ const AppContent: React.FC = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/editprofile" element={<Editprofile />} />
         <Route path="/profile" element={<Profile />} />
-
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/checkout" element={<Checkout />} />
         {/* CHỈ admin mới được vào */}
         <Route
           path="/dashboard"

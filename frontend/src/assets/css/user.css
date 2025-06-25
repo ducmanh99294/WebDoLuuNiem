@@ -79,3 +79,8 @@ padding: 8px 16px;
   transition: background 0.3s ease;
   margin-bottom: 7px;
 }
+.box-t{
+    align-items: center;
+    text-align: center;
+    margin-bottom: 8px;
+}
