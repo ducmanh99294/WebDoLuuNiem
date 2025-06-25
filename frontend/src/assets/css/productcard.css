@@ -9,6 +9,7 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex-wrap: wrap; /* Cho xuống dòng nếu không đủ chỗ */
+  height: 306px;
 }
 .card:hover {
   transform: scale(1.05);
@@ -100,4 +101,16 @@
 }
 .heart-icon:hover{
   color: hotpink;
+}
+.sp {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* số cột linh hoạt */
+  gap: 16px;
+  align-items: stretch; /* kéo dài các container theo chiều cao lớn nhất */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* đảm bảo chiếm toàn bộ chiều cao từ .sp */
 }
