@@ -1,13 +1,15 @@
 const Product = require('../models/Product.js');
 const Images = require('../models/Image.js');
+const LikeList = require('../models/LikeList.js');
 const Categories = require('../models/Category.js');
 const logger = require('../utils/logger.js');
+const { log } = require('winston');
 
 const createProduct = async (req, res) => {
     try {
         logger.info('Creating product with data:', req.body);
 
-        const { name, price, categories, description, discount, quantity, imageUrls } = req.body;
+        const { name, price, categories, description, discount, quantity, images } = req.body;
 
         if (!req.body.name || !req.body.price || !req.body.categories || !req.body.description || !req.body.discount || !req.body.quantity) {
             return res.status(400).json({
@@ -34,9 +36,9 @@ const createProduct = async (req, res) => {
             imageIds = imageIds.concat(uploadImages);
         }
 
-        if (imageUrls) {
-            const imageUrls = Array.isArray(imageUrls) ? imageUrls : [imageUrls];
-            const uploadImages = await Promise.all(imageUrls.map(async (url) => {
+        if (images) {
+            const urls = Array.isArray(images) ? images : [images];
+            const uploadImages = await Promise.all(urls.map(async (url) => {
                 const newImage = await Images.create({ 
                     image: url, 
                     Product: product._id
@@ -178,6 +180,7 @@ const deleteProduct = async (req, res) => {
 
 const like_count = async (req, res) => {
     try {
+        
         logger.info(`Liking product with ID: ${req.params.id}`);
         if (!req.params.id) {
             logger.warn('Product ID is required for liking');
@@ -187,8 +190,8 @@ const like_count = async (req, res) => {
             });
         }
 
-        logger.info(`User ID liking product: ${req.user._id}`);
-        if (!req.user || !req.user._id) {
+        logger.info(`User ID liking product: ${req.user.id}`);
+        if (!req.user || !req.user.id) {
             logger.warn('User not authenticated');
             return res.status(401).json({
                 success: false,
@@ -196,7 +199,9 @@ const like_count = async (req, res) => {
             });
         }
 
+        const likeList = await LikeList.findOne({ user: req.user._id, product: {$in :[req.params.id]} });
         const product = await Product.findById(req.params.id);
+        console.log("   " + product._id, req.params.id);
         if (!product) {
             return res.status(404).json({
                 success: false,
@@ -205,13 +210,27 @@ const like_count = async (req, res) => {
         }
 
         logger.info(`Checking if user has already liked product: ${product._id}`);
-        if (product.liked_by.includes(req.user._id)) {
+        if (likeList) {
+            logger.warn(`User has already liked this product: ${req.user.id}`);
             return res.status(400).json({
                 success: false,
                 message: 'you have already liked this product'
             });
         }
-
+        
+        if (!likeList) {
+            logger.info(`Creating new like list for user: ${req.user.id}`);
+            const newLikeList = await LikeList.create({
+                user: req.user.id,
+                product: [req.params.id]
+            });
+        }
+        else {
+            logger.info(`Adding product to existing like list for user: ${req.user.id}`);
+            likeList.product.push(req.params.id);
+            await likeList.save();
+        }
+      
         product.like_count += 1;
         await product.save();
 
@@ -221,6 +240,8 @@ const like_count = async (req, res) => {
             message: 'updated like count successfully',
             like_count: product.like_count
         });
+        
+       
     } catch (e) {
         logger.error(`Error liking product: ${e.message}`);
         res.status(500).json({

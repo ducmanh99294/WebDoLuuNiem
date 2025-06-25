@@ -11,6 +11,8 @@ router.post('/',  userController.createUser);
 // forgot password
 router.post('/reset-password', userController.resetPassword);
 router.put('/:id', validateToken, authRolers("admin", "user"), userController.updateUser);
+// update user info
+router.put('/info/:id', validateToken, authRolers("user"), userController.updateInfo);
 router.delete('/:id', validateToken, authRolers("admin"), userController.deleteUser);
 
 module.exports = router;

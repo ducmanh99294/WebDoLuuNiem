@@ -1,6 +1,6 @@
 const logger = require('../utils/logger');
 const paymentService = require('../services/paymentServices');
-const { validationCreatePayment, validationUpdatePayment } = require('../utils/validation');
+const { validationCreatePayment, validationUpdatePayment } = require('../utils/validation/validation');
 
 // Create a new payment
 async function createPayment(req, res) {

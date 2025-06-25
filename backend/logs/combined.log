@@ -10841,3 +10841,4 @@
 {"level":"info","message":"Fetching all users...","timestamp":"2025-06-25T01:54:20.344Z"}
 {"level":"info","message":"Total users retrieved: 17","timestamp":"2025-06-25T01:54:20.442Z"}
 {"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-06-25T02:12:48.449Z"}
+
