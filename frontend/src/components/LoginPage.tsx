@@ -28,9 +28,9 @@ const LoginPage: React.FC = () => {
       if (res.ok && data.success) {
         const token = data.data?.accessToken || '';
         const role = (data.data?.role || '').toLowerCase();
-        const name = data.data?.name?.trim() || 'Người dùng'; // ✅ thêm dòng này
+        const name = data.data?.name?.trim() || 'Người dùng'
         const avatar = data.data?.avatar || '/images/default-avatar.png';
-        const userId = data.data?.user_id || ''; // 👈 thêm dòng này
+        const userId = data.data?.user_id || '';
 
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
