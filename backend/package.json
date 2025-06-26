@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "argon2": "^0.43.0",
+    "axios": "^1.10.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.5.0",
