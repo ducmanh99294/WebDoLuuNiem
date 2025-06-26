@@ -82,9 +82,7 @@ const LoginPage: React.FC = () => {
           </div>
 
           <button type="submit" className="btn-login">Đăng nhập</button>
-
           {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
-
           <div className="options">
             <label style={{ width: '100px' }}>
               <input type="checkbox" /> Nhớ đến tôi
