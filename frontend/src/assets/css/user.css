@@ -1,0 +1,86 @@
+.user-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  display: flex;
+  gap: 20px;
+}
+
+.user-avatar {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.btn.edit {
+  background-color: #007bff;
+}
+
+.btn.delete {
+  background-color: #dc3545;
+}
+.t1{
+    display: flex;
+    justify-content: space-between;
+}
+.t1 button{
+padding: 8px 16px;
+  font-size: 14px;           
+  font-weight: 500;           
+  border: none;
+  border-radius: 8px;         
+  color: #fff;                
+  background-color: #007bff;  
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 7px;
+}
+.box-t{
+    align-items: center;
+    text-align: center;
+    margin-bottom: 8px;
+}

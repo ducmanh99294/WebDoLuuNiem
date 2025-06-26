@@ -15,7 +15,9 @@
     "@sendgrid/mail": "^8.1.5",
     "axios": "^1.10.0",
     "express": "^5.1.0",
-    "natural": "^8.1.0"
+    "multer": "^2.0.1",
+    "natural": "^8.1.0",
+    "react-hot-toast": "^2.5.2"
   },
   "devDependencies": {
     "argon2": "^0.43.0",

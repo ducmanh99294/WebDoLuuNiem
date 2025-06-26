@@ -10,7 +10,7 @@ const couponSchema = new mongoose.Schema({
        type: Number,
         required: true,
         min: 0,
-        max: 100 // Assuming discount is a percentage
+        max: 100 
     },
     expiry_date: {
         type: Date,

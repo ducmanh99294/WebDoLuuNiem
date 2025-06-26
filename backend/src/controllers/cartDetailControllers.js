@@ -56,7 +56,7 @@ exports.getCartDetailsByCartId = async (req, res) => {
     try {
         const { cart_id } = req.params;
         logger.info(`Fetching cart details by cart_id: ${cart_id}`);
-        const cartDetails = await CartDetail.find({ cart_id });
+        const cartDetails = await CartDetail.find({ cart_id }).populate('product_id', 'name price images');
         res.status(200).json({
             success: true,
             cartDetails

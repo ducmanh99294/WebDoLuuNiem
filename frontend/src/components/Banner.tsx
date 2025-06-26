@@ -17,7 +17,7 @@ const Banner = () => {
     <div className="banner-container">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
-        autoplay={{ delay: 120000 }}
+        autoplay={{ delay: 1200 }}
         loop={true}
         pagination={{ clickable: true }}
         navigation

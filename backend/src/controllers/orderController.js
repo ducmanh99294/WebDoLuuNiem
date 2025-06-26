@@ -451,20 +451,14 @@ const cancelOrder = async (req, res) => {
 const useCoupon = async (req, res) => {
   try {
     const { code } = req.body;
-    
+
     const coupon = await mongoose.model('Coupons').findOne({ code: code });
     const order = await Order.findById(req.params.id);
+
     if (!coupon) {
       return res.status(404).json({
         success: false,
         message: 'coupon not found'
-      });
-    }
-
-    if (!order) {
-      return res.status(404).json({
-        success: false,
-        message: 'order not found'
       });
     }
 

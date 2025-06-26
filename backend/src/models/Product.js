@@ -46,7 +46,6 @@ const productSchema = new mongoose.Schema({
     like_count: {
         type: Number,
         default: 0
-   
     },
     view_count: {
         type: Number,

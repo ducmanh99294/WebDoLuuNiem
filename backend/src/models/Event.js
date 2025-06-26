@@ -24,6 +24,7 @@ const eventSchema = new mongoose.Schema({
     discount: {
         type: Number,
         required: true,
+        default: 0,
         min: 0,
         max: 100
     },
@@ -32,7 +33,7 @@ const eventSchema = new mongoose.Schema({
     }],
     products: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Products"
+        ref: "ApplicableProducts"
     }],
 });
 

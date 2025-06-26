@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 
 import Header from '../header';
 import Footer from '../Fotter';
-
+import SearchPage from '../search'; // đường dẫn tuỳ theo bạn lưu
 import HomePage from '../pages/homepage';
 import LoginPage from '../LoginPage';
 import Register from '../Register';
@@ -15,15 +15,15 @@ import Dashboard from '../pages/Dashboard';
 import CartPage from '../pages/cart';
 import Editprofile from '../pages/Editprofile';
 import Profile from '../pages/profile';
-
-// Component bọc logic router
+import User from '../pages/user';
+import Checkout from '../pages/checkout';
 const AppContent: React.FC = () => {
   const location = useLocation();
 
-  // Các trang không cần header và footer
-  const noLayoutRoutes = [ '/register', '/dashboard'];
-
+  const noLayoutRoutes = ['/register', '/dashboard', '/user'];
   const hideLayout = noLayoutRoutes.includes(location.pathname);
+
+  const userRole = localStorage.getItem('role'); // sửa lại từ 'admin' thành 'role'
 
   return (
     <>
@@ -37,10 +37,21 @@ const AppContent: React.FC = () => {
         <Route path="/about" element={<About />} />
         <Route path="/product-detail/:_id" element={<DetailProduct />} />
         <Route path="/signin" element={<Navigate to="/login" replace />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/editprofile" element={<Editprofile />} />
-        <Route path="/profile" element={<Profile/>} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/checkout" element={<Checkout />} />
+        {/* CHỈ admin mới được vào */}
+        <Route
+          path="/dashboard"
+          element={userRole === 'admin' ? <Dashboard /> : <Navigate to="/" replace />}
+        />
+        <Route
+          path="/user"
+          element={userRole === 'admin' ? <User /> : <Navigate to="/" replace />}
+        />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {!hideLayout && <Footer />}

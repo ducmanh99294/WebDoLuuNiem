@@ -28,11 +28,11 @@
 
 }
 .text-input input{
-    border: 1px solid white;
+    border: none;
     border-radius: 40px;
     text-align: center;
     width: 200px ;
-    border: none;           /* cút cm m đi viền c hó  */
+    border: none;           
     outline: none;       /* Ẩn đi */
 }
 
@@ -40,7 +40,7 @@
     width: 175px ;
     height: 60px;
     border-radius: 40px;
-    border: 1px solid white;
+    border: none;
     background-color: #3BB77E;
     cursor: pointer;
     margin-left: 13px;
