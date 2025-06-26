@@ -18,6 +18,7 @@ const handleSearch = (e: React.FormEvent) => {
     navigate(`/search?keyword=${encodeURIComponent(searchText.trim())}`);
   }
 };
+  const user = JSON.parse(localStorage.getItem('user') || '{}'); // lấy thông tin người dùng từ localStorage
   // hàm đăng xuất 
 const handleLogout = async () => {
   const refreshToken = localStorage.getItem('refreshToken');
@@ -107,7 +108,7 @@ const handleLogout = async () => {
             </>
           )}
 
-          <Link to="/cart"><button><FaShoppingCart /></button></Link>
+          <Link to="/cart"><button><FaShoppingCart/></button></Link>
         </div>
       </div>
 

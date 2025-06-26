@@ -24,14 +24,11 @@ const orderSchema = new mongoose.Schema({
       min: 0
     }
   }],
-  coupon: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Coupons',
-  }],
   order_number: {
     type: String,
     required: true,
     unique: true,
+    sparse: true,
     match: /^[A-Z0-9]{6,12}$/
   },
   status: {
@@ -44,11 +41,11 @@ const orderSchema = new mongoose.Schema({
     required: true,
     min: 0
   },
-  coupon: {
+  coupon: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Coupons',
     default: null
-  },
+  }],
   shipping: {
     shipping_company: {
       type: mongoose.Schema.Types.ObjectId,

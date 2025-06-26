@@ -6,8 +6,8 @@ const authRoles = require('../middlewares/authRoles');
 const imageUpload = require('../middlewares/imageMiddleware');
 
 // CRUD routes for Categories
-router.post('/',imageUpload.single('images'), categoryController.createCategory);
-// router.post('/',imageUpload.single('images'), validateToken, authRoles('admin'), categoryController.createCategory);
+// router.post('/',imageUpload.single('images'), categoryController.createCategory);
+router.post('/',imageUpload.single('images'), validateToken, authRoles('admin'), categoryController.createCategory);
 router.get('/', categoryController.getAllCategories);
 router.get('/:id', categoryController.getCategoryById);
 router.put('/:id', validateToken, authRoles('admin'), categoryController.updateCategory);
