@@ -1,4 +1,6 @@
 const mongoose = require ('mongoose');
+const logger = require('../utils/logger'); // Import the logger
+const client = require('../config/meiliSearchConfig'); // Import the MeiliSearch client
 
 const productSchema = new mongoose.Schema({
     name: {
@@ -66,6 +68,38 @@ const productSchema = new mongoose.Schema({
     }
 }, {
     timestamps: { created_at: 'create_at', updated_at: 'update_at' }
+});
+
+const productIndex = client.index('products');
+
+productSchema.post('save', async function () {
+  try {
+    logger.info('Indexing product:', this._id);
+    await productIndex.addDocuments([{
+        id: this._id,
+        name: this.name,
+        description: this.description,
+        rating: this.rating,
+        price: this.price,
+        discount: this.discount,
+        like_count: this.like_count,
+        view_count: this.view_count,
+        sell_count: this.sell_count,
+        createdAt: this.createdAt,
+        updatedAt: this.updatedAt
+    }]);
+  } catch (err) {
+    logger.error('Meilisearch Indexing Error:', err.message);
+  }
+});
+
+productSchema.post('remove', async function () {
+    try {
+        logger.info('Deleting product from index:', this._id);
+        await productIndex.deleteDocument(this._id.toString());
+    } catch (err) {
+        logger.error('Meilisearch Delete Error:', err.message);
+    }
 });
 
 const Product = mongoose.model('Products', productSchema);

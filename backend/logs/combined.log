@@ -14224,3 +14224,150 @@
 {"level":"info","message":"Received body: undefined","timestamp":"2025-06-26T18:36:00.492Z"}
 {"level":"info","message":"Fetching all products","timestamp":"2025-06-26T18:36:00.492Z"}
 {"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-26T18:36:00.613Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T01:53:35.368Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T01:53:36.017Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T01:53:37.312Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T01:53:48.924Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T01:53:49.311Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T01:53:50.686Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T01:54:58.456Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T01:54:58.654Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T01:54:59.759Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=Kh%C3%B3a","timestamp":"2025-06-27T01:58:07.878Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T01:58:07.879Z"}
+{"level":"info","message":"Fetching product with ID: search","timestamp":"2025-06-27T01:58:07.880Z"}
+{"level":"error","message":"Error fetching product: Cast to ObjectId failed for value \"search\" (type string) at path \"_id\" for model \"Products\"","timestamp":"2025-06-27T01:58:07.888Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T01:59:06.906Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T01:59:07.120Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T01:59:08.536Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=Kh%C3%B3a","timestamp":"2025-06-27T01:59:16.771Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T01:59:16.771Z"}
+{"level":"info","message":"Searching products with query: Khóa","timestamp":"2025-06-27T01:59:16.772Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=","timestamp":"2025-06-27T01:59:25.609Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T01:59:25.609Z"}
+{"level":"info","message":"Searching products with query: ","timestamp":"2025-06-27T01:59:25.610Z"}
+{"level":"warn","message":"Search query is empty","timestamp":"2025-06-27T01:59:25.610Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=kh%C3%B3a","timestamp":"2025-06-27T02:00:18.524Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T02:00:18.525Z"}
+{"level":"info","message":"Searching products with query: khóa","timestamp":"2025-06-27T02:00:18.526Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:03:40.018Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:03:40.222Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:03:40.270Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:03:41.376Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:05:10.102Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:05:10.835Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:05:11.021Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:05:12.390Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:05:15.518Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:05:15.613Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:05:15.649Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:05:17.046Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:07:05.288Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:07:05.411Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:07:05.443Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:07:06.753Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:07:54.881Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:07:55.046Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:07:55.084Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:07:56.227Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:08:26.851Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:08:26.940Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:08:26.978Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:08:28.243Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:08:55.341Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:08:55.719Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:08:55.769Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:08:57.042Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:09:54.260Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:09:54.359Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:09:54.398Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:09:58.116Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:19:33.473Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:19:33.935Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:19:34.111Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:19:35.364Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:19:46.950Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:19:47.165Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:19:47.208Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:19:48.359Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:24:00.111Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:24:00.266Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:24:00.302Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:24:01.674Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:24:31.958Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:24:32.063Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:24:32.099Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:24:33.046Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:26:46.983Z"}
+{"0":"i","1":"n","10":"o","11":"t","12":" ","13":"d","14":"e","15":"f","16":"i","17":"n","18":"e","19":"d","2":"d","3":"e","4":"x","5":" ","6":"i","7":"s","8":" ","9":"n","level":"error","message":"Failed to update searchableAttributes:","timestamp":"2025-06-27T02:26:47.375Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:26:47.550Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:26:48.837Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:27:35.982Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:27:36.152Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:27:37.259Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=kh%C3%B3a","timestamp":"2025-06-27T02:27:58.299Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T02:27:58.300Z"}
+{"level":"info","message":"Searching products with query: khóa","timestamp":"2025-06-27T02:27:58.301Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=a","timestamp":"2025-06-27T02:29:18.170Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T02:29:18.170Z"}
+{"level":"info","message":"Searching products with query: a","timestamp":"2025-06-27T02:29:18.171Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:38:01.519Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:38:01.665Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:38:02.967Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:38:32.490Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:38:32.795Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:38:34.166Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:38:40.598Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:38:41.104Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:38:42.651Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:38:47.507Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:38:47.635Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:38:48.757Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=a","timestamp":"2025-06-27T02:38:52.258Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T02:38:52.259Z"}
+{"level":"info","message":"Searching products with query: a","timestamp":"2025-06-27T02:38:52.260Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:39:38.272Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:39:38.533Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:39:39.698Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:40:20.740Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:40:21.042Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:40:22.565Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=a","timestamp":"2025-06-27T02:40:22.886Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T02:40:22.887Z"}
+{"level":"info","message":"Searching products with query: a","timestamp":"2025-06-27T02:40:22.887Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:40:39.146Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:40:39.435Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:40:40.429Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=a","timestamp":"2025-06-27T02:40:43.106Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T02:40:43.106Z"}
+{"level":"info","message":"Searching products with query: a","timestamp":"2025-06-27T02:40:43.107Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:40:58.042Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:40:58.706Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:41:00.044Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=a","timestamp":"2025-06-27T02:41:00.090Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T02:41:00.091Z"}
+{"level":"info","message":"Searching products with query: a","timestamp":"2025-06-27T02:41:00.094Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:42:45.290Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:42:45.523Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:42:46.735Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:48:48.705Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:48:49.253Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:48:51.476Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T02:50:47.733Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T02:50:47.897Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T02:50:49.203Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T03:01:27.841Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T03:01:28.041Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T03:01:29.459Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T03:05:16.064Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T03:05:16.295Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T03:05:17.561Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T03:06:42.625Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T03:06:42.919Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T03:06:44.142Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-27T03:11:39.471Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2025-06-27T03:11:39.745Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-27T03:11:40.926Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/search?q=a","timestamp":"2025-06-27T03:12:53.411Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-27T03:12:53.412Z"}
+{"level":"info","message":"Searching products with query: a","timestamp":"2025-06-27T03:12:53.413Z"}
