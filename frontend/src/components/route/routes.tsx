@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-
+import { Toaster } from 'react-hot-toast';
 import Header from '../header';
 import Footer from '../Fotter';
 import SearchPage from '../search'; // đường dẫn tuỳ theo bạn lưu
@@ -54,7 +54,9 @@ const AppContent: React.FC = () => {
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+        
       {!hideLayout && <Footer />}
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 };

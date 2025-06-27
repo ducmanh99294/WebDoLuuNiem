@@ -16,10 +16,12 @@
     "axios": "^1.10.0",
     "express": "^5.1.0",
     "multer": "^2.0.1",
-    "natural": "^8.1.0"
+    "natural": "^8.1.0",
+    "react-hot-toast": "^2.5.2"
   },
   "devDependencies": {
     "argon2": "^0.43.0",
+    "axios": "^1.10.0",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.5.0",
