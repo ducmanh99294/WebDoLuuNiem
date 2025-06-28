@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
+
 import AddedToCartPopup from '../AddedToCartPopup';
 import { jwtDecode } from 'jwt-decode';
+
 
 const DetailProduct: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const token = localStorage.getItem('token');
-  const decoded = token ? jwtDecode(token) : null;
-  const userId = decoded?.id;
+  const userId = localStorage.getItem('userId')
   const { _id } = useParams();
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -103,7 +104,8 @@ const DetailProduct: React.FC = () => {
     const cartDetailData = await cartDetailRes.json();
 
     const existingItem = cartDetailData.cartDetails?.find((item: any) => item.product_id._id?.toString() === _id);
-
+    console.log('existingItem:', existingItem);
+    console.log(_id, 'so sánh với', existingItem?.product_id);
     if (existingItem) {
       // 4. Nếu sản phẩm đã có → tăng số lượng
       console.log('tăng số lượng:', existingItem);

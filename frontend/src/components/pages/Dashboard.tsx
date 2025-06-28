@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Store, LogOut, MessageCircle } from 'lucide-react';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -15,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const Dashboard = () => {
+  const [userList, setUserList] = useState<any[]>([]);
   const [userCount, setUserCount] = useState<number>(0);
   const [activeSection, setActiveSection] = useState('dashboard');
   const navigate = useNavigate();
@@ -26,26 +28,39 @@ const Dashboard = () => {
     navigate('/login');
   };
 
-  useEffect(() => {
-    const fetchUserCount = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/api/v1/users");
-        const data = await response.json();
-        if (Array.isArray(data.data)) {
-          const users = data.data.filter((user: any) => user.role !== "admin");
-          setUserCount(users.length);
-        } else if (typeof data.count === "number") {
-          setUserCount(data.count);
-        } else {
-          setUserCount(0);
-        }
-      } catch (error) {
-        console.error("Lỗi khi tải danh sách người dùng:", error);
-      }
-    };
+useEffect(() => {
+  const fetchUserCount = async () => {
+    try {
+      const token = localStorage.getItem('token');
 
-    fetchUserCount();
-  }, []);
+      const response = await fetch("http://localhost:3000/api/v1/users", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log("Dữ liệu người dùng:", data);
+
+      if (Array.isArray(data.data)) {
+        const users = data.data.filter((user: any) => user.role !== "admin");
+        setUserCount(users.length);
+        setUserList(users); // ✅ Đặt ở đây sau khi đã khai báo `users`
+      } else if (typeof data.count === "number") {
+        setUserCount(data.count);
+        setUserList([]); // fallback rỗng nếu không có mảng data
+      } else {
+        setUserCount(0);
+        setUserList([]);
+      }
+    } catch (error) {
+      console.error("Lỗi khi tải danh sách người dùng:", error);
+    }
+  };
+
+  fetchUserCount();
+}, []);
 
   const chartData = {
     labels: [
@@ -89,8 +104,43 @@ const Dashboard = () => {
         <h1 className="title">
           {activeSection === 'dashboard' && '📈 Thống kê'}
           {activeSection === 'products' && '📦 Quản lý sản phẩm'}
-          {activeSection === 'users' && '👥 Quản lý người dùng'}
-          {activeSection === 'chat' && '💬 Khung chat'}
+{activeSection === 'users' && (
+  <div className="user-management">
+    <div className="user-header">
+      <button onClick={() => setActiveSection('dashboard')}>Back</button>
+      <h2>Quản lí người dùng</h2>
+      <button className="add-user">Thêm người dùng</button>
+    </div>
+
+    <div className="user-list">
+      {userList.map((user) => (
+        <div key={user._id} className="user-card0">
+          <div className="user-infor2">
+            <img
+              src={user.avatar || "/images/default-avatar.png"}
+              alt="avatar"
+              className="avatar-img"
+            />
+            <div className="user-details1">
+              <h3 className="user-name1">{user.name}</h3>
+              <p><strong>Email:</strong> {user.email}</p>
+              <p><strong>SĐT:</strong> {user.phone}</p>
+              <p><strong>Vai trò:</strong> {user.role}</p>
+              <p><strong>Địa chỉ:</strong> {user.address}</p>
+            </div>
+          </div>
+          <div className="user-actions">
+            <button className="btn-edit">Sửa</button>
+            <button className="btn-delete">Xoá</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+
+    {activeSection === 'chat' && '💬 Khung chat'}
           {activeSection === 'posts' && '📝 Bài viết'}
           {activeSection === 'categories' && '📁 Danh mục'}
           {activeSection === 'coupons' && '🏷️ Mã khuyến mãi'}

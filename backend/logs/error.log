@@ -197,3 +197,5 @@
 {"level":"error","message":"Error fetching cart details by cart_id: Cast to ObjectId failed for value \"null\" (type string) at path \"cart_id\" for model \"CartDetail\"","timestamp":"2025-06-26T17:17:45.125Z"}
 >>>>>>> 7b01f27 (fix ctl cart-detail model AP event order routes blog category event product user, update frontend)
 >>>>>>> 127ac5c1d28d29722f2736916f67bd0713fac918
+{"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-06-27T04:57:40.589Z"}
+{"level":"error","message":"Error creating order: Order validation failed: payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-06-28T15:36:19.241Z"}

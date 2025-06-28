@@ -16,8 +16,20 @@ services:
       - PORT=${PORT}
       - API_VERSION=${API_VERSION}
       - JWT_SECRET=${JWT_SECRET}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+      - SENDGRID_FROM_EMAIL=${SENDGRID_FROM_EMAIL}
+      - PARTNER_CODE=${PARTNER_CODE}
+      - ACCESS_KEY=${ACCESS_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+      - ENDPOINT=${ENDPOINT}
+      - RETURN_URL=${RETURN_URL}
+      - MEILISEARCH_HOST=${MEILISEARCH_HOST}
+      - MEILISEARCH_API_KEY=${MEILISEARCH_API_KEY}
+    env_file:
+      - .env
     depends_on:
       - mongodb
+      - meilisearch
   
   mongodb:
     image: mongo:latest
@@ -44,5 +56,16 @@ services:
       "
     restart: "no"
 
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    container_name: meilisearch
+    ports:
+      - "7701:7700"
+    environment:
+      - MEILI_MASTER_KEY=${MEILISEARCH_API_KEY}
+    volumes:
+      - meili_data:/meili_data
+
 volumes:
   mongodb_data:
+  meili_data:

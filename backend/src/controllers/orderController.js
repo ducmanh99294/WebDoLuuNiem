@@ -51,7 +51,7 @@ const createOrder = async (req, res) => {
     }));
 
     const newOrder = await Order.create({
-      user: req.user._id,
+      user,
       order_number,
       products: products.map(p => ({
         product: p.product,
@@ -59,6 +59,7 @@ const createOrder = async (req, res) => {
         price: p.price,
         total_price: p.quantity * p.price
       })),
+      coupon: req.body.coupon || [],
       total_price,
       shipping,
       payment
