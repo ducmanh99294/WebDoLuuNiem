@@ -92,8 +92,12 @@ textarea {
   margin: 5px 0;
 }
 
+.summary {
+  margin-bottom: 25px
+}
+
 .coupons {
-  margin-top: 40px;
+  margin-top: 5px;
 }
 
 .coupon {

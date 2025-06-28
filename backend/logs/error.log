@@ -187,3 +187,23 @@
 {"level":"error","message":"Error fetching cart details by cart_id: Cast to ObjectId failed for value \"null\" (type string) at path \"cart_id\" for model \"CartDetail\"","timestamp":"2025-06-26T17:17:45.121Z"}
 {"level":"error","message":"Error fetching cart details by cart_id: Cast to ObjectId failed for value \"null\" (type string) at path \"cart_id\" for model \"CartDetail\"","timestamp":"2025-06-26T17:17:45.125Z"}
 >>>>>>> 7b01f27 (fix ctl cart-detail model AP event order routes blog category event product user, update frontend)
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:20:18.035Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:20:18.094Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:20:40.544Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:20:40.597Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:21:18.162Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:21:18.217Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:21:25.649Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:21:25.703Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:21:40.172Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:21:59.570Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:21:59.624Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:22:07.561Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: Cannot populate path `images` because it is not in your schema. Set the `strictPopulate` option to false to override.","timestamp":"2025-06-27T03:22:07.615Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: populate is not defined","timestamp":"2025-06-27T03:24:39.556Z"}
+{"level":"error","message":"Error fetching cart details by cart_id: populate is not defined","timestamp":"2025-06-27T03:24:39.568Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"Uncaught Exception thrown: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20)","syscall":"read","timestamp":"2025-06-27T03:59:39.885Z"}
+{"level":"error","message":"Error creating order: Order validation failed: user: Path `user` is required., payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-06-28T09:31:11.502Z"}
+{"level":"error","message":"Error creating order: Order validation failed: user: Path `user` is required.","timestamp":"2025-06-28T09:32:04.647Z"}
+{"level":"error","message":"Error creating order: Order validation failed: user: Path `user` is required.","timestamp":"2025-06-28T09:34:55.228Z"}
+{"level":"error","message":"Error creating order: Order validation failed: user: Path `user` is required.","timestamp":"2025-06-28T09:36:07.013Z"}
