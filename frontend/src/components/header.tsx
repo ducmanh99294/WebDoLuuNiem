@@ -10,6 +10,8 @@ const Header: React.FC = () => {
   const username = localStorage.getItem('username'); // thêm dòng này
   const avatar = localStorage.getItem('avatar') || '/images/default-avatar.png';
   const [searchText, setSearchText] = useState('');
+  const [showNotification, setShowNotification] = useState(false);
+
   const navigate = useNavigate();
 // hàm tìm kiếm 
 const handleSearch = (e: React.FormEvent) => {
@@ -52,15 +54,18 @@ const handleLogout = async () => {
     alert('Lỗi khi gọi API logout, vui lòng thử lại.');
   }
 };
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+useEffect(() => {
+  const handleClickOutside = (e: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      setDropdownOpen(false);
+      setShowNotification(false); // 👈 Thêm dòng này để ẩn popup thông báo
+    }
+  };
+
+  document.addEventListener('mousedown', handleClickOutside);
+  return () => document.removeEventListener('mousedown', handleClickOutside);
+}, []);
+
 
   return (
     <div className="header-container">
@@ -77,8 +82,26 @@ const handleLogout = async () => {
         </div>
 
         <div className="header-actions">
-          <button><FaTruck /> Theo dõi đơn hàng</button>
-          <button><FaBell /> Thông báo</button>
+   <div
+  className="notification-wrapper"
+  style={{ position: 'relative' }}
+  ref={dropdownRef}
+>
+  <button onClick={() => setShowNotification(!showNotification)}>
+    <FaBell /> Thông báo
+  </button>
+
+  {showNotification && (
+    <div className="notification-popup1">
+      <h5 className="title">Thông báo</h5>
+      <p>Không có thông báo mới.</p>
+    </div>
+  )}
+</div>
+
+
+ <button><FaTruck /> Theo dõi đơn hàng</button>
+
 
           {/* Nếu có token thì ẩn Đăng nhập/Đăng ký, hiện dropdown tên */}
           {token ? (
@@ -109,6 +132,7 @@ const handleLogout = async () => {
           )}
 
           <Link to="/cart"><button><FaShoppingCart/></button></Link>
+        
         </div>
       </div>
 

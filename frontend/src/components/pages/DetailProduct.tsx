@@ -3,7 +3,12 @@ import { useParams } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
 
+import AddedToCartPopup from '../AddedToCartPopup';
+import { jwtDecode } from 'jwt-decode';
+
+
 const DetailProduct: React.FC = () => {
+  const [showPopup, setShowPopup] = useState(false);
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId')
   const { _id } = useParams();
@@ -133,11 +138,11 @@ const DetailProduct: React.FC = () => {
         })
       });
       const result = await addRes.json();
-      if (result.success) {
-        toast.success('Đã thêm sản phẩm vào giỏ hàng');
-      } else {
-        toast.error('Không thể thêm sản phẩm');
-      }
+     if (result.success) {
+  toast.success('Đã thêm sản phẩm vào giỏ hàng');
+  setShowPopup(true);
+  setTimeout(() => setShowPopup(false), 10000);
+}
     }
 
   } catch (error) {
@@ -295,6 +300,7 @@ const DetailProduct: React.FC = () => {
           </div>
         </div>
       </div>
+      {showPopup && <AddedToCartPopup onClose={() => setShowPopup(false)} />}
     </div>
   );
 };
