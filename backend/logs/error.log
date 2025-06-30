@@ -206,3 +206,4 @@
 {"level":"error","message":"Error deleting cart detail: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"CartDetail\"","timestamp":"2025-06-30T02:15:07.314Z"}
 {"level":"error","message":"Error deleting cart detail: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"CartDetail\"","timestamp":"2025-06-30T02:15:33.851Z"}
 {"level":"error","message":"Error creating cart detail: CartDetail validation failed: cart_id: Path `cart_id` is required.","timestamp":"2025-06-30T03:01:35.309Z"}
+{"level":"error","message":"Error creating cart detail: CartDetail validation failed: cart_id: Path `cart_id` is required.","timestamp":"2025-06-30T15:44:40.053Z"}
