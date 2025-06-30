@@ -11,6 +11,7 @@ const DetailProduct: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId')
+  const [quantity, setQuantity] = useState(1);
   const { _id } = useParams();
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -134,7 +135,7 @@ const DetailProduct: React.FC = () => {
         body: JSON.stringify({
           cart_id: cartId,
           product_id: _id,
-          quantity: 1
+          quantity
         })
       });
       const result = await addRes.json();
@@ -150,7 +151,7 @@ const DetailProduct: React.FC = () => {
     toast.error('Có lỗi xảy ra khi thêm vào giỏ hàng');
   }
 };
-  
+
   if (loading) return <p>Đang tải...</p>;
   if (!product) return <p>Không tìm thấy sản phẩm.</p>;
 
@@ -229,9 +230,17 @@ const DetailProduct: React.FC = () => {
           </div>
           <div style={{ margin: '12px 0' }}>
             <span>Số lượng: </span>
-            <button>-</button>
-            <input type="number" value={1} style={{ width: 80, textAlign: 'center' }} readOnly />
-            <button>+</button>
+            <button  
+              type="button"
+              onClick={() => setQuantity(prev => Math.max(1, prev - 1))}>
+                -
+            </button>
+            <input type="number" value={quantity} style={{ width: 80, textAlign: 'center'}} readOnly />
+            <button 
+              type="button"
+              onClick={() => setQuantity(prev => prev + 1)}>
+                +
+            </button>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button onClick={handleAddToCart}>Thêm vào giỏ hàng</button>
