@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../../assets/css/checkout.css';
+import PaymentSuccess from '../PaymentSuccess';
 import { products } from '../data/product';
 
 const Checkout: React.FC = () => {
@@ -16,6 +17,7 @@ const Checkout: React.FC = () => {
   const cartId = localStorage.getItem('cart_id');
   const userId = localStorage.getItem('userId');
   const token = localStorage.getItem('token');
+  const [showSuccess, setShowSuccess] = useState(false);
   const shippingPrice = shippingMethod === 'flat' ? 20000 : 0;
   //hàm lấy coupon
   useEffect(() => {
@@ -88,8 +90,8 @@ const Checkout: React.FC = () => {
   }
 
   //hàm tạo order
-  const handleCreateOrder = async () => {
-    try{
+ const handleCreateOrder = async () => {
+  try {
     if (!cart || cart.length === 0) {
       alert('Giỏ hàng trống');
       return;
@@ -98,12 +100,12 @@ const Checkout: React.FC = () => {
       alert('Vui lòng đăng nhập để đặt hàng');
       return;
     }
+
     const products = cart.map((item) => ({
       product: item.product_id._id || item.product_id,
       quantity: item.quantity,
       price: item.product_id.price || item.product_id._id.price
     }));
-    
 
     const orderData = {
       user: userId,
@@ -114,7 +116,7 @@ const Checkout: React.FC = () => {
       shipping: {
         address: address || 'Địa chỉ mặc định',
         price: shippingPrice,
-        description: shippingMethod 
+        description: shippingMethod
       },
       payment: {
         method: selectPayment || 'cod',
@@ -122,29 +124,33 @@ const Checkout: React.FC = () => {
       }
     };
 
-    console.log(orderData)
-      const res = await fetch('http://localhost:3000/api/v1/orders',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(orderData)
-      });
-      const data = await res.json();
-      if(data.success) {
-        alert('success')
-        console.log(data)
-      } else {
-        console.error('Tạo đơn hàng thất bại:', data.message);
-        alert('Tạo đơn hàng thất bại.');
-      }
+    const res = await fetch('http://localhost:3000/api/v1/orders', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(orderData)
+    });
 
-    } catch (error) {
-        console.error('Lỗi tạo đơn hàng:', error);
-        alert('Đã xảy ra lỗi khi tạo đơn hàng.');
+    const data = await res.json();
+
+    if (data.success) {
+      setShowSuccess(true); // ✅ Hiện khung thông báo
+
+      // ⏳ Sau 3 giây chuyển trang
+      
+    } else {
+      console.error('Tạo đơn hàng thất bại:', data.message);
+      alert('Tạo đơn hàng thất bại.');
     }
+
+  } catch (error) {
+    console.error('Lỗi tạo đơn hàng:', error);
+    alert('Đã xảy ra lỗi khi tạo đơn hàng.');
   }
+};
+
 
   return (
     <div className="checkout-page">
@@ -233,7 +239,9 @@ const Checkout: React.FC = () => {
               </div>
               </div>
             </div>
-          ); 
+          
+        ); 
+
           }))
           }
 
@@ -285,6 +293,7 @@ const Checkout: React.FC = () => {
         ))}
       </div>
       </div>
+      {showSuccess && <PaymentSuccess onClose={() => setShowSuccess(false)} />}
     </div>
   );
 };

@@ -114,3 +114,12 @@
   flex-direction: column;
   height: 100%; /* đảm bảo chiếm toàn bộ chiều cao từ .sp */
 }
+.name {
+  font-weight: bold;
+  font-size: 16px;
+  white-space: nowrap;       /* không xuống dòng */
+  overflow: hidden;          /* ẩn phần tràn */
+  text-overflow: ellipsis;   /* thêm dấu "..." */
+  cursor: pointer;           /* đổi con trỏ khi hover */
+  position: relative;
+}
