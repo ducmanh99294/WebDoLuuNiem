@@ -8,7 +8,7 @@ const Shipping: React.FC = () => {
 
   return (
     <div className="shipping-container">
-      <h2>Chi tiết đơn hàng</h2>
+      <h2>Thông tin đơn hàng </h2>
 
       <div className="shipping-actions">
         <button className="btn btn-green">In hóa đơn</button>
