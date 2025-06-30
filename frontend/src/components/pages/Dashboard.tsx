@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { Store } from 'lucide-react';
-import { LogOut } from 'lucide-react';
-import { MessageCircle  } from 'lucide-react';
+import { Store, LogOut, MessageCircle } from 'lucide-react';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,31 +11,52 @@ import {
   Legend,
 } from "chart.js";
 import "../../assets/css/Dashboard.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const Dashboard = () => {
+  const [userList, setUserList] = useState<any[]>([]);
   const [userCount, setUserCount] = useState<number>(0);
-  const navigate = useNavigate()
-  const handleLogout = () =>{
-    localStorage.removeItem('token')
-    localStorage.removeItem('role')
-    localStorage.removeItem('userId')
-    navigate('/login')
-  }
- useEffect(() => {
+  const [activeSection, setActiveSection] = useState('dashboard');
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('userId');
+    navigate('/login');
+  };
+
+useEffect(() => {
   const fetchUserCount = async () => {
     try {
+
       const response = await fetch("http://localhost:3001/api/v1/users");
+
+      const token = localStorage.getItem('token');
+
+      const response = await fetch("http://localhost:3000/api/v1/users", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+
       const data = await response.json();
+      console.log("Dữ liệu người dùng:", data);
+
       if (Array.isArray(data.data)) {
         const users = data.data.filter((user: any) => user.role !== "admin");
         setUserCount(users.length);
+        setUserList(users); // ✅ Đặt ở đây sau khi đã khai báo `users`
       } else if (typeof data.count === "number") {
         setUserCount(data.count);
+        setUserList([]); // fallback rỗng nếu không có mảng data
       } else {
         setUserCount(0);
+        setUserList([]);
       }
     } catch (error) {
       console.error("Lỗi khi tải danh sách người dùng:", error);
@@ -46,7 +66,6 @@ const Dashboard = () => {
   fetchUserCount();
 }, []);
 
- //biểu đồ 
   const chartData = {
     labels: [
       "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
@@ -64,107 +83,159 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      {/* Sidebar */}
       <aside className="sidebar">
         <div className="sidebar-header">🛒 Cửa Hàng Đặc Sản</div>
         <nav className="sidebar-menu">
-          <div className="menu-highlight">📊 Báo cáo</div>
-          <div><MessageCircle size={18}/> Khung chat </div>
-          <div>👥 Quản lý người dùng</div>
-          <div>📦 Quản lý sản phẩm</div>
-          <div>➕ Thêm sản phẩm</div>
-          <div>➕ Thêm người dùng</div>
-          <div>📝 Quản lý bài viết</div>
-          <div>📁 Quản lý danh mục</div>
-          <div>📁 Quản lý mã khuyến mãi </div>
-          <div><Store size={18} /> Gian hàng hợp tác</div>
-<div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
-  <LogOut size={18} /> Đăng Xuất
-</div>        </nav>
+          <div onClick={() => setActiveSection('dashboard')} className="menu-highlight">📊 Báo cáo</div>
+          <div onClick={() => setActiveSection('chat')}><MessageCircle size={18}/> Khung chat</div>
+          <div onClick={() => setActiveSection('users')}>👥 Quản lý người dùng</div>
+          <div onClick={() => setActiveSection('products')}>📦 Quản lý sản phẩm</div>
+          <div onClick={() => setActiveSection('posts')}>📝 Quản lý bài viết</div>
+          <div onClick={() => setActiveSection('categories')}>📁 Quản lý danh mục</div>
+          <div onClick={() => setActiveSection('coupons')}>📁 Quản lý mã khuyến mãi</div>
+          <div onClick={() => setActiveSection('stores')}><Store size={18} /> Gian hàng hợp tác</div>
+          <div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <LogOut size={18} /> Đăng Xuất
+          </div>
+        </nav>
         <div className="sidebar-footer">
           <div>⚙️ Cài đặt</div>
           <div className="user-info">Hoang<br />hoang123@gmail.com</div>
         </div>
       </aside>
-{/* 
-        khung header dùng để phân loại thống kê  */}
+
       <main className="main-content">
-        <h1 className="title">📈 Thống kê</h1>
+        <h1 className="title">
+          {activeSection === 'dashboard' && '📈 Thống kê'}
+          {activeSection === 'products' && '📦 Quản lý sản phẩm'}
+{activeSection === 'users' && (
+  <div className="user-management">
+    <div className="user-header">
+      <button onClick={() => setActiveSection('dashboard')}>Back</button>
+      <h2>Quản lí người dùng</h2>
+      <button className="add-user">Thêm người dùng</button>
+    </div>
 
-        <div className="filters">
-          <select>
-            <option value="all">Thời gian: Từ trước tới nay</option>
-          </select>
-          <select>
-            <option value="all">Nhóm Khách Hàng : Tất cả</option>
-          </select>
-          <select>
-            <option value="all">Mặt hàng: Tất cả</option>
-          </select>
-        </div>
-
-        <div className="n1">
-          <div className="stats-grid">
-         <Link to ='/user' style={{ textDecoration: 'none'}}><StatCard title="Người dùng" value={`${userCount} người`} /></Link>
-            <StatCard title="Câu hỏi" value="3,298" />
-            <StatCard title="Số lượt đánh giá" value="5,000" />
-            <StatCard title="Tổng doanh thu" value="2,000,000 VNĐ" />
-            <StatCard title="Mức tăng trưởng" value="3%" />
-            <StatCard title="Đơn hàng chờ" value="2,000" />
+    <div className="user-list">
+      {userList.map((user) => (
+        <div key={user._id} className="user-card0">
+          <div className="user-infor2">
+            <img
+              src={user.avatar || "/images/default-avatar.png"}
+              alt="avatar"
+              className="avatar-img"
+            />
+            <div className="user-details1">
+              <h3 className="user-name1">{user.name}</h3>
+              <p><strong>Email:</strong> {user.email}</p>
+              <p><strong>SĐT:</strong> {user.phone}</p>
+              <p><strong>Vai trò:</strong> {user.role}</p>
+              <p><strong>Địa chỉ:</strong> {user.address}</p>
+            </div>
           </div>
+          <div className="user-actions">
+            <button className="btn-edit">Sửa</button>
+            <button className="btn-delete">Xoá</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
 
-          <div className="charts-grid">
-            <div className="full-span">
-              <div className="n2">
-                <h2>Activity</h2>
-                <select>
-                  <option value="ngay">Ngày</option>
-                  <option value="thang">Tháng</option>
-                  <option value="nam">Năm</option>
-                </select>
+
+    {activeSection === 'chat' && '💬 Khung chat'}
+          {activeSection === 'posts' && '📝 Bài viết'}
+          {activeSection === 'categories' && '📁 Danh mục'}
+          {activeSection === 'coupons' && '🏷️ Mã khuyến mãi'}
+          {activeSection === 'stores' && '🏪 Gian hàng'}
+        </h1>
+
+        {/* Nội dung từng phần */}
+        {activeSection === 'dashboard' && (
+          <>
+            <div className="filters">
+              <select><option value="all">Thời gian: Từ trước tới nay</option></select>
+              <select><option value="all">Nhóm Khách Hàng: Tất cả</option></select>
+              <select><option value="all">Mặt hàng: Tất cả</option></select>
+            </div>
+
+            <div className="n1">
+              <div className="stats-grid">
+                <StatCard title="Người dùng" value={`${userCount} người`} />
+                <StatCard title="Câu hỏi" value="3,298" />
+                <StatCard title="Số lượt đánh giá" value="5,000" />
+                <StatCard title="Tổng doanh thu" value="2,000,000 VNĐ" />
+                <StatCard title="Mức tăng trưởng" value="3%" />
+                <StatCard title="Đơn hàng chờ" value="2,000" />
               </div>
-              <Bar data={chartData} />
+
+              <div className="charts-grid">
+                <div className="full-span">
+                  <div className="n2">
+                    <h2>Activity</h2>
+                    <select>
+                      <option value="ngay">Ngày</option>
+                      <option value="thang">Tháng</option>
+                      <option value="nam">Năm</option>
+                    </select>
+                  </div>
+                  <Bar data={chartData} />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <br />
+            <br />
 
-        <div className="n3">
-          <div className="card2">
-            <h2>Chủ đề hot</h2>
-            <Progress label="trái cây" percent={95} image="/images/top/Rectangle 2370.png" />
-            <Progress label="quà lưu niệm" percent={92} image="/images/top/Rectangle 2370.png" />
-            <Progress label="đồ ăn khô" percent={89} image="/images/top/Rectangle 2370.png" />
-          </div>
+            <div className="n3">
+              <div className="card2">
+                <h2>Chủ đề hot</h2>
+                <Progress label="trái cây" percent={95} image="/images/top/Rectangle 2370.png" />
+                <Progress label="quà lưu niệm" percent={92} image="/images/top/Rectangle 2370.png" />
+                <Progress label="đồ ăn khô" percent={89} image="/images/top/Rectangle 2370.png" />
+              </div>
 
-          <div className="bottom-grid">
-            <div className="card1">
-              <h2>Top sản phẩm</h2>
-              <Progress label="Food Safety" percent={74} color="red" />
-              <Progress label="Compliance Basics Procedures" percent={52} color="yellow" />
-              <Progress label="Company Networking" percent={36} color="pink" />
+              <div className="bottom-grid">
+                <div className="card1">
+                  <h2>Top sản phẩm</h2>
+                  <Progress label="Food Safety" percent={74} color="red" />
+                  <Progress label="Compliance Basics Procedures" percent={52} color="yellow" />
+                  <Progress label="Company Networking" percent={36} color="pink" />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <br />
-        <br />
+            <br />
+            <br />
 
-        <div className="card">
-          <h2>Bảng xếp hạng người dùng</h2>
-          <div className="ranking">
-            <div>A - 92% Correct <span className="up">▲</span></div>
-            <div>B - 89% Correct <span className="down">▼</span></div>
+            <div className="card">
+              <h2>Bảng xếp hạng người dùng</h2>
+              <div className="ranking">
+                <div>A - 92% Correct <span className="up">▲</span></div>
+                <div>B - 89% Correct <span className="down">▼</span></div>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Các mục khác, ví dụ products */}
+        {activeSection === 'products' && (
+          <div className="card">
+            <h2>Danh sách sản phẩm (demo)</h2>
+            <ul>
+              <li>Sản phẩm 1 - Giá: 100.000đ</li>
+              <li>Sản phẩm 2 - Giá: 150.000đ</li>
+              <li>Sản phẩm 3 - Giá: 200.000đ</li>
+            </ul>
           </div>
-        </div>
+        )}
       </main>
     </div>
   );
 };
 
 const StatCard = ({ title, value }: { title: string; value: string }) => (
-  <div className="card">
+  <div className="card12">
     <div className="card-title">{title}</div>
     <div className="card-value">{value}</div>
   </div>

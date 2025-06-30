@@ -6,6 +6,14 @@ const applicableProductSchema = new mongoose.Schema({
         ref: 'Products',
         required: true
     },
+    startDate: {
+        type: Date,
+        required: true
+    },
+    endDate: {
+        type: Date,
+        required: true
+    },
     coupon: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Coupons',

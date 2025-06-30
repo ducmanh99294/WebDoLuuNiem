@@ -9,6 +9,7 @@
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex-wrap: wrap; /* Cho xuống dòng nếu không đủ chỗ */
+  height: 306px;
 }
 .card:hover {
   transform: scale(1.05);
@@ -100,4 +101,25 @@
 }
 .heart-icon:hover{
   color: hotpink;
+}
+.sp {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* số cột linh hoạt */
+  gap: 16px;
+  align-items: stretch; /* kéo dài các container theo chiều cao lớn nhất */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* đảm bảo chiếm toàn bộ chiều cao từ .sp */
+}
+.name {
+  font-weight: bold;
+  font-size: 16px;
+  white-space: nowrap;       /* không xuống dòng */
+  overflow: hidden;          /* ẩn phần tràn */
+  text-overflow: ellipsis;   /* thêm dấu "..." */
+  cursor: pointer;           /* đổi con trỏ khi hover */
+  position: relative;
 }

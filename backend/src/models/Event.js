@@ -33,7 +33,7 @@ const eventSchema = new mongoose.Schema({
     }],
     products: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Products"
+        ref: "ApplicableProducts"
     }],
 });
 

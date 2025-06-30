@@ -4,6 +4,8 @@ const LikeList = require('../models/LikeList.js');
 const Categories = require('../models/Category.js');
 const logger = require('../utils/logger.js');
 const { log } = require('winston');
+const client = require('../config/meiliSearchConfig'); // Import the MeiliSearch client
+
 
 const createProduct = async (req, res) => {
     try {
@@ -327,6 +329,43 @@ const sell_count = async (req, res) => {
         });
     }
 }
+
+const searchProducts = async (req, res) => {
+    const query = req.query.q || '';
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const offset = (page - 1) * limit;
+
+  try {
+    logger.info(`Searching products with query: ${query}`);
+    if (!query) {
+      logger.warn('Search query is empty');
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide a search keyword'
+      });
+    }
+    const result = await client.index('products').search(query, {
+        limit,
+        offset
+    });
+    res.status(200).json({
+        success: true,
+        message: 'Product search successful',
+        total: result.estimatedTotalHits,
+        page,
+        limit,
+        results: result.hits
+    });
+  } catch (error) {
+    res.status(500).json({
+        success: false,
+        message: 'Unable to search for products',
+        error: error.message
+    });
+  }
+};
+
 module.exports = {
     createProduct,
     getAllProducts,
@@ -335,5 +374,6 @@ module.exports = {
     deleteProduct,
     like_count,
     view_count,
-    sell_count
+    sell_count,
+    searchProducts
 };
