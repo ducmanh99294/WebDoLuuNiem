@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { Toaster } from 'react-hot-toast';
 import Header from '../header';
 import Footer from '../Fotter';
-import SearchPage from '../search'; // đường dẫn tuỳ theo bạn lưu
+import SearchPage from '../search'; 
 import HomePage from '../pages/homepage';
 import LoginPage from '../LoginPage';
 import Register from '../Register';
@@ -17,10 +17,11 @@ import Editprofile from '../pages/Editprofile';
 import Profile from '../pages/profile';
 import User from '../pages/user';
 import Checkout from '../pages/checkout';
+import ShippingDetail from '../pages/Shipping';
 const AppContent: React.FC = () => {
   const location = useLocation();
 
-  const noLayoutRoutes = ['/register', '/dashboard', '/user'];
+  const noLayoutRoutes = ['', '/dashboard', '/user'];
   const hideLayout = noLayoutRoutes.includes(location.pathname);
 
   const userRole = localStorage.getItem('role'); // sửa lại từ 'admin' thành 'role'
@@ -42,6 +43,7 @@ const AppContent: React.FC = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/ship" element={<ShippingDetail />} />
         {/* CHỈ admin mới được vào */}
         <Route
           path="/dashboard"
