@@ -199,3 +199,10 @@
 >>>>>>> 127ac5c1d28d29722f2736916f67bd0713fac918
 {"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-06-27T04:57:40.589Z"}
 {"level":"error","message":"Error creating order: Order validation failed: payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-06-28T15:36:19.241Z"}
+{"level":"error","message":"Error deleting cart detail: Cast to ObjectId failed for value \"[object Object]\" (type string) at path \"_id\" for model \"CartDetail\"","timestamp":"2025-06-30T02:04:41.117Z"}
+{"level":"error","message":"Error deleting cart detail: Cast to ObjectId failed for value \"[object Object]\" (type string) at path \"_id\" for model \"CartDetail\"","timestamp":"2025-06-30T02:07:05.249Z"}
+{"level":"error","message":"Error deleting cart detail: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"CartDetail\"","timestamp":"2025-06-30T02:10:34.278Z"}
+{"level":"error","message":"Error deleting cart detail: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"CartDetail\"","timestamp":"2025-06-30T02:11:35.721Z"}
+{"level":"error","message":"Error deleting cart detail: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"CartDetail\"","timestamp":"2025-06-30T02:15:07.314Z"}
+{"level":"error","message":"Error deleting cart detail: Cast to ObjectId failed for value \"undefined\" (type string) at path \"_id\" for model \"CartDetail\"","timestamp":"2025-06-30T02:15:33.851Z"}
+{"level":"error","message":"Error creating cart detail: CartDetail validation failed: cart_id: Path `cart_id` is required.","timestamp":"2025-06-30T03:01:35.309Z"}

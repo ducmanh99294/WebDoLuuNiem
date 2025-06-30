@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
-
 import AddedToCartPopup from '../AddedToCartPopup';
-import { jwtDecode } from 'jwt-decode';
 import CartError from '../Error';
-
 
 const DetailProduct: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -57,7 +54,6 @@ const DetailProduct: React.FC = () => {
 
   const cartData = await cartRes.json();
   let cartId;
-
   console.log('cartData:', cartData, cartData.success, Array.isArray(cartData.data));
 
   if (cartData.success && Array.isArray(cartData.data)) {
@@ -86,8 +82,8 @@ const DetailProduct: React.FC = () => {
     const newCartData = await createCartRes.json();
 
     if (!newCartData.success || !newCartData.cart?._id) {
-       setShowCartError(true); // 👉 Hiện popup lỗi
-  return;
+      toast.error('Không thể tạo giỏ hàng');
+      return;
     }
 
     cartId = newCartData.cart._id;
@@ -105,7 +101,6 @@ const DetailProduct: React.FC = () => {
       },
     });
     const cartDetailData = await cartDetailRes.json();
-
     const existingItem = cartDetailData.cartDetails?.find((item: any) => item.product_id._id?.toString() === _id);
     console.log('existingItem:', existingItem);
     console.log(_id, 'so sánh với', existingItem?.product_id);

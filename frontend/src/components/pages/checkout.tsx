@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../../assets/css/checkout.css';
 import PaymentSuccess from '../PaymentSuccess';
-import { products } from '../data/product';
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
@@ -151,6 +150,33 @@ const Checkout: React.FC = () => {
   }
 };
 
+ const handleClearCart = async () => {
+  if (!cartId || !token) {
+    alert('Thiếu thông tin giỏ hàng hoặc đăng nhập');
+    return;
+  }
+  try {
+    const res = await fetch(`http://localhost:3000/api/v1/carts/${cartId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      console.log('Đã làm sạch giỏ hàng');
+      setCart([]);
+    } else {
+      console.log('Không thể làm sạch giỏ hàng');
+    }
+  } catch (err) {
+    console.error('Lỗi khi làm sạch giỏ hàng:', err);
+    alert('Lỗi kết nối');
+  }
+};
 
   return (
     <div className="checkout-page">
@@ -217,7 +243,7 @@ const Checkout: React.FC = () => {
           <input type="checkbox" /> Yêu cầu xuất hóa đơn công ty
         </label>
 
-        <button className="submit-button">Tiến hành thanh toán</button>
+        <button className="submit-button" onClick={handleClearCart}>Tiến hành thanh toán</button>
       </form>
 
       <div className="checkout-summary">
