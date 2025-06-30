@@ -17,6 +17,7 @@ import Editprofile from '../pages/Editprofile';
 import Profile from '../pages/profile';
 import User from '../pages/user';
 import Checkout from '../pages/checkout';
+import ShippingDetail from '../pages/Shipping';
 const AppContent: React.FC = () => {
   const location = useLocation();
 
@@ -42,6 +43,7 @@ const AppContent: React.FC = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/ship" element={<ShippingDetail />} />
         {/* CHỈ admin mới được vào */}
         <Route
           path="/dashboard"

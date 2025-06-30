@@ -17706,3 +17706,20 @@
 {"level":"info","message":"Received body: {\"quantity\":3}","timestamp":"2025-06-30T03:26:22.809Z"}
 {"level":"info","message":"Updating quantity for cart detail: 685e0370d2628343eac67d4e","timestamp":"2025-06-30T03:26:22.812Z"}
 {"level":"info","message":"Cart detail quantity updated successfully: 685e0370d2628343eac67d4e","timestamp":"2025-06-30T03:26:22.893Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-06-30T14:13:39.431Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-06-30T14:13:39.823Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-06-30T14:13:40.510Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-30T14:13:57.879Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-30T14:13:57.880Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-30T14:13:57.892Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-30T14:13:57.893Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-30T14:13:57.894Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-30T14:13:57.954Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-06-30T14:13:57.991Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-30T14:13:57.991Z"}
+{"level":"info","message":"Retrieved 9 categories","timestamp":"2025-06-30T14:13:58.049Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-30T14:13:58.062Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-06-30T14:13:58.067Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-06-30T14:13:58.068Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-06-30T14:13:58.069Z"}
+{"level":"info","message":"Retrieved 12 products","timestamp":"2025-06-30T14:13:58.197Z"}
