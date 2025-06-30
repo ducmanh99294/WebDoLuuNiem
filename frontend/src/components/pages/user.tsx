@@ -21,7 +21,7 @@ const UserList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
 
  useEffect(() => {
-  axios.get('http://localhost:3000/api/v1/users')
+  axios.get('http://localhost:3001/api/v1/users')
     .then((res) => {
       let allUsers: User[] = [];
 

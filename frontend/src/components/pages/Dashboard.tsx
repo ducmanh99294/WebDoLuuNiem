@@ -28,7 +28,7 @@ const Dashboard = () => {
  useEffect(() => {
   const fetchUserCount = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/users");
+      const response = await fetch("http://localhost:3001/api/v1/users");
       const data = await response.json();
       if (Array.isArray(data.data)) {
         const users = data.data.filter((user: any) => user.role !== "admin");

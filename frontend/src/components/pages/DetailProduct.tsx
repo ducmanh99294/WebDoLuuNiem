@@ -9,7 +9,7 @@ const DetailProduct: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/products/${_id}`);
+        const res = await fetch(`http://localhost:3001/api/v1/products/${_id}`);
         const data = await res.json();
         setProduct(data); //  API trả về object sản phẩm trực tiếp
       } catch (err) {

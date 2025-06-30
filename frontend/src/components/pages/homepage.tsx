@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/v1/products');
+        const res = await fetch('http://localhost:3001/api/v1/products');
         const data = await res.json();
         setProducts(data.products || []);
       } catch (err) {
