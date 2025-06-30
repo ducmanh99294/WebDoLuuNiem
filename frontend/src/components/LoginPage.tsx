@@ -106,6 +106,7 @@ const LoginPage: React.FC = () => {
       </div>
 
       <div className="login-right">
+        <img src="/images/bn1.png" alt="" srcset="" />
       </div>
     </div>
   );
