@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
-
 import AddedToCartPopup from '../AddedToCartPopup';
-import { jwtDecode } from 'jwt-decode';
-
 
 const DetailProduct: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -55,7 +52,6 @@ const DetailProduct: React.FC = () => {
 
   const cartData = await cartRes.json();
   let cartId;
-
   console.log('cartData:', cartData, cartData.success, Array.isArray(cartData.data));
 
   if (cartData.success && Array.isArray(cartData.data)) {
@@ -84,7 +80,25 @@ const DetailProduct: React.FC = () => {
     const newCartData = await createCartRes.json();
 
     if (!newCartData.success || !newCartData.cart?._id) {
-      toast.error('Không thể tạo giỏ hàng');
+       const addRes = await fetch(`http://localhost:3000/api/v1/cart-details`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          cart_id: cartId,
+          product_id: _id,
+          quantity
+        })
+      });
+       const result = await addRes.json();
+     if (result.success) {
+  toast.success('Đã tạo giỏ hàng và thêm sản phẩm vào giỏ hàng');
+  setShowPopup(true);
+  setTimeout(() => setShowPopup(false), 10000);
+}
+      toast.success('đã tạo giỏ hàng thành công');
       return;
     }
 
@@ -103,7 +117,6 @@ const DetailProduct: React.FC = () => {
       },
     });
     const cartDetailData = await cartDetailRes.json();
-
     const existingItem = cartDetailData.cartDetails?.find((item: any) => item.product_id._id?.toString() === _id);
     console.log('existingItem:', existingItem);
     console.log(_id, 'so sánh với', existingItem?.product_id);
