@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
 import AddedToCartPopup from '../AddedToCartPopup';
+<<<<<<< HEAD
+=======
+import CartError from '../Error';
+>>>>>>> recovered-cod
 
 const DetailProduct: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -14,7 +18,32 @@ const DetailProduct: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(product?.images[0]?.image);
   const [showCartError, setShowCartError] = useState(false);
+<<<<<<< HEAD
+=======
+  const [blogs, setBlogs] = useState<any[]>([])
+>>>>>>> recovered-cod
 
+  // lấy tin tức
+  useEffect(()=>{
+      const fetchBlog = async () => {
+        try {
+          const res = await fetch(`http://localhost:3000/api/v1/blogs`);
+          const data = await res.json();
+          
+          if(data.success) {
+            setBlogs(data.data);
+            console.log(data.data)
+          }
+        } catch (err) {
+          console.error('err', err);
+        } finally {
+          setLoading(false);
+        }
+      };
+      if (blogs) fetchBlog();
+    }, [])
+
+  // lấy sản phẩm
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -67,7 +96,7 @@ const DetailProduct: React.FC = () => {
   }
 
   if (!cartId) {
-    // 2. Nếu chưa có → tạo giỏ hàng mới
+    // 2. Nếu chưa có → tạo giỏ hàng mới và thêm sản phẩm vào
     console.log('Chưa có giỏ hàng, tạo mới...');
     const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
       method: 'POST',
@@ -88,7 +117,6 @@ const DetailProduct: React.FC = () => {
     cartId = newCartData.cart._id;
     console.log('Đã tạo giỏ hàng mới, cartId:', cartId);
   }
-
 
     // 3. Kiểm tra sản phẩm đã có trong cart-detail chưa
     console.log('Kiểm tra cart-detail cho cartId:', cartId);
@@ -159,8 +187,10 @@ const DetailProduct: React.FC = () => {
       <div className="product-main" style={{ display: 'flex', gap: 24 }}>
         {/* Product Image */}
         <div className="product-image" style={{ flex: 1 }}>
-          <div style={{ background: '#eee', height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={selectedImage} alt={product.name}  style={{ maxHeight: '100%' }} />
+          <div 
+            className='zoom-container' 
+            style={{ background: '#eee', height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={selectedImage} alt={product.name}  className="zoom-image" style={{ maxHeight: '100%' }} />
           </div>
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
                {product.images.map((img: any, index: number) => (
@@ -169,7 +199,8 @@ const DetailProduct: React.FC = () => {
                   src={img.image}
                   alt={`Thumbnail ${index + 1}`}
                   style={{ width: 48, height: 48, objectFit: 'cover', cursor: 'pointer', border: '1px solid #ccc' }}
-                  onClick={() => setSelectedImage(img.image)} // nếu muốn đổi ảnh chính
+                  onClick={() => setSelectedImage(img.image)}
+                  className='zoomable-image'
                 />
               ))}
           </div>
@@ -256,11 +287,28 @@ const DetailProduct: React.FC = () => {
         {/* News Sidebar */}
         <div className="product-news" style={{ flex: 1 }}>
           <h4>Tin tức nổi bật</h4>
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, background: '#f5f5f5', padding: 8 }}>
-              <div style={{ width: 48, height: 48, background: '#ddd' }}>Ảnh</div>
-              <div>Tin tức {i}</div>
+          {blogs.slice(0,4).map(blog => (
+             <Link
+                to={`/blog/${blog._id}`}
+                key={blog._id}
+                onClick={()=> {localStorage.setItem('blogId', blog._id)}}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: 16,
+                  background: '#eee',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  transition: 'background 0.3s',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = '#ddd')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#eee')}
+              >
+            <div key={blog._id} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 8,  }}>
+              <img src={blog.image} alt="" style={{ width: 48, height: 48, background: '#ddd' }}/>
+              <div>{blog.title}</div>
             </div>
+            </Link>
           ))}
         </div>
       </div>
