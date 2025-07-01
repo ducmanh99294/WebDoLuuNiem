@@ -27,4 +27,6 @@ router.post('/cancel', orderController.cancelOrder);
 
 router.post('/:id/use-coupon', orderController.useCoupon);
 
+router.get('/user/:userId', orderController.getOrdersByUserId);
+
 module.exports = router;

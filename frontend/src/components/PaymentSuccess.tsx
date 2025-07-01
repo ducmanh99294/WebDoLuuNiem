@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../assets/css/PaymentSuccess.css';
 
 interface PaymentSuccessProps {
@@ -27,7 +27,7 @@ const PaymentSuccess: React.FC<PaymentSuccessProps> = ({ onClose }) => {
         <button onClick={() => navigate('/')}>Quay về trang chủ</button>
         <br />
         <br />
-        <p style={{color:"black"}}>bạn có thể xem đơn hàng của mình tại đây </p>
+        <p style={{color:"black"}}>bạn có thể xem đơn hàng của mình tại đây</p> <Link to={'/order'} ><p style={{color:"black"}}> tại đây </p></Link>
       </div>
     </div>
   );

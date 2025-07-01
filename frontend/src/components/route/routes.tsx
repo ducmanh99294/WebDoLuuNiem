@@ -9,7 +9,7 @@ import LoginPage from '../LoginPage';
 import Register from '../Register';
 import About from '../pages/about';
 import DetailProduct from '../pages/DetailProduct';
-import NewsPage from '../pages/newspage';
+import Blog from '../pages/Blog';
 import Contact from '../pages/contact';
 import Dashboard from '../pages/Dashboard';
 import CartPage from '../pages/cart';
@@ -17,7 +17,10 @@ import Editprofile from '../pages/Editprofile';
 import Profile from '../pages/profile';
 import User from '../pages/user';
 import Checkout from '../pages/checkout';
-import ShippingDetail from '../pages/Shipping';
+import OrderDetail from '../pages/OrderDetail';
+import OrderList from '../pages/listOrder';
+import BlogDetail from '../pages/BlogDetail';
+
 const AppContent: React.FC = () => {
   const location = useLocation();
 
@@ -33,7 +36,7 @@ const AppContent: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/newpage" element={<NewsPage />} />
+        <Route path="/newpage" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/product-detail/:_id" element={<DetailProduct />} />
@@ -43,7 +46,10 @@ const AppContent: React.FC = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/ship" element={<ShippingDetail />} />
+        <Route path="/order/:_id" element={<OrderDetail />} />
+        <Route path="/order" element={<OrderList />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
+
         {/* CHỈ admin mới được vào */}
         <Route
           path="/dashboard"
