@@ -12,13 +12,12 @@ const PaymentSuccess: React.FC<PaymentSuccessProps> = ({ onClose }) => {
   return (
     <div className="payment-success-overlay">
       <div className="payment-success-modal">
-        {/* ❌ nút đóng nếu muốn */}
         {onClose && (
           <button className="close-btn" onClick={onClose}>×</button>
         )}
 
         {/* ✅ SVG vẽ dấu V */}
-        <svg className="  " viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+        <svg className="checkmark" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
           <circle className="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
           <path className="checkmark-check" d="M14 27 L22 35 L38 18" fill="none" />
         </svg>

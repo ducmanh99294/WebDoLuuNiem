@@ -13,6 +13,7 @@ const DetailProduct: React.FC = () => {
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(product?.images[0]?.image);
+  const [showCartError, setShowCartError] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -80,25 +81,7 @@ const DetailProduct: React.FC = () => {
     const newCartData = await createCartRes.json();
 
     if (!newCartData.success || !newCartData.cart?._id) {
-       const addRes = await fetch(`http://localhost:3000/api/v1/cart-details`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          cart_id: cartId,
-          product_id: _id,
-          quantity
-        })
-      });
-       const result = await addRes.json();
-     if (result.success) {
-  toast.success('Đã tạo giỏ hàng và thêm sản phẩm vào giỏ hàng');
-  setShowPopup(true);
-  setTimeout(() => setShowPopup(false), 10000);
-}
-      toast.success('đã tạo giỏ hàng thành công');
+      toast.error('Không thể tạo giỏ hàng');
       return;
     }
 
@@ -242,6 +225,7 @@ const DetailProduct: React.FC = () => {
 
           </div>
           <div style={{ margin: '12px 0' }}>
+            <div className="a3">
             <span>Số lượng: </span>
             <button  
               type="button"
@@ -255,14 +239,17 @@ const DetailProduct: React.FC = () => {
                 +
             </button>
           </div>
+          </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button onClick={handleAddToCart}>Thêm vào giỏ hàng</button>
-            <button>Mua ngay</button>
+            <button onClick={handleAddToCart} className='a2'>Thêm vào giỏ hàng</button>
+            <button className='a1'>Mua ngay</button>
           </div>
           <div style={{ marginTop: 16 }}>
             <span>Liên hệ cửa hàng: </span>
             <span style={{ color: '#009900', fontWeight: 'bold' }}>0909786434</span>
-            <button style={{ marginLeft: 8 }}>Gửi tin nhắn</button>
+            <span> hoặc</span>
+            <span style={{ marginLeft: 3 }} >Gửi tin nhắn </span>
+            <span style={{ marginLeft: 0 }} className='h6'>tại đây  </span>
           </div>
         </div>
 
@@ -298,15 +285,15 @@ const DetailProduct: React.FC = () => {
               </div>
             ))}
           </div>
-          <button style={{ marginTop: 8 }}>Gửi đánh giá của bạn</button>
+          <button style={{ marginTop: 8 }} className='danhgia'>Gửi đánh giá của bạn</button>
         </div>
       </div>
 
       {/* Footer Info */}
       <div style={{ marginTop: 32, borderTop: '1px solid #eee', paddingTop: 16, display: 'flex', justifyContent: 'space-between' }}>
         <div>
-          <b>Shop Mall</b>
-          <div>Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM</div>
+          <b>cửa hàng đặc sản </b>
+          <div>Địa chỉ: xô viết nghệ tĩnh quận hải châu thành phố đà nẵng </div>
           <div>Email: example@gmail.com</div>
         </div>
         <div>
@@ -323,6 +310,8 @@ const DetailProduct: React.FC = () => {
         </div>
       </div>
       {showPopup && <AddedToCartPopup onClose={() => setShowPopup(false)} />}
+      {showCartError && <CartError onClose={() => setShowCartError(false)} />}
+
     </div>
   );
 };

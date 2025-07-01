@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { Toaster } from 'react-hot-toast';
 import Header from '../header';
 import Footer from '../Fotter';
-import SearchPage from '../search'; // đường dẫn tuỳ theo bạn lưu
+import SearchPage from '../search'; 
 import HomePage from '../pages/homepage';
 import LoginPage from '../LoginPage';
 import Register from '../Register';
@@ -20,7 +20,7 @@ import Checkout from '../pages/checkout';
 const AppContent: React.FC = () => {
   const location = useLocation();
 
-  const noLayoutRoutes = ['/register', '/dashboard', '/user'];
+  const noLayoutRoutes = ['', '/dashboard', '/user'];
   const hideLayout = noLayoutRoutes.includes(location.pathname);
 
   const userRole = localStorage.getItem('role'); // sửa lại từ 'admin' thành 'role'
