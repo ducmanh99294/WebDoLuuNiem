@@ -51,4 +51,41 @@ padding: 8px 16px;
 }
 .danhgia :hover{
       background-color: #43a047; /* xanh đậm hơn khi hover */
+<<<<<<< HEAD
 }
+=======
+}
+
+.zoomable-image {
+  max-height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.zoomable-image:hover {
+  transform: scale(1.1); /* phóng to 10% */
+  cursor: zoom-in;
+}
+
+.zoom-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.zoom-image {
+  max-height: 100%;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.zoom-container:hover .zoom-image {
+  transform: scale(1.5); /* 👈 phóng to 150% */
+  cursor: zoom-in;
+}
+>>>>>>> recovered-cod
