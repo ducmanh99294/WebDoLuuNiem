@@ -3,10 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
 import AddedToCartPopup from '../AddedToCartPopup';
-<<<<<<< HEAD
-=======
 import CartError from '../Error';
->>>>>>> recovered-cod
+
 
 const DetailProduct: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -18,10 +16,7 @@ const DetailProduct: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(product?.images[0]?.image);
   const [showCartError, setShowCartError] = useState(false);
-<<<<<<< HEAD
-=======
   const [blogs, setBlogs] = useState<any[]>([])
->>>>>>> recovered-cod
 
   // lấy tin tức
   useEffect(()=>{
