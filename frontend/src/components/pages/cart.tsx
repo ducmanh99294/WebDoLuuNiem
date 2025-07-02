@@ -40,12 +40,8 @@ const handleClearCart = async () => {
   }
 
   try {
-<<<<<<< HEAD
-    const res = await fetch(`http://localhost:3000/api/v1/carts/${cartId}`, {
-=======
     // Gọi API xóa tất cả sản phẩm trong giỏ hàng (cart-detail)
     const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
->>>>>>> recovered-cod
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -56,17 +52,10 @@ const handleClearCart = async () => {
     const data = await res.json();
 
     if (data.success) {
-<<<<<<< HEAD
       alert('Đã làm sạch giỏ hàng');
       setCart([]);
     } else {
       alert('Không thể làm sạch giỏ hàng');
-=======
-      alert('Đã xóa tất cả sản phẩm trong giỏ hàng');
-      setCart([]);
-    } else {
-      alert('Không thể xóa sản phẩm trong giỏ hàng');
->>>>>>> recovered-cod
     }
   } catch (err) {
     console.error('Lỗi khi làm sạch giỏ hàng:', err);
