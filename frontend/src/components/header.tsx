@@ -75,10 +75,22 @@ useEffect(() => {
           <div className="logo">
             <a href="/"><img src="/images/logo.png" alt="" /></a>
           </div>
-          <div className="search-box">
-            <input type="text" placeholder="Nhập nội dung tìm kiếm" />
-            <button><FaSearch /></button>
-          </div>
+<div className="search-box">
+  <input
+    type="text"
+    placeholder="Nhập nội dung tìm kiếm"
+    value={searchText || ''} // đảm bảo luôn là chuỗi
+    onChange={(e) => setSearchText(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter') {
+        handleSearch(e);
+      }
+    }}
+  />
+  <button onClick={handleSearch}><FaSearch /></button>
+</div>
+
+
         </div>
 
         <div className="header-actions">
