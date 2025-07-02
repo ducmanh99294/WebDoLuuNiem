@@ -187,3 +187,10 @@
 {"level":"error","message":"Error fetching cart details by cart_id: Cast to ObjectId failed for value \"null\" (type string) at path \"cart_id\" for model \"CartDetail\"","timestamp":"2025-06-26T17:17:45.121Z"}
 {"level":"error","message":"Error fetching cart details by cart_id: Cast to ObjectId failed for value \"null\" (type string) at path \"cart_id\" for model \"CartDetail\"","timestamp":"2025-06-26T17:17:45.125Z"}
 >>>>>>> 7b01f27 (fix ctl cart-detail model AP event order routes blog category event product user, update frontend)
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-27T02:31:14.812Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-27T02:32:20.257Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-27T02:32:39.504Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-27T02:35:52.360Z"}
+{"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-27T02:36:51.300Z"}
+{"level":"error","message":"senderId and recipientId are required","timestamp":"2025-07-02T02:33:58.080Z"}
+{"level":"error","message":"senderId and recipientId are required","timestamp":"2025-07-02T02:34:04.702Z"}
