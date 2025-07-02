@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../../assets/css/checkout.css';
 import PaymentSuccess from '../PaymentSuccess';
-import { products } from '../data/product';
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
@@ -104,7 +103,8 @@ const Checkout: React.FC = () => {
     const products = cart.map((item) => ({
       product: item.product_id._id || item.product_id,
       quantity: item.quantity,
-      price: item.product_id.price || item.product_id._id.price
+      price: item.product_id.price || item.product_id._id.price,
+      images: item.product_id.image || item.product_id.images || [],
     }));
 
     const orderData = {
@@ -137,7 +137,6 @@ const Checkout: React.FC = () => {
 
     if (data.success) {
       setShowSuccess(true); // ✅ Hiện khung thông báo
-
       // ⏳ Sau 3 giây chuyển trang
       
     } else {
@@ -151,6 +150,33 @@ const Checkout: React.FC = () => {
   }
 };
 
+ const handleClearCart = async () => {
+  if (!cartId || !token) {
+    alert('Thiếu thông tin giỏ hàng hoặc đăng nhập');
+    return;
+  }
+  try {
+    const res = await fetch(`http://localhost:3000/api/v1/carts/${cartId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      console.log('Đã làm sạch giỏ hàng');
+      setCart([]);
+    } else {
+      console.log('Không thể làm sạch giỏ hàng');
+    }
+  } catch (err) {
+    console.error('Lỗi khi làm sạch giỏ hàng:', err);
+    alert('Lỗi kết nối');
+  }
+};
 
   return (
     <div className="checkout-page">
@@ -217,34 +243,32 @@ const Checkout: React.FC = () => {
           <input type="checkbox" /> Yêu cầu xuất hóa đơn công ty
         </label>
 
-        <button className="submit-button">Tiến hành thanh toán</button>
+        <button className="submit-button" onClick={handleClearCart}>Tiến hành thanh toán</button>
       </form>
 
       <div className="checkout-summary">
-        <h3>Sản phẩm</h3>     
+        <h3>Sản phẩm</h3>  
+        <div style={{ maxHeight: 240, overflowY: 'auto', marginBottom: 8 }}>  
         {loading ? (
           <p>Đang tải...</p>
-        ) : (cart.map((item) => {
-          const product = item.product_id;
-           console.log(product.images[0].image)
-          return (
-            <div key={item._id} className="cart-item">
-              <div className="product">
-              <img src={product.images[0]?.image} alt={product.name} style={{ width: 68, height: 68, objectFit: 'cover', cursor: 'pointer', border: '1px solid #ccc' }} />
-              <div>
-                <p>{product.name}</p>
-                <p>Giá: {product.price.toLocaleString()} VND</p>
-                <p>Số lượng: {item.quantity}</p>
-                <p>Thành tiền: {(product.price * item.quantity).toLocaleString()} VND</p>
-              </div>
-              </div>
+        ) : (
+    cart.map((item) => {
+      const product = item.product_id;
+      return (
+        <div key={item._id} className="cart-item">
+          <div className="product">
+            <img src={product.images[0]?.image} alt={product.name} style={{ width: 68, height: 68, objectFit: 'cover', cursor: 'pointer', border: '1px solid #ccc' }} />
+            <div>
+              <p>{product.name}</p>
+              <p>Giá: {product.price.toLocaleString()} VND</p>
+              <p>Số lượng: {item.quantity}</p>
+              <p>Thành tiền: {(product.price * item.quantity).toLocaleString()} VND</p>
             </div>
-          
-        ); 
-
-          }))
-          }
-
+          </div>
+        </div>
+      );
+          }))}
+</div> 
         <div className="shipping-method">
           <label>
             <input

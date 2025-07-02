@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../../assets/css/cart.css';
 
 const CartPage: React.FC = () => {
@@ -7,6 +7,7 @@ const CartPage: React.FC = () => {
   const [cart, setCart] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const cartId = localStorage.getItem('cart_id');
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -32,13 +33,69 @@ const CartPage: React.FC = () => {
     if (cartId) fetchCartData();
   }, [cartId]);
 
+const handleClearCart = async () => {
+  if (!cartId || !token) {
+    alert('Thiếu thông tin giỏ hàng hoặc đăng nhập');
+    return;
+  }
+
+  try {
+    // Gọi API xóa tất cả sản phẩm trong giỏ hàng (cart-detail)
+    const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert('Đã làm sạch giỏ hàng');
+      setCart([]);
+    } else {
+      alert('Không thể làm sạch giỏ hàng');
+    }
+  } catch (err) {
+    console.error('Lỗi khi làm sạch giỏ hàng:', err);
+    alert('Lỗi kết nối');
+  }
+};
+
+ const handleDeleteProduct = async (cartDetailId: string) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/v1/cart-details/${cartDetailId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token') || ''}`
+      }
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      // Cập nhật lại giỏ hàng sau khi xóa
+      setCart(prev => prev.filter(item => item._id !== cartDetailId));
+      alert('Xóa sản phẩm khỏi giỏ hàng thành công!');
+    } else {
+      alert('Xóa sản phẩm thất bại: ' + (data.message || 'Lỗi không xác định'));
+    }
+  } catch (error) {
+    console.error('Lỗi khi xóa sản phẩm:', error);
+    alert('Đã xảy ra lỗi khi xóa sản phẩm khỏi giỏ hàng.');
+  }
+};
+
+
   const handleQuantityChange = async (cartDetailId: string, newQty: number) => {
     try {
       const res = await fetch(`http://localhost:3000/api/v1/cart-details/${cartDetailId}/quantity`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token') || ''}`
+          Authorization: `Bearer ${token || ''}`
         },
         body: JSON.stringify({ quantity: newQty })
       });
@@ -71,6 +128,7 @@ const CartPage: React.FC = () => {
       <table className="cart-table1">
         <thead>
           <tr>
+            <th>hình ảnh</th>
             <th>Sản phẩm</th>
             <th>Giá</th>
             <th>Số lượng</th>
@@ -82,6 +140,7 @@ const CartPage: React.FC = () => {
             const product = item.product_id;
             return (
               <tr key={item._id}>
+                <td><img src={product.images[0].image} alt="" style={{width: 68, height: 68}}/></td>
                 <td className="product-info1">
 
                   <span>{product.name}</span>
@@ -96,6 +155,10 @@ const CartPage: React.FC = () => {
                   />
                 </td>
                 <td>{(product.price * item.quantity).toLocaleString()} VND</td>
+                <td><button 
+                className='btn-green'
+                onClick={() => handleDeleteProduct(item._id)}
+                >xóa</button></td>
               </tr>
             );
           })}
@@ -106,7 +169,7 @@ const CartPage: React.FC = () => {
         <button className="btn-outline1" onClick={() => navigate('/')}>
           Return To Shop
         </button>
-        <button className="btn-outline1">Update Cart</button>
+        <button className="btn-outline1" onClick={handleClearCart}>Update Cart</button>
       </div>
 
       <div className="cart-bottom1">

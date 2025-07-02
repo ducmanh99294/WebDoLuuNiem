@@ -112,7 +112,7 @@ useEffect(() => {
 </div>
 
 
- <button><FaTruck /> Theo dõi đơn hàng</button>
+<Link to={'/order'} style={{ textDecoration: 'none'}}><button><FaTruck/> Theo dõi đơn hàng</button></Link>
 
 
           {/* Nếu có token thì ẩn Đăng nhập/Đăng ký, hiện dropdown tên */}
