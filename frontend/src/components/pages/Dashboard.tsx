@@ -20,6 +20,7 @@ const Dashboard = () => {
   const [userCount, setUserCount] = useState<number>(0);
   const [activeSection, setActiveSection] = useState('dashboard');
   const navigate = useNavigate();
+  const [productList, setProductList] = useState<any[]>([]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -61,6 +62,34 @@ useEffect(() => {
 
   fetchUserCount();
 }, []);
+useEffect(() => {
+  const fetchProductList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/products', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách sản phẩm:', data);
+
+      if (Array.isArray(data.products)) {
+        setProductList(data.products);
+      } else {
+        setProductList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh sách sản phẩm:', error);
+    }
+  };
+
+  if (activeSection === 'products') {
+    fetchProductList();
+  }
+}, [activeSection]);
 
   const chartData = {
     labels: [
@@ -215,16 +244,39 @@ useEffect(() => {
         )}
 
         {/* Các mục khác, ví dụ products */}
-        {activeSection === 'products' && (
-          <div className="card">
-            <h2>Danh sách sản phẩm (demo)</h2>
-            <ul>
-              <li>Sản phẩm 1 - Giá: 100.000đ</li>
-              <li>Sản phẩm 2 - Giá: 150.000đ</li>
-              <li>Sản phẩm 3 - Giá: 200.000đ</li>
-            </ul>
+       {activeSection === 'products' && (
+  <div className="sp-section">
+    <h2>📦 Quản lý sản phẩm</h2>
+    {productList.length === 0 ? (
+      <p>Không có sản phẩm nào.</p>
+    ) : (
+      <div className="sp-list">
+        {productList.map((product) => (
+          <div key={product._id} className="sp-card">
+            <div className="sp-info">
+              <img
+                src={product.image || "/images/default-product.png"}
+                alt={product.name}
+                className="sp-img"
+              />
+              <div className="sp-content">
+                <h3 className="sp-name">{product.name}</h3>
+                <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>
+                <p><strong>Mô tả:</strong> {product.description || 'Không có mô tả'}</p>
+                <p><strong>Danh mục:</strong> {product.category?.name || 'Không có'}</p>
+              </div>
+            </div>
+            <div className="sp-actions">
+              <button className="sp-btn-edit">Sửa</button>
+              <button className="sp-btn-delete">Xoá</button>
+            </div>
           </div>
-        )}
+        ))}
+      </div>
+    )}
+  </div>
+)}
+
       </main>
     </div>
   );
