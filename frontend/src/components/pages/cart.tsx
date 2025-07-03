@@ -52,7 +52,6 @@ const handleClearCart = async () => {
     const data = await res.json();
 
     if (data.success) {
-
       alert('Đã làm sạch giỏ hàng');
       setCart([]);
     } else {

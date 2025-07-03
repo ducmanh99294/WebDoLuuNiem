@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import AddedToCartPopup from '../AddedToCartPopup';
 import CartError from '../Error';
 
+
 const DetailProduct: React.FC = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);

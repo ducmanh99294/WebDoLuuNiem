@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import ProductCard from '../components/pages/ProductCard';
-import type { Product } from '../components/data/product';
 
 const useQuery = () => new URLSearchParams(useLocation().search);
 
@@ -10,22 +9,25 @@ const SearchPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const query = useQuery();
-  const keyword = query.get('keyword') || '';
+const keyword = query.get('keyword') || 'móc khóa';
+console.log('🔍 Từ khóa tìm kiếm:', keyword); // ✅
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await fetch('http://localhost:3000/api/v1/products');
-        const data = await res.json();
-        setProducts(data.data || []);
-      } catch (err) {
-        console.error('Lỗi khi tải sản phẩm:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
+useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch('http://localhost:3000/api/v1/products');
+      const data = await res.json();
+      console.log('📦 Dữ liệu trả về từ API:', data);
+      setProducts(data.products || []);
+    } catch (err) {
+      console.error('❌ Lỗi khi tải sản phẩm:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchProducts();
+}, [keyword]); // ✅ THÊM keyword VÀO ĐÂY
+
 
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(keyword.toLowerCase())
