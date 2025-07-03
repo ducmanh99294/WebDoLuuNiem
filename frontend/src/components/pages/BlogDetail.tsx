@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
 
 const BlogDetail = () => {
   const blogId = localStorage.getItem('blogId');
-  const [blog, setBlog] = useState(null);
+  const [blog, setBlog] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
