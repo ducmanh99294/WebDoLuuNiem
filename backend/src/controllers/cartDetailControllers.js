@@ -56,7 +56,7 @@ exports.getCartDetailsByCartId = async (req, res) => {
     try {
         const { cart_id } = req.params;
         logger.info(`Fetching cart details by cart_id: ${cart_id}`);
-        const cartDetails = await CartDetail.find({ cart_id }).populate('product_id', 'name price images');
+        const cartDetails = await CartDetail.find({ cart_id }).populate({path: 'product_id',select: 'name price images', populate: { path: 'images', select: 'image'}});
         res.status(200).json({
             success: true,
             cartDetails
@@ -198,4 +198,21 @@ exports.updateCartDetailQuantity = async (req, res) => {
             details: err.message
         });
     }
+};
+
+// Xóa tất cả sản phẩm trong giỏ hàng theo cartId
+exports.clearCartDetailsByCartId = async (req, res) => {
+  try {
+    const { cartId } = req.params;
+    if (!cartId) {
+      return res.status(400).json({ success: false, message: 'Thiếu cartId' });
+    }
+
+    // Xóa tất cả cart-detail thuộc cartId này
+    await CartDetail.deleteMany({ cart_id: cartId });
+
+    res.json({ success: true, message: 'Đã xóa tất cả sản phẩm trong giỏ hàng' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Lỗi server', error: error.message });
+  }
 };

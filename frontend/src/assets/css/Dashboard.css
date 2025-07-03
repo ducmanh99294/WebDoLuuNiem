@@ -77,12 +77,12 @@
   width: 800px;
 }
 
-.card{
+.card12{
   background: white;
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  width: 400px;
+  
 }
 
 .card-title {
@@ -212,4 +212,71 @@
 .n3 .card1:hover {
   transform: translateY(-6px); /* nổi lên nhẹ khi hover */
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2); /* bóng đổ mạnh hơn khi hover */
+}
+.user-table thead{
+  justify-content: space-between;
+}
+.box3{
+  border: 1px solid bla;
+}
+.user-card0 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.user-infor2 {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+}
+
+.avatar-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.user-details1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-name1 {
+  color: #2ecc71;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-edit {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }

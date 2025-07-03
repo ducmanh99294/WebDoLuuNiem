@@ -182,3 +182,20 @@ html, body {
 .dropdown-menu div:hover {
   background-color: #f0f0f0;
 }
+.notification-popup1 {
+  position: absolute;
+  top: 100%;
+  right: -30px;
+  background-color: #fff;
+  color: #333;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  z-index: 1000;
+  margin-right: -100px;
+}
+.notification-popup1 .title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}

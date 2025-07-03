@@ -62,4 +62,10 @@ router.patch(
     cartDetailController.updateCartDetailQuantity
 );
 
+router.delete('/cart/:cartId', 
+    validateToken,
+    authRolers('user', 'admin'), 
+    cartDetailController.clearCartDetailsByCartId
+);
+
 module.exports = router;

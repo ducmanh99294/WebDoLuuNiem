@@ -82,6 +82,10 @@ app.use(`/api/${API_VERSION}/events`, require('./routes/eventRoutes'));
 app.use(`/api/${API_VERSION}/blogs`, require('./routes/blogRoutes'));
 app.use(`/api/${API_VERSION}/carts`, require('./routes/cartRoutes'));
 app.use(`/api/${API_VERSION}/cart-details`, require('./routes/cartDetailRoutes'));
+app.use(`/api/${API_VERSION}/payment-online`, require('./routes/paymentOnlineRoutes'));
+app.use(`/api/${API_VERSION}/about`, require('./routes/aboutUsRoutes'));
+app.use(`/api/${API_VERSION}/cancel-requests`, require('./routes/cancelRequestRoutes'));
+
 
 // Error handler
 app.use(errorHandler);
