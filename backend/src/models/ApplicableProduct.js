@@ -14,9 +14,8 @@ const applicableProductSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    coupon: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Coupons',
+    discount: {
+        type: String,
         required: true
     },
 });

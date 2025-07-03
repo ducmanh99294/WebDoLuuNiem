@@ -66,7 +66,10 @@ const DetailProduct: React.FC = () => {
       toast.error('Vui lòng đăng nhập để thêm sản phẩm');
       return;
     }
-
+    if (!_id) {
+      toast.error('Thiếu thông tin sản phẩm');
+      return;
+    }
     let cartId = await getOrCreateCartId();
 
     if (!cartId) {
@@ -95,8 +98,6 @@ const DetailProduct: React.FC = () => {
     toast.error('Có lỗi xảy ra khi thêm vào giỏ hàng');
   }
 };
-
-// --- Helper functions ---
 
 const getOrCreateCartId = async () => {
   // 1. Kiểm tra giỏ hàng hiện tại
@@ -174,6 +175,11 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
   try {
     if (!token || !userId) {
       toast.error('Vui lòng đăng nhập để mua sản phẩm');
+      return;
+    }
+    
+    if (!_id) {
+      toast.error('Thiếu thông tin sản phẩm');
       return;
     }
 
