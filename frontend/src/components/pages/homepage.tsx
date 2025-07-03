@@ -5,6 +5,7 @@ import '../../assets/css/home.css';
 import Banner from '../Banner';
 import WhyChooseUs from '../WhyChooseUs';
 import DealsSection from '../DealsSection';
+import EventPage from './Event';
 import { Link, useNavigate } from 'react-router-dom';
 import CategoryList from '../category';
 
@@ -77,7 +78,9 @@ const Home: React.FC = () => {
           )}
         </div>
       </div>
+      <EventPage />
       <div className="category-products-container">
+        <h1>Danh Mục </h1>
         {categories.map((cat) => (
           <div key={cat._id} className="category-section" onClick={() => {localStorage.setItem('categoryId', cat._id)}}>
             <div className="category-header">

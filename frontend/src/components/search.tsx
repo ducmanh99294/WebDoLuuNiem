@@ -5,7 +5,7 @@ import ProductCard from '../components/pages/ProductCard';
 const useQuery = () => new URLSearchParams(useLocation().search);
 
 const SearchPage: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   const query = useQuery();
