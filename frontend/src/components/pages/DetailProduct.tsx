@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
 import AddedToCartPopup from '../AddedToCartPopup';
@@ -7,6 +7,7 @@ import CartError from '../Error';
 
 
 const DetailProduct: React.FC = () => {
+  const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId')
@@ -66,108 +67,145 @@ const DetailProduct: React.FC = () => {
       return;
     }
 
-    // 1. Kiểm tra có giỏ hàng chưa
-  const cartRes = await fetch(`http://localhost:3000/api/v1/carts/user/${userId}`, {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
-  }
-});
+    let cartId = await getOrCreateCartId();
 
-  const cartData = await cartRes.json();
-  let cartId;
-  console.log('cartData:', cartData, cartData.success, Array.isArray(cartData.data));
-
-  if (cartData.success && Array.isArray(cartData.data)) {
-    // So sánh lỏng để khớp ObjectId và string
-    const userCart = cartData.data.find((cart: any) => cart.user == userId);
-
-    if (userCart) {
-      cartId = userCart._id;
-      localStorage.setItem('cart_id', cartId);
-      console.log('Đã có giỏ hàng, cartId:', cartId);
-    }
-  }
-
-  if (!cartId) {
-    // 2. Nếu chưa có → tạo giỏ hàng mới và thêm sản phẩm vào
-    console.log('Chưa có giỏ hàng, tạo mới...');
-    const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({ user: userId }) // Gửi userId để backend tạo cart
-    });
-
-    const newCartData = await createCartRes.json();
-
-    if (!newCartData.success || !newCartData.cart?._id) {
-      toast.error('Không thể tạo giỏ hàng');
+    if (!cartId) {
+      toast.error('Không thể xử lý giỏ hàng');
       return;
     }
 
-    cartId = newCartData.cart._id;
-    console.log('Đã tạo giỏ hàng mới, cartId:', cartId);
-  }
+    const existingItem = await getExistingCartItem(cartId, _id);
 
-    // 3. Kiểm tra sản phẩm đã có trong cart-detail chưa
-    console.log('Kiểm tra cart-detail cho cartId:', cartId);
-    const cartDetailRes = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-    });
-    const cartDetailData = await cartDetailRes.json();
-    const existingItem = cartDetailData.cartDetails?.find((item: any) => item.product_id._id?.toString() === _id);
-    console.log('existingItem:', existingItem);
-    console.log(_id, 'so sánh với', existingItem?.product_id);
     if (existingItem) {
-      // 4. Nếu sản phẩm đã có → tăng số lượng
-      console.log('tăng số lượng:', existingItem);
-      const updateRes = await fetch(`http://localhost:3000/api/v1/cart-details/${existingItem._id}/quantity`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ quantity: existingItem.quantity + 1 })
-      });
-      const result = await updateRes.json();
-      if (result.success) {
-        toast.success('Đã tăng số lượng sản phẩm trong giỏ hàng');
-      } else {
-        toast.error('Không thể cập nhật số lượng sản phẩm');
-      }
+      const updated = await updateCartItemQuantity(existingItem._id, existingItem.quantity + 1);
+      updated
+        ? toast.success('Đã tăng số lượng sản phẩm trong giỏ hàng')
+        : toast.error('Không thể cập nhật số lượng sản phẩm');
     } else {
-      // 5. Nếu chưa có sản phẩm → thêm vào cart-details
-      const addRes = await fetch(`http://localhost:3000/api/v1/cart-details`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          cart_id: cartId,
-          product_id: _id,
-          quantity
-        })
-      });
-      const result = await addRes.json();
-     if (result.success) {
-  toast.success('Đã thêm sản phẩm vào giỏ hàng');
-  setShowPopup(true);
-  setTimeout(() => setShowPopup(false), 10000);
-}
+      const added = await addNewCartItem(cartId, _id, quantity);
+      if (added) {
+        toast.success('Đã thêm sản phẩm vào giỏ hàng');
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 10000);
+      }
     }
 
   } catch (error) {
     console.error('Lỗi khi thêm vào giỏ hàng:', error);
     toast.error('Có lỗi xảy ra khi thêm vào giỏ hàng');
+  }
+};
+
+// --- Helper functions ---
+
+const getOrCreateCartId = async () => {
+  // 1. Kiểm tra giỏ hàng hiện tại
+  const cartRes = await fetch(`http://localhost:3000/api/v1/carts/user/${userId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  const cartData = await cartRes.json();
+  const userCart = cartData?.data?.find((cart: any) => cart.user == userId);
+
+  if (userCart) {
+    localStorage.setItem('cart_id', userCart._id);
+    return userCart._id;
+  }
+
+  // 2. Nếu chưa có thì tạo mới
+  const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ user: userId })
+  });
+
+  const newCartData = await createCartRes.json();
+  return newCartData?.cart?._id || null;
+};
+
+const getExistingCartItem = async (cartId: string, productId: string) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  const data = await res.json();
+  return data.cartDetails?.find((item: any) => item.product_id._id?.toString() === productId);
+};
+
+const updateCartItemQuantity = async (itemId: string, newQuantity: number) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details/${itemId}/quantity`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ quantity: newQuantity })
+  });
+
+  const result = await res.json();
+  return result.success;
+};
+
+const addNewCartItem = async (cartId: string, productId: string, quantity: number) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ cart_id: cartId, product_id: productId, quantity })
+  });
+
+  const result = await res.json();
+  return result.success;
+};
+
+  // hàm mua ngay
+  const handleBuyNow = async () => {
+  try {
+    if (!token || !userId) {
+      toast.error('Vui lòng đăng nhập để mua sản phẩm');
+      return;
+    }
+
+    const cartId = await getOrCreateCartId();
+    if (!cartId) {
+      toast.error('Không thể xử lý giỏ hàng');
+      return;
+    }
+
+    const existingItem = await getExistingCartItem(cartId, _id);
+
+    if (existingItem) {
+      const updated = await updateCartItemQuantity(existingItem._id, quantity);
+      if (!updated) {
+        toast.error('Không thể cập nhật số lượng sản phẩm');
+        return;
+      }
+    } else {
+      const added = await addNewCartItem(cartId, _id, quantity);
+      if (!added) {
+        toast.error('Không thể thêm sản phẩm vào giỏ hàng');
+        return;
+      }
+    }
+
+    toast.success('Chuyển đến thanh toán...');
+    // Điều hướng sang trang thanh toán
+    navigate('/checkout');
+
+  } catch (error) {
+    console.error('Lỗi khi xử lý mua ngay:', error);
+    toast.error('Có lỗi xảy ra khi mua sản phẩm');
   }
 };
 
@@ -268,7 +306,7 @@ const DetailProduct: React.FC = () => {
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button onClick={handleAddToCart} className='a2'>Thêm vào giỏ hàng</button>
-            <button className='a1'>Mua ngay</button>
+            <button className='a1' onClick={handleBuyNow}>Mua ngay</button>
           </div>
           <div style={{ marginTop: 16 }}>
             <span>Liên hệ cửa hàng: </span>
