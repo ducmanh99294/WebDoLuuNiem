@@ -84,6 +84,7 @@ app.use(`/api/${API_VERSION}/carts`, require('./routes/cartRoutes'));
 app.use(`/api/${API_VERSION}/cart-details`, require('./routes/cartDetailRoutes'));
 app.use(`/api/${API_VERSION}/payment-online`, require('./routes/paymentOnlineRoutes'));
 app.use(`/api/${API_VERSION}/about`, require('./routes/aboutUsRoutes'));
+app.use(`/api/${API_VERSION}/contacts`, require('./routes/contacRoutes'));
 
 
 // Error handler
