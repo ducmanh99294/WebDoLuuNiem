@@ -3,16 +3,18 @@ import { useParams } from 'react-router-dom';
 import '../../assets/css/Detail.css';
 import toast from 'react-hot-toast';
 import { jwtDecode } from 'jwt-decode';
-import ChatComponent from './ChatComponent';
+import UserChatComponent from './UserChatComponent';
+import AdminChatComponent from './AdminChatComponent';
 
 const DetailProduct: React.FC = () => {
   const token = localStorage.getItem('token');
-  const decoded = token ? jwtDecode(token) : null;
+  const decoded: any = token ? jwtDecode(token) : null;
   const userId = decoded?.id;
+  const role = decoded?.role;
   const { _id } = useParams();
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState(product?.images[0]?.image);
+  const [selectedImage, setSelectedImage] = useState<string | undefined>();
   const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
@@ -130,7 +132,7 @@ const DetailProduct: React.FC = () => {
   if (loading) return <p>Đang tải...</p>;
   if (!product) return <p>Không tìm thấy sản phẩm.</p>;
 
-  const finalPrice = product.price - (product.price * product.discount) / 100;
+  const finalPrice = product.price - (product.price * (product.discount || 0)) / 100;
 
   return (
     <div className="product-detail-container" style={{ background: '#fff', padding: 24, position: 'relative' }}>
@@ -285,7 +287,18 @@ const DetailProduct: React.FC = () => {
       >
         Chat
       </button>
-      {showChat && <ChatComponent productId={_id} product={product} onClose={() => setShowChat(false)} />}
+      {showChat && (
+        role === 'admin' ? (
+          <AdminChatComponent adminId={userId} onClose={() => setShowChat(false)} />
+        ) : (
+          <UserChatComponent
+            productId={_id!}
+            product={product}
+            userId={userId}
+            onClose={() => setShowChat(false)}
+          />
+        )
+      )}
     </div>
   );
 };

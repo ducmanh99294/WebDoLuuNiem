@@ -194,3 +194,6 @@
 {"level":"error","message":"Error during user login: secretOrPrivateKey must have a value","timestamp":"2025-06-27T02:36:51.300Z"}
 {"level":"error","message":"senderId and recipientId are required","timestamp":"2025-07-02T02:33:58.080Z"}
 {"level":"error","message":"senderId and recipientId are required","timestamp":"2025-07-02T02:34:04.702Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-02T03:44:58.858Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-02T03:52:25.635Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-03T03:17:12.926Z"}
