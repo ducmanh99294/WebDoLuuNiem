@@ -8,7 +8,6 @@ const AboutUsSchema = new mongoose.Schema({
     description: {
         type: String,
         require: true
-    
     }
 })
 
