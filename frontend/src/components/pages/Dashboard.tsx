@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Store, LogOut, MessageCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+
+import AdminChatComponent from './AdminChatComponent';
 
 import {
   Chart as ChartJS,
@@ -10,8 +14,8 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import "../../assets/css/Dashboard.css";
-import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -28,39 +32,47 @@ const Dashboard = () => {
     navigate('/login');
   };
 
-useEffect(() => {
-  const fetchUserCount = async () => {
-    try {
-      const token = localStorage.getItem('token');
+  // Decode adminId từ token
+  const token = localStorage.getItem('token');
+  let adminId = '';
+  if (token) {
+    const decoded: any = jwtDecode(token);
+    adminId = decoded.sub || decoded._id || decoded.id;
+  }
 
-      const response = await fetch("http://localhost:3000/api/v1/users", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      try {
+        const token = localStorage.getItem('token');
 
-      const data = await response.json();
-      console.log("Dữ liệu người dùng:", data);
+        const response = await fetch("http://localhost:3000/api/v1/users", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      if (Array.isArray(data.data)) {
-        const users = data.data.filter((user: any) => user.role !== "admin");
-        setUserCount(users.length);
-        setUserList(users); // ✅ Đặt ở đây sau khi đã khai báo `users`
-      } else if (typeof data.count === "number") {
-        setUserCount(data.count);
-        setUserList([]); // fallback rỗng nếu không có mảng data
-      } else {
-        setUserCount(0);
-        setUserList([]);
+        const data = await response.json();
+        console.log("Dữ liệu người dùng:", data);
+
+        if (Array.isArray(data.data)) {
+          const users = data.data.filter((user: any) => user.role !== "admin");
+          setUserCount(users.length);
+          setUserList(users);
+        } else if (typeof data.count === "number") {
+          setUserCount(data.count);
+          setUserList([]);
+        } else {
+          setUserCount(0);
+          setUserList([]);
+        }
+      } catch (error) {
+        console.error("Lỗi khi tải danh sách người dùng:", error);
       }
-    } catch (error) {
-      console.error("Lỗi khi tải danh sách người dùng:", error);
-    }
-  };
+    };
 
-  fetchUserCount();
-}, []);
+    fetchUserCount();
+  }, []);
 
   const chartData = {
     labels: [
@@ -88,7 +100,7 @@ useEffect(() => {
           <div onClick={() => setActiveSection('products')}>📦 Quản lý sản phẩm</div>
           <div onClick={() => setActiveSection('posts')}>📝 Quản lý bài viết</div>
           <div onClick={() => setActiveSection('categories')}>📁 Quản lý danh mục</div>
-          <div onClick={() => setActiveSection('coupons')}>📁 Quản lý mã khuyến mãi</div>
+          <div onClick={() => setActiveSection('coupons')}>🏷️ Quản lý mã khuyến mãi</div>
           <div onClick={() => setActiveSection('stores')}><Store size={18} /> Gian hàng hợp tác</div>
           <div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
             <LogOut size={18} /> Đăng Xuất
@@ -104,50 +116,21 @@ useEffect(() => {
         <h1 className="title">
           {activeSection === 'dashboard' && '📈 Thống kê'}
           {activeSection === 'products' && '📦 Quản lý sản phẩm'}
-{activeSection === 'users' && (
-  <div className="user-management">
-    <div className="user-header">
-      <button onClick={() => setActiveSection('dashboard')}>Back</button>
-      <h2>Quản lí người dùng</h2>
-      <button className="add-user">Thêm người dùng</button>
-    </div>
-
-    <div className="user-list">
-      {userList.map((user) => (
-        <div key={user._id} className="user-card0">
-          <div className="user-infor2">
-            <img
-              src={user.avatar || "/images/default-avatar.png"}
-              alt="avatar"
-              className="avatar-img"
-            />
-            <div className="user-details1">
-              <h3 className="user-name1">{user.name}</h3>
-              <p><strong>Email:</strong> {user.email}</p>
-              <p><strong>SĐT:</strong> {user.phone}</p>
-              <p><strong>Vai trò:</strong> {user.role}</p>
-              <p><strong>Địa chỉ:</strong> {user.address}</p>
-            </div>
-          </div>
-          <div className="user-actions">
-            <button className="btn-edit">Sửa</button>
-            <button className="btn-delete">Xoá</button>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-
-
-    {activeSection === 'chat' && '💬 Khung chat'}
           {activeSection === 'posts' && '📝 Bài viết'}
           {activeSection === 'categories' && '📁 Danh mục'}
           {activeSection === 'coupons' && '🏷️ Mã khuyến mãi'}
           {activeSection === 'stores' && '🏪 Gian hàng'}
         </h1>
 
-        {/* Nội dung từng phần */}
+        {/* Khung chat */}
+        {activeSection === 'chat' && (
+          <AdminChatComponent
+            adminId={adminId}
+            onClose={() => setActiveSection('dashboard')}
+          />
+        )}
+
+        {/* Dashboard chính */}
         {activeSection === 'dashboard' && (
           <>
             <div className="filters">
@@ -214,7 +197,43 @@ useEffect(() => {
           </>
         )}
 
-        {/* Các mục khác, ví dụ products */}
+        {/* Quản lý người dùng */}
+        {activeSection === 'users' && (
+          <div className="user-management">
+            <div className="user-header">
+              <button onClick={() => setActiveSection('dashboard')}>Back</button>
+              <h2>Quản lí người dùng</h2>
+              <button className="add-user">Thêm người dùng</button>
+            </div>
+
+            <div className="user-list">
+              {userList.map((user) => (
+                <div key={user._id} className="user-card0">
+                  <div className="user-infor2">
+                    <img
+                      src={user.avatar || "/images/default-avatar.png"}
+                      alt="avatar"
+                      className="avatar-img"
+                    />
+                    <div className="user-details1">
+                      <h3 className="user-name1">{user.name}</h3>
+                      <p><strong>Email:</strong> {user.email}</p>
+                      <p><strong>SĐT:</strong> {user.phone}</p>
+                      <p><strong>Vai trò:</strong> {user.role}</p>
+                      <p><strong>Địa chỉ:</strong> {user.address}</p>
+                    </div>
+                  </div>
+                  <div className="user-actions">
+                    <button className="btn-edit">Sửa</button>
+                    <button className="btn-delete">Xoá</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Quản lý sản phẩm */}
         {activeSection === 'products' && (
           <div className="card">
             <h2>Danh sách sản phẩm (demo)</h2>
@@ -225,6 +244,12 @@ useEffect(() => {
             </ul>
           </div>
         )}
+
+        {/* Các section khác */}
+        {activeSection === 'posts' && <div className="card"><h2>Quản lý bài viết</h2></div>}
+        {activeSection === 'categories' && <div className="card"><h2>Quản lý danh mục</h2></div>}
+        {activeSection === 'coupons' && <div className="card"><h2>Quản lý mã khuyến mãi</h2></div>}
+        {activeSection === 'stores' && <div className="card"><h2>Quản lý gian hàng</h2></div>}
       </main>
     </div>
   );

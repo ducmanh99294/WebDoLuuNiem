@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io, { Socket } from 'socket.io-client';
 import { jwtDecode } from 'jwt-decode';
-
+import toast from 'react-hot-toast';
 interface Chat {
   _id: string;
   product: { _id: string; name: string; price: number; discount?: number; images?: { image: string }[] };
@@ -18,21 +18,24 @@ interface UserChatComponentProps {
 
 const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
   const token = localStorage.getItem('token');
+  if (!token) {
+    toast.error('Please log in to continue');
+    throw new Error('No token found');
+  }
   const headers = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
     ...(options.headers || {}),
   };
-
   const response = await fetch(`http://localhost:3000${url}`, {
     ...options,
     headers,
   });
-
   if (!response.ok) {
+    const errorData = await response.json();
+    toast.error(errorData.message || `HTTP error! status: ${response.status}`);
     throw new Error(`HTTP error! status: ${response.status}`);
   }
-
   return response;
 };
 
@@ -41,6 +44,8 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
   const [message, setMessage] = useState<string>('');
   const socketRef = useRef<Socket | null>(null);
+  const token = localStorage.getItem('token')
+
 
   useEffect(() => {
     socketRef.current = io('http://localhost:3000', {
@@ -79,20 +84,20 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   }, [userId, selectedChat?._id]);
 
   useEffect(() => {
-    const fetchChats = async () => {
-      try {
-        const response = await fetchWithAuth(`/api/v1/chats?productId=${productId}&userId=${userId}`);
-        const data = await response.json();
-        if (data.success) {
-          setChatList(data.chats);
-        }
-      } catch (error) {
-        console.error('Error fetching chats:', error);
+  const fetchChats = async () => {
+    try {
+      const response = await fetchWithAuth(`/api/v1/chats?productId=${productId}&userId=${userId}&page=1&limit=10`);
+      const data = await response.json();
+      if (data.success) {
+        setChatList(data.chats);
       }
-    };
-
-    fetchChats();
-  }, [productId, userId]);
+    } catch (error) {
+      console.error('Error fetching chats:', error);
+      toast.error('Failed to load chats.');
+    }
+  };
+  fetchChats();
+}, [productId, userId]);
 
   useEffect(() => {
     if (selectedChat?._id) {
@@ -115,20 +120,37 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   };
 
   const startNewChat = async () => {
-    try {
-      const response = await fetchWithAuth('/api/v1/chats', {
-        method: 'POST',
-        body: JSON.stringify({ senderId: userId, recipientId: process.env.REACT_APP_ADMIN_ID, productId }),
-      });
-      const data = await response.json();
-      if (data.success) {
-        setChatList([...chatList, data.data]);
-        setSelectedChat(data.data);
-      }
-    } catch (error) {
-      console.error('Error creating chat:', error);
+  if (!userId || !productId) {
+    toast.error('User ID or Product ID is missing');
+    return;
+  }
+  try {
+    const adminId = import.meta.env.VITE_ADMIN_ID;
+    if (!adminId) {
+      toast.error('Admin ID is not configured. Please contact support.');
+      return;
     }
-  };
+    const response = await fetchWithAuth('/api/v1/chats', {
+      method: 'POST',
+      headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+      body: JSON.stringify({ senderId: userId, recipientId: adminId, productId }),
+    });
+    const data = await response.json();
+    if (data.success) {
+      setChatList([...chatList, data.data]);
+      setSelectedChat(data.data);
+      toast.success('Chat created successfully!');
+    } else {
+      toast.error(data.message || 'Failed to create chat.');
+    }
+  } catch (error) {
+    console.error('Error creating chat:', error);
+    toast.error('Failed to create chat. Please try again.');
+  }
+};
 
   const finalPrice = product ? product.price - (product.price * (product.discount || 0)) / 100 : 0;
   const productImage = product?.images?.length > 0 ? product.images[0].image : 'https://via.placeholder.com/50';
