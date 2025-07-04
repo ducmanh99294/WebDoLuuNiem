@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Store, LogOut, MessageCircle } from 'lucide-react';
-
+import { FaPlus } from 'react-icons/fa';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -119,6 +119,7 @@ useEffect(() => {
           <div onClick={() => setActiveSection('categories')}>📁 Quản lý danh mục</div>
           <div onClick={() => setActiveSection('coupons')}>📁 Quản lý mã khuyến mãi</div>
           <div onClick={() => setActiveSection('stores')}><Store size={18} /> Gian hàng hợp tác</div>
+          <div onClick={() => setActiveSection('stores')}><Store size={18} /> đánh giá sản phẩm</div>
           <div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
             <LogOut size={18} /> Đăng Xuất
           </div>
@@ -132,7 +133,6 @@ useEffect(() => {
       <main className="main-content">
         <h1 className="title">
           {activeSection === 'dashboard' && '📈 Thống kê'}
-          {activeSection === 'products' && '📦 Quản lý sản phẩm'}
 {activeSection === 'users' && (
   <div className="user-management">
     <div className="user-header">
@@ -152,10 +152,10 @@ useEffect(() => {
             />
             <div className="user-details1">
               <h3 className="user-name1">{user.name}</h3>
-              <p><strong>Email:</strong> {user.email}</p>
-              <p><strong>SĐT:</strong> {user.phone}</p>
-              <p><strong>Vai trò:</strong> {user.role}</p>
-              <p><strong>Địa chỉ:</strong> {user.address}</p>
+              <p>Email: {user.email}</p>
+              <p>SĐT : {user.phone}</p>
+              <p>Vai trò: {user.role}</p>
+              <p>Địa chỉ: {user.address}</p>
             </div>
           </div>
           <div className="user-actions">
@@ -198,7 +198,7 @@ useEffect(() => {
               <div className="charts-grid">
                 <div className="full-span">
                   <div className="n2">
-                    <h2>Activity</h2>
+                    <h2>Báo cáo </h2>
                     <select>
                       <option value="ngay">Ngày</option>
                       <option value="thang">Tháng</option>
@@ -246,19 +246,18 @@ useEffect(() => {
         {/* Các mục khác, ví dụ products */}
        {activeSection === 'products' && (
   <div className="sp-section">
-    <h2>📦 Quản lý sản phẩm</h2>
+    <h2>quản lí sản phẩm </h2>
     {productList.length === 0 ? (
       <p>Không có sản phẩm nào.</p>
     ) : (
       <div className="sp-list">
+        <div className="add0">
+        <button className="add"> <FaPlus style={{ }}/></button></div>
         {productList.map((product) => (
           <div key={product._id} className="sp-card">
             <div className="sp-info">
-              <img
-                src={product.image || "/images/default-product.png"}
-                alt={product.name}
-                className="sp-img"
-              />
+                 <img src={product.images[0].image} alt={product.name} className="image" />
+
               <div className="sp-content">
                 <h3 className="sp-name">{product.name}</h3>
                 <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>

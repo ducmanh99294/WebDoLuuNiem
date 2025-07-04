@@ -10,7 +10,7 @@ const Banner = () => {
   const slides = [
     "/images/slider_dac-san-ngon-da-nang.png",
     "/images/baner1.png",
-    "/images/slider3.png",
+    "/images/8519001.jpg",
   ];
 
   return (

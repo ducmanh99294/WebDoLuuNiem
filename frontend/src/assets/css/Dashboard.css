@@ -82,6 +82,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  cursor: pointer;
   
 }
 
@@ -300,6 +301,7 @@
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .sp-card:hover {
@@ -348,6 +350,7 @@
 .sp-actions {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
   gap: 8px;
 }
 
@@ -395,4 +398,27 @@
     height: auto;
     max-height: 200px;
   }
+}
+.add{
+  width: auto;
+ background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add0{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 12px;
+}
+.sp-section h2{
+  color: none;
+  display: flex;
+  justify-content: center;
+}
+.sp-info img{
+  width: 160px;
+  height: 160px;
 }

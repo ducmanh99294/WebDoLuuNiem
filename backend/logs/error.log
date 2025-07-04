@@ -1,0 +1,6 @@
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"Uncaught Exception thrown: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:218:20)","syscall":"read","timestamp":"2025-07-04T02:28:31.770Z"}
+{"level":"error","message":"Error during user login: read ECONNRESET","timestamp":"2025-07-04T03:06:12.571Z"}
+{"level":"error","message":"Error during user login: read ECONNRESET","timestamp":"2025-07-04T03:06:14.315Z"}
+{"level":"error","message":"Error during user login: read ECONNRESET","timestamp":"2025-07-04T03:06:14.771Z"}
+{"level":"error","message":"Error during user login: read ECONNRESET","timestamp":"2025-07-04T03:06:14.991Z"}
+{"level":"error","message":"Error during user login: read ECONNRESET","timestamp":"2025-07-04T03:06:15.150Z"}
