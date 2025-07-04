@@ -202,7 +202,7 @@ const logoutUser = async (req, res) => {
     } catch (error) {
         logger.error(`Error during user logout: ${error.message}`);
         return res.status(500).json({
-success: false,
+            success: false,
             message: 'Internal Server Error'
         });
     }
