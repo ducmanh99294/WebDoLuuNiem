@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io, { Socket } from 'socket.io-client';
-import { jwtDecode } from 'jwt-decode';
 import toast from 'react-hot-toast';
+
 interface Chat {
   _id: string;
   product: { _id: string; name: string; price: number; discount?: number; images?: { image: string }[] };
@@ -33,6 +33,11 @@ const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
   });
   if (!response.ok) {
     const errorData = await response.json();
+    if (response.status === 403 && errorData.message === 'Token expired. Please log in again.') {
+      toast.error('Session expired. Please log in again.');
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    }
     toast.error(errorData.message || `HTTP error! status: ${response.status}`);
     throw new Error(`HTTP error! status: ${response.status}`);
   }
@@ -44,12 +49,16 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
   const [message, setMessage] = useState<string>('');
   const socketRef = useRef<Socket | null>(null);
-  const token = localStorage.getItem('token')
-
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      toast.error('Please log in to start chatting');
+      return;
+    }
+
     socketRef.current = io('http://localhost:3000', {
-      auth: { token: localStorage.getItem('token') },
+      auth: { token },
     });
 
     socketRef.current.emit('user_connected', userId);
@@ -76,28 +85,32 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
 
     socketRef.current.on('error', (error) => {
       console.error('Socket error:', error.message);
+      toast.error(error.message || 'Socket connection failed');
     });
 
     return () => {
+      socketRef.current?.emit('leave-session', selectedChat?._id);
       socketRef.current?.disconnect();
     };
   }, [userId, selectedChat?._id]);
 
   useEffect(() => {
-  const fetchChats = async () => {
-    try {
-      const response = await fetchWithAuth(`/api/v1/chats?productId=${productId}&userId=${userId}&page=1&limit=10`);
-      const data = await response.json();
-      if (data.success) {
-        setChatList(data.chats);
+    const fetchChats = async () => {
+      try {
+        const response = await fetchWithAuth(`/api/v1/chats?productId=${productId}&userId=${userId}&page=1&limit=10`);
+        const data = await response.json();
+        if (data.success) {
+          setChatList(data.chats);
+        } else {
+          toast.error(data.message || 'Failed to load chats');
+        }
+      } catch (error) {
+        console.error('Error fetching chats:', error);
+        toast.error('Failed to load chats');
       }
-    } catch (error) {
-      console.error('Error fetching chats:', error);
-      toast.error('Failed to load chats.');
-    }
-  };
-  fetchChats();
-}, [productId, userId]);
+    };
+    fetchChats();
+  }, [productId, userId]);
 
   useEffect(() => {
     if (selectedChat?._id) {
@@ -106,7 +119,16 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   }, [selectedChat?._id]);
 
   const sendMessage = async () => {
-    if (!message.trim() || !selectedChat) return;
+    if (!message.trim() || !selectedChat) {
+      toast.error('Please select a chat and enter a message');
+      return;
+    }
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      toast.error('Please log in to send messages');
+      return;
+    }
 
     const newMessage = {
       session_id: selectedChat._id,
@@ -120,37 +142,38 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   };
 
   const startNewChat = async () => {
-  if (!userId || !productId) {
-    toast.error('User ID or Product ID is missing');
-    return;
-  }
-  try {
-    const adminId = import.meta.env.VITE_ADMIN_ID;
-    if (!adminId) {
-      toast.error('Admin ID is not configured. Please contact support.');
+    const token = localStorage.getItem('token');
+    if (!token) {
+      toast.error('Please log in to start a new chat');
       return;
     }
-    const response = await fetchWithAuth('/api/v1/chats', {
-      method: 'POST',
-      headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-          },
-      body: JSON.stringify({ senderId: userId, recipientId: adminId, productId }),
-    });
-    const data = await response.json();
-    if (data.success) {
-      setChatList([...chatList, data.data]);
-      setSelectedChat(data.data);
-      toast.success('Chat created successfully!');
-    } else {
-      toast.error(data.message || 'Failed to create chat.');
+    if (!userId || !productId) {
+      toast.error('User ID or Product ID is missing');
+      return;
     }
-  } catch (error) {
-    console.error('Error creating chat:', error);
-    toast.error('Failed to create chat. Please try again.');
-  }
-};
+    try {
+      const adminId = import.meta.env.VITE_ADMIN_ID;
+      if (!adminId) {
+        toast.error('Admin ID is not configured. Please contact support.');
+        return;
+      }
+      const response = await fetchWithAuth('/api/v1/chats', {
+        method: 'POST',
+        body: JSON.stringify({ senderId: userId, recipientId: adminId, productId }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setChatList([...chatList, data.data]);
+        setSelectedChat(data.data);
+        toast.success('Chat created successfully!');
+      } else {
+        toast.error(data.message || 'Failed to create chat');
+      }
+    } catch (error) {
+      console.error('Error creating chat:', error);
+      toast.error('Failed to create chat. Please try again.');
+    }
+  };
 
   const finalPrice = product ? product.price - (product.price * (product.discount || 0)) / 100 : 0;
   const productImage = product?.images?.length > 0 ? product.images[0].image : 'https://via.placeholder.com/50';
@@ -191,7 +214,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
                 gap: '10px',
               }}
             >
-              <DefaultLogo />
+              <img src="https://via.placeholder.com/40" alt="Logo" />
               <div>
                 <div style={{ fontWeight: 'bold' }}>
                   {chat.user.find((u) => u._id !== userId)?.name || 'Admin'}

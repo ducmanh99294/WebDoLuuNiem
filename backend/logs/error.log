@@ -73,3 +73,12 @@
 {"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T01:21:33.373Z"}
 {"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T01:24:02.007Z"}
 {"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T01:25:13.575Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-04T01:29:42.759Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T01:29:49.622Z"}
+{"level":"error","message":"Error retrieving chats: Cannot read properties of undefined (reading 'toString')","timestamp":"2025-07-04T02:12:54.348Z"}
+{"level":"error","message":"Error retrieving chats: Cannot read properties of undefined (reading 'toString')","timestamp":"2025-07-04T02:12:54.360Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-04T02:12:54.369Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T02:28:35.845Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T02:31:41.369Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T02:33:23.193Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T03:17:59.895Z"}
