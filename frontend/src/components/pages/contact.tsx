@@ -1,23 +1,61 @@
 import React , { useState }from 'react';
 import '../../assets/css/Contact.css'
+import { ContactSuccess } from '../PaymentSuccess';
+
+
 const Contact: React.FC = () => {
-   const [formData, setFormData] = useState({
+  const userId = localStorage.getItem('userId')
+  const token = localStorage.getItem('token');
+  const [formData, setFormData] = useState({
     title: "",
     name: "",
     phone: "",
     email: "",
     message: "",
   });
+  const [showSuccess, setShowSuccess] = useState(false);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert("Tin nhắn đã được gửi!");
-    // Gửi dữ liệu về backend tại đây nếu cần
-  };
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) {e.preventDefault()}
+    try{
+      if (!token || !userId) {
+      alert('Vui lòng đăng nhập để gửi');
+      return;
+    }
+
+    const contactData = {
+      user: userId,
+      name: formData.name,
+      title: formData.title,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message,
+    }
+      const res = await fetch(`http://localhost:3000/api/v1/contacts`, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+        body: JSON.stringify(contactData)
+      })
+      
+      console.log(contactData)
+      const data = await res.json();
+      if (data.success) {
+        setShowSuccess(true);
+        console.log(data)
+      }
+    } catch (err) {
+      console.error('error: ', err)
+    }
+  }
+
   return (
     <div style={{ background: '#fff', padding: 24 }}>
       <h1>Liên hệ</h1>
@@ -71,7 +109,7 @@ const Contact: React.FC = () => {
       <br />
       <br />
       {/* Footer Info */}
-       <form className="contact-form" onSubmit={handleSubmit}>
+       <form className="contact-form"  onSubmit={(e) => handleSubmit(e)}>
       <h2>Gửi lời nhắn</h2>
 
       <div className="form-group">
@@ -102,7 +140,9 @@ const Contact: React.FC = () => {
 
       <button type="submit">Gửi tin nhắn</button>
     </form>
+    {showSuccess && <ContactSuccess onClose={() => setShowSuccess(false)} />}
     </div>
+    
   );
 };
 
