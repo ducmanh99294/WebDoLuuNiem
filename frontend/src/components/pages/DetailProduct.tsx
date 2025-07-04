@@ -2,52 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
-import AddedToCartPopup from '../AddedToCartPopup';
-import CartError from '../Error';
-
+import { jwtDecode } from 'jwt-decode';
+import UserChatComponent from './UserChatComponent';
+import AdminChatComponent from './AdminChatComponent';
 
 const DetailProduct: React.FC = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const token = localStorage.getItem('token');
-  const userId = localStorage.getItem('userId')
-  const [quantity, setQuantity] = useState(1);
+  const decoded: any = token ? jwtDecode(token) : null;
+  const userId = decoded?.id;
+  const role = decoded?.role;
   const { _id } = useParams();
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedImage, setSelectedImage] = useState(product?.images[0]?.image);
-  const [showCartError, setShowCartError] = useState(false);
-  const [blogs, setBlogs] = useState<any[]>([])
+  const [selectedImage, setSelectedImage] = useState<string | undefined>();
+  const [showChat, setShowChat] = useState(false);
 
-  // lấy tin tức
-  useEffect(()=>{
-      const fetchBlog = async () => {
-        try {
-          const res = await fetch(`http://localhost:3000/api/v1/blogs`);
-          const data = await res.json();
-          
-          if(data.success) {
-            setBlogs(data.data);
-            console.log(data.data)
-          }
-        } catch (err) {
-          console.error('err', err);
-        } finally {
-          setLoading(false);
-        }
-      };
-      if (blogs) fetchBlog();
-    }, [])
-
-  // lấy sản phẩm
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const res = await fetch(`http://localhost:3000/api/v1/products/${_id}`);
         const data = await res.json();
-        setProduct(data); //  API trả về object sản phẩm trực tiếp
-        if(data?.images?.length > 0) {
-          setSelectedImage(data.images[0].image); // Lấy ảnh đầu tiên làm ảnh chính
+        setProduct(data);
+        if (data?.images?.length > 0) {
+          setSelectedImage(data.images[0].image);
         }
       } catch (err) {
         console.error('Lỗi khi lấy sản phẩm:', err);
@@ -59,7 +38,6 @@ const DetailProduct: React.FC = () => {
     fetchProduct();
   }, [_id]);
 
-  // gọi api thêm sản phẩm vào giỏ hàng
   const handleAddToCart = async () => {
   try {
     if (!token || !userId) {
@@ -218,34 +196,28 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
   if (loading) return <p>Đang tải...</p>;
   if (!product) return <p>Không tìm thấy sản phẩm.</p>;
 
-  const finalPrice = product.price - (product.price * product.discount) / 100;
+  const finalPrice = product.price - (product.price * (product.discount || 0)) / 100;
 
   return (
-    <div className="product-detail-container" style={{ background: '#fff', padding: 24 }}>
+    <div className="product-detail-container" style={{ background: '#fff', padding: 24, position: 'relative' }}>
       <h2>Chi tiết sản phẩm</h2>
       <div className="product-main" style={{ display: 'flex', gap: 24 }}>
-        {/* Product Image */}
         <div className="product-image" style={{ flex: 1 }}>
-          <div 
-            className='zoom-container' 
-            style={{ background: '#eee', height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={selectedImage} alt={product.name}  className="zoom-image" style={{ maxHeight: '100%' }} />
+          <div style={{ background: '#eee', height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={selectedImage} alt={product.name} style={{ maxHeight: '100%' }} />
           </div>
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-               {product.images.map((img: any, index: number) => (
-                <img
-                  key={index}
-                  src={img.image}
-                  alt={`Thumbnail ${index + 1}`}
-                  style={{ width: 48, height: 48, objectFit: 'cover', cursor: 'pointer', border: '1px solid #ccc' }}
-                  onClick={() => setSelectedImage(img.image)}
-                  className='zoomable-image'
-                />
-              ))}
+            {product.images.map((img: any, index: number) => (
+              <img
+                key={index}
+                src={img.image}
+                alt={`Thumbnail ${index + 1}`}
+                style={{ width: 48, height: 48, objectFit: 'cover', cursor: 'pointer', border: '1px solid #ccc' }}
+                onClick={() => setSelectedImage(img.image)}
+              />
+            ))}
           </div>
         </div>
-
-        {/* Product Info */}
         <div className="product-info" style={{ flex: 2 }}>
           <h3>{product.name}</h3>
           <div>
@@ -257,58 +229,47 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
           <div>
             <span>Vận chuyển đến: </span>
             <select>
-  <option>Tuyên Quang</option>
-  <option>Lào Cai</option>
-  <option>Thái Nguyên</option>
-  <option>Phú Thọ</option>
-  <option>Bắc Ninh</option>
-  <option>Hưng Yên</option>
-  <option>TP. Hải Phòng</option>
-  <option>Ninh Bình</option>
-  <option>Quảng Trị</option>
-  <option>TP. Huế</option>
-  <option>TP. Đà Nẵng</option>
-  <option>Quảng Ngãi</option>
-  <option>Gia Lai</option>
-  <option>Khánh Hòa</option>
-  <option>Lâm Đồng</option>
-  <option>Đắk Lắk</option>
-  <option>TP. Hồ Chí Minh</option>
-  <option>Đồng Nai</option>
-  <option>Tây Ninh</option>
-  <option>TP. Cần Thơ</option>
-  <option>Vĩnh Long</option>
-  <option>Đồng Tháp</option>
-  <option>Cà Mau</option>
-  <option>An Giang</option>
-  <option>Cao Bằng</option>
-  <option>Lai Châu</option>
-  <option>Điện Biên</option>
-  <option>Lạng Sơn</option>
-  <option>Sơn La</option>
-  <option>Quảng Ninh</option>
-  <option>TP. Hà Nội</option>
-  <option>Thanh Hóa</option>
-  <option>Nghệ An</option>
-  <option>Hà Tĩnh</option>
+              <option>Tuyên Quang</option>
+              <option>Lào Cai</option>
+              <option>Thái Nguyên</option>
+              <option>Phú Thọ</option>
+              <option>Bắc Ninh</option>
+              <option>Hưng Yên</option>
+              <option>TP. Hải Phòng</option>
+              <option>Ninh Bình</option>
+              <option>Quảng Trị</option>
+              <option>TP. Huế</option>
+              <option>TP. Đà Nẵng</option>
+              <option>Quảng Ngãi</option>
+              <option>Gia Lai</option>
+              <option>Khánh Hòa</option>
+              <option>Lâm Đồng</option>
+              <option>Đắk Lắk</option>
+              <option>TP. Hồ Chí Minh</option>
+              <option>Đồng Nai</option>
+              <option>Tây Ninh</option>
+              <option>TP. Cần Thơ</option>
+              <option>Vĩnh Long</option>
+              <option>Đồng Tháp</option>
+              <option>Cà Mau</option>
+              <option>An Giang</option>
+              <option>Cao Bằng</option>
+              <option>Lai Châu</option>
+              <option>Điện Biên</option>
+              <option>Lạng Sơn</option>
+              <option>Sơn La</option>
+              <option>Quảng Ninh</option>
+              <option>TP. Hà Nội</option>
+              <option>Thanh Hóa</option>
+              <option>Nghệ An</option>
+              <option>Hà Tĩnh</option>
             </select>
-
           </div>
           <div style={{ margin: '12px 0' }}>
-            <div className="a3">
             <span>Số lượng: </span>
-            <button  
-              type="button"
-              onClick={() => setQuantity(prev => Math.max(1, prev - 1))}>
-                -
-            </button>
-            <input type="number" value={quantity} style={{ width: 80, textAlign: 'center'}} readOnly />
-            <button 
-              type="button"
-              onClick={() => setQuantity(prev => prev + 1)}>
-                +
-            </button>
-          </div>
+            <button>-</button>
+            <input type="number" value={1} style={{ width: 80, textAlign: 'center' }} readOnly />
+            <button>+</button>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button onClick={handleAddToCart} className='a2'>Thêm vào giỏ hàng</button>
@@ -317,42 +278,19 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
           <div style={{ marginTop: 16 }}>
             <span>Liên hệ cửa hàng: </span>
             <span style={{ color: '#009900', fontWeight: 'bold' }}>0909786434</span>
-            <span> hoặc</span>
-            <span style={{ marginLeft: 3 }} >Gửi tin nhắn </span>
-            <span style={{ marginLeft: 0 }} className='h6'>tại đây  </span>
+            <button style={{ marginLeft: 8 }} onClick={() => setShowChat(true)}>Gửi tin nhắn</button>
           </div>
         </div>
-
-        {/* News Sidebar */}
         <div className="product-news" style={{ flex: 1 }}>
           <h4>Tin tức nổi bật</h4>
-          {blogs.slice(0,4).map(blog => (
-             <Link
-                to={`/blog/${blog._id}`}
-                key={blog._id}
-                onClick={()=> {localStorage.setItem('blogId', blog._id)}}
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  marginBottom: 16,
-                  background: '#eee',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  transition: 'background 0.3s',
-                }}
-                onMouseEnter={e => (e.currentTarget.style.background = '#ddd')}
-                onMouseLeave={e => (e.currentTarget.style.background = '#eee')}
-              >
-            <div key={blog._id} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 8,  }}>
-              <img src={blog.image} alt="" style={{ width: 48, height: 48, background: '#ddd' }}/>
-              <div>{blog.title}</div>
+          {[1, 2, 3, 4].map(i => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, background: '#f5f5f5', padding: 8 }}>
+              <div style={{ width: 48, height: 48, background: '#ddd' }}>Ảnh</div>
+              <div>Tin tức {i}</div>
             </div>
-            </Link>
           ))}
         </div>
       </div>
-
-      {/* Product Description & Reviews */}
       <div style={{ display: 'flex', gap: 24, marginTop: 24 }}>
         <div style={{ flex: 2 }}>
           <h4>Thông tin sản phẩm</h4>
@@ -372,15 +310,13 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
               </div>
             ))}
           </div>
-          <button style={{ marginTop: 8 }} className='danhgia'>Gửi đánh giá của bạn</button>
+          <button style={{ marginTop: 8 }}>Gửi đánh giá của bạn</button>
         </div>
       </div>
-
-      {/* Footer Info */}
       <div style={{ marginTop: 32, borderTop: '1px solid #eee', paddingTop: 16, display: 'flex', justifyContent: 'space-between' }}>
         <div>
-          <b>cửa hàng đặc sản </b>
-          <div>Địa chỉ: xô viết nghệ tĩnh quận hải châu thành phố đà nẵng </div>
+          <b>Shop Mall</b>
+          <div>Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM</div>
           <div>Email: example@gmail.com</div>
         </div>
         <div>
@@ -396,9 +332,37 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
           </div>
         </div>
       </div>
-      {showPopup && <AddedToCartPopup onClose={() => setShowPopup(false)} />}
-      {showCartError && <CartError onClose={() => setShowCartError(false)} />}
-
+      <button
+        onClick={() => setShowChat(true)}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          width: '60px',
+          height: '60px',
+          backgroundColor: '#ff4d4f',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '50%',
+          cursor: 'pointer',
+          boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
+          zIndex: 1000
+        }}
+      >
+        Chat
+      </button>
+      {showChat && (
+        role === 'admin' ? (
+          <AdminChatComponent adminId={userId} onClose={() => setShowChat(false)} />
+        ) : (
+          <UserChatComponent
+            productId={_id!}
+            product={product}
+            userId={userId}
+            onClose={() => setShowChat(false)}
+          />
+        )
+      )}
     </div>
   );
 };
