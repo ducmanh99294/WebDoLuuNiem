@@ -377,14 +377,7 @@ const getProductByCategory = async (req, res) => {
       });
     }
 
-    const products = await Product.find({ categories : categoryId }).populate('images');
-
-    if (!products || products.length === 0) {
-      return res.status(404).json({
-        success: false,
-        message: 'Không tìm thấy sản phẩm theo danh mục',
-      });
-    }
+    const products = await Product.find({ categories: categoryId }).populate('images');
 
     res.status(200).json({
       success: true,

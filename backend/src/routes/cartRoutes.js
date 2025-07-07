@@ -45,12 +45,12 @@ router.delete(
     cartController.deleteCart
 );
 
-// [GET] /user/:userId - Get carts by user ID (authenticated users)
+// [GET] /user- Get carts by user ID (authenticated users)
 router.get(
     '/user/:userId',
     validateToken,
     authRoles('user', 'admin'),
-    cartController.getCartsByUser
+    cartController.getCartByUser
 );
 
 module.exports = router;

@@ -106,18 +106,48 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   }, [selectedChat?._id]);
 
   const sendMessage = async () => {
-    if (!message.trim() || !selectedChat) return;
+  if (!message.trim() || !selectedChat) return;
 
-    const newMessage = {
-      session_id: selectedChat._id,
-      content: message,
-      type: 'text',
-      sender_id: userId,
-    };
-
-    socketRef.current?.emit('send-message', newMessage);
-    setMessage('');
-  };
+  try {
+    const response = await fetchWithAuth('http://localhost:3000/api/v1/chats/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        chatId: selectedChat._id,
+        content: message,
+      }),
+    });
+    const data = await response.json();
+    if (data.success) {
+      // Lấy tin nhắn mới nhất từ response và cập nhật vào state
+      const newMsg = data.chat.messages[data.chat.messages.length - 1];
+      setSelectedChat((prev) =>
+        prev
+          ? {
+              ...prev,
+              messages: [...prev.messages, newMsg],
+            }
+          : prev
+      );
+      setChatList((prev) =>
+        prev.map((chat) =>
+          chat._id === selectedChat._id
+            ? { ...chat, messages: [...chat.messages, newMsg] }
+            : chat
+        )
+      );
+      setMessage('');
+    } else {
+      toast.error(data.message || 'Gửi tin nhắn thất bại.');
+    }
+  } catch (error) {
+    console.error('Error sending message:', error);
+    toast.error('Gửi tin nhắn thất bại. Vui lòng thử lại.');
+  }
+};
 
   const startNewChat = async () => {
   if (!userId || !productId) {
@@ -191,7 +221,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
                 gap: '10px',
               }}
             >
-              <DefaultLogo />
+           
               <div>
                 <div style={{ fontWeight: 'bold' }}>
                   {chat.user.find((u) => u._id !== userId)?.name || 'Admin'}

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
+import AddedToCartPopup from '../AddedToCartPopup';
+import CartError from '../Error';
 import { jwtDecode } from 'jwt-decode';
 import UserChatComponent from './UserChatComponent';
 import AdminChatComponent from './AdminChatComponent';
@@ -10,6 +12,8 @@ const DetailProduct: React.FC = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const token = localStorage.getItem('token');
+  const [quantity, setQuantity] = useState(1);
+  const [showCartError, setShowCartError] = useState(false);
   const decoded: any = token ? jwtDecode(token) : null;
   const userId = decoded?.id;
   const role = decoded?.role;
@@ -18,6 +22,26 @@ const DetailProduct: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | undefined>();
   const [showChat, setShowChat] = useState(false);
+  const [blogs, setBlogs] = useState<any[]>([])
+
+   useEffect(()=>{
+      const fetchBlog = async () => {
+        try {
+          const res = await fetch(`http://localhost:3000/api/v1/blogs`);
+          const data = await res.json();
+          
+          if(data.success) {
+            setBlogs(data.data);
+            console.log(data.data)
+          }
+        } catch (err) {
+          console.error('err', err);
+        } finally {
+          setLoading(false);
+        }
+      };
+      if (blogs) fetchBlog();
+    }, [])
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -40,14 +64,16 @@ const DetailProduct: React.FC = () => {
 
   const handleAddToCart = async () => {
   try {
+    if (!product || !product._id) {
+      toast.error('Thiếu thông tin sản phẩm');
+      return;
+    }
+
     if (!token || !userId) {
       toast.error('Vui lòng đăng nhập để thêm sản phẩm');
       return;
     }
-    if (!_id) {
-      toast.error('Thiếu thông tin sản phẩm');
-      return;
-    }
+
     let cartId = await getOrCreateCartId();
 
     if (!cartId) {
@@ -55,30 +81,36 @@ const DetailProduct: React.FC = () => {
       return;
     }
 
-    const existingItem = await getExistingCartItem(cartId, _id);
+    const existingItem = await getExistingCartItem(cartId, product._id);
 
     if (existingItem) {
-      const updated = await updateCartItemQuantity(existingItem._id, existingItem.quantity + 1);
-      updated
-        ? toast.success('Đã tăng số lượng sản phẩm trong giỏ hàng')
-        : toast.error('Không thể cập nhật số lượng sản phẩm');
+      const updated = await updateCartItemQuantity(
+        existingItem._id,
+        existingItem.quantity + quantity
+      );
+      if (updated) {
+        toast.success('Đã cập nhật số lượng trong giỏ hàng');
+      } else {
+        toast.error('Không thể cập nhật số lượng');
+      }
     } else {
-      const added = await addNewCartItem(cartId, _id, quantity);
+      // Nếu sản phẩm chưa có trong giỏ hàng → thêm mới
+      const added = await addNewCartItem(cartId, product._id, quantity);
       if (added) {
         toast.success('Đã thêm sản phẩm vào giỏ hàng');
         setShowPopup(true);
         setTimeout(() => setShowPopup(false), 10000);
+      } else {
+        toast.error('Không thể thêm sản phẩm vào giỏ hàng');
       }
     }
-
   } catch (error) {
     console.error('Lỗi khi thêm vào giỏ hàng:', error);
-    toast.error('Có lỗi xảy ra khi thêm vào giỏ hàng');
+    toast.error('Có lỗi xảy ra khi thêm sản phẩm');
   }
 };
 
 const getOrCreateCartId = async () => {
-  // 1. Kiểm tra giỏ hàng hiện tại
   const cartRes = await fetch(`http://localhost:3000/api/v1/carts/user/${userId}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -87,25 +119,32 @@ const getOrCreateCartId = async () => {
   });
 
   const cartData = await cartRes.json();
-  const userCart = cartData?.data?.find((cart: any) => cart.user == userId);
+  const userCart = cartData?.data;
 
-  if (userCart) {
+  if (userCart && userCart._id) {
     localStorage.setItem('cart_id', userCart._id);
     return userCart._id;
   }
 
-  // 2. Nếu chưa có thì tạo mới
+  // Nếu chưa có thì tạo mới
   const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     },
-    body: JSON.stringify({ user: userId })
+    body: JSON.stringify({ user: userId }) 
   });
 
   const newCartData = await createCartRes.json();
-  return newCartData?.cart?._id || null;
+  const newCart = newCartData?.data;
+
+  if (newCart && newCart._id) {
+    localStorage.setItem('cart_id', newCart._id);
+    return newCart._id;
+  }
+
+  return null;
 };
 
 const getExistingCartItem = async (cartId: string, productId: string) => {
@@ -117,7 +156,12 @@ const getExistingCartItem = async (cartId: string, productId: string) => {
   });
 
   const data = await res.json();
-  return data.cartDetails?.find((item: any) => item.product_id._id?.toString() === productId);
+  return data.cartDetails?.find(
+  (item: any) =>
+    item.product_id &&
+    item.product_id._id &&
+    item.product_id._id.toString() === productId
+);
 };
 
 const updateCartItemQuantity = async (itemId: string, newQuantity: number) => {
@@ -149,7 +193,7 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
 };
 
   // hàm mua ngay
-  const handleBuyNow = async () => {
+ const handleBuyNow = async () => {
   try {
     if (!token || !userId) {
       toast.error('Vui lòng đăng nhập để mua sản phẩm');
@@ -265,11 +309,21 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
               <option>Hà Tĩnh</option>
             </select>
           </div>
-          <div style={{ margin: '12px 0' }}>
+           <div style={{ margin: '12px 0' }}>
+            <div className="a3">
             <span>Số lượng: </span>
-            <button>-</button>
-            <input type="number" value={1} style={{ width: 80, textAlign: 'center' }} readOnly />
-            <button>+</button>
+            <button  
+              type="button"
+              onClick={() => setQuantity(prev => Math.max(1, prev - 1))}>
+                -
+            </button>
+            <input type="number" value={quantity} style={{ width: 80, textAlign: 'center'}} readOnly />
+            <button 
+              type="button"
+              onClick={() => setQuantity(prev => prev + 1)}>
+                +
+            </button>
+          </div>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
             <button onClick={handleAddToCart} className='a2'>Thêm vào giỏ hàng</button>
@@ -281,13 +335,30 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
             <button style={{ marginLeft: 8 }} onClick={() => setShowChat(true)}>Gửi tin nhắn</button>
           </div>
         </div>
-        <div className="product-news" style={{ flex: 1 }}>
+         <div className="product-news" style={{ flex: 1 }}>
           <h4>Tin tức nổi bật</h4>
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, background: '#f5f5f5', padding: 8 }}>
-              <div style={{ width: 48, height: 48, background: '#ddd' }}>Ảnh</div>
-              <div>Tin tức {i}</div>
+          {blogs.slice(0,4).map(blog => (
+             <Link
+                to={`/blog/${blog._id}`}
+                key={blog._id}
+                onClick={()=> {localStorage.setItem('blogId', blog._id)}}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: 16,
+                  background: '#eee',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  transition: 'background 0.3s',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = '#ddd')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#eee')}
+              >
+            <div key={blog._id} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 8,  }}>
+              <img src={blog.image[0]} alt="" style={{ width: 48, height: 48, background: '#ddd' }}/>
+              <div>{blog.title}</div>
             </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -331,6 +402,8 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
             <img src="https://via.placeholder.com/40" alt="App" />
           </div>
         </div>
+      {showPopup && <AddedToCartPopup onClose={() => setShowPopup(false)} />}
+      {showCartError && <CartError onClose={() => setShowCartError(false)} />}
       </div>
       <button
         onClick={() => setShowChat(true)}

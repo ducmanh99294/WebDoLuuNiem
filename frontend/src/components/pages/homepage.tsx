@@ -72,7 +72,7 @@ const Home: React.FC = () => {
           {loading ? (
             <p>Đang tải sản phẩm...</p>
           ) : (
-             products.map(product => (
+             products.slice(0,5).map(product => (
       <ProductCard key={product._id} product={product} />
     ))
           )}
