@@ -32,11 +32,11 @@ useEffect(() => {
   const fetchUserCount = async () => {
     try {
 
-      const response = await fetch("http://localhost:3001/api/v1/users");
+      const response1 = await fetch("http://localhost:3001/api/v1/users");
 
       const token = localStorage.getItem('token');
 
-      const response = await fetch("http://localhost:3000/api/v1/users", {
+      const response2 = await fetch("http://localhost:3000/api/v1/users", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ useEffect(() => {
       });
 
 
-      const data = await response.json();
+      const data = await response2.json();
       console.log("Dữ liệu người dùng:", data);
 
       if (Array.isArray(data.data)) {

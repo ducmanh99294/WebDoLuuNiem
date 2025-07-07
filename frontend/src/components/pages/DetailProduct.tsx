@@ -44,7 +44,7 @@ const DetailProduct: React.FC = () => {
     }
 
     // 1. Kiểm tra có giỏ hàng chưa
-  const cartRes = await fetch(`http://localhost:3000/api/v1/carts/user/${userId}`, {
+  const cartRes = await fetch(`http://localhost:3001/api/v1/carts/user/${userId}`, {
   method: 'GET',
   headers: {
     'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const DetailProduct: React.FC = () => {
   if (!cartId) {
     // 2. Nếu chưa có → tạo giỏ hàng mới
     console.log('Chưa có giỏ hàng, tạo mới...');
-    const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
+    const createCartRes = await fetch(`http://localhost:3001/api/v1/carts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ const DetailProduct: React.FC = () => {
 
     // 3. Kiểm tra sản phẩm đã có trong cart-detail chưa
     console.log('Kiểm tra cart-detail cho cartId:', cartId);
-    const cartDetailRes = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+    const cartDetailRes = await fetch(`http://localhost:3001/api/v1/cart-details/cart/${cartId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ const DetailProduct: React.FC = () => {
     if (existingItem) {
       // 4. Nếu sản phẩm đã có → tăng số lượng
       console.log('tăng số lượng:', existingItem);
-      const updateRes = await fetch(`http://localhost:3000/api/v1/cart-details/${existingItem._id}/quantity`, {
+      const updateRes = await fetch(`http://localhost:3001/api/v1/cart-details/${existingItem._id}/quantity`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ const DetailProduct: React.FC = () => {
       }
     } else {
       // 5. Nếu chưa có sản phẩm → thêm vào cart-details
-      const addRes = await fetch(`http://localhost:3000/api/v1/cart-details`, {
+      const addRes = await fetch(`http://localhost:3001/api/v1/cart-details`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
