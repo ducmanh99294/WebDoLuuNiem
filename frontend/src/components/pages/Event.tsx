@@ -38,7 +38,7 @@ const EventPage = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px' }}>
+    <div style={{ maxWidth: '100%', height: 'auto', margin: '0 auto', padding: '40px 20px' }}>
       <h1 style={{ textAlign: 'center', fontSize: '32px', marginBottom: '40px' }}>Sự kiện nổi bật</h1>
 
       {loading ? (
@@ -86,11 +86,12 @@ const EventPage = () => {
                   {event.images.map((img: string, idx: number) => (
                     <SwiperSlide key={idx}>
                         <img
+                        key={idx}
                         src={img}
                         alt={`event-${idx}`}
                         style={{
                             width: '100%',
-                            height: 300,
+                            height: 600,
                             objectFit: 'cover',
                             borderRadius: 8,
                         }}

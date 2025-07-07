@@ -114,9 +114,11 @@ const handleClearCart = async () => {
   };
 
   const totalPrice = cart.reduce((sum, item) => {
-    const product = item.product_id;
-    return sum + product.price * item.quantity;
-  }, 0);
+  const product = item.product_id;
+  if (!product || !product.price) return sum;
+  return sum + product.price * item.quantity;
+}, 0);
+
 
   if (loading) return <p>Đang tải...</p>;
   if (!cart || cart.length === 0) return <p>Giỏ hàng của bạn đang trống.</p>;
@@ -137,31 +139,47 @@ const handleClearCart = async () => {
         </thead>
         <tbody>
           {cart.map((item) => {
-            const product = item.product_id;
-            return (
-              <tr key={item._id}>
-                <td><img src={product.images[0].image} alt="" style={{width: 68, height: 68}}/></td>
-                <td className="product-info1">
+              const product = item.product_id;
 
-                  <span>{product.name}</span>
-                </td>
-                <td>{product.price.toLocaleString()} VND</td>
-                <td>
-                  <input
-                    type="number"
-                    min="1"
-                    value={item.quantity}
-                    onChange={(e) => handleQuantityChange(item._id, Number(e.target.value))}
-                  />
-                </td>
-                <td>{(product.price * item.quantity).toLocaleString()} VND</td>
-                <td><button 
-                className='btn-green'
-                onClick={() => handleDeleteProduct(item._id)}
-                >xóa</button></td>
-              </tr>
-            );
-          })}
+              // Bỏ qua item nếu product bị null (sản phẩm đã bị xóa)
+              if (!product || !product.images || product.images.length === 0) return null;
+
+              return (
+                <tr key={item._id}>
+                  <td>
+                    <img
+                      src={product.images[0].image}
+                      alt=""
+                      style={{ width: 68, height: 68 }}
+                    />
+                  </td>
+                  <td className="product-info1">
+                    <span>{product.name}</span>
+                  </td>
+                  <td>{product.price.toLocaleString()} VND</td>
+                  <td>
+                    <input
+                      type="number"
+                      min="1"
+                      value={item.quantity}
+                      onChange={(e) =>
+                        handleQuantityChange(item._id, Number(e.target.value))
+                      }
+                    />
+                  </td>
+                  <td>{(product.price * item.quantity).toLocaleString()} VND</td>
+                  <td>
+                    <button
+                      className="btn-green"
+                      onClick={() => handleDeleteProduct(item._id)}
+                    >
+                      xóa
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+
         </tbody>
       </table>
 

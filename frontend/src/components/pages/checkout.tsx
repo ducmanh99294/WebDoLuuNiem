@@ -6,6 +6,11 @@ import {PaymentSuccess} from '../PaymentSuccess';
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [province, setProvince] = useState('');
+  const [city, setCity] = useState('');
   const [loading, setLoading] = useState(true);
   const [coupon, setCoupon] = useState<any[]>([]);
   const [cart, setCart] = useState<any[]>([]);
@@ -108,21 +113,27 @@ const Checkout: React.FC = () => {
     }));
 
     const orderData = {
-      user: userId,
-      products,
-      order_number: Math.random().toString(36).substring(2, 10).toUpperCase(),
-      total_price: totalPrice,
-      coupon: selectCoupon?._id ? [selectCoupon._id] : [],
-      shipping: {
-        address: address || 'Địa chỉ mặc định',
-        price: shippingPrice,
-        description: shippingMethod
-      },
-      payment: {
-        method: selectPayment || 'cod',
-        status: 'pending'
-      }
-    };
+  user: userId,
+  products,
+  order_number: Math.random().toString(36).substring(2, 10).toUpperCase(),
+  total_price: totalPrice,
+  coupon: selectCoupon?._id ? [selectCoupon._id] : [],
+  customer: {
+    fullName,
+    email,
+    phone
+  },
+  shipping: {
+    address: address || 'Địa chỉ mặc định',
+    price: shippingPrice,
+    description: shippingMethod
+  },
+  payment: {
+    method: selectPayment || 'cod',
+    status: 'pending'
+  }
+};
+
 
     const res = await fetch('http://localhost:3000/api/v1/orders', {
       method: 'POST',
@@ -155,8 +166,10 @@ const Checkout: React.FC = () => {
     alert('Thiếu thông tin giỏ hàng hoặc đăng nhập');
     return;
   }
+
   try {
-    const res = await fetch(`http://localhost:3000/api/v1/carts/${cartId}`, {
+    // Gọi API xóa tất cả sản phẩm trong giỏ hàng (cart-detail)
+    const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -167,10 +180,10 @@ const Checkout: React.FC = () => {
     const data = await res.json();
 
     if (data.success) {
-      console.log('Đã làm sạch giỏ hàng');
+      alert('Đã làm sạch giỏ hàng');
       setCart([]);
     } else {
-      console.log('Không thể làm sạch giỏ hàng');
+      alert('Không thể làm sạch giỏ hàng');
     }
   } catch (err) {
     console.error('Lỗi khi làm sạch giỏ hàng:', err);
@@ -184,16 +197,16 @@ const Checkout: React.FC = () => {
         <h3>Thông tin vận chuyển</h3>
         <div className="form-group">
           <label>Họ và tên</label>
-          <input type="text" placeholder="Name " required/>
+          <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Name" required />
         </div>
         <div className="form-row">
           <div className="form-group">
             <label>Email</label>
-            <input type="email" placeholder="Email" required/>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
           </div>
           <div className="form-group1">
             <label>Điện thoại</label>
-            <input type="text" placeholder="Phone number" required/>
+            <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone number" required />
           </div>
         </div>
         <div className="form-group">
