@@ -22,6 +22,71 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [productList, setProductList] = useState<any[]>([]);
 
+  // xóa sản phẩm 
+// Hàm xoá sản phẩm khỏi hệ thống (admin only)
+const handleDeleteProduct = async (productId: string) => {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    alert('Bạn cần đăng nhập với quyền Admin');
+    return;
+  }
+
+  console.log('🔑 Token:', token);
+  console.log('🆔 ID sản phẩm cần xoá:', productId);
+
+  const confirmDelete = window.confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi hệ thống?');
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(`http://localhost:3000/api/v1/products/${productId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await response.json();
+    console.log('💡 Kết quả xoá:', data);
+
+    if (data.success) {
+      alert('✅ Đã xóa sản phẩm thành công!');
+      // 👉 Gọi lại API để lấy danh sách mới
+      fetchProductList();
+    } else {
+      alert('❌ Xóa sản phẩm thất bại: ' + (data.message || 'Lỗi không xác định'));
+    }
+  } catch (error) {
+    console.error('🚨 Lỗi khi xóa sản phẩm:', error);
+    alert('Đã xảy ra lỗi khi xóa sản phẩm.');
+  }
+};
+const fetchProductList = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch('http://localhost:3000/api/v1/products', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+    console.log('Danh sách sản phẩm:', data);
+
+    if (Array.isArray(data.products)) {
+      setProductList(data.products);
+    } else {
+      setProductList([]);
+    }
+  } catch (error) {
+    console.error('Lỗi khi tải danh sách sản phẩm:', error);
+  }
+};
+
+
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
@@ -267,7 +332,13 @@ useEffect(() => {
             </div>
             <div className="sp-actions">
               <button className="sp-btn-edit">Sửa</button>
-              <button className="sp-btn-delete">Xoá</button>
+             <button
+  className="sp-btn-delete"
+  onClick={() => handleDeleteProduct(product._id)}
+>
+  Xoá
+</button>
+
             </div>
           </div>
         ))}
