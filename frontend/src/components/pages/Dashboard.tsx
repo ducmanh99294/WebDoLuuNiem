@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Store, LogOut, MessageCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -22,9 +22,10 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 const Dashboard = () => {
   const [userList, setUserList] = useState<any[]>([]);
   const [userCount, setUserCount] = useState<number>(0);
+  // const [activeSection, setActiveSection] = useState<string>('dashboard');
   const [activeSection, setActiveSection] = useState('dashboard');
-  const navigate = useNavigate();
-  const [productList, setProductList] = useState<any[]>([]);
+
+  const navigate = useNavigate();  const [productList, setProductList] = useState<any[]>([]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -46,7 +47,7 @@ const Dashboard = () => {
       try {
         const token = localStorage.getItem('token');
 
-        const response = await fetch("http://localhost:3000/api/v1/users", {
+        const response = await fetch("https://be-webdoluuniem.onrender.com/api/v1/users", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -79,7 +80,7 @@ const Dashboard = () => {
   const fetchProductList = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3000/api/v1/products', {
+      const response = await fetch('https://be-webdoluuniem.onrender.com/api/v1/products', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
@@ -216,7 +217,19 @@ const Dashboard = () => {
             <br />
             <br />
 
-                   {/* Quản lý người dùng */}
+        {/* Quản lý sản phẩm */}
+
+            <div className="card">
+              <h2>Bảng xếp hạng người dùng</h2>
+              <div className="ranking">
+                <div>A - 92% Correct <span className="up">▲</span></div>
+                <div>B - 89% Correct <span className="down">▼</span></div>
+              </div>
+            </div>
+          </>
+        )}
+        
+ {/* Quản lý người dùng */}
         {activeSection === 'users' && (
           <div className="user-management">
             <div className="user-header">
@@ -250,18 +263,6 @@ const Dashboard = () => {
               ))}
             </div>
           </div>
-        )}
-
-        {/* Quản lý sản phẩm */}
-
-            <div className="card">
-              <h2>Bảng xếp hạng người dùng</h2>
-              <div className="ranking">
-                <div>A - 92% Correct <span className="up">▲</span></div>
-                <div>B - 89% Correct <span className="down">▼</span></div>
-              </div>
-            </div>
-          </>
         )}
 
              {activeSection === 'products' && (

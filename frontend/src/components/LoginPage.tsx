@@ -11,7 +11,7 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3000/api/v1/auth/login', {
+      const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ const LoginPage: React.FC = () => {
       </div>
 
       <div className="login-right">
-        <img src="/images/bn1.png" alt="" srcset="" />
+        <img src="/images/bn1.png" alt="" srcSet="" />
       </div>
     </div>
   );

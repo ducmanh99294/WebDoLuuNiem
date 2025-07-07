@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../assets/css/user.css';
 import axios from 'axios';
-import { data } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 interface User {
   _id: string;
@@ -22,7 +21,7 @@ const UserList: React.FC = () => {
     const navigate = useNavigate();
 
  useEffect(() => {
-  axios.get('http://localhost:3000/api/v1/users')
+  axios.get('https://be-webdoluuniem.onrender.com/api/v1/users')
     .then((res) => {
       let allUsers: User[] = [];
 

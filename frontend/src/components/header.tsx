@@ -22,8 +22,7 @@ const handleSearch = (e: React.FormEvent) => {
     navigate(`/search?keyword=${encodeURIComponent(searchText.trim())}`);
   }
 };
-  const user = JSON.parse(localStorage.getItem('user') || '{}'); // lấy thông tin người dùng từ localStorage
-  // hàm đăng xuất 
+   // hàm đăng xuất 
 const handleLogout = async () => {
   const refreshToken = localStorage.getItem('refreshToken');
 
@@ -34,7 +33,7 @@ const handleLogout = async () => {
   }
 
   try {
-    const res = await fetch('http://localhost:3000/api/v1/auth/logout', {
+    const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/auth/logout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ refreshToken }),
@@ -73,7 +72,7 @@ useEffect(() => {
   const fetchNotifications = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:3000/api/v1/notifications', {
+      const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/notifications', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,

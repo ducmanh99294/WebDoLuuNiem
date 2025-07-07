@@ -15,7 +15,7 @@ console.log('🔍 Từ khóa tìm kiếm:', keyword); // ✅
 useEffect(() => {
   const fetchProducts = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/v1/products');
+      const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/products');
       const data = await res.json();
       console.log('📦 Dữ liệu trả về từ API:', data);
       setProducts(data.products || []);

@@ -9,7 +9,7 @@ const CategoryList: React.FC = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/v1/categories');
+        const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/categories');
         const data = await res.json();
         setCategories(data.data || []);
       } catch (err) {

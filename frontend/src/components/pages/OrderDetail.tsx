@@ -11,7 +11,7 @@ const OrderDetail: React.FC = () => {
   useEffect(() => {
     const fetchOrderDetail = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/orders/${orderId}`, {
+        const res = await fetch(`https://be-webdoluuniem.onrender.com/api/v1/orders/${orderId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

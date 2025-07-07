@@ -14,7 +14,7 @@ const Profile: React.FC = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/v1/users/', {
+        const res = await axios.get('https://be-webdoluuniem.onrender.com/api/v1/users/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -65,7 +65,7 @@ const Profile: React.FC = () => {
     try {
       console.log('Dữ liệu gửi đi:', editableData);
       await axios.put(
-        `http://localhost:3000/api/v1/users/${userId}`,
+        `https://be-webdoluuniem.onrender.com/api/v1/users/${userId}`,
         editableData,
         {
           headers: {

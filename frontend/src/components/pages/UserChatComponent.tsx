@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import io, { Socket } from 'socket.io-client';
-import { jwtDecode } from 'jwt-decode';
 import toast from 'react-hot-toast';
 interface Chat {
   _id: string;
@@ -27,7 +26,7 @@ const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
     Authorization: `Bearer ${token}`,
     ...(options.headers || {}),
   };
-  const response = await fetch(`http://localhost:3000${url}`, {
+  const response = await fetch(`https://be-webdoluuniem.onrender.com${url}`, {
     ...options,
     headers,
   });
@@ -48,7 +47,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
 
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:3000', {
+    socketRef.current = io('https://be-webdoluuniem.onrender.com', {
       auth: { token: localStorage.getItem('token') },
     });
 
@@ -109,7 +108,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   if (!message.trim() || !selectedChat) return;
 
   try {
-    const response = await fetchWithAuth('http://localhost:3000/api/v1/chats/messages', {
+    const response = await fetchWithAuth('https://be-webdoluuniem.onrender.com/api/v1/chats/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -183,7 +182,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
 };
 
   const finalPrice = product ? product.price - (product.price * (product.discount || 0)) / 100 : 0;
-  const productImage = product?.images?.length > 0 ? product.images[0].image : 'https://via.placeholder.com/50';
+  const productImage = product?.images?.length && product.images.length > 0 ? product.images[0].image : 'https://via.placeholder.com/50';
 
   return (
     <div style={{

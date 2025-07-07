@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductCard from '../pages/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -12,7 +12,7 @@ const EventPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/v1/events');
+        const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/events');
         const data = await res.json();
         if (data.success) {
           setEvents(data.data || []);
@@ -121,7 +121,7 @@ const EventPage = () => {
                     marginTop: '20px',
                   }}
                 >
-                  {event.products.map((product) => (
+                  {event.products.map((product: any) => (
                     <ProductCard key={product._id} product={product} />
                   ))}
                 </div>

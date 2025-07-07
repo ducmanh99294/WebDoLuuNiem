@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
       email: formData.email,
       message: formData.message,
     }
-      const res = await fetch(`http://localhost:3000/api/v1/contacts`, {
+      const res = await fetch(`https://be-webdoluuniem.onrender.com/api/v1/contacts`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',

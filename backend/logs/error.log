@@ -214,3 +214,4 @@
 {"level":"error","message":"Error retrieving order 686752eb884e4eb07515d89b: Cannot read properties of undefined (reading 'toString')","timestamp":"2025-07-05T12:28:05.951Z"}
 {"level":"error","message":"Error retrieving order 686919f008de58a4c0cd61ea: Cannot read properties of undefined (reading 'toString')","timestamp":"2025-07-05T12:33:47.136Z"}
 {"level":"error","message":"Error retrieving order 686919f008de58a4c0cd61ea: Cannot read properties of undefined (reading 'toString')","timestamp":"2025-07-05T12:33:47.395Z"}
+{"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-01.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-07-07T02:17:33.679Z"}
