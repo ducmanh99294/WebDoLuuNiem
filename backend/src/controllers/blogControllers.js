@@ -22,7 +22,7 @@ const getAllBlogs = async (req, res) => {
 
 const getBlogById = async (req,res) => {
     try {
-        const blog = req.params.is;
+        const blog = req.params.id;
         const blogData = await Blog.findById(blog);
         if (!blogData) {
             logger.warn(`Blog not found with ID: ${blog}`);
@@ -48,8 +48,8 @@ const getBlogById = async (req,res) => {
 
  const createBlog = async (req, res) => {
     try {
-        const {title, content, image} = req.body;
-        if (!title || !content || !image) {
+        const {title, content, image, description} = req.body;
+        if (!title || !content || !image || !description) {
             logger.warn('Title, content, and image are required to create a blog');
             res.status(404).json({
                 success: false,
@@ -57,7 +57,7 @@ const getBlogById = async (req,res) => {
             });
         }
 
-        const newBlog = await Blog.create({ title, content, image });
+        const newBlog = await Blog.create({ title, content, image, description });
         logger.info(`Blog created successfully: ${newBlog._id}`);
         res.status(200).json({
             success: true,
@@ -77,7 +77,7 @@ const updateBlog = async (req, res) => {
     try {
         const blog = req.params.id
         const { title, content, image } = req.body;
-        if (!title || !content || !image) {
+        if (!title || !content || !image || !description) {
             logger.warn('Title, content, and image are required to update a blog');
             return res.status(400).json({
                 success: false,
@@ -85,7 +85,7 @@ const updateBlog = async (req, res) => {
             });
         }
 
-        const updateBlog = await Blog.findByIdAndUpdate(blog, { title, content, image }, { new: true });
+        const updateBlog = await Blog.findByIdAndUpdate(blog, { title, content, image, description }, { new: true });
         if (!updateBlog) {
             logger.warn(`Blog not found with ID: ${blog}`);
             return res.status(404).json({

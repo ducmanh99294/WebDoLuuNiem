@@ -9,10 +9,14 @@ const BlogSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    image: {
+    description: {
         type: String,
         required: true,
-    }
+    },
+    image: [{
+        type: String,
+        required: true,
+    }]
 }, {
     timestamps: true,
     versionKey: false

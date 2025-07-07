@@ -155,7 +155,14 @@ const getOrderById = async (req, res) => {
     const order = await Order.findById(req.params.id)
       .select('order_number status total_price products shipping payment createdAt')
       .populate('user', 'name email')
-      .populate('products.product', 'name price')
+      .populate({
+        path: 'products.product',
+        select: 'name price images',
+        populate: {
+          path: 'images',
+          select: 'image'
+        }
+      })
       .populate('shipping.shipping_company', 'name')
       .populate('shipping.shipper', 'name phone');
 
@@ -512,6 +519,46 @@ const useCoupon = async (req, res) => {
   }
 };
 
+const getOrdersByUserId = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).json({
+        success: false,
+        message: 'Thiếu userId'
+      });
+    }
+
+    const orders = await Order.find({ user: userId })
+      .sort({ createdAt: -1 })
+      .populate({
+    path: 'products.product',
+    select: 'name price images',
+    populate: {
+      path: 'images',
+      select: 'image'
+    }
+  })
+      .populate('coupon')
+      .populate('shipping.shipping_company')
+      .populate('shipping.shipper');
+
+    res.status(200).json({
+      success: true,
+      message: 'Lấy đơn hàng theo user thành công',
+      data: orders
+    });
+  } catch (error) {
+    console.error('Lỗi khi lấy đơn hàng theo user:', error.message);
+    res.status(500).json({
+      success: false,
+      message: 'Lỗi server',
+      error: error.message
+    });
+  }
+};
+
 module.exports = {
   createOrder,
   getAllOrders,
@@ -520,5 +567,6 @@ module.exports = {
   deleteOrder,
   confirmOrder,
   cancelOrder,
-  useCoupon
+  useCoupon,
+  getOrdersByUserId
 };

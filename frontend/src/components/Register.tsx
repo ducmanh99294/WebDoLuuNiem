@@ -117,7 +117,9 @@ const LoginPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="login-right">{/* Có thể thêm ảnh hoặc trang trí tại đây */}</div>
+      <div className="login-right">{/* Có thể thêm ảnh hoặc trang trí tại đây */}
+        <img src="/images/bn3.png" alt=""/>
+      </div>
     </div>
   );
 };

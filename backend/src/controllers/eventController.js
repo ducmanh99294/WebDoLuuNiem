@@ -1,5 +1,5 @@
-const { default: mongoose } = require('mongoose');
 const Event = require('../models/Event');
+const ApplicableProducts = require('../models/applicableProduct')
 const logger = require('../utils/logger');
 
 const createEvent = async (req, res) => {
@@ -47,7 +47,13 @@ const getAllEvents = async (req, res) => {
     try {
         const events = await Event.find()
             .populate('images', 'url')
-            .populate('products', 'name price');
+             .populate({
+                path: 'products',
+                populate: {
+                    path: 'product',
+                    select: 'name price' 
+                }
+            });
 
         logger.info(`Retrieved ${events.length} events`);
         res.status(200).json({

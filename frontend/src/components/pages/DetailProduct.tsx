@@ -1,21 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
-
 import AddedToCartPopup from '../AddedToCartPopup';
-import { jwtDecode } from 'jwt-decode';
+import CartError from '../Error';
 
 
 const DetailProduct: React.FC = () => {
+  const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const token = localStorage.getItem('token');
   const userId = localStorage.getItem('userId')
+  const [quantity, setQuantity] = useState(1);
   const { _id } = useParams();
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(product?.images[0]?.image);
+  const [showCartError, setShowCartError] = useState(false);
+  const [blogs, setBlogs] = useState<any[]>([])
 
+  // lấy tin tức
+  useEffect(()=>{
+      const fetchBlog = async () => {
+        try {
+          const res = await fetch(`http://localhost:3000/api/v1/blogs`);
+          const data = await res.json();
+          
+          if(data.success) {
+            setBlogs(data.data);
+            console.log(data.data)
+          }
+        } catch (err) {
+          console.error('err', err);
+        } finally {
+          setLoading(false);
+        }
+      };
+      if (blogs) fetchBlog();
+    }, [])
+
+  // lấy sản phẩm
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -43,6 +67,7 @@ const DetailProduct: React.FC = () => {
       return;
     }
 
+
     // 1. Kiểm tra có giỏ hàng chưa
   const cartRes = await fetch(`http://localhost:3001/api/v1/carts/user/${userId}`, {
   method: 'GET',
@@ -65,8 +90,14 @@ const DetailProduct: React.FC = () => {
       cartId = userCart._id;
       localStorage.setItem('cart_id', cartId);
       console.log('Đã có giỏ hàng, cartId:', cartId);
+
+    if (!_id) {
+      toast.error('Thiếu thông tin sản phẩm');
+      return;
+
     }
-  }
+    let cartId = await getOrCreateCartId();
+
 
   if (!cartId) {
     // 2. Nếu chưa có → tạo giỏ hàng mới
@@ -84,12 +115,15 @@ const DetailProduct: React.FC = () => {
 
     if (!newCartData.success || !newCartData.cart?._id) {
       toast.error('Không thể tạo giỏ hàng');
+
+    if (!cartId) {
+      toast.error('Không thể xử lý giỏ hàng');
+
       return;
     }
 
-    cartId = newCartData.cart._id;
-    console.log('Đã tạo giỏ hàng mới, cartId:', cartId);
-  }
+    const existingItem = await getExistingCartItem(cartId, _id);
+
 
 
     // 3. Kiểm tra sản phẩm đã có trong cart-detail chưa
@@ -143,6 +177,20 @@ const DetailProduct: React.FC = () => {
   setShowPopup(true);
   setTimeout(() => setShowPopup(false), 10000);
 }
+
+    if (existingItem) {
+      const updated = await updateCartItemQuantity(existingItem._id, existingItem.quantity + 1);
+      updated
+        ? toast.success('Đã tăng số lượng sản phẩm trong giỏ hàng')
+        : toast.error('Không thể cập nhật số lượng sản phẩm');
+    } else {
+      const added = await addNewCartItem(cartId, _id, quantity);
+      if (added) {
+        toast.success('Đã thêm sản phẩm vào giỏ hàng');
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 10000);
+      }
+
     }
 
   } catch (error) {
@@ -150,7 +198,123 @@ const DetailProduct: React.FC = () => {
     toast.error('Có lỗi xảy ra khi thêm vào giỏ hàng');
   }
 };
-  
+
+const getOrCreateCartId = async () => {
+  // 1. Kiểm tra giỏ hàng hiện tại
+  const cartRes = await fetch(`http://localhost:3000/api/v1/carts/user/${userId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  const cartData = await cartRes.json();
+  const userCart = cartData?.data?.find((cart: any) => cart.user == userId);
+
+  if (userCart) {
+    localStorage.setItem('cart_id', userCart._id);
+    return userCart._id;
+  }
+
+  // 2. Nếu chưa có thì tạo mới
+  const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ user: userId })
+  });
+
+  const newCartData = await createCartRes.json();
+  return newCartData?.cart?._id || null;
+};
+
+const getExistingCartItem = async (cartId: string, productId: string) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  const data = await res.json();
+  return data.cartDetails?.find((item: any) => item.product_id._id?.toString() === productId);
+};
+
+const updateCartItemQuantity = async (itemId: string, newQuantity: number) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details/${itemId}/quantity`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ quantity: newQuantity })
+  });
+
+  const result = await res.json();
+  return result.success;
+};
+
+const addNewCartItem = async (cartId: string, productId: string, quantity: number) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ cart_id: cartId, product_id: productId, quantity })
+  });
+
+  const result = await res.json();
+  return result.success;
+};
+
+  // hàm mua ngay
+  const handleBuyNow = async () => {
+  try {
+    if (!token || !userId) {
+      toast.error('Vui lòng đăng nhập để mua sản phẩm');
+      return;
+    }
+    
+    if (!_id) {
+      toast.error('Thiếu thông tin sản phẩm');
+      return;
+    }
+
+    const cartId = await getOrCreateCartId();
+    if (!cartId) {
+      toast.error('Không thể xử lý giỏ hàng');
+      return;
+    }
+
+    const existingItem = await getExistingCartItem(cartId, _id);
+
+    if (existingItem) {
+      const updated = await updateCartItemQuantity(existingItem._id, quantity);
+      if (!updated) {
+        toast.error('Không thể cập nhật số lượng sản phẩm');
+        return;
+      }
+    } else {
+      const added = await addNewCartItem(cartId, _id, quantity);
+      if (!added) {
+        toast.error('Không thể thêm sản phẩm vào giỏ hàng');
+        return;
+      }
+    }
+
+    toast.success('Chuyển đến thanh toán...');
+    // Điều hướng sang trang thanh toán
+    navigate('/checkout');
+
+  } catch (error) {
+    console.error('Lỗi khi xử lý mua ngay:', error);
+    toast.error('Có lỗi xảy ra khi mua sản phẩm');
+  }
+};
+
   if (loading) return <p>Đang tải...</p>;
   if (!product) return <p>Không tìm thấy sản phẩm.</p>;
 
@@ -162,8 +326,10 @@ const DetailProduct: React.FC = () => {
       <div className="product-main" style={{ display: 'flex', gap: 24 }}>
         {/* Product Image */}
         <div className="product-image" style={{ flex: 1 }}>
-          <div style={{ background: '#eee', height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={selectedImage} alt={product.name}  style={{ maxHeight: '100%' }} />
+          <div 
+            className='zoom-container' 
+            style={{ background: '#eee', height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={selectedImage} alt={product.name}  className="zoom-image" style={{ maxHeight: '100%' }} />
           </div>
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
                {product.images.map((img: any, index: number) => (
@@ -172,7 +338,8 @@ const DetailProduct: React.FC = () => {
                   src={img.image}
                   alt={`Thumbnail ${index + 1}`}
                   style={{ width: 48, height: 48, objectFit: 'cover', cursor: 'pointer', border: '1px solid #ccc' }}
-                  onClick={() => setSelectedImage(img.image)} // nếu muốn đổi ảnh chính
+                  onClick={() => setSelectedImage(img.image)}
+                  className='zoomable-image'
                 />
               ))}
           </div>
@@ -228,30 +395,59 @@ const DetailProduct: React.FC = () => {
 
           </div>
           <div style={{ margin: '12px 0' }}>
+            <div className="a3">
             <span>Số lượng: </span>
-            <button>-</button>
-            <input type="number" value={1} style={{ width: 80, textAlign: 'center' }} readOnly />
-            <button>+</button>
+            <button  
+              type="button"
+              onClick={() => setQuantity(prev => Math.max(1, prev - 1))}>
+                -
+            </button>
+            <input type="number" value={quantity} style={{ width: 80, textAlign: 'center'}} readOnly />
+            <button 
+              type="button"
+              onClick={() => setQuantity(prev => prev + 1)}>
+                +
+            </button>
+          </div>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button onClick={handleAddToCart}>Thêm vào giỏ hàng</button>
-            <button>Mua ngay</button>
+            <button onClick={handleAddToCart} className='a2'>Thêm vào giỏ hàng</button>
+            <button className='a1' onClick={handleBuyNow}>Mua ngay</button>
           </div>
           <div style={{ marginTop: 16 }}>
             <span>Liên hệ cửa hàng: </span>
             <span style={{ color: '#009900', fontWeight: 'bold' }}>0909786434</span>
-            <button style={{ marginLeft: 8 }}>Gửi tin nhắn</button>
+            <span> hoặc</span>
+            <span style={{ marginLeft: 3 }} >Gửi tin nhắn </span>
+            <span style={{ marginLeft: 0 }} className='h6'>tại đây  </span>
           </div>
         </div>
 
         {/* News Sidebar */}
         <div className="product-news" style={{ flex: 1 }}>
           <h4>Tin tức nổi bật</h4>
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, background: '#f5f5f5', padding: 8 }}>
-              <div style={{ width: 48, height: 48, background: '#ddd' }}>Ảnh</div>
-              <div>Tin tức {i}</div>
+          {blogs.slice(0,4).map(blog => (
+             <Link
+                to={`/blog/${blog._id}`}
+                key={blog._id}
+                onClick={()=> {localStorage.setItem('blogId', blog._id)}}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: 16,
+                  background: '#eee',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  transition: 'background 0.3s',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = '#ddd')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#eee')}
+              >
+            <div key={blog._id} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 8,  }}>
+              <img src={blog.image} alt="" style={{ width: 48, height: 48, background: '#ddd' }}/>
+              <div>{blog.title}</div>
             </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -276,15 +472,15 @@ const DetailProduct: React.FC = () => {
               </div>
             ))}
           </div>
-          <button style={{ marginTop: 8 }}>Gửi đánh giá của bạn</button>
+          <button style={{ marginTop: 8 }} className='danhgia'>Gửi đánh giá của bạn</button>
         </div>
       </div>
 
       {/* Footer Info */}
       <div style={{ marginTop: 32, borderTop: '1px solid #eee', paddingTop: 16, display: 'flex', justifyContent: 'space-between' }}>
         <div>
-          <b>Shop Mall</b>
-          <div>Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM</div>
+          <b>cửa hàng đặc sản </b>
+          <div>Địa chỉ: xô viết nghệ tĩnh quận hải châu thành phố đà nẵng </div>
           <div>Email: example@gmail.com</div>
         </div>
         <div>
@@ -301,6 +497,8 @@ const DetailProduct: React.FC = () => {
         </div>
       </div>
       {showPopup && <AddedToCartPopup onClose={() => setShowPopup(false)} />}
+      {showCartError && <CartError onClose={() => setShowCartError(false)} />}
+
     </div>
   );
 };

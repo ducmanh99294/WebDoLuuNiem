@@ -199,3 +199,20 @@ exports.updateCartDetailQuantity = async (req, res) => {
         });
     }
 };
+
+// Xóa tất cả sản phẩm trong giỏ hàng theo cartId
+exports.clearCartDetailsByCartId = async (req, res) => {
+  try {
+    const { cartId } = req.params;
+    if (!cartId) {
+      return res.status(400).json({ success: false, message: 'Thiếu cartId' });
+    }
+
+    // Xóa tất cả cart-detail thuộc cartId này
+    await CartDetail.deleteMany({ cart_id: cartId });
+
+    res.json({ success: true, message: 'Đã xóa tất cả sản phẩm trong giỏ hàng' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Lỗi server', error: error.message });
+  }
+};

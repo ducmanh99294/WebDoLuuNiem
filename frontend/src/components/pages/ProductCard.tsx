@@ -1,10 +1,18 @@
 import React from 'react';
 import '../../assets/css/productcard.css';
 import { FaHeart } from 'react-icons/fa';
-import type { Product } from '../data/product';
 import { Link } from 'react-router-dom'; // 👈 Thêm dòng này
 // 👉 Import type Product từ productData
 
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  discount: number;
+  rating: number;
+  like_count: number;
+  images: { image: string }[];
+}
 
 interface ProductCardProps {
   product: Product;
