@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../../assets/css/checkout.css';
 import {PaymentSuccess} from '../PaymentSuccess';
 
 const Checkout: React.FC = () => {
-  const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [province, setProvince] = useState('');
-  const [city, setCity] = useState('');
   const [loading, setLoading] = useState(true);
   const [coupon, setCoupon] = useState<any[]>([]);
   const [cart, setCart] = useState<any[]>([]);

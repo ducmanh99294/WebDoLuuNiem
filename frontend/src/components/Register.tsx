@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import '../assets/css/Register.css';
-import { Link } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
   const [step, setStep] = useState<'form' | 'otp'>('form');
