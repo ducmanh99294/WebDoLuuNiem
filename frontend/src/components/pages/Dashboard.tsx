@@ -4,7 +4,7 @@ import { Store, LogOut, MessageCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { FaPlus } from 'react-icons/fa';
-import SuccessPage from "../consolog/sua";
+import { SuccessPage } from "../PaymentSuccess";
 import AdminChatComponent from './AdminChatComponent';
 import {
   Chart as ChartJS,
@@ -15,7 +15,6 @@ import {
   Legend,
 } from "chart.js";
 import "../../assets/css/Dashboard.css";
-import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -62,7 +61,11 @@ const handleUpdateProduct = async () => {
     if (response.ok) {  // Chỉ cần status 200~299 là thành công
       setShowSuccess(true); 
       setEditingProduct(null);
-      fetchProductList();
+      setProductList((prevList) =>
+        prevList.map((p) =>
+          p._id === editingProduct._id ? { ...p, ...editingProduct } : p
+        )
+      );
     } else {
       alert('❌ Cập nhật thất bại: ' + (data.message || 'Lỗi không xác định'));
     }
@@ -99,7 +102,7 @@ const handleDeleteProduct = async (productId: string) => {
     // ✅ Chỉ kiểm tra response.ok thay vì data.success
     if (response.ok) {
       alert('✅ Đã xóa sản phẩm thành công!');
-      fetchProductList();
+      setProductList((prevList) => prevList.filter((p) => p._id !== productId));
     } else {
       alert('❌ Xóa sản phẩm thất bại: ' + (data.message || 'Lỗi không xác định'));
     }
