@@ -18,13 +18,13 @@ const Home: React.FC = () => {
     const fetchCategories = async () => {
       try {
         // 1. Lấy tất cả danh mục
-        const catRes = await fetch('https://be-webdoluuniem.onrender.com/api/v1/categories');
+        const catRes = await fetch('http://localhost:3000/api/v1/categories');
         const catData = await catRes.json();
         setCategories(catData.data || []);
 
         // 2. Lấy sản phẩm theo danh mục
         const promises = catData.data.map(async (cat: any) => {
-          const prodRes = await fetch(`https://be-webdoluuniem.onrender.com/api/v1/products/category/${cat._id}`);
+          const prodRes = await fetch(`http://localhost:3000/api/v1/products/category/${cat._id}`);
           const prodData = await prodRes.json();
           return { categoryId: cat._id, products: prodData.data?.slice(0, 4) || [] };
         });
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/products');
+        const res = await fetch('http://localhost:3000/api/v1/products');
         const data = await res.json();
         setProducts(data.products || []);
       } catch (err) {

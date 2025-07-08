@@ -12,7 +12,7 @@ const EventPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/events');
+        const res = await fetch('http://localhost:3000/api/v1/events');
         const data = await res.json();
         if (data.success) {
           setEvents(data.data || []);

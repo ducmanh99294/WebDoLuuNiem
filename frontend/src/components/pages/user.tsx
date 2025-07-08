@@ -21,7 +21,7 @@ const UserList: React.FC = () => {
     const navigate = useNavigate();
 
  useEffect(() => {
-  axios.get('https://be-webdoluuniem.onrender.com/api/v1/users')
+  axios.get('http://localhost:3000/api/v1/users')
     .then((res) => {
       let allUsers: User[] = [];
 

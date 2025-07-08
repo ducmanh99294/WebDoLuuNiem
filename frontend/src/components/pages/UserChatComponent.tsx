@@ -26,7 +26,7 @@ const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
     Authorization: `Bearer ${token}`,
     ...(options.headers || {}),
   };
-  const response = await fetch(`https://be-webdoluuniem.onrender.com${url}`, {
+  const response = await fetch(`http://localhost:3000${url}`, {
     ...options,
     headers,
   });
@@ -47,7 +47,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
 
 
   useEffect(() => {
-    socketRef.current = io('https://be-webdoluuniem.onrender.com', {
+    socketRef.current = io('http://localhost:3000', {
       auth: { token: localStorage.getItem('token') },
     });
 
@@ -108,7 +108,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   if (!message.trim() || !selectedChat) return;
 
   try {
-    const response = await fetchWithAuth('https://be-webdoluuniem.onrender.com/api/v1/chats/messages', {
+    const response = await fetchWithAuth('http://localhost:3000/api/v1/chats/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

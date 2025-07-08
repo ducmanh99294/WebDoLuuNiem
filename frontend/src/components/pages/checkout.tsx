@@ -25,7 +25,7 @@ const Checkout: React.FC = () => {
     console.log("toekn", token)
   const fetchCouponData = async () => {
     try {
-      const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/coupons', {
+      const res = await fetch('http://localhost:3000/api/v1/coupons', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token') || ''}`
@@ -53,7 +53,7 @@ const Checkout: React.FC = () => {
   useEffect(() => {
     const fetchCartDetails = async () => {
       try {
-        const res = await fetch(`https://be-webdoluuniem.onrender.com/api/v1/cart-details/cart/${cartId}`, {
+        const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token') || ''}`
@@ -131,7 +131,7 @@ const Checkout: React.FC = () => {
 };
 
 
-    const res = await fetch('https://be-webdoluuniem.onrender.com/api/v1/orders', {
+    const res = await fetch('http://localhost:3000/api/v1/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ const Checkout: React.FC = () => {
 
   try {
     // Gọi API xóa tất cả sản phẩm trong giỏ hàng (cart-detail)
-    const res = await fetch(`https://be-webdoluuniem.onrender.com/api/v1/cart-details/cart/${cartId}`, {
+    const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
