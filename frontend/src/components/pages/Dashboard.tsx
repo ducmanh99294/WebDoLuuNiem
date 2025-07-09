@@ -4,6 +4,7 @@ import { Store, LogOut, MessageCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { FaPlus } from 'react-icons/fa';
+import AdminOrders from './AdminOrders';
 import { SuccessPage } from "../PaymentSuccess";
 import AdminChatComponent from './AdminChatComponent';
 import {
@@ -239,6 +240,13 @@ const handleDeleteProduct = async (productId: string) => {
   </div>
 
   <div 
+  onClick={() => setActiveSection('orders')} 
+  className={activeSection === 'orders' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+  🚚 Quản lý đơn hàng
+  </div>
+
+  <div 
     onClick={() => setActiveSection('posts')} 
     className={activeSection === 'posts' ? 'menu-highlight active' : 'menu-highlight'}
   >
@@ -321,6 +329,9 @@ const handleDeleteProduct = async (productId: string) => {
     </div>
   </div>
 )}
+
+    {activeSection === 'orders' && <AdminOrders />}
+
 
 
     {activeSection === 'chat' && '💬 Khung chat'}
@@ -518,6 +529,7 @@ const handleDeleteProduct = async (productId: string) => {
     )}
   </div>
 )}
+
 {showSuccess && (
   <SuccessPage onClose={() => setShowSuccess(false)} />
 )}
@@ -572,6 +584,8 @@ const Progress = ({
       ></div>
     </div>
   </div>
+  
 );
+
 
 export default Dashboard;

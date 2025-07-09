@@ -1,0 +1,21 @@
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:53.077Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:54.205Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:54.702Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:55.661Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:56.138Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:56.596Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:57.145Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:57.587Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:58.020Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:32:58.378Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:33:08.203Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-09T01:33:26.041Z"}
+{"level":"error","message":"Error updating order 6862e3a364535ebe4ac0aeb5: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:22:33.137Z"}
+{"level":"error","message":"Error updating order 6862e3a364535ebe4ac0aeb5: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:22:35.110Z"}
+{"level":"error","message":"Error updating order 6862e3a364535ebe4ac0aeb5: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:22:44.086Z"}
+{"level":"error","message":"Error updating order 6862f3493d725b6307185ba6: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:27:17.214Z"}
+{"level":"error","message":"Error updating order 6862e3a364535ebe4ac0aeb5: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:34:39.270Z"}
+{"level":"error","message":"Error updating order 6862e3a364535ebe4ac0aeb5: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:35:42.478Z"}
+{"level":"error","message":"Error updating order 6862e3a364535ebe4ac0aeb5: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:47:59.249Z"}
+{"level":"error","message":"Error updating order 6862e3a364535ebe4ac0aeb5: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:51:19.629Z"}
+{"level":"error","message":"Error updating order 6862e3a364535ebe4ac0aeb5: Order validation failed: customer.email: Path `customer.email` is required., customer.phone: Path `customer.phone` is required., customer.fullName: Path `customer.fullName` is required.","timestamp":"2025-07-09T03:55:43.106Z"}
