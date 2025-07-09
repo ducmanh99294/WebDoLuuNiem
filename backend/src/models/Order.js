@@ -12,18 +12,23 @@ const orderSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Products',
       required: true
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      min: 1
-    },
-    price: {
-      type: Number,
-      required: true,
-      min: 0
-    },
+    },  
   }],
+  customer: {
+    fullName: { 
+      type: String ,
+      required: true
+    },
+    phone: { 
+      type: String,
+      required: true
+    },
+    email: { 
+      type: String,
+      required: true
+    }
+},
+
   order_number: {
     type: String,
     required: true,

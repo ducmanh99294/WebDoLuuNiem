@@ -76,11 +76,15 @@ async function getCartsByUser(userId) {
     }));
 }
 
+const getCartByUser = async (userId) => {
+  return Cart.findOne({ user: userId });
+};
+
 module.exports = {
     createCart,
     getAllCarts,
     getCartById,
     updateCart,
     deleteCart,
-    getCartsByUser
+    getCartByUser
 };

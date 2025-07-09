@@ -295,3 +295,31 @@ exports.updateInfo = async (req, res) => {
         });
     }
 }
+
+// [GET] /api/v1/admins
+exports.getAvailableAdmin = async (req, res) => {
+    try {
+        logger.info('Fetching available admin...');
+        const admin = await User.findOne({ role: 'admin' }).select('_id');
+        if (!admin) {
+            logger.warn('No admin found in the database');
+            return res.status(404).json({
+                success: false,
+                message: 'No admin found'
+            });
+        }
+        logger.info(`Admin retrieved successfully: ${admin._id}`);
+        res.status(200).json({
+            success: true,
+            message: 'Admin retrieved successfully',
+            adminId: admin._id
+        });
+    } catch (err) {
+        logger.error(`Error fetching admin: ${err.message}`);
+        res.status(500).json({
+            success: false,
+            message: 'Error fetching admin',
+            details: err.message
+        });
+    }
+};
