@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { Store, LogOut, MessageCircle } from 'lucide-react';
+import { Store, LogOut, MessageCircle, Angry } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { FaPlus } from 'react-icons/fa';
@@ -20,18 +20,27 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const Dashboard = () => {
   const [userList, setUserList] = useState<any[]>([]);
+  const [editingUser, setEditingUser] = useState<any | null>(null);
   const [userCount, setUserCount] = useState<number>(0);
   const [activeSection, setActiveSection] = useState('dashboard');
   const navigate = useNavigate();
   const [productList, setProductList] = useState<any[]>([]);
   const [editingProduct, setEditingProduct] = useState<any | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [blogList, setBlogList] = useState<any[]>([]);
+  const [editingBlog, setEditingBlog] = useState<any | null>(null);
+  const [categoryList, setCategoryList] = useState<any[]>([]);
+  const [editingCategory, setEditingCategory] = useState<any | null>(null);
+  const [couponList, setCouponList] = useState<any[]>([]);
+  const [editingCoupon, setEditingCoupon] = useState<any | null>(null);
+  const [eventList, setEventList] = useState<any[]>([]);
+  const [editingEvent, setEditingEvent] = useState<any | null>(null);
   // hàm mở form sửa sản phẩm 
   const handleEditProduct = (product: any) => {
   setEditingProduct({ ...product });
 };
 // hàm lưu chỉnh sửa 
-const handleUpdateProduct = async () => {
+  const handleUpdateProduct = async () => {
   const token = localStorage.getItem('token');
   if (!token || !editingProduct) {
     alert('Bạn cần đăng nhập hoặc có sản phẩm để sửa');
@@ -76,7 +85,7 @@ const handleUpdateProduct = async () => {
 };
 
 // Hàm xoá sản phẩm khỏi hệ thống (admin only)
-const handleDeleteProduct = async (productId: string) => {
+  const handleDeleteProduct = async (productId: string) => {
   const token = localStorage.getItem('token');
 
   if (!token) {
@@ -128,6 +137,7 @@ const handleDeleteProduct = async (productId: string) => {
     adminId = decoded.sub || decoded._id || decoded.id;
   }
 
+// ngnuowif dùng
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
@@ -162,6 +172,7 @@ const handleDeleteProduct = async (productId: string) => {
   fetchUserCount();
 }, []);
 
+// sản phẩm
   useEffect(() => {
   const fetchProductList = async () => {
     try {
@@ -190,6 +201,127 @@ const handleDeleteProduct = async (productId: string) => {
     fetchProductList();
   }
 }, [activeSection]);
+
+// bài viết
+  useEffect(() => {
+  const fetchBlogList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/blogs', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách sản phẩm:', data);
+
+      if (Array.isArray(data.data)) {
+        setBlogList(data.data);
+      } else {
+        setBlogList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh sách sản phẩm:', error);
+    }
+  };
+
+  if (activeSection === 'posts') {
+    fetchBlogList();
+  }
+}, [activeSection]);
+
+// danh mục
+  useEffect(() => {
+  const fetchCategoryList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/categories', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách sản phẩm:', data);
+
+      if (Array.isArray(data.data)) {
+        setCategoryList(data.data);
+      } else {
+        setCategoryList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh sách sản phẩm:', error);
+    }
+  };
+
+  if (activeSection === 'categories') {
+    fetchCategoryList();
+  }
+}, [activeSection]);
+
+// mã giảm giá
+  useEffect(() => {
+  const fetchCouponList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/coupons', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách mã:', data);
+
+      if (Array.isArray(data.data)) {
+        setCouponList(data.data);
+      } else {
+        setCouponList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh:', error);
+    }
+  };
+
+  if (activeSection === 'coupons') {
+    fetchCouponList();
+  }
+}, [activeSection]);
+
+// sự kiện
+  useEffect(() => {
+  const fetchEventList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/events', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách sản phẩm:', data);
+
+      if (Array.isArray(data.data)) {
+        setEventList(data.data);
+      } else {
+        setEventList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh sách sản phẩm:', error);
+    }
+  };
+
+  if (activeSection === 'events') {
+    fetchEventList();
+  }
+}, [activeSection]);
+
   const chartData = {
     labels: [
       "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
@@ -260,6 +392,13 @@ const handleDeleteProduct = async (productId: string) => {
   </div>
 
   <div 
+    onClick={() => setActiveSection('events')} 
+    className={activeSection === 'events' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    🏷️ quản lí sự kiện
+  </div>
+
+  <div 
     onClick={() => setActiveSection('stores')} 
     className={activeSection === 'stores' ? 'menu-highlight active' : 'menu-highlight'}
   >
@@ -287,51 +426,16 @@ const handleDeleteProduct = async (productId: string) => {
       <main className="main-content">
         <h1 className="title">
           {activeSection === 'dashboard' && '📈 Thống kê'}
-{activeSection === 'users' && (
-  <div className="user-management">
-    <div className="user-header">
-      <button onClick={() => setActiveSection('dashboard')}>Back</button>
-      <h2>Quản lí người dùng</h2>
-      <button className="add-user">Thêm người dùng</button>
-    </div>
-
-    <div className="user-list">
-      {userList.map((user) => (
-        <div key={user._id} className="user-card0">
-          <div className="user-infor2">
-            <img
-              src={user.avatar || "/images/default-avatar.png"}
-              alt="avatar"
-              className="avatar-img"
-            />
-            <div className="user-details1">
-              <h3 className="user-name1">{user.name}</h3>
-              <p>Email: {user.email}</p>
-              <p>SĐT : {user.phone}</p>
-              <p>Vai trò: {user.role}</p>
-              <p>Địa chỉ: {user.address}</p>
-            </div>
-          </div>
-          <div className="user-actions">
-            <button className="btn-edit">Sửa</button>
-            <button className="btn-delete">Xoá</button>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-
-
-    {activeSection === 'chat' && '💬 Khung chat'}
+          {activeSection === 'chat' && '💬 Khung chat'}
           {activeSection === 'posts' && '📝 Bài viết'}
           {activeSection === 'categories' && '📁 Danh mục'}
           {activeSection === 'coupons' && '🏷️ Mã khuyến mãi'}
           {activeSection === 'stores' && '🏪 Gian hàng'}
+          {activeSection === 'events' && '🏷️ quản lí sự kiện'}
         </h1>
 
         {/* Nội dung từng phần */}
-        {activeSection === 'dashboard' && (
+{activeSection === 'dashboard' && (
           <>
             <div className="filters">
               <select><option value="all">Thời gian: Từ trước tới nay</option></select>
@@ -395,9 +499,133 @@ const handleDeleteProduct = async (productId: string) => {
               </div>
             </div>
           </>
-        )}
+)}
+         {/*người dùng*/}
+ {activeSection === 'users' && (
+  <div className="sp-section">
 
-        {/* Các mục khác, ví dụ products */}
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingUser ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa sản phẩm</h2>
+
+        <div className="form-group">
+          <label>Tên sản phẩm:</label>
+          <input
+            type="text"
+            value={editingProduct.name}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, name: e.target.value })
+            }
+            placeholder="Nhập tên sản phẩm"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingProduct.description}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, description: e.target.value })
+            }
+            placeholder="Nhập mô tả"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Giá:</label>
+          <input
+            type="number"
+            value={editingProduct.price}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, price: e.target.value })
+            }
+            placeholder="Nhập giá"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingProduct.images?.[0]?.image || ''}
+            onChange={(e) =>
+              setEditingProduct({
+                ...editingProduct,
+                images: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Danh mục:</label>
+          <input
+            type="text"
+            value={editingProduct.category?.name || ''}
+            onChange={(e) =>
+              setEditingProduct({
+                ...editingProduct,
+                category: { ...editingProduct.category, name: e.target.value },
+              })
+            }
+            placeholder="Nhập danh mục"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingProduct(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm và danh sách sản phẩm */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {userList.length === 0 ? (
+          <p>Không có người dùng nào.</p>
+        ) : (
+          <div className="sp-list">
+            {userList.map((user) => (
+              <div key={user._id} className="sp-card">
+                <div className="sp-info">
+                   <img
+                    src={user.image || '/images/default.jpg'}
+                    alt={user.name}
+                    className="image"
+                    style={{width: 168, height:168}}
+                  />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{user.name}</h3>
+                    <p><strong>email:</strong> {user.email}</p>
+                    <p><strong>điện thoại:</strong> {user.phone || 'Không có'}</p>
+                    <p><strong>role:</strong> {user.role || 'Không có'}</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(user)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(user._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+        {/*sẩn phẩm*/}
  {activeSection === 'products' && (
   <div className="sp-section">
 
@@ -494,16 +722,12 @@ const handleDeleteProduct = async (productId: string) => {
             {productList.map((product) => (
               <div key={product._id} className="sp-card">
                 <div className="sp-info">
-                  <img
-                    src={product.images[0]?.image || '/images/default.jpg'}
-                    alt={product.name}
-                    className="image"
-                  />
+                  <ImageSlider images={Array.isArray(product.images) ? product.images.map(img => img.image || img) : []} />
                   <div className="sp-content">
                     <h3 className="sp-name">{product.name}</h3>
                     <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>
                     <p><strong>Mô tả:</strong> {product.description || 'Không có mô tả'}</p>
-                    <p><strong>Danh mục:</strong> {product.category?.name || 'Không có'}</p>
+                    <p><strong>Danh mục:</strong> {product.categories?.name || 'Không có'}</p>
                   </div>
                 </div>
                 <div className="sp-actions">
@@ -522,11 +746,436 @@ const handleDeleteProduct = async (productId: string) => {
   <SuccessPage onClose={() => setShowSuccess(false)} />
 )}
 
+        {/*tin tức*/}
+ {activeSection === 'posts' && (
+  <div className="sp-section">
 
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingBlog ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa bài viêt</h2>
+
+        <div className="form-group">
+          <label>Tên bài viêt:</label>
+          <input
+            type="text"
+            value={editingCategory.title}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, title: e.target.value })
+            }
+            placeholder="Nhập tiêu đề tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content: </label>
+          <textarea
+            value={editingCategory.content}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, content: e.target.value })
+            }
+            placeholder="Nhập content"
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingCategory.description}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, description: e.target.value })
+            }
+            placeholder="Nhập tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingCategory.image[0] || ''}
+            onChange={(e) =>
+              setEditingCategory({
+                ...editingCategory,
+                image: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingCategory(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm vào danh sách */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {blogList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {blogList.map((blog) => (
+              <div key={blog._id} className="sp-card">
+                <div className="sp-info">
+                  <img
+                    src={blog.image[0] || '/images/default.jpg'}
+                    alt={blog.name}
+                    className="image"
+                    style={{width: 168, height:168}}
+                  />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{blog.title}</h3>
+                    <p><strong>Mô tả:</strong> {blog.description || 'Không có mô tả'}</p>
+                    <p><strong>Danh mục:</strong> {blog.content || 'Không có'}</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(blog)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(blog._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+
+        {/*danh mục*/}
+ {activeSection === 'categories' && (
+  <div className="sp-section">
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingCategory ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa bài viêt</h2>
+
+        <div className="form-group">
+          <label>Tên bài viêt:</label>
+          <input
+            type="text"
+            value={editingCategory.title}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, title: e.target.value })
+            }
+            placeholder="Nhập tiêu đề tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content: </label>
+          <textarea
+            value={editingCategory.content}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, content: e.target.value })
+            }
+            placeholder="Nhập content"
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingCategory.description}
+            onChange={(e) =>
+              setEditingBlog({ ...editingCategory, description: e.target.value })
+            }
+            placeholder="Nhập tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingCategory.image[0] || ''}
+            onChange={(e) =>
+              setEditingCategory({
+                ...editingCategory,
+                image: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => seteditingCategory(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm vào danh sách */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {categoryList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {categoryList.map((category) => (
+              <div key={category._id} className="sp-card">
+                <div className="sp-info">
+                  <img
+                    src={category.image || '/images/default.jpg'}
+                    alt={category.name}
+                    className="image"
+                    style={{width: 168, height:168}}
+                  />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{category.name}</h3>
+                    <p><strong>Mô tả:</strong> {category.description || 'Không có mô tả'}</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(category)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(category._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+
+        {/*mã khuyến mãi*/}
+ {activeSection === 'coupons' && (
+  <div className="sp-section">
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingCoupon ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa bài viêt</h2>
+
+        <div className="form-group">
+          <label>Tên bài viêt:</label>
+          <input
+            type="text"
+            value={editingCoupon.title}
+            onChange={(e) =>
+              setEditingCoupon({ ...editingCoupon, title: e.target.value })
+            }
+            placeholder="Nhập tiêu đề tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content: </label>
+          <textarea
+            value={editingCoupon.content}
+            onChange={(e) =>
+              setEditingCoupon({ ...editingCoupon, content: e.target.value })
+            }
+            placeholder="Nhập content"
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingCoupon.description}
+            onChange={(e) =>
+              setEditingBlog({ ...editingCoupon, description: e.target.value })
+            }
+            placeholder="Nhập tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingCoupon.image[0] || ''}
+            onChange={(e) =>
+              setEditingCoupon({
+                ...editingCoupon,
+                image: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingCoupon(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm vào danh sách */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {couponList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {couponList.map((coupon) => (
+              <div key={coupon._id} className="sp-card">
+                <div className="sp-info">
+                  <div className="sp-content">
+                    <h3 className="sp-name">{coupon.code}</h3>
+                    <p><strong>giảm giá:</strong> {coupon.discount || 'Không có mô tả'}%</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(coupon)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(coupon._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+
+        {/*sự kiện*/}
+ {activeSection === 'events' && (
+  <div className="sp-section">
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingEvent ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa bài viêt</h2>
+
+        <div className="form-group">
+          <label>Tên bài viêt:</label>
+          <input
+            type="text"
+            value={editingEvent.title}
+            onChange={(e) =>
+              setEditingEvent({ ...editingEvent, title: e.target.value })
+            }
+            placeholder="Nhập tiêu đề tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content: </label>
+          <textarea
+            value={editingEvent.content}
+            onChange={(e) =>
+              setEditingEvent({ ...editingEvent, content: e.target.value })
+            }
+            placeholder="Nhập content"
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingEvent.description}
+            onChange={(e) =>
+              setEditingEvent({ ...editingEvent, description: e.target.value })
+            }
+            placeholder="Nhập tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingEvent.image[0] || ''}
+            onChange={(e) =>
+              setEditingEvent({
+                ...editingEvent,
+                image: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingEvent(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm vào danh sách */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {eventList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {eventList.map((event) => (
+              <div key={event._id} className="sp-card">
+                <div className="sp-info">
+                   <ImageSlider images={event.images || []} />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{event.name}</h3>
+                    <p><strong>ngày bắt đầu:</strong> {event.startDate || 'Không có mô tả'}</p>
+                    <p><strong>ngày kết thúc:</strong> {event.startDate || 'Không có mô tả'}</p>
+                    <p><strong>địa điểm áp dụng:</strong> {event.location || 'Không có mô tả'}</p>
+                    <p><strong>hiện đang áp dụng cho:</strong>{" "}{Array.isArray(event.products) ? event.products.length : 0} sản phẩm</p>
+                    <p><strong>giảm giá:</strong> {event.discount || 'Không có mô tả'}%</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(event)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(event._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
       </main>
     </div>
   );
 };
+
 
 const StatCard = ({ title, value }: { title: string; value: string }) => (
   <div className="card12">
@@ -574,4 +1223,87 @@ const Progress = ({
   </div>
 );
 
+const ImageSlider = ({ images }: { images: string[] }) => {
+  const [current, setCurrent] = useState(0);
+  if (!images || images.length === 0) return null;
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setTimeout(() => {
+      setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [current, images.length]);
+
+  const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+
+  return (
+    <div style={{ position: "relative", width: 168, height: 168 }}>
+      <img
+        src={images[current] || "/images/default.jpg"}
+        alt=""
+        className="image"
+        style={{ width: 168, height: 168, objectFit: "cover", borderRadius: 8 }}
+      />
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: 0,
+              transform: "translateY(-50%)",
+              background: "rgba(0,0,0,0.3)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "50%",
+              width: 24,
+              height: 24,
+              cursor: "pointer",
+            }}
+          >
+            {"<"}
+          </button>
+          <button
+            onClick={next}
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: 0,
+              transform: "translateY(-50%)",
+              background: "rgba(0,0,0,0.3)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "50%",
+              width: 24,
+              height: 24,
+              cursor: "pointer",
+            }}
+          >
+            {">"}
+          </button>
+        </>
+      )}
+      {/* Dots indicator */}
+      {images.length > 1 && (
+        <div style={{ position: "absolute", bottom: 8, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 4 }}>
+          {images.map((_, idx) => (
+            <span
+              key={idx}
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: idx === current ? "#4f46e5" : "#ccc",
+                display: "inline-block",
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 export default Dashboard;

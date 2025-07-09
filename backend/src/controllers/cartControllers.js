@@ -172,3 +172,38 @@ exports.getCartByUser = async (req, res) => {
     });
   }
 };
+
+exports.createCartWithSession = async () => {
+    try {
+    const userId = req.user.id;
+    const items = req.body.items;
+
+    let cart = await Cart.findOne({ user: userId });
+    if (!cart) {
+      cart = await Cart.create({ user: userId });
+    }
+
+    for (const item of items) {
+      const existingItem = await CartDetail.findOne({
+        cart_id: cart._id,
+        product_id: item.product_id
+      });
+
+      if (existingItem) {
+        existingItem.quantity += item.quantity;
+        await existingItem.save();
+      } else {
+        await CartDetail.create({
+          cart_id: cart._id,
+          product_id: item.product_id,
+          quantity: item.quantity
+        });
+      }
+    }
+
+    return res.json({ success: true, message: 'Merged session cart successfully' });
+  } catch (error) {
+    console.error('Lỗi khi merge cart:', error);
+    res.status(500).json({ success: false, message: 'Lỗi server khi merge cart' });
+  }
+}
