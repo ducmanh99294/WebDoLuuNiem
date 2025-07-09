@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../../assets/css/productcard.css';
 import { FaHeart } from 'react-icons/fa';
 

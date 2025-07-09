@@ -19,7 +19,8 @@ interface User {
   name: string;
   email: string;
   avatar?: string;
-}
+  role: string;
+} 
 
 interface Message {
   _id: string;

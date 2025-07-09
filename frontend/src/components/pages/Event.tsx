@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductCard from '../pages/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -121,7 +121,7 @@ const EventPage = () => {
                     marginTop: '20px',
                   }}
                 >
-                  {event.products.map((product) => (
+                  {event.products.map((product: any) => (
                     <ProductCard key={product._id} product={product} />
                   ))}
                 </div>
