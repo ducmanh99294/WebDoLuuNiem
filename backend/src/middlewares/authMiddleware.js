@@ -1,31 +1,40 @@
 const jwt = require('jsonwebtoken');
-const logger = require('../utils/logger');
+const User = require('../models/User');
 
-const validateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+const validateToken = async (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
 
-    if (!token) {
-        logger.warn('Access attempt without valid token');
-        return res.status(401).json({
-            success: false,
-            message: 'Token not provided'
-        });
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: 'Token not provided'
+    });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.id).select('_id name email role');
+
+    if (!user) {
+      return res.status(401).json({ success: false, message: 'User not found' });
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
-            logger.warn('Invalid token');
-            return res.status(403).json({
-                success: false,
-                message: 'Invalid token'
-            });
-        }
+    // Gán cả _id và id để tương thích
+    req.user = {
+      ...user._doc,
+      id: user._id  // giữ nguyên `id`
+    };
 
-        req.user = user;
-        next();
+    next();
+  } catch (err) {
+    return res.status(403).json({
+      success: false,
+      message: 'Invalid token'
     });
+  }
 };
+
 module.exports = {
-    validateToken
-}
+  validateToken
+};

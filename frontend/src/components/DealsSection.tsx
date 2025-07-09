@@ -1,6 +1,7 @@
 import "../assets/css/Deal.css";
 import { useEffect, useState } from "react";
-import { dealsData, Deal } from "../components/data/dealsData";
+import { dealsData } from "../components/data/dealsData";
+import type { Deal } from "../components/data/dealsData";
 
 const DealsSection = () => {
   const [timeLeft, setTimeLeft] = useState({

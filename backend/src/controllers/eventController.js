@@ -1,5 +1,5 @@
 const Event = require('../models/Event');
-const ApplicableProducts = require('../models/applicableProduct')
+const ApplicableProducts = require('../models/ApplicableProduct')
 const logger = require('../utils/logger');
 
 const createEvent = async (req, res) => {

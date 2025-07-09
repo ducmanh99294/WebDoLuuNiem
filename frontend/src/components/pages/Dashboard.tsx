@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Store, LogOut, MessageCircle } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+import { FaPlus } from 'react-icons/fa';
+import { SuccessPage } from "../PaymentSuccess";
+import AdminChatComponent from './AdminChatComponent';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +15,6 @@ import {
   Legend,
 } from "chart.js";
 import "../../assets/css/Dashboard.css";
-import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -21,7 +24,95 @@ const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('dashboard');
   const navigate = useNavigate();
   const [productList, setProductList] = useState<any[]>([]);
+  const [editingProduct, setEditingProduct] = useState<any | null>(null);
+  const [showSuccess, setShowSuccess] = useState(false);
+  // hàm mở form sửa sản phẩm 
+  const handleEditProduct = (product: any) => {
+  setEditingProduct({ ...product });
+};
+// hàm lưu chỉnh sửa 
+const handleUpdateProduct = async () => {
+  const token = localStorage.getItem('token');
+  if (!token || !editingProduct) {
+    alert('Bạn cần đăng nhập hoặc có sản phẩm để sửa');
+    return;
+  }
 
+  try {
+    const response = await fetch(`http://localhost:3000/api/v1/products/${editingProduct._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        name: editingProduct.name,
+        price: editingProduct.price,
+        description: editingProduct.description,
+        images: editingProduct.images,
+        category: editingProduct.category?._id || editingProduct.category
+      })
+    });
+
+    const data = await response.json();
+    console.log('✅ Kết quả cập nhật:', data);
+
+    // ✅ Không phụ thuộc vào data.success nữa
+    if (response.ok) {  // Chỉ cần status 200~299 là thành công
+      setShowSuccess(true); 
+      setEditingProduct(null);
+      setProductList((prevList) =>
+        prevList.map((p) =>
+          p._id === editingProduct._id ? { ...p, ...editingProduct } : p
+        )
+      );
+    } else {
+      alert('❌ Cập nhật thất bại: ' + (data.message || 'Lỗi không xác định'));
+    }
+  } catch (error) {
+    console.error('🚨 Lỗi cập nhật:', error);
+    alert('Đã xảy ra lỗi khi cập nhật.');
+  }
+};
+
+// Hàm xoá sản phẩm khỏi hệ thống (admin only)
+const handleDeleteProduct = async (productId: string) => {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    alert('❌ Bạn cần đăng nhập với quyền Admin');
+    return;
+  }
+
+  const confirmDelete = window.confirm('❗Bạn có chắc chắn muốn xóa sản phẩm này khỏi hệ thống?');
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(`http://localhost:3000/api/v1/products/${productId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await response.json();
+    console.log('💡 Kết quả xoá:', data);
+
+    // ✅ Chỉ kiểm tra response.ok thay vì data.success
+    if (response.ok) {
+      alert('✅ Đã xóa sản phẩm thành công!');
+      setProductList((prevList) => prevList.filter((p) => p._id !== productId));
+    } else {
+      alert('❌ Xóa sản phẩm thất bại: ' + (data.message || 'Lỗi không xác định'));
+    }
+
+  } catch (error) {
+    console.error('🚨 Lỗi khi xóa sản phẩm:', error);
+    alert('❌ Đã xảy ra lỗi khi xóa sản phẩm.');
+  }
+};
+  
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
@@ -29,40 +120,49 @@ const Dashboard = () => {
     navigate('/login');
   };
 
-useEffect(() => {
-  const fetchUserCount = async () => {
-    try {
-      const token = localStorage.getItem('token');
+  // Decode adminId từ token
+  const token = localStorage.getItem('token');
+  let adminId = '';
+  if (token) {
+    const decoded: any = jwtDecode(token);
+    adminId = decoded.sub || decoded._id || decoded.id;
+  }
 
-      const response = await fetch("http://localhost:3000/api/v1/users", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+  useEffect(() => {
+    const fetchUserCount = async () => {
+      try {
+        const token = localStorage.getItem('token');
 
-      const data = await response.json();
-      console.log("Dữ liệu người dùng:", data);
+        const response = await fetch("http://localhost:3000/api/v1/users", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      if (Array.isArray(data.data)) {
-        const users = data.data.filter((user: any) => user.role !== "admin");
-        setUserCount(users.length);
-        setUserList(users); // ✅ Đặt ở đây sau khi đã khai báo `users`
-      } else if (typeof data.count === "number") {
-        setUserCount(data.count);
-        setUserList([]); // fallback rỗng nếu không có mảng data
-      } else {
-        setUserCount(0);
-        setUserList([]);
+        const data = await response.json();
+        console.log("Dữ liệu người dùng:", data);
+
+        if (Array.isArray(data.data)) {
+          const users = data.data.filter((user: any) => user.role !== "admin");
+          setUserCount(users.length);
+          setUserList(users);
+        } else if (typeof data.count === "number") {
+          setUserCount(data.count);
+          setUserList([]);
+        } else {
+          setUserCount(0);
+          setUserList([]);
+        }
+      } catch (error) {
+        console.error("Lỗi khi tải danh sách người dùng:", error);
       }
-    } catch (error) {
-      console.error("Lỗi khi tải danh sách người dùng:", error);
-    }
-  };
+    };
 
   fetchUserCount();
 }, []);
-useEffect(() => {
+
+  useEffect(() => {
   const fetchProductList = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -90,7 +190,6 @@ useEffect(() => {
     fetchProductList();
   }
 }, [activeSection]);
-
   const chartData = {
     labels: [
       "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
@@ -111,18 +210,74 @@ useEffect(() => {
       <aside className="sidebar">
         <div className="sidebar-header">🛒 Cửa Hàng Đặc Sản</div>
         <nav className="sidebar-menu">
-          <div onClick={() => setActiveSection('dashboard')} className="menu-highlight">📊 Báo cáo</div>
-          <div onClick={() => setActiveSection('chat')}><MessageCircle size={18}/> Khung chat</div>
-          <div onClick={() => setActiveSection('users')}>👥 Quản lý người dùng</div>
-          <div onClick={() => setActiveSection('products')}>📦 Quản lý sản phẩm</div>
-          <div onClick={() => setActiveSection('posts')}>📝 Quản lý bài viết</div>
-          <div onClick={() => setActiveSection('categories')}>📁 Quản lý danh mục</div>
-          <div onClick={() => setActiveSection('coupons')}>📁 Quản lý mã khuyến mãi</div>
-          <div onClick={() => setActiveSection('stores')}><Store size={18} /> Gian hàng hợp tác</div>
-          <div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <LogOut size={18} /> Đăng Xuất
-          </div>
-        </nav>
+  <div 
+    onClick={() => setActiveSection('dashboard')} 
+    className={activeSection === 'dashboard' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    📊 Báo cáo
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('chat')} 
+    className={activeSection === 'chat' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    <MessageCircle size={18}/> Khung chat
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('users')} 
+    className={activeSection === 'users' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    👥 Quản lý người dùng
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('products')} 
+    className={activeSection === 'products' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    📦 Quản lý sản phẩm
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('posts')} 
+    className={activeSection === 'posts' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    📝 Quản lý bài viết
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('categories')} 
+    className={activeSection === 'categories' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    📁 Quản lý danh mục
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('coupons')} 
+    className={activeSection === 'coupons' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    🏷️ Quản lý mã khuyến mãi
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('stores')} 
+    className={activeSection === 'stores' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    <Store size={18} /> Gian hàng hợp tác
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('reviews')} 
+    className={activeSection === 'reviews' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    <Store size={18} /> Đánh giá sản phẩm
+  </div>
+
+  <div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
+    <LogOut size={18} /> Đăng Xuất
+  </div>
+</nav>
+
         <div className="sidebar-footer">
           <div>⚙️ Cài đặt</div>
           <div className="user-info">Hoang<br />hoang123@gmail.com</div>
@@ -132,7 +287,6 @@ useEffect(() => {
       <main className="main-content">
         <h1 className="title">
           {activeSection === 'dashboard' && '📈 Thống kê'}
-          {activeSection === 'products' && '📦 Quản lý sản phẩm'}
 {activeSection === 'users' && (
   <div className="user-management">
     <div className="user-header">
@@ -152,10 +306,10 @@ useEffect(() => {
             />
             <div className="user-details1">
               <h3 className="user-name1">{user.name}</h3>
-              <p><strong>Email:</strong> {user.email}</p>
-              <p><strong>SĐT:</strong> {user.phone}</p>
-              <p><strong>Vai trò:</strong> {user.role}</p>
-              <p><strong>Địa chỉ:</strong> {user.address}</p>
+              <p>Email: {user.email}</p>
+              <p>SĐT : {user.phone}</p>
+              <p>Vai trò: {user.role}</p>
+              <p>Địa chỉ: {user.address}</p>
             </div>
           </div>
           <div className="user-actions">
@@ -198,7 +352,7 @@ useEffect(() => {
               <div className="charts-grid">
                 <div className="full-span">
                   <div className="n2">
-                    <h2>Activity</h2>
+                    <h2>Báo cáo </h2>
                     <select>
                       <option value="ngay">Ngày</option>
                       <option value="thang">Tháng</option>
@@ -244,38 +398,130 @@ useEffect(() => {
         )}
 
         {/* Các mục khác, ví dụ products */}
-       {activeSection === 'products' && (
+ {activeSection === 'products' && (
   <div className="sp-section">
-    <h2>📦 Quản lý sản phẩm</h2>
-    {productList.length === 0 ? (
-      <p>Không có sản phẩm nào.</p>
-    ) : (
-      <div className="sp-list">
-        {productList.map((product) => (
-          <div key={product._id} className="sp-card">
-            <div className="sp-info">
-              <img
-                src={product.image || "/images/default-product.png"}
-                alt={product.name}
-                className="sp-img"
-              />
-              <div className="sp-content">
-                <h3 className="sp-name">{product.name}</h3>
-                <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>
-                <p><strong>Mô tả:</strong> {product.description || 'Không có mô tả'}</p>
-                <p><strong>Danh mục:</strong> {product.category?.name || 'Không có'}</p>
-              </div>
-            </div>
-            <div className="sp-actions">
-              <button className="sp-btn-edit">Sửa</button>
-              <button className="sp-btn-delete">Xoá</button>
-            </div>
-          </div>
-        ))}
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingProduct ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa sản phẩm</h2>
+
+        <div className="form-group">
+          <label>Tên sản phẩm:</label>
+          <input
+            type="text"
+            value={editingProduct.name}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, name: e.target.value })
+            }
+            placeholder="Nhập tên sản phẩm"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingProduct.description}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, description: e.target.value })
+            }
+            placeholder="Nhập mô tả"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Giá:</label>
+          <input
+            type="number"
+            value={editingProduct.price}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, price: e.target.value })
+            }
+            placeholder="Nhập giá"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingProduct.images?.[0]?.image || ''}
+            onChange={(e) =>
+              setEditingProduct({
+                ...editingProduct,
+                images: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Danh mục:</label>
+          <input
+            type="text"
+            value={editingProduct.category?.name || ''}
+            onChange={(e) =>
+              setEditingProduct({
+                ...editingProduct,
+                category: { ...editingProduct.category, name: e.target.value },
+              })
+            }
+            placeholder="Nhập danh mục"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingProduct(null)}>
+            Hủy
+          </button>
+        </div>
       </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm và danh sách sản phẩm */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {productList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {productList.map((product) => (
+              <div key={product._id} className="sp-card">
+                <div className="sp-info">
+                  <img
+                    src={product.images[0]?.image || '/images/default.jpg'}
+                    alt={product.name}
+                    className="image"
+                  />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{product.name}</h3>
+                    <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>
+                    <p><strong>Mô tả:</strong> {product.description || 'Không có mô tả'}</p>
+                    <p><strong>Danh mục:</strong> {product.category?.name || 'Không có'}</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(product)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(product._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
     )}
   </div>
 )}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+
 
       </main>
     </div>
