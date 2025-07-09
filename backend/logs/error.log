@@ -82,3 +82,4 @@
 {"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T02:31:41.369Z"}
 {"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T02:33:23.193Z"}
 {"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-04T03:17:59.895Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-07T03:43:57.149Z"}
