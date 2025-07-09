@@ -151,3 +151,10 @@ width: 500px;
 .options label input[type="checkbox"] {
   border-radius: 100%; 
 }
+.name1{
+  display: flex;
+  gap: 10px;
+}
+.name1 input {
+border: 1px solid black;
+}
