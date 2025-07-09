@@ -51,6 +51,24 @@ const LoginPage: React.FC = () => {
         localStorage.setItem('role', role);
         localStorage.setItem('username', name);
         console.log('Role:', role);
+        
+        localStorage.setItem('avatar', avatar);   // ✔ avatar
+        const tempCart = JSON.parse(localStorage.getItem('temp_cart') || '[]');
+        if (tempCart.length > 0) {
+          try {
+            await fetch('http://localhost:3000/api/v1/carts/merge-session', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ items: tempCart }),
+            });
+            localStorage.removeItem('temp_cart'); // Xoá giỏ tạm sau khi merge thành công
+          } catch (mergeErr) {
+            console.error('Lỗi khi merge giỏ hàng:', mergeErr);
+          }
+        }
         localStorage.setItem('avatar', avatar);  
         if (res.ok && data.success) {
   // Save remember me

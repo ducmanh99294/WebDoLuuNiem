@@ -12,7 +12,8 @@ const Header: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const [showNotification, setShowNotification] = useState(false);
   const [notifications, setNotifications] = useState<any[]>([]);
-  const [loading,setLoading] = useState(true)
+  const [loading,setLoading] = useState(true);
+  const [categories, setCategories] = useState<any>([]);
 
   const navigate = useNavigate();
 // hàm tìm kiếm 
@@ -93,6 +94,28 @@ useEffect(() => {
   if (showNotification) fetchNotifications();
 }, [showNotification])
 
+useEffect(() => {
+  const fetchCategories = async ()=> {
+    try {
+      const res = await fetch('http://localhost:3000/api/v1/categories', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data)
+    if(data.success) {
+      setCategories(data.data);
+    }
+    } catch (err) {
+      console.error('ERR: ', err);
+    } finally {
+      setLoading(false);
+    }
+  }
+  if (categories) fetchCategories();
+}, [])
 
   return (
     <div className="header-container">
@@ -190,11 +213,33 @@ useEffect(() => {
 
       {/* Dòng dưới */}
       <div className="header-dm">
-        <button><FaBars /> DANH MỤC SẢN PHẨM</button>
         <div className="utilities">
           <a href="/about">Giới thiệu</a>
-          <a href="#">Đặc Sản </a>
-          <a href="#">Trà - Cafe</a>
+          
+          {/* Dropdown danh mục */}
+          <div 
+            className="category-dropdown"
+            style={{ position: 'relative', display: 'inline-block' }}
+          >
+            <button>
+              Danh mục
+            </button>
+            <div className="dropdown-content">
+              {categories.map((cat: any) => (
+                <div
+                  key={cat._id}
+                  className="dropdown-item"
+                  style={{ padding: '8px 16px', cursor: 'pointer', whiteSpace: 'nowrap' }}
+                  onClick={() => {
+                    localStorage.setItem('categoryId', cat._id);
+                    navigate(`/category/${cat._id}`);
+                  }}
+                >
+                  {cat.name}
+                </div>
+              ))}
+            </div>
+          </div>
           <a href="/newpage">Tin Tức</a>
           <a href="/contact">Liên Hệ </a>
         </div>

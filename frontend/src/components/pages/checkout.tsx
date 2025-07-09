@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/css/checkout.css';
 import {PaymentSuccess} from '../PaymentSuccess';
 
@@ -19,6 +19,7 @@ const Checkout: React.FC = () => {
   const token = localStorage.getItem('token');
   const [showSuccess, setShowSuccess] = useState(false);
   const shippingPrice = shippingMethod === 'flat' ? 20000 : 0;
+  const navigate = useNavigate();
   //hàm lấy coupon
   useEffect(() => {
     console.log("userId", userId)
@@ -258,7 +259,11 @@ const handleCreateOrder = async () => {
           <input type="checkbox" /> Yêu cầu xuất hóa đơn công ty
         </label>
 
-        <button className="submit-button" onClick={handleClearCart}>Tiến hành thanh toán</button>
+        <button className="submit-button" onClick={() => {if (!token) {
+                navigate('/login');
+              } else {
+                {handleClearCart}
+              }}}>Tiến hành thanh toán</button>
       </form>
 
       <div className="checkout-summary">
