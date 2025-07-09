@@ -82,6 +82,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  cursor: pointer;
   
 }
 
@@ -288,6 +289,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-top: 10px;
 }
 
 .sp-card {
@@ -300,6 +302,7 @@
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .sp-card:hover {
@@ -348,6 +351,7 @@
 .sp-actions {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
   gap: 8px;
 }
 
@@ -395,4 +399,115 @@
     height: auto;
     max-height: 200px;
   }
+}
+.add{
+  width: auto;
+ background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add0{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 12px;
+}
+.sp-section h2{
+  color: none;
+  display: flex;
+  justify-content: center;
+}
+.sp-info img{
+  width: 160px;
+  height: 160px;
+}
+/* // highitlight */
+.sidebar-menu .menu-highlight {
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  color: black;
+}
+
+.sidebar-menu .menu-highlight:hover {
+  background-color: #f1f1f1;
+}
+
+.sidebar-menu .menu-highlight.active {
+  background-color: #4CAF50; /* Màu xanh active */
+  color: #fff;
+  font-weight: bold;
+}
+/* sửa sản phẩm form  */
+.edit-product-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-save {
+  background: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background: #ccc;
+  color: #000;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-success{
+ background: #28a745;
+  color: white;
+}
+.form-actions1 {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.btn-secondary{
+  background-color: red;
+  color: white;
 }

@@ -91,7 +91,7 @@ const Checkout: React.FC = () => {
   }
 
   //hàm tạo order
- const handleCreateOrder = async () => {
+const handleCreateOrder = async () => {
   try {
     if (!cart || cart.length === 0) {
       alert('Giỏ hàng trống');
@@ -144,9 +144,14 @@ const Checkout: React.FC = () => {
     const data = await res.json();
 
     if (data.success) {
-      setShowSuccess(true); // ✅ Hiện khung thông báo
-      // ⏳ Sau 3 giây chuyển trang
-      
+      await handleClearCart();     // ✅ Xóa giỏ hàng sau khi tạo đơn thành công
+      setShowSuccess(true);        // ✅ Hiển thị modal thành công
+
+      // 👉 Nếu bạn muốn tự động chuyển trang sau 3 giây:
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+
     } else {
       console.error('Tạo đơn hàng thất bại:', data.message);
       alert('Tạo đơn hàng thất bại.');
@@ -157,6 +162,7 @@ const Checkout: React.FC = () => {
     alert('Đã xảy ra lỗi khi tạo đơn hàng.');
   }
 };
+
 
  const handleClearCart = async () => {
   if (!cartId || !token) {
