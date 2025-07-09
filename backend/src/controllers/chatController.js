@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Chat = require('../models/Chat');
+const Product = require('../models/Product');
 const { sendNotification } = require('../services/notifyService');
 const logger = require('../utils/logger');
 
@@ -32,24 +33,6 @@ const createChat = async (req, res) => {
         product: productId || null,
       });
       await chat.save();
-
-      await sendNotification({
-        user: recipientId,
-        sender: senderId,
-        type: 'chat',
-        message: `Bạn có một cuộc trò chuyện mới từ người dùng ${req.user.name}`,
-        data: { chatId: chat._id, productId },
-        priority: 'normal',
-        io: req.io,
-        socketRoom: recipientId.toString(),
-        socketEvent: 'chat_created',
-        socketPayload: {
-          chatId: chat._id,
-          senderId,
-          recipientId,
-          productId
-        }
-      });
     }
 
     logger.info(`Chat created successfully with ID: ${chat._id}`);
@@ -68,6 +51,72 @@ const createChat = async (req, res) => {
   }
 };
 
+const sendMessage = async (req,res) => {
+  try {
+    const {chatId, content} = req.body;
+    const senderId = req.user._id;
+
+    if (!chatId || !content) {
+      return res.status(400).json({
+        success: false,
+        message: 'chatId and content are required'
+      })
+    }
+
+      const chat = await Chat.findById(chatId);
+      if (!chat) {
+      return res.status(404).json({
+        success: false,
+        message: 'Chat not found'
+      });
+    }
+
+    const message = {
+      sender: senderId,
+      content,
+      timestamp: new Date()
+    };
+    chat.messages.push(message);
+    await chat.save();
+
+    // Gửi thông báo cho các user trong chat (trừ người gửi)
+    await Promise.all(chat.user.map(async userId => {
+      if (userId.toString() !== senderId.toString()) {
+        await sendNotification({
+          user: userId,
+          sender: senderId,
+          type: 'chat',
+          message: `Bạn có tin nhắn mới trong cuộc trò chuyện #${chat._id}`,
+          data: { chatId: chat._id, content },
+          priority: 'normal',
+          io: req.io,
+          socketRoom: userId.toString(),
+          socketEvent: 'chat_updated',
+          socketPayload: {
+            chatId: chat._id,
+            senderId,
+            content,
+            timestamp: message.timestamp,
+            messageId: chat.messages[chat.messages.length - 1]._id
+          }
+        });
+      }
+    }));
+
+    res.status(200).json({
+      success: true,
+      message: 'Message sent successfully',
+      chat
+    });
+    } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Failed to send message',
+      err: err.message
+    });
+  }
+}
+
 const getAllChats = async (req, res) => {
   try {
     const { productId, userId } = req.query;
@@ -80,11 +129,17 @@ const getAllChats = async (req, res) => {
           message: 'Unauthorized access to chats'
         });
       }
-      query = { user: userId };
+        query = { user: { $in: [mongoose.Types.ObjectId(userId)] } };
     }
 
     if (productId) {
-      query = { ...query, product: productId };
+      if (!mongoose.isValidObjectId(productId)) {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid productId'
+        });
+      }
+      query = { ...query, product: mongoose.Types.ObjectId(productId) };
     }
 
     const chats = await Chat.find(query)
@@ -100,13 +155,15 @@ const getAllChats = async (req, res) => {
       chats
     });
   } catch (error) {
-    logger.error(`Error retrieving chats: ${error.message}`);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to retrieve chats',
-      error: error.message
-    });
-  }
+  console.error('Error in getAllChats:', error.stack);
+  logger.error(`Error retrieving chats: ${error.message}`);
+  res.status(500).json({
+    success: false,
+    message: 'Failed to retrieve chats',
+    error: error.message
+  });
+}
+
 };
 
 const getChatById = async (req, res) => {
@@ -308,4 +365,5 @@ module.exports = {
     getChatById,
     updateChat,
     deleteChat,
+    sendMessage,
 };

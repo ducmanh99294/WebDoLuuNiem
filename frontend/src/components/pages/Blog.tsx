@@ -1,48 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-const newsList = [
-  {
-    id: 1,
-    title: "Cam sành nên ăn hay uống? Lựa chọn nào tốt cho sức khỏe?",
-    link : "https://foodmap.asia/tin-tuc/cam-sanh-nen-an-hay-uong",
-    image: "http://news.foodmap.vn/wp-content/uploads/2025/04/cam-sanh-nen-an-hay-uong.jpg",
-  },
-  {
-    id: 2,
-    title: "Dưa lưới có phải là loại trái cây nhiều đường không?",
-    link : "https://foodmap.asia/tin-tuc/dua-luoi-co-nhieu-duong-khong",
-    image: "http://news.foodmap.vn/wp-content/uploads/2025/04/dua-luoi-co-nhieu-duong-khong.jpg",
-  },
-  {
-    id: 3,
-    title: "Táo có vitamin C không? Khám phá tác dụng của táo với sức khỏe",
-    link : "https://foodmap.asia/tin-tuc/tao-co-vitamin-c-khong",
-    image: "http://news.foodmap.vn/wp-content/uploads/2025/03/Tao-co-vitamin-C-khong.jpg",
-  },
-  {
-    id: 4,
-    title: "Mít có chất dinh dưỡng gì? Tất tần tật về lợi ích sức khỏe của mít",
-    link : "https://foodmap.asia/tin-tuc/mit-co-chat-dinh-duong-gi",
-    image: "http://news.foodmap.vn/wp-content/uploads/2025/03/Mit-co-duong-chat-gi.jpg",
-  },
-  {
-    id: 5,
-    title: "Nước mắm ủ chượp – Tinh hoa ẩm thực Việt với hương vị khó quên",
-    link : "https://foodmap.asia/tin-tuc/nuoc-mam-u-chuop",
-    image: "http://news.foodmap.vn/wp-content/uploads/2025/03/Nuoc-mam-u-chuop.jpg",
-  },
-  {
-    id: 6,
-    title: "Sầu riêng musang king giá bao nhiêu?",
-    link : "https://foodmap.asia/tin-tuc/sau-rieng-musang-king-gia",
-    image: "http://news.foodmap.vn/wp-content/uploads/2024/08/3-7.jpg",
-  },
-];
 
 const Blog: React.FC = () => {
   const [blogs, setBlogs] = useState<any[]>([])
   const [loading, setLoading] = useState(true);
-  
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 5;
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+ 
   useEffect(()=>{
     const fetchBlog = async () => {
       try {
@@ -92,7 +60,7 @@ const Blog: React.FC = () => {
       {/* Danh sách bài viết */}
       <div>
         <h3 style={{ fontSize: 18, marginBottom: 16 }}>Các bài viết khác</h3>
-        {blogs.map(blog => (
+        {currentBlogs.map(blog => (
           <Link
             to={`/blog/${blog._id}`}
             key={blog._id}
@@ -119,6 +87,7 @@ const Blog: React.FC = () => {
                 flexShrink: 0,
               }}
             >
+              
               <img
                 src={Array.isArray(blog.image) ? blog.image[0] : blog.image}
                 alt="Ảnh"
@@ -147,12 +116,34 @@ const Blog: React.FC = () => {
 
       {/* Phân trang */}
       <div style={{ marginTop: 32, textAlign: 'center' }}>
-        <button style={pageButtonStyle}>{'<'}</button>
-        <button style={pageButtonStyle}>1</button>
-        <button style={pageButtonStyle}>2</button>
-        <button style={pageButtonStyle}>3</button>
-        <button style={pageButtonStyle}>{'>'}</button>
-      </div>
+  <button
+    style={pageButtonStyle}
+    disabled={currentPage === 1}
+    onClick={() => setCurrentPage(currentPage - 1)}
+  >
+    {'<'}
+  </button>
+  {Array.from({ length: totalPages }, (_, i) => (
+    <button
+      key={i + 1}
+      style={{
+        ...pageButtonStyle,
+        background: currentPage === i + 1 ? '#1a8f3c' : '#eee',
+        color: currentPage === i + 1 ? '#fff' : '#000',
+      }}
+      onClick={() => setCurrentPage(i + 1)}
+    >
+      {i + 1}
+    </button>
+  ))}
+  <button
+    style={pageButtonStyle}
+    disabled={currentPage === totalPages}
+    onClick={() => setCurrentPage(currentPage + 1)}
+  >
+    {'>'}
+  </button>
+</div>
 
       {/* Footer Info */}
       <div

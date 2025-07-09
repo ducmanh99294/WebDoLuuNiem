@@ -18,7 +18,8 @@
     "express": "^5.1.0",
     "multer": "^2.0.1",
     "natural": "^8.1.0",
-    "react-hot-toast": "^2.5.2"
+    "react-hot-toast": "^2.5.2",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
     "argon2": "^0.43.0",

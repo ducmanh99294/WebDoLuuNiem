@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import '../../assets/css/Detail.css';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import '../../assets/css/Detail.css'
 import toast from 'react-hot-toast';
+import AddedToCartPopup from '../AddedToCartPopup';
+import CartError from '../Error';
 import { jwtDecode } from 'jwt-decode';
 import UserChatComponent from './UserChatComponent';
 import AdminChatComponent from './AdminChatComponent';
 
 const DetailProduct: React.FC = () => {
+  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
   const token = localStorage.getItem('token');
+  const [quantity, setQuantity] = useState(1);
+  const [showCartError, setShowCartError] = useState(false);
   const decoded: any = token ? jwtDecode(token) : null;
   const userId = decoded?.id;
   const role = decoded?.role;
@@ -16,6 +22,26 @@ const DetailProduct: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | undefined>();
   const [showChat, setShowChat] = useState(false);
+  const [blogs, setBlogs] = useState<any[]>([])
+
+   useEffect(()=>{
+      const fetchBlog = async () => {
+        try {
+          const res = await fetch(`http://localhost:3000/api/v1/blogs`);
+          const data = await res.json();
+          
+          if(data.success) {
+            setBlogs(data.data);
+            console.log(data.data)
+          }
+        } catch (err) {
+          console.error('err', err);
+        } finally {
+          setLoading(false);
+        }
+      };
+      if (blogs) fetchBlog();
+    }, [])
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -37,97 +63,179 @@ const DetailProduct: React.FC = () => {
   }, [_id]);
 
   const handleAddToCart = async () => {
-    try {
-      if (!token || !userId) {
-        toast.error('Vui lòng đăng nhập để thêm sản phẩm');
+  try {
+    if (!product || !product._id) {
+      toast.error('Thiếu thông tin sản phẩm');
+      return;
+    }
+
+    if (!token || !userId) {
+      toast.error('Vui lòng đăng nhập để thêm sản phẩm');
+      return;
+    }
+
+    let cartId = await getOrCreateCartId();
+
+    if (!cartId) {
+      toast.error('Không thể xử lý giỏ hàng');
+      return;
+    }
+
+    const existingItem = await getExistingCartItem(cartId, product._id);
+
+    if (existingItem) {
+      const updated = await updateCartItemQuantity(
+        existingItem._id,
+        existingItem.quantity + quantity
+      );
+      if (updated) {
+        toast.success('Đã cập nhật số lượng trong giỏ hàng');
+      } else {
+        toast.error('Không thể cập nhật số lượng');
+      }
+    } else {
+      // Nếu sản phẩm chưa có trong giỏ hàng → thêm mới
+      const added = await addNewCartItem(cartId, product._id, quantity);
+      if (added) {
+        toast.success('Đã thêm sản phẩm vào giỏ hàng');
+        setShowPopup(true);
+        setTimeout(() => setShowPopup(false), 10000);
+      } else {
+        toast.error('Không thể thêm sản phẩm vào giỏ hàng');
+      }
+    }
+  } catch (error) {
+    console.error('Lỗi khi thêm vào giỏ hàng:', error);
+    toast.error('Có lỗi xảy ra khi thêm sản phẩm');
+  }
+};
+
+const getOrCreateCartId = async () => {
+  const cartRes = await fetch(`http://localhost:3000/api/v1/carts/user/${userId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  const cartData = await cartRes.json();
+  const userCart = cartData?.data;
+
+  if (userCart && userCart._id) {
+    localStorage.setItem('cart_id', userCart._id);
+    return userCart._id;
+  }
+
+  // Nếu chưa có thì tạo mới
+  const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ user: userId }) 
+  });
+
+  const newCartData = await createCartRes.json();
+  const newCart = newCartData?.data;
+
+  if (newCart && newCart._id) {
+    localStorage.setItem('cart_id', newCart._id);
+    return newCart._id;
+  }
+
+  return null;
+};
+
+const getExistingCartItem = async (cartId: string, productId: string) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  const data = await res.json();
+  return data.cartDetails?.find(
+  (item: any) =>
+    item.product_id &&
+    item.product_id._id &&
+    item.product_id._id.toString() === productId
+);
+};
+
+const updateCartItemQuantity = async (itemId: string, newQuantity: number) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details/${itemId}/quantity`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ quantity: newQuantity })
+  });
+
+  const result = await res.json();
+  return result.success;
+};
+
+const addNewCartItem = async (cartId: string, productId: string, quantity: number) => {
+  const res = await fetch(`http://localhost:3000/api/v1/cart-details`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ cart_id: cartId, product_id: productId, quantity })
+  });
+
+  const result = await res.json();
+  return result.success;
+};
+
+  // hàm mua ngay
+ const handleBuyNow = async () => {
+  try {
+    if (!token || !userId) {
+      toast.error('Vui lòng đăng nhập để mua sản phẩm');
+      return;
+    }
+    
+    if (!_id) {
+      toast.error('Thiếu thông tin sản phẩm');
+      return;
+    }
+
+    const cartId = await getOrCreateCartId();
+    if (!cartId) {
+      toast.error('Không thể xử lý giỏ hàng');
+      return;
+    }
+
+    const existingItem = await getExistingCartItem(cartId, _id);
+
+    if (existingItem) {
+      const updated = await updateCartItemQuantity(existingItem._id, quantity);
+      if (!updated) {
+        toast.error('Không thể cập nhật số lượng sản phẩm');
         return;
       }
-
-      const cartRes = await fetch(`http://localhost:3000/api/v1/carts/user/${userId}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      });
-      const cartData = await cartRes.json();
-      let cartId;
-
-      if (cartData.success && Array.isArray(cartData.data)) {
-        const userCart = cartData.data.find((cart: any) => cart.user == userId);
-        if (userCart) {
-          cartId = userCart._id;
-          localStorage.setItem('cart_id', cartId);
-        }
+    } else {
+      const added = await addNewCartItem(cartId, _id, quantity);
+      if (!added) {
+        toast.error('Không thể thêm sản phẩm vào giỏ hàng');
+        return;
       }
-
-      if (!cartId) {
-        const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify({ user: userId })
-        });
-        const newCartData = await createCartRes.json();
-        if (!newCartData.success || !newCartData.cart?._id) {
-          toast.error('Không thể tạo giỏ hàng');
-          return;
-        }
-        cartId = newCartData.cart._id;
-      }
-
-      const cartDetailRes = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-      });
-      const cartDetailData = await cartDetailRes.json();
-      const existingItem = cartDetailData.cartDetails?.find((item: any) => item.product_id?.toString() === _id);
-
-      if (existingItem) {
-        const updateRes = await fetch(`http://localhost:3000/api/v1/cart-details/${existingItem._id}/quantity`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify({ quantity: existingItem.quantity + 1 })
-        });
-        const result = await updateRes.json();
-        if (result.success) {
-          toast.success('Đã tăng số lượng sản phẩm trong giỏ hàng');
-        } else {
-          toast.error('Không thể cập nhật số lượng sản phẩm');
-        }
-      } else {
-        const addRes = await fetch(`http://localhost:3000/api/v1/cart-details`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            cart_id: cartId,
-            product_id: _id,
-            quantity: 1
-          })
-        });
-        const result = await addRes.json();
-        if (result.success) {
-          toast.success('Đã thêm sản phẩm vào giỏ hàng');
-        } else {
-          toast.error('Không thể thêm sản phẩm');
-        }
-      }
-    } catch (error) {
-      console.error('Lỗi khi thêm vào giỏ hàng:', error);
-      toast.error('Có lỗi xảy ra khi thêm vào giỏ hàng');
     }
-  };
+
+    toast.success('Chuyển đến thanh toán...');
+    // Điều hướng sang trang thanh toán
+    navigate('/checkout');
+
+  } catch (error) {
+    console.error('Lỗi khi xử lý mua ngay:', error);
+    toast.error('Có lỗi xảy ra khi mua sản phẩm');
+  }
+};
 
   if (loading) return <p>Đang tải...</p>;
   if (!product) return <p>Không tìm thấy sản phẩm.</p>;
@@ -201,15 +309,25 @@ const DetailProduct: React.FC = () => {
               <option>Hà Tĩnh</option>
             </select>
           </div>
-          <div style={{ margin: '12px 0' }}>
+           <div style={{ margin: '12px 0' }}>
+            <div className="a3">
             <span>Số lượng: </span>
-            <button>-</button>
-            <input type="number" value={1} style={{ width: 80, textAlign: 'center' }} readOnly />
-            <button>+</button>
+            <button  
+              type="button"
+              onClick={() => setQuantity(prev => Math.max(1, prev - 1))}>
+                -
+            </button>
+            <input type="number" value={quantity} style={{ width: 80, textAlign: 'center'}} readOnly />
+            <button 
+              type="button"
+              onClick={() => setQuantity(prev => prev + 1)}>
+                +
+            </button>
+          </div>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button onClick={handleAddToCart}>Thêm vào giỏ hàng</button>
-            <button>Mua ngay</button>
+            <button onClick={handleAddToCart} className='a2'>Thêm vào giỏ hàng</button>
+            <button className='a1' onClick={handleBuyNow}>Mua ngay</button>
           </div>
           <div style={{ marginTop: 16 }}>
             <span>Liên hệ cửa hàng: </span>
@@ -217,13 +335,30 @@ const DetailProduct: React.FC = () => {
             <button style={{ marginLeft: 8 }} onClick={() => setShowChat(true)}>Gửi tin nhắn</button>
           </div>
         </div>
-        <div className="product-news" style={{ flex: 1 }}>
+         <div className="product-news" style={{ flex: 1 }}>
           <h4>Tin tức nổi bật</h4>
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, background: '#f5f5f5', padding: 8 }}>
-              <div style={{ width: 48, height: 48, background: '#ddd' }}>Ảnh</div>
-              <div>Tin tức {i}</div>
+          {blogs.slice(0,4).map(blog => (
+             <Link
+                to={`/blog/${blog._id}`}
+                key={blog._id}
+                onClick={()=> {localStorage.setItem('blogId', blog._id)}}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  marginBottom: 16,
+                  background: '#eee',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  transition: 'background 0.3s',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = '#ddd')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#eee')}
+              >
+            <div key={blog._id} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 8,  }}>
+              <img src={blog.image[0]} alt="" style={{ width: 48, height: 48, background: '#ddd' }}/>
+              <div>{blog.title}</div>
             </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -267,6 +402,8 @@ const DetailProduct: React.FC = () => {
             <img src="https://via.placeholder.com/40" alt="App" />
           </div>
         </div>
+      {showPopup && <AddedToCartPopup onClose={() => setShowPopup(false)} />}
+      {showCartError && <CartError onClose={() => setShowCartError(false)} />}
       </div>
       <button
         onClick={() => setShowChat(true)}

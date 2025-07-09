@@ -8,6 +8,7 @@ const { validateToken } = require('../middlewares/authMiddleware');
 router.get('/search', productController.searchProducts);
 router.get('/', productController.getAllProducts);
 router.get('/:id', productController.getProductById);
+router.get('/category/:categoryId', productController.getProductByCategory);
 router.post('/', validateToken, authRoles("admin"), imageUpload.array('image', 5), productController.createProduct);
 router.post('/:id/like', validateToken, authRoles, productController.like_count);
 router.post('/:id/view', validateToken, authRoles, productController.view_count);

@@ -11,6 +11,8 @@ const Header: React.FC = () => {
   const avatar = localStorage.getItem('avatar') || '/images/default-avatar.png';
   const [searchText, setSearchText] = useState('');
   const [showNotification, setShowNotification] = useState(false);
+  const [notifications, setNotifications] = useState<any[]>([]);
+  const [loading,setLoading] = useState(true)
 
   const navigate = useNavigate();
 // hàm tìm kiếm 
@@ -20,8 +22,7 @@ const handleSearch = (e: React.FormEvent) => {
     navigate(`/search?keyword=${encodeURIComponent(searchText.trim())}`);
   }
 };
-  const user = JSON.parse(localStorage.getItem('user') || '{}'); // lấy thông tin người dùng từ localStorage
-  // hàm đăng xuất 
+   // hàm đăng xuất 
 const handleLogout = async () => {
   const refreshToken = localStorage.getItem('refreshToken');
 
@@ -55,6 +56,7 @@ const handleLogout = async () => {
   }
 };
 useEffect(() => {
+  
   const handleClickOutside = (e: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
       setDropdownOpen(false);
@@ -66,6 +68,31 @@ useEffect(() => {
   return () => document.removeEventListener('mousedown', handleClickOutside);
 }, []);
 
+useEffect(() => {
+  const fetchNotifications = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch('http://localhost:3000/api/v1/notifications', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    console.log(data)
+    if(data.success) {
+      setNotifications(data.data || []);
+      }
+    } catch (err) {
+        console.error('err', err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (showNotification) fetchNotifications();
+}, [showNotification])
+
 
   return (
     <div className="header-container">
@@ -75,10 +102,22 @@ useEffect(() => {
           <div className="logo">
             <a href="/"><img src="/images/logo.png" alt="" /></a>
           </div>
-          <div className="search-box">
-            <input type="text" placeholder="Nhập nội dung tìm kiếm" />
-            <button><FaSearch /></button>
-          </div>
+<div className="search-box">
+  <input
+    type="text"
+    placeholder="Nhập nội dung tìm kiếm"
+    value={searchText || ''} // đảm bảo luôn là chuỗi
+    onChange={(e) => setSearchText(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === 'Enter') {
+        handleSearch(e);
+      }
+    }}
+  />
+  <button onClick={handleSearch}><FaSearch /></button>
+</div>
+
+
         </div>
 
         <div className="header-actions">
@@ -92,11 +131,24 @@ useEffect(() => {
   </button>
 
   {showNotification && (
-    <div className="notification-popup1">
-      <h5 className="title">Thông báo</h5>
+  <div className="notification-popup1">
+    <h5 className="title">Thông báo</h5>
+    {loading ? (
+      <p>Đang tải...</p>
+    ) : notifications.length === 0 ? (
       <p>Không có thông báo mới.</p>
-    </div>
-  )}
+    ) : (
+      notifications.map((noti) => (
+        <div key={noti._id} className="noti-item">
+          <div>{noti.message}</div>
+          <div style={{ fontSize: 12, color: '#888' }}>
+            {new Date(noti.created_at || noti.createdAt).toLocaleString()}
+          </div>
+        </div>
+      ))
+    )}
+  </div>
+)}
 </div>
 
 
