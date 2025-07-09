@@ -27,7 +27,7 @@ const Home: React.FC = () => {
         const promises = catData.data.map(async (cat: any) => {
           const prodRes = await fetch(`http://localhost:3000/api/v1/products/category/${cat._id}`);
           const prodData = await prodRes.json();
-          return { categoryId: cat._id, products: prodData.products.slice(0, 4) }; // Lấy 4 sản phẩm đầu
+          return { categoryId: cat._id, products: prodData.data?.slice(0, 4) || [] };
         });
 
         const result = await Promise.all(promises);
@@ -67,12 +67,12 @@ const Home: React.FC = () => {
       <CategoryList />
       <div className="card-sp">
         {/* <h1>Chào mừng đến với cửa hàng Đặc Sản</h1> */}
-        <h1>Sản phẩm nổi bật </h1>
+        <h1 style={{textAlign: 'center'}}>Sản phẩm nổi bật </h1>
         <div className="sp">
           {loading ? (
             <p>Đang tải sản phẩm...</p>
           ) : (
-             products.map(product => (
+             products.slice(0,5).map(product => (
       <ProductCard key={product._id} product={product} />
     ))
           )}

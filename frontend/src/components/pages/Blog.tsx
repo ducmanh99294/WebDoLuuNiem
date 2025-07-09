@@ -42,7 +42,13 @@ const newsList = [
 const Blog: React.FC = () => {
   const [blogs, setBlogs] = useState<any[]>([])
   const [loading, setLoading] = useState(true);
-  
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 5;
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+ 
   useEffect(()=>{
     const fetchBlog = async () => {
       try {
@@ -92,7 +98,7 @@ const Blog: React.FC = () => {
       {/* Danh sách bài viết */}
       <div>
         <h3 style={{ fontSize: 18, marginBottom: 16 }}>Các bài viết khác</h3>
-        {blogs.map(blog => (
+        {currentBlogs.map(blog => (
           <Link
             to={`/blog/${blog._id}`}
             key={blog._id}
@@ -119,6 +125,7 @@ const Blog: React.FC = () => {
                 flexShrink: 0,
               }}
             >
+              
               <img
                 src={Array.isArray(blog.image) ? blog.image[0] : blog.image}
                 alt="Ảnh"
@@ -147,12 +154,34 @@ const Blog: React.FC = () => {
 
       {/* Phân trang */}
       <div style={{ marginTop: 32, textAlign: 'center' }}>
-        <button style={pageButtonStyle}>{'<'}</button>
-        <button style={pageButtonStyle}>1</button>
-        <button style={pageButtonStyle}>2</button>
-        <button style={pageButtonStyle}>3</button>
-        <button style={pageButtonStyle}>{'>'}</button>
-      </div>
+  <button
+    style={pageButtonStyle}
+    disabled={currentPage === 1}
+    onClick={() => setCurrentPage(currentPage - 1)}
+  >
+    {'<'}
+  </button>
+  {Array.from({ length: totalPages }, (_, i) => (
+    <button
+      key={i + 1}
+      style={{
+        ...pageButtonStyle,
+        background: currentPage === i + 1 ? '#1a8f3c' : '#eee',
+        color: currentPage === i + 1 ? '#fff' : '#000',
+      }}
+      onClick={() => setCurrentPage(i + 1)}
+    >
+      {i + 1}
+    </button>
+  ))}
+  <button
+    style={pageButtonStyle}
+    disabled={currentPage === totalPages}
+    onClick={() => setCurrentPage(currentPage + 1)}
+  >
+    {'>'}
+  </button>
+</div>
 
       {/* Footer Info */}
       <div

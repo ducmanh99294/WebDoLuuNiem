@@ -1,4 +1,6 @@
 const CartService = require('../services/cartService');
+const Cart = require('../models/Cart');
+const CartDetail = require('../models/CartDetail');
 const logger = require('../utils/logger'); // Adjust path as needed
 
 // [POST] /carts
@@ -130,20 +132,43 @@ exports.deleteCart = async (req, res) => {
 };
 
 // [GET] /carts/user/:userId
-exports.getCartsByUser = async (req, res) => {
-    try {
-        logger.info(`Fetching carts for user: ${req.params.userId}`);
-        const carts = await CartService.getCartsByUser(req.params.userId);
-        res.status(200).json({
-            success: true,
-            data: carts
-        });
-    } catch (err) {
-        logger.error(`Error fetching carts by user: ${err.message}`);
-        res.status(400).json({
-            success: false,
-            error: 'Failed to fetch carts by user',
-            details: err.message
-        });
+exports.getCartByUser = async (req, res) => {
+  try {
+    console.log('🔍 req.user.id:', req.user.id);
+    console.log('🔍 req.params.userId:', req.params.userId);
+    console.log('🔍 req.user.role:', req.user.role);
+    const requestedUserId = req.params.userId;
+    const currentUserId = req.user.id;
+    const isAdmin = req.user.role === 'admin';
+    if (!isAdmin && requestedUserId !== String(currentUserId)) {
+      return res.status(403).json({
+        success: false,
+        message: 'Bạn không có quyền truy cập giỏ hàng của người khác'
+      });
     }
+
+    const cart = await Cart.findOne({ user: requestedUserId }).lean();
+    if (!cart) {
+      return res.status(404).json({
+        success: false,
+        message: 'Không tìm thấy giỏ hàng'
+      });
+    }
+
+    const cartDetails = await CartDetail.find({ cart_id: cart._id }).populate('product_id').lean();
+
+    res.status(200).json({
+      success: true,
+      data: {
+        ...cart,
+        cartDetails: cartDetails || []
+      }
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Lỗi server',
+      error: err.message
+    });
+  }
 };

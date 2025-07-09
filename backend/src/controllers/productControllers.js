@@ -366,32 +366,34 @@ const searchProducts = async (req, res) => {
   }
 };
 
-const getProductByCategory = async (req,res) => {
-    try {
-    const {categoryId} = req.params;
-        
-    if (!categoryId) {
-    return res.status(400).json({
-        success: false,
-        message: 'Thiếu Id'
-    });
-}
+const getProductByCategory = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
 
-    const orders = await Order.find({ user: userId })
+    if (!categoryId) {
+      return res.status(400).json({
+        success: false,
+        message: 'Thiếu categoryId',
+      });
+    }
+
+    const products = await Product.find({ categories: categoryId }).populate('images');
+
     res.status(200).json({
       success: true,
-      message: 'Lấy đơn hàng theo user thành công',
-      data: orders
+      message: 'Lấy sản phẩm theo danh mục thành công',
+      data: products,
     });
-    } catch (err) {
-        console.log('err', err);
-        res.status(500).json({
+  } catch (error) {
+    console.error('Lỗi khi lấy sản phẩm theo danh mục:', error);
+    res.status(500).json({
       success: false,
       message: 'Lỗi server',
-      error: error.message
+      error: error.message,
     });
-    }
-}
+  }
+};
+
 module.exports = {
     createProduct,
     getAllProducts,

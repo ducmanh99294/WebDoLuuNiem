@@ -14,4 +14,5 @@ router.put('/:id', validateToken, authRolers("admin", "user"), userController.up
 router.put('/info/:id', validateToken, authRolers("user"), userController.updateInfo);
 router.delete('/:id', validateToken, authRolers("admin"), userController.deleteUser);
 
+//router.get('/admins', validateToken, getAvailableAdmin);
 module.exports = router;
