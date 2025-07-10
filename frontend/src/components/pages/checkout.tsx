@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/css/checkout.css';
 import {PaymentSuccess} from '../PaymentSuccess';
 
@@ -19,6 +19,7 @@ const Checkout: React.FC = () => {
   const token = localStorage.getItem('token');
   const [showSuccess, setShowSuccess] = useState(false);
   const shippingPrice = shippingMethod === 'flat' ? 20000 : 0;
+  const navigate = useNavigate();
   //hàm lấy coupon
   useEffect(() => {
     console.log("userId", userId)
@@ -90,7 +91,7 @@ const Checkout: React.FC = () => {
   }
 
   //hàm tạo order
- const handleCreateOrder = async () => {
+const handleCreateOrder = async () => {
   try {
     if (!cart || cart.length === 0) {
       alert('Giỏ hàng trống');
@@ -143,9 +144,14 @@ const Checkout: React.FC = () => {
     const data = await res.json();
 
     if (data.success) {
-      setShowSuccess(true); // ✅ Hiện khung thông báo
-      // ⏳ Sau 3 giây chuyển trang
-      
+      await handleClearCart();     // ✅ Xóa giỏ hàng sau khi tạo đơn thành công
+      setShowSuccess(true);        // ✅ Hiển thị modal thành công
+
+      // 👉 Nếu bạn muốn tự động chuyển trang sau 3 giây:
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+
     } else {
       console.error('Tạo đơn hàng thất bại:', data.message);
       alert('Tạo đơn hàng thất bại.');
@@ -156,6 +162,7 @@ const Checkout: React.FC = () => {
     alert('Đã xảy ra lỗi khi tạo đơn hàng.');
   }
 };
+
 
  const handleClearCart = async () => {
   if (!cartId || !token) {
@@ -252,7 +259,11 @@ const Checkout: React.FC = () => {
           <input type="checkbox" /> Yêu cầu xuất hóa đơn công ty
         </label>
 
-        <button className="submit-button" onClick={handleClearCart}>Tiến hành thanh toán</button>
+        <button className="submit-button" onClick={() => {if (!token) {
+                navigate('/login');
+              } else {
+                {handleClearCart}
+              }}}>Tiến hành thanh toán</button>
       </form>
 
       <div className="checkout-summary">

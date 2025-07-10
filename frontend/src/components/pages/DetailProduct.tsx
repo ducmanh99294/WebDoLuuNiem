@@ -70,7 +70,22 @@ const DetailProduct: React.FC = () => {
     }
 
     if (!token || !userId) {
-      toast.error('Vui lòng đăng nhập để thêm sản phẩm');
+      const tempCart = JSON.parse(localStorage.getItem('temp_cart') || '[]');
+      const existing = tempCart.find((item: any) => item.product_id === product._id);
+
+      let updatedCart;
+      if (existing) {
+        updatedCart = tempCart.map((item: any) =>
+          item.product_id === product._id ? { ...item, quantity: item.quantity + quantity } : item
+        );
+      } else {
+        updatedCart = [...tempCart, { product_id: product._id, quantity }];
+      }
+
+      localStorage.setItem('temp_cart', JSON.stringify(updatedCart));
+      toast.success('Đã thêm vào giỏ hàng tạm thời');
+      setShowPopup(true);
+      setTimeout(() => setShowPopup(false), 10000);
       return;
     }
 

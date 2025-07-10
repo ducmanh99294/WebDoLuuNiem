@@ -53,4 +53,5 @@ router.get(
     cartController.getCartByUser
 );
 
+router.post('/merge-session', cartController.createCartWithSession);
 module.exports = router;

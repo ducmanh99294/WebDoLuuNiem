@@ -138,3 +138,25 @@ form input[type="password"] {
 height: 600px;
 width: 500px;
 }
+.pass {
+  position: relative;
+  width: 100%;
+}
+
+.pass input {
+  width: 100%;
+  padding: 10px 40px 10px 10px;  /* chừa khoảng bên phải cho icon */
+  border: 1px solid #0e8f6e;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 18px;
+}
