@@ -111,7 +111,7 @@ const fetchCategories = async () => {
 
     if (Array.isArray(data.data)) {
       // ✅ Lọc bỏ các danh mục không có name hoặc name là null
-      const validCategories = data.data.filter(cat => cat && cat.name);
+      const validCategories = data.data.filter((cat: any) => cat && cat.name);
       setCategories(validCategories);
     } else {
       setCategories([]);
@@ -120,7 +120,6 @@ const fetchCategories = async () => {
     console.error('❌ Lỗi lấy danh mục:', error);
   }
 };
-
 
 // hàm lưu chỉnh sửa 
   const handleUpdateProduct = async () => {
@@ -212,7 +211,7 @@ const fetchCategories = async () => {
     navigate('/login');
   };
  // hàm thêm sản phẩm 
-const handleSaveNewProduct = async (newProduct) => {
+const handleSaveNewProduct = async (newProduct: any) => {
   const token = localStorage.getItem('token');
   if (!token || !newProduct) {
     alert('Bạn cần đăng nhập hoặc điền đủ thông tin.');
@@ -312,7 +311,7 @@ const handleSaveNewProduct = async (newProduct) => {
 
       if (Array.isArray(data.products)) {
   setProductList(
-    data.products.map((p) => ({
+    data.products.map((p:any) => ({
       ...p,
       images: Array.isArray(p.images) ? p.images : [],
     }))
@@ -451,6 +450,13 @@ const handleSaveNewProduct = async (newProduct) => {
   }
 }, [activeSection]);
 
+// thêm sự kiện
+
+// thêm sản phảm vào sự kiện
+
+// sửa sự kiện
+
+// xóa sự kiện
   const chartData = {
     labels: [
       "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
@@ -1059,7 +1065,7 @@ const handleSaveNewProduct = async (newProduct) => {
             {productList.map((product) => (
               <div key={product._id} className="sp-card">
                 <div className="sp-info">
-                  <ImageSlider images={Array.isArray(product.images) ? product.images.map(img => img.image || img) : []} />
+                  <ImageSlider images={Array.isArray(product.images) ? product.images.map((img: any) => img.image || img) : []} />
                   <div className="sp-content">
                     <h3 className="sp-name">{product.name}</h3>
                     <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>
@@ -1298,7 +1304,7 @@ const handleSaveNewProduct = async (newProduct) => {
           <button className="btn btn-success" onClick={handleUpdateProduct}>
             Cập nhật sản phẩm
           </button>
-          <button className="btn btn-secondary" onClick={() => seteditingCategory(null)}>
+          <button className="btn btn-secondary" onClick={() => setEditingCategory(null)}>
             Hủy
           </button>
         </div>
@@ -1557,7 +1563,6 @@ const handleSaveNewProduct = async (newProduct) => {
   );
 };
 
-
 const StatCard = ({ title, value }: { title: string; value: string }) => (
   <div className="card12">
     <div className="card-title">{title}</div>
@@ -1602,7 +1607,6 @@ const Progress = ({
       ></div>
     </div>
   </div>
-export default Dashboard;
 );
 
 const ImageSlider = ({ images }: { images: string[] }) => {
@@ -1611,7 +1615,7 @@ const ImageSlider = ({ images }: { images: string[] }) => {
 
   useEffect(() => {
     if (images.length <= 1) return;
-    const timer = setTimeout(() => {
+    const timer = setInterval(() => {
       setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
     }, 1500);
     return () => clearTimeout(timer);
@@ -1688,4 +1692,5 @@ const ImageSlider = ({ images }: { images: string[] }) => {
     </div>
   );
 };
+
 export default Dashboard;
