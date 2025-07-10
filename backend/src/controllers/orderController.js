@@ -263,6 +263,7 @@ const updateOrderStatus = async (req, res) => {
       });
     }
 
+    // Tìm đơn hàng nhưng không cập nhật
     const order = await Order.findById(req.params.id);
     if (!order) {
       return res.status(404).json({
@@ -278,38 +279,47 @@ const updateOrderStatus = async (req, res) => {
       });
     }
 
-    order.status = status;
-    await order.save();
-
+    // SỬA: Sử dụng findByIdAndUpdate để tránh validate toàn bộ đối tượng
+    const updatedOrder = await Order.findByIdAndUpdate(
+      req.params.id,
+      { status: status },
+      { 
+        new: true,
+        runValidators: false, // Tắt validation khi chỉ cập nhật status
+        setDefaultsOnInsert: false
+      }
+    );
+    
     // Cập nhật sell_count khi trạng thái là delivered
     if (status === 'delivered') {
-      await Promise.all(order.products.map(async (item) => {
+      await Promise.all(updatedOrder.products.map(async (item) => {
         await Product.findByIdAndUpdate(item.product, {
           $inc: { sell_count: item.quantity }
         });
       }));
-      logger.info(`Updated sell_count for products in order ${order._id}`);
+      logger.info(`Updated sell_count for products in order ${updatedOrder._id}`);
     }
 
     // Gửi thông báo
     await sendNotification({
-      user: order.user,
+      user: updatedOrder.user,
       sender: req.user._id,
       type: 'order',
-      message: `Đơn hàng #${order.order_number} đã được cập nhật trạng thái thành ${status}`,
-      data: { orderId: order._id, status },
+      message: `Đơn hàng #${updatedOrder.order_number} đã được cập nhật trạng thái thành ${status}`,
+      data: { orderId: updatedOrder._id, status },
       priority: 'high',
       io: req.io,
-      socketRoom: order.user.toString(),
+      socketRoom: updatedOrder.user.toString(),
       socketEvent: 'order_updated',
       socketPayload: {
-        orderId: order._id,
-        orderNumber: order.order_number,
+        orderId: updatedOrder._id,
+        orderNumber: updatedOrder.order_number,
         status
       }
     });
 
-    const populatedOrder = await Order.findById(req.params.id)
+    // Populate lại dữ liệu để trả về
+    const populatedOrder = await Order.findById(updatedOrder._id)
       .populate('user', 'name email')
       .populate('products.product', 'name price')
       .populate('shipping.shipping_company', 'name')
@@ -329,6 +339,7 @@ const updateOrderStatus = async (req, res) => {
     });
   }
 };
+
 
 const deleteOrder = async (req, res) => {
   try {

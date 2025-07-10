@@ -4,6 +4,7 @@ import { Store, LogOut, MessageCircle, Angry, PrinterCheck } from 'lucide-react'
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { FaPlus } from 'react-icons/fa';
+import AdminOrders from './AdminOrders';
 import { SuccessPage } from "../PaymentSuccess";
 import AdminChatComponent from './AdminChatComponent';
 import {
@@ -499,6 +500,13 @@ const handleSaveNewProduct = async (newProduct) => {
   </div>
 
   <div 
+  onClick={() => setActiveSection('orders')} 
+  className={activeSection === 'orders' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+  🚚 Quản lý đơn hàng
+  </div>
+
+  <div 
     onClick={() => setActiveSection('posts')} 
     className={activeSection === 'posts' ? 'menu-highlight active' : 'menu-highlight'}
   >
@@ -554,6 +562,46 @@ const handleSaveNewProduct = async (newProduct) => {
       <main className="main-content">
         <h1 className="title">
           {activeSection === 'dashboard' && '📈 Thống kê'}
+{activeSection === 'users' && (
+  <div className="user-management">
+    <div className="user-header">
+      <button onClick={() => setActiveSection('dashboard')}>Back</button>
+      <h2>Quản lí người dùng</h2>
+      <button className="add-user">Thêm người dùng</button>
+    </div>
+
+    <div className="user-list">
+      {userList.map((user) => (
+        <div key={user._id} className="user-card0">
+          <div className="user-infor2">
+            <img
+              src={user.avatar || "/images/default-avatar.png"}
+              alt="avatar"
+              className="avatar-img"
+            />
+            <div className="user-details1">
+              <h3 className="user-name1">{user.name}</h3>
+              <p>Email: {user.email}</p>
+              <p>SĐT : {user.phone}</p>
+              <p>Vai trò: {user.role}</p>
+              <p>Địa chỉ: {user.address}</p>
+            </div>
+          </div>
+          <div className="user-actions">
+            <button className="btn-edit">Sửa</button>
+            <button className="btn-delete">Xoá</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+    {activeSection === 'orders' && <AdminOrders />}
+
+
+
+    {activeSection === 'chat' && '💬 Khung chat'}
           {activeSection === 'chat' && '💬 Khung chat'}
           {activeSection === 'posts' && '📝 Bài viết'}
           {activeSection === 'categories' && '📁 Danh mục'}
@@ -750,6 +798,7 @@ const handleSaveNewProduct = async (newProduct) => {
     )}
   </div>
 )}
+
 {showSuccess && (
   <SuccessPage onClose={() => setShowSuccess(false)} />
 )}
@@ -1553,6 +1602,7 @@ const Progress = ({
       ></div>
     </div>
   </div>
+export default Dashboard;
 );
 
 const ImageSlider = ({ images }: { images: string[] }) => {
@@ -1639,4 +1689,3 @@ const ImageSlider = ({ images }: { images: string[] }) => {
   );
 };
 export default Dashboard;
-
