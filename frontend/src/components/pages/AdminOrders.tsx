@@ -3,20 +3,23 @@ import { FiSearch, FiChevronDown, FiEye, FiCheck, FiArrowLeft } from 'react-icon
 import '../../assets/css/Dashboard.css';
 import { useNavigate } from 'react-router-dom';
 
-interface AdminOrdersProps {
-  navigate: (path: string) => void;
-}
-
-const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
+const AdminOrders: React.FC = () => {
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const token = localStorage.getItem('token');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
+        if (!token) {
+          alert('Vui lòng đăng nhập lại');
+          navigate('/login');
+          return;
+        }
+
         const response = await fetch('http://localhost:3000/api/v1/orders', {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -24,9 +27,11 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
         });
         const data = await response.json();
         if (response.ok && data.success && Array.isArray(data.orders)) {
+          console.log('Orders data:', JSON.stringify(data.orders, null, 2));
           setOrders(data.orders);
         } else {
           console.error('Lỗi khi tải đơn hàng:', data.message);
+          alert('Lỗi khi tải đơn hàng');
         }
       } catch (error) {
         console.error('Lỗi kết nối:', error);
@@ -37,7 +42,7 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
     };
 
     fetchOrders();
-  }, [token]);
+  }, [token, navigate]);
 
   const handleUpdateOrderStatus = async (orderId: string, newStatus: string) => {
     try {
@@ -66,8 +71,10 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
   };
 
   const filteredOrders = orders.filter(order => {
-    const matchesSearch = order.order_number.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         order.customer?.fullName.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = 
+      order.order_number.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      (order.customer?.fullName || order.user?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (order.customer?.email || order.user?.email || '').toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -121,7 +128,6 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
   return (
     <div className="orders-management p-6 bg-gray-50 min-h-screen">
       <div className="bg-white rounded-lg shadow-sm p-6">
-        {/* Header với tiêu đề và bộ lọc */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div className="flex items-center gap-4">
             <button 
@@ -140,7 +146,7 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
               </div>
               <input
                 type="text"
-                placeholder="Tìm đơn hàng hoặc khách hàng..."
+                placeholder="Tìm đơn hàng, tên hoặc email khách hàng..."
                 className="pl-10 pr-4 py-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -167,7 +173,6 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
           </div>
         </div>
 
-        {/* Danh sách đơn hàng */}
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead>
@@ -194,10 +199,10 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
                       </td>
                       <td className="px-6 py-5">
                         <div className="text-sm font-medium text-gray-900">
-                          {order.customer?.fullName}
+                          {order.customer?.fullName || order.user?.name || 'N/A'}
                         </div>
                         <div className="text-sm text-gray-500 mt-1">
-                          {order.customer?.phone || 'Chưa cập nhật'}
+                          {order.customer?.email || order.user?.email || 'Chưa cập nhật'}
                         </div>
                       </td>
                       <td className="px-6 py-5 whitespace-nowrap text-sm text-gray-500">
@@ -218,14 +223,14 @@ const AdminOrders: React.FC<AdminOrdersProps> = ({ navigate }) => {
                         <div className="flex space-x-3">
                           <button
                             onClick={() => {
-                              localStorage.setItem('orderId', order._id);
-                              navigate(`/orders/${order._id}`);
+                              console.log('Navigating to order ID:', order._id);
+                              console.log('Order Data:', JSON.stringify(order, null, 2));
+                              navigate(`/orders/${order._id}`, { state: { order } });
                             }}
                             className="text-blue-600 hover:text-blue-900 flex items-center"
                           >
                             <FiEye className="mr-1" /> Chi tiết
                           </button>
-                          
                           {actionText && nextStatus && (
                             <button
                               onClick={() => handleUpdateOrderStatus(order._id, nextStatus)}
