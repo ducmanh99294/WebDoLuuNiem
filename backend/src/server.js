@@ -103,3 +103,5 @@ process.on('uncaughtException', (err) => {
   logger.error('Uncaught Exception thrown:', err);
   process.exit(1);
 });
+
+module.exports = app;
