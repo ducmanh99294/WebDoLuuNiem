@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { Store, LogOut, MessageCircle } from 'lucide-react';
+import { Store, LogOut, MessageCircle, Angry, PrinterCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { FaPlus } from 'react-icons/fa';
@@ -16,23 +16,113 @@ import {
   Legend,
 } from "chart.js";
 import "../../assets/css/Dashboard.css";
+import { _descriptors } from "chart.js/helpers";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const Dashboard = () => {
   const [userList, setUserList] = useState<any[]>([]);
+  const [editingUser, setEditingUser] = useState<any | null>(null);
   const [userCount, setUserCount] = useState<number>(0);
   const [activeSection, setActiveSection] = useState('dashboard');
   const navigate = useNavigate();
   const [productList, setProductList] = useState<any[]>([]);
-  const [editingProduct, setEditingProduct] = useState<any | null>(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [blogList, setBlogList] = useState<any[]>([]);
+  const [editingBlog, setEditingBlog] = useState<any | null>(null);
+  const [categoryList, setCategoryList] = useState<any[]>([]);
+  const [editingCategory, setEditingCategory] = useState<any | null>(null);
+  const [couponList, setCouponList] = useState<any[]>([]);
+  const [editingCoupon, setEditingCoupon] = useState<any | null>(null);
+  const [eventList, setEventList] = useState<any[]>([]);
+  const [editingEvent, setEditingEvent] = useState<any | null>(null);
+const [editingProduct, setEditingProduct] = useState<any | null>(null);
+const [addingProduct, setAddingProduct] = useState<any | null>(null);
+const [categories, setCategories] = useState<any[]>([]);
+const [images, setImages] = useState<string[]>(['']);
   // hàm mở form sửa sản phẩm 
   const handleEditProduct = (product: any) => {
   setEditingProduct({ ...product });
 };
+// xử lí thêm ảnh từ  link 
+const handleAddImageLink = () => {
+  if (images.length >= 5) {
+    alert('Chỉ được chọn tối đa 5 ảnh.');
+    return;
+  }
+  const link = prompt('Nhập link hình ảnh:');
+  if (link) {
+    setImages((prev) => [...prev, link]);
+  }
+};
+// xử lí chọn ảnh từ máy 
+const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const files = e.target.files;
+  if (!files) return;
+
+  if (images.length + files.length > 5) {
+    alert('Chỉ được chọn tối đa 5 ảnh.');
+    return;
+  }
+
+  const newImages: string[] = [];
+  Array.from(files).forEach((file) => {
+    const url = URL.createObjectURL(file);
+    newImages.push(url);
+    // ❌ Không upload thực tế => chỉ preview
+    // ✅ Nếu muốn upload thực tế, bạn upload lên Cloudinary, Firebase, rồi lấy URL đẩy vào images
+  });
+
+  setImages((prev) => [...prev, ...newImages]);
+};
+// xử lí xóa ảnh 
+const handleRemoveImage = (index: number) => {
+  setImages(images.filter((_, i) => i !== index));
+};
+
+// hàm mở form thêm sản phẩm 
+const handleAddProductClick = () => {
+  setAddingProduct({
+    name: '',
+    description: '',
+    price: '',
+    images: [{ image: '' }],
+    category: '',
+    discount: '',
+    quantity: ''
+  });
+  fetchCategories();   // Thêm dòng này để chắc chắn danh mục được load
+};
+
+
+// lấy danh mục
+const fetchCategories = async () => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await fetch('http://localhost:3000/api/v1/categories', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+    console.log('📂 Danh mục trả về:', data);
+
+    if (Array.isArray(data.data)) {
+      // ✅ Lọc bỏ các danh mục không có name hoặc name là null
+      const validCategories = data.data.filter((cat: any) => cat && cat.name);
+      setCategories(validCategories);
+    } else {
+      setCategories([]);
+    }
+  } catch (error) {
+    console.error('❌ Lỗi lấy danh mục:', error);
+  }
+};
+
 // hàm lưu chỉnh sửa 
-const handleUpdateProduct = async () => {
+  const handleUpdateProduct = async () => {
   const token = localStorage.getItem('token');
   if (!token || !editingProduct) {
     alert('Bạn cần đăng nhập hoặc có sản phẩm để sửa');
@@ -77,7 +167,7 @@ const handleUpdateProduct = async () => {
 };
 
 // Hàm xoá sản phẩm khỏi hệ thống (admin only)
-const handleDeleteProduct = async (productId: string) => {
+  const handleDeleteProduct = async (productId: string) => {
   const token = localStorage.getItem('token');
 
   if (!token) {
@@ -113,13 +203,53 @@ const handleDeleteProduct = async (productId: string) => {
     alert('❌ Đã xảy ra lỗi khi xóa sản phẩm.');
   }
 };
-  
+  // đăng xuất 
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('userId');
     navigate('/login');
   };
+ // hàm thêm sản phẩm 
+const handleSaveNewProduct = async (newProduct: any) => {
+  const token = localStorage.getItem('token');
+  if (!token || !newProduct) {
+    alert('Bạn cần đăng nhập hoặc điền đủ thông tin.');
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:3000/api/v1/products`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        name: newProduct.name,
+        price: Number(newProduct.price),
+        description: newProduct.description,
+        images: images,
+        categories: [newProduct.category],                     // ✅ mảng id
+        discount: Number(newProduct.discount) || 0,
+        quantity: Number(newProduct.quantity) || 1,
+        rating : 0
+      })
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      setShowSuccess(true);
+      setAddingProduct(null);
+      setProductList(prev => [...prev, data.product]);
+    } else {
+      alert('❌ Thêm sản phẩm thất bại: ' + (data.message || 'Lỗi không xác định'));
+    }
+  } catch (error) {
+    console.error('🚨 Lỗi khi thêm sản phẩm:', error);
+    alert('Đã xảy ra lỗi khi thêm sản phẩm.');
+  }
+};
 
   // Decode adminId từ token
   const token = localStorage.getItem('token');
@@ -129,6 +259,7 @@ const handleDeleteProduct = async (productId: string) => {
     adminId = decoded.sub || decoded._id || decoded.id;
   }
 
+// ngnuowif dùng
   useEffect(() => {
     const fetchUserCount = async () => {
       try {
@@ -163,6 +294,7 @@ const handleDeleteProduct = async (productId: string) => {
   fetchUserCount();
 }, []);
 
+// sản phẩm
   useEffect(() => {
   const fetchProductList = async () => {
     try {
@@ -178,10 +310,15 @@ const handleDeleteProduct = async (productId: string) => {
       console.log('Danh sách sản phẩm:', data);
 
       if (Array.isArray(data.products)) {
-        setProductList(data.products);
-      } else {
-        setProductList([]);
-      }
+  setProductList(
+    data.products.map((p:any) => ({
+      ...p,
+      images: Array.isArray(p.images) ? p.images : [],
+    }))
+  );
+} else {
+  setProductList([]);
+}
     } catch (error) {
       console.error('Lỗi khi tải danh sách sản phẩm:', error);
     }
@@ -189,8 +326,137 @@ const handleDeleteProduct = async (productId: string) => {
 
   if (activeSection === 'products') {
     fetchProductList();
+    fetchCategories()
   }
 }, [activeSection]);
+
+// bài viết
+  useEffect(() => {
+  const fetchBlogList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/blogs', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách sản phẩm:', data);
+
+      if (Array.isArray(data.data)) {
+        setBlogList(data.data);
+      } else {
+        setBlogList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh sách sản phẩm:', error);
+    }
+  };
+
+  if (activeSection === 'posts') {
+    fetchBlogList();
+  }
+}, [activeSection]);
+
+// danh mục
+  useEffect(() => {
+  const fetchCategoryList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/categories', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách sản phẩm:', data);
+
+      if (Array.isArray(data.data)) {
+        setCategoryList(data.data);
+      } else {
+        setCategoryList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh sách sản phẩm:', error);
+    }
+  };
+
+  if (activeSection === 'categories') {
+    fetchCategoryList();
+  }
+}, [activeSection]);
+
+// mã giảm giá
+  useEffect(() => {
+  const fetchCouponList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/coupons', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách mã:', data);
+
+      if (Array.isArray(data.data)) {
+        setCouponList(data.data);
+      } else {
+        setCouponList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh:', error);
+    }
+  };
+
+  if (activeSection === 'coupons') {
+    fetchCouponList();
+  }
+}, [activeSection]);
+
+// sự kiện
+  useEffect(() => {
+  const fetchEventList = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/v1/events', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log('Danh sách sản phẩm:', data);
+
+      if (Array.isArray(data.data)) {
+        setEventList(data.data);
+      } else {
+        setEventList([]);
+      }
+    } catch (error) {
+      console.error('Lỗi khi tải danh sách sản phẩm:', error);
+    }
+  };
+
+  if (activeSection === 'events') {
+    fetchEventList();
+  }
+}, [activeSection]);
+
+// thêm sự kiện
+
+// thêm sản phảm vào sự kiện
+
+// sửa sự kiện
+
+// xóa sự kiện
   const chartData = {
     labels: [
       "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
@@ -268,6 +534,13 @@ const handleDeleteProduct = async (productId: string) => {
   </div>
 
   <div 
+    onClick={() => setActiveSection('events')} 
+    className={activeSection === 'events' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    🏷️ quản lí sự kiện
+  </div>
+
+  <div 
     onClick={() => setActiveSection('stores')} 
     className={activeSection === 'stores' ? 'menu-highlight active' : 'menu-highlight'}
   >
@@ -335,14 +608,16 @@ const handleDeleteProduct = async (productId: string) => {
 
 
     {activeSection === 'chat' && '💬 Khung chat'}
+          {activeSection === 'chat' && '💬 Khung chat'}
           {activeSection === 'posts' && '📝 Bài viết'}
           {activeSection === 'categories' && '📁 Danh mục'}
           {activeSection === 'coupons' && '🏷️ Mã khuyến mãi'}
           {activeSection === 'stores' && '🏪 Gian hàng'}
+          {activeSection === 'events' && '🏷️ quản lí sự kiện'}
         </h1>
 
         {/* Nội dung từng phần */}
-        {activeSection === 'dashboard' && (
+{activeSection === 'dashboard' && (
           <>
             <div className="filters">
               <select><option value="all">Thời gian: Từ trước tới nay</option></select>
@@ -406,14 +681,13 @@ const handleDeleteProduct = async (productId: string) => {
               </div>
             </div>
           </>
-        )}
-
-        {/* Các mục khác, ví dụ products */}
- {activeSection === 'products' && (
+)}
+         {/*người dùng*/}
+ {activeSection === 'users' && (
   <div className="sp-section">
 
     {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
-    {editingProduct ? (
+    {editingUser ? (
       <div className="edit-product-form">
         <h2 className="form-title">Sửa sản phẩm</h2>
 
@@ -498,28 +772,29 @@ const handleDeleteProduct = async (productId: string) => {
           <button className="add"><FaPlus /></button>
         </div>
 
-        {productList.length === 0 ? (
-          <p>Không có sản phẩm nào.</p>
+        {userList.length === 0 ? (
+          <p>Không có người dùng nào.</p>
         ) : (
           <div className="sp-list">
-            {productList.map((product) => (
-              <div key={product._id} className="sp-card">
+            {userList.map((user) => (
+              <div key={user._id} className="sp-card">
                 <div className="sp-info">
-                  <img
-                    src={product.images[0]?.image || '/images/default.jpg'}
-                    alt={product.name}
+                   <img
+                    src={user.image || '/images/default.jpg'}
+                    alt={user.name}
                     className="image"
+                    style={{width: 168, height:168}}
                   />
                   <div className="sp-content">
-                    <h3 className="sp-name">{product.name}</h3>
-                    <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>
-                    <p><strong>Mô tả:</strong> {product.description || 'Không có mô tả'}</p>
-                    <p><strong>Danh mục:</strong> {product.category?.name || 'Không có'}</p>
+                    <h3 className="sp-name">{user.name}</h3>
+                    <p><strong>email:</strong> {user.email}</p>
+                    <p><strong>điện thoại:</strong> {user.phone || 'Không có'}</p>
+                    <p><strong>role:</strong> {user.role || 'Không có'}</p>
                   </div>
                 </div>
                 <div className="sp-actions">
-                  <button className="sp-btn-edit" onClick={() => handleEditProduct(product)}>Sửa</button>
-                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(product._id)}>Xoá</button>
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(user)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(user._id)}>Xoá</button>
                 </div>
               </div>
             ))}
@@ -533,8 +808,756 @@ const handleDeleteProduct = async (productId: string) => {
 {showSuccess && (
   <SuccessPage onClose={() => setShowSuccess(false)} />
 )}
+        {/*sẩn phẩm*/}
+ {activeSection === 'products' && (
+  <div className="sp-section">
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingProduct ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa sản phẩm</h2>
+
+        <div className="form-group">
+          <label>Tên sản phẩm:</label>
+          <input
+            type="text"
+            value={editingProduct.name}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, name: e.target.value })
+            }
+            placeholder="Nhập tên sản phẩm"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingProduct.description}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, description: e.target.value })
+            }
+            placeholder="Nhập mô tả"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Giá:</label>
+          <input
+            type="number"
+            value={editingProduct.price}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, price: e.target.value })
+            }
+            placeholder="Nhập giá"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingProduct.images?.[0]?.image || ''}
+            onChange={(e) =>
+              setEditingProduct({
+                ...editingProduct,
+                images: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Danh mục:</label>
+          <input
+            type="text"
+            value={editingProduct.category?.name || ''}
+            onChange={(e) =>
+              setEditingProduct({
+                ...editingProduct,
+                category: { ...editingProduct.category, name: e.target.value },
+              })
+            }
+            placeholder="Nhập danh mục"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingProduct(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      
+      <>
+{addingProduct && (
+  <div className="edit-product-form">
+    <h2 className="form-title">Thêm sản phẩm</h2>
+
+    <div className="form-group">
+      <label>Tên sản phẩm:</label>
+      <input
+        type="text"
+        value={addingProduct.name}
+        onChange={(e) =>
+          setAddingProduct({ ...addingProduct, name: e.target.value })
+        }
+        placeholder="Nhập tên sản phẩm"
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Mô tả:</label>
+      <textarea
+        value={addingProduct.description}
+        onChange={(e) =>
+          setAddingProduct({ ...addingProduct, description: e.target.value })
+        }
+        placeholder="Nhập mô tả"
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Giá:</label>
+      <input
+        type="number"
+        value={addingProduct.price}
+        onChange={(e) =>
+          setAddingProduct({ ...addingProduct, price: e.target.value })
+        }
+        placeholder="Nhập giá"
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Hình ảnh:</label>
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+  {images.map((img, index) => (
+    <div key={index} style={{ position: 'relative' }}>
+      <img
+        src={img}
+        alt={`Ảnh ${index + 1}`}
+        style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '4px' }}
+      />
+      <button
+        type="button"
+        onClick={() => handleRemoveImage(index)}
+        style={{
+          position: 'absolute',
+          top: '-5px',
+          right: '-5px',
+          background: 'red',
+          color: 'white',
+          border: 'none',
+          borderRadius: '50%',
+          width: '20px',
+          height: '20px',
+          cursor: 'pointer',
+        }}
+      >
+        x
+      </button>
+    </div>
+  ))}
+</div>
+
+<div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
+  {images.length < 5 && (
+    <>
+      <button type="button" onClick={handleAddImageLink}>+ Thêm từ link</button>
+      <label style={{ cursor: 'pointer', background: '#eee', padding: '6px 12px', borderRadius: '4px' }}>
+        + Tải ảnh từ máy
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleFileUpload}
+          style={{ display: 'none' }}
+        />
+      </label>
+    </>
+  )}
+</div>
+
+      <input
+        type="text"
+        value={addingProduct.images?.[0]?.image || ''}
+        onChange={(e) =>
+          setAddingProduct({
+            ...addingProduct,
+            images: [{ image: e.target.value }],
+          })
+        }
+        placeholder="Nhập link hình ảnh"
+      />
+    </div>
+
+    <div className="form-group">
+  <label>Danh mục:</label>
+  <select
+  value={addingProduct?.category || ''}
+  onChange={(e) =>
+    setAddingProduct({ ...addingProduct, category: e.target.value })
+  }
+>
+  <option value="">-- Chọn danh mục --</option>
+  {categories.map((cat) => (
+    <option key={cat._id} value={cat._id}>{cat.name}</option>
+  ))}
+</select>
+
+</div>
+
+    <div className="form-group">
+  <label>Giảm giá (%):</label>
+  <input
+    type="number"
+    value={addingProduct?.discount || ''}
+    onChange={(e) =>
+      setAddingProduct({ ...addingProduct, discount: e.target.value })
+    }
+    placeholder="Nhập giảm giá"
+  />
+</div>
+
+<div className="form-group">
+  <label>Số lượng:</label>
+  <input
+    type="number"
+    value={addingProduct?.quantity || ''}
+    onChange={(e) =>
+      setAddingProduct({ ...addingProduct, quantity: e.target.value })
+    }
+    placeholder="Nhập số lượng"
+  />
+</div>
+
+    <div className="form-actions1">
+   <button className="btn btn-success" onClick={() => handleSaveNewProduct(addingProduct)}>
+  Thêm sản phẩm
+</button>
+
+      <button className="btn btn-secondary" onClick={() => setAddingProduct(null)}>
+        Hủy
+      </button>
+    </div>
+  </div>
+)}
+
+        {/* Hiển thị nút Thêm và danh sách sản phẩm */}
+        <div className="add0">
+<button className="add" onClick={handleAddProductClick}>
+  <FaPlus />
+</button>
 
 
+
+        </div>
+
+        {productList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {productList.map((product) => (
+              <div key={product._id} className="sp-card">
+                <div className="sp-info">
+                  <ImageSlider images={Array.isArray(product.images) ? product.images.map((img: any) => img.image || img) : []} />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{product.name}</h3>
+                    <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>
+                    <p><strong>Mô tả:</strong> {product.description || 'Không có mô tả'}</p>
+                    <p><strong>Danh mục:</strong> {product.categories?.name || 'Không có'}</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(product)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(product._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          {productList?.filter(Boolean)?.map((product) => {
+  // Phòng trường hợp product.images không tồn tại hoặc không phải mảng
+  const imageSrc =
+    Array.isArray(product.images) && product.images.length > 0
+      ? product.images[0]?.image || '/images/default.jpg'
+      : '/images/default.jpg';
+
+  const productName = product?.name || 'Sản phẩm không tên';
+  const productPrice = product?.price ? product.price.toLocaleString() : '0';
+  const productDescription = product?.description || 'Không có mô tả';
+  const productCategory = product?.category?.name || 'Không có';
+
+  return (
+    <div key={product._id || Math.random()} className="sp-card">
+      <div className="sp-info">
+        <img
+          src={imageSrc}
+          alt={productName}
+          className="image"
+        />
+        <div className="sp-content">
+          <h3 className="sp-name">{productName}</h3>
+          <p><strong>Giá:</strong> {productPrice}đ</p>
+          <p><strong>Mô tả:</strong> {productDescription}</p>
+          <p><strong>Danh mục:</strong> {productCategory}</p>
+        </div>
+      </div>
+      <div className="sp-actions">
+        <button
+          className="sp-btn-edit"
+          onClick={() => handleEditProduct(product)}
+        >
+          Sửa
+        </button>
+        <button
+          className="sp-btn-delete"
+          onClick={() => handleDeleteProduct(product._id)}
+        >
+          Xoá
+        </button>
+      </div>
+    </div>
+  );
+})}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+
+        {/*tin tức*/}
+ {activeSection === 'posts' && (
+  <div className="sp-section">
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingBlog ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa bài viêt</h2>
+
+        <div className="form-group">
+          <label>Tên bài viêt:</label>
+          <input
+            type="text"
+            value={editingCategory.title}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, title: e.target.value })
+            }
+            placeholder="Nhập tiêu đề tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content: </label>
+          <textarea
+            value={editingCategory.content}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, content: e.target.value })
+            }
+            placeholder="Nhập content"
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingCategory.description}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, description: e.target.value })
+            }
+            placeholder="Nhập tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingCategory.image[0] || ''}
+            onChange={(e) =>
+              setEditingCategory({
+                ...editingCategory,
+                image: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingCategory(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm vào danh sách */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {blogList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {blogList.map((blog) => (
+              <div key={blog._id} className="sp-card">
+                <div className="sp-info">
+                  <img
+                    src={blog.image[0] || '/images/default.jpg'}
+                    alt={blog.name}
+                    className="image"
+                    style={{width: 168, height:168}}
+                  />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{blog.title}</h3>
+                    <p><strong>Mô tả:</strong> {blog.description || 'Không có mô tả'}</p>
+                    <p><strong>Danh mục:</strong> {blog.content || 'Không có'}</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(blog)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(blog._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+
+        {/*danh mục*/}
+ {activeSection === 'categories' && (
+  <div className="sp-section">
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingCategory ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa bài viêt</h2>
+
+        <div className="form-group">
+          <label>Tên bài viêt:</label>
+          <input
+            type="text"
+            value={editingCategory.title}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, title: e.target.value })
+            }
+            placeholder="Nhập tiêu đề tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content: </label>
+          <textarea
+            value={editingCategory.content}
+            onChange={(e) =>
+              setEditingCategory({ ...editingCategory, content: e.target.value })
+            }
+            placeholder="Nhập content"
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingCategory.description}
+            onChange={(e) =>
+              setEditingBlog({ ...editingCategory, description: e.target.value })
+            }
+            placeholder="Nhập tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingCategory.image[0] || ''}
+            onChange={(e) =>
+              setEditingCategory({
+                ...editingCategory,
+                image: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingCategory(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm vào danh sách */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {categoryList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {categoryList.map((category) => (
+              <div key={category._id} className="sp-card">
+                <div className="sp-info">
+                  <img
+                    src={category.image || '/images/default.jpg'}
+                    alt={category.name}
+                    className="image"
+                    style={{width: 168, height:168}}
+                  />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{category.name}</h3>
+                    <p><strong>Mô tả:</strong> {category.description || 'Không có mô tả'}</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(category)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(category._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+
+        {/*mã khuyến mãi*/}
+ {activeSection === 'coupons' && (
+  <div className="sp-section">
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingCoupon ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa bài viêt</h2>
+
+        <div className="form-group">
+          <label>Tên bài viêt:</label>
+          <input
+            type="text"
+            value={editingCoupon.title}
+            onChange={(e) =>
+              setEditingCoupon({ ...editingCoupon, title: e.target.value })
+            }
+            placeholder="Nhập tiêu đề tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content: </label>
+          <textarea
+            value={editingCoupon.content}
+            onChange={(e) =>
+              setEditingCoupon({ ...editingCoupon, content: e.target.value })
+            }
+            placeholder="Nhập content"
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingCoupon.description}
+            onChange={(e) =>
+              setEditingBlog({ ...editingCoupon, description: e.target.value })
+            }
+            placeholder="Nhập tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingCoupon.image[0] || ''}
+            onChange={(e) =>
+              setEditingCoupon({
+                ...editingCoupon,
+                image: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingCoupon(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm vào danh sách */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {couponList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {couponList.map((coupon) => (
+              <div key={coupon._id} className="sp-card">
+                <div className="sp-info">
+                  <div className="sp-content">
+                    <h3 className="sp-name">{coupon.code}</h3>
+                    <p><strong>giảm giá:</strong> {coupon.discount || 'Không có mô tả'}%</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(coupon)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(coupon._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
+
+        {/*sự kiện*/}
+ {activeSection === 'events' && (
+  <div className="sp-section">
+
+    {/* Nếu đang sửa thì chỉ hiển thị form sửa */}
+    {editingEvent ? (
+      <div className="edit-product-form">
+        <h2 className="form-title">Sửa bài viêt</h2>
+
+        <div className="form-group">
+          <label>Tên bài viêt:</label>
+          <input
+            type="text"
+            value={editingEvent.title}
+            onChange={(e) =>
+              setEditingEvent({ ...editingEvent, title: e.target.value })
+            }
+            placeholder="Nhập tiêu đề tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Content: </label>
+          <textarea
+            value={editingEvent.content}
+            onChange={(e) =>
+              setEditingEvent({ ...editingEvent, content: e.target.value })
+            }
+            placeholder="Nhập content"
+          />
+        </div>
+        
+        <div className="form-group">
+          <label>Mô tả:</label>
+          <textarea
+            value={editingEvent.description}
+            onChange={(e) =>
+              setEditingEvent({ ...editingEvent, description: e.target.value })
+            }
+            placeholder="Nhập tin tức"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Hình ảnh:</label>
+          <input
+            type="text"
+            value={editingEvent.image[0] || ''}
+            onChange={(e) =>
+              setEditingEvent({
+                ...editingEvent,
+                image: [{ image: e.target.value }],
+              })
+            }
+            placeholder="Nhập link hình ảnh"
+          />
+        </div>
+
+        <div className="form-actions1">
+          <button className="btn btn-success" onClick={handleUpdateProduct}>
+            Cập nhật sản phẩm
+          </button>
+          <button className="btn btn-secondary" onClick={() => setEditingEvent(null)}>
+            Hủy
+          </button>
+        </div>
+      </div>
+    ) : (
+      <>
+        {/* Hiển thị nút Thêm vào danh sách */}
+        <div className="add0">
+          <button className="add"><FaPlus /></button>
+        </div>
+
+        {eventList.length === 0 ? (
+          <p>Không có sản phẩm nào.</p>
+        ) : (
+          <div className="sp-list">
+            {eventList.map((event) => (
+              <div key={event._id} className="sp-card">
+                <div className="sp-info">
+                   <ImageSlider images={event.images || []} />
+                  <div className="sp-content">
+                    <h3 className="sp-name">{event.name}</h3>
+                    <p><strong>ngày bắt đầu:</strong> {event.startDate || 'Không có mô tả'}</p>
+                    <p><strong>ngày kết thúc:</strong> {event.startDate || 'Không có mô tả'}</p>
+                    <p><strong>địa điểm áp dụng:</strong> {event.location || 'Không có mô tả'}</p>
+                    <p><strong>hiện đang áp dụng cho:</strong>{" "}{Array.isArray(event.products) ? event.products.length : 0} sản phẩm</p>
+                    <p><strong>giảm giá:</strong> {event.discount || 'Không có mô tả'}%</p>
+                  </div>
+                </div>
+                <div className="sp-actions">
+                  <button className="sp-btn-edit" onClick={() => handleEditProduct(event)}>Sửa</button>
+                  <button className="sp-btn-delete" onClick={() => handleDeleteProduct(event._id)}>Xoá</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </>
+    )}
+  </div>
+)}
+{showSuccess && (
+  <SuccessPage onClose={() => setShowSuccess(false)} />
+)}
       </main>
     </div>
   );
@@ -584,8 +1607,90 @@ const Progress = ({
       ></div>
     </div>
   </div>
-  
 );
 
+const ImageSlider = ({ images }: { images: string[] }) => {
+  const [current, setCurrent] = useState(0);
+  if (!images || images.length === 0) return null;
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [current, images.length]);
+
+  const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+
+  return (
+    <div style={{ position: "relative", width: 168, height: 168 }}>
+      <img
+        src={images[current] || "/images/default.jpg"}
+        alt=""
+        className="image"
+        style={{ width: 168, height: 168, objectFit: "cover", borderRadius: 8 }}
+      />
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: 0,
+              transform: "translateY(-50%)",
+              background: "rgba(0,0,0,0.3)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "50%",
+              width: 24,
+              height: 24,
+              cursor: "pointer",
+            }}
+          >
+            {"<"}
+          </button>
+          <button
+            onClick={next}
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: 0,
+              transform: "translateY(-50%)",
+              background: "rgba(0,0,0,0.3)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "50%",
+              width: 24,
+              height: 24,
+              cursor: "pointer",
+            }}
+          >
+            {">"}
+          </button>
+        </>
+      )}
+      {/* Dots indicator */}
+      {images.length > 1 && (
+        <div style={{ position: "absolute", bottom: 8, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 4 }}>
+          {images.map((_, idx) => (
+            <span
+              key={idx}
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: idx === current ? "#4f46e5" : "#ccc",
+                display: "inline-block",
+              }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Dashboard;

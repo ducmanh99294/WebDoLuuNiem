@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import '../assets/css/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 const LoginPage: React.FC = () => {
   const [emailOrPhone, setEmailOrPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);  // ✅ Đặt ở đây
   const [errorMsg, setErrorMsg] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
+    useEffect(() => {
+    const savedEmail = localStorage.getItem('savedEmail') || '';
+    const savedPassword = localStorage.getItem('savedPassword') || '';
+    const savedRemember = localStorage.getItem('rememberMe') === 'true';
+
+    if (savedRemember) {
+      setEmailOrPhone(savedEmail);
+      setPassword(savedPassword);
+      setRememberMe(true);
+    }
+  }, []);
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -31,13 +45,46 @@ const LoginPage: React.FC = () => {
         const name = data.data?.name?.trim() || 'Người dùng'
         const avatar = data.data?.avatar || '/images/default-avatar.png';
         const userId = data.data?.user_id || '';
-
+        
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
         localStorage.setItem('role', role);
         localStorage.setItem('username', name);
         console.log('Role:', role);
+        
         localStorage.setItem('avatar', avatar);   // ✔ avatar
+        const tempCart = JSON.parse(localStorage.getItem('temp_cart') || '[]');
+        if (tempCart.length > 0) {
+          try {
+            await fetch('http://localhost:3000/api/v1/carts/merge-session', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({ items: tempCart }),
+            });
+            localStorage.removeItem('temp_cart'); // Xoá giỏ tạm sau khi merge thành công
+          } catch (mergeErr) {
+            console.error('Lỗi khi merge giỏ hàng:', mergeErr);
+          }
+        }
+        localStorage.setItem('avatar', avatar);  
+        if (res.ok && data.success) {
+  // Save remember me
+  if (rememberMe) {
+    localStorage.setItem('savedEmail', emailOrPhone);
+    localStorage.setItem('savedPassword', password);
+    localStorage.setItem('rememberMe', 'true');
+  } else {
+    localStorage.removeItem('savedEmail');
+    localStorage.removeItem('savedPassword');
+    localStorage.removeItem('rememberMe');
+  }
+
+  // (các xử lý khác giữ nguyên)
+}
+
         if (role === 'admin') {
           console.log('Admin detected. Navigating to dashboard...');
           navigate('/dashboard');
@@ -71,12 +118,18 @@ const LoginPage: React.FC = () => {
             value={emailOrPhone}
             onChange={(e) => setEmailOrPhone(e.target.value)}
           />
-          <input
-            type="password"
-            placeholder="Mật khẩu"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+            <div className="pass">
+  <input
+    type={showPassword ? 'text' : 'password'}
+    placeholder="Mật khẩu"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+  <span className="password-toggle" onClick={() => setShowPassword(!showPassword)}>
+    {showPassword ? <FaEyeSlash /> : <FaEye />}
+  </span>
+</div>
+
           <div className="otp-link">
             <a href="#">Đăng nhập bằng OTP</a>
           </div>
@@ -84,10 +137,14 @@ const LoginPage: React.FC = () => {
           <button type="submit" className="btn-login">Đăng nhập</button>
           {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
           <div className="options">
-            <label style={{ width: '100px' }}>
-              <input type="checkbox" /> Nhớ đến tôi
-            </label>
-          </div>
+  <label style={{ width: '130px' }}>
+    <input
+      type="checkbox"
+      checked={rememberMe}
+      onChange={(e) => setRememberMe(e.target.checked)}
+    /> Nhớ mật khẩu
+  </label>
+</div>
 
           <div className="links">
             <span>Bạn không có tài khoản?
