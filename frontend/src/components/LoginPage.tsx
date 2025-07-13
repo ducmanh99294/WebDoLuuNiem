@@ -56,7 +56,7 @@ const LoginPage: React.FC = () => {
         const tempCart = JSON.parse(localStorage.getItem('temp_cart') || '[]');
         if (tempCart.length > 0) {
           try {
-            await fetch('http://localhost:3000/api/v1/carts/merge-session', {
+            const mergeRes = await fetch('http://localhost:3000/api/v1/carts/merge-session', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -64,13 +64,34 @@ const LoginPage: React.FC = () => {
               },
               body: JSON.stringify({ items: tempCart }),
             });
-            localStorage.removeItem('temp_cart'); // Xoá giỏ tạm sau khi merge thành công
+
+            const mergeData = await mergeRes.json();
+            if (mergeRes.ok && mergeData.success) {
+              localStorage.removeItem('temp_cart');
+
+              // ✅ Sau khi merge, lấy lại giỏ hàng mới theo user để lấy cart_id
+              const cartRes = await fetch('http://localhost:3000/api/v1/carts/user/' + userId, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${token}`,
+                },
+              });
+
+              const cartData = await cartRes.json();
+              if (cartRes.ok && cartData.success && cartData.data) {
+                localStorage.setItem('cart_id', cartData.data._id);
+                navigate('/checkout');
+              }
+            } else {
+              console.error('Merge thất bại:', mergeData.message);
+            }
           } catch (mergeErr) {
             console.error('Lỗi khi merge giỏ hàng:', mergeErr);
           }
         }
+
         localStorage.setItem('avatar', avatar);  
-        if (res.ok && data.success) {
+        if (data.success) {
   // Save remember me
   if (rememberMe) {
     localStorage.setItem('savedEmail', emailOrPhone);
@@ -81,7 +102,6 @@ const LoginPage: React.FC = () => {
     localStorage.removeItem('savedPassword');
     localStorage.removeItem('rememberMe');
   }
-
   // (các xử lý khác giữ nguyên)
 }
 
