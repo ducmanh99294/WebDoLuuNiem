@@ -207,3 +207,40 @@ exports.createCartWithSession = async () => {
     res.status(500).json({ success: false, message: 'Lỗi server khi merge cart' });
   }
 }
+
+// POST /api/v1/carts/merge-session
+exports.mergeTempCart = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const items = req.body.items;
+
+    if (!items || !Array.isArray(items)) {
+      return res.status(400).json({ success: false, message: 'Dữ liệu không hợp lệ' });
+    }
+
+    // Tìm hoặc tạo cart của người dùng
+    let cart = await Cart.findOne({ user: userId });
+    if (!cart) {
+      cart = await Cart.create({ user: userId });
+    }
+
+    for (const item of items) {
+      const existing = await CartDetail.findOne({ cart: cart._id, product_id: item.product_id });
+      if (existing) {
+        existing.quantity += item.quantity;
+        await existing.save();
+      } else {
+        await CartDetail.create({
+          cart_id: cart._id,
+          product_id: item.product_id,
+          quantity: item.quantity,
+        });
+      }
+    }
+
+    return res.json({ success: true, message: 'Đã merge giỏ hàng thành công' });
+  } catch (err) {
+    console.error('Lỗi merge giỏ hàng:', err);
+    return res.status(500).json({ success: false, message: 'Lỗi server khi merge giỏ hàng' });
+  }
+};

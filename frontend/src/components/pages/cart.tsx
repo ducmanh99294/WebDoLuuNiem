@@ -6,8 +6,16 @@ const CartPage: React.FC = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const cartId = localStorage.getItem('cart_id');
+  const [cartId, setCartId] = useState<string | null>(localStorage.getItem('cart_id'));
   const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    // cập nhật lại cartId nếu user vừa đăng nhập
+    const updatedCartId = localStorage.getItem('cart_id');
+    if (updatedCartId !== cartId) {
+      setCartId(updatedCartId);
+    }
+  }, [token]);
 
   useEffect(() => {
     const fetchCartData = async () => {
@@ -51,7 +59,7 @@ const CartPage: React.FC = () => {
     fetchCartData();
   }, [cartId, token]);
 
-  // ✅ Hàm xử lý xóa từng sản phẩm
+  // Hàm xử lý xóa từng sản phẩm
   const handleDeleteProduct = async (cartDetailId: string) => {
     if (!token) {
       // Nếu chưa đăng nhập → xóa khỏi localStorage
@@ -80,11 +88,11 @@ const CartPage: React.FC = () => {
     }
   };
 
-  // ✅ Cập nhật số lượng
+  // Cập nhật số lượng
   const handleQuantityChange = async (id: string, newQty: number) => {
+    const tempCart = JSON.parse(localStorage.getItem('temp_cart') || '[]');
     if (!token) {
       // Nếu chưa đăng nhập → cập nhật trong temp_cart
-      const tempCart = JSON.parse(localStorage.getItem('temp_cart') || '[]');
       const updated = tempCart.map((item: any) =>
         item.product_id === id ? { ...item, quantity: newQty } : item
       );
@@ -118,7 +126,7 @@ const CartPage: React.FC = () => {
     }
   };
 
-  // ✅ Tổng giá
+  // Tổng giá
   const totalPrice = cart.reduce((sum, item) => {
     const product = item.product_id;
     if (!product || !product.price) return sum;
@@ -198,7 +206,8 @@ const CartPage: React.FC = () => {
           <button
             className="btn-green full-width"
             onClick={() => {
-             navigate("/checkout")
+              if (!token) navigate("/login");
+              else navigate("/checkout");
             }}
           >
             Chuyển đến thanh toán
@@ -207,6 +216,6 @@ const CartPage: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default CartPage;

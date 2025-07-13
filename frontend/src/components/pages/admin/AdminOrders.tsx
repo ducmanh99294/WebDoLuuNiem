@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FiSearch, FiChevronDown, FiEye, FiCheck, FiArrowLeft } from 'react-icons/fi';
-import '../../assets/css/Dashboard.css';
+import '../../../assets/css/Dashboard.css';
 import { useNavigate } from 'react-router-dom';
 
 const AdminOrders: React.FC = () => {
