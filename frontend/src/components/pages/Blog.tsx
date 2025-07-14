@@ -46,7 +46,7 @@ const Blog: React.FC = () => {
   useEffect(()=>{
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/blogs`);
+        const res = await fetch(`http://localhost:3001/api/v1/blogs`);
         const data = await res.json();
         
         if(data.success) {

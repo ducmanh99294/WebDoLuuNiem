@@ -8,7 +8,7 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/blogs/${blogId}`); // Thay link bằng API thật
+        const res = await fetch(`http://localhost:3001/api/v1/blogs/${blogId}`); // Thay link bằng API thật
         const data = await res.json();
        if(data.success) {
         setBlog(data.data);

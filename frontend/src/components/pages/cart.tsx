@@ -12,7 +12,7 @@ const CartPage: React.FC = () => {
   useEffect(() => {
     const fetchCartData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+        const res = await fetch(`http://localhost:3001/api/v1/cart-details/cart/${cartId}`, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localStorage.getItem('token') || ''}`
@@ -41,7 +41,7 @@ const handleClearCart = async () => {
 
   try {
     // Gọi API xóa tất cả sản phẩm trong giỏ hàng (cart-detail)
-    const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+    const res = await fetch(`http://localhost:3001/api/v1/cart-details/cart/${cartId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const handleClearCart = async () => {
 
  const handleDeleteProduct = async (cartDetailId: string) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/v1/cart-details/${cartDetailId}`, {
+    const res = await fetch(`http://localhost:3001/api/v1/cart-details/${cartDetailId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const handleClearCart = async () => {
 
   const handleQuantityChange = async (cartDetailId: string, newQty: number) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/v1/cart-details/${cartDetailId}/quantity`, {
+      const res = await fetch(`http://localhost:3001/api/v1/cart-details/${cartDetailId}/quantity`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

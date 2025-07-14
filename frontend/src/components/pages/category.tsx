@@ -13,7 +13,7 @@ const CategoryPage: React.FC = () => {
     const fetchCategoryData = async () => {
       try {
         // Lấy sản phẩm theo danh mục
-        const res1 = await fetch(`http://localhost:3000/api/v1/products/category/${categoryId}`);
+        const res1 = await fetch(`http://localhost:3001/api/v1/products/category/${categoryId}`);
         const data1 = await res1.json();
         if (data1.success) {
           setCategoryName(data1.category?.name || "");
@@ -21,7 +21,7 @@ const CategoryPage: React.FC = () => {
         }
 
         // Lấy sản phẩm liên quan
-        const res2 = await fetch(`http://localhost:3000/api/v1/products`);
+        const res2 = await fetch(`http://localhost:3001/api/v1/products`);
         const data2 = await res2.json();
         if (data2.success) setRelated(data2.products);
       } catch (err) {
@@ -54,7 +54,7 @@ const CategoryPage: React.FC = () => {
         {products.map((p) => {
             return (
           <div key={p._id} className="product-card">
-            <img src={`http://localhost:3000/api/v1/images/${p.images[0]}`} alt={p.name} />
+            <img src={`http://localhost:3001/api/v1/images/${p.images[0]}`} alt={p.name} />
             <h4>{p.name}</h4>
             <p>{p.price}₫</p>
           </div>

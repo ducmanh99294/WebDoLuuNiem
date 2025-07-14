@@ -108,13 +108,8 @@
 // };
 
 // export default Contact;
-
-import React from 'react';
+import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
-
-const Contact: React.FC = () => {
-
-import React , { useState }from 'react';
 import '../../assets/css/Contact.css'
 import { ContactSuccess } from '../PaymentSuccess';
 
@@ -152,7 +147,7 @@ const Contact: React.FC = () => {
       email: formData.email,
       message: formData.message,
     }
-      const res = await fetch(`http://localhost:3000/api/v1/contacts`, {
+      const res = await fetch(`http://localhost:3001/api/v1/contacts`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',

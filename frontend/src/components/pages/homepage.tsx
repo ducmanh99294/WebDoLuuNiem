@@ -19,13 +19,13 @@ const Home: React.FC = () => {
     const fetchCategories = async () => {
       try {
         // 1. Lấy tất cả danh mục
-        const catRes = await fetch('http://localhost:3000/api/v1/categories');
+        const catRes = await fetch('http://localhost:3001/api/v1/categories');
         const catData = await catRes.json();
         setCategories(catData.data || []);
 
         // 2. Lấy sản phẩm theo danh mục
         const promises = catData.data.map(async (cat: any) => {
-          const prodRes = await fetch(`http://localhost:3000/api/v1/products/category/${cat._id}`);
+          const prodRes = await fetch(`http://localhost:3001/api/v1/products/category/${cat._id}`);
           const prodData = await prodRes.json();
           return { categoryId: cat._id, products: prodData.products.slice(0, 4) }; // Lấy 4 sản phẩm đầu
         });
