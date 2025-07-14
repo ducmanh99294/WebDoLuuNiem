@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../assets/css/user.css';
 import axios from 'axios';
-import { data } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 interface User {
   _id: string;

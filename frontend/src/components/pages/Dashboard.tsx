@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import  {useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { Store, LogOut, MessageCircle } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,25 +10,32 @@ import {
   BarElement,
   Tooltip,
   Legend,
-} from "chart.js";
+} from "chart.js"
 import "../../assets/css/Dashboard.css";
-import { useNavigate } from 'react-router-dom';
+import { _descriptors } from "chart.js/helpers";
+import AdminOrders from './admin/AdminOrders';
+import AdminEvents from "./admin/AdminEvents";
+import UserManager from "./admin/userManager";
+import BlogManagement from "./admin/BlogManagement";
+import CouponManagement from "./admin/CouponManagement";
+import CategoryManagement from "./admin/CategoryManagement";
+import ProductManagement from "./admin/ProductManagement";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const Dashboard = () => {
-  const [userList, setUserList] = useState<any[]>([]);
   const [userCount, setUserCount] = useState<number>(0);
   const [activeSection, setActiveSection] = useState('dashboard');
   const navigate = useNavigate();
-  const [productList, setProductList] = useState<any[]>([]);
 
+  // đăng xuất 
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('userId');
     navigate('/login');
   };
+
 
 useEffect(() => {
   const fetchUserCount = async () => {
@@ -92,8 +100,15 @@ useEffect(() => {
 
   if (activeSection === 'products') {
     fetchProductList();
+
+  // Decode adminId từ token
+  const token = localStorage.getItem('token');
+  let adminId = '';
+  if (token) {
+    const decoded: any = jwtDecode(token);
+    adminId = decoded.sub || decoded._id || decoded.id;
+
   }
-}, [activeSection]);
 
   const chartData = {
     labels: [
@@ -115,18 +130,88 @@ useEffect(() => {
       <aside className="sidebar">
         <div className="sidebar-header">🛒 Cửa Hàng Đặc Sản</div>
         <nav className="sidebar-menu">
-          <div onClick={() => setActiveSection('dashboard')} className="menu-highlight">📊 Báo cáo</div>
-          <div onClick={() => setActiveSection('chat')}><MessageCircle size={18}/> Khung chat</div>
-          <div onClick={() => setActiveSection('users')}>👥 Quản lý người dùng</div>
-          <div onClick={() => setActiveSection('products')}>📦 Quản lý sản phẩm</div>
-          <div onClick={() => setActiveSection('posts')}>📝 Quản lý bài viết</div>
-          <div onClick={() => setActiveSection('categories')}>📁 Quản lý danh mục</div>
-          <div onClick={() => setActiveSection('coupons')}>📁 Quản lý mã khuyến mãi</div>
-          <div onClick={() => setActiveSection('stores')}><Store size={18} /> Gian hàng hợp tác</div>
-          <div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <LogOut size={18} /> Đăng Xuất
-          </div>
-        </nav>
+  <div 
+    onClick={() => setActiveSection('dashboard')} 
+    className={activeSection === 'dashboard' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    📊 Báo cáo
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('chat')} 
+    className={activeSection === 'chat' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    <MessageCircle size={18}/> Khung chat
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('users')} 
+    className={activeSection === 'users' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    👥 Quản lý người dùng
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('products')} 
+    className={activeSection === 'products' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    📦 Quản lý sản phẩm
+  </div>
+
+  <div 
+  onClick={() => setActiveSection('orders')} 
+  className={activeSection === 'orders' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+  🚚 Quản lý đơn hàng
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('posts')} 
+    className={activeSection === 'posts' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    📝 Quản lý bài viết
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('categories')} 
+    className={activeSection === 'categories' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    📁 Quản lý danh mục
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('coupons')} 
+    className={activeSection === 'coupons' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    🏷️ Quản lý mã khuyến mãi
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('events')} 
+    className={activeSection === 'events' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    🏷️ quản lí sự kiện
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('stores')} 
+    className={activeSection === 'stores' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    <Store size={18} /> Gian hàng hợp tác
+  </div>
+
+  <div 
+    onClick={() => setActiveSection('reviews')} 
+    className={activeSection === 'reviews' ? 'menu-highlight active' : 'menu-highlight'}
+  >
+    <Store size={18} /> Đánh giá sản phẩm
+  </div>
+
+  <div onClick={handleLogout} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
+    <LogOut size={18} /> Đăng Xuất
+  </div>
+</nav>
+
         <div className="sidebar-footer">
           <div>⚙️ Cài đặt</div>
           <div className="user-info">Hoang<br />hoang123@gmail.com</div>
@@ -136,52 +221,18 @@ useEffect(() => {
       <main className="main-content">
         <h1 className="title">
           {activeSection === 'dashboard' && '📈 Thống kê'}
-          {activeSection === 'products' && '📦 Quản lý sản phẩm'}
-{activeSection === 'users' && (
-  <div className="user-management">
-    <div className="user-header">
-      <button onClick={() => setActiveSection('dashboard')}>Back</button>
-      <h2>Quản lí người dùng</h2>
-      <button className="add-user">Thêm người dùng</button>
-    </div>
-
-    <div className="user-list">
-      {userList.map((user) => (
-        <div key={user._id} className="user-card0">
-          <div className="user-infor2">
-            <img
-              src={user.avatar || "/images/default-avatar.png"}
-              alt="avatar"
-              className="avatar-img"
-            />
-            <div className="user-details1">
-              <h3 className="user-name1">{user.name}</h3>
-              <p><strong>Email:</strong> {user.email}</p>
-              <p><strong>SĐT:</strong> {user.phone}</p>
-              <p><strong>Vai trò:</strong> {user.role}</p>
-              <p><strong>Địa chỉ:</strong> {user.address}</p>
-            </div>
-          </div>
-          <div className="user-actions">
-            <button className="btn-edit">Sửa</button>
-            <button className="btn-delete">Xoá</button>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-
-
-    {activeSection === 'chat' && '💬 Khung chat'}
+          {activeSection === 'chat' && '💬 Khung chat'}
+          {activeSection === 'chat' && '💬 Khung chat'}
           {activeSection === 'posts' && '📝 Bài viết'}
           {activeSection === 'categories' && '📁 Danh mục'}
           {activeSection === 'coupons' && '🏷️ Mã khuyến mãi'}
           {activeSection === 'stores' && '🏪 Gian hàng'}
+          {activeSection === 'events' && '🏷️ quản lí sự kiện'}
+          {activeSection === 'products' && '🛒 quản lí sản phẩm'}
         </h1>
 
         {/* Nội dung từng phần */}
-        {activeSection === 'dashboard' && (
+{activeSection === 'dashboard' && (
           <>
             <div className="filters">
               <select><option value="all">Thời gian: Từ trước tới nay</option></select>
@@ -202,7 +253,7 @@ useEffect(() => {
               <div className="charts-grid">
                 <div className="full-span">
                   <div className="n2">
-                    <h2>Activity</h2>
+                    <h2>Báo cáo </h2>
                     <select>
                       <option value="ngay">Ngày</option>
                       <option value="thang">Tháng</option>
@@ -245,42 +296,22 @@ useEffect(() => {
               </div>
             </div>
           </>
-        )}
-
-        {/* Các mục khác, ví dụ products */}
-       {activeSection === 'products' && (
-  <div className="sp-section">
-    <h2>📦 Quản lý sản phẩm</h2>
-    {productList.length === 0 ? (
-      <p>Không có sản phẩm nào.</p>
-    ) : (
-      <div className="sp-list">
-        {productList.map((product) => (
-          <div key={product._id} className="sp-card">
-            <div className="sp-info">
-              <img
-                src={product.image || "/images/default-product.png"}
-                alt={product.name}
-                className="sp-img"
-              />
-              <div className="sp-content">
-                <h3 className="sp-name">{product.name}</h3>
-                <p><strong>Giá:</strong> {product.price?.toLocaleString()}đ</p>
-                <p><strong>Mô tả:</strong> {product.description || 'Không có mô tả'}</p>
-                <p><strong>Danh mục:</strong> {product.category?.name || 'Không có'}</p>
-              </div>
-            </div>
-            <div className="sp-actions">
-              <button className="sp-btn-edit">Sửa</button>
-              <button className="sp-btn-delete">Xoá</button>
-            </div>
-          </div>
-        ))}
-      </div>
-    )}
-  </div>
 )}
 
+        {/*sẩn phẩm*/}
+{activeSection === 'products' && <ProductManagement />}
+        {/*sự kiện*/}
+{activeSection === 'events' && <AdminEvents />}
+        {/* đơn hàng */}
+{activeSection === 'orders' && <AdminOrders />}
+        {/*tin tức*/}
+{activeSection === 'posts' && <BlogManagement />}
+        {/*người dùng*/}
+{activeSection === 'users' && <UserManager />}
+        {/*danh mục*/}
+{activeSection === 'categories' && <CategoryManagement />}
+        {/*mã giảm giá*/}
+{activeSection === 'coupons' && <CouponManagement />}
       </main>
     </div>
   );

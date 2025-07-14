@@ -1,127 +1,125 @@
-
 import React, { useState } from 'react';
 import '../assets/css/Register.css';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
-const LoginPage: React.FC = () => {
-  const [step, setStep] = useState<'form' | 'otp'>('form');
-  const [contact, setContact] = useState('');
-  const [method, setMethod] = useState<'zalo' | 'sms' | ''>('');
-  const [otp, setOtp] = useState('');
+const RegisterPage: React.FC = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
   const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!contact) return setError('Vui lòng nhập email hoặc số điện thoại.');
-    if (!method) return setError('Vui lòng chọn phương thức OTP.');
-    // Mô phỏng gửi OTP
-    alert('Mã OTP đã được gửi! (mock: 123456)');
-    setStep('otp');
-    setError('');
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleVerifyOtp = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (otp === '123456') {
-      alert('Đăng ký thành công!');
-      // Reset lại form
-      setContact('');
-      setMethod('');
-      setOtp('');
-      setStep('form');
-    } else {
-      setError('Mã OTP không chính xác.');
+    const { email, password, confirmPassword } = formData;
+
+    console.log('👉 Dữ liệu gửi:', formData);
+
+    if (!email || !password || !confirmPassword) {
+      setError('Vui lòng nhập đầy đủ thông tin.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Mật khẩu không khớp.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3000/api/v1/auth/register', {
+        email,
+        password,
+      });
+
+      console.log('✅ Phản hồi:', response.data);
+
+      if (response.data.success) {
+        alert('Đăng ký thành công!');
+        setError('');
+        navigate('/login');  // 👉 Chuyển thẳng sang login
+      } else {
+        setError(response.data.message || 'Đăng ký thất bại.');
+      }
+    } catch (err: any) {
+      console.log('❌ Lỗi:', err.response?.data);
+      setError(err.response?.data?.error || 'Có lỗi xảy ra.');
     }
   };
 
   return (
     <div className="login-container">
       <div className="login-left">
-        <h2>{step === 'form' ? 'Đăng Ký' : 'Nhập mã OTP'}</h2>
+        <h2>Đăng Ký</h2>
         <p>
           <strong>Shop Mall</strong> Đăng nhập hoặc tạo tài khoản
           <span className="highlight"> Chúng Tôi </span>
-          phục vụ bạn tốt hơn nhé.<br />
+          phục vụ bạn tốt hơn nhé.
         </p>
 
         {error && <div style={{ color: 'red', marginBottom: 12 }}>{error}</div>}
 
-        {step === 'form' ? (
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Email hoặc số điện thoại"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
-            />
+        <form onSubmit={handleSubmit}>
+        
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="Mật khẩu"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="Xác nhận mật khẩu"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+          />
 
-            <div className="options" style={{ marginTop: 12 }}>
-              <label>
-                <input
-                  type="radio"
-                  checked={method === 'zalo'}
-                  onChange={() => setMethod('zalo')}
-                />{' '}
-                Zalo OTP
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  checked={method === 'sms'}
-                  onChange={() => setMethod('sms')}
-                />{' '}
-                SMS OTP
-              </label>
-            </div>
+          <button type="submit" className="btn-login" style={{ marginTop: 12 }}>
+            Đăng ký
+          </button>
 
-            <button type="submit" className="btn-login" style={{ marginTop: 12 }}>
-              Tiếp tục
-            </button>
-
-            <div className="links">
-              <span>
-                Bạn đã có tài khoản <a href="/login">Đăng nhập</a>
-              </span>
-            </div>
-          </form>
-        ) : (
-          <form onSubmit={handleVerifyOtp}>
-            <input
-              type="text"
-              placeholder="Nhập mã OTP"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-            />
-            <button type="submit" className="btn-login" style={{ marginTop: 12 }}>
-              Xác nhận
-            </button>
-          </form>
-        )}
+          <div className="links">
+            <span>
+              Bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
+            </span>
+          </div>
+        </form>
 
         <div className="divider">Hoặc đăng nhập bằng</div>
         <div className="social-login">
-          <a
-            href="https://www.facebook.com/login"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.facebook.com/login" target="_blank" rel="noopener noreferrer">
             <button type="button" className="facebook-btn">Facebook</button>
           </a>
-          <a
-            href="https://accounts.google.com/signin"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://accounts.google.com/signin" target="_blank" rel="noopener noreferrer">
             <button type="button" className="google-btn">Google</button>
           </a>
         </div>
       </div>
 
-      <div className="login-right">{/* Có thể thêm ảnh hoặc trang trí tại đây */}
-        <img src="/images/bn3.png" alt=""/>
+      <div className="login-right">
+        <img src="/images/bn3.png" alt="Shop Mall" />
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

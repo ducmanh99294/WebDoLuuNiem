@@ -1,4 +1,6 @@
 const CartService = require('../services/cartService');
+const Cart = require('../models/Cart');
+const CartDetail = require('../models/CartDetail');
 const logger = require('../utils/logger'); // Adjust path as needed
 
 // [POST] /carts
@@ -130,20 +132,115 @@ exports.deleteCart = async (req, res) => {
 };
 
 // [GET] /carts/user/:userId
-exports.getCartsByUser = async (req, res) => {
-    try {
-        logger.info(`Fetching carts for user: ${req.params.userId}`);
-        const carts = await CartService.getCartsByUser(req.params.userId);
-        res.status(200).json({
-            success: true,
-            data: carts
-        });
-    } catch (err) {
-        logger.error(`Error fetching carts by user: ${err.message}`);
-        res.status(400).json({
-            success: false,
-            error: 'Failed to fetch carts by user',
-            details: err.message
-        });
+exports.getCartByUser = async (req, res) => {
+  try {
+    console.log('🔍 req.user.id:', req.user.id);
+    console.log('🔍 req.params.userId:', req.params.userId);
+    console.log('🔍 req.user.role:', req.user.role);
+    const requestedUserId = req.params.userId;
+    const currentUserId = req.user.id;
+    const isAdmin = req.user.role === 'admin';
+    if (!isAdmin && requestedUserId !== String(currentUserId)) {
+      return res.status(403).json({
+        success: false,
+        message: 'Bạn không có quyền truy cập giỏ hàng của người khác'
+      });
     }
+
+    const cart = await Cart.findOne({ user: requestedUserId }).lean();
+    if (!cart) {
+      return res.status(404).json({
+        success: false,
+        message: 'Không tìm thấy giỏ hàng'
+      });
+    }
+
+    const cartDetails = await CartDetail.find({ cart_id: cart._id }).populate('product_id').lean();
+
+    res.status(200).json({
+      success: true,
+      data: {
+        ...cart,
+        cartDetails: cartDetails || []
+      }
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Lỗi server',
+      error: err.message
+    });
+  }
+};
+
+exports.createCartWithSession = async () => {
+    try {
+    const userId = req.user.id;
+    const items = req.body.items;
+
+    let cart = await Cart.findOne({ user: userId });
+    if (!cart) {
+      cart = await Cart.create({ user: userId });
+    }
+
+    for (const item of items) {
+      const existingItem = await CartDetail.findOne({
+        cart_id: cart._id,
+        product_id: item.product_id
+      });
+
+      if (existingItem) {
+        existingItem.quantity += item.quantity;
+        await existingItem.save();
+      } else {
+        await CartDetail.create({
+          cart_id: cart._id,
+          product_id: item.product_id,
+          quantity: item.quantity
+        });
+      }
+    }
+
+    return res.json({ success: true, message: 'Merged session cart successfully' });
+  } catch (error) {
+    console.error('Lỗi khi merge cart:', error);
+    res.status(500).json({ success: false, message: 'Lỗi server khi merge cart' });
+  }
+}
+
+// POST /api/v1/carts/merge-session
+exports.mergeTempCart = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const items = req.body.items;
+
+    if (!items || !Array.isArray(items)) {
+      return res.status(400).json({ success: false, message: 'Dữ liệu không hợp lệ' });
+    }
+
+    // Tìm hoặc tạo cart của người dùng
+    let cart = await Cart.findOne({ user: userId });
+    if (!cart) {
+      cart = await Cart.create({ user: userId });
+    }
+
+    for (const item of items) {
+      const existing = await CartDetail.findOne({ cart: cart._id, product_id: item.product_id });
+      if (existing) {
+        existing.quantity += item.quantity;
+        await existing.save();
+      } else {
+        await CartDetail.create({
+          cart_id: cart._id,
+          product_id: item.product_id,
+          quantity: item.quantity,
+        });
+      }
+    }
+
+    return res.json({ success: true, message: 'Đã merge giỏ hàng thành công' });
+  } catch (err) {
+    console.error('Lỗi merge giỏ hàng:', err);
+    return res.status(500).json({ success: false, message: 'Lỗi server khi merge giỏ hàng' });
+  }
 };

@@ -15,10 +15,6 @@ const OrderDetailSchema = new mongoose.Schema({
         index: true,
         unique: false
     },
-    quantity: {
-        type: Number,
-        default: null
-    }
 }, {
     timestamps: false
 });

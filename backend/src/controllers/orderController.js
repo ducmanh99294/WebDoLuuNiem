@@ -8,33 +8,44 @@ const { Console } = require('winston/lib/winston/transports');
 
 const createOrder = async (req, res) => {
   try {
-    const { user, order_number, products, total_price, shipping, payment } = req.body;
+    const { user, order_number, products, shipping, payment, customer, coupon = [] } = req.body;
 
-    // Validation
-    if (!user || !order_number || !products || !total_price || !shipping) {
+    // ✅ Validate cơ bản
+    if (!user || !order_number || !products || !shipping || !payment || !customer) {
       return res.status(400).json({
         success: false,
-        message: 'Thiếu thông tin cần thiết: user, order_number, products, total_price, shipping'
+        message: 'Thiếu thông tin bắt buộc: user, order_number, products, shipping, payment, customer'
       });
     }
+
+    if (!customer.fullName || !customer.phone || !customer.email) {
+      return res.status(400).json({
+        success: false,
+        message: 'Thiếu thông tin người nhận: fullName, phone, email'
+      });
+    }
+
     if (!mongoose.isValidObjectId(user)) {
       return res.status(400).json({
         success: false,
         message: 'ID người dùng không hợp lệ'
       });
     }
+
     if (!Array.isArray(products) || products.length === 0) {
       return res.status(400).json({
         success: false,
         message: 'Danh sách sản phẩm không hợp lệ'
       });
     }
+
     if (products.some(p => !mongoose.isValidObjectId(p.product) || p.quantity < 1 || p.price < 0)) {
       return res.status(400).json({
         success: false,
         message: 'Sản phẩm không hợp lệ'
       });
     }
+
     if (!shipping.address || shipping.price < 0) {
       return res.status(400).json({
         success: false,
@@ -42,7 +53,7 @@ const createOrder = async (req, res) => {
       });
     }
 
-    // Kiểm tra sản phẩm tồn tại và đủ số lượng
+    // ✅ Kiểm tra tồn kho từng sản phẩm
     await Promise.all(products.map(async (p) => {
       const product = await Product.findById(p.product);
       if (!product || product.quantity < p.quantity) {
@@ -50,6 +61,35 @@ const createOrder = async (req, res) => {
       }
     }));
 
+    // ✅ Tính tổng tiền gốc
+    let rawTotal = products.reduce((sum, p) => sum + p.price * p.quantity, 0);
+
+    // ✅ Kiểm tra và áp dụng coupon
+    let discountPercent = 0;
+    if (coupon.length > 0) {
+      const couponDoc = await mongoose.model('Coupons').findById(coupon[0]);
+
+      if (!couponDoc) {
+        return res.status(400).json({
+          success: false,
+          message: 'Mã giảm giá không hợp lệ'
+        });
+      }
+
+      if (couponDoc.expiry_date < new Date()) {
+        return res.status(400).json({
+          success: false,
+          message: 'Mã giảm giá đã hết hạn'
+        });
+      }
+
+      discountPercent = couponDoc.discount || 0;
+    }
+
+    // ✅ Tổng sau giảm + phí vận chuyển
+    const finalTotal = Math.max(0, rawTotal * (1 - discountPercent / 100) + shipping.price);
+
+    // ✅ Tạo đơn hàng
     const newOrder = await Order.create({
       user,
       order_number,
@@ -57,15 +97,16 @@ const createOrder = async (req, res) => {
         product: p.product,
         quantity: p.quantity,
         price: p.price,
-        total_price: p.quantity * p.price
+        total_price: p.price * p.quantity
       })),
-      coupon: req.body.coupon || [],
-      total_price,
+      coupon,
+      total_price: finalTotal,
+      customer,
       shipping,
       payment
     });
 
-    // Gửi thông báo cho người dùng
+    // ✅ Gửi thông báo cho người dùng
     await sendNotification({
       user: newOrder.user,
       sender: req.user._id,
@@ -83,7 +124,7 @@ const createOrder = async (req, res) => {
       }
     });
 
-    // Gửi thông báo cho admin
+    // ✅ Gửi thông báo cho admin
     const admins = await mongoose.model('User').find({ role: 'admin' });
     await Promise.all(admins.map(admin =>
       sendNotification({
@@ -96,14 +137,15 @@ const createOrder = async (req, res) => {
       })
     ));
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: 'Tạo đơn hàng thành công',
       order: newOrder
     });
+
   } catch (error) {
     logger.error(`Error creating order: ${error.message}`);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Lỗi khi tạo đơn hàng',
       error: error.message
@@ -153,8 +195,7 @@ const getOrderById = async (req, res) => {
     }
 
     const order = await Order.findById(req.params.id)
-      .select('order_number status total_price products shipping payment createdAt')
-      .populate('user', 'name email')
+      .populate('user', 'name email') 
       .populate({
         path: 'products.product',
         select: 'name price images',
@@ -173,7 +214,17 @@ const getOrderById = async (req, res) => {
       });
     }
 
-    if (req.user.role !== 'admin' && order.user.toString() !== req.user._id.toString()) {
+    if (!req.user || !req.user._id) {
+      return res.status(401).json({
+        success: false,
+        message: 'Chưa xác thực người dùng'
+      });
+    }
+
+    const isAdmin = req.user.role === 'admin';
+    const isOwner = order.user && order.user._id.toString() === req.user._id.toString();
+
+    if (!isAdmin && !isOwner) {
       return res.status(403).json({
         success: false,
         message: 'Bạn không có quyền xem đơn hàng này'
@@ -212,6 +263,7 @@ const updateOrderStatus = async (req, res) => {
       });
     }
 
+    // Tìm đơn hàng nhưng không cập nhật
     const order = await Order.findById(req.params.id);
     if (!order) {
       return res.status(404).json({
@@ -227,38 +279,47 @@ const updateOrderStatus = async (req, res) => {
       });
     }
 
-    order.status = status;
-    await order.save();
-
+    // SỬA: Sử dụng findByIdAndUpdate để tránh validate toàn bộ đối tượng
+    const updatedOrder = await Order.findByIdAndUpdate(
+      req.params.id,
+      { status: status },
+      { 
+        new: true,
+        runValidators: false, // Tắt validation khi chỉ cập nhật status
+        setDefaultsOnInsert: false
+      }
+    );
+    
     // Cập nhật sell_count khi trạng thái là delivered
     if (status === 'delivered') {
-      await Promise.all(order.products.map(async (item) => {
+      await Promise.all(updatedOrder.products.map(async (item) => {
         await Product.findByIdAndUpdate(item.product, {
           $inc: { sell_count: item.quantity }
         });
       }));
-      logger.info(`Updated sell_count for products in order ${order._id}`);
+      logger.info(`Updated sell_count for products in order ${updatedOrder._id}`);
     }
 
     // Gửi thông báo
     await sendNotification({
-      user: order.user,
+      user: updatedOrder.user,
       sender: req.user._id,
       type: 'order',
-      message: `Đơn hàng #${order.order_number} đã được cập nhật trạng thái thành ${status}`,
-      data: { orderId: order._id, status },
+      message: `Đơn hàng #${updatedOrder.order_number} đã được cập nhật trạng thái thành ${status}`,
+      data: { orderId: updatedOrder._id, status },
       priority: 'high',
       io: req.io,
-      socketRoom: order.user.toString(),
+      socketRoom: updatedOrder.user.toString(),
       socketEvent: 'order_updated',
       socketPayload: {
-        orderId: order._id,
-        orderNumber: order.order_number,
+        orderId: updatedOrder._id,
+        orderNumber: updatedOrder.order_number,
         status
       }
     });
 
-    const populatedOrder = await Order.findById(req.params.id)
+    // Populate lại dữ liệu để trả về
+    const populatedOrder = await Order.findById(updatedOrder._id)
       .populate('user', 'name email')
       .populate('products.product', 'name price')
       .populate('shipping.shipping_company', 'name')
@@ -278,6 +339,7 @@ const updateOrderStatus = async (req, res) => {
     });
   }
 };
+
 
 const deleteOrder = async (req, res) => {
   try {

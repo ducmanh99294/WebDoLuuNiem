@@ -12,7 +12,6 @@ const CategoryList: React.FC = () => {
         const res = await fetch('http://localhost:3001/api/v1/categories');
         const data = await res.json();
         setCategories(data.data || []);
-        console.log('Danh mục:', data.categories);
       } catch (err) {
         console.error('Lỗi gọi API danh mục:', err);
       } finally {

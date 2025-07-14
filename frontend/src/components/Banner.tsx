@@ -1,22 +1,23 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import "../assets/css/baner.css";
 import { FaPaperPlane } from "react-icons/fa";
 const Banner = () => {
+  const swiperModules = [Autoplay, Pagination, Navigation];
   const slides = [
     "/images/slider_dac-san-ngon-da-nang.png",
     "/images/baner1.png",
-    "/images/slider3.png",
+    "/images/8519001.jpg",
   ];
 
   return (
     <div className="banner-container">
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={swiperModules}
         autoplay={{ delay: 1200 }}
         loop={true}
         pagination={{ clickable: true }}

@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import '../../assets/css/checkout.css';
 import {PaymentSuccess} from '../PaymentSuccess';
 
 const Checkout: React.FC = () => {
-  const navigate = useNavigate();
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(true);
   const [coupon, setCoupon] = useState<any[]>([]);
   const [cart, setCart] = useState<any[]>([]);
@@ -18,6 +19,7 @@ const Checkout: React.FC = () => {
   const token = localStorage.getItem('token');
   const [showSuccess, setShowSuccess] = useState(false);
   const shippingPrice = shippingMethod === 'flat' ? 20000 : 0;
+  const navigate = useNavigate();
   //hàm lấy coupon
   useEffect(() => {
     console.log("userId", userId)
@@ -89,7 +91,7 @@ const Checkout: React.FC = () => {
   }
 
   //hàm tạo order
- const handleCreateOrder = async () => {
+const handleCreateOrder = async () => {
   try {
     if (!cart || cart.length === 0) {
       alert('Giỏ hàng trống');
@@ -108,21 +110,27 @@ const Checkout: React.FC = () => {
     }));
 
     const orderData = {
-      user: userId,
-      products,
-      order_number: Math.random().toString(36).substring(2, 10).toUpperCase(),
-      total_price: totalPrice,
-      coupon: selectCoupon?._id ? [selectCoupon._id] : [],
-      shipping: {
-        address: address || 'Địa chỉ mặc định',
-        price: shippingPrice,
-        description: shippingMethod
-      },
-      payment: {
-        method: selectPayment || 'cod',
-        status: 'pending'
-      }
-    };
+  user: userId,
+  products,
+  order_number: Math.random().toString(36).substring(2, 10).toUpperCase(),
+  total_price: totalPrice,
+  coupon: selectCoupon?._id ? [selectCoupon._id] : [],
+  customer: {
+    fullName,
+    email,
+    phone
+  },
+  shipping: {
+    address: address || 'Địa chỉ mặc định',
+    price: shippingPrice,
+    description: shippingMethod
+  },
+  payment: {
+    method: selectPayment || 'cod',
+    status: 'pending'
+  }
+};
+
 
     const res = await fetch('http://localhost:3001/api/v1/orders', {
       method: 'POST',
@@ -136,9 +144,14 @@ const Checkout: React.FC = () => {
     const data = await res.json();
 
     if (data.success) {
-      setShowSuccess(true); // ✅ Hiện khung thông báo
-      // ⏳ Sau 3 giây chuyển trang
-      
+      await handleClearCart();     // ✅ Xóa giỏ hàng sau khi tạo đơn thành công
+      setShowSuccess(true);        // ✅ Hiển thị modal thành công
+
+      // 👉 Nếu bạn muốn tự động chuyển trang sau 3 giây:
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+
     } else {
       console.error('Tạo đơn hàng thất bại:', data.message);
       alert('Tạo đơn hàng thất bại.');
@@ -150,13 +163,20 @@ const Checkout: React.FC = () => {
   }
 };
 
+
  const handleClearCart = async () => {
   if (!cartId || !token) {
     alert('Thiếu thông tin giỏ hàng hoặc đăng nhập');
     return;
   }
+
   try {
+
     const res = await fetch(`http://localhost:3001/api/v1/carts/${cartId}`, {
+
+    // Gọi API xóa tất cả sản phẩm trong giỏ hàng (cart-detail)
+    const res = await fetch(`http://localhost:3001/api/v1/cart-details/cart/${cartId}`, {
+
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -167,10 +187,10 @@ const Checkout: React.FC = () => {
     const data = await res.json();
 
     if (data.success) {
-      console.log('Đã làm sạch giỏ hàng');
+      alert('Đã làm sạch giỏ hàng');
       setCart([]);
     } else {
-      console.log('Không thể làm sạch giỏ hàng');
+      alert('Không thể làm sạch giỏ hàng');
     }
   } catch (err) {
     console.error('Lỗi khi làm sạch giỏ hàng:', err);
@@ -184,16 +204,16 @@ const Checkout: React.FC = () => {
         <h3>Thông tin vận chuyển</h3>
         <div className="form-group">
           <label>Họ và tên</label>
-          <input type="text" placeholder="Name " required/>
+          <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Name" required />
         </div>
         <div className="form-row">
           <div className="form-group">
             <label>Email</label>
-            <input type="email" placeholder="Email" required/>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
           </div>
           <div className="form-group1">
             <label>Điện thoại</label>
-            <input type="text" placeholder="Phone number" required/>
+            <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone number" required />
           </div>
         </div>
         <div className="form-group">
@@ -243,7 +263,11 @@ const Checkout: React.FC = () => {
           <input type="checkbox" /> Yêu cầu xuất hóa đơn công ty
         </label>
 
-        <button className="submit-button" onClick={handleClearCart}>Tiến hành thanh toán</button>
+        <button className="submit-button" onClick={() => {if (!token) {
+                navigate('/login');
+              } else {
+                {handleClearCart}
+              }}}>Tiến hành thanh toán</button>
       </form>
 
       <div className="checkout-summary">
