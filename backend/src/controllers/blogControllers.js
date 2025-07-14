@@ -76,7 +76,7 @@ const getBlogById = async (req,res) => {
 const updateBlog = async (req, res) => {
     try {
         const blog = req.params.id
-        const { title, content, image } = req.body;
+        const { title, content, image, description } = req.body;
         if (!title || !content || !image || !description) {
             logger.warn('Title, content, and image are required to update a blog');
             return res.status(400).json({
@@ -101,7 +101,7 @@ const updateBlog = async (req, res) => {
             data: updateBlog
         })
     } catch (e) {
-        logger.warm(`Error updating blog: ${e.message}`);
+        logger.warn(`Error updating blog: ${e.message}`);
         res.status(500).json({
             success: false,
             message: e.message

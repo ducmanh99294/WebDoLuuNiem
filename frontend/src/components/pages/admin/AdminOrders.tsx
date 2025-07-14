@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FiSearch, FiChevronDown, FiEye, FiCheck, FiArrowLeft } from 'react-icons/fi';
-import '../../../assets/css/Dashboard.css';
+import '../../../assets/css/Oder2.css'
 import { useNavigate } from 'react-router-dom';
 
 const AdminOrders: React.FC = () => {
@@ -10,6 +10,7 @@ const AdminOrders: React.FC = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -78,7 +79,11 @@ const AdminOrders: React.FC = () => {
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
-
+const itemsPerPage = 15;
+const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
+const startIndex = (currentPage - 1) * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+const paginatedOrders = filteredOrders.slice(startIndex, endIndex);
   const getStatusColor = (status: string) => {
     switch(status) {
       case 'pending': return 'bg-yellow-100 text-yellow-800';
@@ -139,11 +144,8 @@ const AdminOrders: React.FC = () => {
             <h2 className="text-2xl font-bold text-gray-800">Quản lý đơn hàng</h2>
           </div>
           
-          <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-            <div className="relative flex-grow">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <FiSearch className="text-gray-400" />
-              </div>
+          <div className="C1">
+            <div className="relative1">
               <input
                 type="text"
                 placeholder="Tìm đơn hàng, tên hoặc email khách hàng..."
@@ -157,7 +159,7 @@ const AdminOrders: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="appearance-none pl-3 pr-8 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="TT"
               >
                 <option value="all">Tất cả trạng thái</option>
                 <option value="pending">Đang chờ xử lý</option>
@@ -166,9 +168,6 @@ const AdminOrders: React.FC = () => {
                 <option value="delivered">Đã giao hàng</option>
                 <option value="cancelled">Đã hủy</option>
               </select>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <FiChevronDown className="text-gray-400" />
-              </div>
             </div>
           </div>
         </div>
@@ -187,8 +186,8 @@ const AdminOrders: React.FC = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {filteredOrders.length > 0 ? (
-                filteredOrders.map((order) => {
+              {paginatedOrders.length > 0 ? (
+                paginatedOrders.map((order) => {
                   const nextStatus = getNextStatus(order.status);
                   const actionText = getActionText(order.status);
                   
@@ -219,8 +218,8 @@ const AdminOrders: React.FC = () => {
                           {getStatusText(order.status)}
                         </span>
                       </td>
-                      <td className="px-6 py-5 whitespace-nowrap text-sm font-medium">
-                        <div className="flex space-x-3">
+                      <td className="thaotac">
+                        <div className="thaotac1">
                           <button
                             onClick={() => {
                               console.log('Navigating to order ID:', order._id);
@@ -266,14 +265,38 @@ const AdminOrders: React.FC = () => {
         {filteredOrders.length > 10 && (
           <div className="mt-6 flex items-center justify-between">
             <div className="text-sm text-gray-500">
-              Hiển thị 1-10 trong tổng số {filteredOrders.length} đơn hàng
+<div className="text-sm text-gray-500">
+  Hiển thị {startIndex + 1}-{Math.min(endIndex, filteredOrders.length)} trong tổng số {filteredOrders.length} đơn hàng
+</div>
             </div>
-            <div className="flex space-x-2">
-              <button className="px-3 py-1 rounded-md bg-gray-100 text-gray-600">Trước</button>
-              <button className="px-3 py-1 rounded-md bg-blue-600 text-white">1</button>
-              <button className="px-3 py-1 rounded-md bg-gray-100 text-gray-600">2</button>
-              <button className="px-3 py-1 rounded-md bg-gray-100 text-gray-600">Sau</button>
-            </div>
+           <div className="X2 flex gap-2">
+  <button
+    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+    className="PX3"
+    disabled={currentPage === 1}
+  >
+    Trước
+  </button>
+
+  {Array.from({ length: totalPages }, (_, i) => (
+    <button
+      key={i + 1}
+      onClick={() => setCurrentPage(i + 1)}
+      className={`PX3 ${currentPage === i + 1 ? 'bg-blue-600 text-white' : ''}`}
+    >
+      {i + 1}
+    </button>
+  ))}
+
+  <button
+    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+    className="PX3"
+    disabled={currentPage === totalPages}
+  >
+    Sau
+  </button>
+</div>
+
           </div>
         )}
       </div>

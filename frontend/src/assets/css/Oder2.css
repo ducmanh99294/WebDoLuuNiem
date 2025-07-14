@@ -1,0 +1,109 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid #0099cc;
+  padding: 10px;
+}
+
+th {
+  background-color: #003366;
+  color: white;
+}
+.status-waiting {
+  background-color: #ffc107;
+  color: black;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.status-approved {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.status-rejected {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.status-imported {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.action-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+}
+
+.edit-btn {
+  color: #007bff;
+}
+
+.delete-btn {
+  color: #dc3545;
+}
+.thaotac1 button{
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    font-size: 13px;
+    border: none;
+    height: 30px;
+    width: 50px;
+    gap: 5px;
+    cursor: pointer;
+}
+.thaotac1 {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+.C1{
+    margin-bottom: 12px;
+    display: flex;
+    gap: 5px;
+}
+.TT{
+    margin-top: 14px;
+    height: 25px;
+    cursor: pointer;
+}
+.relative{
+}
+.relative1{
+    display: flex;
+    height: 25px;
+    margin-top: 14px;
+}
+.X2{
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+}
+.PX3{
+    cursor: pointer;
+}
