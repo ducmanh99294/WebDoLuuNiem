@@ -204,7 +204,7 @@ const handleSaveNewProduct = async (newProduct: any) => {
         name: newProduct.name,
         price: Number(newProduct.price),
         description: newProduct.description,
-        images: images,
+        images: images.map((url) => ({ image: url })),
         categories: [newProduct.category],                     // ✅ mảng id
         discount: Number(newProduct.discount) || 0,
         quantity: Number(newProduct.quantity) || 1,
@@ -244,6 +244,7 @@ const handleSaveNewProduct = async (newProduct: any) => {
             },
           });
           const data = await res.json();
+          console.log(data)
           setProductList(data.products || []);
         } catch (err) {
           console.error("Lỗi tải sản phẩm:", err);
@@ -309,19 +310,18 @@ const handleSaveNewProduct = async (newProduct: any) => {
 
         <div className="form-group">
           <label>Danh mục:</label>
-          <input
-            type="text"
-            value={editingProduct.category?.name || ''}
+          <select
+            value={addingProduct.category || ''}
             onChange={(e) =>
-              setEditingProduct({
-                ...editingProduct,
-                category: { ...editingProduct.category, name: e.target.value },
-              })
+              setAddingProduct({ ...addingProduct, category: e.target.value })
             }
-            placeholder="Nhập danh mục"
-          />
+          >
+            <option value="">-- Chọn danh mục --</option>
+            {categories?.map((cat) => (
+              <option key={cat._id} value={cat._id}>{cat.name}</option>
+            ))}
+          </select>
         </div>
-
         <div className="form-actions1">
           <button className="btn btn-success" onClick={handleUpdateProduct}>
             Cập nhật sản phẩm
@@ -487,14 +487,13 @@ const handleSaveNewProduct = async (newProduct: any) => {
         ) : (
           <div className="sp-list">
             {productList.map((product) => {
-              const imageSrc = Array.isArray(product.images) && product.images.length > 0
-                ? product.images[0]?.image || '/images/default.jpg'
-                : '/images/default.jpg';
+              const imageSrc = product.images?.[0]?.image || '/images/default.jpg';
+
 
               return (
                 <div key={product._id || Math.random()} className="sp-card">
                   <div className="sp-info">
-                    <img src={imageSrc} alt={product.name} className="image" />
+                    <img src= {encodeURI(imageSrc)} alt={product.name} className="image" />
                     <div className="sp-content">
                       <h3 className="sp-name">{product.name || 'Sản phẩm không tên'}</h3>
                       <p><strong>Giá:</strong> {product.price?.toLocaleString() || 0}đ</p>

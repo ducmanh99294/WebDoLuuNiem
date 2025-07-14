@@ -48,6 +48,7 @@ const DetailProduct: React.FC = () => {
       try {
         const res = await fetch(`http://localhost:3000/api/v1/products/${_id}`);
         const data = await res.json();
+        console.log(data)
         setProduct(data);
         if (data?.images?.length > 0) {
           setSelectedImage(data.images[0].image);
