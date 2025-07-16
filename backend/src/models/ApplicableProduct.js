@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const applicableProductSchema = new mongoose.Schema({
-    product: {
+    product: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Products',
         required: true
-    },
+    }],
     startDate: {
         type: Date,
         required: true

@@ -8,63 +8,79 @@ const client = require('../config/meiliSearchConfig'); // Import the MeiliSearch
 
 
 const createProduct = async (req, res) => {
-    try {
-        logger.info('Creating product with data:', req.body);
+  try {
+    logger.info('Creating product with data:', req.body);
 
-        const { name, price, categories, description, discount, quantity, images } = req.body;
+    const { name, price, categories, description, discount, quantity, images } = req.body;
 
-        if (!req.body.name || !req.body.price || !req.body.categories || !req.body.description || !req.body.discount || !req.body.quantity) {
-            return res.status(400).json({
-                success: false,
-                message: 'please provide all required fields: name, price, categories, images, description, discount, quantity'
-            });
-        }
-        
-        const product = await Product.create({
-            ...req.body,
-            images: [],
-        });
-
-        let imageIds = [];
-
-        if (req.files && req.files.length > 0) {
-            const uploadImages = await Promise.all(req.files.map(async (file) => {
-                const newImage = await Images.create({ 
-                    image: `/src/assets/images/${file.filename}`, 
-                    Product: product._id
-                });
-                return newImage._id; 
-            }));
-            imageIds = imageIds.concat(uploadImages);
-        }
-
-        if (images) {
-            const urls = Array.isArray(images) ? images : [images];
-            const uploadImages = await Promise.all(urls.map(async (url) => {
-                const newImage = await Images.create({ 
-                    image: url, 
-                    Product: product._id
-                });
-                return newImage._id; 
-            }));
-            imageIds = imageIds.concat(uploadImages);
-        }
-
-        product.images = imageIds;
-        await product.save();
-
-        logger.info(`Product created successfully: ${product._id}`);
-        res.status(201).json({
-            success: true,
-            data: product
-        });
-    } catch (e) {
-        res.status(500).json({
-            success: false,
-            message: e.message
-        });
+    // ✅ Validate các trường bắt buộc
+    if (!name || !price || !categories || !description || !discount || !quantity) {
+      return res.status(400).json({
+        success: false,
+        message:
+          'please provide all required fields: name, price, categories, description, discount, quantity',
+      });
     }
-}
+
+    // ✅ Parse lại dữ liệu số nếu bị gửi dưới dạng chuỗi
+    const newProduct = await Product.create({
+      name,
+      price: Number(price),
+      categories, // MongoDB sẽ tự cast sang ObjectId nếu đúng
+      description,
+      discount: Number(discount),
+      quantity: Number(quantity),
+      images: [],
+    });
+
+    let imageIds = [];
+
+    // ✅ Ảnh từ file upload
+    if (req.files && req.files.length > 0) {
+      const uploadedImages = await Promise.all(
+        req.files.map(async (file) => {
+          const img = await Images.create({
+            image: `/src/assets/images/${file.filename}`,
+            Product: newProduct._id,
+          });
+          return img._id;
+        })
+      );
+      imageIds = imageIds.concat(uploadedImages);
+    }
+
+    // ✅ Ảnh từ URL/link
+    if (images) {
+      const urls = Array.isArray(images) ? images : [images];
+      const linkImages = await Promise.all(
+        urls.map(async (url) => {
+          const img = await Images.create({
+            image: url,
+            Product: newProduct._id,
+          });
+          return img._id;
+        })
+      );
+      imageIds = imageIds.concat(linkImages);
+    }
+
+    newProduct.images = imageIds;
+    await newProduct.save();
+
+    logger.info(`Product created successfully: ${newProduct._id}`);
+    res.status(201).json({
+      success: true,
+      data: newProduct,
+    });
+  } catch (e) {
+    logger.error('Error creating product:', e.message);
+    res.status(500).json({
+      success: false,
+      message: e.message,
+    });
+  }
+};
+
 
 const getAllProducts = async (req, res) => {
     try {

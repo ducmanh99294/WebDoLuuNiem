@@ -1,18 +1,1 @@
 {"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-07-10T16:17:30.346Z"}
-{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-11T01:42:18.989Z"}
-{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-11T01:42:19.957Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Mô tả lỗi phải có ít nhất 10 ký tự","timestamp":"2025-07-11T02:37:38.929Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Mô tả lỗi phải có ít nhất 10 ký tự","timestamp":"2025-07-11T02:37:40.760Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Mô tả lỗi phải có ít nhất 10 ký tự","timestamp":"2025-07-11T02:37:53.080Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Mô tả lỗi phải có ít nhất 10 ký tự","timestamp":"2025-07-11T02:37:57.925Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Mô tả lỗi phải có ít nhất 10 ký tự","timestamp":"2025-07-11T02:38:08.868Z"}
-{"level":"error","message":"Failed to send notification: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T02:54:45.961Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T02:54:45.962Z"}
-{"level":"error","message":"Failed to send notification: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T03:10:55.764Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T03:10:55.765Z"}
-{"level":"error","message":"Failed to send notification: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T03:24:30.439Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T03:24:30.440Z"}
-{"level":"error","message":"Failed to send notification: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T03:24:47.594Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T03:24:47.595Z"}
-{"level":"error","message":"Failed to send notification: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T03:27:08.424Z"}
-{"level":"error","message":"Lỗi khi tạo yêu cầu trả hàng: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-11T03:27:08.425Z"}
