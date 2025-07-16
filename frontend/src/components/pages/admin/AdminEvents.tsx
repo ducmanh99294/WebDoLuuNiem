@@ -9,18 +9,10 @@ const AdminEvents: React.FC = () => {
   const [eventList, setEventList] = useState<any[]>([]);
   const [editingEvent, setEditingEvent] = useState<any | null>(null);
   const [addingEvent, setAddingEvent] = useState<any | null>(null);
-  const [newEvent, setNewEvent] = useState({
-    name: "",
-    description: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-    discount: 0,
-    images: [],
-  });
+  const [editImages, setEditImages] = useState<string[]>([]);
   const [expandedEventId, setExpandedEventId] = useState<string | null>(null);
   const [subEventForm, setSubEventForm] = useState({
-    product: "",
+    product: [] as string[],
     discount: "",
     startDate: "",
     endDate: "",
@@ -106,8 +98,23 @@ const handleRemoveImage = (index: number) => {
 const handleSaveNewEvent = async () => {
   const token = localStorage.getItem("token");
 
-  // ✅ Log dữ liệu đang gửi
-  console.log("📤 Dữ liệu đang gửi lên:", addingEvent);
+  if (
+    !addingEvent.name ||
+    !addingEvent.description ||
+    !addingEvent.startDate ||
+    !addingEvent.endDate
+  ) {
+    alert("❌ Vui lòng nhập đầy đủ thông tin");
+    return;
+  }
+
+  // 👉 Gộp images vào dữ liệu gửi đi
+  const payload = {
+    ...addingEvent,
+    images: images.filter(img => img), // loại bỏ rỗng
+  };
+
+  console.log("📤 Dữ liệu đang gửi lên:", payload);
 
   try {
     const res = await fetch("http://localhost:3000/api/v1/events", {
@@ -116,7 +123,7 @@ const handleSaveNewEvent = async () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(addingEvent), // Dùng addingEvent, không dùng newEvent
+      body: JSON.stringify(payload),
     });
 
     const data = await res.json();
@@ -125,15 +132,7 @@ const handleSaveNewEvent = async () => {
     if (res.ok) {
       alert("✅ Tạo sự kiện thành công!");
       setAddingEvent(null);
-      setNewEvent({
-        name: "",
-        description: "",
-        startDate: "",
-        endDate: "",
-        location: "",
-        discount: 0,
-        images: [],
-      });
+      setImages(['']); // reset ảnh sau khi thêm thành công
       fetchEvents();
     } else {
       alert("❌ Thêm thất bại: " + data.message);
@@ -143,7 +142,6 @@ const handleSaveNewEvent = async () => {
     alert("Đã xảy ra lỗi khi tạo sự kiện.");
   }
 };
-
 
 // hàm lưu chỉnh sửa 
   const handleUpdateEvent = async () => {
@@ -167,7 +165,7 @@ const handleSaveNewEvent = async () => {
         endDate: editingEvent.endDate,
         discount: Number(editingEvent.discount) || 0,
         location: editingEvent.location,
-        image: editingEvent.image || []
+        image: editImages
       })
     });
 
@@ -203,7 +201,7 @@ const handleCreateEvent = () => {
     images: [],
     products: [],
   });
-  setImages(['']); // reset hình ảnh
+  setImages([]); // reset hình ảnh
 };
 
 
@@ -245,26 +243,44 @@ const handleDeleteEvent = async (eventId: string) => {
 
 // thêm sản phẩm vào sự kiện
 const handleAddProductToEvent = async (eventId: string) => {
-    const token = localStorage.getItem("token");
-    const res = await fetch(`http://localhost:3000/api/v1/events/${eventId}/products`, {
+  const token = localStorage.getItem("token");
+  if (!token) return alert("❌ Cần đăng nhập");
+
+  if (subEventForm.product.length === 0) {
+    return alert("❗Bạn chưa chọn sản phẩm nào");
+  }
+
+  const payload = {
+    products: subEventForm.product,
+    discount: subEventForm.discount,
+    startDate: subEventForm.startDate,
+    endDate: subEventForm.endDate,
+  };
+
+  try {
+    const res = await fetch(`http://localhost:3000/api/v1/events/${eventId}/add-products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(subEventForm),
+      body: JSON.stringify(payload),
     });
+
     const data = await res.json();
     if (res.ok) {
       alert("✅ Đã thêm sản phẩm vào sự kiện!");
-      setSubEventForm({ product: "", discount: "", startDate: "", endDate: "" });
+      setSubEventForm({ product: [], discount: "", startDate: "", endDate: "" });
       setExpandedEventId(null);
       fetchEvents();
     } else {
       alert("❌ Lỗi: " + data.message);
     }
-  };
-
+  } catch (err) {
+    console.error("❌ Lỗi gửi:", err);
+    alert("Lỗi kết nối.");
+  }
+};
 
   return (
   <div className="sp-section">
@@ -342,20 +358,70 @@ const handleAddProductToEvent = async (eventId: string) => {
           />
         </div>
 
-        <div className="form-group">
-          <label>Hình ảnh:</label>
+       <div className="form-group">
+  <label>Hình ảnh:</label>
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+    {editImages.map((img, index) => (
+      <div key={index} style={{ position: 'relative' }}>
+        <img
+          src={img}
+          alt={`Ảnh ${index + 1}`}
+          style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '4px' }}
+        />
+        <button
+          type="button"
+          onClick={() => setEditImages(editImages.filter((_, i) => i !== index))}
+          style={{
+            position: 'absolute',
+            top: '-5px',
+            right: '-5px',
+            background: 'red',
+            color: 'white',
+            border: 'none',
+            borderRadius: '50%',
+            width: '20px',
+            height: '20px',
+            cursor: 'pointer',
+          }}
+        >
+          x
+        </button>
+      </div>
+    ))}
+  </div>
+
+  <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
+    {editImages.length < 5 && (
+      <>
+        <button type="button" onClick={() => {
+          const link = prompt('Nhập link hình ảnh:');
+          if (link) setEditImages(prev => [...prev, link]);
+        }}>+ Thêm từ link</button>
+
+        <label style={{ cursor: 'pointer', background: '#eee', padding: '6px 12px', borderRadius: '4px' }}>
+          + Tải ảnh từ máy
           <input
-            type="text"
-            value={editingEvent.images?.[0] || ""}
-            onChange={(e) =>
-              setEditingEvent({
-                ...editingEvent,
-                images: [e.target.value],
-              })
-            }
-            placeholder="Nhập URL hình ảnh"
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={(e) => {
+              const files = e.target.files;
+              if (!files) return;
+              const newImgs: string[] = [];
+              Array.from(files).forEach(file => {
+                const url = URL.createObjectURL(file);
+                newImgs.push(url);
+              });
+              setEditImages(prev => [...prev, ...newImgs]);
+            }}
+            style={{ display: 'none' }}
           />
-        </div>
+        </label>
+      </>
+    )}
+  </div>
+</div>
+
 
         <div className="form-actions1">
           <button className="btn btn-success" onClick={handleUpdateEvent}>
@@ -374,10 +440,10 @@ const handleAddProductToEvent = async (eventId: string) => {
         {/* Nút thêm sự kiện */}
         {addingEvent && (
           <div className="edit-product-form">
-            <h2 className="form-title">Thêm sản phẩm</h2>
+            <h2 className="form-title">Thêm sự kiện</h2>
         
             <div className="form-group">
-              <label>Tên sản phẩm:</label>
+              <label>Tên sự kiện:</label>
               <input
                 type="text"
                 value={addingEvent.name}
@@ -420,7 +486,17 @@ const handleAddProductToEvent = async (eventId: string) => {
                 }
               />
             </div>
-
+              <div className="form-group">
+                <label>Địa điểm:</label>
+                <input
+                  type="text"
+                  value={addingEvent.location}
+                  onChange={(e) =>
+                    setAddingEvent({ ...addingEvent, location: e.target.value })
+                  }
+                  placeholder="Nhập địa điểm áp dụng"
+                />
+              </div>
             <div className="form-group">
               <label>Hình ảnh:</label>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
@@ -470,18 +546,7 @@ const handleAddProductToEvent = async (eventId: string) => {
             </>
           )}
         </div>
-        
-              {/* <input
-                type="text"
-                value={addingEvent.images?.[0]?.image || ''}
-                onChange={(e) =>
-                  setAddingEvent({
-                    ...addingEvent,
-                    images: [{ image: e.target.value }],
-                  })
-                }
-                placeholder="Nhập link hình ảnh"
-              /> */}
+      
             </div>
         
             <div className="form-group">
@@ -542,9 +607,7 @@ const handleAddProductToEvent = async (eventId: string) => {
                     </p>
                     <p>
                       <strong>Số sản phẩm áp dụng:</strong>{" "}
-                      {Array.isArray(event.products)
-                        ? event.products.length
-                        : 0}
+                      {event.appliedProductCount || 0}
                     </p>
                     <p>
                       <strong>Giảm giá:</strong>{" "}
@@ -560,6 +623,16 @@ const handleAddProductToEvent = async (eventId: string) => {
                   >
                     Sửa
                   </button>
+                  
+                  <button
+                    className="sp-btn-sub"
+                    onClick={() =>
+                      setExpandedEventId(expandedEventId === event._id ? null : event._id)
+                    }
+                  >
+                    {expandedEventId === event._id ? "Ẩn sự kiện nhỏ" : "tạo sự kiện nhỏ"}
+                  </button>
+
                   <button
                     className="sp-btn-delete"
                     onClick={() => handleDeleteEvent(event._id)}
@@ -567,6 +640,87 @@ const handleAddProductToEvent = async (eventId: string) => {
                     Xoá
                   </button>
                 </div>
+
+                {expandedEventId === event._id && (
+  <div className="sub-event-form">
+    <div className="form-group">
+      <label>Chọn sản phẩm:</label>
+      <div style={{ maxHeight: "200px", overflowY: "auto", border: "1px solid #ccc", padding: "8px", borderRadius: "4px" }}>
+        {productList.map((product) => (
+          <div key={product._id}>
+            <label>
+              <input
+                type="checkbox"
+                checked={subEventForm.product.includes(product._id)}
+                onChange={(e) => {
+                  const isChecked = e.target.checked;
+                  setSubEventForm((prev) => ({
+                    ...prev,
+                    product: isChecked
+                      ? [...prev.product, product._id]
+                      : prev.product.filter((id) => id !== product._id),
+                  }));
+                }}
+              />
+              {" "}{product.name}
+            </label>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="form-group">
+      <label>Giảm giá riêng (%):</label>
+      <input
+        type="number"
+        value={subEventForm.discount}
+        onChange={(e) =>
+          setSubEventForm({ ...subEventForm, discount: e.target.value })
+        }
+        placeholder="VD: 15"
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Ngày bắt đầu:</label>
+      <input
+        type="date"
+        value={subEventForm.startDate}
+        onChange={(e) =>
+          setSubEventForm({ ...subEventForm, startDate: e.target.value })
+        }
+      />
+    </div>
+
+    <div className="form-group">
+      <label>Ngày kết thúc:</label>
+      <input
+        type="date"
+        value={subEventForm.endDate}
+        onChange={(e) =>
+          setSubEventForm({ ...subEventForm, endDate: e.target.value })
+        }
+      />
+    </div>
+
+    <button
+      className="btn btn-success"
+      onClick={() => handleAddProductToEvent(event._id)}
+    >
+      thêm
+    </button>
+    <button
+        className="btn btn-secondary"
+        onClick={() => {
+          setExpandedEventId(null);
+          setSubEventForm({ product: [], discount: "", startDate: "", endDate: "" });
+        }}
+      >
+        ❌ Hủy
+      </button>
+  </div>
+)}
+
               </div>
             ))}
           </div>

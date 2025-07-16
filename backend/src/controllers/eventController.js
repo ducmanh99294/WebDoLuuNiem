@@ -1,12 +1,13 @@
 const Event = require('../models/Event');
 const ApplicableProducts = require('../models/ApplicableProduct')
 const logger = require('../utils/logger');
+const { getReviewById } = require('./reviewController');
 
 const createEvent = async (req, res) => {
     try {
-        const { name, description, startDate, endDate, location, discount, images, products } = req.body;
+        const { name, description, startDate, endDate, discount, images, location } = req.body;
 
-        if (!name || !description || !startDate || !endDate || !location) {
+        if (!name || !description || !startDate || !endDate ) {
             logger.error('All fields are required');
             return res.status(400).json({
                 success: false,
@@ -22,7 +23,6 @@ const createEvent = async (req, res) => {
             location,
             discount,
             images,
-            products
         });
 
         await event.save();
@@ -44,32 +44,36 @@ const createEvent = async (req, res) => {
 }
 
 const getAllEvents = async (req, res) => {
-    try {
-        const events = await Event.find()
-            .populate('images', 'url')
-             .populate({
-                path: 'products',
-                populate: {
-                    path: 'product',
-                    select: 'name price' 
-                }
-            });
+  try {
+    const events = await Event.find().lean(); // lấy toàn bộ events
 
-        logger.info(`Retrieved ${events.length} events`);
-        res.status(200).json({
-            success: true,
-            message: 'Retrieved all events successfully',
-            data: events
-        });
-    } catch (error) {
-        logger.error(`Error retrieving events: ${error.message}`);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to retrieve events',
-            error: error.message
-        });
-    }
-}
+    // lấy danh sách các application theo eventId
+    const applications = await ApplicableProducts.find({
+    eventId: { $ne: null },
+    }).lean();
+    // gom nhóm theo eventId
+    const eventProductMap = {};
+    applications.forEach((app) => {
+      const id = app.eventId.toString();
+      if (!eventProductMap[id]) eventProductMap[id] = [];
+      eventProductMap[id].push(app.productId);
+    });
+
+    // thêm field `appliedProductCount` cho mỗi event
+    const enrichedEvents = events.map((event) => {
+      const appliedProducts = eventProductMap[event._id.toString()] || [];
+      return {
+        ...event,
+        appliedProductCount: appliedProducts.length, // 👈 thêm số lượng sản phẩm áp dụng
+      };
+    });
+
+    res.status(200).json({ success: true, data: enrichedEvents });
+  } catch (err) {
+    console.error("❌ Error when getting events:", err);
+    res.status(500).json({ success: false, message: "Failed to get events" });
+  }
+};
 
 const getEventById = async (req, res) => {
     try {
@@ -168,51 +172,47 @@ const deleteEvent = async (req, res) => {
 }
 
 const addProductToEvent = async (req, res) => {
-    const { productId } = req.body;
-    try {
-        const event = await Event.findById(req.params.id);
-        if(!event) {
-            logger.warn(`Event not found with ID: ${req.params.id}`);
-            return res.status(404).json({
-                success: false,
-                message: 'Event not found'
-            });
-        }
-        
-        console.log("id "+Array.isArray(productId), productId);
-        if (!Array.isArray(productId)) {
-            logger.warn(`Product already exists in event with ID: ${req.params.id}`);
-            return res.status(400).json({
-                success: false,
-                message: 'Product already exists in this event'
-            });
-        }
+  const { products, discount, startDate, endDate } = req.body;
+  const eventId = req.params.id;
 
-        let addProducts = [];
+  try {
+    const event = await Event.findById(eventId);
+    if (!event) {
+      return res.status(404).json({ success: false, message: "Sự kiện không tồn tại" });
+    }
 
-        for(const id of productId) {
-            if (!event.products.includes(id)) {
-                event.products.push(id);
-                addProducts.push(id);
-            }
-        }
+    if (!Array.isArray(products) || products.length === 0) {
+      return res.status(400).json({ success: false, message: "Vui lòng chọn ít nhất một sản phẩm" });
+    }
 
-        await event.save();
-        logger.info(`Product added to event successfully with ID: ${req.params.id}`);
-        res.status(200).json({
-            success: true,
-            message: 'Product added to event successfully',
-            data: event
+    const applications = [];
+
+    for (const productId of products) {
+      const existing = await ApplicableProducts.findOne({ eventId, productId });
+      if (!existing) {
+        const app = await ApplicableProducts.create({
+          eventId,
+          productId,
+          discount,
+          startDate,
+          endDate,
         });
-} catch (error) {
-    logger.error(`Error adding product to event: ${error.message}`);
-    res.status(500).json({
-        success: false,
-        message: 'Failed to add product to event',
-        error: error.message
+        console.log(app);
+        applications.push(app);
+      }
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Thêm sản phẩm vào sự kiện thành công",
+      data: applications,
     });
-}
-}
+  } catch (error) {
+    console.error("❌ Error:", error);
+    res.status(500).json({ success: false, message: "Thêm thất bại", error: error.message });
+  }
+};
+
 
 const removeProductFromEvent = async (req, res) => {
     const { productId } = req.body;
@@ -257,6 +257,7 @@ module.exports = {
     createEvent,
     getAllEvents,
     getEventById,
+    getReviewById,
     updateEvent,
     deleteEvent,
     addProductToEvent,

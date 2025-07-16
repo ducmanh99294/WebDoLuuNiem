@@ -511,3 +511,20 @@
   background-color: red;
   color: white;
 }
+
+.sub-event-form {
+  background: #f8f8f8;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.sp-btn-sub {
+  background-color: #15ac22ff;
+  color: white;
+  padding: 6px 12px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
