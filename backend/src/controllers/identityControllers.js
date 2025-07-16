@@ -3,6 +3,7 @@ const User = require('../models/User');
 const generateAuthToken = require('../utils/generateToken');
 const { validationRegistration, validationLogin } = require('../utils/validation/validation');
 const RefreshToken = require('../models/RefreshToken');
+const { verifyOTP } = require('../services/emailService');
 
 const registerUser = async (req, res) => {
     try {
@@ -17,7 +18,7 @@ const registerUser = async (req, res) => {
             });
         }
 
-        const { email, password } = req.body;
+        const { email, otp, password } = req.body;
         
         let user = await User.findOne({ email });
         if (user) {
@@ -27,6 +28,16 @@ const registerUser = async (req, res) => {
                 message: 'User already exists'
             });
         }
+
+        const verify = await verifyOTP(email, otp, 'register');
+        if (!verify.success) {
+            logger.warn(`OTP verification failed: ${verify.message}`);
+            return res.status(400).json({ 
+                success: false,
+                error: verify.message 
+            });
+        }
+
 
         user = new User({
             email,

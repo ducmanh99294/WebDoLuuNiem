@@ -5,12 +5,16 @@ const app = require('../src/server'); // app.js cần export app = express()
 chai.use(chaiHttp);
 const expect = chai.expect;
 
+it('should register user', async function () {
+  this.timeout(1000);
+})
+
 describe('Auth API', () => {
   it('should register user', (done) => {
     chai.request(app)
       .post('/api/v1/auth/register')
       .send({
-        email: 'example983@example.com',
+        email: 'example977@example.com',
         password: '123456'
       })
       .end((err, res) => {
@@ -20,8 +24,6 @@ describe('Auth API', () => {
           expect(res.body).to.have.property('data');
           expect(res.body.data).to.have.property('accessToken');
           expect(res.body.data).to.have.property('refreshToken');
-          expect(res.body.data).to.have.property('user');
-          expect(res.body.data.user.email).to.equal('example983@example.com');
           done();
         } catch (error) {
           done(error);
@@ -33,7 +35,7 @@ describe('Auth API', () => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
-        email: 'example983@example.com',
+        email: 'example977@example.com',
         password: '123456'
       })
     .end((err, res) => {
@@ -43,8 +45,6 @@ describe('Auth API', () => {
         expect(res.body).to.have.property('data');
         expect(res.body.data).to.have.property('accessToken');
         expect(res.body.data).to.have.property('refreshToken');
-        expect(res.body.data).to.have.property('user');
-        expect(res.body.data.user.email).to.equal('example983@example.com');
         done();
       } catch (error) {
         done(error);

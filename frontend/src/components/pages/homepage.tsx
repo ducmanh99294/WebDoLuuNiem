@@ -5,7 +5,7 @@ import '../../assets/css/home.css';
 import Banner from '../Banner';
 import WhyChooseUs from '../WhyChooseUs';
 import EventPage from './Event';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import CategoryList from '../category';
 
 const Home: React.FC = () => {
@@ -59,6 +59,7 @@ const Home: React.FC = () => {
 
     fetchProducts();
   }, []);
+
 
   return (
     <>

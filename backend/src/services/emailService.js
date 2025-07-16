@@ -62,7 +62,9 @@ const sendOTP = async (email, purpose) => {
 const verifyOTP = async (email, otp, purpose) => {
     try {
         const otpRecord = await OTP.findOne({ "email": email, "otp": otp, "purpose": purpose });
-        if (!otpRecord) {
+        logger.info(otpRecord)
+        if (!otpRecord) {        
+            await OTP.deleteOne({ email, purpose });
             return { success: false, message: 'Invalid or expired OTP code.' };
         }
 

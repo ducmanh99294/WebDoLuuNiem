@@ -101,7 +101,7 @@ const LoginPage: React.FC = () => {
 
         <div className="social-login">
           <button className="facebook-btn">Facebook</button>
-          <button className="google-btn">Google</button>
+          <a href='http://localhost:3000/auth/google'><button className="google-btn">Google</button></a>
         </div>
       </div>
 

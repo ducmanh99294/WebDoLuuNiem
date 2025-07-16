@@ -4,7 +4,8 @@ const { password } = require('../../models/User')
 const validationRegistration = (data) => {
     const schema = joi.object({
         email: joi.string().email().required(),
-        password: joi.string().min(6).required()
+        password: joi.string().min(6).required(),
+        otp: joi.string().pattern(/^[0-9]{6}$/).required()
     })
 
     return schema.validate(data)

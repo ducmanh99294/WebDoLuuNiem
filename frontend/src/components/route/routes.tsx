@@ -21,6 +21,7 @@ import OrderDetail from '../pages/OrderDetail';
 import OrderList from '../pages/listOrder';
 import BlogDetail from '../pages/BlogDetail';
 import CategoryPage from '../pages/category';
+import LoginSuccess from '../pages/loginSuccess';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const AppContent: React.FC = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/login-success" element={<LoginSuccess />} />
         <Route path="/register" element={<Register />} />
         <Route path="/newpage" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />

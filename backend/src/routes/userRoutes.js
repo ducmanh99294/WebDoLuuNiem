@@ -14,5 +14,10 @@ router.put('/:id', validateToken, authRolers("admin", "user"), userController.up
 router.put('/info/:id', validateToken, authRolers("user"), userController.updateInfo);
 router.delete('/:id', validateToken, authRolers("admin"), userController.deleteUser);
 
+router.get('/profile', (req, res) => {
+  if (!req.isAuthenticated()) return res.redirect('/auth/google');
+  res.send(`<h1>Hello ${req.user.displayName}</h1><a href="/logout">Logout</a>`);
+});
+
 //router.get('/admins', validateToken, getAvailableAdmin);
 module.exports = router;

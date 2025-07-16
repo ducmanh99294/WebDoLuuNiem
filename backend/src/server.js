@@ -1,8 +1,10 @@
 require('dotenv').config();
+require('./services/auth/google'); // Import Google auth strategy
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const passport = require('passport');
 const { Server } = require('socket.io');
 const { rateLimit } = require('express-rate-limit');
 
@@ -11,6 +13,7 @@ const logger = require('./utils/logger');
 const connectMongoDB = require('./config/mongodbConfig');
 const socketAuthMiddleware = require('./middlewares/socketAuthMiddleware');
 const socketHandler = require('./sockets/index');
+const session = require('express-session');
 
 const app = express();
 const server = http.createServer(app);
@@ -26,6 +29,17 @@ connectMongoDB();
 // Socket.IO setup
 io.use(socketAuthMiddleware);
 socketHandler(io);
+
+// Initialize Passport.js
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware
 app.use(helmet());
@@ -86,6 +100,25 @@ app.use(`/api/${API_VERSION}/payment-online`, require('./routes/paymentOnlineRou
 app.use(`/api/${API_VERSION}/about`, require('./routes/aboutUsRoutes'));
 app.use(`/api/${API_VERSION}/contacts`, require('./routes/contacRoutes'));
 app.use(`/api/${API_VERSION}/cancel-requests`, require('./routes/cancelRequestRoutes'));
+
+// Google OAuth routes
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.get('/auth/google/callback', passport.authenticate('google', { session: false }), 
+    (req, res) => {
+      logger.info('Google authentication successful');
+      const { user, accessToken, refreshToken } = req.user;
+      const redirectUrl = new URL('http://localhost:5173/login-success');  
+      redirectUrl.searchParams.set('accessToken', accessToken);
+      redirectUrl.searchParams.set('refreshToken', refreshToken);
+      redirectUrl.searchParams.set('name', user.name);
+      redirectUrl.searchParams.set('image', user.image);
+      redirectUrl.searchParams.set('user_id', user.id);
+      redirectUrl.searchParams.set('role', user.role);
+      
+      res.redirect(redirectUrl.toString());
+    }
+);
+
 // Error handler
 app.use(errorHandler);
 
@@ -96,7 +129,7 @@ server.listen(PORT, () => {
 
 // Handle errors
 process.on('unhandledRejection', (reason, promise) => {
-  logger.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  logger.error('Unhandled Rejection at:', promise + ' reason:', reason);
 });
 
 process.on('uncaughtException', (err) => {

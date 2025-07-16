@@ -1,38 +1,73 @@
 
 import React, { useState } from 'react';
 import '../assets/css/Register.css';
-
+import { getOTP, registerUser } from '../services/authService';
+import type { RegisterSuccessResponse } from '../types/auth/RegisterResponse';
+import { Eye, EyeOff } from 'lucide-react';
 const LoginPage: React.FC = () => {
   const [step, setStep] = useState<'form' | 'otp'>('form');
-  const [contact, setContact] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [method, setMethod] = useState<'zalo' | 'sms' | ''>('');
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contact) return setError('Vui lòng nhập email hoặc số điện thoại.');
-    if (!method) return setError('Vui lòng chọn phương thức OTP.');
-    // Mô phỏng gửi OTP
-    alert('Mã OTP đã được gửi! (mock: 123456)');
+    if (!email) return setError('Vui lòng nhập email.');
+    const result = await getOTP(email, 'register')
+    if (result.success) {
+      alert(`Mã OTP đã được gửi đến email ${email}.`);
+    } else {
+      return setError(result.message);
+    }
+
     setStep('otp');
     setError('');
   };
 
-  const handleVerifyOtp = (e: React.FormEvent) => {
+  const handleRefreshOTP = async (e:React.FormEvent) => {
     e.preventDefault();
-    if (otp === '123456') {
+    const result = await getOTP(email, 'register')
+    if (result.success) {
+      alert(`Mã OTP đã được gửi đến email ${email}.`);
+    } else {
+      return setError(result.message);
+    }
+    setStep('otp');
+    setError('');
+  }
+
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!otp) return setError('Vui lòng nhập mã OTP.');
+    // regiter
+    if (otp.length !== 6) return setError('Mã OTP phải có 6 chữ số.');
+    // Mô phỏng xác thực OTP
+    const result = await registerUser(email, otp, password)
+    if (result.success) {
       alert('Đăng ký thành công!');
-      // Reset lại form
-      setContact('');
-      setMethod('');
+      // Redirect to login or dashboard
+      const { accessToken, data } = result as RegisterSuccessResponse;
+      localStorage.setItem('token', accessToken);
+      localStorage.setItem('userId', data.user._id);
+      localStorage.setItem('role', 'user');
+
+      window.location.href = '/login';
+    } else {
       setOtp('');
       setStep('form');
-    } else {
-      setError('Mã OTP không chính xác.');
+      return setError(result.message);
     }
-  };
-
+    setError('');
+    setStep('form');
+    setEmail('');
+    setPassword('');
+    setOtp('');
+    setMethod('');
+  }
+  console.log(showPassword)
   return (
     <div className="login-container">
       <div className="login-left">
@@ -49,10 +84,30 @@ const LoginPage: React.FC = () => {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Email hoặc số điện thoại"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
+
+            <input
+              type="text"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              style={{ paddingRight: '40px' }}
+            />
+
+            <span
+              onClick={() => setShowPassword((prev) => !prev)}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
+            >{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}</span>
 
             <div className="options" style={{ marginTop: 12 }}>
               <label>
@@ -94,6 +149,7 @@ const LoginPage: React.FC = () => {
             <button type="submit" className="btn-login" style={{ marginTop: 12 }}>
               Xác nhận
             </button>
+            <div onClick={() => handleRefreshOTP}>Gủi lại mã OTP!</div>
           </form>
         )}
 

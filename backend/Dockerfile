@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:18
 
 # Set working directory
 WORKDIR /app/backend

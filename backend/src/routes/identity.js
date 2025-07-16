@@ -4,6 +4,7 @@ const logger = require('../utils/logger');
 const User = require('../models/User');
 const generateOTP = require('../utils/generateOTP');
 const router = express.Router();
+const sgMail = require('@sendgrid/mail');
 
 // Example routes
 router.post('/register', registerUser)
@@ -19,15 +20,48 @@ router.post('/request-otp',  async (req, res) => {
             return res.status(400).json({ success: false, message: 'Email and action are required' });
         }
 
-        const user = User.findOne({ email });
-        if (!user) {
-            return res.status(404).json({ success: false, message: 'User not found' });
+        if (action === 'change_password') {
+            const user = User.findOne({ email });
+            if (!user) {
+                return res.status(404).json({ success: false, message: 'User not found' });
+            }
+        }
+        
+        if (action === 'register') {
+            let user = await User.findOne({ email });
+            if (user) {
+                logger.warn(`User already exists with email: ${email}`);
+                return res.status(400).json({
+                    success: false,
+                    message: 'User already exists'
+                });
+            }
+            
         }
 
-        await generateOTP(email, action);
+        const { otp } = await generateOTP(email, action);
 
+        const msg = {
+            to: email,
+            from: process.env.SENDGRID_FROM_EMAIL,
+            subject: "Your OTP Code",
+            text: `Your OTP code is ${otp}`,
+            html: `<p>Your OTP code is <strong>${otp}</strong></p>`,
+        };
+
+        try {
+            await sgMail.send(msg);
+            logger.info('OTP sent successfully');
+        } catch (error) {
+            logger.error('Error sending OTP:', error);
+            if (error.response) {
+                logger.error('Response body:', error.response.body);
+            }
+            return res.status(500).json({ success: false, message: 'Failed to send OTP' });
+        }
+        
         logger.info('OTP requested successfully');
-        res.status(200).json({ success: true, smessage: 'OTP requested successfully'});
+        res.status(200).json({ success: true, message: 'OTP requested successfully'});
     } catch (error) {
         logger.error('Error requesting OTP:', error);
         res.status(500).json({ success: false, message: 'Failed to request OTP' });

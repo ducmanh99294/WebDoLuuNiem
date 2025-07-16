@@ -18,4 +18,7 @@ router.put('/:id', supportSessionController.updateSupportSession);
 // Delete a support session by ID
 router.delete('/:id', supportSessionController.deleteSupportSession);
 
+// Route hiển thị thông tin người dùng
+
+
 module.exports = router;
