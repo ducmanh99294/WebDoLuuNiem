@@ -71,3 +71,5 @@
 {"level":"error","message":"Error creating category: Categories validation failed: description: Path `description` is required., image: Path `image` is required.","timestamp":"2025-07-14T02:19:23.847Z"}
 {"code":"ECONNRESET","errno":-4077,"level":"error","message":"Uncaught Exception thrown: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20)","syscall":"read","timestamp":"2025-07-14T04:03:41.676Z"}
 
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-16T02:33:02.830Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-16T02:33:07.555Z"}
