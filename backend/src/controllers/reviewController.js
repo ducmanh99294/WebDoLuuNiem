@@ -5,6 +5,13 @@ const createReview = async (req, res) => {
     try {
         const reviewData = req.body;
 
+        if (reviewData.rating < 1 || reviewData.rating > 5) {
+            return res.status(400).json({
+                success: false,
+                message: 'Số sao phải nằm trong khoảng 1 đến 5'
+            });
+            }
+
         logger.info(`Creating review for product: ${reviewData.product} by user: ${reviewData.user}`);
         if (!reviewData.user || !reviewData.product || !reviewData.rating || !reviewData.comment) {
             logger.warn('Missing required fields for review creation');
@@ -64,6 +71,30 @@ const getAllReviews = async (req, res) => {
         });
     }
 }
+
+const getReviewsByProductId = async (req, res) => {
+    try {
+        const { productId } = req.params;
+        logger.info(`Fetching reviews for product: ${productId}`);
+
+        const reviews = await Review.find({ product: productId })
+            .populate('user', 'name email')
+            .sort({ createdAt: -1 });
+
+        res.status(200).json({
+            success: true,
+            message: 'Lấy danh sách đánh giá theo sản phẩm thành công',
+            reviews
+        });
+    } catch (error) {
+        logger.error(`Error fetching reviews for product: ${error.message}`);
+        res.status(500).json({
+            success: false,
+            message: 'Không thể lấy đánh giá sản phẩm',
+            error: error.message
+        });
+    }
+};
 
 const getReviewById = async (req, res) => {
     try {
@@ -167,6 +198,7 @@ module.exports = {
     createReview,
     getAllReviews,  
     getReviewById,
+    getReviewsByProductId,
     updateReview,
     deleteReview
 };

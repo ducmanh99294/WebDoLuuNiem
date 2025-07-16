@@ -21,6 +21,7 @@ import OrderDetail from '../pages/OrderDetail';
 import OrderList from '../pages/listOrder';
 import BlogDetail from '../pages/BlogDetail';
 import CategoryPage from '../pages/category';
+import ReturnForm from '../pages/ReturnForm';
 
 const AppContent: React.FC = () => {
   const location = useLocation();
@@ -51,6 +52,7 @@ const AppContent: React.FC = () => {
         <Route path="/order" element={<OrderList />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/category/:id" element={<CategoryPage />} />
+        <Route path="/return-form/:orderId" element={<ReturnForm />} />
         {/* <Route path="/category" element={<CategoryPage />} /> */}
 
 
