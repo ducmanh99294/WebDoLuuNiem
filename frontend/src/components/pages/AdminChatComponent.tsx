@@ -43,7 +43,7 @@ const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
     ...(options.headers || {}),
   };
 
-  const response = await fetch(`http://localhost:3000${url}`, {
+  const response = await fetch(`http://localhost:3001${url}`, {
     ...options,
     headers,
   });
@@ -80,7 +80,7 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
   }, [adminId]);
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:3000', {
+    socketRef.current = io('http://localhost:3001', {
       auth: { token: localStorage.getItem('token') },
     });
 
