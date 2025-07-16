@@ -382,7 +382,7 @@ import "../../assets/css/Dashboard.css";
 import { _descriptors } from "chart.js/helpers";
 import AdminOrders from './admin/AdminOrders';
 import AdminEvents from "./admin/AdminEvents";
-import UserManager from "./admin/userManager";
+import UserManager from "./admin/UserManager";
 import BlogManagement from "./admin/BlogManagement";
 import CouponManagement from "./admin/CouponManagement";
 import CategoryManagement from "./admin/CategoryManagement";
