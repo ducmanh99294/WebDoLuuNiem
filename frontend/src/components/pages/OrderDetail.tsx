@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../assets/css/ShippingDetail.css';
 
 const OrderDetail: React.FC = () => {
+  const navigate = useNavigate();
   const orderId = localStorage.getItem('orderId');
   const [orderDetail, setOrderDetail] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const token = localStorage.getItem('token');
   const [status, setStatus] = useState<string>('');
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
-  const order = orderDetail;
 
   useEffect(() => {
     const fetchOrderDetail = async () => {
       try {
+        if (!token) {
+          console.log('Không tìm thấy token, chuyển hướng đến /login');
+          alert('Vui lòng đăng nhập lại');
+          navigate('/login');
+          return;
+        }
+        if (!orderId) {
+          console.log('Không tìm thấy orderId, chuyển hướng đến /orders');
+          alert('Không tìm thấy ID đơn hàng');
+          navigate('/orders');
+          return;
+        }
+
+        console.log('Gửi yêu cầu đến API với orderId:', orderId);
         const res = await fetch(`http://localhost:3000/api/v1/orders/${orderId}`, {
           method: 'GET',
           headers: {
@@ -21,57 +35,40 @@ const OrderDetail: React.FC = () => {
           },
         });
 
+        if (!res.ok) {
+          console.log('Phản hồi API không thành công:', res.status, res.statusText);
+          throw new Error(`Lỗi khi lấy chi tiết đơn hàng: ${res.status}`);
+        }
+
         const data = await res.json();
         if (data.success) {
+          console.log('Dữ liệu đơn hàng:', data.order);
           setOrderDetail(data.order);
           setStatus(data.order.status);
-          
-          // Check if user is admin
-          const userRes = await fetch('http://localhost:3000/api/v1/auth/me', {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          const userData = await userRes.json();
-          setIsAdmin(userData.user?.role === 'admin');
+        } else {
+          throw new Error(data.message || 'Không thể lấy chi tiết đơn hàng');
         }
       } catch (err) {
-        console.log('err', err);
+        console.error('Lỗi khi lấy chi tiết đơn hàng:', err);
+        alert(err.message || 'Có lỗi xảy ra khi tải đơn hàng');
+        navigate('/orders');
       } finally {
         setLoading(false);
       }
     };
 
     if (orderId) fetchOrderDetail();
-  }, [orderId, token]);
+  }, [orderId, token, navigate]);
 
-  const handleStatusChange = async (newStatus: string) => {
-    try {
-      const res = await fetch(`http://localhost:3000/api/v1/orders/${orderId}/status`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ status: newStatus }),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        setStatus(newStatus);
-        setOrderDetail({ ...orderDetail, status: newStatus });
-        alert('Cập nhật trạng thái thành công!');
-      }
-    } catch (err) {
-      console.error('Error updating status:', err);
-      alert('Có lỗi xảy ra khi cập nhật trạng thái');
+  const handleCancelOrder = () => {
+    if (!orderId) {
+      console.log('Không tìm thấy orderId, chuyển hướng đến /orders');
+      alert('Không tìm thấy ID đơn hàng');
+      navigate('/orders');
+      return;
     }
-  };
-
-  const handleCancelOrder = async () => {
-    if (window.confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')) {
-      await handleStatusChange('cancelled');
-    }
+    console.log('Chuyển hướng đến return-form với orderId:', orderId);
+    navigate(`/return-form/${orderId}`);
   };
 
   const getStatusColor = (status: string) => {
@@ -95,7 +92,7 @@ const OrderDetail: React.FC = () => {
       <div className="shipping-actions">
         <button className="btn btn-green">In hóa đơn</button>
         <button className="btn btn-green">Tải xuống hóa đơn</button>
-        {order?.status !== 'cancelled' && order?.status !== 'delivered' && (
+        {orderDetail?.status !== 'cancelled' && orderDetail?.status !== 'delivered' && (
           <button className="btn btn-red" onClick={handleCancelOrder}>
             Hủy đơn hàng
           </button>
@@ -105,51 +102,26 @@ const OrderDetail: React.FC = () => {
       <div className="order-info">
         <div className="box">
           <h4>Thông tin đơn hàng</h4>
-          <p><strong>Số đơn hàng:</strong> {order?.order_number || 'N/A'}</p>
-          <p><strong>Thời gian:</strong> {order?.createdAt ? new Date(order.createdAt).toLocaleString() : 'N/A'}</p>
+          <p><strong>Số đơn hàng:</strong> {orderDetail?.order_number || 'N/A'}</p>
+          <p><strong>Thời gian:</strong> {orderDetail?.createdAt ? new Date(orderDetail.createdAt).toLocaleString() : 'N/A'}</p>
           <p>
             <strong>Trạng thái đơn hàng:</strong> 
-            <span className={`status ${getStatusColor(order?.status)}`}>
-              {order?.status || 'N/A'}
+            <span className={`status ${getStatusColor(orderDetail?.status)}`}>
+              {orderDetail?.status || 'N/A'}
             </span>
           </p>
-          <p><strong>Phương thức thanh toán:</strong> {order?.payment?.method || 'N/A'}</p>
-          <p><strong>Trạng thái thanh toán:</strong> {order?.payment?.status || 'N/A'}</p>
+          <p><strong>Phương thức thanh toán:</strong> {orderDetail?.payment?.method || 'N/A'}</p>
+          <p><strong>Trạng thái thanh toán:</strong> {orderDetail?.payment?.status || 'N/A'}</p>
         </div>
 
         <div className="box">
           <h4>Địa chỉ giao hàng</h4>
-          <p><strong>Họ và tên:</strong> {order?.customer?.fullName || 'N/A'}</p>
-          <p><strong>Điện thoại:</strong> {order?.customer?.phone || 'N/A'}</p>
-          <p><strong>Email:</strong> {order?.customer?.email || 'N/A'}</p>
-          <p><strong>Địa chỉ:</strong> {order?.shipping?.address || 'N/A'}</p>
+          <p><strong>Họ và tên:</strong> {orderDetail?.customer?.fullName || 'N/A'}</p>
+          <p><strong>Điện thoại:</strong> {orderDetail?.customer?.phone || 'N/A'}</p>
+          <p><strong>Email:</strong> {orderDetail?.customer?.email || 'N/A'}</p>
+          <p><strong>Địa chỉ:</strong> {orderDetail?.shipping?.address || 'N/A'}</p>
         </div>
       </div>
-
-      {isAdmin && (
-        <div className="admin-actions">
-          <h4>Cập nhật trạng thái đơn hàng</h4>
-          <div className="status-buttons">
-            {order?.status === 'pending' && (
-              <button className="btn btn-blue" onClick={() => handleStatusChange('confirmed')}>
-                Xác nhận đơn hàng
-              </button>
-            )}
-            {order?.status === 'confirmed' && (
-              <button className="btn btn-blue" onClick={() => handleStatusChange('shipped')}>
-                Đã giao cho đơn vị vận chuyển
-              </button>
-            )}
-            {order?.status === 'shipped' && (
-              <button className="btn btn-blue" onClick={() => handleStatusChange('delivered')}>
-                Đã giao hàng thành công
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* ... (phần còn lại giữ nguyên) ... */}
     </div>
   );
 };
