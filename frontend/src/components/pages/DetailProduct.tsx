@@ -457,3 +457,4 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
 };
 
 export default DetailProduct;
+
