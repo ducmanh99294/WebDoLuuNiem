@@ -30,7 +30,7 @@ const DetailProduct: React.FC = () => {
    useEffect(()=>{
       const fetchBlog = async () => {
         try {
-          const res = await fetch(`http://localhost:3000/api/v1/blogs`);
+          const res = await fetch(`http://localhost:3001/api/v1/blogs`);
           const data = await res.json();
           
           if(data.success) {
@@ -49,7 +49,7 @@ const DetailProduct: React.FC = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/products/${_id}`);
+        const res = await fetch(`http://localhost:3001/api/v1/products/${_id}`);
         const data = await res.json();
         console.log(data)
         setProduct(data);
@@ -195,7 +195,7 @@ const DetailProduct: React.FC = () => {
 };
 
 const getOrCreateCartId = async () => {
-  const cartRes = await fetch(`http://localhost:3000/api/v1/carts/user/${userId}`, {
+  const cartRes = await fetch(`http://localhost:3001/api/v1/carts/user/${userId}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
@@ -211,7 +211,7 @@ const getOrCreateCartId = async () => {
   }
 
   // Nếu chưa có thì tạo mới
-  const createCartRes = await fetch(`http://localhost:3000/api/v1/carts`, {
+  const createCartRes = await fetch(`http://localhost:3001/api/v1/carts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -232,7 +232,7 @@ const getOrCreateCartId = async () => {
 };
 
 const getExistingCartItem = async (cartId: string, productId: string) => {
-  const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+  const res = await fetch(`http://localhost:3001/api/v1/cart-details/cart/${cartId}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
@@ -270,7 +270,7 @@ const renderStars = (rating: number) => {
 };
 
 const updateCartItemQuantity = async (itemId: string, newQuantity: number) => {
-  const res = await fetch(`http://localhost:3000/api/v1/cart-details/${itemId}/quantity`, {
+  const res = await fetch(`http://localhost:3001/api/v1/cart-details/${itemId}/quantity`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -284,7 +284,7 @@ const updateCartItemQuantity = async (itemId: string, newQuantity: number) => {
 };
 
 const addNewCartItem = async (cartId: string, productId: string, quantity: number) => {
-  const res = await fetch(`http://localhost:3000/api/v1/cart-details`, {
+  const res = await fetch(`http://localhost:3001/api/v1/cart-details`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -579,3 +579,4 @@ return (
 };
 
 export default DetailProduct;
+

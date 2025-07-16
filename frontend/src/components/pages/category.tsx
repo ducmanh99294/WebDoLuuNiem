@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import '../../assets/css/productcard.css';
@@ -13,21 +14,21 @@ const CategoryPage: React.FC = () => {
   const fetchCategoryData = async () => {
     try {
       // 🔹 1. Lấy tên danh mục theo ID
-      const catRes = await fetch(`http://localhost:3000/api/v1/categories/${categoryId}`);
+      const catRes = await fetch(`http://localhost:3001/api/v1/categories/${categoryId}`);
       const catData = await catRes.json();
       if (catData.success) {
         setCategoryName(catData.data.name);
       }
 
       // 🔹 2. Lấy sản phẩm theo danh mục
-      const res1 = await fetch(`http://localhost:3000/api/v1/products/category/${categoryId}`);
+      const res1 = await fetch(`http://localhost:3001/api/v1/products/category/${categoryId}`);
       const data1 = await res1.json();
       if (data1.success) {
         setProducts(data1.data || []);
       }
 
       // 🔹 3. Lấy toàn bộ sản phẩm để chọn sản phẩm liên quan
-      const res2 = await fetch(`http://localhost:3000/api/v1/products`);
+      const res2 = await fetch(`http://localhost:3001/api/v1/products`);
       const data2 = await res2.json();
       if (data2.success) setRelated(data2.products || []);
     } catch (err) {

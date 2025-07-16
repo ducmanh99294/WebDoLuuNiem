@@ -13,7 +13,7 @@ const OrderDetail: React.FC = () => {
   useEffect(() => {
     const fetchOrderDetail = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/orders/${orderId}`, {
+        const res = await fetch(`http://localhost:3001/api/v1/orders/${orderId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const OrderDetail: React.FC = () => {
           setStatus(data.order.status);
           
           // Check if user is admin
-          const userRes = await fetch('http://localhost:3000/api/v1/auth/me', {
+          const userRes = await fetch('http://localhost:3001/api/v1/auth/me', {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -47,7 +47,7 @@ const OrderDetail: React.FC = () => {
 
   const handleStatusChange = async (newStatus: string) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/v1/orders/${orderId}/status`, {
+      const res = await fetch(`http://localhost:3001/api/v1/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
