@@ -26,7 +26,7 @@ const returnSchema = new mongoose.Schema({
   description: {
     type: String,
     required: [true, 'Mô tả là bắt buộc'],
-    minlength: [10, 'Mô tả cần ít nhất 10 ký tự'],
+    minlength: [5, 'Mô tả cần ít nhất 5 ký tự'],
     maxlength: [500, 'Mô tả tối đa 500 ký tự']
   },
   reason: {

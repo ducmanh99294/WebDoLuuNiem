@@ -8,7 +8,11 @@ const OrderDetail: React.FC = () => {
   const [orderDetail, setOrderDetail] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const token = localStorage.getItem('token');
-  const [status, setStatus] = useState<string>('');
+
+  // Kiểm tra xem đơn hàng có thể trả được không
+  const canReturn = orderDetail && 
+                   ['pending', 'delivered'].includes(orderDetail.status) &&
+                   (new Date().getTime() - new Date(orderDetail.createdAt).getTime()) <= 5 * 24 * 60 * 60 * 1000;
 
   useEffect(() => {
     const fetchOrderDetail = async () => {
@@ -44,7 +48,12 @@ const OrderDetail: React.FC = () => {
         if (data.success) {
           console.log('Dữ liệu đơn hàng:', data.order);
           setOrderDetail(data.order);
-          setStatus(data.order.status);
+          // Debug trạng thái và thời gian
+          console.log('Trạng thái đơn hàng:', data.order.status);
+          console.log('Thời gian createdAt:', data.order.createdAt);
+          console.log('Thời gian hiện tại:', new Date().toISOString());
+          console.log('Can return:', ['pending', 'delivered'].includes(data.order.status) &&
+            (new Date().getTime() - new Date(data.order.createdAt).getTime()) <= 5 * 24 * 60 * 60 * 1000);
         } else {
           throw new Error(data.message || 'Không thể lấy chi tiết đơn hàng');
         }
@@ -60,7 +69,7 @@ const OrderDetail: React.FC = () => {
     if (orderId) fetchOrderDetail();
   }, [orderId, token, navigate]);
 
-  const handleCancelOrder = () => {
+  const handleReturnOrder = () => {
     if (!orderId) {
       console.log('Không tìm thấy orderId, chuyển hướng đến /orders');
       alert('Không tìm thấy ID đơn hàng');
@@ -92,10 +101,16 @@ const OrderDetail: React.FC = () => {
       <div className="shipping-actions">
         <button className="btn btn-green">In hóa đơn</button>
         <button className="btn btn-green">Tải xuống hóa đơn</button>
-        {orderDetail?.status !== 'cancelled' && orderDetail?.status !== 'delivered' && (
-          <button className="btn btn-red" onClick={handleCancelOrder}>
-            Hủy đơn hàng
+        {canReturn ? (
+          <button className="btn btn-blue" onClick={handleReturnOrder}>
+            Trả hàng
           </button>
+        ) : (
+          <p className="error-message">
+            {orderDetail && ['pending', 'delivered'].includes(orderDetail.status)
+              ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
+              : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng'}
+          </p>
         )}
       </div>
 

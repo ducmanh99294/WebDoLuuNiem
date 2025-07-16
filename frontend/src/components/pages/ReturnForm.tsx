@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../../assets/css/ReturnForm.css';
+import { toast } from 'react-toastify';
 
 const ReturnForm: React.FC = () => {
   const { orderId } = useParams<{ orderId: string }>();
@@ -13,23 +14,29 @@ const ReturnForm: React.FC = () => {
   const [orderDetail, setOrderDetail] = useState<any>(null);
   const token = localStorage.getItem('token');
 
+  // Kiểm tra form có hợp lệ không
+  const isOrderValid = orderDetail && 
+                      ['pending', 'delivered'].includes(orderDetail.status) &&
+                      (new Date().getTime() - new Date(orderDetail.createdAt).getTime()) <= 5 * 24 * 60 * 60 * 1000;
+  const isFormValid = isOrderValid && 
+                      images.length >= 3 && 
+                      description.trim().length >= 5 && 
+                      reason;
+
   useEffect(() => {
     const fetchOrderDetail = async () => {
       try {
         if (!token) {
-          console.log('Không tìm thấy token, chuyển hướng đến /login');
-          alert('Vui lòng đăng nhập lại');
+          toast.error('Vui lòng đăng nhập lại');
           navigate('/login');
           return;
         }
         if (!orderId) {
-          console.log('Không tìm thấy orderId, chuyển hướng đến /orders');
-          alert('Không tìm thấy ID đơn hàng');
+          toast.error('Không tìm thấy ID đơn hàng');
           navigate('/orders');
           return;
         }
 
-        console.log('Gửi yêu cầu đến API với orderId:', orderId);
         const res = await fetch(`http://localhost:3000/api/v1/orders/${orderId}`, {
           method: 'GET',
           headers: {
@@ -39,20 +46,22 @@ const ReturnForm: React.FC = () => {
         });
 
         if (!res.ok) {
-          console.log('Phản hồi API không thành công:', res.status, res.statusText);
           throw new Error(`Lỗi khi lấy chi tiết đơn hàng: ${res.status}`);
         }
 
         const data = await res.json();
         if (data.success) {
-          console.log('Dữ liệu đơn hàng:', data.order);
           setOrderDetail(data.order);
+          if (!['pending', 'delivered'].includes(data.order.status)) {
+            setError('Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
+          } else if ((new Date().getTime() - new Date(data.order.createdAt).getTime()) > 5 * 24 * 60 * 60 * 1000) {
+            setError('Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng');
+          }
         } else {
           throw new Error(data.message || 'Không thể lấy chi tiết đơn hàng');
         }
-      } catch (err) {
-        console.error('Lỗi khi lấy chi tiết đơn hàng:', err);
-        alert(err.message || 'Có lỗi xảy ra khi tải đơn hàng');
+      } catch (err: any) {
+        toast.error(err.message || 'Có lỗi xảy ra khi tải đơn hàng');
         navigate('/orders');
       }
     };
@@ -63,11 +72,24 @@ const ReturnForm: React.FC = () => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const selectedFiles = Array.from(e.target.files);
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      const invalidFiles = selectedFiles.filter(file => file.size > maxSize);
+      if (invalidFiles.length > 0) {
+        setError('Một số file vượt quá 5MB');
+        return;
+      }
       const newImages = [...images, ...selectedFiles];
       if (newImages.length < 3) {
         setError('Vui lòng tải lên ít nhất 3 ảnh sản phẩm.');
+      } else if (newImages.length > 5) {
+        setError('Tối đa 5 ảnh sản phẩm.');
+        return;
       } else {
-        setError('');
+        setError(!isOrderValid 
+          ? (['pending', 'delivered'].includes(orderDetail?.status) 
+              ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
+              : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
+          : '');
       }
       setImages(newImages);
     }
@@ -79,23 +101,37 @@ const ReturnForm: React.FC = () => {
     if (newImages.length < 3) {
       setError('Vui lòng tải lên ít nhất 3 ảnh sản phẩm.');
     } else {
-      setError('');
+      setError(!isOrderValid 
+        ? (['pending', 'delivered'].includes(orderDetail?.status) 
+            ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
+            : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
+        : '');
     }
   };
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!token) {
-      alert('Vui lòng đăng nhập lại');
+      toast.error('Vui lòng đăng nhập lại');
       navigate('/login');
+      return;
+    }
+    if (!isOrderValid) {
+      setError(['pending', 'delivered'].includes(orderDetail?.status)
+        ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
+        : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
       return;
     }
     if (images.length < 3) {
       setError('Vui lòng tải lên ít nhất 3 ảnh sản phẩm.');
       return;
     }
-    if (!description || !reason) {
-      setError('Vui lòng điền đầy đủ mô tả lỗi và lý do trả hàng.');
+    if (!description || description.trim().length < 5 || /^\s*$/.test(description)) {
+      setError('Vui lòng nhập mô tả lỗi ít nhất 5 ký tự (không tính khoảng trắng).');
+      return;
+    }
+    if (!reason) {
+      setError('Vui lòng chọn lý do trả hàng.');
       return;
     }
 
@@ -103,13 +139,18 @@ const ReturnForm: React.FC = () => {
     try {
       const formData = new FormData();
       images.forEach((image) => {
-        formData.append('images', image); // Sửa thành 'images' thay vì `images[${index}]`
+        formData.append('images', image);
       });
-      formData.append('description', description);
+      formData.append('description', description.trim());
       formData.append('reason', reason);
       formData.append('orderId', orderId || '');
 
-      console.log('Gửi FormData:', { description, reason, orderId, images: images.map(f => f.name) });
+      console.log('FormData:', {
+        orderId,
+        description: description.trim(),
+        reason,
+        images: images.map(file => file.name)
+      });
 
       const res = await fetch('http://localhost:3000/api/v1/returns', {
         method: 'POST',
@@ -121,14 +162,29 @@ const ReturnForm: React.FC = () => {
 
       const data = await res.json();
       if (data.success) {
-        alert('Yêu cầu trả hàng đã được gửi thành công!');
+        toast.success('Yêu cầu trả hàng đã được gửi thành công!');
         navigate('/orders');
       } else {
-        setError(data.message || 'Có lỗi xảy ra khi gửi yêu cầu trả hàng.');
+        switch (res.status) {
+          case 400:
+            toast.error(data.message || 'Dữ liệu không hợp lệ');
+            break;
+          case 401:
+            toast.error('Vui lòng đăng nhập lại');
+            navigate('/login');
+            break;
+          case 403:
+            toast.error('Bạn không có quyền thực hiện hành động này');
+            break;
+          case 404:
+            toast.error('Không tìm thấy đơn hàng');
+            break;
+          default:
+            toast.error(data.message || 'Có lỗi xảy ra, vui lòng thử lại');
+        }
       }
     } catch (err) {
-      console.error('Lỗi khi gửi yêu cầu trả hàng:', err);
-      setError('Có lỗi xảy ra khi gửi yêu cầu trả hàng.');
+      toast.error('Không thể kết nối đến server');
     } finally {
       setLoading(false);
     }
@@ -184,6 +240,7 @@ const ReturnForm: React.FC = () => {
             accept="image/*"
             multiple
             onChange={handleImageChange}
+            disabled={!isOrderValid}
           />
           <p>Số ảnh đã tải: {images.length}</p>
           {images.length > 0 && (
@@ -199,6 +256,7 @@ const ReturnForm: React.FC = () => {
                     className="remove-image-btn"
                     onClick={() => handleRemoveImage(index)}
                     title="Xóa ảnh"
+                    disabled={!isOrderValid}
                   >
                     ×
                   </button>
@@ -215,17 +273,23 @@ const ReturnForm: React.FC = () => {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Mô tả chi tiết lỗi của sản phẩm..."
             rows={5}
+            disabled={!isOrderValid}
           />
         </div>
 
         <div className="form-group">
           <label>Lý do trả hàng:</label>
-          <textarea
+          <select
             value={reason}
             onChange={(e) => setReason(e.target.value)}
-            placeholder="Lý do bạn muốn trả hàng..."
-            rows={3}
-          />
+            disabled={!isOrderValid}
+          >
+            <option value="" disabled>Chọn lý do</option>
+            <option value="wrong_item">Sản phẩm sai</option>
+            <option value="damaged">Sản phẩm hỏng</option>
+            <option value="not_as_described">Sản phẩm không như mô tả</option>
+            <option value="other">Khác</option>
+          </select>
         </div>
 
         {error && <p className="error-message">{error}</p>}
@@ -233,7 +297,7 @@ const ReturnForm: React.FC = () => {
         <button
           className="btn btn-blue"
           onClick={handleSubmit}
-          disabled={loading}
+          disabled={loading || !isFormValid}
         >
           {loading ? 'Đang gửi...' : 'Gửi yêu cầu trả hàng'}
         </button>

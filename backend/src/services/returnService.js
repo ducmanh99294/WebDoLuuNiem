@@ -23,7 +23,7 @@ const saveImages = async (files) => {
     return imageUrls;
   } catch (error) {
     logger.error('Failed to save images:', error);
-    throw new Error('Failed to save return images');
+    throw new Error('Không thể lưu ảnh trả hàng');
   }
 };
 
@@ -37,17 +37,25 @@ const createReturn = async (data, files) => {
     // Kiểm tra order
     const order = await Order.findById(orderId).session(session);
     if (!order) {
-      throw new Error('Order not found');
+      throw new Error('Không tìm thấy đơn hàng');
     }
 
     // Kiểm tra quyền
     if (order.user.toString() !== userId.toString()) {
-      throw new Error('You do not have permission to return this order');
+      throw new Error('Bạn không có quyền trả đơn hàng này');
     }
 
     // Kiểm tra trạng thái order
-    if (!['delivered', 'completed'].includes(order.status)) {
-      throw new Error('Order must be delivered or completed to return');
+    if (!['pending', 'delivered'].includes(order.status)) {
+      throw new Error('Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
+    }
+
+    // Kiểm tra thời gian trả hàng (5 ngày kể từ createdAt)
+    const fiveDaysInMs = 5 * 24 * 60 * 60 * 1000; // 5 ngày
+    const currentTime = new Date();
+    const orderCreationTime = new Date(order.createdAt);
+    if (currentTime - orderCreationTime > fiveDaysInMs) {
+      throw new Error('Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng');
     }
 
     // Lưu ảnh

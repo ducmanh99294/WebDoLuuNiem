@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { createReturnRequest } = require('../controllers/returnController');
+const { createReturnRequest, approveReturn } = require('../controllers/returnController');
 const { validateToken } = require('../middlewares/authMiddleware');
-const authRoles = require('../middlewares/authRoles');
 const multer = require('multer');
 const logger = require('../utils/logger');
 
@@ -41,9 +40,7 @@ const handleUpload = (req, res, next) => {
 router.post(
   '/',
   validateToken,
-  authRoles(['user', 'admin']),
   (req, res, next) => {
-    // Middleware kiểm tra content-type
     if (!req.is('multipart/form-data')) {
       return res.status(400).json({
         success: false,
@@ -55,5 +52,7 @@ router.post(
   handleUpload,
   createReturnRequest
 );
+
+router.patch('/:returnId/approve', validateToken, approveReturn);
 
 module.exports = router;
