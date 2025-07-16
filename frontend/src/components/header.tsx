@@ -73,7 +73,7 @@ useEffect(() => {
   const fetchNotifications = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:3000/api/v1/notifications', {
+      const res = await fetch('http://localhost:3001/api/v1/notifications', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -97,7 +97,7 @@ useEffect(() => {
 useEffect(() => {
   const fetchCategories = async ()=> {
     try {
-      const res = await fetch('http://localhost:3000/api/v1/categories', {
+      const res = await fetch('http://localhost:3001/api/v1/categories', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
