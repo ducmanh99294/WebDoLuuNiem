@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 
 const applicableProductSchema = new mongoose.Schema({
-    product: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Products',
-        required: true
-    }],
+      eventId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Events',
+    required: true,
+  },
+  productId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Products',
+    required: true,
+  },
     startDate: {
         type: Date,
         required: true
