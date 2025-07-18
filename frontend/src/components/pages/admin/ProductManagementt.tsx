@@ -19,7 +19,7 @@ const ProductManagement = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await fetch("http://localhost:3000/api/v1/categories");
+      const res = await fetch("http://localhost:3001/api/v1/categories");
       const data = await res.json();
       const validCategories = data.data.filter((cat: any) => cat && cat.name);
       setCategories(validCategories);
@@ -31,7 +31,7 @@ const ProductManagement = () => {
     const fetchProductList = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:3000/api/v1/products", {
+        const res = await fetch("http://localhost:3001/api/v1/products", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -150,7 +150,7 @@ const handleSave = async () => {
   });
 
   try {
-    const res = await fetch("http://localhost:3000/api/v1/products", {
+    const res = await fetch("http://localhost:3001/api/v1/products", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -179,7 +179,7 @@ const handleSave = async () => {
     if (!window.confirm("Bạn có chắc muốn xóa?")) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/api/v1/products/${productId}`, {
+      const res = await fetch(`http://localhost:3001/api/v1/products/${productId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

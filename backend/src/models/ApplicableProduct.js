@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const applicableProductSchema = new mongoose.Schema({
-      eventId: {
+  eventId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Events',
     required: true,

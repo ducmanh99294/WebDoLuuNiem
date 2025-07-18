@@ -27,8 +27,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="image-wrapper">
           <Link to={`/product-detail/${product._id}`}>
             {product?.images?.length > 0 && (
-  <img src={product.images[0].image} alt={product.name} className="image" />
-)}
+            <img src={product.images[0].image} alt={product.name} className="image" 
+            />
+          )}
 
           </Link>
           <div className="label">Hot</div>

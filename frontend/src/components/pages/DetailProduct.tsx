@@ -68,7 +68,7 @@ const DetailProduct: React.FC = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/reviews/product/${_id}`);
+        const res = await fetch(`http://localhost:3001/api/v1/reviews/product/${_id}`);
         const data = await res.json();
         if (data.success) {
           setReviews(data.reviews);
@@ -95,7 +95,7 @@ const DetailProduct: React.FC = () => {
   }
 
   try {
-    const res = await fetch('http://localhost:3000/api/v1/reviews', {
+    const res = await fetch('http://localhost:3001/api/v1/reviews', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ const DetailProduct: React.FC = () => {
       setUserRating(5);
 
       // Cập nhật lại danh sách đánh giá
-      const res2 = await fetch(`http://localhost:3000/api/v1/reviews/product/${_id}`);
+      const res2 = await fetch(`http://localhost:3001/api/v1/reviews/product/${_id}`);
       const newData = await res2.json();
       if (newData.success) {
         setReviews(newData.reviews);

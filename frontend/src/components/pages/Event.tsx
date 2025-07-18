@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import ProductCard from '../pages/ProductCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
+import '../../assets/css/productcard.css';
+import { Link } from 'react-router-dom';
+import { FaHeart } from 'react-icons/fa';
 
 const EventPage = () => {
   const [events, setEvents] = useState<any[]>([]);
@@ -14,8 +16,15 @@ const EventPage = () => {
       try {
         const res = await fetch('http://localhost:3001/api/v1/events');
         const data = await res.json();
+        console.log("📦 Dữ liệu sự kiện:", data);
         if (data.success) {
-          setEvents(data.data || []);
+          const now = new Date();
+          const ongoingEvents = (data.data || []).filter((event: any) => {
+            const start = new Date(event.startDate);
+            const end = new Date(event.endDate);
+            return start <= now && end >= now;
+          });
+          setEvents(ongoingEvents);
         }
       } catch (err) {
         console.error('Lỗi khi tải sự kiện:', err);
@@ -112,24 +121,58 @@ const EventPage = () => {
                 Ưu đãi: Giảm {event.discount}%
               </p>
 
-              {event.products?.length > 0 ? (
-                <div
-                  style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '20px',
-                    marginTop: '20px',
-                  }}
-                >
-                  {event.products.map((product: any) => (
-                    <ProductCard key={product._id} product={product} />
-                  ))}
-                </div>
-              ) : (
-                <p style={{ color: '#aaa', marginTop: 10 }}>
-                  Không có sản phẩm trong sự kiện này.
-                </p>
+         {event.products?.length > 0 ? (
+  <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginTop: 20 }}>
+    {event.products.map((app: any, idx: any) => {
+      const product = app.productId; // populate productId từ backend
+      const finalPrice = product.price - (product.price * app.discount) / 100;
+
+      return (
+        <div key={product._id} className="card" style={{ width: 260 }}>
+          <div className="image-wrapper">
+            <Link to={`/product-detail/${product._id}`}>
+              {product?.images?.length > 0 && (
+                <img
+                  src={product.images[0]?.image}
+                  alt={product.name}
+                  className="image"
+                />
               )}
+            </Link>
+            <div className="label">Hot</div>
+          </div>
+
+          <div className="rating-line" style={{ marginTop: 8 }}>
+            <span className="star">{product.rating}</span>
+            <span className="review-count">({product.like_count} đánh giá)</span>
+          </div>
+
+          <div className="name" style={{ fontWeight: 'bold' }}>{product.name}</div>
+          <div className="provider">By <span className="provider-name">NetFood</span></div>
+
+          <div className="price-line">
+            {app.discount > 0 ? (
+              <div>
+                <span className="final-price" style={{ color: 'red', fontWeight: 600 }}>{finalPrice}₫</span>
+                <span className="old-price" style={{ textDecoration: 'line-through', color: '#888', marginLeft: 8 }}>{product.price}₫</span>
+              </div>
+            ) : (
+              <span className="final-price">{product.price}₫</span>
+            )}
+            <span><FaHeart className="heart-icon" /></span>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+) : (
+  <p style={{ color: '#aaa', marginTop: 10 }}>Không có sản phẩm trong sự kiện này.</p>
+)}
+
+
+
+
+
             </div>
           );
         })

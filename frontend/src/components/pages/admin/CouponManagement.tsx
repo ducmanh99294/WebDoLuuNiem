@@ -14,7 +14,7 @@ const CouponManagement = () => {
     const fetchCouponList = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:3000/api/v1/coupons", {
+        const response = await fetch("http://localhost:3001/api/v1/coupons", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ const CouponManagement = () => {
       if (editingCoupon) {
         // Cập nhật mã giảm giá
         const response = await fetch(
-          `http://localhost:3000/api/v1/coupons/${editingCoupon._id}`,
+          `http://localhost:3001/api/v1/coupons/${editingCoupon._id}`,
           {
             method: "PUT",
             headers: {
@@ -106,7 +106,7 @@ const CouponManagement = () => {
         }
       } else {
         // Thêm mới
-        const response = await fetch("http://localhost:3000/api/v1/coupons", {
+        const response = await fetch("http://localhost:3001/api/v1/coupons", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -141,7 +141,7 @@ const CouponManagement = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/v1/coupons/${couponId}`, {
+      const response = await fetch(`http://localhost:3001/api/v1/coupons/${couponId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
