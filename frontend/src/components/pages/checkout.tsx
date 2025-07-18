@@ -533,7 +533,6 @@ const handleCreateOrder = async () => {
     const data = await res.json();
 
     if (data.success) {
-      alert('Đã làm sạch giỏ hàng');
       setCart([]);
     } else {
       alert('Không thể làm sạch giỏ hàng');

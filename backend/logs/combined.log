@@ -34759,3 +34759,4 @@
 {"level":"info","message":"Received request: GET /api/v1/carts/user/686b30500ac07b5272ad8aa0","timestamp":"2025-07-18T02:00:54.600Z"}
 {"level":"info","message":"Received request: POST /api/v1/carts","timestamp":"2025-07-18T02:00:54.628Z"}
 {"code":"ECONNRESET","errno":-4077,"level":"error","message":"Uncaught Exception thrown: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20)","syscall":"read","timestamp":"2025-07-18T02:14:48.792Z"}
+

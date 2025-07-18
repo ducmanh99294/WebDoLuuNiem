@@ -17,7 +17,6 @@ const AdminEvents: React.FC = () => {
     startDate: "",
     endDate: "",
   });
-  const [showSuccess, setShowSuccess] = useState(false);
   const [images, setImages] = useState<string[]>(['']);
 
    useEffect(() => {
@@ -25,7 +24,7 @@ const AdminEvents: React.FC = () => {
   }, []);
 
   const fetchEvents = async () => {
-    const res = await fetch("http://localhost:3000/api/v1/events");
+    const res = await fetch("http://localhost:3001/api/v1/events");
     const data = await res.json();
     setEventList(data.data || []);
   };
@@ -34,7 +33,7 @@ const AdminEvents: React.FC = () => {
       const fetchProductList = async () => {
         try {
           const token = localStorage.getItem('token');
-          const res = await fetch('http://localhost:3000/api/v1/products', {
+          const res = await fetch('http://localhost:3001/api/v1/products', {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -117,7 +116,7 @@ const handleSaveNewEvent = async () => {
   console.log("📤 Dữ liệu đang gửi lên:", payload);
 
   try {
-    const res = await fetch("http://localhost:3000/api/v1/events", {
+    const res = await fetch("http://localhost:3001/api/v1/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -152,7 +151,7 @@ const handleSaveNewEvent = async () => {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/v1/events/${editingEvent._id}`, {
+    const response = await fetch(`http://localhost:3001/api/v1/events/${editingEvent._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -173,7 +172,6 @@ const handleSaveNewEvent = async () => {
     console.log('✅ Kết quả cập nhật:', data);
 
     if (response.ok) {
-      setShowSuccess(true); 
       setEditingEvent(null);
       setEventList((prevList) =>
         prevList.map((e) =>
@@ -218,7 +216,7 @@ const handleDeleteEvent = async (eventId: string) => {
   if (!confirmDelete) return;
 
   try {
-    const response = await fetch(`http://localhost:3000/api/v1/events/${eventId}`, {
+    const response = await fetch(`http://localhost:3001/api/v1/events/${eventId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -258,7 +256,7 @@ const handleAddProductToEvent = async (eventId: string) => {
   };
 
   try {
-    const res = await fetch(`http://localhost:3000/api/v1/events/${eventId}/add-products`, {
+    const res = await fetch(`http://localhost:3001/api/v1/events/${eventId}/add-products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -682,9 +680,9 @@ const handleAddProductToEvent = async (eventId: string) => {
     </div>
 
     <div className="form-group">
-      <label>Ngày bắt đầu:</label>
+      <label>thời gian bắt đầu:</label>
       <input
-        type="date"
+        type="datetime-local"
         value={subEventForm.startDate}
         onChange={(e) =>
           setSubEventForm({ ...subEventForm, startDate: e.target.value })
@@ -693,9 +691,9 @@ const handleAddProductToEvent = async (eventId: string) => {
     </div>
 
     <div className="form-group">
-      <label>Ngày kết thúc:</label>
+      <label>thời gian kết thúc:</label>
       <input
-        type="date"
+        type="datetime-local"
         value={subEventForm.endDate}
         onChange={(e) =>
           setSubEventForm({ ...subEventForm, endDate: e.target.value })
@@ -704,19 +702,20 @@ const handleAddProductToEvent = async (eventId: string) => {
     </div>
 
     <button
-      className="btn btn-success"
+      className="sp-btn-sub"
       onClick={() => handleAddProductToEvent(event._id)}
     >
       thêm
     </button>
     <button
-        className="btn btn-secondary"
+        className="sp-btn-delete"
+        style={{ marginLeft: 8}}
         onClick={() => {
           setExpandedEventId(null);
           setSubEventForm({ product: [], discount: "", startDate: "", endDate: "" });
         }}
       >
-        ❌ Hủy
+       Hủy
       </button>
   </div>
 )}
