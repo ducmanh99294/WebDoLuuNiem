@@ -34274,3 +34274,24 @@
 {"level":"info","message":"Received body: {\"user\":\"686b30500ac07b5272ad8aa0\"}","timestamp":"2025-07-16T03:22:13.200Z"}
 
 
+{"level":"info","message":"Created upload directory at D:\\DoanTTapi\\WebDoLuuNiem\\backend\\src\\uploads","timestamp":"2025-07-16T03:28:18.157Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-07-16T03:28:18.173Z"}
+{"level":"info","message":"Server is running on http://localhost:3001","timestamp":"2025-07-16T03:28:18.456Z"}
+{"level":"info","message":"Upload directory: D:\\DoanTTapi\\WebDoLuuNiem\\backend\\src\\uploads","timestamp":"2025-07-16T03:28:18.457Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-16T03:28:19.050Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-16T03:30:12.834Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-16T03:30:12.857Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-16T03:30:12.861Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-16T03:30:12.862Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-16T03:30:13.099Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-16T03:30:13.136Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-16T03:30:13.687Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-16T03:30:13.696Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-16T03:30:13.704Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-16T03:30:13.708Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-16T03:30:13.708Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-16T03:30:13.712Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-16T03:30:14.279Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-16T03:30:14.281Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-16T03:30:14.821Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-16T03:30:15.098Z"}
