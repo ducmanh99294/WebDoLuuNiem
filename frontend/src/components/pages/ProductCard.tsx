@@ -26,7 +26,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="card">
         <div className="image-wrapper">
           <Link to={`/product-detail/${product._id}`}>
-            <img src={product.images[0].image} alt={product.name} className="image" />
+            {product?.images?.length > 0 && (
+            <img src={product.images[0].image} alt={product.name} className="image" 
+            />
+          )}
+
           </Link>
           <div className="label">Hot</div>
         </div>
@@ -41,11 +45,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="price-line">
           {product.discount > 0 ? (
             <div>
-              <span className="final-price">{finalPrice.toLocaleString()}₫</span>
-              <span className="old-price">{product.price.toLocaleString()}₫</span>
+              <span className="final-price">{finalPrice}₫</span>
+              <span className="old-price">{product.price}₫</span>
             </div>
           ) : (
-              <span className="final-price">{product.price.toLocaleString()}₫</span>
+              <span className="final-price">{product.price}₫</span>
           )
           }
           <span><FaHeart className="heart-icon" /></span>

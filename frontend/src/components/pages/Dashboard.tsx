@@ -1,8 +1,9 @@
-import  {useState } from "react";
+import  {useState,useEffect  } from "react";
 import { Bar } from "react-chartjs-2";
 import { Store, LogOut, MessageCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,9 +27,49 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 const Dashboard = () => {
   const [userCount, setUserCount] = useState<number>(0);
   const [activeSection, setActiveSection] = useState('dashboard');
+  const [totalRevenue, setTotalRevenue] = useState<number>(0);
+  const [orderCount, setOrderCount] = useState<number>(0);
   const navigate = useNavigate();
-
   // đăng xuất 
+  // useffect
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const fetchOrders = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/orders", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      console.log("Dữ liệu trả về từ API:", data); // 👈 kiểm tra dữ liệu
+
+      if (response.ok && Array.isArray(data.orders)) {
+        // Kiểm tra và lọc đơn hàng có total_price hợp lệ
+        const validOrders = data.orders.filter(
+          (order) => typeof order.total_price === "number"
+        );
+
+        const total = validOrders.reduce(
+          (sum, order) => sum + order.total_price,
+          0
+        );
+
+        setOrderCount(validOrders.length);
+        setTotalRevenue(total);
+      } else {
+        console.warn("Không lấy được dữ liệu đơn hàng hoặc sai định dạng.");
+      }
+    } catch (error) {
+      console.error("Lỗi khi lấy đơn hàng:", error);
+    }
+  };
+
+  fetchOrders();
+}, []);
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
@@ -179,8 +220,17 @@ const Dashboard = () => {
                 <StatCard title="Người dùng" value={`${userCount} người`} />
                 <StatCard title="Câu hỏi" value="3,298" />
                 <StatCard title="Số lượt đánh giá" value="5,000" />
-                <StatCard title="Tổng doanh thu" value="2,000,000 VNĐ" />
-                <StatCard title="Mức tăng trưởng" value="3%" />
+<StatCard
+  title="Tổng doanh thu"
+  value={
+    totalRevenue > 0
+      ? totalRevenue.toLocaleString("vi-VN", {
+          style: "currency",
+          currency: "VND",
+        })
+      : "Đang cập nhật..."
+  }
+/>               <StatCard title="Mức tăng trưởng" value="3%" />
                 <StatCard title="Đơn hàng chờ" value="2,000" />
               </div>
 

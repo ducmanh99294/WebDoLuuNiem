@@ -30,3 +30,5 @@
 {"level":"error","message":"Error creating coupon: Coupons validation failed: expiry_date: Path `expiry_date` is required.","timestamp":"2025-07-14T02:24:13.841Z"}
 {"level":"error","message":"Error creating coupon: Coupons validation failed: expiry_date: Path `expiry_date` is required.","timestamp":"2025-07-14T02:24:29.252Z"}
 {"level":"error","message":"Error updating order 6862e603849f093e77e8a46f: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-14T02:50:02.176Z"}
+{"level":"error","message":"Error updating order 686935c6b67141d16a1cf26b: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-18T02:40:28.648Z"}
+{"level":"error","message":"Error updating order 686935c6b67141d16a1cf26b: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-18T02:40:31.264Z"}

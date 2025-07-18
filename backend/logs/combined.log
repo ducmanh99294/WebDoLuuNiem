@@ -7804,3 +7804,1255 @@
 {"level":"info","message":"Received body: undefined","timestamp":"2025-07-14T03:34:00.646Z"}
 {"level":"info","message":"Fetching all products","timestamp":"2025-07-14T03:34:00.647Z"}
 {"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-14T03:34:00.932Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-07-18T01:55:23.350Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-07-18T01:55:23.770Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-18T01:55:24.491Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T01:55:30.325Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:30.326Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T01:55:30.328Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T01:55:30.468Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T01:55:30.516Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:30.517Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T01:55:30.520Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T01:55:30.576Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T01:55:41.928Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:41.930Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T01:55:41.944Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:41.946Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T01:55:41.948Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T01:55:41.982Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T01:55:41.987Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:41.988Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T01:55:42.148Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T01:55:42.204Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T01:55:42.212Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:42.213Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T01:55:42.213Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T01:55:42.350Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T01:55:47.743Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:47.744Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T01:55:48.097Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:48.099Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T01:55:50.579Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:50.580Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T01:55:50.766Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T01:55:50.770Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:50.771Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T01:55:50.832Z"}
+{"level":"info","message":"Received request: PUT /api/v1/blogs/6863c8cba8072225f83c3afe","timestamp":"2025-07-18T01:55:54.309Z"}
+{"level":"info","message":"Received body: {\"title\":\"Mắm Dì Cẩn – Hương vị truyền thống miền Trung\",\"content\":\"Mắm Dì Cẩn không đơn thuần là một loại nước chấm, mà là cả một phần hồn của miền Trung nắng gió. Với nguyên liệu chính là cá cơm tươi ngon đánh bắt trong ngày, kết hợp cùng muối hạt tinh khiết và bí quyết ủ truyền thống hơn 30 năm, mỗi giọt mắm là một câu chuyện. Vị mặn mòi nhưng dịu nhẹ, hậu vị ngọt thanh đặc trưng, mắm Dì Cẩn dùng để chấm rau luộc, thịt luộc hay pha nước mắm chua ngọt đều thơm ngon khó cưỡng. Nhiều du khách khi rời Đà Nẵng đều chọn mua vài chai về làm quà biếu – bởi mắm không chỉ ngon, mà còn là tình thân gửi trao nè \\n\",\"image\":[\"/images/blog/mamDiCam.jpeg\",\"https://example.com/images/mam-di-can2.jpg\"],\"description\":\"Thơm ngon, đậm đà, đậm chất quê hương – mắm Dì Cẩn là món quà tuyệt vời từ Đà Nẵng.12\"}","timestamp":"2025-07-18T01:55:54.310Z"}
+{"level":"info","message":"Blog updating successfully: 6863c8cba8072225f83c3afe","timestamp":"2025-07-18T01:55:54.441Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T01:55:58.517Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:58.518Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T01:55:58.597Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T01:55:58.601Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:55:58.602Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T01:55:58.658Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-07-18T01:56:00.586Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:00.587Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-07-18T01:56:00.717Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-07-18T01:56:00.724Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:00.726Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-07-18T01:56:00.850Z"}
+{"level":"info","message":"Received request: PUT /api/v1/coupons/68521f0db3f6180a93c8da57","timestamp":"2025-07-18T01:56:13.782Z"}
+{"level":"info","message":"Received body: {\"code\":\"WELCOME10\",\"discount\":10,\"expiryDate\":\"2025-02-26\"}","timestamp":"2025-07-18T01:56:13.782Z"}
+{"level":"info","message":"Coupon updated successfully: 68521f0db3f6180a93c8da57","timestamp":"2025-07-18T01:56:13.902Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T01:56:18.975Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:18.976Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T01:56:18.985Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:18.986Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T01:56:18.986Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T01:56:19.097Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T01:56:19.102Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:19.103Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T01:56:19.124Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T01:56:19.137Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:19.138Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T01:56:19.138Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T01:56:19.226Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T01:56:19.270Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T01:56:28.170Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:28.170Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T01:56:28.179Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:28.180Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T01:56:28.181Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T01:56:28.329Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T01:56:28.333Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:28.334Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T01:56:28.389Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T01:56:28.424Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T01:56:28.433Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:28.433Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T01:56:28.434Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T01:56:28.560Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T01:56:30.309Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:30.310Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T01:56:30.311Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T01:56:30.421Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T01:56:30.427Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T01:56:30.427Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T01:56:30.428Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T01:56:30.493Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:15:03.796Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:15:03.797Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:15:03.798Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:15:03.918Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:17:09.846Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:17:09.847Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:17:09.855Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:17:09.855Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:17:09.856Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:17:09.910Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:17:09.924Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:17:09.925Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:17:09.977Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:17:09.985Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:17:09.988Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:17:09.989Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:17:09.989Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:17:10.110Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:17:16.056Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:17:16.057Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:17:16.057Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:17:16.168Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:17:16.175Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:17:16.176Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:17:16.176Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:17:16.234Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:23:30.697Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:23:30.698Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:23:30.698Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:23:30.835Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683aee9a47be79dae2dfef4e","timestamp":"2025-07-18T02:25:10.181Z"}
+{"level":"info","message":"Received body: {\"name\":\"shduhas\",\"email\":\"nguyenvand@example.com\",\"phone\":\"1212\",\"address\":\"12\"}","timestamp":"2025-07-18T02:25:10.182Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:25:17.422Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:25:17.423Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:25:17.495Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:25:17.498Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:25:17.499Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:25:17.610Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-07-18T02:25:37.268Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"Hoang123\"}","timestamp":"2025-07-18T02:25:37.269Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-07-18T02:25:37.270Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-07-18T02:25:37.357Z"}
+{"level":"warn","message":"Invalid password","timestamp":"2025-07-18T02:25:37.454Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-07-18T02:25:41.660Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-07-18T02:25:41.661Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-07-18T02:25:41.661Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-07-18T02:25:41.723Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-07-18T02:25:41.824Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:25:43.872Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:25:43.872Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:25:43.873Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:25:44.287Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:25:44.291Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:25:44.292Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:25:44.292Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:25:44.462Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:26:02.675Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:26:02.676Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:26:02.676Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:26:02.793Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:29:30.928Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:29:30.929Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:29:30.929Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:29:31.135Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:29:31.141Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:29:31.141Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:29:31.142Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:29:31.219Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683aeda11c43568ff530c471","timestamp":"2025-07-18T02:30:04.108Z"}
+{"level":"info","message":"Received body: {\"name\":\"Nguyễn hoà\",\"email\":\"nguyenvanb@example.com\",\"phone\":\"0968814438\",\"role\":\"user\",\"address\":\"Thôn hoà mỹ\"}","timestamp":"2025-07-18T02:30:04.109Z"}
+{"level":"info","message":"Updating user with ID: 683aeda11c43568ff530c471","timestamp":"2025-07-18T02:30:04.206Z"}
+{"level":"info","message":"User updated successfully: 683aeda11c43568ff530c471","timestamp":"2025-07-18T02:30:04.390Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683aeda11c43568ff530c471","timestamp":"2025-07-18T02:30:18.113Z"}
+{"level":"info","message":"Received body: {\"name\":\"Nguyễn hoà\",\"email\":\"nguyenvanb@example.com\",\"phone\":\"0968814438\",\"role\":\"staff\",\"address\":\"Thôn hoà mỹ\"}","timestamp":"2025-07-18T02:30:18.113Z"}
+{"level":"info","message":"Updating user with ID: 683aeda11c43568ff530c471","timestamp":"2025-07-18T02:30:18.209Z"}
+{"level":"warn","message":"Validation error: \"role\" must be one of [user, admin]","timestamp":"2025-07-18T02:30:18.544Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:30:46.956Z"}
+{"level":"info","message":"Received body: {\"name\":\"Nguyễn hoàng\",\"email\":\"nguyenvanc@example.com\",\"phone\":\"0968814438\",\"role\":\"staff\",\"address\":\"Thôn hoà mỹ\"}","timestamp":"2025-07-18T02:30:46.957Z"}
+{"level":"info","message":"Updating user with ID: 683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:30:47.079Z"}
+{"level":"warn","message":"Validation error: \"role\" must be one of [user, admin]","timestamp":"2025-07-18T02:30:47.191Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:32:14.800Z"}
+{"level":"info","message":"Received body: {\"name\":\"Nguyễn hoàng\",\"email\":\"nguyenvanc@example.com\",\"phone\":\"0968814438\",\"role\":\"staff\",\"address\":\"Thôn hoà mỹ\"}","timestamp":"2025-07-18T02:32:14.801Z"}
+{"level":"info","message":"Updating user with ID: 683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:32:14.926Z"}
+{"level":"warn","message":"Validation error: \"role\" must be one of [user, admin]","timestamp":"2025-07-18T02:32:14.985Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:32:56.306Z"}
+{"level":"info","message":"Received body: {\"name\":\"Nguyễn hoàng\",\"email\":\"nguyenvanc@example.com\",\"phone\":\"0968814438\",\"role\":\"staff\",\"address\":\"Thôn hoà mỹ\"}","timestamp":"2025-07-18T02:32:56.307Z"}
+{"level":"info","message":"Updating user with ID: 683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:32:56.417Z"}
+{"level":"warn","message":"Validation error: \"role\" must be one of [user, admin]","timestamp":"2025-07-18T02:32:56.499Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:34:18.120Z"}
+{"level":"info","message":"Received body: {\"name\":\"Nguyễn hoàng\",\"email\":\"nguyenvanc@example.com\",\"phone\":\"0968814438\",\"role\":\"staff\",\"address\":\"Thôn hoà mỹ\"}","timestamp":"2025-07-18T02:34:18.120Z"}
+{"level":"info","message":"Updating user with ID: 683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:34:18.334Z"}
+{"level":"warn","message":"Validation error: \"role\" must be one of [user, admin]","timestamp":"2025-07-18T02:34:18.391Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:34:54.963Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:34:54.964Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:34:54.965Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:34:55.076Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:34:55.084Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:34:55.084Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:34:55.085Z"}
+{"level":"info","message":"Total users retrieved: 46","timestamp":"2025-07-18T02:34:55.145Z"}
+{"level":"info","message":"Received request: PUT /api/v1/users/683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:35:04.360Z"}
+{"level":"info","message":"Received body: {\"name\":\"Nguyễn hoà\",\"email\":\"nguyenvanc@example.com\",\"phone\":\"0968814438\",\"role\":\"admin\",\"address\":\"Thôn hoà mỹ\"}","timestamp":"2025-07-18T02:35:04.361Z"}
+{"level":"info","message":"Updating user with ID: 683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:35:04.420Z"}
+{"level":"info","message":"User updated successfully: 683aee3f2ebf4e38a04658a1","timestamp":"2025-07-18T02:35:04.584Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/683aeda11c43568ff530c471","timestamp":"2025-07-18T02:36:50.095Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:36:50.095Z"}
+{"level":"info","message":"Deleting user with ID: 683aeda11c43568ff530c471","timestamp":"2025-07-18T02:36:50.152Z"}
+{"level":"info","message":"User deleted successfully: 683aeda11c43568ff530c471","timestamp":"2025-07-18T02:36:50.208Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:39:56.227Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:39:56.228Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:39:56.231Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:39:56.231Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:39:56.232Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:39:56.281Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:39:56.296Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:39:56.297Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:39:56.346Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:39:56.362Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:39:56.376Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:39:56.379Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:39:56.382Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:39:56.506Z"}
+{"level":"info","message":"Received request: POST /api/v1/products/upload","timestamp":"2025-07-18T02:40:07.904Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:07.905Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:40:12.451Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:12.452Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:40:12.630Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:12.632Z"}
+{"level":"info","message":"Received request: PATCH /api/v1/orders/686935c6b67141d16a1cf26b/status","timestamp":"2025-07-18T02:40:19.997Z"}
+{"level":"info","message":"Received body: {\"status\":\"confirmed\"}","timestamp":"2025-07-18T02:40:19.997Z"}
+{"level":"info","message":"Notification sent to user 6842562b7afa6205c0a70ae3 - type: order","timestamp":"2025-07-18T02:40:20.241Z"}
+{"level":"debug","message":"Socket emitted to 6842562b7afa6205c0a70ae3: order_updated","timestamp":"2025-07-18T02:40:20.245Z"}
+{"level":"info","message":"Received request: PATCH /api/v1/orders/686935c6b67141d16a1cf26b/status","timestamp":"2025-07-18T02:40:24.443Z"}
+{"level":"info","message":"Received body: {\"status\":\"shipped\"}","timestamp":"2025-07-18T02:40:24.443Z"}
+{"level":"info","message":"Notification sent to user 6842562b7afa6205c0a70ae3 - type: order","timestamp":"2025-07-18T02:40:24.724Z"}
+{"level":"debug","message":"Socket emitted to 6842562b7afa6205c0a70ae3: order_updated","timestamp":"2025-07-18T02:40:24.724Z"}
+{"level":"info","message":"Received request: PATCH /api/v1/orders/686935c6b67141d16a1cf26b/status","timestamp":"2025-07-18T02:40:28.465Z"}
+{"level":"info","message":"Received body: {\"status\":\"delivered\"}","timestamp":"2025-07-18T02:40:28.466Z"}
+{"level":"error","message":"Error updating order 686935c6b67141d16a1cf26b: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-18T02:40:28.648Z"}
+{"level":"info","message":"Received request: PATCH /api/v1/orders/686935c6b67141d16a1cf26b/status","timestamp":"2025-07-18T02:40:31.095Z"}
+{"level":"info","message":"Received body: {\"status\":\"delivered\"}","timestamp":"2025-07-18T02:40:31.096Z"}
+{"level":"error","message":"Error updating order 686935c6b67141d16a1cf26b: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-18T02:40:31.264Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:35.313Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:35.313Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:35.369Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:35.376Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:35.377Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:35.433Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:40:37.392Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:37.392Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:40:37.578Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:37.579Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:39.837Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:39.838Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:39.891Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:39.895Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:39.896Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:40:39.915Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:39.916Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:40:39.920Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:39.924Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:40:39.925Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:39.959Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:39.964Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:39.965Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:40.022Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:40:40.027Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:40.033Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.036Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:40:40.042Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.042Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:40:40.054Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:40:40.066Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.068Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:40:40.069Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:40.091Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:40.100Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.102Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:40:40.108Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.108Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:40:40.112Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.114Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:40:40.132Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.134Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:40.157Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:40:40.166Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.167Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:40:40.186Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:40:40.195Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.196Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:40:40.199Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:40.203Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.203Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:40.256Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:40:40.262Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.263Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:40:40.266Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.266Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:40:40.268Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.269Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:40:40.273Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.273Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:40:40.275Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:40.275Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:50.238Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.238Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:40:50.241Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.243Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:40:50.251Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.252Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:40:50.254Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:50.296Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:50.305Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.307Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:40:50.360Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:50.366Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:40:50.370Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.371Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:50.376Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.377Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:40:50.395Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:40:50.407Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.408Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:40:50.410Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:50.431Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:50.434Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.434Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:40:50.493Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:50.496Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:50.501Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.502Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:40:50.544Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:40:50.551Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.552Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:40:50.558Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.560Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:40:50.567Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.570Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:40:50.576Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.576Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:50.582Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:40:50.589Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.590Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:40:50.593Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.593Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:40:50.641Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:40:50.699Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.701Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:40:50.704Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.704Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:40:50.705Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.706Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:40:50.709Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.710Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:40:50.712Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:40:50.712Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:06.402Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.403Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:41:06.405Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.405Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:41:06.407Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.407Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:41:06.408Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:06.470Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:06.478Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.479Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:41:06.515Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:41:06.521Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.524Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:41:06.548Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:06.556Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:41:06.561Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.562Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:41:06.565Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:06.571Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.573Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:06.655Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:06.658Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.660Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:41:06.677Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.678Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:41:06.681Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.682Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:41:06.684Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.685Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:41:06.696Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:41:06.700Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.704Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:06.886Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:41:06.889Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:06.890Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:41:06.995Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:07.000Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:07.001Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:07.176Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:07.179Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:07.180Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:07.297Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:41:07.318Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:07.319Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:41:07.321Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:07.322Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:41:07.327Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:07.328Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:41:07.332Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:07.333Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:41:07.336Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:07.336Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:40.624Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.625Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:41:40.629Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.629Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:41:40.632Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.633Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:41:40.633Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:40.698Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:40.702Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.703Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:41:40.747Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:41:40.754Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.755Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:41:40.755Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:41:40.785Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:41:40.788Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.789Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:40.793Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:40.797Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.798Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:41:40.833Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.834Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:41:40.836Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.837Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:41:40.840Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.841Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:40.857Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:41:40.860Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.860Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:41:40.879Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:41:40.890Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.891Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:41:40.905Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:40.909Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.910Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:40.968Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:40.971Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:40.972Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:41.024Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:41.028Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:41.029Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:41.080Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:41:41.090Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:41.090Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:41:41.092Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:41.093Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:41:41.094Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:41.095Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:41:41.098Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:41.098Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:41:41.100Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:41.100Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:43.640Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.640Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:41:43.645Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.646Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:41:43.652Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.652Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:41:43.653Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:43.719Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:43.723Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.723Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:43.779Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:41:43.782Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:43.785Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.786Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:41:43.789Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.799Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:41:43.827Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:41:43.839Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.840Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:41:43.841Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:43.853Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:43.868Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.869Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:41:43.928Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.928Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:43.932Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:41:43.934Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.935Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:41:43.939Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.945Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:41:43.956Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:41:43.960Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.962Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:41:43.974Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:41:43.986Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:43.987Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:43.999Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:44.005Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:44.073Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:41:44.079Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:44.080Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:41:44.136Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:41:44.173Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:44.173Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:41:44.175Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:44.175Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:41:44.178Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:44.178Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:41:44.180Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:44.181Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:41:44.182Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:41:44.183Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:42:20.616Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.617Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:42:20.621Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.624Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:42:20.627Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.628Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:42:20.629Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:42:20.721Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:42:20.729Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.732Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:42:20.800Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:42:20.808Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:42:20.812Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.812Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:42:20.813Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:42:20.815Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.815Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:42:20.922Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:42:20.926Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.927Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:42:20.936Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.937Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:42:20.940Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.941Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:42:20.944Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.945Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:42:20.976Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:42:20.984Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:42:20.990Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:20.991Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:42:20.996Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:42:20.999Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.000Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:42:21.018Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.018Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:42:21.082Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:42:21.091Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.092Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:42:21.149Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:42:21.152Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.152Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:42:21.227Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbda","timestamp":"2025-07-18T02:42:21.310Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.311Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd9","timestamp":"2025-07-18T02:42:21.314Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.314Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:42:21.317Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.318Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbd7","timestamp":"2025-07-18T02:42:21.320Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.321Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/68746e942d807ff0739fdca8","timestamp":"2025-07-18T02:42:21.325Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:42:21.326Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:43:13.844Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:13.844Z"}
+{"level":"info","message":"Category retrieved successfully: 6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:43:13.905Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:43:13.909Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:13.910Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:43:13.914Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:13.915Z"}
+{"level":"info","message":"Category retrieved successfully: 6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:43:13.975Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/category/6866ab95ca36cf228e09cbdb","timestamp":"2025-07-18T02:43:14.117Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:14.117Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:43:14.122Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:14.123Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:43:14.123Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:43:14.321Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:43:14.329Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:14.329Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:43:14.330Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:43:14.498Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:43:30.650Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:30.651Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:43:30.651Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:43:30.818Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:43:30.824Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:30.824Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:43:30.825Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:43:30.963Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:43:31.755Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:31.756Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:43:31.764Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:31.765Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:43:31.766Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:43:31.834Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:43:31.838Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:31.839Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:43:31.903Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:43:31.910Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:31.911Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:43:31.912Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:43:31.917Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:43:32.051Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:43:34.195Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:34.195Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:43:34.196Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:43:34.332Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:43:34.338Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:34.338Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:43:34.339Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:43:34.403Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:43:34.754Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:34.754Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:43:34.759Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:34.760Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:43:34.761Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:43:34.840Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:43:34.845Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:34.845Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:43:34.903Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:43:34.910Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:43:34.914Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:34.915Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:43:34.916Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:43:35.103Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:43:37.424Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:37.425Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:43:37.432Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:37.433Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:43:41.769Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:41.770Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:43:41.903Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:43:41.908Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:41.909Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:43:41.978Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:43:43.132Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:43.133Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:43:43.139Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:43:43.140Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:44:17.449Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:44:17.450Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:44:17.450Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:44:17.570Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:44:17.575Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:44:17.575Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:44:17.576Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:44:17.636Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:51:03.690Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:03.691Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:51:03.691Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:51:03.813Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:51:03.820Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:03.820Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:51:03.821Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:51:03.884Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:04.250Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:04.251Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:51:04.260Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:04.261Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:51:04.261Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:04.310Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:04.313Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:04.314Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:04.373Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:51:04.382Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:51:04.390Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:04.391Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:51:04.391Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:51:04.526Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:51:05.638Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:05.639Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:51:05.649Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:05.650Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-07-18T02:51:20.692Z"}
+{"level":"info","message":"Server is running on http://local:3000","timestamp":"2025-07-18T02:51:20.938Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-18T02:51:21.730Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:27.369Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:27.371Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:51:27.390Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:27.391Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:51:27.392Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:27.435Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:27.443Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:27.443Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:27.530Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:51:27.568Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:51:27.577Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:27.578Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:51:27.579Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:51:27.775Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:51:28.369Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:28.370Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:51:28.379Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:28.380Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:35.948Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:35.949Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:36.009Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:36.012Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:36.012Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:36.071Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-07-18T02:51:37.725Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-07-18T02:51:37.726Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-07-18T02:51:37.727Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-07-18T02:51:37.788Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-07-18T02:51:37.869Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:39.770Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:39.771Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:39.831Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:39.835Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:39.835Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:39.893Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:42.156Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:42.157Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:51:42.164Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:42.164Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:51:42.165Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:42.215Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:51:42.235Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:42.236Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:51:42.358Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:51:42.373Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:51:42.384Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:42.385Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:51:42.386Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:51:42.519Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:51:44.910Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:44.911Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:51:45.128Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:45.129Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:51:54.236Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:54.237Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:51:54.238Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:51:54.363Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:51:54.370Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:54.371Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:51:54.372Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:51:54.518Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:51:55.690Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:55.691Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:51:55.840Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:51:55.845Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:55.846Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:51:55.968Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:51:58.032Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:58.033Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:51:58.035Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:51:58.199Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:51:58.205Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:51:58.206Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:51:58.206Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:51:58.333Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:04.752Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:04.753Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:04.754Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:04.872Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:04.880Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:04.880Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:04.881Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:04.965Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:05.719Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:05.721Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:05.726Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:05.727Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:05.728Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:05.793Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:05.798Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:05.800Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:05.846Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:05.857Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:05.858Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:05.858Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:05.863Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:05.971Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:52:07.228Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:07.230Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:52:07.458Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:07.459Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:52:09.304Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:09.304Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:52:09.447Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:52:09.454Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:09.455Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:52:09.572Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:13.674Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:13.675Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:13.731Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:13.735Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:13.736Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:13.793Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-07-18T02:52:15.426Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:15.427Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-07-18T02:52:15.541Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-07-18T02:52:15.545Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:15.546Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-07-18T02:52:15.661Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:52:17.054Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:17.055Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:17.071Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:17.072Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:17.072Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:52:17.186Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:52:17.193Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:17.193Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:17.207Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:17.221Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:17.222Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:17.223Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:52:17.331Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:17.382Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:52:21.639Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:21.640Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:52:21.750Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:52:21.758Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:21.761Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:52:21.821Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:52:23.367Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:23.367Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:52:23.557Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:23.558Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:25.275Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:25.276Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:25.280Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:25.281Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:25.282Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:25.330Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:25.341Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:25.341Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:25.398Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:25.407Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:25.410Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:25.412Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:25.413Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:25.545Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:26.502Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:26.503Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:26.504Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:26.651Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:26.664Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:26.665Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:26.667Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:26.893Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:30.173Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:30.173Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:30.174Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:30.306Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:30.311Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:30.311Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:30.312Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:30.374Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:43.563Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:43.564Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:43.573Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:43.574Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:43.574Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:43.621Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:43.625Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:43.626Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:43.687Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:43.698Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:43.705Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:43.706Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:43.706Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:43.823Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:52:45.064Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:45.064Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:52:45.261Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:45.262Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:52:46.218Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:46.219Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:52:46.318Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:52:46.324Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:46.325Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:52:46.385Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:47.485Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:47.486Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:47.536Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:47.539Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:47.540Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:47.592Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-07-18T02:52:48.620Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:48.621Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-07-18T02:52:48.718Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-07-18T02:52:48.723Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:48.724Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-07-18T02:52:48.821Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:52:49.615Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:49.616Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:49.622Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:49.623Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:49.623Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:52:49.719Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:52:49.722Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:49.722Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:49.747Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:49.751Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:49.753Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:49.754Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:52:49.824Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:49.881Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:56.453Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:56.453Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:56.454Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:56.571Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:56.576Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:56.577Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:56.577Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:56.639Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:57.853Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:57.854Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:57.857Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:57.858Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:57.858Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:57.916Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:52:57.919Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:57.920Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:57.972Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:52:57.979Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:52:57.982Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:57.982Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:52:57.983Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:52:58.107Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:59.694Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:59.695Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:59.696Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:59.812Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:52:59.819Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:52:59.820Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:52:59.821Z"}
+{"level":"info","message":"Total users retrieved: 45","timestamp":"2025-07-18T02:52:59.887Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/683aee9a47be79dae2dfef4e","timestamp":"2025-07-18T02:53:24.106Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:53:24.106Z"}
+{"level":"info","message":"Deleting user with ID: 683aee9a47be79dae2dfef4e","timestamp":"2025-07-18T02:53:24.174Z"}
+{"level":"info","message":"User deleted successfully: 683aee9a47be79dae2dfef4e","timestamp":"2025-07-18T02:53:24.259Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/683aef16475d6e3a6dbf587f","timestamp":"2025-07-18T02:53:28.911Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:53:28.912Z"}
+{"level":"info","message":"Deleting user with ID: 683aef16475d6e3a6dbf587f","timestamp":"2025-07-18T02:53:28.974Z"}
+{"level":"info","message":"User deleted successfully: 683aef16475d6e3a6dbf587f","timestamp":"2025-07-18T02:53:29.033Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/6879a7c7a9c55d30705bc413","timestamp":"2025-07-18T02:53:46.560Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:53:46.560Z"}
+{"level":"info","message":"Deleting user with ID: 6879a7c7a9c55d30705bc413","timestamp":"2025-07-18T02:53:46.650Z"}
+{"level":"info","message":"User deleted successfully: 6879a7c7a9c55d30705bc413","timestamp":"2025-07-18T02:53:46.728Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68707ad49215661e7a4e9f74","timestamp":"2025-07-18T02:53:50.970Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:53:50.971Z"}
+{"level":"info","message":"Deleting user with ID: 68707ad49215661e7a4e9f74","timestamp":"2025-07-18T02:53:51.034Z"}
+{"level":"info","message":"User deleted successfully: 68707ad49215661e7a4e9f74","timestamp":"2025-07-18T02:53:51.096Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68707aa2bc90121743ec7949","timestamp":"2025-07-18T02:53:54.736Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:53:54.737Z"}
+{"level":"info","message":"Deleting user with ID: 68707aa2bc90121743ec7949","timestamp":"2025-07-18T02:53:54.801Z"}
+{"level":"info","message":"User deleted successfully: 68707aa2bc90121743ec7949","timestamp":"2025-07-18T02:53:54.862Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68707a8230ffce9218d2f034","timestamp":"2025-07-18T02:53:58.147Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:53:58.148Z"}
+{"level":"info","message":"Deleting user with ID: 68707a8230ffce9218d2f034","timestamp":"2025-07-18T02:53:58.213Z"}
+{"level":"info","message":"User deleted successfully: 68707a8230ffce9218d2f034","timestamp":"2025-07-18T02:53:58.271Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68707a391f8198dd9b627586","timestamp":"2025-07-18T02:54:01.057Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:01.058Z"}
+{"level":"info","message":"Deleting user with ID: 68707a391f8198dd9b627586","timestamp":"2025-07-18T02:54:01.119Z"}
+{"level":"info","message":"User deleted successfully: 68707a391f8198dd9b627586","timestamp":"2025-07-18T02:54:01.181Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68707a0453405263a7ce3207","timestamp":"2025-07-18T02:54:04.519Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:04.520Z"}
+{"level":"info","message":"Deleting user with ID: 68707a0453405263a7ce3207","timestamp":"2025-07-18T02:54:04.580Z"}
+{"level":"info","message":"User deleted successfully: 68707a0453405263a7ce3207","timestamp":"2025-07-18T02:54:04.641Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/687079d394f9bb818c3b80bf","timestamp":"2025-07-18T02:54:07.351Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:07.351Z"}
+{"level":"info","message":"Deleting user with ID: 687079d394f9bb818c3b80bf","timestamp":"2025-07-18T02:54:07.428Z"}
+{"level":"info","message":"User deleted successfully: 687079d394f9bb818c3b80bf","timestamp":"2025-07-18T02:54:07.490Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/687073f72481096a23a14787","timestamp":"2025-07-18T02:54:10.733Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:10.734Z"}
+{"level":"info","message":"Deleting user with ID: 687073f72481096a23a14787","timestamp":"2025-07-18T02:54:10.797Z"}
+{"level":"info","message":"User deleted successfully: 687073f72481096a23a14787","timestamp":"2025-07-18T02:54:10.872Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/6870736c4f57c9e0d9933891","timestamp":"2025-07-18T02:54:13.995Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:13.995Z"}
+{"level":"info","message":"Deleting user with ID: 6870736c4f57c9e0d9933891","timestamp":"2025-07-18T02:54:14.058Z"}
+{"level":"info","message":"User deleted successfully: 6870736c4f57c9e0d9933891","timestamp":"2025-07-18T02:54:14.117Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68707102b5114af6bc3e9483","timestamp":"2025-07-18T02:54:20.067Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:20.068Z"}
+{"level":"info","message":"Deleting user with ID: 68707102b5114af6bc3e9483","timestamp":"2025-07-18T02:54:20.129Z"}
+{"level":"info","message":"User deleted successfully: 68707102b5114af6bc3e9483","timestamp":"2025-07-18T02:54:20.190Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/687070e430230edd896e7f1b","timestamp":"2025-07-18T02:54:23.543Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:23.544Z"}
+{"level":"info","message":"Deleting user with ID: 687070e430230edd896e7f1b","timestamp":"2025-07-18T02:54:23.606Z"}
+{"level":"info","message":"User deleted successfully: 687070e430230edd896e7f1b","timestamp":"2025-07-18T02:54:23.667Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/687070a4fd664c97138fa573","timestamp":"2025-07-18T02:54:26.624Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:26.625Z"}
+{"level":"info","message":"Deleting user with ID: 687070a4fd664c97138fa573","timestamp":"2025-07-18T02:54:26.686Z"}
+{"level":"info","message":"User deleted successfully: 687070a4fd664c97138fa573","timestamp":"2025-07-18T02:54:26.747Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68707191f58e781fc96fb3e3","timestamp":"2025-07-18T02:54:29.843Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:29.844Z"}
+{"level":"info","message":"Deleting user with ID: 68707191f58e781fc96fb3e3","timestamp":"2025-07-18T02:54:29.904Z"}
+{"level":"info","message":"User deleted successfully: 68707191f58e781fc96fb3e3","timestamp":"2025-07-18T02:54:29.969Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68707007760b6c9cee1aa03d","timestamp":"2025-07-18T02:54:32.929Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:32.929Z"}
+{"level":"info","message":"Deleting user with ID: 68707007760b6c9cee1aa03d","timestamp":"2025-07-18T02:54:32.993Z"}
+{"level":"info","message":"User deleted successfully: 68707007760b6c9cee1aa03d","timestamp":"2025-07-18T02:54:33.055Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68706f9d48ff64fb290a9fe2","timestamp":"2025-07-18T02:54:36.930Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:36.931Z"}
+{"level":"info","message":"Deleting user with ID: 68706f9d48ff64fb290a9fe2","timestamp":"2025-07-18T02:54:36.989Z"}
+{"level":"info","message":"User deleted successfully: 68706f9d48ff64fb290a9fe2","timestamp":"2025-07-18T02:54:37.050Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/68706f3bbab2e3c03d51f671","timestamp":"2025-07-18T02:54:39.497Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:39.498Z"}
+{"level":"info","message":"Deleting user with ID: 68706f3bbab2e3c03d51f671","timestamp":"2025-07-18T02:54:39.559Z"}
+{"level":"info","message":"User deleted successfully: 68706f3bbab2e3c03d51f671","timestamp":"2025-07-18T02:54:39.633Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/685e059dab170f8f0c093d3b","timestamp":"2025-07-18T02:54:54.883Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:54:54.884Z"}
+{"level":"info","message":"Deleting user with ID: 685e059dab170f8f0c093d3b","timestamp":"2025-07-18T02:54:54.964Z"}
+{"level":"info","message":"User deleted successfully: 685e059dab170f8f0c093d3b","timestamp":"2025-07-18T02:54:55.033Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/684f7d6b849452c8f3a162fb","timestamp":"2025-07-18T02:55:01.239Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:01.244Z"}
+{"level":"info","message":"Deleting user with ID: 684f7d6b849452c8f3a162fb","timestamp":"2025-07-18T02:55:01.327Z"}
+{"level":"info","message":"User deleted successfully: 684f7d6b849452c8f3a162fb","timestamp":"2025-07-18T02:55:01.400Z"}
+{"level":"info","message":"Received request: DELETE /api/v1/users/684f7b56eac2a56df9b795a8","timestamp":"2025-07-18T02:55:05.169Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:05.170Z"}
+{"level":"info","message":"Deleting user with ID: 684f7b56eac2a56df9b795a8","timestamp":"2025-07-18T02:55:05.250Z"}
+{"level":"info","message":"User deleted successfully: 684f7b56eac2a56df9b795a8","timestamp":"2025-07-18T02:55:05.324Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:55:21.089Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:21.089Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:55:21.096Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:21.100Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:55:21.101Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:55:21.165Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:55:21.169Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:21.169Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:55:21.228Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:55:21.238Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:55:21.247Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:21.248Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:55:21.249Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:55:21.366Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:55:24.346Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:24.347Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:55:24.523Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:24.524Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:55:25.586Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:25.587Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:55:25.694Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:55:25.699Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:25.700Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:55:25.753Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:55:26.926Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:26.927Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:55:26.990Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:55:26.994Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:26.994Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:55:27.044Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-07-18T02:55:29.010Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:29.010Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-07-18T02:55:29.112Z"}
+{"level":"info","message":"Received request: GET /api/v1/coupons","timestamp":"2025-07-18T02:55:29.115Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:29.116Z"}
+{"level":"info","message":"Retrieved 5 coupons","timestamp":"2025-07-18T02:55:29.218Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:55:30.344Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:30.346Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:55:30.351Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:30.352Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:55:30.353Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:55:30.520Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:55:30.535Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:30.536Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:55:30.589Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:55:30.604Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:30.604Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:55:30.605Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:55:30.670Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:55:30.732Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:55:43.596Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:43.597Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:55:43.696Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:55:43.701Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:43.701Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:55:43.751Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:55:58.280Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:58.281Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:55:58.450Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:58.451Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:55:59.641Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:59.641Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:55:59.650Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:59.650Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:55:59.652Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:55:59.695Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:55:59.699Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:59.699Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:55:59.752Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:55:59.783Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:55:59.789Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:55:59.790Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:55:59.791Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:55:59.919Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:56:00.555Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:00.556Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:56:00.556Z"}
+{"level":"info","message":"Total users retrieved: 24","timestamp":"2025-07-18T02:56:00.639Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:56:00.644Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:00.645Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:56:00.647Z"}
+{"level":"info","message":"Total users retrieved: 24","timestamp":"2025-07-18T02:56:00.710Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:56:10.064Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:10.067Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:56:10.068Z"}
+{"level":"info","message":"Total users retrieved: 24","timestamp":"2025-07-18T02:56:10.128Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:56:10.133Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:10.134Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:56:10.134Z"}
+{"level":"info","message":"Total users retrieved: 24","timestamp":"2025-07-18T02:56:10.197Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:10.588Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:10.589Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:56:10.594Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:10.595Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:56:10.595Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:10.655Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:10.658Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:10.659Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:56:10.708Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:56:10.714Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:10.715Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:56:10.716Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:10.719Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:56:10.830Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:56:11.706Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:11.706Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:56:11.909Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:11.910Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:56:12.723Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:12.724Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:56:12.840Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-18T02:56:12.843Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:12.844Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-18T02:56:12.915Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:14.163Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:14.163Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:14.221Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:14.224Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:14.225Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:14.283Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:56:14.902Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:14.905Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:56:14.908Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:14.909Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:56:14.909Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:56:15.031Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:56:15.040Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:56:15.044Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:15.044Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:56:15.046Z"}
+{"level":"info","message":"Received request: GET /api/v1/events","timestamp":"2025-07-18T02:56:15.050Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:15.051Z"}
+{"level":"info","message":"Retrieved 2 events","timestamp":"2025-07-18T02:56:15.156Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:56:15.170Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:29.341Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:29.342Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:29.406Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:29.409Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:29.409Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:29.468Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:31.579Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:31.580Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:31.687Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:31.692Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:31.693Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:31.762Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:32.443Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:32.444Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:32.503Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:32.507Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:32.508Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:32.566Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:33.481Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:33.481Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:33.545Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:33.550Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:33.551Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:33.622Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:34.608Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:34.609Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:34.667Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:34.671Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:34.672Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:34.731Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:35.757Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:35.757Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:35.816Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:56:35.819Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:56:35.819Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:56:35.877Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:57:16.254Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:57:16.255Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:57:16.255Z"}
+{"level":"info","message":"Total users retrieved: 24","timestamp":"2025-07-18T02:57:16.313Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-18T02:57:16.318Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:57:16.319Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-18T02:57:16.319Z"}
+{"level":"info","message":"Total users retrieved: 24","timestamp":"2025-07-18T02:57:16.381Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:57:17.024Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:57:17.025Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:57:17.027Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:57:17.028Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:57:17.029Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:57:17.090Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T02:57:17.106Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:57:17.107Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T02:57:17.160Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:57:17.164Z"}
+{"level":"info","message":"Received request: GET /api/v1/products","timestamp":"2025-07-18T02:57:17.173Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:57:17.173Z"}
+{"level":"info","message":"Fetching all products","timestamp":"2025-07-18T02:57:17.174Z"}
+{"level":"info","message":"Retrieved 29 products","timestamp":"2025-07-18T02:57:17.304Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:57:19.730Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:57:19.730Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T02:57:19.912Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T02:57:19.912Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:18:24.426Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:18:24.427Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:18:39.187Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:18:39.187Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:18:39.194Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:18:39.194Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:25:08.381Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:25:08.382Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/count","timestamp":"2025-07-18T03:25:08.386Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:25:08.386Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:25:13.731Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:25:13.731Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/count","timestamp":"2025-07-18T03:25:13.735Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:25:13.735Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:25:13.737Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:25:13.738Z"}
+{"level":"info","message":"Received request: GET /api/v1/users/count","timestamp":"2025-07-18T03:25:13.742Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:25:13.742Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:25:16.253Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:25:16.254Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:27:17.984Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:27:17.985Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:27:17.989Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:27:17.990Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:29:37.319Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:29:37.319Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:29:37.329Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:29:37.332Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T03:30:06.230Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:30:06.231Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T03:30:06.287Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-18T03:30:06.290Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:30:06.291Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-18T03:30:06.344Z"}
+{"level":"info","message":"Received request: POST /api/v1/auth/login","timestamp":"2025-07-18T03:30:07.404Z"}
+{"level":"info","message":"Received body: {\"email\":\"hoang123123@gmail.com\",\"password\":\"12345678\"}","timestamp":"2025-07-18T03:30:07.405Z"}
+{"level":"info","message":"User login attempt...","timestamp":"2025-07-18T03:30:07.406Z"}
+{"level":"info","message":"User login attempt for email: hoang123123@gmail.com","timestamp":"2025-07-18T03:30:07.461Z"}
+{"level":"info","message":"User logged in successfully: 6855894748ae4b1bcb10d49b","timestamp":"2025-07-18T03:30:07.546Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:30:07.748Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:30:07.749Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:30:08.271Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:30:08.272Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:32:53.484Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:32:53.485Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:32:53.662Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:32:53.663Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:34:37.398Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:34:37.398Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:35:29.111Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:35:29.112Z"}
+{"level":"info","message":"Received request: GET /api/v1/orders","timestamp":"2025-07-18T03:35:29.302Z"}
+{"level":"info","message":"Received body: undefined","timestamp":"2025-07-18T03:35:29.303Z"}
