@@ -9,7 +9,7 @@ const BlogManagement = () => {
     const fetchBlogList = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:3000/api/v1/blogs', {
+        const response = await fetch('http://localhost:3001/api/v1/blogs', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
@@ -47,7 +47,7 @@ const BlogManagement = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/v1/blogs/${blogId}`, {
+      const response = await fetch(`http://localhost:3001/api/v1/blogs/${blogId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

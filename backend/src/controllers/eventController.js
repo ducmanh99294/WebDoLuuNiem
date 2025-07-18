@@ -1,5 +1,6 @@
 const Event = require('../models/Event');
-const ApplicableProducts = require('../models/ApplicableProduct')
+const ApplicableProduct = require('../models/ApplicableProduct')
+const Image = require("../models/Image")
 const logger = require('../utils/logger');
 const { getReviewById } = require('./reviewController');
 
@@ -45,13 +46,25 @@ const createEvent = async (req, res) => {
 
 const getAllEvents = async (req, res) => {
   try {
-    const events = await Event.find().lean(); // lấy toàn bộ events
+    // KHÔNG dùng .lean() trước populate lồng
+    const events = await Event.find()
+       .populate({
+        path: 'products',
+        populate: {
+          path: 'productId',
+          model: 'Products',
+          populate: {
+            path: 'images', 
+            model: 'Images', 
+          },
+        },
+      });
+console.log('👉 Kết quả populate:', JSON.stringify(events, null, 2));
+    const applications = await ApplicableProduct.find({
+      eventId: { $ne: null },
+    });
 
-    // lấy danh sách các application theo eventId
-    const applications = await ApplicableProducts.find({
-    eventId: { $ne: null },
-    }).lean();
-    // gom nhóm theo eventId
+    // Gom nhóm theo eventId
     const eventProductMap = {};
     applications.forEach((app) => {
       const id = app.eventId.toString();
@@ -59,12 +72,12 @@ const getAllEvents = async (req, res) => {
       eventProductMap[id].push(app.productId);
     });
 
-    // thêm field `appliedProductCount` cho mỗi event
+    // Thêm field `appliedProductCount` cho mỗi event
     const enrichedEvents = events.map((event) => {
       const appliedProducts = eventProductMap[event._id.toString()] || [];
       return {
-        ...event,
-        appliedProductCount: appliedProducts.length, // 👈 thêm số lượng sản phẩm áp dụng
+        ...event.toObject(), // chuyển từ Document sang plain Object để thêm field mới
+        appliedProductCount: appliedProducts.length,
       };
     });
 
@@ -74,6 +87,7 @@ const getAllEvents = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to get events" });
   }
 };
+
 
 const getEventById = async (req, res) => {
     try {
@@ -172,47 +186,52 @@ const deleteEvent = async (req, res) => {
 }
 
 const addProductToEvent = async (req, res) => {
-  const { products, discount, startDate, endDate } = req.body;
-  const eventId = req.params.id;
-
   try {
-    const event = await Event.findById(eventId);
-    if (!event) {
-      return res.status(404).json({ success: false, message: "Sự kiện không tồn tại" });
+    const eventId = req.params.id;
+    const { products, discount, startDate, endDate } = req.body;
+
+    if (!products || !Array.isArray(products) || products.length === 0) {
+      return res.status(400).json({ success: false, message: 'Không có sản phẩm nào được chọn' });
     }
 
-    if (!Array.isArray(products) || products.length === 0) {
-      return res.status(400).json({ success: false, message: "Vui lòng chọn ít nhất một sản phẩm" });
-    }
-
-    const applications = [];
+    const createdApplicableProducts = [];
 
     for (const productId of products) {
-      const existing = await ApplicableProducts.findOne({ eventId, productId });
-      if (!existing) {
-        const app = await ApplicableProducts.create({
-          eventId,
-          productId,
-          discount,
-          startDate,
-          endDate,
-        });
-        console.log(app);
-        applications.push(app);
-      }
+              console.log('🟡 Thêm sản phẩm vào event:', {
+                eventId,
+                products,
+                discount,
+                startDate,
+                endDate
+                });
+      const applicable = await ApplicableProduct.create({
+        eventId,
+        productId,
+        discount,
+        startDate,
+        endDate,
+      });
+
+
+
+      // Cập nhật sự kiện
+      await Event.findByIdAndUpdate(eventId, {
+        $push: { products: applicable._id },
+      });
+
+      createdApplicableProducts.push(applicable);
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
-      message: "Thêm sản phẩm vào sự kiện thành công",
-      data: applications,
+      message: 'Đã thêm sản phẩm vào sự kiện',
+      data: createdApplicableProducts,
     });
-  } catch (error) {
-    console.error("❌ Error:", error);
-    res.status(500).json({ success: false, message: "Thêm thất bại", error: error.message });
+  } catch (err) {
+    console.error('❌ Lỗi khi thêm sản phẩm vào sự kiện:', err);
+    return res.status(500).json({ success: false, message: 'Lỗi server' });
   }
 };
-
 
 const removeProductFromEvent = async (req, res) => {
     const { productId } = req.body;

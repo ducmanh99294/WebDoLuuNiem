@@ -5,12 +5,14 @@ const CategoryManagement = () => {
   const [editingCategory, setEditingCategory] = useState<any | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [categoryName, setCategoryName] = useState("");
+  const [categoryDescription, setCategoryDescription] = useState("");
+  const [categoryImage, setCategoryImage] = useState("");
 
   useEffect(() => {
     const fetchCategoryList = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:3000/api/v1/categories", {
+        const response = await fetch("http://localhost:3001/api/v1/categories", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -30,28 +32,30 @@ const CategoryManagement = () => {
     fetchCategoryList();
   }, []);
 
-  // Mở form thêm mới
   const handleAddClick = () => {
     setEditingCategory(null);
     setCategoryName("");
+    setCategoryDescription("");
+    setCategoryImage("");
     setShowForm(true);
   };
 
-  // Mở form sửa
   const handleEditCategory = (category: any) => {
     setEditingCategory(category);
-    setCategoryName(category.name);
+    setCategoryName(category.name || "");
+    setCategoryDescription(category.description || "");
+    setCategoryImage(category.image || "");
     setShowForm(true);
   };
 
-  // Đóng form
   const handleCancel = () => {
     setShowForm(false);
     setEditingCategory(null);
     setCategoryName("");
+    setCategoryDescription("");
+    setCategoryImage("");
   };
 
-  // Xử lý lưu (thêm hoặc cập nhật)
   const handleSave = async () => {
     if (!categoryName.trim()) {
       alert("Vui lòng nhập tên danh mục");
@@ -65,17 +69,23 @@ const CategoryManagement = () => {
     }
 
     try {
+      const payload = {
+        name: categoryName,
+        description: categoryDescription,
+        image: categoryImage,
+      };
+
       if (editingCategory) {
         // Cập nhật danh mục
         const response = await fetch(
-          `http://localhost:3000/api/v1/categories/${editingCategory._id}`,
+          `http://localhost:3001/api/v1/categories/${editingCategory._id}`,
           {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({ name: categoryName }),
+            body: JSON.stringify(payload),
           }
         );
         const data = await response.json();
@@ -90,13 +100,13 @@ const CategoryManagement = () => {
         }
       } else {
         // Thêm danh mục mới
-        const response = await fetch("http://localhost:3000/api/v1/categories", {
+        const response = await fetch("http://localhost:3001/api/v1/categories", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ name: categoryName }),
+          body: JSON.stringify(payload),
         });
         const data = await response.json();
         if (response.ok) {
@@ -113,7 +123,6 @@ const CategoryManagement = () => {
     }
   };
 
-  // Xóa danh mục
   const handleDeleteCategory = async (categoryId: string) => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -125,7 +134,7 @@ const CategoryManagement = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/v1/categories/${categoryId}`, {
+      const response = await fetch(`http://localhost:3001/api/v1/categories/${categoryId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -151,9 +160,7 @@ const CategoryManagement = () => {
 
       {!showForm && (
         <div className="add0">
-          <button className="add" onClick={handleAddClick}>
-            +
-          </button>
+          <button className="add" onClick={handleAddClick}>+</button>
         </div>
       )}
 
@@ -169,13 +176,29 @@ const CategoryManagement = () => {
               placeholder="Nhập tên danh mục"
             />
           </div>
+          <div className="form-group">
+            <label>Hình ảnh (URL):</label>
+            <input
+              type="text"
+              value={categoryImage}
+              onChange={(e) => setCategoryImage(e.target.value)}
+              placeholder="Nhập link ảnh"
+            />
+          </div>
+          <div className="form-group">
+            <label>Mô tả:</label>
+            <textarea
+              value={categoryDescription}
+              onChange={(e) => setCategoryDescription(e.target.value)}
+              placeholder="Nhập mô tả danh mục"
+              rows={3}
+            />
+          </div>
           <div className="form-actions1">
             <button className="btn btn-success" onClick={handleSave}>
               {editingCategory ? "Cập nhật" : "Thêm"}
             </button>
-            <button className="btn btn-secondary" onClick={handleCancel}>
-              Hủy
-            </button>
+            <button className="btn btn-secondary" onClick={handleCancel}>Hủy</button>
           </div>
         </div>
       )}
@@ -187,27 +210,20 @@ const CategoryManagement = () => {
           categoryList.map((category) => (
             <div key={category._id} className="sp-card">
               <div className="sp-info">
-                  <img
-                    src={category.image || '/images/default.jpg'}
-                    alt={category.name}
-                    className="image"
-                    style={{width: 168, height:168}}
-                  />
-                  <div className="sp-content">
-                    <h3 className="sp-name">{category.name}</h3>
-                    <p><strong>Mô tả:</strong> {category.description || 'Không có mô tả'}</p>
-                  </div>
+                <img
+                  src={category.image || '/images/default.jpg'}
+                  alt={category.name}
+                  className="image"
+                  style={{ width: 168, height: 168 }}
+                />
+                <div className="sp-content">
+                  <h3 className="sp-name">{category.name}</h3>
+                  <p><strong>Mô tả:</strong> {category.description || 'Không có mô tả'}</p>
                 </div>
+              </div>
               <div className="sp-actions">
-                <button className="sp-btn-edit" onClick={() => handleEditCategory(category)}>
-                  Sửa
-                </button>
-                <button
-                  className="sp-btn-delete"
-                  onClick={() => handleDeleteCategory(category._id)}
-                >
-                  Xóa
-                </button>
+                <button className="sp-btn-edit" onClick={() => handleEditCategory(category)}>Sửa</button>
+                <button className="sp-btn-delete" onClick={() => handleDeleteCategory(category._id)}>Xóa</button>
               </div>
             </div>
           ))

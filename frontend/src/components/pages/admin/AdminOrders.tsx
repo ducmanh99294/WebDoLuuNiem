@@ -20,7 +20,7 @@ const AdminOrders: React.FC = () => {
           return;
         }
 
-        const response = await fetch('http://localhost:3000/api/v1/orders', {
+        const response = await fetch('http://localhost:3001/api/v1/orders', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,7 +46,7 @@ const AdminOrders: React.FC = () => {
 
   const handleUpdateOrderStatus = async (orderId: string, newStatus: string) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/v1/orders/${orderId}/status`, {
+      const response = await fetch(`http://localhost:3001/api/v1/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

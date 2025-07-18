@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 const UserManagement = () => {
   const [userList, setUserList] = useState<any[]>([]);
   const [editingUser, setEditingUser] = useState<any | null>(null);
+  const [userCount, setUserCount] = useState<number>(0);useState<any | null>(null);
 
   useEffect(() => {
     const fetchUserList = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch("http://localhost:3000/api/v1/users", {
+        const response = await fetch("http://localhost:3001/api/v1/users", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -45,7 +46,7 @@ const UserManagement = () => {
     if (!confirmDelete) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/v1/users/${userId}`, {
+      const response = await fetch(`http://localhost:3001api/v1/users/${userId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
