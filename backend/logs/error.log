@@ -10,3 +10,8 @@
 {"level":"error","message":"Error updating order 686dc856b2c47ee067417bba: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-16T02:27:57.271Z"}
 {"level":"error","message":"Error updating order 6862e8b5dc5a37e1f74edd0b: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-16T03:42:32.878Z"}
 {"level":"error","message":"Error updating order 68771fdc4a4e15aaeb6450b6: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-16T03:43:44.073Z"}
+{"level":"error","message":"Error creating order: Order validation failed: payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-07-16T06:42:43.128Z"}
+{"level":"error","message":"Error creating order: Order validation failed: payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-07-16T06:42:48.627Z"}
+{"level":"error","message":"Error creating order: Order validation failed: payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-07-16T06:42:59.187Z"}
+{"level":"error","message":"Error creating order: Order validation failed: payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-07-16T06:43:01.472Z"}
+{"level":"error","message":"Error updating order 68774b0f48045638f02a69bf: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-16T06:48:07.148Z"}
