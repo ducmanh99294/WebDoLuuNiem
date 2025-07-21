@@ -78,3 +78,5 @@
 
 {"code":"ECONNRESET","errno":-4077,"level":"error","message":"Uncaught Exception thrown: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20)","syscall":"read","timestamp":"2025-07-18T02:14:48.792Z"}
 
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-18T02:41:32.245Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-18T02:41:40.291Z"}
