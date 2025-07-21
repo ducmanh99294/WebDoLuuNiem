@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {"0":"r","1":"e","2":"a","3":"s","4":"o","5":"n","6":":","address":"cluster0-shard-00-02.1ya4y.mongodb.net:27017","beforeHandshake":false,"errorLabelSet":{},"level":"error","message":"Unhandled Rejection at:","timestamp":"2025-07-10T16:17:30.346Z"}
 {"level":"error","message":"Create return transaction failed: Order must be delivered or completed to return","stack":"Error: Order must be delivered or completed to return\n    at createReturn (D:\\LuuNiem2\\backend\\src\\services\\returnService.js:50:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async createReturnRequest (D:\\LuuNiem2\\backend\\src\\controllers\\returnController.js:57:23)","timestamp":"2025-07-16T02:24:41.733Z"}
 {"level":"error","message":"Return creation error: Order must be delivered or completed to return","stack":"Error: Order must be delivered or completed to return\n    at createReturn (D:\\LuuNiem2\\backend\\src\\services\\returnService.js:50:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async createReturnRequest (D:\\LuuNiem2\\backend\\src\\controllers\\returnController.js:57:23)","timestamp":"2025-07-16T02:24:41.735Z"}
@@ -15,3 +16,16 @@
 {"level":"error","message":"Error creating order: Order validation failed: payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-07-16T06:42:59.187Z"}
 {"level":"error","message":"Error creating order: Order validation failed: payment.method: `on` is not a valid enum value for path `payment.method`.","timestamp":"2025-07-16T06:43:01.472Z"}
 {"level":"error","message":"Error updating order 68774b0f48045638f02a69bf: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-16T06:48:07.148Z"}
+=======
+
+>>>>>>> main
+{"level":"error","message":"Error updating order 687d9c9347392bf4181672f9: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T01:49:55.000Z"}
+{"level":"error","message":"Error updating order 687d9c9347392bf4181672f9: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T01:49:55.194Z"}
+{"level":"error","message":"Error updating order 687d9c9347392bf4181672f9: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T01:49:55.398Z"}
+{"level":"error","message":"Error updating order 687d9c9347392bf4181672f9: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T01:49:55.566Z"}
+{"level":"error","message":"Error updating order 687d9c9347392bf4181672f9: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T01:49:55.752Z"}
+{"level":"error","message":"Error updating order 687d9c9347392bf4181672f9: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T01:49:56.004Z"}
+{"level":"error","message":"Error updating order 687d9c9347392bf4181672f9: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T01:49:56.182Z"}
+{"level":"error","message":"Error updating order 6877143c7c2b2246e9d5ec22: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T03:26:43.664Z"}
+{"level":"error","message":"Error updating order 6870e771f9dc1482773082de: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T03:30:42.602Z"}
+{"level":"error","message":"Error updating order 6870e771f9dc1482773082de: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T03:30:44.442Z"}

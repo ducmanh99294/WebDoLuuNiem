@@ -25,7 +25,7 @@ const AdminReturnDetail: React.FC = () => {
           return;
         }
 
-        const res = await fetch(`http://localhost:3000/api/v1/returns/${returnId}`, {
+        const res = await fetch(`http://localhost:3001/api/v1/returns/${returnId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -34,15 +34,15 @@ const AdminReturnDetail: React.FC = () => {
         });
 
         const data = await res.json();
-        if (res.ok && data.success) {
-          console.log('Return data:', JSON.stringify(data.return, null, 2));
-          setReturnRequest(data.return);
+        if (res.ok && data.success && data.data) {
+          console.log('Return data:', JSON.stringify(data.data, null, 2));
+          setReturnRequest(data.data);
         } else {
           throw new Error(data.message || 'Không thể lấy chi tiết yêu cầu trả hàng');
         }
       } catch (err: any) {
         console.error('Lỗi khi lấy chi tiết yêu cầu trả hàng:', err);
-        toast.error(err.message || 'Có lỗi xảy ra khi tải dữ liệu');
+        toast.error(err.message || 'Không thể lấy chi tiết yêu cầu trả hàng');
         navigate('/admin/orders');
       } finally {
         setLoading(false);
@@ -54,7 +54,7 @@ const AdminReturnDetail: React.FC = () => {
 
   const handleApproveReturn = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/v1/returns/${returnId}/approve`, {
+      const res = await fetch(`http://localhost:3001/api/v1/returns/${returnId}/approve`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const AdminReturnDetail: React.FC = () => {
 
   const handleRejectReturn = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/api/v1/returns/${returnId}/reject`, {
+      const res = await fetch(`http://localhost:3001/api/v1/returns/${returnId}/reject`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -178,7 +178,7 @@ const AdminReturnDetail: React.FC = () => {
               returnRequest.images.map((image: string, index: number) => (
                 <img
                   key={index}
-                  src={`http://localhost:3000${image}`}
+                  src={`http://localhost:3001${image}`}
                   alt={`Product ${index + 1}`}
                   className="w-full h-48 object-cover rounded-lg"
                 />
@@ -189,7 +189,7 @@ const AdminReturnDetail: React.FC = () => {
           </div>
         </div>
 
-        {returnRequest.status === 'pending' && (
+        {returnRequest.status === 'pending' ? (
           <div className="mt-6 flex space-x-4">
             <button
               className="btn btn-green flex items-center"
@@ -203,6 +203,12 @@ const AdminReturnDetail: React.FC = () => {
             >
               <FiXCircle className="mr-2" /> Từ chối trả hàng
             </button>
+          </div>
+        ) : (
+          <div className="mt-6">
+            <p className={`text-sm font-medium ${getStatusColor(returnRequest.status)}`}>
+              Yêu cầu trả hàng đã được {getStatusText(returnRequest.status).toLowerCase()} bởi admin vào {new Date(returnRequest.processedAt).toLocaleString('vi-VN')}.
+            </p>
           </div>
         )}
       </div>

@@ -12,7 +12,7 @@ const OrderList: React.FC = () => {
     const fetchOrdersByUser = async (userId: string) => {
       try {
         const res = await fetch(
-          `http://localhost:3000/api/v1/orders/user/${userId}`,
+          `http://localhost:3001/api/v1/orders/user/${userId}`,
           {
             headers: {
               "Content-Type": "application/json",

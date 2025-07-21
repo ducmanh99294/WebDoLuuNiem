@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import io, { Socket } from 'socket.io-client';
+import io from 'socket.io-client';
 import toast from 'react-hot-toast';
+import { Socket } from 'socket.io-client';
 
 interface Chat {
   _id: string;
@@ -27,7 +28,7 @@ const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
     Authorization: `Bearer ${token}`,
     ...(options.headers || {}),
   };
-  const response = await fetch(`http://localhost:3000${url}`, {
+  const response = await fetch(`http://localhost:3001${url}`, {
     ...options,
     headers,
   });
@@ -57,7 +58,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
       return;
     }
 
-    socketRef.current = io('http://localhost:3000', {
+    socketRef.current = io('http://localhost:3001', {
       auth: { token },
     });
 
@@ -131,7 +132,7 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
     }
 
   try {
-    const response = await fetchWithAuth('http://localhost:3000/api/v1/chats/messages', {
+    const response = await fetchWithAuth('http://localhost:3001/api/v1/chats/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

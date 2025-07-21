@@ -20,46 +20,59 @@ const [editingProduct, setEditingProduct] = useState<any | null>(null);
 const [addingProduct, setAddingProduct] = useState<any | null>(null);
 const [categories, setCategories] = useState<any[]>([]);
 const [images, setImages] = useState<string[]>(['']);
+const [imageFiles, setImageFiles] = useState<File[]>([]);  // ảnh từ máy
+const [imageLinks, setImageLinks] = useState<string[]>([]);  // ảnh từ link
+
 
   // hàm mở form sửa sản phẩm 
   const handleEditProduct = (product: any) => {
   setEditingProduct({ ...product });
+  const imageUrls = product.images?.map((img: any) => img.image) || [];
+  setImages(imageUrls);
 };
+
 // xử lí thêm ảnh từ  link 
-const handleAddImageLink = () => {
-  if (images.length >= 5) {
-    alert('Chỉ được chọn tối đa 5 ảnh.');
-    return;
-  }
-  const link = prompt('Nhập link hình ảnh:');
-  if (link) {
-    setImages((prev) => [...prev, link]);
-  }
-};
+// const handleAddImageLink = () => {
+//   if (images.length >= 5) {
+//     alert('Chỉ được chọn tối đa 5 ảnh.');
+//     return;
+//   }
+//   const link = prompt('Nhập link hình ảnh:');
+//   if (link) {
+//     setImages((prev) => [...prev, link]);
+//   }
+// };
 // xử lí chọn ảnh từ máy 
 const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
   const files = e.target.files;
   if (!files) return;
 
-  if (images.length + files.length > 5) {
+  if (imageFiles.length + files.length + imageLinks.length > 5) {
     alert('Chỉ được chọn tối đa 5 ảnh.');
     return;
   }
 
-  const newImages: string[] = [];
-  Array.from(files).forEach((file) => {
-    const url = URL.createObjectURL(file);
-    newImages.push(url);
-    // ❌ Không upload thực tế => chỉ preview
-    // ✅ Nếu muốn upload thực tế, bạn upload lên Cloudinary, Firebase, rồi lấy URL đẩy vào images
-  });
-
-  setImages((prev) => [...prev, ...newImages]);
+  const newFiles = Array.from(files);
+  setImageFiles((prev) => [...prev, ...newFiles]);
 };
+
 // xử lí xóa ảnh 
 const handleRemoveImage = (index: number) => {
-  setImages(images.filter((_, i) => i !== index));
+  setImages(prev => prev.filter((_, i) => i !== index));
 };
+
+const handleAddImageLink = () => {
+  if (imageFiles.length + imageLinks.length >= 5) {
+    alert('Chỉ được chọn tối đa 5 ảnh.');
+    return;
+  }
+
+  const link = prompt('Nhập link hình ảnh:');
+  if (link) {
+    setImageLinks((prev) => [...prev, link]);
+  }
+};
+
 
 // hàm mở form thêm sản phẩm 
 const handleAddProductClick = () => {
@@ -80,7 +93,7 @@ const handleAddProductClick = () => {
 const fetchCategories = async () => {
   try {
     const token = localStorage.getItem('token');
-    const response = await fetch('http://localhost:3000/api/v1/categories', {
+    const response = await fetch('http://localhost:3001/api/v1/categories', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -91,8 +104,7 @@ const fetchCategories = async () => {
     console.log('📂 Danh mục trả về:', data);
 
     if (Array.isArray(data.data)) {
-      // ✅ Lọc bỏ các danh mục không có name hoặc name là null
-      const validCategories = data.data.filter(cat => cat && cat.name);
+      const validCategories = data.data.filter((cat: any) => cat && cat.name);
       setCategories(validCategories);
     } else {
       setCategories([]);
@@ -112,7 +124,7 @@ const handleUpdateProduct = async () => {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/v1/products/${editingProduct._id}`, {
+    const response = await fetch(`http://localhost:3001/api/v1/products/${editingProduct._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -160,7 +172,7 @@ const handleDeleteProduct = async (productId: string) => {
   if (!confirmDelete) return;
 
   try {
-    const response = await fetch(`http://localhost:3000/api/v1/products/${productId}`, {
+    const response = await fetch(`http://localhost:3001/api/v1/products/${productId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -194,28 +206,37 @@ const handleSaveNewProduct = async (newProduct: any) => {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/api/v1/products`, {
+    const formData = new FormData();
+    formData.append('name', newProduct.name);
+    formData.append('price', newProduct.price);
+    formData.append('description', newProduct.description);
+    formData.append('discount', newProduct.discount);
+    formData.append('quantity', newProduct.quantity);
+    formData.append('rating', '0');
+    formData.append('categories', newProduct.category);
+
+    // 👇 Gửi file từ máy (blob)
+    imageFiles.forEach((file) => {
+      formData.append('image', file);
+    });
+
+    // 👇 Gửi link (ảnh từ URL)
+    imageLinks.forEach((url) => {
+      formData.append('images', url); // Backend sẽ xử lý chuỗi URL
+    });
+
+    const response = await fetch(`http://localhost:3001/api/v1/products`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
-      body: JSON.stringify({
-        name: newProduct.name,
-        price: Number(newProduct.price),
-        description: newProduct.description,
-        images: images.map((url) => ({ image: url })),
-        categories: [newProduct.category],                     // ✅ mảng id
-        discount: Number(newProduct.discount) || 0,
-        quantity: Number(newProduct.quantity) || 1,
-        rating : 0
-      })
+      body: formData
     });
 
     const data = await response.json();
     if (response.ok) {
       setAddingProduct(null);
-      setProductList(prev => [...prev, data.product]);
+      setProductList(prev => [...prev, data.data]);
     } else {
       alert('❌ Thêm sản phẩm thất bại: ' + (data.message || 'Lỗi không xác định'));
     }
@@ -238,7 +259,7 @@ const handleSaveNewProduct = async (newProduct: any) => {
       const fetchProductList = async () => {
         try {
           const token = localStorage.getItem("token");
-          const res = await fetch("http://localhost:3000/api/v1/products", {
+          const res = await fetch("http://localhost:3001/api/v1/products", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -293,27 +314,89 @@ const handleSaveNewProduct = async (newProduct: any) => {
           />
         </div>
 
-        <div className="form-group">
-          <label>Hình ảnh:</label>
-          <input
-            type="text"
-            value={editingProduct.images?.[0]?.image || ''}
-            onChange={(e) =>
-              setEditingProduct({
-                ...editingProduct,
-                images: [{ image: e.target.value }],
-              })
-            }
-            placeholder="Nhập link hình ảnh"
-          />
-        </div>
+<div className="form-group">
+  <label>Hình ảnh:</label>
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+    {images.map((img, index) => (
+      <div key={index} style={{ position: 'relative' }}>
+        <img
+          src={img}
+          alt={`Ảnh ${index + 1}`}
+          style={{
+            width: '80px',
+            height: '80px',
+            objectFit: 'cover',
+            borderRadius: '4px',
+          }}
+        />
+        <button
+          type="button"
+          onClick={() => handleRemoveImage(index)}
+          style={{
+            position: 'absolute',
+            top: '-5px',
+            right: '-5px',
+            background: 'red',
+            color: 'white',
+            border: 'none',
+            borderRadius: '50%',
+            width: '20px',
+            height: '20px',
+            cursor: 'pointer',
+          }}
+        >
+          x
+        </button>
+      </div>
+    ))}
+  </div>
+
+  <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
+  {images.length < 100 && (
+    <>
+      <label
+        style={{
+          cursor: 'pointer',
+          background: '#eee',
+          padding: '6px 12px',
+          borderRadius: '4px',
+        }}
+      >
+        + Tải ảnh từ máy
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleFileUpload}
+          style={{ display: 'none' }}
+        />
+      </label>
+
+      <button
+        type="button"
+        onClick={handleAddImageLink}
+        style={{
+          cursor: 'pointer',
+          background: '#eee',
+          padding: '6px 12px',
+          borderRadius: '4px',
+          border: 'none'
+        }}
+      >
+        + Thêm từ link
+      </button>
+    </>
+  )}
+</div>
+
+</div>
 
         <div className="form-group">
           <label>Danh mục:</label>
           <select
-            value={addingProduct.category || ''}
+            value={editingProduct.category || ''}
             onChange={(e) =>
-              setAddingProduct({ ...addingProduct, category: e.target.value })
+              setEditingProduct({ ...editingProduct, category: e.target.value })
             }
           >
             <option value="">-- Chọn danh mục --</option>
@@ -370,61 +453,83 @@ const handleSaveNewProduct = async (newProduct: any) => {
           />
         </div>
 
-        <div className="form-group">
-          <label>Hình ảnh:</label>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            {images.map((img, index) => (
-              <div key={index} style={{ position: 'relative' }}>
-                <img
-                  src={img}
-                  alt={`Ảnh ${index + 1}`}
-                  style={{
-                    width: '80px',
-                    height: '80px',
-                    objectFit: 'cover',
-                    borderRadius: '4px',
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveImage(index)}
-                  style={{
-                    position: 'absolute',
-                    top: '-5px',
-                    right: '-5px',
-                    background: 'red',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '50%',
-                    width: '20px',
-                    height: '20px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  x
-                </button>
-              </div>
-            ))}
-          </div>
+<div className="form-group">
+  <label>Hình ảnh:</label>
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+    {images.map((img, index) => (
+      <div key={index} style={{ position: 'relative' }}>
+        <img
+          src={img}
+          alt={`Ảnh ${index + 1}`}
+          style={{
+            width: '80px',
+            height: '80px',
+            objectFit: 'cover',
+            borderRadius: '4px',
+          }}
+        />
+        <button
+          type="button"
+          onClick={() => handleRemoveImage(index)}
+          style={{
+            position: 'absolute',
+            top: '-5px',
+            right: '-5px',
+            background: 'red',
+            color: 'white',
+            border: 'none',
+            borderRadius: '50%',
+            width: '20px',
+            height: '20px',
+            cursor: 'pointer',
+          }}
+        >
+          x
+        </button>
+      </div>
+    ))}
+  </div>
 
-          <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
-            {images.length < 5 && (
-              <>
-                <button type="button" onClick={handleAddImageLink}>+ Thêm từ link</button>
-                <label style={{ cursor: 'pointer', background: '#eee', padding: '6px 12px', borderRadius: '4px' }}>
-                  + Tải ảnh từ máy
-                  <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={handleFileUpload}
-                    style={{ display: 'none' }}
-                  />
-                </label>
-              </>
-            )}
-          </div>
-        </div>
+  <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
+  {images.length < 100 && (
+    <>
+      <label
+        style={{
+          cursor: 'pointer',
+          background: '#eee',
+          padding: '6px 12px',
+          borderRadius: '4px',
+        }}
+      >
+        + Tải ảnh từ máy
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleFileUpload}
+          style={{ display: 'none' }}
+        />
+      </label>
+
+      <button
+        type="button"
+        onClick={handleAddImageLink}
+        style={{
+          cursor: 'pointer',
+          background: '#eee',
+          padding: '6px 12px',
+          borderRadius: '4px',
+          border: 'none'
+        }}
+      >
+        + Thêm từ link
+      </button>
+    </>
+  )}
+</div>
+
+</div>
+
 
         <div className="form-group">
           <label>Danh mục:</label>

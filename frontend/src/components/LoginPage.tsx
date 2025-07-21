@@ -25,7 +25,7 @@ const LoginPage: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3000/api/v1/auth/login', {
+      const res = await fetch('http://localhost:3001/api/v1/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const LoginPage: React.FC = () => {
         const tempCart = JSON.parse(localStorage.getItem('temp_cart') || '[]');
         if (tempCart.length > 0) {
           try {
-            const mergeRes = await fetch('http://localhost:3000/api/v1/carts/merge-session', {
+            const mergeRes = await fetch('http://localhost:3001/api/v1/carts/merge-session', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const LoginPage: React.FC = () => {
               localStorage.removeItem('temp_cart');
 
               // ✅ Sau khi merge, lấy lại giỏ hàng mới theo user để lấy cart_id
-              const cartRes = await fetch('http://localhost:3000/api/v1/carts/user/' + userId, {
+              const cartRes = await fetch('http://localhost:3001/api/v1/carts/user/' + userId, {
                 headers: {
                   'Content-Type': 'application/json',
                   Authorization: `Bearer ${token}`,

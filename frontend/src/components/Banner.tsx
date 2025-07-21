@@ -10,8 +10,8 @@ const Banner = () => {
   const swiperModules = [Autoplay, Pagination, Navigation];
   const slides = [
     "/images/slider_dac-san-ngon-da-nang.png",
-    "/images/baner1.png",
-    "/images/8519001.jpg",
+    "/images/dac-san-da-nang-mua-lam-qua.jpg ",
+    "/images/4-237.jpg",
   ];
 
   return (
@@ -36,7 +36,7 @@ const Banner = () => {
               }}
             >
               <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-between px-6 md:px-16">
-                <div className="Text-big">
+                {/* <div className="Text-big">
                   <div className="text">
                     <h2 className="Text-chu">Đặc Sản </h2>
                     <p className="text-p">Save up to 50% off on your first order!</p>
@@ -50,7 +50,7 @@ const Banner = () => {
                       <button>Subscribe</button>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </SwiperSlide>

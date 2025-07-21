@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../assets/css/cart.css';
@@ -23,7 +25,7 @@ const CartPage: React.FC = () => {
       try {
         if (token && cartId) {
           // ✅ Người dùng đã đăng nhập
-          const res = await fetch(`http://localhost:3000/api/v1/cart-details/cart/${cartId}`, {
+          const res = await fetch(`http://localhost:3001/api/v1/cart-details/cart/${cartId}`, {
             headers: {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${token}`
@@ -40,7 +42,7 @@ const CartPage: React.FC = () => {
           const products: any[] = [];
 
           for (const item of tempCart) {
-            const res = await fetch(`http://localhost:3000/api/v1/products/${item.product_id}`);
+            const res = await fetch(`http://localhost:3001/api/v1/products/${item.product_id}`);
             const data = await res.json();
             if (data && data._id) {
               products.push({ _id: item.product_id, quantity: item.quantity, product_id: data });
@@ -71,7 +73,7 @@ const CartPage: React.FC = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/v1/cart-details/${cartDetailId}`, {
+      const res = await fetch(`http://localhost:3001/api/v1/cart-details/${cartDetailId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +108,7 @@ const CartPage: React.FC = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/v1/cart-details/${id}/quantity`, {
+      const res = await fetch(`http://localhost:3001/api/v1/cart-details/${id}/quantity`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

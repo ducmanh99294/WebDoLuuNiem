@@ -31,7 +31,7 @@ const OrderDetail: React.FC = () => {
         }
 
         console.log('Gửi yêu cầu đến API với orderId:', orderId);
-        const res = await fetch(`http://localhost:3000/api/v1/orders/${orderId}`, {
+        const res = await fetch(`http://localhost:3001/api/v1/orders/${orderId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

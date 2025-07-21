@@ -76,6 +76,7 @@ const createReturnRequest = async (req, res) => {
     });
   }
 };
+//______________XEM NỘI DUNG TRẢ HÀNG_________________//
 
 const approveReturn = async (req, res) => {
   try {
@@ -175,4 +176,170 @@ const approveReturn = async (req, res) => {
   }
 };
 
-module.exports = { createReturnRequest, approveReturn };
+const rejectReturn = async (req, res) => {
+  try {
+    if (!req.user || req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Chỉ admin mới có quyền từ chối yêu cầu trả hàng'
+      });
+    }
+
+    const { returnId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(returnId)) {
+      return res.status(400).json({
+        success: false,
+        message: 'ID yêu cầu trả hàng không hợp lệ'
+      });
+    }
+
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    try {
+      // Tìm yêu cầu trả hàng
+      const returnRequest = await Return.findById(returnId).session(session);
+      if (!returnRequest) {
+        throw new Error('Không tìm thấy yêu cầu trả hàng');
+      }
+
+      if (returnRequest.status !== 'pending') {
+        throw new Error('Yêu cầu trả hàng không ở trạng thái chờ xử lý');
+      }
+
+      // Cập nhật trạng thái yêu cầu trả hàng
+      returnRequest.status = 'rejected';
+      returnRequest.processedBy = req.user._id;
+      returnRequest.processedAt = new Date();
+      await returnRequest.save({ session });
+
+      // Tìm đơn hàng liên quan
+      const order = await Order.findById(returnRequest.order).session(session);
+      if (!order) {
+        throw new Error('Không tìm thấy đơn hàng liên quan');
+      }
+
+      // Gửi thông báo cho người dùng
+      await sendNotification({
+        user: order.user,
+        sender: req.user._id,
+        type: 'return',
+        message: `Yêu cầu trả hàng cho đơn hàng #${order.order_number} đã bị từ chối.`,
+        data: { orderId: order._id, returnId },
+        priority: 'high',
+        io: req.io,
+        socketRoom: order.user.toString(),
+        socketEvent: 'return_rejected',
+        socketPayload: {
+          orderId: order._id,
+          orderNumber: order.order_number,
+          status: order.status
+        }
+      });
+
+      await session.commitTransaction();
+
+      return res.status(200).json({
+        success: true,
+        message: 'Yêu cầu trả hàng đã bị từ chối',
+        data: returnRequest
+      });
+    } catch (error) {
+      await session.abortTransaction();
+      throw error;
+    } finally {
+      session.endSession();
+    }
+  } catch (error) {
+    logger.error('Reject return error:', error);
+    const statusCode = error.message.includes('not found') ? 404 :
+                      error.message.includes('trạng thái') ? 400 : 500;
+    return res.status(statusCode).json({
+      success: false,
+      message: error.message || 'Không thể từ chối yêu cầu trả hàng'
+    });
+  }
+};
+//_____________________________________//
+const getReturnById = async (req, res) => {
+  try {
+    if (!req.user || req.user.role !== 'admin') {
+      return res.status(403).json({
+        success: false,
+        message: 'Chỉ admin mới có quyền xem chi tiết yêu cầu trả hàng'
+      });
+    }
+
+    const { returnId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(returnId)) {
+      return res.status(400).json({
+        success: false,
+        message: 'ID yêu cầu trả hàng không hợp lệ'
+      });
+    }
+
+    const returnRequest = await Return.findById(returnId)
+      .populate('user', 'name email')
+      .populate('order', 'order_number customer status');
+    
+    if (!returnRequest) {
+      return res.status(404).json({
+        success: false,
+        message: 'Không tìm thấy yêu cầu trả hàng'
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: returnRequest // Đảm bảo trả về "data" thay vì "return"
+    });
+  } catch (error) {
+    logger.error('Get return by ID error:', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message || 'Không thể lấy chi tiết yêu cầu trả hàng'
+    });
+  }
+};
+
+const getReturnByOrderId = async (req, res) => {
+  try {
+    if (!req.user || req.user.role !== 'admin') {
+      return res.status(403).json({ success: false, message: 'Chỉ admin mới có quyền xem yêu cầu trả hàng' });
+    }
+    const { orderId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(orderId)) {
+      return res.status(400).json({ success: false, message: 'ID đơn hàng không hợp lệ' });
+    }
+    const returnRequest = await Return.findOne({ order: orderId })
+      .populate('user', 'name email')
+      .populate('order', 'order_number customer status');
+    if (!returnRequest) {
+      return res.status(404).json({ success: false, message: 'Không tìm thấy yêu cầu trả hàng' });
+    }
+    return res.status(200).json({ success: true, data: returnRequest });
+  } catch (error) {
+    logger.error('Get return by order ID error:', error);
+    return res.status(500).json({ success: false, message: error.message || 'Không thể lấy yêu cầu trả hàng' });
+  }
+};
+
+
+const getAllReturns = async (req, res) => {
+  try {
+    if (!req.user || req.user.role !== 'admin') {
+      return res.status(403).json({ success: false, message: 'Chỉ admin mới có quyền xem danh sách yêu cầu trả hàng' });
+    }
+
+    const returns = await Return.find()
+      .populate('user', 'name email')
+      .populate('order', 'order_number customer status');
+
+    return res.status(200).json({ success: true, returns });
+  } catch (error) {
+    logger.error('Get all returns error:', error);
+    return res.status(500).json({ success: false, message: error.message || 'Không thể lấy danh sách yêu cầu trả hàng' });
+  }
+};
+
+module.exports = { createReturnRequest, approveReturn, rejectReturn, getReturnById, getReturnByOrderId, getAllReturns };

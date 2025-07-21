@@ -22,31 +22,25 @@ const AdminOrders: React.FC = () => {
           return;
         }
 
-        const orderResponse = await fetch('http://localhost:3000/api/v1/orders', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        // Lấy danh sách orders
+        const orderRes = await fetch('http://localhost:3001/api/v1/orders', {
+          headers: { Authorization: `Bearer ${token}` },
         });
-        const orderData = await orderResponse.json();
-        if (orderResponse.ok && orderData.success && Array.isArray(orderData.orders)) {
-          console.log('Orders data:', JSON.stringify(orderData.orders, null, 2));
-          setOrders(orderData.orders);
+        const orderData = await orderRes.json();
+        if (orderRes.ok && orderData.success) {
+          setOrders(orderData.orders || []);
         } else {
-          console.error('Lỗi khi tải đơn hàng:', orderData.message);
           toast.error('Lỗi khi tải đơn hàng');
         }
 
-        const returnResponse = await fetch('http://localhost:3000/api/v1/returns', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        // Lấy danh sách returns
+        const returnRes = await fetch('http://localhost:3001/api/v1/returns', {
+          headers: { Authorization: `Bearer ${token}` },
         });
-        const returnData = await returnResponse.json();
-        if (returnResponse.ok && returnData.success && Array.isArray(returnData.returns)) {
-          console.log('Returns data:', JSON.stringify(returnData.returns, null, 2));
-          setReturns(returnData.returns);
+        const returnData = await returnRes.json();
+        if (returnRes.ok && returnData.success) {
+          setReturns(returnData.returns || []);
         } else {
-          console.error('Lỗi khi tải yêu cầu trả hàng:', returnData.message);
           toast.error('Lỗi khi tải yêu cầu trả hàng');
         }
       } catch (error) {
@@ -62,7 +56,7 @@ const AdminOrders: React.FC = () => {
 
   const handleUpdateOrderStatus = async (orderId: string, newStatus: string) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/v1/orders/${orderId}/status`, {
+      const response = await fetch(`http://localhost:3001/api/v1/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -77,6 +71,14 @@ const AdminOrders: React.FC = () => {
           order._id === orderId ? { ...order, status: newStatus } : order
         ));
         toast.success(`Đã cập nhật trạng thái đơn hàng thành ${newStatus}!`);
+        // Reload danh sách returns để đồng bộ
+        const returnRes = await fetch('http://localhost:3001/api/v1/returns', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const returnData = await returnRes.json();
+        if (returnRes.ok && returnData.success) {
+          setReturns(returnData.returns || []);
+        }
       } else {
         toast.error(`Có lỗi xảy ra: ${data.message || 'Vui lòng thử lại sau'}`);
       }
@@ -87,26 +89,28 @@ const AdminOrders: React.FC = () => {
   };
 
   const handleViewReturnDetails = async (orderId: string) => {
-    try {
-      const returnRequest = returns.find(r => r.order.toString() === orderId.toString() && r.status === 'pending');
-      if (returnRequest) {
-        navigate(`/admin/returns/${returnRequest._id}`);
-      } else {
-        const response = await fetch(`http://localhost:3000/api/v1/returns/by-order/${orderId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
-        if (response.ok && data.success && data.data) {
-          navigate(`/admin/returns/${data.data._id}`);
-        } else {
-          toast.error('Không có thông tin về đơn hoàn');
-        }
-      }
-    } catch (error) {
-      console.error('Lỗi khi kiểm tra yêu cầu trả hàng:', error);
-      toast.error('Không thể kiểm tra thông tin đơn hoàn');
+  try {
+    const returnRequest = returns.find(r => r.order.toString() === orderId.toString());
+    if (returnRequest) {
+      navigate(`/admin/returns/${returnRequest._id}`);
+      return;
+    }
+
+    const response = await fetch(`http://localhost:3001/api/v1/returns/by-order/${orderId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    if (response.ok && data.success && data.data) {
+      setReturns((prev) => [...prev, data.data]); // Cập nhật state returns
+      navigate(`/admin/returns/${data.data._id}`);
+    } else {
+      toast.error('Không có yêu cầu trả hàng cho đơn hàng này');
+    }
+  } catch (error) {
+    console.error('Lỗi khi kiểm tra yêu cầu trả hàng:', error);
+    toast.error('Không thể kiểm tra thông tin yêu cầu trả hàng');
     }
   };
 
@@ -269,11 +273,7 @@ const AdminOrders: React.FC = () => {
                       <td className="px-6 py-5 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-3">
                           <button
-                            onClick={() => {
-                              console.log('Navigating to order ID:', order._id);
-                              console.log('Order Data:', JSON.stringify(order, null, 2));
-                              navigate(`/orders/${order._id}`, { state: { order } });
-                            }}
+                            onClick={() => navigate(`/orders/${order._id}`, { state: { order } })}
                             className="text-blue-600 hover:text-blue-900 flex items-center"
                           >
                             <FiEye className="mr-1" /> Chi tiết
@@ -286,19 +286,11 @@ const AdminOrders: React.FC = () => {
                               <FiCheck className="mr-1" /> {actionText}
                             </button>
                           )}
-                          {returnRequest && (
-                            <button
-                              onClick={() => navigate(`/admin/returns/${returnRequest._id}`)}
-                              className="text-orange-600 hover:text-orange-900 flex items-center"
-                            >
-                              <FiFileText className="mr-1" /> Xem trả hàng
-                            </button>
-                          )}
                           <button
                             onClick={() => handleViewReturnDetails(order._id)}
-                            className="text-yellow-600 hover:text-yellow-900 flex items-center"
+                            className="text-orange-600 hover:text-orange-900 flex items-center"
                           >
-                            <FiFileText className="mr-1" /> Chi tiết trả hàng
+                            <FiFileText className="mr-1" /> Xem yêu cầu trả hàng
                           </button>
                         </div>
                       </td>
