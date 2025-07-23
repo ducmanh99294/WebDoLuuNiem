@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import toast from 'react-hot-toast';
 import { Socket } from 'socket.io-client';
+import { fetcher } from '../../api/base';
 
 interface Chat {
   _id: string;
@@ -9,6 +10,27 @@ interface Chat {
   messages: { sender: { _id: string; name: string }; content: string; timestamp: string; is_read: boolean }[];
   user: { _id: string; name: string }[];
 }
+
+interface UserChatComponentProps {
+  productId: string;
+  product: { _id: string; name: string; price: number; discount?: number; images?: { image: string }[] };
+  onClose: () => void;
+  userId: string;
+}
+
+interface ChatErrorResponse {
+  success: false,
+  message: string
+}
+interface ChatSuccessResponse {
+  success: true,
+  message: string,
+  data: []
+}
+
+type ChatResponse = ChatErrorResponse | ChatSuccessResponse
+
+
 
 interface UserChatComponentProps {
   productId: string;
@@ -50,50 +72,75 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
   const [message, setMessage] = useState<string>('');
   const socketRef = useRef<Socket | null>(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      toast.error('Please log in to start chatting');
-      return;
-    }
-
-    socketRef.current = io('http://localhost:3001', {
-      auth: { token },
-    });
-
-    socketRef.current.emit('user_connected', userId);
-
-    socketRef.current.on('receive-message', (newMessage) => {
-      if (newMessage.session_id === selectedChat?._id) {
-        setSelectedChat((prev) =>
-          prev
-            ? {
-                ...prev,
-                messages: [...prev.messages, newMessage],
-              }
-            : prev
-        );
+  const [token, setToken] = useState(`Bearer ${localStorage.getItem('token')}`)
+  const [sessions, setSessions] = useState([])
+  
+  const fetchSessionsByUserId = async() => {
+    try {
+      const chats = await fetcher<ChatResponse>(`/chats/user/${localStorage.getItem('userId')}`, { method: 'GET' }, token)
+      if(chats.success){
+        setSessions(chats.data)
+        console.log('session:', sessions)
+      } else {
+        throw console.error(chats.message)
       }
-      setChatList((prev) =>
-        prev.map((chat) =>
-          chat._id === newMessage.session_id
-            ? { ...chat, messages: [...chat.messages, newMessage] }
-            : chat
-        )
-      );
-    });
+    } catch (e) {
+      throw console.error(e);
+    }
+  }
+  
+  useEffect(()=>{
+    console.log('fetching sessions by userId')
 
-    socketRef.current.on('error', (error) => {
-      console.error('Socket error:', error.message);
-      toast.error(error.message || 'Socket connection failed');
-    });
+    setToken(`Bearer ${localStorage.getItem('token')}`)
+    if (token) {
+      fetchSessionsByUserId()
+    }
+  }, [])
 
-    return () => {
-      socketRef.current?.emit('leave-session', selectedChat?._id);
-      socketRef.current?.disconnect();
-    };
-  }, [userId, selectedChat?._id]);
+  // useEffect(() => {
+  //   console.log(token)
+  //   if (!token) {
+  //     toast.error('Please log in to start chatting');
+  //     return;
+  //   }
+
+  //   socketRef.current = io('http://localhost:3001', {
+  //     auth: { token },
+  //   });
+
+  //   socketRef.current.emit('user_connected', userId);
+
+  //   socketRef.current.on('receive-message', (newMessage) => {
+  //     if (newMessage.session_id === selectedChat?._id) {
+  //       setSelectedChat((prev) =>
+  //         prev
+  //           ? {
+  //               ...prev,
+  //               messages: [...prev.messages, newMessage],
+  //             }
+  //           : prev
+  //       );
+  //     }
+  //     setChatList((prev) =>
+  //       prev.map((chat) =>
+  //         chat._id === newMessage.session_id
+  //           ? { ...chat, messages: [...chat.messages, newMessage] }
+  //           : chat
+  //       )
+  //     );
+  //   });
+
+  //   socketRef.current.on('error', (error) => {
+  //     console.error('Socket error:', error.message);
+  //     toast.error(error.message || 'Socket connection failed');
+  //   });
+
+  //   return () => {
+  //     socketRef.current?.emit('leave-session', selectedChat?._id);
+  //     socketRef.current?.disconnect();
+  //   };
+  // }, [userId, selectedChat?._id, token]);
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -113,64 +160,64 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
     fetchChats();
   }, [productId, userId]);
 
-  useEffect(() => {
-    if (selectedChat?._id) {
-      socketRef.current?.emit('join-session', selectedChat._id);
-    }
-  }, [selectedChat?._id]);
+//   useEffect(() => {
+//     if (selectedChat?._id) {
+//       socketRef.current?.emit('join-session', selectedChat._id);
+//     }
+//   }, [selectedChat?._id]);
 
-  const sendMessage = async () => {
-    if (!message.trim() || !selectedChat) {
-      toast.error('Please select a chat and enter a message');
-      return;
-    }
+//   const sendMessage = async () => {
+//     if (!message.trim() || !selectedChat) {
+//       toast.error('Please select a chat and enter a message');
+//       return;
+//     }
 
-    const token = localStorage.getItem('token');
-    if (!token) {
-      toast.error('Please log in to send messages');
-      return;
-    }
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//       toast.error('Please log in to send messages');
+//       return;
+//     }
 
-  try {
-    const response = await fetchWithAuth('http://localhost:3001/api/v1/chats/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        chatId: selectedChat._id,
-        content: message,
-      }),
-    });
-    const data = await response.json();
-    if (data.success) {
-      // Lấy tin nhắn mới nhất từ response và cập nhật vào state
-      const newMsg = data.chat.messages[data.chat.messages.length - 1];
-      setSelectedChat((prev) =>
-        prev
-          ? {
-              ...prev,
-              messages: [...prev.messages, newMsg],
-            }
-          : prev
-      );
-      setChatList((prev) =>
-        prev.map((chat) =>
-          chat._id === selectedChat._id
-            ? { ...chat, messages: [...chat.messages, newMsg] }
-            : chat
-        )
-      );
-      setMessage('');
-    } else {
-      toast.error(data.message || 'Gửi tin nhắn thất bại.');
-    }
-  } catch (error) {
-    console.error('Error sending message:', error);
-    toast.error('Gửi tin nhắn thất bại. Vui lòng thử lại.');
-  }
-};
+//   try {
+//     const response = await fetchWithAuth('http://localhost:3001/api/v1/chats/messages', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${token}`,
+//       },
+//       body: JSON.stringify({
+//         chatId: selectedChat._id,
+//         content: message,
+//       }),
+//     });
+//     const data = await response.json();
+//     if (data.success) {
+//       // Lấy tin nhắn mới nhất từ response và cập nhật vào state
+//       const newMsg = data.chat.messages[data.chat.messages.length - 1];
+//       setSelectedChat((prev) =>
+//         prev
+//           ? {
+//               ...prev,
+//               messages: [...prev.messages, newMsg],
+//             }
+//           : prev
+//       );
+//       setChatList((prev) =>
+//         prev.map((chat) =>
+//           chat._id === selectedChat._id
+//             ? { ...chat, messages: [...chat.messages, newMsg] }
+//             : chat
+//         )
+//       );
+//       setMessage('');
+//     } else {
+//       toast.error(data.message || 'Gửi tin nhắn thất bại.');
+//     }
+//   } catch (error) {
+//     console.error('Error sending message:', error);
+//     toast.error('Gửi tin nhắn thất bại. Vui lòng thử lại.');
+//   }
+// };
 
   const startNewChat = async () => {
     const token = localStorage.getItem('token');

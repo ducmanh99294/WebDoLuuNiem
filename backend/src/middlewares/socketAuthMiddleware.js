@@ -3,6 +3,7 @@ const logger = require('../utils/logger');
 
 function socketAuthMiddleware(socket, next) {
   const authToken = socket.handshake.auth?.token;
+  logger.info(authToken)
   const token = authToken?.startsWith('Bearer ') ? authToken.split(' ')[1] : authToken;
 
   if (!token) {

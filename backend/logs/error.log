@@ -29,3 +29,19 @@
 {"level":"error","message":"Error updating order 6877143c7c2b2246e9d5ec22: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T03:26:43.664Z"}
 {"level":"error","message":"Error updating order 6870e771f9dc1482773082de: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T03:30:42.602Z"}
 {"level":"error","message":"Error updating order 6870e771f9dc1482773082de: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-21T03:30:44.442Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-22T09:51:00.677Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-22T09:51:02.467Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-22T09:51:03.771Z"}
+{"level":"error","message":"Error updating order 687f61125b5070fb6922940f: Cast to number failed for value \"undefined\" (type undefined) at path \"sell_count\"","timestamp":"2025-07-22T10:00:03.886Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:29:10.877Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T02:38:25.423Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:40:14.251Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:45:05.511Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:46:20.284Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:48:28.432Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:49:05.788Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:50:37.534Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T03:50:13.740Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T03:51:03.382Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T03:51:39.728Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T03:53:01.245Z"}

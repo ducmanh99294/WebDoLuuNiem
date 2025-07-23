@@ -14,6 +14,8 @@ router.get('/', validateToken, chatController.getAllChats);
 // Lấy cuộc trò chuyện theo ID
 router.get('/:id', validateToken, chatController.getChatById);
 
+router.get('/user/:id', validateToken, chatController.getChatByUserId)
+
 // Cập nhật cuộc trò chuyện (user trong chat hoặc admin)
 router.patch('/:id', validateToken, chatController.updateChat);
 
