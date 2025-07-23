@@ -8,7 +8,7 @@ const LoginPage: React.FC = () => {
   const [step, setStep] = useState<'form' | 'otp'>('form');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [method, setMethod] = useState<'zalo' | 'sms' | ''>('');
+  const [rePassword, setRePassword] = useState('');
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +16,14 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return setError('Vui lòng nhập email.');
+    if (!password) return setError('Vui lòng nhập mật khẩu.');
+    if (!rePassword) return setError('Vui lòng nhập lại mật khẩu.');
+    if (password.length < 6) return setError('Mật khẩu phải có ít nhất 6 ký tự.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return setError('Email không hợp lệ.');
+    if (rePassword.length < 6) return setError('Mật khẩu nhập lại phải có ít nhất 6 ký tự.');
+    if (rePassword.length > 20) return setError('Mật khẩu nhập lại không được quá 20 ký tự.');
+    if (password.length > 20) return setError('Mật khẩu không được quá 20 ký tự.');
+    if (password !== rePassword) return setError('Mật khẩu không khớp.');
     const result = await getOTP(email, 'register')
     if (result.success) {
       alert(`Mã OTP đã được gửi đến email ${email}.`);
@@ -65,7 +73,6 @@ const LoginPage: React.FC = () => {
     setEmail('');
     setPassword('');
     setOtp('');
-    setMethod('');
   }
   console.log(showPassword)
   return (
@@ -109,24 +116,24 @@ const LoginPage: React.FC = () => {
               }}
             >{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}</span>
 
-            <div className="options" style={{ marginTop: 12 }}>
-              <label>
-                <input
-                  type="radio"
-                  checked={method === 'zalo'}
-                  onChange={() => setMethod('zalo')}
-                />{' '}
-                Zalo OTP
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  checked={method === 'sms'}
-                  onChange={() => setMethod('sms')}
-                />{' '}
-                SMS OTP
-              </label>
-            </div>
+            <input
+              type="text"
+              placeholder="re-password"
+              value={rePassword}
+              onChange={(e) => setRePassword(e.target.value)}
+              style={{ paddingRight: '40px' }}
+            />
+            <span
+              onClick={() => setShowPassword((prev) => !prev)}
+              style={{
+                position: 'absolute',
+                right: '10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                cursor: 'pointer',
+                userSelect: 'none',
+              }}
+            >{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}</span>
 
             <button type="submit" className="btn-login" style={{ marginTop: 12 }}>
               Tiếp tục

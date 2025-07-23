@@ -21,4 +21,4 @@ export const loginWithGoogle = async () => {
     return await fetcher<LoginResponse>('/auth/google', {
         method: 'GET'
     });
-} 
+}

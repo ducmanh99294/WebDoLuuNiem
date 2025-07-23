@@ -9,7 +9,7 @@ export const getOTP = async (email: string, action: string) => {
             return { success: false, message: result.message };
         }
     } catch (error) {
-        console.error("Error generating OTP:", error);
+        alert(error);
         throw error;
     }
 };
@@ -29,7 +29,7 @@ export const registerUser = async (email: string, otp: string, password: string)
             };
         }
     } catch (error) {
-        console.error("Error registering user:", error);
+        alert(error);
         throw error;
     }
 };
