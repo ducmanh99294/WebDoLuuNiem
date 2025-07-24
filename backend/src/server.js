@@ -22,9 +22,11 @@ const io = new Server(server, { cors: { origin: '*' } });
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3001;
 const API_VERSION = process.env.API_VERSION || 'v1';
+const cookieParser = require('cookie-parser');
 
 // 1. Khởi tạo thư mục upload
-const uploadDir = path.join(__dirname, 'uploads');
+const uploadDir = path.join(__dirname, '../public/uploads');
+
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
   logger.info(`Created upload directory at ${uploadDir}`);
@@ -55,7 +57,7 @@ const upload = multer({
     }
   }
 });
-
+app.use(cookieParser());
 // Connect to MongoDB
 connectMongoDB();
 
@@ -66,20 +68,24 @@ socketHandler(io);
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: 'http://localhost:5173', // Cho phép Vite frontend
-  credentials: true,               // Nếu frontend gửi cookie hoặc token
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:5173'],
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   exposedHeaders: ['Content-Disposition']
 }));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use('/uploads', express.static(uploadDir));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb'  }));
+app.use('/uploads', (req, res, next) => {
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin'); // hoặc 'same-origin' nếu frontend cùng port
+  next();
+}, express.static(uploadDir));
 
 // Truyền io vào request
 app.use((req, res, next) => {
   req.io = io;
+  res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
   next();
 });
 
@@ -153,6 +159,7 @@ app.use(`/api/${API_VERSION}/about`, require('./routes/aboutUsRoutes'));
 app.use(`/api/${API_VERSION}/contacts`, require('./routes/contacRoutes'));
 app.use(`/api/${API_VERSION}/cancel-requests`, require('./routes/cancelRequestRoutes'));
 app.use(`/api/${API_VERSION}/returns`, require('./routes/returnRoutes'));
+app.use('/images', express.static(path.join(__dirname, 'src/assets/images')));
 
 // Error handler
 app.use(errorHandler);

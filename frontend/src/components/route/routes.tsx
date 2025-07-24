@@ -22,6 +22,7 @@ import OrderList from '../pages/listOrder';
 import BlogDetail from '../pages/BlogDetail';
 import CategoryPage from '../pages/category';
 import ReturnForm from '../pages/ReturnForm';
+import { useAutoRefreshToken } from '../refreshAccessToken';
 
 const AppContent: React.FC = () => {
   const location = useLocation();

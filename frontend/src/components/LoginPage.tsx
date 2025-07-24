@@ -41,12 +41,14 @@ const LoginPage: React.FC = () => {
 
       if (res.ok && data.success) {
         const token = data.data?.accessToken || '';
+        const refreshToken = data.data?.refreshToken || '';
         const role = (data.data?.role || '').toLowerCase();
         const name = data.data?.name?.trim() || 'Người dùng'
         const avatar = data.data?.avatar || '/images/default-avatar.png';
         const userId = data.data?.user_id || '';
         
         localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
         localStorage.setItem('userId', userId);
         localStorage.setItem('role', role);
         localStorage.setItem('username', name);

@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { FaPlus } from 'react-icons/fa';
 import "../../../assets/css/Dashboard.css";
 import { _descriptors } from "chart.js/helpers";
-
+import {CreateProductSuccess, DeleteProductSuccess, UpdateProductSuccess, ConfirmDeleteDialog} from '../../PaymentSuccess';
 
 const AdminEvents: React.FC = () => {
   const [productList, setProductList] = useState<any[]>([]);
   const [eventList, setEventList] = useState<any[]>([]);
   const [editingEvent, setEditingEvent] = useState<any | null>(null);
   const [addingEvent, setAddingEvent] = useState<any | null>(null);
-  const [editImages, setEditImages] = useState<string[]>([]);
+  const [imageFiles, setImageFiles] = useState<File[]>([]);  // ảnh từ máy
+  const [imageLinks, setImageLinks] = useState<string[]>([]);  // ảnh từ link
   const [expandedEventId, setExpandedEventId] = useState<string | null>(null);
   const [subEventForm, setSubEventForm] = useState({
     product: [] as string[],
@@ -18,6 +19,11 @@ const AdminEvents: React.FC = () => {
     endDate: "",
   });
   const [images, setImages] = useState<string[]>(['']);
+  const [showCreateSuccess, setShowCreateSuccess] = useState(false);
+  const [showUpdateSuccess, setShowUpdateSuccess] = useState(false);
+  const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  const [pendingDelete, setPendingDelete] = useState<string | null>(null);
 
    useEffect(() => {
     fetchEvents();
@@ -26,6 +32,7 @@ const AdminEvents: React.FC = () => {
   const fetchEvents = async () => {
     const res = await fetch("http://localhost:3001/api/v1/events");
     const data = await res.json();
+    console.log(data)
     setEventList(data.data || []);
   };
 
@@ -50,239 +57,269 @@ const AdminEvents: React.FC = () => {
       fetchProductList();
     }, []);
 
-const handleAddImageLink = () => {
-  if (images.length >= 5) {
+  const handleAddImageLink = () => {
+  if (imageFiles.length + imageLinks.length >= 5) {
     alert('Chỉ được chọn tối đa 5 ảnh.');
     return;
   }
+
   const link = prompt('Nhập link hình ảnh:');
   if (link) {
-    setImages((prev) => [...prev, link]);
+    setImageLinks(prev => [...prev, link]);
+    setImages(prev => [...prev, link]);  
   }
 };
+
 // xử lí chọn ảnh từ máy 
-const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const files = e.target.files;
-  if (!files) return;
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+  
+    if (imageFiles.length + imageLinks.length + files.length > 5) {
+      alert('Chỉ được chọn tối đa 5 ảnh.');
+      return;
+    }
+  
+    const newFiles = Array.from(files);
+    setImageFiles(prev => [...prev, ...newFiles]);
+  
+    const newPreviews = newFiles.map(file => URL.createObjectURL(file));
+    setImages(prev => [...prev, ...newPreviews]);
+  };
+  // xử lí xóa ảnh 
+  const handleRemoveImage = (index: number) => {
+    setImages(prev => prev.filter((_, i) => i !== index));
 
-  if (images.length + files.length > 5) {
-    alert('Chỉ được chọn tối đa 5 ảnh.');
-    return;
-  }
+    // Loại bỏ link nếu là link
+    setImageLinks(prev => prev.filter((_, i) => images[i].startsWith('http') ? i !== index : true));
+    
+    // Loại bỏ file nếu là file (URL.createObjectURL)
+    setImageFiles(prev => prev.filter((_, i) => !images[i].startsWith('blob:') || i !== index));
+  };
 
-  const newImages: string[] = [];
-  Array.from(files).forEach((file) => {
-    const url = URL.createObjectURL(file);
-    newImages.push(url);
-    // ❌ Không upload thực tế => chỉ preview
-    // ✅ Nếu muốn upload thực tế, bạn upload lên Cloudinary, Firebase, rồi lấy URL đẩy vào images
-  });
-
-  setImages((prev) => [...prev, ...newImages]);
-};
-// xử lí xóa ảnh 
-const handleRemoveImage = (index: number) => {
-  setImages(images.filter((_, i) => i !== index));
-};
  // hàm mở form sửa sản phẩm 
   const handleEditEvent = (event: any) => {
-  setEditingEvent({ 
-  ...event, 
-  images: Array.isArray(event.images) ? event.images : [''] 
-});
-
+    setEditingEvent({ ...event });
+    const imageUrls = event.images?.map((img: any) => {
+    return typeof img === 'string' ? img : img?.image;
+  }) || [];
+    setImages(imageUrls);
+    setImageFiles([]);
+    setImageLinks([]);
 };
 
-// hàm thêm sản phẩm 
-const handleSaveNewEvent = async () => {
-  const token = localStorage.getItem("token");
-
-  if (
-    !addingEvent.name ||
-    !addingEvent.description ||
-    !addingEvent.startDate ||
-    !addingEvent.endDate
-  ) {
-    alert("❌ Vui lòng nhập đầy đủ thông tin");
-    return;
-  }
-
-  // 👉 Gộp images vào dữ liệu gửi đi
-  const payload = {
-    ...addingEvent,
-    images: images.filter(img => img), // loại bỏ rỗng
-  };
-
-  console.log("📤 Dữ liệu đang gửi lên:", payload);
-
-  try {
-    const res = await fetch("http://localhost:3001/api/v1/events", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(payload),
-    });
-
-    const data = await res.json();
-    console.log("📥 Phản hồi từ server:", data);
-
-    if (res.ok) {
-      alert("✅ Tạo sự kiện thành công!");
-      setAddingEvent(null);
-      setImages(['']); // reset ảnh sau khi thêm thành công
-      fetchEvents();
-    } else {
-      alert("❌ Thêm thất bại: " + data.message);
+  // hàm thêm sản phẩm 
+  const handleSaveNewEvent = async (newEvent: any) => {
+    const token = localStorage.getItem("token");
+    if (!token || !newEvent) {
+      alert('Bạn cần đăng nhập hoặc điền đủ thông tin.');
+      return;
     }
-  } catch (error) {
-    console.error("❌ Lỗi khi gửi request:", error);
-    alert("Đã xảy ra lỗi khi tạo sự kiện.");
-  }
-};
 
-// hàm lưu chỉnh sửa 
-  const handleUpdateEvent = async () => {
-  const token = localStorage.getItem('token');
-  if (!token || !editingEvent) {
-    alert('Bạn cần đăng nhập hoặc có sự kiện để sửa');
-    return;
-  }
-
-  try {
-    const response = await fetch(`http://localhost:3001/api/v1/events/${editingEvent._id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        name: editingEvent.name,
-        description: editingEvent.description,
-        startDate: editingEvent.startDate,
-        endDate: editingEvent.endDate,
-        discount: Number(editingEvent.discount) || 0,
-        location: editingEvent.location,
-        image: editImages
-      })
-    });
-
-    const data = await response.json();
-    console.log('✅ Kết quả cập nhật:', data);
-
-    if (response.ok) {
-      setEditingEvent(null);
-      setEventList((prevList) =>
-        prevList.map((e) =>
-          e._id === editingEvent._id ? { ...e, ...editingEvent } : e
-        )
-      );
-    } else {
-      alert('❌ Cập nhật thất bại: ' + (data.message || 'Lỗi không xác định'));
+    if (
+      !addingEvent.name ||
+      !addingEvent.description ||
+      !addingEvent.startDate ||
+      !addingEvent.endDate
+    ) {
+      alert("❌ Vui lòng nhập đầy đủ thông tin");
+      return;
     }
-  } catch (error) {
-    console.error('🚨 Lỗi cập nhật:', error);
-    alert('Đã xảy ra lỗi khi cập nhật.');
-  }
-};
 
-// hàm mở form thêm sản phẩm 
-const handleCreateEvent = () => {
-  setAddingEvent({
-    name: "",
-    description: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-    discount: 0,
-    images: [],
-    products: [],
-  });
-  setImages([]); // reset hình ảnh
-};
+    try {
+      const formData = new FormData();
+      formData.append('name', newEvent.name);
+      formData.append('description', newEvent.description);
+      formData.append('startDate', newEvent.startDate);
+      formData.append('endDate', newEvent.endDate);
+    // 👇 Gửi file từ máy (blob)
+      imageFiles.forEach((file) => {
+        formData.append('image', file);
+      });
 
+      // 👇 Gửi link (ảnh từ URL)
+      imageLinks.forEach((url) => {
+        formData.append('image', url); // Backend sẽ xử lý chuỗi URL
+      });
 
-// Hàm xoá sản phẩm khỏi hệ thống (admin only)
-const handleDeleteEvent = async (eventId: string) => {
-  const token = localStorage.getItem('token');
+      const res = await fetch("http://localhost:3001/api/v1/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
-  if (!token) {
-    alert('❌ Bạn cần đăng nhập với quyền Admin');
-    return;
-  }
+      const data = await res.json();
+      console.log("📥 Phản hồi từ server:", data);
 
-  const confirmDelete = window.confirm('❗Bạn có chắc chắn muốn xóa sự kiện này?');
-  if (!confirmDelete) return;
-
-  try {
-    const response = await fetch(`http://localhost:3001/api/v1/events/${eventId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+      if (res.ok) {
+        setShowCreateSuccess(true);
+        setAddingEvent(null);
+        setImages(['']); // reset ảnh sau khi thêm thành công
+        fetchEvents();
+      } else {
+        alert("❌ Thêm thất bại: " + data.message);
       }
-    });
-
-    const data = await response.json();
-    console.log('💡 Kết quả xoá:', data);
-
-    if (response.ok) {
-      alert('✅ Đã xóa sự kiện thành công!');
-      setEventList((prevList) => prevList.filter((e) => e._id !== eventId));
-    } else {
-      alert('❌ Xóa sự kiện thất bại: ' + (data.message || 'Lỗi không xác định'));
+    } catch (error) {
+      console.error("❌ Lỗi khi gửi request:", error);
+      alert("Đã xảy ra lỗi khi tạo sự kiện.");
     }
-  } catch (error) {
-    console.error('🚨 Lỗi khi xóa sự kiện:', error);
-    alert('❌ Đã xảy ra lỗi khi xóa sự kiện.');
-  }
-};
-
-// thêm sản phẩm vào sự kiện
-const handleAddProductToEvent = async (eventId: string) => {
-  const token = localStorage.getItem("token");
-  if (!token) return alert("❌ Cần đăng nhập");
-
-  if (subEventForm.product.length === 0) {
-    return alert("❗Bạn chưa chọn sản phẩm nào");
-  }
-
-  const payload = {
-    products: subEventForm.product,
-    discount: subEventForm.discount,
-    startDate: subEventForm.startDate,
-    endDate: subEventForm.endDate,
   };
 
-  try {
-    const res = await fetch(`http://localhost:3001/api/v1/events/${eventId}/add-products`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(payload),
-    });
-
-    const data = await res.json();
-    if (res.ok) {
-      alert("✅ Đã thêm sản phẩm vào sự kiện!");
-      setSubEventForm({ product: [], discount: "", startDate: "", endDate: "" });
-      setExpandedEventId(null);
-      fetchEvents();
-    } else {
-      alert("❌ Lỗi: " + data.message);
+  // hàm lưu chỉnh sửa 
+    const handleUpdateEvent = async (editEvent: any) => {
+    const token = localStorage.getItem('token');
+    if (!token || !editingEvent) {
+      alert('Bạn cần đăng nhập hoặc có sự kiện để sửa');
+      return;
     }
-  } catch (err) {
-    console.error("❌ Lỗi gửi:", err);
-    alert("Lỗi kết nối.");
-  }
+try {
+      const formData = new FormData();
+      formData.append('name', editEvent.name);
+      formData.append('description', editEvent.description);
+      formData.append('startDate', editEvent.startDate);
+      formData.append('endDate', editEvent.endDate);
+      formData.append('discount', editEvent.discount);
+      formData.append('location', editEvent.location);
+    // 👇 Gửi file từ máy (blob)
+      imageFiles.forEach((file) => {
+        formData.append('image', file);
+      });
+
+      // 👇 Gửi link (ảnh từ URL)
+      imageLinks.forEach((url) => {
+        formData.append('image', url); // Backend sẽ xử lý chuỗi URL
+      });
+    console.log('🧾 ID cần cập nhật:', editEvent._id);
+
+      const res = await fetch(`http://localhost:3001/api/v1/events/${editEvent._id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log("📥 Phản hồi từ server:", data);
+
+      if (res.ok) {
+        setShowUpdateSuccess(true);
+        setAddingEvent(null);
+        fetchEvents();
+      } else {
+        alert("❌ Thêm thất bại: " + data.message);
+      }
+    } 
+ catch (error) {
+      console.error('🚨 Lỗi cập nhật:', error);
+      alert('Đã xảy ra lỗi khi cập nhật.');
+    }
+  };
+
+  // hàm mở form thêm sản phẩm 
+  const handleCreateEvent = () => {
+    setAddingEvent({
+      name: "",
+      description: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      discount: 0,
+      images: [],
+      products: [],
+    });
+    setImages([]);
+    setImageFiles([]);  
+    setImageLinks([]); 
+  };
+
+
+  const confirmDelete = (eventId: string) => {
+  setPendingDelete(eventId);
+  setShowConfirmDelete(true);
 };
+  // Hàm xoá sản phẩm khỏi hệ thống (admin only)
+  const handleDeleteEvent = async () => {
+    if (!pendingDelete) return;
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      alert('❌ Bạn cần đăng nhập với quyền Admin');
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3001/api/v1/events/${pendingDelete}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+      console.log('💡 Kết quả xoá:', data);
+
+      if (response.ok) {
+        setEventList((prevList) => prevList.filter((e) => e._id !== pendingDelete));
+        setShowDeleteSuccess(true);
+      } else {
+        alert('❌ Xóa sự kiện thất bại: ' + (data.message || 'Lỗi không xác định'));
+      }
+    } catch (error) {
+      console.error('🚨 Lỗi khi xóa sự kiện:', error);
+    } finally {
+    setShowConfirmDelete(false);
+    setPendingDelete(null);
+  }
+  };
+
+  // thêm sản phẩm vào sự kiện
+  const handleAddProductToEvent = async (eventId: string) => {
+    const token = localStorage.getItem("token");
+    if (!token) return alert("❌ Cần đăng nhập");
+
+    if (subEventForm.product.length === 0) {
+      return alert("❗Bạn chưa chọn sản phẩm nào");
+    }
+
+    const payload = {
+      products: subEventForm.product,
+      discount: subEventForm.discount,
+      startDate: subEventForm.startDate,
+      endDate: subEventForm.endDate,
+    };
+
+    try {
+      const res = await fetch(`http://localhost:3001/api/v1/events/${eventId}/add-products`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("✅ Đã thêm sản phẩm vào sự kiện!");
+        setSubEventForm({ product: [], discount: "", startDate: "", endDate: "" });
+        setExpandedEventId(null);
+        fetchEvents();
+      } else {
+        alert("❌ Lỗi: " + data.message);
+      }
+    } catch (err) {
+      console.error("❌ Lỗi gửi:", err);
+      alert("Lỗi kết nối.");
+    }
+  };
 
   return (
   <div className="sp-section">
-    {/* Nếu đang sửa sự kiện */}
     {editingEvent ? (
       <div className="edit-product-form">
         <h2 className="form-title">Sửa sự kiện</h2>
@@ -356,19 +393,24 @@ const handleAddProductToEvent = async (eventId: string) => {
           />
         </div>
 
-       <div className="form-group">
+<div className="form-group">
   <label>Hình ảnh:</label>
   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-    {editImages.map((img, index) => (
+    {images.map((img, index) => (
       <div key={index} style={{ position: 'relative' }}>
-        <img
-          src={img}
+        <img 
+          src={img.startsWith('http') ? img : `http://localhost:3001${img}`}
           alt={`Ảnh ${index + 1}`}
-          style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '4px' }}
+          style={{
+            width: '80px',
+            height: '80px',
+            objectFit: 'cover',
+            borderRadius: '4px',
+          }}
         />
         <button
           type="button"
-          onClick={() => setEditImages(editImages.filter((_, i) => i !== index))}
+          onClick={() => handleRemoveImage(index)}
           style={{
             position: 'absolute',
             top: '-5px',
@@ -389,40 +431,48 @@ const handleAddProductToEvent = async (eventId: string) => {
   </div>
 
   <div style={{ marginTop: '8px', display: 'flex', gap: '8px' }}>
-    {editImages.length < 5 && (
-      <>
-        <button type="button" onClick={() => {
-          const link = prompt('Nhập link hình ảnh:');
-          if (link) setEditImages(prev => [...prev, link]);
-        }}>+ Thêm từ link</button>
+  {images.length < 100 && (
+    <>
+      <label
+        style={{
+          cursor: 'pointer',
+          background: '#eee',
+          padding: '6px 12px',
+          borderRadius: '4px',
+        }}
+      >
+        + Tải ảnh từ máy
+        <input
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleFileUpload}
+          style={{ display: 'none' }}
+        />
+      </label>
 
-        <label style={{ cursor: 'pointer', background: '#eee', padding: '6px 12px', borderRadius: '4px' }}>
-          + Tải ảnh từ máy
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={(e) => {
-              const files = e.target.files;
-              if (!files) return;
-              const newImgs: string[] = [];
-              Array.from(files).forEach(file => {
-                const url = URL.createObjectURL(file);
-                newImgs.push(url);
-              });
-              setEditImages(prev => [...prev, ...newImgs]);
-            }}
-            style={{ display: 'none' }}
-          />
-        </label>
-      </>
-    )}
-  </div>
+      <button
+        type="button"
+        onClick={handleAddImageLink}
+        style={{
+          cursor: 'pointer',
+          background: '#eee',
+          padding: '6px 12px',
+          borderRadius: '4px',
+          border: 'none'
+        }}
+      >
+        + Thêm từ link
+      </button>
+    </>
+  )}
+</div>
+
 </div>
 
 
         <div className="form-actions1">
-          <button className="btn btn-success" onClick={handleUpdateEvent}>
+          <button className="btn btn-success" onClick={()=>handleUpdateEvent(editingEvent)}>
             Cập nhật sự kiện
           </button>
           <button
@@ -433,10 +483,7 @@ const handleAddProductToEvent = async (eventId: string) => {
           </button>
         </div>
       </div>
-    ) : (
-      <>
-        {/* Nút thêm sự kiện */}
-        {addingEvent && (
+    ) : addingEvent ? (
           <div className="edit-product-form">
             <h2 className="form-title">Thêm sự kiện</h2>
         
@@ -569,18 +616,14 @@ const handleAddProductToEvent = async (eventId: string) => {
               </button>
             </div>
           </div>
-        )}
-        
-        {/* Hiển thị nút Thêm và danh sách sản phẩm */}
-        <div className="add0">
+    ) : (
+    <>
+    <div className="add0">
         <button className="add" onClick={handleCreateEvent}>
           <FaPlus />
         </button>
-        
-        
-        
-                </div>
-        {/* Danh sách sự kiện */}
+    </div>
+
         {eventList.length === 0 ? (
           <p>Không có sự kiện nào.</p>
         ) : (
@@ -633,7 +676,7 @@ const handleAddProductToEvent = async (eventId: string) => {
 
                   <button
                     className="sp-btn-delete"
-                    onClick={() => handleDeleteEvent(event._id)}
+                    onClick={() => confirmDelete(event._id)}
                   >
                     Xoá
                   </button>
@@ -719,16 +762,50 @@ const handleAddProductToEvent = async (eventId: string) => {
       </button>
   </div>
 )}
-
-              </div>
-            ))}
-          </div>
-        )}
-      </>
+   </div>
+ ))}
+ </div>
+ 
+    )} 
+    </>
+    )}
+    {showCreateSuccess && (
+      <CreateProductSuccess
+        message="Thêm sự kiện thành công"
+        description="sự kiện mới đã được tạo."
+        buttonText="Đóng"
+        onClose={() => setShowCreateSuccess(false)}
+      />
+    )}
+    
+    {showUpdateSuccess && (
+      <UpdateProductSuccess
+        message="Cập nhật sự kiện thành công"
+        description="sự kiện đã được chỉnh sửa."
+        buttonText="Đóng"
+        onClose={() => setShowUpdateSuccess(false)}
+      />
+    )}
+    
+    {showDeleteSuccess && (
+      <DeleteProductSuccess
+        message="Xóa sự kiện thành công"
+        description="sự kiện đã bị xóa khỏi hệ thống."
+        buttonText="Đóng"
+        onClose={() => setShowDeleteSuccess(false)}
+      />
+    )}
+    {showConfirmDelete && (
+      <ConfirmDeleteDialog
+        onConfirm={handleDeleteEvent}
+        onCancel={() => {
+          setShowConfirmDelete(false);
+          setPendingDelete(null);
+        }}
+      />
     )}
   </div>
 );
-
 };
 
 const ImageSlider = ({ images }: { images: string[] }) => {
@@ -746,10 +823,18 @@ const ImageSlider = ({ images }: { images: string[] }) => {
   const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
 
+  // Tạo đường dẫn ảnh
+  const getImageSrc = (imgPath: string) => {
+    if (imgPath.startsWith('http://') || imgPath.startsWith('https://')) {
+      return imgPath;
+    }
+    return `http://localhost:3001${imgPath.startsWith('/') ? imgPath : '/' + imgPath}`;
+  };
+
   return (
     <div style={{ position: "relative", width: 168, height: 168 }}>
       <img
-        src={images[current] || ""}
+        src={getImageSrc(images[current])}
         alt=""
         className="image"
         style={{ width: 168, height: 168, objectFit: "cover", borderRadius: 8 }}
@@ -794,9 +879,17 @@ const ImageSlider = ({ images }: { images: string[] }) => {
           </button>
         </>
       )}
-      {/* Dots indicator */}
       {images.length > 1 && (
-        <div style={{ position: "absolute", bottom: 8, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 4 }}>
+        <div
+          style={{
+            position: "absolute",
+            bottom: 8,
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            gap: 4,
+          }}
+        >
           {images.map((_, idx) => (
             <span
               key={idx}
@@ -814,4 +907,5 @@ const ImageSlider = ({ images }: { images: string[] }) => {
     </div>
   );
 };
+
 export default AdminEvents;

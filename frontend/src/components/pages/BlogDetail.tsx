@@ -33,7 +33,9 @@ const BlogDetail = () => {
 
       {Array.isArray(blog.image) && blog.image.length > 0 && (
         <img
-          src={blog.image[0]}
+           src={ blog.image?.[0]?.startsWith('http')||blog.image?.[0]?.startsWith('data:image')
+      ? blog.image?.[0]
+      : `http://localhost:3001${blog.image?.[0]}`}
           alt={blog.title}
           style={{
             width: '100%',

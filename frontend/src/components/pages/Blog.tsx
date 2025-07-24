@@ -5,7 +5,7 @@ const Blog: React.FC = () => {
   const [blogs, setBlogs] = useState<any[]>([])
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 5;
+  const blogsPerPage = 3;
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
@@ -89,7 +89,9 @@ const Blog: React.FC = () => {
             >
               
               <img
-                src={Array.isArray(blog.image) ? blog.image[0] : blog.image}
+                src={ blog.image?.[0]?.startsWith('http')||blog.image?.[0]?.startsWith('data:image')
+      ? blog.image?.[0]
+      : `http://localhost:3001${blog.image?.[0]}`}
                 alt="Ảnh"
                 style={{
                   width: '100%',

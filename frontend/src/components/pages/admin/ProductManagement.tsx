@@ -11,55 +11,62 @@ import {
 } from "chart.js";
 import "../../../assets/css/Dashboard.css";
 import { _descriptors } from "chart.js/helpers";
+import {CreateProductSuccess, DeleteProductSuccess, UpdateProductSuccess, ConfirmDeleteDialog} from '../../PaymentSuccess';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 const ProductManagement = () => {
   const [productList, setProductList] = useState<any[]>([]);
-const [editingProduct, setEditingProduct] = useState<any | null>(null);
-const [addingProduct, setAddingProduct] = useState<any | null>(null);
-const [categories, setCategories] = useState<any[]>([]);
-const [images, setImages] = useState<string[]>(['']);
-const [imageFiles, setImageFiles] = useState<File[]>([]);  // ảnh từ máy
-const [imageLinks, setImageLinks] = useState<string[]>([]);  // ảnh từ link
-
+  const [editingProduct, setEditingProduct] = useState<any | null>(null);
+  const [addingProduct, setAddingProduct] = useState<any | null>(null);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [images, setImages] = useState<string[]>(['']);
+  const [imageFiles, setImageFiles] = useState<File[]>([]);  // ảnh từ máy
+  const [imageLinks, setImageLinks] = useState<string[]>([]);  // ảnh từ link
+  const [showCreateSuccess, setShowCreateSuccess] = useState(false);
+  const [showUpdateSuccess, setShowUpdateSuccess] = useState(false);
+  const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false);
+  const [pendingDelete, setPendingDelete] = useState<string | null>(null);
 
   // hàm mở form sửa sản phẩm 
   const handleEditProduct = (product: any) => {
-  setEditingProduct({ ...product });
-  const imageUrls = product.images?.map((img: any) => img.image) || [];
-  setImages(imageUrls);
+    setEditingProduct({ ...product });
+    const imageUrls = product.images?.map((img: any) => img.image) || [];
+    setImages(imageUrls);
+    setImageFiles([]);
+    setImageLinks([]);
 };
 
-// xử lí thêm ảnh từ  link 
-// const handleAddImageLink = () => {
-//   if (images.length >= 5) {
-//     alert('Chỉ được chọn tối đa 5 ảnh.');
-//     return;
-//   }
-//   const link = prompt('Nhập link hình ảnh:');
-//   if (link) {
-//     setImages((prev) => [...prev, link]);
-//   }
-// };
 // xử lí chọn ảnh từ máy 
 const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
   const files = e.target.files;
   if (!files) return;
 
-  if (imageFiles.length + files.length + imageLinks.length > 5) {
+  if (imageFiles.length + imageLinks.length + files.length > 5) {
     alert('Chỉ được chọn tối đa 5 ảnh.');
     return;
   }
 
   const newFiles = Array.from(files);
-  setImageFiles((prev) => [...prev, ...newFiles]);
+  setImageFiles(prev => [...prev, ...newFiles]);
+
+  const newPreviews = newFiles.map(file => URL.createObjectURL(file));
+  setImages(prev => [...prev, ...newPreviews]);
 };
+
 
 // xử lí xóa ảnh 
 const handleRemoveImage = (index: number) => {
   setImages(prev => prev.filter((_, i) => i !== index));
+
+  // Loại bỏ link nếu là link
+  setImageLinks(prev => prev.filter((_, i) => images[i].startsWith('http') ? i !== index : true));
+  
+  // Loại bỏ file nếu là file (URL.createObjectURL)
+  setImageFiles(prev => prev.filter((_, i) => !images[i].startsWith('blob:') || i !== index));
 };
+
 
 const handleAddImageLink = () => {
   if (imageFiles.length + imageLinks.length >= 5) {
@@ -69,10 +76,10 @@ const handleAddImageLink = () => {
 
   const link = prompt('Nhập link hình ảnh:');
   if (link) {
-    setImageLinks((prev) => [...prev, link]);
+    setImageLinks(prev => [...prev, link]);
+    setImages(prev => [...prev, link]);  
   }
 };
-
 
 // hàm mở form thêm sản phẩm 
 const handleAddProductClick = () => {
@@ -85,9 +92,11 @@ const handleAddProductClick = () => {
     discount: '',
     quantity: ''
   });
+  setImages([]);  
+  setImageFiles([]);  
+  setImageLinks([]); 
   fetchCategories();   // Thêm dòng này để chắc chắn danh mục được load
 };
-
 
 // lấy danh mục
 const fetchCategories = async () => {
@@ -114,7 +123,6 @@ const fetchCategories = async () => {
   }
 };
 
-
 // hàm lưu chỉnh sửa 
 const handleUpdateProduct = async () => {
   const token = localStorage.getItem('token');
@@ -124,32 +132,41 @@ const handleUpdateProduct = async () => {
   }
 
   try {
+    const formData = new FormData();
+    formData.append("name", editingProduct.name);
+    formData.append("description", editingProduct.description);
+    formData.append("price", editingProduct.price);
+    formData.append("quantity", editingProduct.quantity);
+    formData.append("discount", editingProduct.discount);
+    formData.append("category", editingProduct.categoryId);
+       imageFiles.forEach((file) => {
+        formData.append('images', file);
+      });
+
+       imageLinks.forEach((url) => {
+        formData.append('images', url); // Backend sẽ xử lý chuỗi URL
+      });
+
     const response = await fetch(`http://localhost:3001/api/v1/products/${editingProduct._id}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       },
-      body: JSON.stringify({
-        name: editingProduct.name,
-        price: editingProduct.price,
-        description: editingProduct.description,
-        images: editingProduct.images,
-        category: editingProduct.category?._id || editingProduct.category
-      })
+      body: formData
     });
 
     const data = await response.json();
     console.log('✅ Kết quả cập nhật:', data);
 
-    // ✅ Không phụ thuộc vào data.success nữa
-    if (response.ok) {  // Chỉ cần status 200~299 là thành công
+    if (response.ok) {
+      setShowUpdateSuccess(true)
       setEditingProduct(null);
       setProductList((prevList) =>
         prevList.map((p) =>
           p._id === editingProduct._id ? { ...p, ...editingProduct } : p
         )
       );
+      await fetchProductList();
     } else {
       alert('❌ Cập nhật thất bại: ' + (data.message || 'Lỗi không xác định'));
     }
@@ -159,8 +176,14 @@ const handleUpdateProduct = async () => {
   }
 };
 
+  const confirmDelete = (productId: string) => {
+  setPendingDelete(productId);
+  setShowConfirmDelete(true);
+};
 // Hàm xoá sản phẩm khỏi hệ thống (admin only)
-const handleDeleteProduct = async (productId: string) => {
+const handleDeleteProduct = async () => {
+  if (!pendingDelete) return;
+
   const token = localStorage.getItem('token');
 
   if (!token) {
@@ -172,7 +195,7 @@ const handleDeleteProduct = async (productId: string) => {
   if (!confirmDelete) return;
 
   try {
-    const response = await fetch(`http://localhost:3001/api/v1/products/${productId}`, {
+    const response = await fetch(`http://localhost:3001/api/v1/products/${pendingDelete}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -185,8 +208,8 @@ const handleDeleteProduct = async (productId: string) => {
 
     // ✅ Chỉ kiểm tra response.ok thay vì data.success
     if (response.ok) {
-      alert('✅ Đã xóa sản phẩm thành công!');
-      setProductList((prevList) => prevList.filter((p) => p._id !== productId));
+      setShowDeleteSuccess(true);
+      setProductList((prevList) => prevList.filter((p) => p._id !== pendingDelete));
     } else {
       alert('❌ Xóa sản phẩm thất bại: ' + (data.message || 'Lỗi không xác định'));
     }
@@ -217,7 +240,7 @@ const handleSaveNewProduct = async (newProduct: any) => {
 
     // 👇 Gửi file từ máy (blob)
     imageFiles.forEach((file) => {
-      formData.append('image', file);
+      formData.append('images', file);
     });
 
     // 👇 Gửi link (ảnh từ URL)
@@ -235,8 +258,10 @@ const handleSaveNewProduct = async (newProduct: any) => {
 
     const data = await response.json();
     if (response.ok) {
+      setShowCreateSuccess(true);
       setAddingProduct(null);
       setProductList(prev => [...prev, data.data]);
+      await fetchProductList();
     } else {
       alert('❌ Thêm sản phẩm thất bại: ' + (data.message || 'Lỗi không xác định'));
     }
@@ -256,6 +281,9 @@ const handleSaveNewProduct = async (newProduct: any) => {
 
 
     useEffect(() => {
+            fetchProductList();
+    }, []);
+
       const fetchProductList = async () => {
         try {
           const token = localStorage.getItem("token");
@@ -271,8 +299,7 @@ const handleSaveNewProduct = async (newProduct: any) => {
           console.error("Lỗi tải sản phẩm:", err);
         }
       };
-      fetchProductList();
-    }, []);
+
   return (
   <div className="sp-section">
     {editingProduct ? (
@@ -320,7 +347,13 @@ const handleSaveNewProduct = async (newProduct: any) => {
     {images.map((img, index) => (
       <div key={index} style={{ position: 'relative' }}>
         <img
-          src={img}
+         src={
+    img.startsWith('http') ||
+    img.startsWith('blob') ||
+    img.startsWith('data:image')
+      ? img
+      : `http://localhost:3001${img}`
+  }  
           alt={`Ảnh ${index + 1}`}
           style={{
             width: '80px',
@@ -391,6 +424,7 @@ const handleSaveNewProduct = async (newProduct: any) => {
 
 </div>
 
+
         <div className="form-group">
           <label>Danh mục:</label>
           <select
@@ -400,14 +434,39 @@ const handleSaveNewProduct = async (newProduct: any) => {
             }
           >
             <option value="">-- Chọn danh mục --</option>
-            {categories?.map((cat) => (
+            {categories.map((cat) => (
               <option key={cat._id} value={cat._id}>{cat.name}</option>
             ))}
           </select>
         </div>
+
+        <div className="form-group">
+          <label>Giảm giá (%):</label>
+          <input
+            type="number"
+            value={editingProduct.discount || ''}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, discount: e.target.value })
+            }
+            placeholder="Nhập giảm giá"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Số lượng:</label>
+          <input
+            type="number"
+            value={editingProduct.quantity || ''}
+            onChange={(e) =>
+              setEditingProduct({ ...editingProduct, quantity: e.target.value })
+            }
+            placeholder="Nhập số lượng"
+          />
+        </div>
+
         <div className="form-actions1">
-          <button className="btn btn-success" onClick={handleUpdateProduct}>
-            Cập nhật sản phẩm
+          <button className="btn btn-success" onClick={() => handleUpdateProduct()}>
+            Sửa sản phẩm
           </button>
           <button className="btn btn-secondary" onClick={() => setEditingProduct(null)}>
             Hủy
@@ -592,13 +651,32 @@ const handleSaveNewProduct = async (newProduct: any) => {
         ) : (
           <div className="sp-list">
             {productList.map((product) => {
-              const imageSrc = product.images?.[0]?.image || '/images/default.jpg';
+
+let imageSrc = '';
+
+if (product.images && product.images.length > 0) {
+  const firstImage = product.images[0];
+
+  const imagePath = typeof firstImage === 'string'
+    ? firstImage
+    : firstImage?.image;
+
+  if (typeof imagePath === 'string') {
+    if (/^https?:\/\//.test(imagePath)) {
+  imageSrc = imagePath;
+} else {
+  imageSrc = `http://localhost:3001${imagePath}`;
+}
+  
+  }
+
+}
 
 
               return (
                 <div key={product._id || Math.random()} className="sp-card">
                   <div className="sp-info">
-                    <img src= {encodeURI(imageSrc)} alt={product.name} className="image" />
+                    <img src= {imageSrc} alt={product.name} className="image" />
                     <div className="sp-content">
                       <h3 className="sp-name">{product.name || 'Sản phẩm không tên'}</h3>
                       <p><strong>Giá:</strong> {product.price?.toLocaleString() || 0}đ</p>
@@ -608,7 +686,7 @@ const handleSaveNewProduct = async (newProduct: any) => {
                   </div>
                   <div className="sp-actions">
                     <button className="sp-btn-edit" onClick={() => handleEditProduct(product)}>Sửa</button>
-                    <button className="sp-btn-delete" onClick={() => handleDeleteProduct(product._id)}>Xoá</button>
+                    <button className="sp-btn-delete" onClick={() => confirmDelete(product._id)}>Xoá</button>
                   </div>
                 </div>
               );
@@ -616,6 +694,41 @@ const handleSaveNewProduct = async (newProduct: any) => {
           </div>
         )}
       </>
+    )}
+    {showCreateSuccess && (
+      <CreateProductSuccess
+        message="Thêm danh mục thành công"
+        description="Danh mục mới đã được tạo."
+        buttonText="Đóng"
+        onClose={() => setShowCreateSuccess(false)}
+      />
+    )}
+    
+    {showUpdateSuccess && (
+      <UpdateProductSuccess
+        message="Cập nhật danh mục thành công"
+        description="Danh mục đã được chỉnh sửa."
+        buttonText="Đóng"
+        onClose={() => setShowUpdateSuccess(false)}
+      />
+    )}
+    
+    {showDeleteSuccess && (
+      <DeleteProductSuccess
+        message="Xóa danh mục thành công"
+        description="Danh mục đã bị xóa khỏi hệ thống."
+        buttonText="Đóng"
+        onClose={() => setShowDeleteSuccess(false)}
+      />
+    )}
+    {showConfirmDelete && (
+      <ConfirmDeleteDialog
+        onConfirm={handleDeleteProduct}
+        onCancel={() => {
+          setShowConfirmDelete(false);
+          setPendingDelete(null);
+        }}
+      />
     )}
   </div>
 );

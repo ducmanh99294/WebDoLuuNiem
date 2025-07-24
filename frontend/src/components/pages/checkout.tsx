@@ -413,7 +413,8 @@ const Checkout: React.FC = () => {
 
         const data = await res.json();
         if (data.success && Array.isArray(data.cartDetails)) {
-          setCart(data.cartDetails);
+  const filteredCart = data.cartDetails.filter((item: any) => item.product_id !== null);
+  setCart(filteredCart);
           console.log('Cart details:', data.cartDetails);
          
         } else {
