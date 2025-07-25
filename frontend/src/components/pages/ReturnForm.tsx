@@ -205,7 +205,7 @@ const ReturnForm: React.FC = () => {
 
   return (
     <div className="return-form-container">
-      <h2>Thủ tục trả hàng</h2>
+      <h2>Thủ tục hoàn trả hàng</h2>
 
       <div className="order-info">
         <div className="box">
@@ -271,7 +271,7 @@ const ReturnForm: React.FC = () => {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Mô tả chi tiết lỗi của sản phẩm..."
+            placeholder="Mô tả chi tiết lỗi sản phẩm..."
             rows={5}
             disabled={!isOrderValid}
           />
