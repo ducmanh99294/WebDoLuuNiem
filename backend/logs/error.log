@@ -80,3 +80,30 @@
 
 {"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-18T02:41:32.245Z"}
 {"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-18T02:41:40.291Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T01:59:16.354Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T01:59:46.542Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T01:59:46.646Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T01:59:46.758Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:06:48.605Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:06:48.706Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:06:48.820Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:06:58.247Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:06:58.350Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:06:58.474Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:10:51.376Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:10:51.482Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:10:51.594Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:11:11.985Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:11:12.088Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:11:12.199Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-23T02:11:38.262Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:11:38.389Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-23T02:11:38.501Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T02:17:08.341Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T02:36:39.155Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T02:40:00.546Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T02:41:20.128Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T02:41:39.424Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T02:42:21.373Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T02:44:55.444Z"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"Uncaught Exception thrown: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TLSWrap.onStreamRead (node:internal/stream_base_commons:216:20)","syscall":"read","timestamp":"2025-07-23T03:09:55.843Z"}
