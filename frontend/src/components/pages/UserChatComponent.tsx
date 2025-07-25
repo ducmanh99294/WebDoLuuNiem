@@ -1,7 +1,9 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import toast from 'react-hot-toast';
 import { Socket } from 'socket.io-client';
+import { fetcher } from '../../api/base';
 
 interface Chat {
   _id: string;
@@ -9,6 +11,27 @@ interface Chat {
   messages: { sender: { _id: string; name: string }; content: string; timestamp: string; is_read: boolean }[];
   user: { _id: string; name: string }[];
 }
+
+interface UserChatComponentProps {
+  productId: string;
+  product: { _id: string; name: string; price: number; discount?: number; images?: { image: string }[] };
+  onClose: () => void;
+  userId: string;
+}
+
+interface ChatErrorResponse {
+  success: false,
+  message: string
+}
+interface ChatSuccessResponse {
+  success: true,
+  message: string,
+  data: []
+}
+
+type ChatResponse = ChatErrorResponse | ChatSuccessResponse
+
+
 
 interface UserChatComponentProps {
   productId: string;
@@ -50,29 +73,51 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
   const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
   const [message, setMessage] = useState<string>('');
   const socketRef = useRef<Socket | null>(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      toast.error('Please log in to start chatting');
-      return;
+  const [token, setToken] = useState(`Bearer ${localStorage.getItem('token')}`)
+  const [sessions, setSessions] = useState([])
+  
+  const fetchSessionsByUserId = async() => {
+    try {
+      const chats = await fetcher<ChatResponse>(`/chats/user/${localStorage.getItem('userId')}`, { method: 'GET' }, token)
+      if(chats.success){
+        setSessions(chats.data)
+        console.log('session:', sessions)
+      } else {
+        throw console.error(chats.message)
+      }
+    } catch (e) {
+      throw console.error(e);
     }
+  }
+  
+  useEffect(()=>{
+    console.log('fetching sessions by userId')
 
-    socketRef.current = io('http://localhost:3001', {
-      auth: { token },
-    });
+    setToken(`Bearer ${localStorage.getItem('token')}`)
+    if (token) {
+      fetchSessionsByUserId()
+    }
+  }, [])
 
+  // useEffect(() => {
+  //   console.log(token)
+  //   if (!token) {
+  //     toast.error('Please log in to start chatting');
+  //     return;
+  //   }
+
+  //   socketRef.current = io('http://localhost:3001', {
+  //     auth: { token },
+  //   });
+
+  //   socketRef.current.emit('user_connected', userId);
+    socketRef.current = io('http://localhost:3001', { auth: { token } });
     socketRef.current.emit('user_connected', userId);
 
     socketRef.current.on('receive-message', (newMessage) => {
       if (newMessage.session_id === selectedChat?._id) {
         setSelectedChat((prev) =>
-          prev
-            ? {
-                ...prev,
-                messages: [...prev.messages, newMessage],
-              }
-            : prev
+          prev ? { ...prev, messages: [...prev.messages, newMessage] } : prev
         );
       }
       setChatList((prev) =>
@@ -84,27 +129,44 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
       );
     });
 
-    socketRef.current.on('error', (error) => {
-      console.error('Socket error:', error.message);
-      toast.error(error.message || 'Socket connection failed');
-    });
+  //   socketRef.current.on('receive-message', (newMessage) => {
+  //     if (newMessage.session_id === selectedChat?._id) {
+  //       setSelectedChat((prev) =>
+  //         prev
+  //           ? {
+  //               ...prev,
+  //               messages: [...prev.messages, newMessage],
+  //             }
+  //           : prev
+  //       );
+  //     }
+  //     setChatList((prev) =>
+  //       prev.map((chat) =>
+  //         chat._id === newMessage.session_id
+  //           ? { ...chat, messages: [...chat.messages, newMessage] }
+  //           : chat
+  //       )
+  //     );
+  //   });
 
-    return () => {
-      socketRef.current?.emit('leave-session', selectedChat?._id);
-      socketRef.current?.disconnect();
-    };
-  }, [userId, selectedChat?._id]);
+  //   socketRef.current.on('error', (error) => {
+  //     console.error('Socket error:', error.message);
+  //     toast.error(error.message || 'Socket connection failed');
+  //   });
+
+  //   return () => {
+  //     socketRef.current?.emit('leave-session', selectedChat?._id);
+  //     socketRef.current?.disconnect();
+  //   };
+  // }, [userId, selectedChat?._id, token]);
 
   useEffect(() => {
     const fetchChats = async () => {
       try {
         const response = await fetchWithAuth(`/api/v1/chats?productId=${productId}&userId=${userId}&page=1&limit=10`);
         const data = await response.json();
-        if (data.success) {
-          setChatList(data.chats);
-        } else {
-          toast.error(data.message || 'Failed to load chats');
-        }
+        if (data.success) setChatList(data.chats);
+        else toast.error(data.message || 'Failed to load chats');
       } catch (error) {
         console.error('Error fetching chats:', error);
         toast.error('Failed to load chats');
@@ -113,81 +175,99 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
     fetchChats();
   }, [productId, userId]);
 
-  useEffect(() => {
-    if (selectedChat?._id) {
-      socketRef.current?.emit('join-session', selectedChat._id);
-    }
-  }, [selectedChat?._id]);
+//   useEffect(() => {
+//     if (selectedChat?._id) {
+//       socketRef.current?.emit('join-session', selectedChat._id);
+//     }
+//   }, [selectedChat?._id]);
+//   const sendMessage = async () => {
+//     if (!message.trim() || !selectedChat) {
+//       toast.error('Please select a chat and enter a message');
+//       return;
+//     }
 
+//     const token = localStorage.getItem('token');
+//     if (!token) {
+//       toast.error('Please log in to send messages');
+//       return;
+//     }
+
+//   try {
+//     const response = await fetchWithAuth('http://localhost:3001/api/v1/chats/messages', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${token}`,
+//       },
+//       body: JSON.stringify({
+//         chatId: selectedChat._id,
+//         content: message,
+//       }),
+//     });
+//     const data = await response.json();
+//     if (data.success) {
+//       // Lấy tin nhắn mới nhất từ response và cập nhật vào state
+//       const newMsg = data.chat.messages[data.chat.messages.length - 1];
+//       setSelectedChat((prev) =>
+//         prev
+//           ? {
+//               ...prev,
+//               messages: [...prev.messages, newMsg],
+//             }
+//           : prev
+//       );
+//       setChatList((prev) =>
+//         prev.map((chat) =>
+//           chat._id === selectedChat._id
+//             ? { ...chat, messages: [...chat.messages, newMsg] }
+//             : chat
+//         )
+//       );
+//       setMessage('');
+//     } else {
+//       toast.error(data.message || 'Gửi tin nhắn thất bại.');
+//     }
+//   } catch (error) {
+//     console.error('Error sending message:', error);
+//     toast.error('Gửi tin nhắn thất bại. Vui lòng thử lại.');
+//   }
+// };
   const sendMessage = async () => {
     if (!message.trim() || !selectedChat) {
-      toast.error('Please select a chat and enter a message');
+      toast.error('Vui lòng nhập tin nhắn');
       return;
     }
 
-    const token = localStorage.getItem('token');
-    if (!token) {
-      toast.error('Please log in to send messages');
-      return;
+    try {
+      const response = await fetchWithAuth('/api/v1/chats/messages', {
+        method: 'POST',
+        body: JSON.stringify({ chatId: selectedChat._id, content: message }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        const newMsg = data.chat.messages[data.chat.messages.length - 1];
+        setSelectedChat((prev) =>
+          prev ? { ...prev, messages: [...prev.messages, newMsg] } : prev
+        );
+        setChatList((prev) =>
+          prev.map((chat) =>
+            chat._id === selectedChat._id ? { ...chat, messages: [...chat.messages, newMsg] } : chat
+          )
+        );
+        setMessage('');
+      } else toast.error(data.message || 'Gửi tin nhắn thất bại.');
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error('Gửi tin nhắn thất bại.');
     }
-
-  try {
-    const response = await fetchWithAuth('http://localhost:3001/api/v1/chats/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        chatId: selectedChat._id,
-        content: message,
-      }),
-    });
-    const data = await response.json();
-    if (data.success) {
-      // Lấy tin nhắn mới nhất từ response và cập nhật vào state
-      const newMsg = data.chat.messages[data.chat.messages.length - 1];
-      setSelectedChat((prev) =>
-        prev
-          ? {
-              ...prev,
-              messages: [...prev.messages, newMsg],
-            }
-          : prev
-      );
-      setChatList((prev) =>
-        prev.map((chat) =>
-          chat._id === selectedChat._id
-            ? { ...chat, messages: [...chat.messages, newMsg] }
-            : chat
-        )
-      );
-      setMessage('');
-    } else {
-      toast.error(data.message || 'Gửi tin nhắn thất bại.');
-    }
-  } catch (error) {
-    console.error('Error sending message:', error);
-    toast.error('Gửi tin nhắn thất bại. Vui lòng thử lại.');
-  }
-};
+  };
 
   const startNewChat = async () => {
     const token = localStorage.getItem('token');
-    if (!token) {
-      toast.error('Please log in to start a new chat');
-      return;
-    }
-    if (!userId || !productId) {
-      toast.error('User ID or Product ID is missing');
-      return;
-    }
+    if (!token) return toast.error('Please log in to start a new chat');
     try {
       const adminId = import.meta.env.VITE_ADMIN_ID;
-      if (!adminId) {
-        toast.error('Admin ID is not configured. Please contact support.');
-        return;
-      }
+      if (!adminId) return toast.error('Admin ID is not configured.');
       const response = await fetchWithAuth('/api/v1/chats', {
         method: 'POST',
         body: JSON.stringify({ senderId: userId, recipientId: adminId, productId }),
@@ -196,39 +276,27 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
       if (data.success) {
         setChatList([...chatList, data.data]);
         setSelectedChat(data.data);
-        toast.success('Chat created successfully!');
-      } else {
-        toast.error(data.message || 'Failed to create chat');
-      }
+        toast.success('Chat đã được tạo!');
+      } else toast.error(data.message || 'Tạo chat thất bại');
     } catch (error) {
-      console.error('Error creating chat:', error);
-      toast.error('Failed to create chat. Please try again.');
+      toast.error('Tạo chat thất bại');
     }
   };
 
   const finalPrice = product ? product.price - (product.price * (product.discount || 0)) / 100 : 0;
-  const productImage = product?.images?.length && product.images.length > 0 ? product.images[0].image : 'https://via.placeholder.com/50';
+  const productImage = product?.images?.[0]?.image || 'https://via.placeholder.com/50';
 
   return (
     <div style={{
-      position: 'fixed',
-      bottom: '90px',
-      right: '20px',
-      width: '600px',
-      backgroundColor: '#fff',
-      border: '1px solid #ccc',
-      borderRadius: '8px',
-      boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
-      zIndex: 1000,
-      display: 'flex',
-      height: '400px',
+      position: 'fixed', bottom: '90px', right: '20px', width: '650px',
+      background: '#fff', borderRadius: '10px', boxShadow: '0 0 15px rgba(0,0,0,0.15)', display: 'flex', height: '450px',
+      fontFamily: 'Segoe UI, sans-serif', overflow: 'hidden', zIndex: 1000,
     }}>
-      <div style={{ width: '200px', borderRight: '1px solid #eee', overflowY: 'auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #eee', padding: '10px' }}>
-          <h4>Chat với Cửa hàng</h4>
-          <button onClick={onClose} style={{ border: 'none', background: 'none', cursor: 'pointer', fontSize: '18px' }}>
-            ×
-          </button>
+      {/* Sidebar */}
+      <div style={{ width: '220px', background: '#f9f9f9', borderRight: '1px solid #ddd', overflowY: 'auto' }}>
+        <div style={{ padding: '15px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between' }}>
+          <strong>Chat với Cửa hàng</strong>
+          <button onClick={onClose} style={{ border: 'none', background: 'none', fontSize: '18px', cursor: 'pointer' }}>×</button>
         </div>
         {chatList.length > 0 ? (
           chatList.map((chat) => (
@@ -236,92 +304,78 @@ const UserChatComponent: React.FC<UserChatComponentProps> = ({ productId, produc
               key={chat._id}
               onClick={() => setSelectedChat(chat)}
               style={{
-                padding: '10px',
+                padding: '10px 12px', cursor: 'pointer', backgroundColor: selectedChat?._id === chat._id ? '#e6f7ff' : 'transparent',
                 borderBottom: '1px solid #eee',
-                cursor: 'pointer',
-                backgroundColor: selectedChat?._id === chat._id ? '#f0f0f0' : 'transparent',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
               }}
             >
-              <img src="https://via.placeholder.com/40" alt="Logo" />
-              <div>
-                <div style={{ fontWeight: 'bold' }}>
-                  {chat.user.find((u) => u._id !== userId)?.name || 'Admin'}
-                </div>
-                <div>{chat.messages[chat.messages.length - 1]?.content || 'No messages'}</div>
-                <div style={{ color: '#888' }}>
-                  {new Date(chat.messages[chat.messages.length - 1]?.timestamp).toLocaleDateString()}
-                </div>
-              </div>
+              <div style={{ fontWeight: 600 }}>{chat.user.find((u) => u._id !== userId)?.name || 'Admin'}</div>
+              <div style={{ fontSize: '13px', color: '#666' }}>{chat.messages.at(-1)?.content || '...'}</div>
+              <div style={{ fontSize: '12px', color: '#aaa' }}>{new Date(chat.messages.at(-1)?.timestamp || '').toLocaleDateString()}</div>
             </div>
           ))
         ) : (
-          <div style={{ padding: '10px' }}>
-            <p>Bắt đầu trò chuyện ngay!</p>
-            <button onClick={startNewChat} style={{ padding: '5px 10px', background: '#ff4d4f', color: '#fff', border: 'none', borderRadius: '5px' }}>
+          <div style={{ padding: '15px' }}>
+            <p>Chưa có cuộc trò chuyện nào.</p>
+            <button
+              onClick={startNewChat}
+              style={{ padding: '6px 12px', background: '#ff4d4f', color: '#fff', border: 'none', borderRadius: '5px' }}
+            >
               Tạo chat mới
             </button>
           </div>
         )}
       </div>
-      <div style={{ flex: 1, padding: '10px', overflowY: 'auto' }}>
+
+      {/* Main Chat Area */}
+      <div style={{ flex: 1, padding: '15px', display: 'flex', flexDirection: 'column' }}>
         {selectedChat ? (
           <>
-            <div style={{ padding: '10px', border: '1px solid #eee', borderRadius: '5px', marginBottom: '10px' }}>
-              <img
-                src={productImage}
-                alt={product?.name || 'Sản phẩm'}
-                style={{ width: '50px', height: '50px', verticalAlign: 'middle', marginRight: '10px' }}
-              />
-              <span style={{ verticalAlign: 'middle' }}>{product?.name || 'Sản phẩm không xác định'}</span>
-              <br />
-              <span style={{ color: '#888' }}>Hiển thị: {finalPrice.toLocaleString()} VND</span>
-              <br />
-              <span style={{ color: '#888' }}>ID Sản phẩm: {productId}</span>
+            <div style={{ marginBottom: '10px', border: '1px solid #eee', borderRadius: '8px', padding: '10px', background: '#fafafa' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <img src={productImage} alt={product?.name} style={{ width: '50px', height: '50px', borderRadius: '6px' }} />
+                <div>
+                  <div style={{ fontWeight: 600 }}>{product?.name}</div>
+                  <div style={{ color: '#999' }}>Hiển thị: {finalPrice.toLocaleString('vi-VN')}₫</div>
+                  <div style={{ color: '#ccc', fontSize: '13px' }}>ID: {productId}</div>
+                </div>
+              </div>
             </div>
-            <div style={{ height: '250px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {selectedChat.messages.map((msg, index) => (
+            <div style={{ flex: 1, overflowY: 'auto', paddingRight: '5px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {selectedChat.messages.map((msg, i) => (
                 <div
-                  key={index}
+                  key={i}
                   style={{
-                    margin: '5px 0',
-                    padding: '5px 10px',
-                    background: msg.sender._id === userId ? '#e0f7fa' : '#f0f0f0',
-                    borderRadius: '5px',
-                    maxWidth: '70%',
                     alignSelf: msg.sender._id === userId ? 'flex-end' : 'flex-start',
-                    wordWrap: 'break-word',
+                    background: msg.sender._id === userId ? '#d2f7e5' : '#f1f1f1',
+                    borderRadius: '8px', padding: '8px 12px', maxWidth: '75%',
                   }}
                 >
-                  <strong>{msg.sender.name}: </strong>
-                  {msg.content}
-                  <div style={{ fontSize: '12px', color: '#888' }}>
-                    {new Date(msg.timestamp).toLocaleTimeString()}
-                    {msg.is_read && msg.sender._id !== userId && ' (Đã đọc)'}
+                  <div style={{ fontSize: '14px', fontWeight: 500 }}>{msg.sender.name}</div>
+                  <div>{msg.content}</div>
+                  <div style={{ fontSize: '11px', color: '#888', textAlign: 'right' }}>
+                    {new Date(msg.timestamp).toLocaleTimeString()} {msg.is_read && msg.sender._id !== userId && ' (Đã đọc)'}
                   </div>
                 </div>
               ))}
             </div>
-            <div style={{ display: 'flex', gap: '5px', marginTop: '10px' }}>
+            <div style={{ display: 'flex', gap: '6px', marginTop: '12px' }}>
               <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Nhập tin nhắn..."
-                style={{ flex: 1, padding: '5px', border: '1px solid #ccc', borderRadius: '5px' }}
+                style={{ flex: 1, padding: '8px', border: '1px solid #ccc', borderRadius: '6px' }}
               />
               <button
                 onClick={sendMessage}
-                style={{ padding: '5px 10px', background: '#ff4d4f', color: '#fff', border: 'none', borderRadius: '5px' }}
+                style={{ padding: '8px 16px', background: '#1890ff', color: '#fff', border: 'none', borderRadius: '6px' }}
               >
                 Gửi
               </button>
             </div>
           </>
         ) : (
-          <p style={{ padding: '10px' }}>Chọn một cuộc trò chuyện để bắt đầu.</p>
+          <div style={{ textAlign: 'center', color: '#888', marginTop: '50%' }}>Chọn một cuộc trò chuyện để bắt đầu.</div>
         )}
       </div>
     </div>

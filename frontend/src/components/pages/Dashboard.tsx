@@ -125,7 +125,7 @@ const Dashboard = () => {
     onClick={() => setActiveSection('events')} 
     className={activeSection === 'events' ? 'menu-highlight active' : 'menu-highlight'}
   >
-    🏷️ quản lí sự kiện
+    🏷️ Quản lí sự kiện
   </div>
 
   <div 
