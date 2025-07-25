@@ -75,7 +75,7 @@ const ReturnForm: React.FC = () => {
       const maxSize = 5 * 1024 * 1024; // 5MB
       const invalidFiles = selectedFiles.filter(file => file.size > maxSize);
       if (invalidFiles.length > 0) {
-        setError('Một số file vượt quá 5MB');
+        setError('Một số file đã vượt quá 5MB');
         return;
       }
       const newImages = [...images, ...selectedFiles];
@@ -87,8 +87,8 @@ const ReturnForm: React.FC = () => {
       } else {
         setError(!isOrderValid 
           ? (['pending', 'delivered'].includes(orderDetail?.status) 
-              ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
-              : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
+              ? 'Đã quá 5 ngày kể từ khi đặt hàng, bạn không thể trả hàng'
+              : 'Đơn hàng phải đang ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
           : '');
       }
       setImages(newImages);
@@ -103,8 +103,8 @@ const ReturnForm: React.FC = () => {
     } else {
       setError(!isOrderValid 
         ? (['pending', 'delivered'].includes(orderDetail?.status) 
-            ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
-            : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
+            ? 'Đã quá 5 ngày kể từ khi đặt hàng, bạn không thể trả hàng'
+            : 'Đơn hàng phải đang ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
         : '');
     }
   };
