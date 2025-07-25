@@ -287,7 +287,7 @@ const ReturnForm: React.FC = () => {
             <option value="" disabled>Chọn lý do</option>
             <option value="wrong_item">Sản phẩm sai</option>
             <option value="damaged">Sản phẩm hỏng</option>
-            <option value="not_as_described">Sản phẩm không như mô tả</option>
+            <option value="not_as_described">Sản phẩm không đúng như mô tả</option>
             <option value="other">Khác</option>
           </select>
         </div>
