@@ -61,7 +61,7 @@ const ReturnForm: React.FC = () => {
           throw new Error(data.message || 'Không thể lấy chi tiết đơn hàng');
         }
       } catch (err: any) {
-        toast.error(err.message || 'Có lỗi xảy ra khi tải đơn hàng');
+        toast.error(err.message || 'Đã có lỗi xảy ra khi tải đơn hàng');
         navigate('/orders');
       }
     };
