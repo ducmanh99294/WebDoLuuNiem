@@ -118,8 +118,8 @@ const ReturnForm: React.FC = () => {
     }
     if (!isOrderValid) {
       setError(['pending', 'delivered'].includes(orderDetail?.status)
-        ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
-        : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
+        ? 'Đã quá 5 ngày kể từ khi đặt hàng, bạn không thể trả hàng'
+        : 'Đơn hàng phải đang ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
       return;
     }
     if (images.length < 3) {
@@ -127,11 +127,11 @@ const ReturnForm: React.FC = () => {
       return;
     }
     if (!description || description.trim().length < 5 || /^\s*$/.test(description)) {
-      setError('Vui lòng nhập mô tả lỗi ít nhất 5 ký tự (không tính khoảng trắng).');
+      setError('Vui lòng hãy nhập mô tả lỗi ít nhất 5 ký tự (không tính khoảng trắng).');
       return;
     }
     if (!reason) {
-      setError('Vui lòng chọn lý do trả hàng.');
+      setError('Vui lòng chọn lý do bạn trả hàng.');
       return;
     }
 
