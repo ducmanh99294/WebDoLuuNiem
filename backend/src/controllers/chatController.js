@@ -210,6 +210,58 @@ const getChatById = async (req, res) => {
         });
     }
 };
+const getChatByUserId = async (req, res) => {
+    try {
+        if (!mongoose.isValidObjectId(req.params.id)) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid chat ID'
+            });
+        }
+
+        const userId = req.params.id
+        logger.info(req.body.user)
+
+        if (userId == undefined || userId !== req.body.user.id) {
+          logger.warn("Invalid user id!")
+          return res.status(401).json({
+            message: "Invalid user id!",
+            success: false
+          })
+        }
+
+        const chat = await (await Chat.find({user : {$in: [userId]}})).populate('user').exec()
+
+        if (!chat) {
+            logger.warn(`Chat not found with ID: ${req.params.id}`);
+            return res.status(404).json({
+                success: false,
+                message: 'Chat not found'
+            });
+        }
+
+        if (req.user.role !== 'admin' && !chat.user.includes(req.user._id)) {
+            return res.status(403).json({
+                success: false,
+                message: 'You are not authorized to view this chat'
+            });
+        }
+
+        logger.info(`Retrieved chat with ID: ${req.params.id}`);
+        res.status(200).json({
+            success: true,
+            message: 'Retrieved chat successfully',
+            data: chat
+        });
+    } catch (error) {
+        logger.error(`Error retrieving chat ${req.params.id}: ${error.message}`);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to retrieve chat',
+            error: error.message
+        });
+    }
+};
 
 const updateChat = async (req, res) => {
     try {
@@ -363,6 +415,7 @@ module.exports = {
     createChat,
     getAllChats,
     getChatById,
+    getChatByUserId,
     updateChat,
     deleteChat,
     sendMessage,

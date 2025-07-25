@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createReturnRequest, approveReturn } = require('../controllers/returnController');
+const { createReturnRequest, approveReturn, rejectReturn, getReturnById,getReturnByOrderId,getAllReturns } = require('../controllers/returnController');
 const { validateToken } = require('../middlewares/authMiddleware');
 const multer = require('multer');
 const logger = require('../utils/logger');
@@ -54,5 +54,8 @@ router.post(
 );
 
 router.patch('/:returnId/approve', validateToken, approveReturn);
-
+router.patch('/:returnId/reject', validateToken, rejectReturn);
+router.get('/:returnId', validateToken, getReturnById);
+router.get('/by-order/:orderId', validateToken, getReturnByOrderId);
+router.get('/', validateToken, getAllReturns);
 module.exports = router;
