@@ -3,43 +3,62 @@ const Category = require('../models/Category');
 const logger = require('../utils/logger');
 
 const createCategory = async (req, res) => {
-    try {
-        const { name, description, image } = req.body;
+  try {
+    const { name, description, image } = req.body;
 
-        const existingCategory = await Category.findOne({ name });
-        if (existingCategory) {
-            logger.warn(`Category already exists with name: ${name}`);
-            return res.status(400).json({
-                success: false,
-                message: 'Category already exists'
-            });
-        }
-
-        let newImage = "";
-
-        if(req.file) {
-            newImage = `/src/assets/images/${req.file.filename}`;
-        } 
-
-        if (image) {
-            newImage = image;
-        }
-
-        const category = await Category.create({ ...req.body, image: newImage });
-        await category.save();
-
-        logger.info(`Category created successfully: ${category._id}`);
-        res.status(201).json({
-            success: true,
-            data: category
-        });
-    } catch (e) {
-        logger.error(`Error creating category: ${e.message}`);
-        res.status(500).json({
-            success: false,
-            message: e.message
-        });
+    if (!name || !description) {
+      return res.status(400).json({
+        success: false,
+        message: 'Name and description are required'
+      });
     }
+
+    // Check tồn tại
+    const existingCategory = await Category.findOne({ name });
+    if (existingCategory) {
+      logger.warn(`Category already exists with name: ${name}`);
+      return res.status(400).json({
+        success: false,
+        message: 'Category already exists'
+      });
+    }
+
+    // Xử lý ảnh upload (1 ảnh)
+    let uploadedImages = '';
+        if (req.file) {
+        uploadedImages = `/uploads/categories/${req.file.filename}`;
+        }
+
+
+    // Xử lý ảnh từ link
+    let linkImages = [];
+    if (image) {
+        linkImages = [image]; // nếu là JSON string
+    }
+
+    // Gộp tất cả ảnh
+    const allImages = linkImages.length > 0 ? linkImages[0] : uploadedImages;
+
+
+    // Tạo category mới
+    const category = await Category.create({
+      name,
+      description,
+      image: allImages
+    });
+
+    logger.info(`Category created successfully: ${category._id}`);
+    res.status(201).json({
+      success: true,
+      data: category
+    });
+  } catch (e) {
+    logger.error(`Error creating category: ${e.message}`);
+    res.status(500).json({
+      success: false,
+      message: e.message
+    });
+  }
 };
 
 const getAllCategories = async (req, res) => {
@@ -86,24 +105,62 @@ const getCategoryById = async (req, res) => {
 
 const updateCategory = async (req, res) => {
     try {
-        const category = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!category) {
-            logger.warn(`Category not found with ID: ${req.params.id}`);
-            return res.status(404).json({
+        const categoryId = req.params.id;
+        const { name, description, image } = req.body;
+
+        if (!name || !description) {
+            logger.warn('Missing required fields to update a category');
+            return res.status(400).json({
                 success: false,
-                message: 'Category not found'
+                message: 'Please provide name and description',
             });
         }
-        logger.info(`Category updated successfully: ${category._id}`);
+
+        // Check tồn tại
+        const existingCategory = await Category.findById(req.params.id);
+            if (!existingCategory) {
+              logger.warn(`Category not found with ID: ${req.params.id}`);
+              return res.status(404).json({ success: false, message: 'Category not found' });
+        }
+
+    // Xử lý ảnh upload (1 ảnh)
+    let uploadedImages = '';
+        if (req.file) {
+        uploadedImages = `/uploads/categories/${req.file.filename}`;
+        }
+
+
+    // Xử lý ảnh từ link
+    let linkImages = [];
+    if (image) {
+        linkImages = [image];
+    }
+
+    // Gộp tất cả ảnh
+    const newImages = linkImages.length > 0 ? linkImages[0] : uploadedImages;
+
+        // Cập nhật category
+        const updatedCategory = await Category.findByIdAndUpdate(
+            categoryId,
+            {
+                name,
+                description,
+                image: newImages,
+            },
+            { new: true }
+        );
+
+        logger.info(`Category updated successfully: ${updatedCategory._id}`);
         res.status(200).json({
             success: true,
-            data: category
+            data: updatedCategory,
         });
+
     } catch (e) {
         logger.error(`Error updating category: ${e.message}`);
         res.status(500).json({
             success: false,
-            message: e.message
+            message: e.message,
         });
     }
 };

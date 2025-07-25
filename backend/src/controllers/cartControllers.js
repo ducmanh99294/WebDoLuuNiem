@@ -155,15 +155,18 @@ exports.getCartByUser = async (req, res) => {
       });
     }
 
-    const cartDetails = await CartDetail.find({ cart_id: cart._id }).populate('product_id').lean();
+const allDetails = await CartDetail.find({ cart_id: cart._id }).populate('product_id').lean();
 
-    res.status(200).json({
-      success: true,
-      data: {
-        ...cart,
-        cartDetails: cartDetails || []
-      }
-    });
+// Lọc các cart item có product tồn tại
+const validDetails = allDetails.filter(item => item.product_id !== null);
+
+res.status(200).json({
+  success: true,
+  data: {
+    ...cart,
+    cartDetails: validDetails
+  }
+});
   } catch (err) {
     res.status(500).json({
       success: false,

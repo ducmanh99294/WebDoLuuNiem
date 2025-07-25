@@ -5,7 +5,6 @@ const imageSchema = new mongoose.Schema({
     Product: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Products',
-        required: true
     },
     image: {
         type: String,

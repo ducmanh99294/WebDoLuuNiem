@@ -128,10 +128,11 @@ const loginUser = async (req, res) => {
     }
 }
 
+// '/refresh-token'
 const refreshToken = async (req, res) => {
     try {
         logger.info('Refreshing token...');
-        const { refreshToken } = req.body;
+        const refreshToken = req.cookies.refreshToken;
 
         if (!refreshToken) {
             logger.warn('Refresh token is required');
@@ -144,7 +145,6 @@ const refreshToken = async (req, res) => {
         const token = await RefreshToken.findOne({ token: refreshToken });
         if (!token || token.expiredAt < new Date()) {
             logger.warn('Invalid refresh token');
-
             return res.status(401).json({
                 success: false,
                 message: 'Invalid refresh token'
@@ -152,7 +152,6 @@ const refreshToken = async (req, res) => {
         }
 
         const user = await User.findById(token.user_id);
-
         if (!user) {
             logger.warn('User not found for the provided refresh token');
             return res.status(404).json({
@@ -162,11 +161,20 @@ const refreshToken = async (req, res) => {
         }
 
         const { accessToken, newRefreshToken } = await generateAuthToken(user);
-        await RefreshToken.deleteMany({ user_id: user._id });
+
+        // Xóa refresh token cũ
+        await RefreshToken.deleteOne({ token: refreshToken });
+
+        // Lưu refresh token mới vào cookie (httpOnly)
+        res.cookie('refreshToken', newRefreshToken, {
+            httpOnly: true,
+            secure: true,           // Đảm bảo dùng HTTPS trong production
+            sameSite: 'Strict',
+            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 ngày
+        });
 
         res.status(200).json({
-            accessToken,
-            refreshToken: newRefreshToken
+            accessToken
         });
 
     } catch (error) {
@@ -176,7 +184,7 @@ const refreshToken = async (req, res) => {
             message: 'Internal Server Error'
         });
     }
-}
+};
 
 const logoutUser = async (req, res) => {
     try {

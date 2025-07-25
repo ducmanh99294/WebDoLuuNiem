@@ -51,10 +51,11 @@ const DetailProduct: React.FC = () => {
       try {
         const res = await fetch(`http://localhost:3001/api/v1/products/${_id}`);
         const data = await res.json();
-        console.log(data)
-        setProduct(data);
-        if (data?.images?.length > 0) {
-          setSelectedImage(data.images[0].image);
+        if (data.success) {
+          setProduct(data.data);
+          if (data.data?.images?.length > 0) {
+            setSelectedImage(data.data.images[0].image);
+          }
         }
       } catch (err) {
         console.error('Lỗi khi lấy sản phẩm:', err);
@@ -343,9 +344,11 @@ const addNewCartItem = async (cartId: string, productId: string, quantity: numbe
 };
 
   if (loading) return <p>Đang tải...</p>;
-  if (!product) return <p>Không tìm thấy sản phẩm.</p>;
+  if (!product) return <p>Không tìm thấy sản phẩm.</p>; 
 
-  const finalPrice = product.price - (product.price * (product.discount || 0)) / 100;
+const finalPrice = product.eventDiscount
+  ? product.price * (100 - product.eventDiscount) / 100
+  : product.price;
 
 return (
   <div className="product-detail-container" style={{ background: '#fff', padding: 24, position: 'relative' }}>
@@ -381,8 +384,23 @@ return (
         </div>
 
         <div style={{ fontSize: 24, color: '#009900', margin: '12px 0' }}>
-          {finalPrice.toLocaleString()} VND
+          {product.isInEvent ? (
+            <>
+              <span style={{ color: 'red', fontWeight: 600 }}>
+                {finalPrice?.toLocaleString()} VND
+              </span>
+              <span style={{ textDecoration: 'line-through', color: '#888', marginLeft: 8 }}>
+                {product.price?.toLocaleString()} VND
+              </span>
+              <span style={{ marginLeft: 8, color: 'green' }}>
+                (-{product.eventDiscount}%)
+              </span>
+            </>
+          ) : (
+            <span>{product.price?.toLocaleString()} VND</span>
+          )}
         </div>
+
         <div>
           <span>Vận chuyển đến: </span>
           <select>{/* ... các option tỉnh thành như cũ ... */}</select>
@@ -433,7 +451,9 @@ return (
             onMouseLeave={e => (e.currentTarget.style.background = '#eee')}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: 8 }}>
-              <img src={blog.image[0]} alt="" style={{ width: 48, height: 48, background: '#ddd' }} />
+              <img  src={ blog.image?.[0]?.startsWith('http')||blog.image?.[0]?.startsWith('data:image')
+      ? blog.image?.[0]
+      : `http://localhost:3001${blog.image?.[0]}`} alt="" style={{ width: 48, height: 48, background: '#ddd' }} />
               <div>{blog.title}</div>
             </div>
           </Link>
