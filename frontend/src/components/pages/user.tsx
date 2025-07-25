@@ -52,7 +52,7 @@ const UserList: React.FC = () => {
 <button className="title" onClick={() => navigate('/dashboard')}>
   Back
 </button>
-      <button className='HI'> thêm người dùng </button></div>
+      <button className='HI'> Thêm người dùng </button></div>
       {users.map((user) => (
             
         <div key={user._id} className="user-card">
