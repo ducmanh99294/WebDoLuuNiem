@@ -55,7 +55,7 @@ const ReturnForm: React.FC = () => {
           if (!['pending', 'delivered'].includes(data.order.status)) {
             setError('Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
           } else if ((new Date().getTime() - new Date(data.order.createdAt).getTime()) > 5 * 24 * 60 * 60 * 1000) {
-            setError('Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng');
+            setError('Đã quá 5 ngày kể từ khi đặt hàng, bạn không thể trả hàng');
           }
         } else {
           throw new Error(data.message || 'Không thể lấy chi tiết đơn hàng');
