@@ -36,21 +36,6 @@ const Banner = () => {
               }}
             >
               <div className="absolute inset-0 bg-white/60 backdrop-blur-sm flex items-center justify-between px-6 md:px-16">
-                {/* <div className="Text-big">
-                  <div className="text">
-                    <h2 className="Text-chu">Đặc Sản </h2>
-                    <p className="text-p">Save up to 50% off on your first order!</p>
-                    <div className="text-input">
-                      <div className="icon"><FaPaperPlane /></div>
-                      <input
-                        type="email"
-                        placeholder="Your email address"
-                        className="px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none w-2/3"
-                      />
-                      <button>Subscribe</button>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </SwiperSlide>

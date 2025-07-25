@@ -55,13 +55,13 @@ const ReturnForm: React.FC = () => {
           if (!['pending', 'delivered'].includes(data.order.status)) {
             setError('Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
           } else if ((new Date().getTime() - new Date(data.order.createdAt).getTime()) > 5 * 24 * 60 * 60 * 1000) {
-            setError('Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng');
+            setError('Đã quá 5 ngày kể từ khi đặt hàng, bạn không thể trả hàng');
           }
         } else {
           throw new Error(data.message || 'Không thể lấy chi tiết đơn hàng');
         }
       } catch (err: any) {
-        toast.error(err.message || 'Có lỗi xảy ra khi tải đơn hàng');
+        toast.error(err.message || 'Đã có lỗi xảy ra khi tải đơn hàng');
         navigate('/orders');
       }
     };
@@ -75,7 +75,7 @@ const ReturnForm: React.FC = () => {
       const maxSize = 5 * 1024 * 1024; // 5MB
       const invalidFiles = selectedFiles.filter(file => file.size > maxSize);
       if (invalidFiles.length > 0) {
-        setError('Một số file vượt quá 5MB');
+        setError('Một số file đã vượt quá 5MB');
         return;
       }
       const newImages = [...images, ...selectedFiles];
@@ -87,8 +87,8 @@ const ReturnForm: React.FC = () => {
       } else {
         setError(!isOrderValid 
           ? (['pending', 'delivered'].includes(orderDetail?.status) 
-              ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
-              : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
+              ? 'Đã quá 5 ngày kể từ khi đặt hàng, bạn không thể trả hàng'
+              : 'Đơn hàng phải đang ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
           : '');
       }
       setImages(newImages);
@@ -103,8 +103,8 @@ const ReturnForm: React.FC = () => {
     } else {
       setError(!isOrderValid 
         ? (['pending', 'delivered'].includes(orderDetail?.status) 
-            ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
-            : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
+            ? 'Đã quá 5 ngày kể từ khi đặt hàng, bạn không thể trả hàng'
+            : 'Đơn hàng phải đang ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng')
         : '');
     }
   };
@@ -118,8 +118,8 @@ const ReturnForm: React.FC = () => {
     }
     if (!isOrderValid) {
       setError(['pending', 'delivered'].includes(orderDetail?.status)
-        ? 'Đã quá 5 ngày kể từ khi đặt hàng, không thể trả hàng'
-        : 'Đơn hàng phải ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
+        ? 'Đã quá 5 ngày kể từ khi đặt hàng, bạn không thể trả hàng'
+        : 'Đơn hàng phải đang ở trạng thái chờ xác nhận hoặc đã giao để được trả hàng');
       return;
     }
     if (images.length < 3) {
@@ -127,11 +127,11 @@ const ReturnForm: React.FC = () => {
       return;
     }
     if (!description || description.trim().length < 5 || /^\s*$/.test(description)) {
-      setError('Vui lòng nhập mô tả lỗi ít nhất 5 ký tự (không tính khoảng trắng).');
+      setError('Vui lòng hãy nhập mô tả lỗi ít nhất 5 ký tự (không tính khoảng trắng).');
       return;
     }
     if (!reason) {
-      setError('Vui lòng chọn lý do trả hàng.');
+      setError('Vui lòng chọn lý do bạn trả hàng.');
       return;
     }
 
@@ -205,7 +205,7 @@ const ReturnForm: React.FC = () => {
 
   return (
     <div className="return-form-container">
-      <h2>Thủ tục trả hàng</h2>
+      <h2>Thủ tục hoàn trả hàng</h2>
 
       <div className="order-info">
         <div className="box">
@@ -271,7 +271,7 @@ const ReturnForm: React.FC = () => {
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            placeholder="Mô tả chi tiết lỗi của sản phẩm..."
+            placeholder="Mô tả chi tiết lỗi sản phẩm..."
             rows={5}
             disabled={!isOrderValid}
           />
@@ -287,7 +287,7 @@ const ReturnForm: React.FC = () => {
             <option value="" disabled>Chọn lý do</option>
             <option value="wrong_item">Sản phẩm sai</option>
             <option value="damaged">Sản phẩm hỏng</option>
-            <option value="not_as_described">Sản phẩm không như mô tả</option>
+            <option value="not_as_described">Sản phẩm không đúng như mô tả</option>
             <option value="other">Khác</option>
           </select>
         </div>

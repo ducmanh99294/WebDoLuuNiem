@@ -32,7 +32,7 @@ const DealsSection = () => {
   return (
     <section className="deals-section">
       <div className="deals-header">
-        <h2>Deals AND offers</h2>
+        <h2>Deals and offers</h2>
         <div className="countdown">
           <div><span>{String(timeLeft.days).padStart(2, "0")}</span><p>ngày</p></div>
           <div><span>{String(timeLeft.hours).padStart(2, "0")}</span><p>giờ</p></div>

@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <div className="footer-column">
           <h4 className="footer-title">Cửa hàng đặc sản</h4>
           <ul>
-            <li>📍 Address: 33 xô viết nghệ tĩnh, phường hoà cường nam, thành phố Đà Nẵng</li>
+            <li>📍 Address: 33 xô viết nghệ tĩnh, phường Hoà cường nam, thành phố Đà Nẵng</li>
             <li>📞 sđt: 0909876266</li>
             <li>✉️ Email: h1@gmail.com</li>
           </ul>
