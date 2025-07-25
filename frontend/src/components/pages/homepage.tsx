@@ -15,6 +15,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const [productsByCategory, setProductsByCategory] = useState<Record<string, any[]>>({});
   const [topRatedProducts, setTopRatedProducts] = useState<any[]>([]);
+  const catId = localStorage.getItem('categoryId')
 
 useEffect(() => {
   const fetchTopRatedProducts = async () => {
@@ -34,9 +35,11 @@ useEffect(() => {
       const reviewData = await reviewRes.json();
 
       if (!prodData.success || !reviewData.success) throw new Error("Lỗi dữ liệu");
+console.log("reviewData:", reviewData);
 
-      const products = prodData.data;
-      const reviews = reviewData.data;
+      const products = prodData.products;
+      const reviews = Array.isArray(reviewData.reviews) ? reviewData.reviews : [];
+
 
       // Tính trung bình sao
       const reviewMap: Record<string, { total: number; count: number }> = {};
@@ -125,7 +128,7 @@ useEffect(() => {
   return (
     <>
       <Banner />
-      <CategoryList />
+      <CategoryList/>
       <div className="card-sp">
         {/* <h1>Chào mừng đến với cửa hàng Đặc Sản</h1> */}
        <h1 style={{ textAlign: 'center' }}>Sản phẩm nổi bật </h1>

@@ -5,7 +5,13 @@ const INACTIVITY_LIMIT = 5 * 60 * 1000; // 5 phút
 
 export const refreshAccessToken = async (): Promise<boolean> => {
   const refreshToken = localStorage.getItem('refreshToken');
-  if (!refreshToken) return false;
+
+  if (!refreshToken || refreshToken.trim() === '') {
+    console.warn('[REFRESH TOKEN] Không có hoặc rỗng → bỏ qua làm mới');
+    return false;
+  }
+
+  console.log('[REFRESH TOKEN] Đang gửi yêu cầu làm mới token...');
 
   try {
     const res = await fetch('http://localhost:3001/api/v1/auth/refresh-token', {
@@ -19,14 +25,15 @@ export const refreshAccessToken = async (): Promise<boolean> => {
     if (res.ok && data.accessToken && data.refreshToken) {
       localStorage.setItem('token', data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
+      console.log('[REFRESH TOKEN] Làm mới token thành công ✅');
       return true;
     } else {
-      console.warn('Làm mới token thất bại:', data.message);
+      console.warn('[REFRESH TOKEN] Làm mới token thất bại ❌:', data.message);
       localStorage.clear();
       return false;
     }
   } catch (err) {
-    console.error('Lỗi khi làm mới token:', err);
+    console.error('[REFRESH TOKEN] Lỗi khi làm mới token ❌:', err);
     localStorage.clear();
     return false;
   }
@@ -35,7 +42,15 @@ export const refreshAccessToken = async (): Promise<boolean> => {
 export const useAutoRefreshToken = () => {
   const navigate = useNavigate();
   const lastActiveTimeRef = useRef(Date.now());
+  const token = localStorage.getItem('token');
+  const refreshToken = localStorage.getItem('refreshToken');
+  const shouldRun = token && refreshToken;
   useEffect(() => {
+     if (!shouldRun) {
+      console.log('[AUTO REFRESH] Chưa đăng nhập, không cần refresh token');
+      return;
+    }
+
     const checkInactivity = () => {
       const now = Date.now();
       const inactiveTime = now - lastActiveTimeRef.current;
@@ -73,5 +88,10 @@ export const useAutoRefreshToken = () => {
       clearInterval(interval);
       events.forEach((e) => window.removeEventListener(e, updateLastActive));
        };
-  }, [navigate]);
+  }, [navigate, shouldRun]);
+};
+
+export const TokenWatcher = () => {
+  useAutoRefreshToken();
+  return null; 
 };

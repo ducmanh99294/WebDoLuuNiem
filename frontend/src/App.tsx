@@ -3,9 +3,7 @@ import AppRouter from './components/route/routes';
 
 const App: React.FC = () => {
   return (
-
       <AppRouter />
-
   );
 };
 

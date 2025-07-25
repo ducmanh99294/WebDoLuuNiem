@@ -86,16 +86,24 @@ const AdminEvents: React.FC = () => {
     const newPreviews = newFiles.map(file => URL.createObjectURL(file));
     setImages(prev => [...prev, ...newPreviews]);
   };
-  // xử lí xóa ảnh 
-  const handleRemoveImage = (index: number) => {
-    setImages(prev => prev.filter((_, i) => i !== index));
 
-    // Loại bỏ link nếu là link
-    setImageLinks(prev => prev.filter((_, i) => images[i].startsWith('http') ? i !== index : true));
-    
-    // Loại bỏ file nếu là file (URL.createObjectURL)
-    setImageFiles(prev => prev.filter((_, i) => !images[i].startsWith('blob:') || i !== index));
-  };
+  // xử lí xóa ảnh 
+const handleRemoveImage = (index: number) => {
+  console.log('Xóa ảnh ở index:', index);
+  console.log('Trước khi xóa - images:', images);
+
+  const newImages = [...images];
+  newImages.splice(index, 1); // Xóa đúng index
+  setImages(newImages);
+
+  // Cập nhật lại các state phụ nếu có:
+  const newImageLinks = newImages.filter(img => typeof img === 'string' && img.startsWith('http'));
+  setImageLinks(newImageLinks);
+
+  console.log('Sau khi xóa - images:', newImages);
+};
+
+
 
  // hàm mở form sửa sản phẩm 
   const handleEditEvent = (event: any) => {

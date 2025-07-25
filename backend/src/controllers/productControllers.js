@@ -234,6 +234,16 @@ const updateProduct = async (req, res) => {
     const product = await Product.findById(productId);
     if (!product) return res.status(404).json({ message: 'Product not found' });
 
+        // Ảnh từ link (chuỗi URL)
+    let imageLinks = [];
+    if (req.body.image) {
+      if (Array.isArray(req.body.image)) {
+        imageLinks = req.body.image.filter((img) => typeof img === 'string');
+      } else if (typeof req.body.image === 'string') {
+        imageLinks = [req.body.image];
+      }
+    }
+    
     // Xử lý ảnh mới (nếu có)
     let newImageIds = [];
     if (req.files && req.files.length > 0) {

@@ -25,11 +25,10 @@ import ReturnForm from '../pages/ReturnForm';
 import { useAutoRefreshToken } from '../refreshAccessToken';
 
 const AppContent: React.FC = () => {
+  // useAutoRefreshToken();
   const location = useLocation();
-
   const noLayoutRoutes = ['', '/dashboard', '/user'];
   const hideLayout = noLayoutRoutes.includes(location.pathname);
-
   const userRole = localStorage.getItem('role'); // sửa lại từ 'admin' thành 'role'
 
   return (
