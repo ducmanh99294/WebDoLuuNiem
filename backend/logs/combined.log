@@ -10062,3 +10062,111 @@
 {"level":"info","message":"Server is running on http://localhost:3001","timestamp":"2025-07-23T03:58:58.883Z"}
 {"level":"info","message":"Upload directory: D:\\LuuNiem2\\backend\\src\\uploads","timestamp":"2025-07-23T03:58:58.884Z"}
 {"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-23T03:58:59.479Z"}
+{"level":"info","message":"📡 Socket handler initialized","timestamp":"2025-07-23T03:59:00.789Z"}
+{"level":"info","message":"Server is running on http://localhost:3001","timestamp":"2025-07-23T03:59:00.970Z"}
+{"level":"info","message":"Upload directory: D:\\LuuNiem2\\backend\\src\\uploads","timestamp":"2025-07-23T03:59:00.971Z"}
+{"level":"info","message":"MongoDB connected successfully","timestamp":"2025-07-23T03:59:01.562Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-23T04:00:26.071Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-23T04:00:26.080Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.084Z"}
+{"level":"info","message":"Fetching product with ID: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.086Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews/product/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.096Z"}
+{"level":"info","message":"Fetching reviews for product: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.098Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-23T04:00:26.134Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-23T04:00:26.151Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews/product/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.161Z"}
+{"level":"info","message":"Fetching reviews for product: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.163Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-23T04:00:26.175Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-23T04:00:26.180Z"}
+{"level":"info","message":"Product retrieved successfully: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.202Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-23T04:00:26.205Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.207Z"}
+{"level":"info","message":"Fetching product with ID: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.207Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-23T04:00:26.231Z"}
+{"level":"info","message":"Product retrieved successfully: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:00:26.312Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-23T04:00:30.093Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-23T04:00:30.094Z"}
+{"level":"info","message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjQ5ZTkzZjQyNTViMDYxMWU2NTQwZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MzIzODM5NCwiZXhwIjoxNzUzMjM5Mjk0fQ.FQKZ-L_dZZTcMgWqwMbMFeeiue0DHqh9TL93uieyWdg","timestamp":"2025-07-23T04:00:30.113Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T04:00:30.116Z"}
+{"level":"info","message":"Total users retrieved: 25","timestamp":"2025-07-23T04:00:30.149Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-23T04:00:30.156Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-23T04:00:30.157Z"}
+{"level":"info","message":"Total users retrieved: 25","timestamp":"2025-07-23T04:00:30.210Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-23T04:01:00.720Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.723Z"}
+{"level":"info","message":"Fetching product with ID: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.724Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews/product/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.726Z"}
+{"level":"info","message":"Fetching reviews for product: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.727Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-23T04:01:00.731Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-23T04:01:00.787Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews/product/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.790Z"}
+{"level":"info","message":"Fetching reviews for product: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.791Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-23T04:01:00.795Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-23T04:01:00.842Z"}
+{"level":"info","message":"Product retrieved successfully: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.846Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-23T04:01:00.847Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.849Z"}
+{"level":"info","message":"Fetching product with ID: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.850Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-23T04:01:00.862Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-23T04:01:00.944Z"}
+{"level":"info","message":"Product retrieved successfully: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:00.955Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-23T04:01:03.494Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-23T04:01:03.495Z"}
+{"level":"info","message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjQ5ZTkzZjQyNTViMDYxMWU2NTQwZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MzIzODM5NCwiZXhwIjoxNzUzMjM5Mjk0fQ.FQKZ-L_dZZTcMgWqwMbMFeeiue0DHqh9TL93uieyWdg","timestamp":"2025-07-23T04:01:03.508Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T04:01:03.512Z"}
+{"level":"info","message":"Total users retrieved: 25","timestamp":"2025-07-23T04:01:03.561Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-23T04:01:03.565Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-23T04:01:03.566Z"}
+{"level":"info","message":"Total users retrieved: 25","timestamp":"2025-07-23T04:01:03.623Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.025Z"}
+{"level":"info","message":"Fetching product with ID: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.026Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-23T04:01:42.029Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews/product/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.032Z"}
+{"level":"info","message":"Fetching reviews for product: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.032Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-23T04:01:42.035Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews/product/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.085Z"}
+{"level":"info","message":"Fetching reviews for product: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.086Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-23T04:01:42.089Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-23T04:01:42.092Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-23T04:01:42.122Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-23T04:01:42.127Z"}
+{"level":"info","message":"Product retrieved successfully: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.137Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.141Z"}
+{"level":"info","message":"Fetching product with ID: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.142Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-23T04:01:42.147Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-23T04:01:42.179Z"}
+{"level":"info","message":"Product retrieved successfully: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:01:42.252Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-23T04:01:44.270Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-23T04:01:44.270Z"}
+{"level":"info","message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjQ5ZTkzZjQyNTViMDYxMWU2NTQwZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MzIzODM5NCwiZXhwIjoxNzUzMjM5Mjk0fQ.FQKZ-L_dZZTcMgWqwMbMFeeiue0DHqh9TL93uieyWdg","timestamp":"2025-07-23T04:01:44.285Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T04:01:44.288Z"}
+{"level":"info","message":"Total users retrieved: 25","timestamp":"2025-07-23T04:01:44.330Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-23T04:01:44.337Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-23T04:01:44.338Z"}
+{"level":"info","message":"Total users retrieved: 25","timestamp":"2025-07-23T04:01:44.405Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.257Z"}
+{"level":"info","message":"Fetching product with ID: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.258Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-23T04:02:13.260Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews/product/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.262Z"}
+{"level":"info","message":"Fetching reviews for product: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.263Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-23T04:02:13.266Z"}
+{"level":"info","message":"Received request: GET /api/v1/reviews/product/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.321Z"}
+{"level":"info","message":"Fetching reviews for product: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.322Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-23T04:02:13.326Z"}
+{"level":"info","message":"Received request: GET /api/v1/categories","timestamp":"2025-07-23T04:02:13.330Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-23T04:02:13.355Z"}
+{"level":"info","message":"Received request: GET /api/v1/blogs","timestamp":"2025-07-23T04:02:13.362Z"}
+{"level":"info","message":"Product retrieved successfully: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.367Z"}
+{"level":"info","message":"Received request: GET /api/v1/products/68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.371Z"}
+{"level":"info","message":"Fetching product with ID: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.371Z"}
+{"level":"info","message":"Retrieved 5 categories","timestamp":"2025-07-23T04:02:13.383Z"}
+{"level":"info","message":"Retrieved 3 blogs","timestamp":"2025-07-23T04:02:13.412Z"}
+{"level":"info","message":"Product retrieved successfully: 68746ac92d807ff0739fdc75","timestamp":"2025-07-23T04:02:13.477Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-23T04:02:15.339Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-23T04:02:15.339Z"}
+{"level":"info","message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjQ5ZTkzZjQyNTViMDYxMWU2NTQwZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MzIzODM5NCwiZXhwIjoxNzUzMjM5Mjk0fQ.FQKZ-L_dZZTcMgWqwMbMFeeiue0DHqh9TL93uieyWdg","timestamp":"2025-07-23T04:02:15.353Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-23T04:02:15.355Z"}
+{"level":"info","message":"Total users retrieved: 25","timestamp":"2025-07-23T04:02:15.400Z"}
+{"level":"info","message":"Received request: GET /api/v1/users","timestamp":"2025-07-23T04:02:15.404Z"}
+{"level":"info","message":"Fetching all users...","timestamp":"2025-07-23T04:02:15.405Z"}
+{"level":"info","message":"Total users retrieved: 25","timestamp":"2025-07-23T04:02:15.461Z"}
