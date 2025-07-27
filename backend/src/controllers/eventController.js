@@ -16,17 +16,36 @@ const createEvent = async (req, res) => {
             });
         }
 
-        const event = new Event({
+        // Ảnh upload từ máy
+            let uploadedImages = [];
+            if (req.files && req.files.length > 0) {
+              uploadedImages = req.files.map(file => `/uploads/events/${file.filename}`);
+            }
+        
+            // Ảnh từ link
+            let linkImages = [];
+            if (imageLinks) {
+              try {
+                linkImages = Array.isArray(imageLinks)
+                  ? imageLinks
+                  : JSON.parse(imageLinks); // nếu là JSON string
+              } catch (err) {
+                logger.warn('imageLinks is not valid JSON');
+              }
+            }
+        
+            const allImages = [...uploadedImages, ...linkImages];
+
+            
+        const event = await Event.create({
             name,
             description,
             startDate,
             endDate,
             location,
             discount,
-            images,
+            images: allImages
         });
-
-        await event.save();
 
         logger.info(`Event created successfully with ID: ${event._id}`);
         res.status(201).json({
@@ -120,43 +139,76 @@ const getEventById = async (req, res) => {
 }
 
 const updateEvent = async (req, res) => {
-    try {
-        const { name, description, startDate, endDate, location, discount, images, products } = req.body;
+  try {
+    const {
+      name,
+      description,
+      startDate,
+      endDate,
+      location,
+      discount
+    } = req.body;
 
-        const event = await Event.findByIdAndUpdate(req.params.id, {
-            name,
-            description,
-            startDate,
-            endDate,
-            location,
-            discount,
-            images,
-            products
-        }, { new: true });
-
-        if (!event) {
-            logger.warn(`Event not found with ID: ${req.params.id}`);
-            return res.status(404).json({
-                success: false,
-                message: 'Event not found'
-            });
-        }
-
-        logger.info(`Event updated successfully with ID: ${event._id}`);
-        res.status(200).json({
-            success: true,
-            message: 'Event updated successfully',
-            data: event
-        });
-    } catch (error) {
-        logger.error(`Error updating event: ${error.message}`);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to update event',
-            error: error.message
-        });
+    // Lấy sự kiện cũ từ DB
+    const existingEvent = await Event.findById(req.params.id);
+    if (!existingEvent) {
+      logger.warn(`Event not found with ID: ${req.params.id}`);
+      return res.status(404).json({ success: false, message: 'Event not found' });
     }
-}
+
+    // Ảnh từ link (chuỗi URL)
+    let imageLinks = [];
+    if (req.body.image) {
+      if (Array.isArray(req.body.image)) {
+        imageLinks = req.body.image.filter((img) => typeof img === 'string');
+      } else if (typeof req.body.image === 'string') {
+        imageLinks = [req.body.image];
+      }
+    }
+
+    // Ảnh từ file upload
+    let uploadedFiles = [];
+    if (req.files && req.files.length > 0) {
+      uploadedFiles = req.files.map((file) => `/uploads/events/${file.filename}`);
+    }
+
+    // Gộp tất cả ảnh mới nếu có
+    const newImages = [...imageLinks, ...uploadedFiles];
+
+    // ✅ Nếu không có ảnh mới, giữ nguyên ảnh cũ
+    const finalImages = [...existingEvent.images, ...newImages];
+
+    const updatedEvent = await Event.findByIdAndUpdate(
+      req.params.id,
+      {
+        name,
+        description,
+        startDate,
+        endDate,
+        location,
+        discount,
+        images: finalImages
+      },
+      { new: true }
+    );
+
+    logger.info(`Event updated successfully with ID: ${updatedEvent._id}`);
+    res.status(200).json({
+      success: true,
+      message: 'Event updated successfully',
+      data: updatedEvent
+    });
+
+  } catch (error) {
+    logger.error(`Error updating event: ${error.message}`);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to update event',
+      error: error.message
+    });
+  }
+};
+
 
 const deleteEvent = async (req, res) => {
     try {
