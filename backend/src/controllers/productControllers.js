@@ -158,66 +158,6 @@ console.log("Kết quả applicableEvent:", applicableEvent);
   }
 };
 
-// const updateProduct = async (req, res) => {
-//   try {
-//     const product = req.params.id;
-
-//     const { name, price, description, category, images } = req.body;
-
-//     // Nếu images là chuỗi (do từ form-data), parse JSON
-//     if (typeof images === 'string') {
-//       images = JSON.parse(images);
-//     }
-
-//       const existingEvent = await Product.findById(req.params.id);
-//       if (!existingEvent) {
-//         logger.warn(`Event not found with ID: ${req.params.id}`);
-//          return res.status(404).json({ success: false, message: 'Event not found' });
-//       }
-        
-//            // Ảnh từ link (chuỗi URL)
-// let imageLinks = [];
-// if (req.body.image) {
-//   if (Array.isArray(req.body.image)) {
-//     imageLinks = req.body.image.filter((img) => typeof img === 'string');
-//   } else if (typeof req.body.image === 'string') {
-//     imageLinks = [req.body.image];
-//   }
-// }
-
-// // Ảnh từ file upload
-// let uploadedFiles = [];
-// if (req.files && req.files.length > 0) {
-//   uploadedFiles = req.files.map((file) => `/uploads/products/${file.filename}`);
-// }
-
-// // Gộp ảnh mới (link + file)
-// const newImages = [...imageLinks, ...uploadedFiles];
-
-// // Gộp với ảnh cũ, bỏ trùng
-// const finalImages = Array.from(new Set([...existingEvent.image, ...newImages]));
-
-// console.log('req.files:', req.files);
-// console.log('req.body.image:', req.body.image);
-
-//     const updateProduct = await Product.findByIdAndUpdate(
-//             product, 
-//             { 
-//                 name, 
-//                 price, 
-//                 description, 
-//                 category,
-//                 image: finalImages, 
-//             }, 
-//             { new: true });
-
-//     res.json({ success: true, updateProduct });
-//   } catch (err) {
-//     console.error('❌ Error updating product:', err);
-//     res.status(500).json({ message: 'Lỗi khi cập nhật sản phẩm' });
-//   }
-// };
-
 const updateProduct = async (req, res) => {
   try {
     const productId = req.params.id;
@@ -230,51 +170,76 @@ const updateProduct = async (req, res) => {
       category,
     } = req.body;
 
-    // Tìm sản phẩm hiện tại
+    // 1️⃣ Tìm sản phẩm
     const product = await Product.findById(productId);
     if (!product) return res.status(404).json({ message: 'Product not found' });
 
-        // Ảnh từ link (chuỗi URL)
+    // 2️⃣ Ảnh “giữ lại” do client gửi về dưới key 'images'
     let imageLinks = [];
-    if (req.body.image) {
-      if (Array.isArray(req.body.image)) {
-        imageLinks = req.body.image.filter((img) => typeof img === 'string');
-      } else if (typeof req.body.image === 'string') {
-        imageLinks = [req.body.image];
+    if (req.body.images) {
+      // Nếu nó là JSON string của 1 array
+      let sent = req.body.images;
+      if (typeof sent === 'string' && sent.trim().startsWith('[')) {
+        try {
+          sent = JSON.parse(sent);
+        } catch (e) {
+          // nếu JSON.parse fail, giữ nguyên sent
+        }
+      }
+      // Bây giờ sent là array hoặc string
+      const arr = Array.isArray(sent) ? sent : [sent];
+      for (const link of arr) {
+        if (typeof link !== 'string') continue;
+        // Nếu link trỏ tới file cũ hoặc URL
+        // tìm doc đã có
+        let imgDoc = await Images.findOne({ image: link });
+        if (!imgDoc) {
+          imgDoc = new Images({ image: link });
+          await imgDoc.save();
+        }
+        imageLinks.push(imgDoc._id);
       }
     }
-    
-    // Xử lý ảnh mới (nếu có)
-    let newImageIds = [];
+
+    // 3️⃣ Ảnh mới upload
+    let uploadedFiles = [];
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
-        const newImage = new Images({
-          image: `/uploads/products/${file.filename}`,
-        });
-        await newImage.save();
-        newImageIds.push(newImage._id);
+        const imgDoc = new Images({ image: `/uploads/products/${file.filename}` });
+        await imgDoc.save();
+        uploadedFiles.push(imgDoc._id);
       }
     }
 
-    // Gộp ảnh cũ và ảnh mới
-    product.images = [...product.images, ...newImageIds];
+    // 4️⃣ Gộp **chính mảng client gửi** (ảnh cũ giữ lại) + **ảnh mới**
+    const finalImages = [...imageLinks, ...uploadedFiles];
 
-    // Cập nhật các trường khác
-    product.name = name;
-    product.description = description;
-    product.price = price;
-    product.quantity = quantity;
-    product.discount = discount;
-    product.category = category;
+    // 5️⃣ Cập nhật và ghi đè mảng cũ
+    const updated = await Product.findByIdAndUpdate(
+      productId,
+      {
+        name,
+        description,
+        price,
+        quantity,
+        discount,
+        category,
+        images: finalImages,
+      },
+      { new: true }
+    );
 
-    await product.save();
-
-    res.status(200).json({ message: 'Cập nhật sản phẩm thành công', product });
+    return res.status(200).json({
+      success: true,
+      message: 'Cập nhật sản phẩm thành công',
+      data: updated,
+    });
   } catch (err) {
     console.error('Error updating product:', err);
-    res.status(500).json({ message: 'Lỗi khi cập nhật sản phẩm' });
+    return res.status(500).json({ message: 'Lỗi khi cập nhật sản phẩm' });
   }
 };
+
 const deleteProduct = async (req, res) => {
     try {
         logger.info(`Deleting product with ID: ${req.params.id}`);

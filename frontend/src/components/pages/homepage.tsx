@@ -128,6 +128,8 @@ console.log("reviewData:", reviewData);
   return (
     <>
       <Banner />
+       <h1 style={{ textAlign: 'center' }}>Danh mục nổi bật </h1>
+
       <CategoryList/>
       <div className="card-sp">
         {/* <h1>Chào mừng đến với cửa hàng Đặc Sản</h1> */}

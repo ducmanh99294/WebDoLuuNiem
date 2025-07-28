@@ -113,8 +113,6 @@ const updateBlog = async (req, res) => {
             });
         }
 
-        
-            // Lấy sự kiện cũ từ DB
             const existingEvent = await Blog.findById(req.params.id);
             if (!existingEvent) {
               logger.warn(`Event not found with ID: ${req.params.id}`);
@@ -122,28 +120,28 @@ const updateBlog = async (req, res) => {
             }
         
            // Ảnh từ link (chuỗi URL)
-let imageLinks = [];
-if (req.body.image) {
-  if (Array.isArray(req.body.image)) {
-    imageLinks = req.body.image.filter((img) => typeof img === 'string');
-  } else if (typeof req.body.image === 'string') {
-    imageLinks = [req.body.image];
-  }
-}
+          let imageLinks = [];
+          if (req.body.image) {
+            if (Array.isArray(req.body.image)) {
+              imageLinks = req.body.image.filter((img) => typeof img === 'string');
+            } else if (typeof req.body.image === 'string') {
+              imageLinks = [req.body.image];
+            }
+          }
 
-// Ảnh từ file upload
-let uploadedFiles = [];
-if (req.files && req.files.length > 0) {
-  uploadedFiles = req.files.map((file) => `/uploads/blogs/${file.filename}`);
-}
+          // Ảnh từ file upload
+          let uploadedFiles = [];
+          if (req.files && req.files.length > 0) {
+            uploadedFiles = req.files.map((file) => `/uploads/blogs/${file.filename}`);
+          }
 
-// Gộp ảnh mới (link + file)
-const newImages = [...imageLinks, ...uploadedFiles];
+          // Gộp ảnh mới (link + file)
+          const newImages = [...imageLinks, ...uploadedFiles];
 
-// Gộp với ảnh cũ, bỏ trùng
-const finalImages = Array.from(new Set([...existingEvent.image, ...newImages]));
-console.log('req.files:', req.files);
-console.log('req.body.image:', req.body.image);
+          // Gộp với ảnh cũ, bỏ trùng
+          const finalImages = newImages.length > 0 ? newImages : existingEvent.image;
+          console.log('req.files:', req.files);
+          console.log('req.body.image:', req.body.image);
 
 
         const updateBlog = await Blog.findByIdAndUpdate(
