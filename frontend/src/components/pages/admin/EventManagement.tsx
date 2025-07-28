@@ -177,55 +177,54 @@ const handleRemoveImage = (index: number) => {
   };
 
   // hàm lưu chỉnh sửa 
-    const handleUpdateEvent = async (editEvent: any) => {
-    const token = localStorage.getItem('token');
-    if (!token || !editingEvent) {
-      alert('Bạn cần đăng nhập hoặc có sự kiện để sửa');
-      return;
-    }
-try {
-      const formData = new FormData();
-      formData.append('name', editEvent.name);
-      formData.append('description', editEvent.description);
-      formData.append('startDate', editEvent.startDate);
-      formData.append('endDate', editEvent.endDate);
-      formData.append('discount', editEvent.discount);
-      formData.append('location', editEvent.location);
-    // 👇 Gửi file từ máy (blob)
-      imageFiles.forEach((file) => {
-        formData.append('image', file);
-      });
+const handleUpdateEvent = async (editEvent: any) => {
+  const token = localStorage.getItem("token");
+  if (!token || !editingEvent) return;
 
-      // 👇 Gửi link (ảnh từ URL)
-      imageLinks.forEach((url) => {
-        formData.append('image', url); // Backend sẽ xử lý chuỗi URL
-      });
-    console.log('🧾 ID cần cập nhật:', editEvent._id);
+  try {
+    const formData = new FormData();
 
-      const res = await fetch(`http://localhost:3001/api/v1/events/${editEvent._id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
+    formData.append("name", editEvent.name);
+    formData.append("description", editEvent.description);
+    formData.append("startDate", editEvent.startDate);
+    formData.append("endDate", editEvent.endDate);
+    formData.append("discount", editEvent.discount);
+    formData.append("location", editEvent.location);
 
-      const data = await res.json();
-      console.log("📥 Phản hồi từ server:", data);
-
-      if (res.ok) {
-        setShowUpdateSuccess(true);
-        setAddingEvent(null);
-        fetchEvents();
+    // 🧼 Gửi chỉ các ảnh hiện còn lại (sau khi đã xoá ở UI)
+    images.forEach((img) => {
+      if (typeof img === 'string') {
+        formData.append('image', img);
       } else {
-        alert("❌ Thêm thất bại: " + data.message);
+        formData.append('image', img); // File object
       }
-    } 
- catch (error) {
-      console.error('🚨 Lỗi cập nhật:', error);
-      alert('Đã xảy ra lỗi khi cập nhật.');
+    });
+
+    // 🧠 Thêm dấu hiệu để backend hiểu: đây là ảnh mới, cần thay thế ảnh cũ (nếu backend hỗ trợ)
+    // Nếu không sửa backend thì chỉ cần backend override toàn bộ ảnh bằng mảng mới này
+
+    const res = await fetch(`http://localhost:3001/api/v1/events/${editEvent._id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await res.json();
+    console.log("📥 Phản hồi từ server:", data);
+
+    if (res.ok) {
+      setShowUpdateSuccess(true);
+      setAddingEvent(null);
+      fetchEvents(); // Làm mới danh sách
+    } else {
+      alert("❌ Cập nhật thất bại: " + data.message);
     }
-  };
+  } catch (error) {
+    console.error("🚨 Lỗi cập nhật:", error);
+  }
+};
 
   // hàm mở form thêm sản phẩm 
   const handleCreateEvent = () => {
@@ -407,7 +406,11 @@ try {
     {images.map((img, index) => (
       <div key={index} style={{ position: 'relative' }}>
         <img 
-          src={img.startsWith('http') ? img : `http://localhost:3001${img}`}
+          src={    
+            img.startsWith('http') ||
+            img.startsWith('blob')
+          ? img
+          : `http://localhost:3001${img}`}
           alt={`Ảnh ${index + 1}`}
           style={{
             width: '80px',

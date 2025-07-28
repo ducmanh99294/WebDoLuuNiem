@@ -22,11 +22,10 @@ import OrderList from '../pages/listOrder';
 import BlogDetail from '../pages/BlogDetail';
 import CategoryPage from '../pages/category';
 import ReturnForm from '../pages/ReturnForm';
-import { useAutoRefreshToken } from '../refreshAccessToken';
 import AdminReturnDetail from '../pages/admin/AdminReturnDetail';
+import { TokenWatcher } from '../TokenWatcher'
 
 const AppContent: React.FC = () => {
-  // useAutoRefreshToken();
   const location = useLocation();
   const noLayoutRoutes = ['', '/dashboard', '/user'];
   const hideLayout = noLayoutRoutes.includes(location.pathname);
@@ -80,6 +79,7 @@ const AppContent: React.FC = () => {
 const AppRouter: React.FC = () => {
   return (
     <Router>
+      <TokenWatcher />
       <AppContent />
     </Router>
   );
