@@ -20,14 +20,29 @@ interface User {
   email: string;
   avatar?: string;
   role: string;
-} 
+}
 
 interface Message {
   _id: string;
-  sender: { _id: string; name: string };
+  sender: { _id: string; name: string; email: string };
   content: string;
   timestamp: string;
   is_read: boolean;
+}
+
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  discount?: number;
+  images?: { image: string }[];
+}
+
+interface Chat {
+  _id: string;
+  user: User[];
+  product: Product | null;
+  messages: Message[];
 }
 
 interface AdminChatComponentProps {
@@ -49,34 +64,44 @@ const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
   });
 
   if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-  return response;
+  return response.json();
 };
 
-const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
-  adminId,
-  onClose,
-}) => {
-  const [users, setUsers] = useState<User[]>([]);
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [messages, setMessages] = useState<Message[]>([]);
+const AdminChatComponent: React.FC<AdminChatComponentProps> = ({ adminId, onClose }) => {
+  const [chats, setChats] = useState<Chat[]>([]);
+  const [selectedChat, setSelectedChat] = useState<Chat | null>(null);
   const [message, setMessage] = useState<string>('');
   const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchChats = async () => {
       try {
-        const res = await fetchWithAuth('/api/v1/users');
-        const data = await res.json();
-        const nonAdminUsers = data.data.filter(
-          (user: User) => user._id !== adminId && user.role !== 'admin'
-        );
-        setUsers(nonAdminUsers);
+        const data = await fetchWithAuth('/api/v1/chats');
+        if (data.success) {
+          const filteredChats = data.chats.filter(chat => chat.user.some(u => u._id === adminId));
+          setChats(filteredChats);
+
+          // Fetch danh sách người dùng để làm giàu thông tin
+          const usersResponse = await fetchWithAuth('/api/v1/users');
+          if (usersResponse.success && Array.isArray(usersResponse.data)) {
+            const usersMap = new Map(usersResponse.data.map(user => [user._id, user]));
+            setChats(prevChats =>
+              prevChats.map(chat => ({
+                ...chat,
+                user: chat.user.map(u => ({
+                  ...u,
+                  ...usersMap.get(u._id)
+                }))
+              }))
+            );
+          }
+        }
       } catch (err) {
-        console.error('Error fetching users:', err);
+        console.error('Error fetching chats:', err);
       }
     };
 
-    fetchUsers();
+    fetchChats();
   }, [adminId]);
 
   useEffect(() => {
@@ -87,50 +112,48 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
     socketRef.current.emit('user_connected', adminId);
 
     socketRef.current.on('receive-message', (msg: Message) => {
-      if (
-        msg.sender._id === selectedUser?._id ||
-        msg.sender._id === adminId
-      ) {
-        setMessages((prev) => [...prev, msg]);
+      if (selectedChat && selectedChat._id === msg._id) {
+        setSelectedChat((prev) => prev ? { ...prev, messages: [...prev.messages, msg] } : prev);
       }
+      setChats((prev) =>
+        prev.map(chat =>
+          chat._id === msg._id ? { ...chat, messages: [...chat.messages, msg] } : chat
+        )
+      );
     });
 
     return () => {
       socketRef.current?.disconnect();
     };
-  }, [selectedUser?._id]);
+  }, [selectedChat?._id]);
 
-  const handleSelectUser = (user: User) => {
-    setSelectedUser(user);
-    socketRef.current?.emit('join-session-direct', { userId: user._id });
-
-    fetchWithAuth(`/api/v1/chats/history/${user._id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setMessages(data.messages);
-        } else {
-          setMessages([]);
-        }
-      })
-      .catch((err) => {
-        console.error('Error fetching message history:', err);
-        setMessages([]);
-      });
+  const handleSelectChat = (chat: Chat) => {
+    setSelectedChat(chat);
+    socketRef.current?.emit('join-session', chat._id);
   };
 
-  const sendMessage = () => {
-    if (!message.trim() || !selectedUser) return;
+  const sendMessage = async () => {
+    if (!message.trim() || !selectedChat) return;
 
-    const newMsg = {
-      content: message,
-      type: 'text',
-      sender_id: adminId,
-      receiver_id: selectedUser._id,
-    };
-
-    socketRef.current?.emit('send-message-direct', newMsg);
-    setMessage('');
+    try {
+      const response = await fetchWithAuth(`/api/v1/chats/messages`, {
+        method: 'POST',
+        body: JSON.stringify({ chatId: selectedChat._id, content: message }),
+      });
+      const data = await response;
+      if (data.success) {
+        const newMsg = data.chat.messages[data.chat.messages.length - 1];
+        setSelectedChat((prev) => prev ? { ...prev, messages: [...prev.messages, newMsg] } : prev);
+        setChats((prev) =>
+          prev.map(chat =>
+            chat._id === selectedChat._id ? { ...chat, messages: [...chat.messages, newMsg] } : chat
+          )
+        );
+        setMessage('');
+      }
+    } catch (err) {
+      console.error('Error sending message:', err);
+    }
   };
 
   return (
@@ -173,7 +196,7 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
             alignItems: 'center',
           }}
         >
-          <span>Người dùng</span>
+          <span>Cuộc trò chuyện</span>
           <button
             onClick={onClose}
             style={{
@@ -189,33 +212,40 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
         </div>
 
         <div style={{ overflowY: 'auto', flex: 1 }}>
-          {users.map((user) => (
-            <div
-              key={user._id}
-              onClick={() => handleSelectUser(user)}
-              style={{
-                display: 'flex',
-                gap: '10px',
-                alignItems: 'center',
-                padding: '12px 15px',
-                cursor: 'pointer',
-                backgroundColor:
-                  selectedUser?._id === user._id ? '#e6f7ff' : 'transparent',
-                borderBottom: '1px solid #eee',
-                transition: 'background 0.2s',
-              }}
-            >
-              <DefaultLogo />
-              <div style={{ flex: 1 }}>
-                <div style={{ fontWeight: 'bold', fontSize: '15px' }}>
-                  {user.name}
-                </div>
-                <div style={{ fontSize: '13px', color: '#666' }}>
-                  {user.email}
+          {chats.map((chat) => {
+            const user = chat.user.find(u => u._id !== adminId);
+            return (
+              <div
+                key={chat._id}
+                onClick={() => handleSelectChat(chat)}
+                style={{
+                  display: 'flex',
+                  gap: '10px',
+                  alignItems: 'center',
+                  padding: '12px 15px',
+                  cursor: 'pointer',
+                  backgroundColor: selectedChat?._id === chat._id ? '#e6f7ff' : 'transparent',
+                  borderBottom: '1px solid #eee',
+                  transition: 'background 0.2s',
+                }}
+              >
+                <DefaultLogo />
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 'bold', fontSize: '15px' }}>
+                    {user?.name || 'Người dùng'} ({user?.email || user?._id})
+                  </div>
+                  <div style={{ fontSize: '13px', color: '#666' }}>
+                    {chat.messages.length > 0 ? chat.messages[chat.messages.length - 1].content : 'Chưa có tin nhắn'}
+                  </div>
+                  {chat.product && (
+                    <div style={{ fontSize: '12px', color: '#999' }}>
+                      Sản phẩm: {chat.product.name} (ID: {chat.product._id})
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -228,7 +258,7 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
           background: '#fafafa',
         }}
       >
-        {selectedUser ? (
+        {selectedChat ? (
           <>
             <div
               style={{
@@ -239,8 +269,29 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
                 fontSize: '17px',
               }}
             >
-              Chat với: {selectedUser.name}
+              Chat với: {selectedChat.user.find(u => u._id !== adminId)?.name || 'Người dùng'} 
+              ({selectedChat.user.find(u => u._id !== adminId)?.email || selectedChat.user.find(u => u._id !== adminId)?._id})
             </div>
+
+            {/* Hiển thị thông tin sản phẩm */}
+            {selectedChat.product && (
+              <div style={{ marginBottom: '10px', border: '1px solid #eee', borderRadius: '8px', padding: '10px', background: '#fafafa' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <img
+                    src={selectedChat.product.images?.[0]?.image || 'https://via.placeholder.com/50'}
+                    alt={selectedChat.product.name}
+                    style={{ width: '50px', height: '50px', borderRadius: '6px' }}
+                  />
+                  <div>
+                    <div style={{ fontWeight: 600 }}>{selectedChat.product.name}</div>
+                    <div style={{ color: '#999' }}>
+                      Giá: {(selectedChat.product.price - (selectedChat.product.price * (selectedChat.product.discount || 0)) / 100).toLocaleString('vi-VN')}₫
+                    </div>
+                    <div style={{ color: '#ccc', fontSize: '13px' }}>ID: {selectedChat.product._id}</div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div
               style={{
@@ -252,24 +303,20 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
                 gap: '12px',
               }}
             >
-              {messages.map((msg, idx) => (
+              {selectedChat.messages.map((msg, idx) => (
                 <div
                   key={idx}
                   style={{
-                    alignSelf:
-                      msg.sender._id === adminId ? 'flex-end' : 'flex-start',
+                    alignSelf: msg.sender._id === adminId ? 'flex-end' : 'flex-start',
                     maxWidth: '65%',
-                    background:
-                      msg.sender._id === adminId
-                        ? '#d2f7e2'
-                        : '#ffffff',
+                    background: msg.sender._id === adminId ? '#d2f7e2' : '#ffffff',
                     padding: '10px 15px',
                     borderRadius: '10px',
                     boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                     fontSize: '14px',
                   }}
                 >
-                  <strong>{msg.sender.name}:</strong> {msg.content}
+                  <strong>{msg.sender.name} ({msg.sender.email || msg.sender._id}):</strong> {msg.content}
                   <div
                     style={{
                       fontSize: '12px',
@@ -333,7 +380,7 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({
               fontSize: '16px',
             }}
           >
-            Chọn người dùng để bắt đầu chat
+            Chọn cuộc trò chuyện để bắt đầu
           </div>
         )}
       </div>

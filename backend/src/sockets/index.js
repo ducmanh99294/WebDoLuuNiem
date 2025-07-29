@@ -2,12 +2,45 @@ const mongoose = require('mongoose');
 const Chat = require('../models/Chat');
 const Comment = require('../models/Comment');
 const Notification = require('../models/Notification');
+const User = require('../models/User'); // Thêm model User
+const jwt = require('jsonwebtoken');
 const logger = require('../utils/logger');
 
 const onlineUsers = new Map(); // userId -> socket.id
 
 module.exports = (io) => {
   logger.info('📡 Socket handler initialized');
+
+  io.use(async (socket, next) => {
+    const token = socket.handshake.auth.token;
+    if (!token) {
+      logger.warn('No token provided in socket connection');
+      return next(new Error('Authentication error'));
+    }
+
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await User.findById(decoded.id).select('_id name email role');
+
+      if (!user) {
+        logger.warn(`User not found for ID: ${decoded.id} in socket connection`);
+        return next(new Error('User not found'));
+      }
+
+      socket.user = {
+        _id: user._id,
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      };
+      logger.info(`Socket authenticated for user: ${socket.user._id}`);
+      next();
+    } catch (error) {
+      logger.error(`Socket authentication failed: ${error.message}`);
+      next(new Error('Authentication error'));
+    }
+  });
 
   io.on('connection', (socket) => {
     logger.info(`✅ Client connected: ${socket.id}`);
@@ -36,7 +69,7 @@ module.exports = (io) => {
       io.emit('online_users', Array.from(onlineUsers.keys()));
     });
 
-    // 📌 [1] User tham gia phiên hỗ trợ hoặc chat
+    // User tham gia phiên chat
     socket.on('join-session', (sessionId) => {
       if (!mongoose.isValidObjectId(sessionId)) {
         logger.warn(`Invalid sessionId: ${sessionId}`);
@@ -47,11 +80,11 @@ module.exports = (io) => {
       logger.info(`Socket ${socket.id} joined session ${sessionId}`);
     });
 
-    // 📌 [2] Gửi tin nhắn mới vào 1 phiên (chat)
+    // Gửi tin nhắn mới
     socket.on('send-message', async (msg) => {
       try {
         const { session_id, content, type, parentMessageId } = msg;
-        const sender_id = socket.user?.id;
+        const sender_id = socket.user._id;
 
         if (!mongoose.isValidObjectId(session_id) || !mongoose.isValidObjectId(sender_id) || !content || !type) {
           logger.warn('Invalid message payload:', msg);
@@ -59,11 +92,6 @@ module.exports = (io) => {
           return;
         }
 
-        const message = new Message({
-          content,
-          type,
-        });
-        await message.save();
         const chat = await Chat.findById(session_id);
         if (!chat || !chat.user.map(id => id.toString()).includes(sender_id)) {
           logger.warn(`Access denied for chat ${session_id} by user ${sender_id}`);
@@ -76,7 +104,8 @@ module.exports = (io) => {
           content,
           type,
           timestamp: new Date(),
-          parentMessageId: parentMessageId && mongoose.isValidObjectId(parentMessageId) ? parentMessageId : null
+          parentMessageId: parentMessageId && mongoose.isValidObjectId(parentMessageId) ? parentMessageId : null,
+          is_read: false
         };
         chat.messages.push(newMessage);
         await chat.save();
@@ -84,24 +113,15 @@ module.exports = (io) => {
         const messageId = chat.messages[chat.messages.length - 1]._id;
 
         io.to(session_id).emit('receive-message', {
-          _id: message._id,
-          session_id: message.session_id,
-          sender_id: message.sender_id,
-          content: message.content,
-          type: message.type,
-          timestamp: message.timestamp,
-          is_read: message.is_read,
           _id: messageId,
           session_id,
-          sender_id,
+          sender: { _id: sender_id, name: socket.user.name || 'Admin' },
           content,
           type,
-          parentMessageId: newMessage.parentMessageId,
           timestamp: newMessage.timestamp,
           is_read: false
         });
 
-        // Gửi thông báo tới người tham gia khác
         await Promise.all(chat.user.map(async userId => {
           if (userId.toString() !== sender_id) {
             const noti = await Notification.create({
@@ -127,7 +147,7 @@ module.exports = (io) => {
       }
     });
 
-    // 📌 [3] Đơn hàng mới
+    // Đơn hàng mới
     socket.on('order_created', async ({ userId, orderNumber, orderId }) => {
       try {
         if (!mongoose.isValidObjectId(userId) || !orderNumber || !mongoose.isValidObjectId(orderId)) {
@@ -136,7 +156,6 @@ module.exports = (io) => {
           return;
         }
 
-        // Thông báo cho user
         const userNoti = await Notification.create({
           user: userId,
           type: 'order',
@@ -150,7 +169,6 @@ module.exports = (io) => {
           io.to(receiverSocket).emit('notification', userNoti);
         }
 
-        // Thông báo cho admin
         const admins = await mongoose.model('User').find({ role: 'admin' });
         await Promise.all(admins.map(async admin => {
           const adminNoti = await Notification.create({
@@ -162,7 +180,7 @@ module.exports = (io) => {
             priority: 'high'
           });
 
-          const adminSocket = onlineUsers.get(admin._id.toString());
+          const adminSocket = onlineUsers.get(userId.toString());
           if (adminSocket) {
             io.to(adminSocket).emit('notification', adminNoti);
           }
@@ -175,7 +193,7 @@ module.exports = (io) => {
       }
     });
 
-    // 📌 [4] Tham gia bình luận sản phẩm
+    // Tham gia bình luận sản phẩm
     socket.on('join-comment', (productId) => {
       if (!mongoose.isValidObjectId(productId)) {
         logger.warn(`Invalid productId: ${productId}`);
@@ -186,7 +204,7 @@ module.exports = (io) => {
       logger.info(`Socket ${socket.id} joined comment room for product ${productId}`);
     });
 
-    // 📌 [5] Gửi bình luận mới
+    // Gửi bình luận mới
     socket.on('send-comment', async ({ productId, senderId, content, parentMessageId }) => {
       try {
         if (!mongoose.isValidObjectId(productId) || !mongoose.isValidObjectId(senderId) || !content) {
@@ -229,7 +247,6 @@ module.exports = (io) => {
           messageId
         });
 
-        // Gửi thông báo
         await Promise.all(commentThread.user.map(async userId => {
           if (userId.toString() !== senderId) {
             const noti = await Notification.create({
@@ -255,7 +272,6 @@ module.exports = (io) => {
       }
     });
 
-    // Hệ thống xử lý sự kiện kỹ thuật
     socket.on('upgrade', () => {
       logger.info('Transport upgraded:', socket.transport);
     });

@@ -22,7 +22,7 @@ const addToLikeList = async (req, res) => {
             });
         }
 
-        let likeList = await LikeList.findOne({ user: req.user.id});
+        let likeList = await LikeList.findOne({ user: req.user.id });
         const product = await Product.findById(req.params.id);
         if (!product) {
             return res.status(404).json({
@@ -30,26 +30,24 @@ const addToLikeList = async (req, res) => {
                 message: 'product not found'
             });
         }
-        console.log("likeList", likeList);
         logger.info(`Checking if user has already liked product: ${product._id}`);
 
-        if (!likeList ) {
+        if (!likeList) {
             logger.info(`Creating new like list for user: ${req.user.id}`);
             likeList = await LikeList.create({
                 user: req.user.id,
                 product: [req.params.id]
             });
-        }
-        else {
-            if(likeList.product.includes(req.params.id)) {
+        } else {
+            if (likeList.product.includes(req.params.id)) {
                 logger.warn('Product already liked by user');
                 return res.status(400).json({
                     success: false,
                     message: 'you have already liked this product'
                 });        
-            } 
-        }
+            }
             likeList.product.push(req.params.id);
+        }
 
         product.like_count += 1;
         await product.save();
@@ -59,10 +57,8 @@ const addToLikeList = async (req, res) => {
         res.json({
             success: true,
             message: 'like Product successfully',
-            // like_count: product.like_count
+            like_count: product.like_count
         });
-        
-       
     } catch (e) {
         logger.error(`Error liking product: ${e.message}`);
         res.status(500).json({
@@ -70,7 +66,7 @@ const addToLikeList = async (req, res) => {
             message: e.message
         });
     }
-}
+};
 
 const getAllLikeLists = async (req, res) => {
     try {
@@ -85,7 +81,7 @@ const getAllLikeLists = async (req, res) => {
             });
         }
 
-        const likes = await LikeList.find({ user }).populate('product', 'name');
+        const likes = await LikeList.find({ user }).populate('product', 'name price discount rating like_count images');
 
         res.status(200).json({
             success: true,
@@ -100,7 +96,7 @@ const getAllLikeLists = async (req, res) => {
             error: error.message
         });
     }
-}
+};
 
 const removeFromLikeList = async (req, res) => {
     try {
@@ -114,10 +110,8 @@ const removeFromLikeList = async (req, res) => {
             });
         }
 
-        const product = await Product.findById(req.params.id);
-        const likeList = await LikeList.findOneAndDelete({ user: req.user.id, product: req.params.id});
-
-        if (!likeList) {
+        const likeList = await LikeList.findOne({ user: req.user.id });
+        if (!likeList || !likeList.product.includes(req.params.id)) {
             logger.warn('Product not found in like list');
             return res.status(404).json({
                 success: false,
@@ -125,15 +119,19 @@ const removeFromLikeList = async (req, res) => {
             });
         }
 
-        await Product.findByIdAndUpdate(req.params.id, { $inc: { like_count: -1 } });
-        
-        product.like_count -= 1;
-        await product.save();
+        likeList.product = likeList.product.filter(id => id.toString() !== req.params.id);
+        await likeList.save();
+
+        const product = await Product.findById(req.params.id);
+        if (product) {
+            product.like_count = Math.max(0, product.like_count - 1);
+            await product.save();
+        }
 
         res.status(200).json({
             success: true,
             message: 'delete product from like list successfully',
-            likeList
+            like_count: product ? product.like_count : 0
         });
     } catch (error) {
         logger.error(`Error removing from like list: ${error.message}`);
@@ -143,10 +141,35 @@ const removeFromLikeList = async (req, res) => {
             error: error.message
         });
     }
-}
+};
+
+const getMostLikedProducts = async (req, res) => {
+    try {
+        logger.info('Fetching most liked products');
+        const products = await Product.find()
+            .sort({ like_count: -1 })
+            .limit(5)
+            .populate('images')
+            .select('name price discount rating like_count images');
+        
+        res.status(200).json({
+            success: true,
+            message: 'get most liked products successfully',
+            products
+        });
+    } catch (error) {
+        logger.error(`Error fetching most liked products: ${error.message}`);
+        res.status(500).json({
+            success: false,
+            message: 'get most liked products failed',
+            error: error.message
+        });
+    }
+};
 
 module.exports = {
     addToLikeList,
     getAllLikeLists,
     removeFromLikeList,
+    getMostLikedProducts
 };
