@@ -11,7 +11,7 @@ interface Product {
   discount: number;
   rating: number;
   like_count: number;
-  images: { image: string }[];
+  images: { image: string }[] | string[];
 }
 
 interface ProductCardProps {
@@ -25,22 +25,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [likeCount, setLikeCount] = useState(product.like_count || 0);
   const [isLiking, setIsLiking] = useState(false);
   const finalPrice = product.price - (product.price * product.discount) / 100;
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-  // Kiểm tra trạng thái "Thích" ban đầu
   const { data: likesData } = useQuery({
     queryKey: ['userLikes', product._id],
     queryFn: async () => {
       const token = localStorage.getItem('token');
       if (!token) return { success: false, likes: [] };
       const res = await fetch('http://localhost:3001/api/v1/like-lists', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error('Failed to fetch likes');
       return res.json();
     },
     enabled: !!localStorage.getItem('token'),
+    staleTime: 5 * 60 * 1000,
   });
 
   useEffect(() => {
@@ -52,7 +51,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     }
   }, [likesData, product._id]);
 
-  // Mutation cho thích/bỏ thích
   const likeMutation = useMutation({
     mutationFn: async ({ productId, isLiked }: { productId: string; isLiked: boolean }) => {
       const token = localStorage.getItem('token');
@@ -73,14 +71,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       return res.json();
     },
     onMutate: async ({ isLiked }) => {
-      // Optimistic update
       setIsLiking(true);
       const previousIsLiked = isLiked;
       const previousLikeCount = likeCount;
       setIsLiked(!isLiked);
       setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
-
-      // Invalidate cache
       await queryClient.cancelQueries(['mostLikedProducts']);
       return { previousIsLiked, previousLikeCount };
     },
@@ -108,18 +103,27 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     likeMutation.mutate({ productId: product._id, isLiked });
   };
 
-  // Hiển thị sao
   const renderStars = (rating: number) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       stars.push(
-        <FaStar
-          key={i}
-          className={i <= Math.round(rating) ? 'star filled' : 'star'}
-        />
+        <FaStar key={i} className={i <= Math.round(rating) ? 'star filled' : 'star'} />
       );
     }
     return stars;
+  };
+
+  const getImageUrl = () => {
+    if (!product.images || product.images.length === 0) {
+      return 'https://via.placeholder.com/150?text=No+Image'; // Fallback nếu không có ảnh
+    }
+    const firstImage = product.images[0];
+    if (typeof firstImage === 'string') {
+      // Nếu là ID, cần fetch URL (giả định endpoint /api/v1/images/:id)
+      console.warn('Image is ID, fetching URL might be needed:', firstImage);
+      return `http://localhost:3001/api/v1/images/${firstImage}`; // Placeholder, cần API thực tế
+    }
+    return firstImage.image || 'https://via.placeholder.com/150?text=Error'; // Nếu là object
   };
 
   return (
@@ -127,9 +131,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="card">
         <div className="image-wrapper">
           <Link to={`/product-detail/${product._id}`}>
-            {product?.images?.length > 0 && (
-              <img src={product.images[0].image} alt={product.name} className="image" />
-            )}
+            <img
+              src={getImageUrl()}
+              alt={product.name}
+              className="image"
+              loading="lazy" // Lazy loading
+              onLoad={() => setImageLoaded(true)}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = 'https://via.placeholder.com/150?text=Error'; // Fallback nếu lỗi
+              }}
+              style={{ opacity: imageLoaded ? 1 : 0, transition: 'opacity 0.3s' }}
+            />
+            {!imageLoaded && <div className="image-placeholder">Đang tải...</div>}
           </Link>
           <div className="label">Hot</div>
         </div>

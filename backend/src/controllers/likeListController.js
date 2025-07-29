@@ -149,6 +149,7 @@ const getMostLikedProducts = async (req, res) => {
         const products = await Product.find()
             .sort({ like_count: -1 })
             .limit(5)
+            .populate('images')
             .select('name price discount rating like_count images');
         
         res.status(200).json({
