@@ -31,3 +31,283 @@
 {"kind":"number","level":"error","message":"Approve return error: Cast to number failed for value \"undefined\" (type undefined) at path \"quantity\"","path":"quantity","stack":"CastError: Cast to number failed for value \"undefined\" (type undefined) at path \"quantity\"\n    at castUpdateVal (D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\helpers\\query\\castUpdate.js:591:13)\n    at walkUpdatePath (D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\helpers\\query\\castUpdate.js:433:24)\n    at castUpdate (D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\helpers\\query\\castUpdate.js:144:7)\n    at model.Query._castUpdate (D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\query.js:4851:10)\n    at model.Query._findOneAndUpdate (D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\query.js:3474:23)\n    at model.Query.exec (D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\query.js:4604:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async D:\\LuuNiem2\\backend\\src\\controllers\\returnController.js:130:9\n    at async Promise.all (index 0)\n    at async approveReturn (D:\\LuuNiem2\\backend\\src\\controllers\\returnController.js:129:7)","stringValue":"\"undefined\"","timestamp":"2025-07-29T02:28:03.206Z","valueType":"undefined"}
 {"level":"error","message":"Failed to send notification: Notification validation failed: type: `return` is not a valid enum value for path `type`.","timestamp":"2025-07-29T02:28:11.176Z"}
 {"_message":"Notification validation failed","errors":{"type":{"kind":"enum","message":"`return` is not a valid enum value for path `type`.","name":"ValidatorError","path":"type","properties":{"enumValues":["order","chat","comment","coupon","review"],"message":"`return` is not a valid enum value for path `type`.","path":"type","type":"enum","value":"return"},"value":"return"}},"level":"error","message":"Reject return error: Notification validation failed: type: `return` is not a valid enum value for path `type`.","stack":"ValidationError: Notification validation failed: type: `return` is not a valid enum value for path `type`.\n    at Document.invalidate (D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\document.js:3343:32)\n    at D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\document.js:3104:17\n    at D:\\LuuNiem2\\backend\\node_modules\\mongoose\\lib\\schemaType.js:1407:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)","timestamp":"2025-07-29T02:28:11.235Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:33.975Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:33.978Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:44:34.120Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:44:34.241Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:55.177Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:55.182Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:58.030Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:58.032Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:58.236Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:58.238Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:58.662Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:58.665Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:58.836Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:58.838Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:59.033Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:44:59.036Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:00.089Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:00.093Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:12.859Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:12.863Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.013Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.016Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.173Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.176Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.180Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.183Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.187Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.192Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.197Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.201Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.331Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.334Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.489Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.493Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.604Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.607Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.863Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:13.867Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.064Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.068Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.222Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.225Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.229Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.234Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.238Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.242Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.245Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.250Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.390Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.393Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.493Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.497Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.500Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.503Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.507Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.509Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.512Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.515Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.520Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.523Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.528Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.531Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.560Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.562Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.717Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.721Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.841Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.845Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.848Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.852Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.856Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.861Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.865Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:14.868Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.006Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.018Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.021Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.026Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.029Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.033Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.035Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.039Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.042Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.046Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.222Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.225Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.444Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.446Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.654Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:15.656Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:17.866Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:17.870Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:24.743Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:45:24.745Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:47:03.388Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:47:03.393Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:47:03.495Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:47:03.617Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:47:13.587Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:47:13.591Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:47:13.695Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:47:13.817Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:47:17.323Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:47:17.326Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:47:19.428Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:47:19.431Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:48:45.717Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:48:45.721Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:48:45.823Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:48:45.952Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:48:47.168Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:48:47.172Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:48:56.280Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:48:56.285Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:48:56.390Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:48:56.512Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:48:57.425Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:48:57.429Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.316Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.320Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.500Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.503Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.505Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.508Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.511Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.516Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.519Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:04.522Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.373Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.375Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.377Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.380Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.383Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.387Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.389Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.392Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.395Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:05.398Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:07.758Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:07.761Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:13.648Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:13.657Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:59:13.755Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:59:13.887Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:15.684Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:15.688Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:20.327Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:20.330Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:59:20.431Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:59:20.552Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:21.390Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:21.393Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:22.587Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:22.590Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:22.662Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:22.665Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.244Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.246Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.412Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.415Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.420Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.424Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.428Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.431Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.435Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.440Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.690Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:23.693Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:25.022Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:25.025Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:25.419Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:25.421Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:25.826Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:25.828Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:26.486Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:26.490Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:31.606Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:31.611Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:59:31.719Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:59:31.842Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:32.757Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:32.761Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:37.907Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:37.911Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:59:38.025Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T02:59:38.140Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:38.929Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T02:59:38.933Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T03:01:46.660Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T03:01:46.663Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T03:01:46.772Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T03:01:46.889Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T03:01:51.228Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T03:01:51.231Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:02:20.295Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:02:20.297Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:27.869Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:27.874Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:28.856Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:28.859Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:30.866Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:30.869Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:32.854Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:32.858Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:35.861Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:35.863Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:36.864Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:36.867Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:39.858Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:10:39.861Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:15:01.860Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:15:01.863Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:15:36.867Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:15:38.857Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:15:38.862Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:15:39.864Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T03:15:55.425Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T03:15:55.504Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T03:15:55.609Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T03:15:56.663Z"}
+{"level":"error","message":"Socket authentication failed: jwt expired","timestamp":"2025-07-29T03:53:45.798Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T03:53:59.209Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T03:53:59.315Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T03:53:59.444Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T03:54:00.266Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:13:08.422Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:13:08.531Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:13:08.657Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:13:10.051Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:13:36.610Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:13:36.722Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:13:36.855Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:13:37.864Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:28:59.273Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:28:59.381Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:28:59.506Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:29:00.677Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:29:08.674Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:29:08.764Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:29:08.873Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:29:10.448Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T04:30:01.436Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:30:01.525Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T04:30:01.627Z"}
+{"level":"error","message":"Error retrieving blog: Cast to ObjectId failed for value \"null\" (type string) at path \"_id\" for model \"Blog\"","timestamp":"2025-07-29T04:30:04.910Z"}
+{"level":"error","message":"Error retrieving blog: Cast to ObjectId failed for value \"null\" (type string) at path \"_id\" for model \"Blog\"","timestamp":"2025-07-29T04:30:04.920Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:45:58.112Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T06:45:58.209Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T06:45:58.321Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:46:06.204Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T06:46:06.302Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T06:46:06.412Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:47:31.620Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T06:47:31.714Z"}
+{"level":"error","message":"Error retrieving chats: Class constructor ObjectId cannot be invoked without 'new'","timestamp":"2025-07-29T06:47:31.825Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:50:47.341Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:50:53.583Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:50:54.262Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:50:55.084Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:50:55.450Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:50:55.835Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:50:58.851Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:50:59.451Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:51:00.433Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:51:00.941Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:51:01.287Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:51:02.733Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:51:22.813Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:51:23.928Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:52:01.552Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:52:02.789Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:52:04.028Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:52:05.334Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:52:16.823Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:52:17.907Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:52:18.681Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:53:05.902Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:53:07.378Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:53:27.174Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:53:28.139Z"}
