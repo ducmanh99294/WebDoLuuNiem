@@ -122,13 +122,13 @@ const handleUpdateProduct = async () => {
     formData.append('description', editingBlog.description);
 
     // ✅ Gửi ảnh dạng link (string)
-       imageFiles.forEach((file) => {
-        formData.append('image', file);
-      });
-
-       imageLinks.forEach((url) => {
-        formData.append('image', url); // Backend sẽ xử lý chuỗi URL
-      });
+    image.forEach((img) => {
+      if (typeof img === 'string') {
+        formData.append('image', img);
+      } else {
+        formData.append('image', img); // File object
+      }
+    });
 
     const response = await fetch(`http://localhost:3001/api/v1/blogs/${editingBlog._id}`, {
       method: 'PUT',

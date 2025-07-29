@@ -139,9 +139,6 @@ const EventPage = () => {
               📍 {event.location} | ⏰{' '}
               {new Date(event.startDate).toLocaleDateString()} - {new Date(event.endDate).toLocaleDateString()}
             </p>
-            <p style={{ fontWeight: 'bold', color: '#d32f2f' }}>
-              Ưu đãi: Giảm {event.discount}%
-            </p>
 
             {/* Time Slot Bar */}
             <div style={{ display: 'flex', gap: 10, overflowX: 'auto', marginBottom: 20 }}>
@@ -160,6 +157,8 @@ const EventPage = () => {
                   }}
                 >
                   🕒 {slot}
+                              <p style={{ fontWeight: 'bold', color: '#d32f2f' }}>
+            </p>
                 </button>
               ))}
             </div>
@@ -192,7 +191,7 @@ const EventPage = () => {
 
                     <div className="name" style={{ fontWeight: 'bold' }}>{product.name}</div>
                     <div className="provider">By <span className="provider-name">NetFood</span></div>
-
+                    <div className='discount'>{app.discount}%</div>  
                     <div className="price-line">
                       {app.discount > 0 ? (
                         <div>
