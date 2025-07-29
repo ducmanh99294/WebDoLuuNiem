@@ -30,10 +30,18 @@ interface Message {
   is_read: boolean;
 }
 
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  discount?: number;
+  images?: { image: string }[];
+}
+
 interface Chat {
   _id: string;
   user: User[];
-  product: { _id: string; name: string; price: number; discount?: number; images?: { image: string }[] } | null;
+  product: Product | null;
   messages: Message[];
 }
 
@@ -70,7 +78,23 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({ adminId, onClos
       try {
         const data = await fetchWithAuth('/api/v1/chats');
         if (data.success) {
-          setChats(data.chats.filter(chat => chat.user.some(u => u._id === adminId)));
+          const filteredChats = data.chats.filter(chat => chat.user.some(u => u._id === adminId));
+          setChats(filteredChats);
+
+          // Fetch danh sách người dùng để làm giàu thông tin
+          const usersResponse = await fetchWithAuth('/api/v1/users');
+          if (usersResponse.success && Array.isArray(usersResponse.data)) {
+            const usersMap = new Map(usersResponse.data.map(user => [user._id, user]));
+            setChats(prevChats =>
+              prevChats.map(chat => ({
+                ...chat,
+                user: chat.user.map(u => ({
+                  ...u,
+                  ...usersMap.get(u._id)
+                }))
+              }))
+            );
+          }
         }
       } catch (err) {
         console.error('Error fetching chats:', err);
@@ -208,11 +232,16 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({ adminId, onClos
                 <DefaultLogo />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 'bold', fontSize: '15px' }}>
-                    {user?.name || 'Người dùng'}
+                    {user?.name || 'Người dùng'} ({user?.email || user?._id})
                   </div>
                   <div style={{ fontSize: '13px', color: '#666' }}>
                     {chat.messages.length > 0 ? chat.messages[chat.messages.length - 1].content : 'Chưa có tin nhắn'}
                   </div>
+                  {chat.product && (
+                    <div style={{ fontSize: '12px', color: '#999' }}>
+                      Sản phẩm: {chat.product.name} (ID: {chat.product._id})
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -240,8 +269,29 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({ adminId, onClos
                 fontSize: '17px',
               }}
             >
-              Chat với: {selectedChat.user.find(u => u._id !== adminId)?.name || 'Người dùng'}
+              Chat với: {selectedChat.user.find(u => u._id !== adminId)?.name || 'Người dùng'} 
+              ({selectedChat.user.find(u => u._id !== adminId)?.email || selectedChat.user.find(u => u._id !== adminId)?._id})
             </div>
+
+            {/* Hiển thị thông tin sản phẩm */}
+            {selectedChat.product && (
+              <div style={{ marginBottom: '10px', border: '1px solid #eee', borderRadius: '8px', padding: '10px', background: '#fafafa' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <img
+                    src={selectedChat.product.images?.[0]?.image || 'https://via.placeholder.com/50'}
+                    alt={selectedChat.product.name}
+                    style={{ width: '50px', height: '50px', borderRadius: '6px' }}
+                  />
+                  <div>
+                    <div style={{ fontWeight: 600 }}>{selectedChat.product.name}</div>
+                    <div style={{ color: '#999' }}>
+                      Giá: {(selectedChat.product.price - (selectedChat.product.price * (selectedChat.product.discount || 0)) / 100).toLocaleString('vi-VN')}₫
+                    </div>
+                    <div style={{ color: '#ccc', fontSize: '13px' }}>ID: {selectedChat.product._id}</div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div
               style={{
@@ -266,7 +316,7 @@ const AdminChatComponent: React.FC<AdminChatComponentProps> = ({ adminId, onClos
                     fontSize: '14px',
                   }}
                 >
-                  <strong>{msg.sender.name}:</strong> {msg.content}
+                  <strong>{msg.sender.name} ({msg.sender.email || msg.sender._id}):</strong> {msg.content}
                   <div
                     style={{
                       fontSize: '12px',

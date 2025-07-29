@@ -311,3 +311,17 @@
 {"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:53:07.378Z"}
 {"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:53:27.174Z"}
 {"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:53:28.139Z"}
+{"level":"error","message":"Token validation failed: jwt malformed","timestamp":"2025-07-29T06:56:25.081Z"}
+{"level":"error","message":"Token validation failed: jwt malformed","timestamp":"2025-07-29T06:56:25.087Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:56:25.099Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:56:26.367Z"}
+{"level":"error","message":"Token validation failed: jwt malformed","timestamp":"2025-07-29T06:56:41.349Z"}
+{"level":"error","message":"Token validation failed: jwt malformed","timestamp":"2025-07-29T06:56:41.356Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:56:41.365Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:56:42.194Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:56:51.019Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:56:52.921Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:57:02.636Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T06:57:03.685Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T07:10:50.061Z"}
+{"level":"error","message":"Socket authentication failed: _id is not defined","timestamp":"2025-07-29T07:10:51.479Z"}
