@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import { categories } from "../components/data/categorydata";
 import '../assets/css/category.css'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CategoryList: React.FC = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -25,25 +25,27 @@ const CategoryList: React.FC = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Danh mục nổi bật</h2>
       { loading ? (
         <p>Đang tải danh mục...</p>
       ) : (
           <div className="boder">
         {categories.map((cate) => {
-  console.log('cate._id:', cate._id); // ✅ Log _id
 
   return (
     <div className="O" key={cate._id} onClick={() => {localStorage.setItem('categoryId', cate._id)}}>
       <Link to={`/category/${cate._id}`} style={{textDecoration: 'none', color: 'black'}}>
         <div className="b1">
           <img
-            src={cate.image}
+            src={     
+              cate.image.startsWith('http') ||
+              cate.image.startsWith('blob') ||
+              cate.image.startsWith('data:image')
+                ? cate.image
+                : `http://localhost:3001${cate.image}`}
             alt={cate.name}
             className="w-12 h-16 mx-auto mb-2 object-contain"
           />
           <h6 className="font-medium text-sm">{cate.name}</h6>
-          <p className="text-p1">{cate.description}</p>
         </div>
       </Link>
     </div>

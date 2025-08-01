@@ -139,13 +139,13 @@ const handleUpdateProduct = async () => {
     formData.append("quantity", editingProduct.quantity);
     formData.append("discount", editingProduct.discount);
     formData.append("category", editingProduct.categoryId);
-       imageFiles.forEach((file) => {
-        formData.append('images', file);
-      });
-
-       imageLinks.forEach((url) => {
-        formData.append('images', url); // Backend sẽ xử lý chuỗi URL
-      });
+ images.forEach(img => {
+  if (typeof img === 'string') {
+    formData.append('images', img); // img là ID chuỗi
+  } else {
+    formData.append('files', img);   // img là File mới
+  }
+});
 
     const response = await fetch(`http://localhost:3001/api/v1/products/${editingProduct._id}`, {
       method: 'PUT',
@@ -190,9 +190,6 @@ const handleDeleteProduct = async () => {
     alert('❌ Bạn cần đăng nhập với quyền Admin');
     return;
   }
-
-  const confirmDelete = window.confirm('❗Bạn có chắc chắn muốn xóa sản phẩm này khỏi hệ thống?');
-  if (!confirmDelete) return;
 
   try {
     const response = await fetch(`http://localhost:3001/api/v1/products/${pendingDelete}`, {
@@ -662,12 +659,13 @@ if (product.images && product.images.length > 0) {
     : firstImage?.image;
 
   if (typeof imagePath === 'string') {
-    if (/^https?:\/\//.test(imagePath)) {
+    if (/^https?:\/\//.test(imagePath) ||   
+        imagePath.startsWith('blob:') ||
+        imagePath.startsWith('data:image')) {
   imageSrc = imagePath;
 } else {
   imageSrc = `http://localhost:3001${imagePath}`;
 }
-  
   }
 
 }

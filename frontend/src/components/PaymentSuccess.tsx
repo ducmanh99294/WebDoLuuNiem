@@ -234,7 +234,7 @@ export const TokenExpiredModal: React.FC<ConfirmDeleteProps> = ({ onConfirm }) =
     <div className="token-expired-overlay">
       <div className="token-expired-modal">
         <h2>Phiên đăng nhập đã hết hạn</h2>
-        <p>Vui lòng đăng nhập lại để tiếp tục sử dụng dịch vụ.</p>
+        <p>Vui lòng đăng nhập lại để tiếp tục.</p>
         <button onClick={onConfirm}>Đăng nhập lại</button>
       </div>
     </div>

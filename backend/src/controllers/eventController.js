@@ -176,7 +176,8 @@ const updateEvent = async (req, res) => {
     const newImages = [...imageLinks, ...uploadedFiles];
 
     // ✅ Nếu không có ảnh mới, giữ nguyên ảnh cũ
-    const finalImages = [...existingEvent.images, ...newImages];
+    // const finalImages = [...existingEvent.images, ...newImages];
+    const finalImages = newImages.length > 0 ? newImages : existingEvent.images;
 
     const updatedEvent = await Event.findByIdAndUpdate(
       req.params.id,

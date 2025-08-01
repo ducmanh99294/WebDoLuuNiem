@@ -125,7 +125,8 @@ const Home: React.FC = () => {
   return (
     <>
       <Banner />
-      <CategoryList />
+       <h1 style={{ textAlign: 'center' }}>Danh mục nổi bật </h1>
+      <CategoryList/>
       <div className="card-sp">
         <h1 style={{ textAlign: 'center' }}>Sản phẩm nổi bật</h1>
         <div className="sp">

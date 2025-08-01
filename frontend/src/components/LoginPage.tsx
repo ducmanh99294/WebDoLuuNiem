@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import '../assets/css/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const LoginPage: React.FC = () => {
   const [emailOrPhone, setEmailOrPhone] = useState('');
   const [password, setPassword] = useState('');
